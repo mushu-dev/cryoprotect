@@ -1,0 +1,49 @@
+{
+  "version": "1.0",
+  "last_updated": "2025-04-15T15:11:00-06:00",
+  "issues_fixed": [
+    {
+      "issue_id": "RDKIT-001",
+      "title": "RDKit Fragments compatibility issue",
+      "description": "The rdkit_utils.py file was using functions that don't exist in RDKit 2023.9.1, such as fr_alcohol, fr_amine, fr_sulfonamide, fr_sulfonic, fr_phosphate, and fr_phosphonate.",
+      "file": "api/rdkit_utils.py",
+      "original_code": "functional_groups = {\n    \"alcohol\": Fragments.fr_alcohol(mol),\n    \"aldehyde\": Fragments.fr_aldehyde(mol),\n    \"alkyl_halide\": Fragments.fr_alkyl_halide(mol),\n    \"amide\": Fragments.fr_amide(mol),\n    \"amine\": Fragments.fr_amine(mol),\n    \"carboxylic_acid\": Fragments.fr_COO(mol),\n    \"ester\": Fragments.fr_ester(mol),\n    \"ether\": Fragments.fr_ether(mol),\n    \"ketone\": Fragments.fr_ketone(mol),\n    \"nitrile\": Fragments.fr_nitrile(mol),\n    \"nitro\": Fragments.fr_nitro(mol),\n    \"sulfide\": Fragments.fr_sulfide(mol),\n    \"sulfonamide\": Fragments.fr_sulfonamide(mol),\n    \"sulfone\": Fragments.fr_sulfone(mol),\n    \"sulfonic_acid\": Fragments.fr_sulfonic(mol),\n    \"phenol\": Fragments.fr_phenol(mol),\n    \"phosphate\": Fragments.fr_phosphate(mol),\n    \"phosphonate\": Fragments.fr_phosphonate(mol),\n    \"hydroxyl\": Fragments.fr_Al_OH(mol) + Fragments.fr_Ar_OH(mol)\n}",
+      "fixed_code": "functional_groups = {\n    # Alcohols (using available fragments)\n    \"alcohol\": Fragments.fr_Al_OH(mol) + Fragments.fr_Ar_OH(mol),\n    \"aldehyde\": Fragments.fr_aldehyde(mol),\n    \"alkyl_halide\": Fragments.fr_alkyl_halide(mol),\n    \"amide\": Fragments.fr_amide(mol),\n    # Use NH groups instead of generic amine\n    \"amine\": Fragments.fr_NH1(mol) + Fragments.fr_NH2(mol),\n    \"carboxylic_acid\": Fragments.fr_COO(mol),\n    \"ester\": Fragments.fr_ester(mol),\n    \"ether\": Fragments.fr_ether(mol),\n    \"ketone\": Fragments.fr_ketone(mol),\n    \"nitrile\": Fragments.fr_nitrile(mol),\n    \"nitro\": Fragments.fr_nitro(mol),\n    \"sulfide\": Fragments.fr_sulfide(mol),\n    # Use sulfonamd instead of sulfonamide\n    \"sulfonamide\": Fragments.fr_sulfonamd(mol),\n    \"sulfone\": Fragments.fr_sulfone(mol),\n    # Remove sulfonic_acid as fr_sulfonic doesn't exist\n    \"phenol\": Fragments.fr_phenol(mol),\n    # Remove phosphate and phosphonate as they don't exist\n    # Use combined hydroxyl groups\n    \"hydroxyl\": Fragments.fr_Al_OH(mol) + Fragments.fr_Ar_OH(mol)\n}",
+      "fix_date": "2025-04-15",
+      "verification": "Verified with verify_rdkit.py that all tests pass with the fixed code."
+    },
+    {
+      "issue_id": "FLASK-001",
+      "title": "Flask app variable not defined before routes",
+      "description": "The app.py file was defining routes before the app variable was created, causing a NameError.",
+      "file": "app.py",
+      "original_code": "# Add routes for the web interface\n@app.route('/')\ndef index():\n    return render_template('index.html')\n\n@app.route('/molecules')\ndef molecules():\n    return render_template('molecules.html')\n\n# ... more routes ...\n\nif __name__ == '__main__':\n    app = create_app()\n    \n    # Try to authenticate with Supabase\n    with app.app_context():\n        user = authenticate_user()\n        if user:\n            app.logger.info(f\"Authenticated as {user.email}\")\n        else:\n            app.logger.warning(\"No authentication. Some operations may fail due to Row Level Security (RLS) policies.\")\n    \n    # Run the application\n    port = int(os.environ.get('PORT', 5000))\n    app.run(host='0.0.0.0', port=port)",
+      "fixed_code": "# Create the app instance\napp = create_app()\n\n# Add routes for the web interface\n@app.route('/')\ndef index():\n    return render_template('index.html')\n\n@app.route('/molecules')\ndef molecules():\n    return render_template('molecules.html')\n\n# ... more routes ...\n\nif __name__ == '__main__':\n    # Try to authenticate with Supabase\n    with app.app_context():\n        user = authenticate_user()\n        if user:\n            app.logger.info(f\"Authenticated as {user.email}\")\n        else:\n            app.logger.warning(\"No authentication. Some operations may fail due to Row Level Security (RLS) policies.\")\n    \n    # Run the application\n    port = int(os.environ.get('PORT', 5000))\n    app.run(host='0.0.0.0', port=port)",
+      "fix_date": "2025-04-15",
+      "verification": "Verified that the Flask application runs correctly in the Docker container and the health endpoint returns a successful response."
+    },
+    {
+      "issue_id": "DOCKER-001",
+      "title": "Docker container security vulnerabilities",
+      "description": "The Docker container has several security vulnerabilities (CVEs) that need to be addressed.",
+      "file": "Dockerfile",
+      "status": "Identified but not fixed",
+      "severity": "Medium",
+      "recommendation": "Update the base image to a more recent version or use a security-hardened image. Consider using multi-stage builds to reduce the final image size and attack surface."
+    },
+    {
+      "issue_id": "JS-001",
+      "title": "JavaScript error in web interface",
+      "description": "The web interface has a JavaScript error: 'Invalid left-hand side in assignment'.",
+      "file": "Unknown (likely in static/js/)",
+      "status": "Identified but not fixed",
+      "severity": "Low",
+      "recommendation": "Debug the JavaScript code to identify and fix the assignment error."
+    }
+  ],
+  "verification_methods": {
+    "RDKit": "Used verify_rdkit.py to run tests for RDKit functionality",
+    "Flask": "Used curl to test the health endpoint and browser to verify the web interface",
+    "Docker": "Built and ran the Docker container to verify it works correctly"
+  }
+}

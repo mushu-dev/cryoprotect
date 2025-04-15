@@ -1,0 +1,264 @@
+{
+  "version": "1.0",
+  "last_updated": "2025-04-15T15:12:00-06:00",
+  "base_url": "http://localhost:5000",
+  "endpoints": {
+    "health": {
+      "path": "/health",
+      "method": "GET",
+      "description": "Health check endpoint to verify the API is running",
+      "authentication_required": false,
+      "example_request": "curl http://localhost:5000/health",
+      "example_response": {
+        "status": "ok",
+        "version": "v1"
+      },
+      "usage_notes": "Use this endpoint to verify that the API is running correctly before making other requests."
+    },
+    "molecules": {
+      "path": "/api/molecules",
+      "method": "GET",
+      "description": "Get a list of all molecules in the database",
+      "authentication_required": false,
+      "query_parameters": {
+        "limit": {
+          "type": "integer",
+          "description": "Maximum number of molecules to return",
+          "default": 10
+        },
+        "offset": {
+          "type": "integer",
+          "description": "Number of molecules to skip",
+          "default": 0
+        },
+        "sort_by": {
+          "type": "string",
+          "description": "Field to sort by",
+          "default": "created_at"
+        },
+        "sort_order": {
+          "type": "string",
+          "description": "Sort order (asc or desc)",
+          "default": "desc"
+        }
+      },
+      "example_request": "curl http://localhost:5000/api/molecules?limit=5&sort_by=name",
+      "example_response": {
+        "molecules": [
+          {
+            "id": "uuid",
+            "cid": 123456,
+            "name": "Ethanol",
+            "molecular_formula": "C2H6O",
+            "smiles": "CCO",
+            "created_at": "2025-04-15T15:00:00Z"
+          }
+        ],
+        "total": 1,
+        "limit": 5,
+        "offset": 0
+      },
+      "usage_notes": "This endpoint returns a paginated list of molecules. Use the limit and offset parameters to navigate through the results."
+    },
+    "molecule_detail": {
+      "path": "/api/molecules/{id}",
+      "method": "GET",
+      "description": "Get detailed information about a specific molecule",
+      "authentication_required": false,
+      "path_parameters": {
+        "id": {
+          "type": "string (UUID)",
+          "description": "UUID of the molecule"
+        }
+      },
+      "example_request": "curl http://localhost:5000/api/molecules/550e8400-e29b-41d4-a716-446655440000",
+      "example_response": {
+        "id": "550e8400-e29b-41d4-a716-446655440000",
+        "cid": 123456,
+        "name": "Ethanol",
+        "molecular_formula": "C2H6O",
+        "smiles": "CCO",
+        "properties": {
+          "molecular_weight": 46.07,
+          "logp": -0.31,
+          "tpsa": 20.23,
+          "hydrogen_bonding": {
+            "donors": 1,
+            "acceptors": 1,
+            "total": 2
+          }
+        },
+        "created_at": "2025-04-15T15:00:00Z",
+        "updated_at": "2025-04-15T15:00:00Z"
+      },
+      "usage_notes": "This endpoint returns detailed information about a specific molecule, including its properties."
+    },
+    "molecule_create": {
+      "path": "/api/molecules",
+      "method": "POST",
+      "description": "Create a new molecule in the database",
+      "authentication_required": true,
+      "request_body": {
+        "cid": {
+          "type": "integer",
+          "description": "PubChem Compound ID",
+          "required": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the molecule",
+          "required": false
+        },
+        "molecular_formula": {
+          "type": "string",
+          "description": "Molecular formula",
+          "required": false
+        },
+        "smiles": {
+          "type": "string",
+          "description": "SMILES representation of the molecule",
+          "required": true
+        }
+      },
+      "example_request": "curl -X POST -H \"Content-Type: application/json\" -d '{\"cid\": 702, \"name\": \"Ethanol\", \"smiles\": \"CCO\"}' http://localhost:5000/api/molecules",
+      "example_response": {
+        "id": "550e8400-e29b-41d4-a716-446655440000",
+        "cid": 702,
+        "name": "Ethanol",
+        "smiles": "CCO",
+        "created_at": "2025-04-15T15:00:00Z"
+      },
+      "usage_notes": "This endpoint creates a new molecule in the database. The CID and SMILES are required, but other fields are optional."
+    },
+    "molecule_properties": {
+      "path": "/api/molecules/{id}/properties",
+      "method": "GET",
+      "description": "Get properties of a specific molecule",
+      "authentication_required": false,
+      "path_parameters": {
+        "id": {
+          "type": "string (UUID)",
+          "description": "UUID of the molecule"
+        }
+      },
+      "example_request": "curl http://localhost:5000/api/molecules/550e8400-e29b-41d4-a716-446655440000/properties",
+      "example_response": {
+        "hydrogen_bonding": {
+          "donors": 1,
+          "acceptors": 1,
+          "total": 2
+        },
+        "logp": -0.31,
+        "tpsa": 20.23,
+        "molecular_properties": {
+          "molecular_weight": 46.07,
+          "exact_mass": 46.042,
+          "heavy_atom_count": 3,
+          "atom_count": 9,
+          "rotatable_bond_count": 1,
+          "ring_count": 0,
+          "aromatic_ring_count": 0,
+          "fraction_csp3": 1.0
+        },
+        "functional_groups": {
+          "alcohol": 1,
+          "hydroxyl": 1
+        },
+        "permeability": {
+          "rule_of_5_violations": 0,
+          "veber_violations": 0,
+          "bbb_permeant": true,
+          "intestinal_absorption": true,
+          "estimated_log_papp": -4.5
+        }
+      },
+      "usage_notes": "This endpoint returns detailed properties of a specific molecule, calculated using RDKit."
+    },
+    "molecule_visualization": {
+      "path": "/api/molecules/{id}/visualization",
+      "method": "GET",
+      "description": "Get SVG visualization of a specific molecule",
+      "authentication_required": false,
+      "path_parameters": {
+        "id": {
+          "type": "string (UUID)",
+          "description": "UUID of the molecule"
+        }
+      },
+      "query_parameters": {
+        "width": {
+          "type": "integer",
+          "description": "Width of the SVG in pixels",
+          "default": 400
+        },
+        "height": {
+          "type": "integer",
+          "description": "Height of the SVG in pixels",
+          "default": 300
+        }
+      },
+      "example_request": "curl http://localhost:5000/api/molecules/550e8400-e29b-41d4-a716-446655440000/visualization?width=500&height=400",
+      "example_response": "<svg width=\"500\" height=\"400\" xmlns=\"http://www.w3.org/2000/svg\">...</svg>",
+      "usage_notes": "This endpoint returns an SVG visualization of a specific molecule. The response is an SVG string that can be displayed in a web browser."
+    },
+    "mixtures": {
+      "path": "/api/mixtures",
+      "method": "GET",
+      "description": "Get a list of all mixtures in the database",
+      "authentication_required": false,
+      "query_parameters": {
+        "limit": {
+          "type": "integer",
+          "description": "Maximum number of mixtures to return",
+          "default": 10
+        },
+        "offset": {
+          "type": "integer",
+          "description": "Number of mixtures to skip",
+          "default": 0
+        }
+      },
+      "example_request": "curl http://localhost:5000/api/mixtures?limit=5",
+      "example_response": {
+        "mixtures": [
+          {
+            "id": "uuid",
+            "name": "Ethanol-Glycerol Mixture",
+            "description": "A mixture of ethanol and glycerol",
+            "created_at": "2025-04-15T15:00:00Z"
+          }
+        ],
+        "total": 1,
+        "limit": 5,
+        "offset": 0
+      },
+      "usage_notes": "This endpoint returns a paginated list of mixtures. Use the limit and offset parameters to navigate through the results."
+    }
+  },
+  "authentication": {
+    "method": "Bearer Token",
+    "endpoint": "/auth/login",
+    "request_body": {
+      "email": {
+        "type": "string",
+        "description": "User email",
+        "required": true
+      },
+      "password": {
+        "type": "string",
+        "description": "User password",
+        "required": true
+      }
+    },
+    "example_request": "curl -X POST -H \"Content-Type: application/json\" -d '{\"email\": \"user@example.com\", \"password\": \"password\"}' http://localhost:5000/auth/login",
+    "example_response": {
+      "message": "Authentication successful",
+      "user": {
+        "id": "user_id",
+        "email": "user@example.com"
+      },
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+    },
+    "usage_notes": "Include the token in the Authorization header of subsequent requests: Authorization: Bearer {token}"
+  }
+}
