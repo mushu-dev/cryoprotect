@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Molecules - CryoProtect Analyzer</title>
+  
+  <!-- Supabase Configuration -->
+  <meta name="supabase-url" content="{{ supabase_url }}">
+  <meta name="supabase-key" content="{{ supabase_key }}">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <i class="bi bi-snow2"></i> CryoProtect <span>Analyzer</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/molecules">Molecules</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/mixtures">Mixtures</a>
+          </li>
+          <li class="nav-item dropdown nav-authenticated d-none">
+            <a class="nav-link dropdown-toggle" href="#" id="analysisDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Analysis
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="analysisDropdown">
+              <li><a class="dropdown-item" href="/predictions">Predictions</a></li>
+              <li><a class="dropdown-item" href="/experiments">Experiments</a></li>
+              <li><a class="dropdown-item" href="/comparisons">Comparisons</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item nav-unauthenticated">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          <li class="nav-item dropdown nav-authenticated d-none">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle"></i> <span class="user-name">User</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li><a class="dropdown-item" href="/profile">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#" id="logout-button">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container py-4">
+    <!-- Molecules List View -->
+    <div id="molecules-list-view">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Molecules</h1>
+        <a href="/molecules/import" class="btn btn-primary requires-auth disabled">
+          <i class="bi bi-plus-circle"></i> Import Molecule
+        </a>
+      </div>
+      
+      <!-- Search and Filter -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="input-group">
+                <input type="text" class="form-control" id="molecule-search" placeholder="Search molecules...">
+                <button class="btn btn-outline-secondary" type="button" id="search-button">
+                  <i class="bi bi-search"></i>
+                </button>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <select class="form-select" id="molecule-filter">
+                <option value="all">All Molecules</option>
+                <option value="high-score">High Score (>70)</option>
+                <option value="medium-score">Medium Score (40-70)</option>
+                <option value="low-score">Low Score (<40)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Molecules Grid -->
+      <div class="row" id="molecules-container">
+        <!-- Molecules will be loaded here dynamically -->
+        <div class="col-12 text-center py-5">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <p class="mt-2">Loading molecules...</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Molecule Detail View -->
+    <div id="molecule-detail-view" style="display: none;">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 id="molecule-name">Molecule Name</h1>
+        <a href="/molecules" class="btn btn-outline-secondary">
+          <i class="bi bi-arrow-left"></i> Back to Molecules
+        </a>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <div class="card-header">
+              Basic Information
+            </div>
+            <div class="card-body">
+              <p><strong>Formula:</strong> <span id="molecule-formula">-</span></p>
+              <p><strong>SMILES:</strong> <span id="molecule-smiles">-</span></p>
+              <p>
+                <a href="#" id="pubchem-link" target="_blank" class="btn btn-sm btn-outline-primary">
+                  <i class="bi bi-box-arrow-up-right"></i> View on PubChem
+                </a>
+              </p>
+            </div>
+          </div>
+          
+          <div class="card">
+            <div class="card-header">
+              Properties
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Property</th>
+                      <th>Value</th>
+                    </tr>
+                  </thead>
+                  <tbody id="molecule-properties">
+                    <!-- Properties will be loaded here dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <div class="card-header">
+              Property Profile
+            </div>
+            <div class="card-body">
+              <div class="chart-container">
+                <canvas id="molecule-radar-chart"></canvas>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card">
+            <div class="card-header">
+              Actions
+            </div>
+            <div class="card-body">
+              <div class="d-grid gap-2">
+                <a href="#" class="btn btn-primary requires-auth disabled" id="add-to-mixture-btn">
+                  <i class="bi bi-droplet"></i> Add to Mixture
+                </a>
+                <a href="#" class="btn btn-outline-primary requires-auth disabled" id="predict-properties-btn">
+                  <i class="bi bi-graph-up"></i> Predict Properties
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Import Molecule View -->
+    <div id="import-molecule-view" style="display: none;">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Import Molecule from PubChem</h1>
+        <a href="/molecules" class="btn btn-outline-secondary">
+          <i class="bi bi-arrow-left"></i> Back to Molecules
+        </a>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              Import by CID
+            </div>
+            <div class="card-body">
+              <form id="molecule-import-form">
+                <div class="mb-3">
+                  <label for="pubchem-cid" class="form-label">PubChem Compound ID (CID)</label>
+                  <input type="number" class="form-control" id="pubchem-cid" required min="1">
+                  <div class="form-text">Enter the CID of the molecule you want to import from PubChem.</div>
+                </div>
+                <button type="submit" class="btn btn-primary">Import Molecule</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              How to Find a CID
+            </div>
+            <div class="card-body">
+              <p>To find a PubChem Compound ID (CID):</p>
+              <ol>
+                <li>Visit <a href="https://pubchem.ncbi.nlm.nih.gov/" target="_blank">PubChem</a></li>
+                <li>Search for a molecule by name or formula</li>
+                <li>Open the compound page</li>
+                <li>Look for the CID in the URL or on the page</li>
+              </ol>
+              <p>Example CIDs for cryoprotectants:</p>
+              <ul>
+                <li>Glycerol: 753</li>
+                <li>Dimethyl sulfoxide (DMSO): 679</li>
+                <li>Ethylene glycol: 174</li>
+                <li>Propylene glycol: 1030</li>
+                <li>Trehalose: 7427</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-light py-4 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p>&copy; 2025 CryoProtect Analyzer. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a href="#" class="text-decoration-none me-3">Privacy Policy</a>
+          <a href="#" class="text-decoration-none me-3">Terms of Service</a>
+          <a href="#" class="text-decoration-none">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Supabase JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Custom JS -->
+  <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  
+  <script>
+    // Initialize page based on URL
+    document.addEventListener('DOMContentLoaded', function() {
+      const path = window.location.pathname;
+      
+      // Show the appropriate view based on the URL
+      if (path.endsWith('/import')) {
+        document.getElementById('molecules-list-view').style.display = 'none';
+        document.getElementById('molecule-detail-view').style.display = 'none';
+        document.getElementById('import-molecule-view').style.display = 'block';
+      } else if (path.match(/\/molecules\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i)) {
+        document.getElementById('molecules-list-view').style.display = 'none';
+        document.getElementById('molecule-detail-view').style.display = 'block';
+        document.getElementById('import-molecule-view').style.display = 'none';
+      } else {
+        document.getElementById('molecules-list-view').style.display = 'block';
+        document.getElementById('molecule-detail-view').style.display = 'none';
+        document.getElementById('import-molecule-view').style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

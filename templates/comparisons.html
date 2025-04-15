@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comparisons - CryoProtect Analyzer</title>
+  
+  <!-- Supabase Configuration -->
+  <meta name="supabase-url" content="{{ supabase_url }}">
+  <meta name="supabase-key" content="{{ supabase_key }}">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <i class="bi bi-snow2"></i> CryoProtect <span>Analyzer</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/molecules">Molecules</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/mixtures">Mixtures</a>
+          </li>
+          <li class="nav-item dropdown nav-authenticated d-none">
+            <a class="nav-link dropdown-toggle active" href="#" id="analysisDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Analysis
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="analysisDropdown">
+              <li><a class="dropdown-item" href="/predictions">Predictions</a></li>
+              <li><a class="dropdown-item" href="/experiments">Experiments</a></li>
+              <li><a class="dropdown-item active" href="/comparisons">Comparisons</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item nav-unauthenticated">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          <li class="nav-item dropdown nav-authenticated d-none">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle"></i> <span class="user-name">User</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li><a class="dropdown-item" href="/profile">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#" id="logout-button">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container py-4">
+    <!-- Mixture Information -->
+    <div class="card mb-4">
+      <div class="card-header">
+        Mixture Information
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <h4 id="mixture-name-display">Loading mixture...</h4>
+            <p id="mixture-description-display">-</p>
+          </div>
+          <div class="col-md-6">
+            <h5>Components</h5>
+            <ul class="list-group" id="mixture-components-display">
+              <!-- Components will be loaded here dynamically -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Comparison Form -->
+    <div class="card mb-4">
+      <div class="card-header">
+        Compare Prediction with Experiment
+      </div>
+      <div class="card-body">
+        <form id="comparison-form">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="mb-3">
+                <label for="comparison-property" class="form-label">Select Property</label>
+                <select class="form-select" id="comparison-property" required>
+                  <option value="">Select a property</option>
+                  <!-- Property options will be loaded dynamically -->
+                </select>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3 d-flex align-items-end h-100">
+                <button type="submit" class="btn btn-primary w-100">Compare</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    <!-- Comparison Results -->
+    <div id="comparison-result">
+      <!-- Comparison results will be displayed here -->
+      <div class="alert alert-info">
+        <i class="bi bi-info-circle"></i> Select a property above to compare prediction with experimental results.
+      </div>
+    </div>
+    
+    <!-- Comparison Chart -->
+    <div class="card mt-4" id="comparison-chart-card" style="display: none;">
+      <div class="card-header">
+        Comparison Chart
+      </div>
+      <div class="card-body">
+        <div class="chart-container">
+          <canvas id="comparison-chart"></canvas>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Explanation -->
+    <div class="card mt-4">
+      <div class="card-header">
+        About Comparisons
+      </div>
+      <div class="card-body">
+        <h5>Understanding the Comparison</h5>
+        <p>
+          Comparisons help you evaluate the accuracy of your predictions by comparing them with experimental results.
+          The system calculates:
+        </p>
+        <ul>
+          <li><strong>Difference:</strong> The absolute difference between the predicted and experimental values.</li>
+          <li><strong>Percent Error:</strong> The percentage difference relative to the experimental value.</li>
+        </ul>
+        <p>The comparison is color-coded based on the percent error:</p>
+        <ul>
+          <li><span class="badge bg-success">Good</span> Less than 5% error</li>
+          <li><span class="badge bg-warning">Warning</span> 5-10% error</li>
+          <li><span class="badge bg-danger">Bad</span> More than 10% error</li>
+        </ul>
+        <p>
+          <strong>Note:</strong> Comparisons are only available for properties that have both predictions and experimental results.
+          If you don't see a property in the dropdown, you may need to add a prediction or record an experiment first.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-light py-4 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p>&copy; 2025 CryoProtect Analyzer. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a href="#" class="text-decoration-none me-3">Privacy Policy</a>
+          <a href="#" class="text-decoration-none me-3">Terms of Service</a>
+          <a href="#" class="text-decoration-none">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Supabase JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Custom JS -->
+  <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  
+  <script>
+    // Initialize page based on URL
+    document.addEventListener('DOMContentLoaded', function() {
+      // Handle form submission
+      document.getElementById('comparison-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const propertyName = document.getElementById('comparison-property').value;
+        if (!propertyName) {
+          return;
+        }
+        
+        // Show loading state
+        document.getElementById('comparison-result').innerHTML = `
+          <div class="text-center py-3">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-2">Comparing prediction with experiment...</p>
+          </div>
+        `;
+        
+        // Get the mixture ID from the URL
+        const mixtureId = getIdFromUrl();
+        if (!mixtureId) {
+          document.getElementById('comparison-result').innerHTML = `
+            <div class="alert alert-danger">
+              <i class="bi bi-exclamation-triangle"></i> Mixture ID not found in URL.
+            </div>
+          `;
+          return;
+        }
+        
+        // Get comparison data
+        API.getComparison(mixtureId, propertyName)
+          .then(comparison => {
+            // Render comparison result
+            renderComparisonResult(comparison);
+            
+            // Show comparison chart
+            document.getElementById('comparison-chart-card').style.display = 'block';
+            Charts.createComparisonChart('comparison-chart', comparison);
+          })
+          .catch(error => {
+            console.error('Error getting comparison:', error);
+            document.getElementById('comparison-result').innerHTML = `
+              <div class="alert alert-danger">
+                <i class="bi bi-exclamation-triangle"></i> Error: ${error.message}
+              </div>
+            `;
+            document.getElementById('comparison-chart-card').style.display = 'none';
+          });
+      });
+    });
+    
+    // Helper function to get ID from URL
+    function getIdFromUrl() {
+      const pathParts = window.location.pathname.split('/');
+      for (let i = 0; i < pathParts.length; i++) {
+        // Look for UUIDs in the URL
+        if (/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(pathParts[i])) {
+          return pathParts[i];
+        }
+      }
+      return null;
+    }
+  </script>
+</body>
+</html>

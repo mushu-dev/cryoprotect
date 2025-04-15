@@ -1,0 +1,22 @@
+name: cryoprotect
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - rdkit=2023.9.1
+  - pip=23.1.2
+  - ipython=8.12.0
+  - pip:
+    - flask==2.3.3
+    - flask-restful==0.3.10
+    - flask-cors==4.0.0
+    - flask-apispec==0.11.4
+    - apispec==6.3.0
+    - marshmallow==3.20.1
+    - supabase==2.0.3
+    - python-dotenv==1.0.0
+    - python-dateutil==2.8.2
+    - requests==2.31.0
+    - numpy==1.26.0
+    - pillow==10.0.1

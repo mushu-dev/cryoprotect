@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  cryoprotect:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+      # Uncomment and set these values for your Supabase instance
+      # - SUPABASE_URL=your_supabase_url
+      # - SUPABASE_KEY=your_supabase_key
+    restart: unless-stopped

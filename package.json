@@ -1,0 +1,40 @@
+{
+  "name": "cryoprotect-analyzer",
+  "version": "1.0.0",
+  "description": "A database and analysis system for cryoprotectant molecules and mixtures",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests/test_database_schema.js",
+    "apply-migration": "node migrations/apply_migration.js",
+    "example:js": "node examples/cryoprotect_db_example.js",
+    "example:py": "python examples/cryoprotect_db_example.py",
+    "analyze": "python PubChem_CryoProtectants.py"
+  },
+  "keywords": [
+    "cryoprotectant",
+    "database",
+    "supabase",
+    "postgresql",
+    "pubchem",
+    "molecular-analysis"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.3.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/cryoprotect-analyzer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/cryoprotect-analyzer/issues"
+  },
+  "homepage": "https://github.com/yourusername/cryoprotect-analyzer#readme"
+}

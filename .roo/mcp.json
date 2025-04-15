@@ -1,0 +1,27 @@
+{
+  "mcpServers": {
+    "supabase": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@supabase/mcp-server-supabase@latest",
+        "--access-token",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1Z3JoaWt5b2ZobHNraXJ5cWl4Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0Mzg3NTQ4NCwiZXhwIjoyMDU5NDUxNDg0fQ.8OuDui9hsILc6dzyQrxaCLrEzjEmcFo0WToyBZ4RrXI"
+      ],
+      "alwaysAllow": [
+        "list_projects",
+        "get_project",
+        "create_project",
+        "get_organization",
+        "list_tables",
+        "execute_sql",
+        "get_project_url",
+        "get_logs",
+        "create_branch",
+        "list_branches"
+      ]
+    }
+  }
+}

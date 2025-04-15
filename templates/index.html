@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CryoProtect Analyzer</title>
+  
+  <!-- Supabase Configuration -->
+  <meta name="supabase-url" content="{{ supabase_url }}">
+  <meta name="supabase-key" content="{{ supabase_key }}">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <i class="bi bi-snow2"></i> CryoProtect <span>Analyzer</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/molecules">Molecules</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/mixtures">Mixtures</a>
+          </li>
+          <li class="nav-item dropdown nav-authenticated d-none">
+            <a class="nav-link dropdown-toggle" href="#" id="analysisDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Analysis
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="analysisDropdown">
+              <li><a class="dropdown-item" href="/predictions">Predictions</a></li>
+              <li><a class="dropdown-item" href="/experiments">Experiments</a></li>
+              <li><a class="dropdown-item" href="/comparisons">Comparisons</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item nav-unauthenticated">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          <li class="nav-item dropdown nav-authenticated d-none">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-circle"></i> <span class="user-name">User</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li><a class="dropdown-item" href="/profile">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#" id="logout-button">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container py-4">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="mb-4">Welcome to CryoProtect Analyzer</h1>
+        <p class="lead">
+          A comprehensive tool for analyzing and predicting the properties of cryoprotectant molecules and mixtures.
+        </p>
+      </div>
+    </div>
+
+    <!-- Dashboard Stats -->
+    <div class="row dashboard-stats mt-4">
+      <div class="col-md-4">
+        <div class="stat-card">
+          <i class="bi bi-flask"></i>
+          <h3 id="molecule-count">0</h3>
+          <p>Molecules</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat-card">
+          <i class="bi bi-droplet"></i>
+          <h3 id="mixture-count">0</h3>
+          <p>Mixtures</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat-card">
+          <i class="bi bi-graph-up"></i>
+          <h3 id="prediction-count">0</h3>
+          <p>Predictions</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Charts -->
+    <div class="row mt-5">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            Top Molecules
+          </div>
+          <div class="card-body">
+            <div class="chart-container">
+              <canvas id="molecule-properties-chart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            Mixture Composition
+          </div>
+          <div class="card-body">
+            <div class="chart-container">
+              <canvas id="mixture-composition-chart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="row mt-5">
+      <div class="col-md-12">
+        <h2 class="mb-4">Quick Actions</h2>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Import Molecule</h5>
+            <p class="card-text">Import a molecule from PubChem by its Compound ID (CID).</p>
+            <a href="/molecules/import" class="btn btn-primary requires-auth disabled">Import Molecule</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Create Mixture</h5>
+            <p class="card-text">Create a new mixture by combining multiple molecules.</p>
+            <a href="/mixtures/new" class="btn btn-primary requires-auth disabled">Create Mixture</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Compare Results</h5>
+            <p class="card-text">Compare predictions with experimental results.</p>
+            <a href="/comparisons" class="btn btn-primary requires-auth disabled">Compare Results</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-light py-4 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p>&copy; 2025 CryoProtect Analyzer. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a href="#" class="text-decoration-none me-3">Privacy Policy</a>
+          <a href="#" class="text-decoration-none me-3">Terms of Service</a>
+          <a href="#" class="text-decoration-none">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Supabase JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Custom JS -->
+  <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
