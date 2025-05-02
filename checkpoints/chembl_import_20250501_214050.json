@@ -1,0 +1,110 @@
+{
+  "smiles": "C(CO)O",
+  "similarity": 80,
+  "batch": 9,
+  "molecules_imported": 0,
+  "properties_imported": 0,
+  "processed_compounds": [
+    "CHEMBL504",
+    "CHEMBL1256511",
+    "CHEMBL3184026",
+    "CHEMBL125278",
+    "CHEMBL297569",
+    "CHEMBL692",
+    "CHEMBL96",
+    "CHEMBL5483025",
+    "CHEMBL3289669",
+    "CHEMBL16502",
+    "CHEMBL2096635",
+    "CHEMBL1995464",
+    "CHEMBL284116",
+    "CHEMBL3560381",
+    "CHEMBL2096648",
+    "CHEMBL985",
+    "CHEMBL457299"
+  ],
+  "batches_processed": 9,
+  "search_terms_used": [],
+  "similarity_searches": [
+    {
+      "smiles": "C(C(CO)O)O",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(C(CO)O)O",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(C(CO)O)O",
+      "similarity": 60,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CS(=O)C",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CS(=O)C",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CS(=O)C",
+      "similarity": 60,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(CC(=O)O)N",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(CC(=O)O)N",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(CC(=O)O)N",
+      "similarity": 60,
+      "compounds_found": 5
+    },
+    {
+      "smiles": "CC(C)(C)O",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CC(C)(C)O",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CC(C)(C)O",
+      "similarity": 60,
+      "compounds_found": 2
+    },
+    {
+      "smiles": "C(=O)(N)N",
+      "similarity": 80,
+      "compounds_found": 4
+    },
+    {
+      "smiles": "C(=O)(N)N",
+      "similarity": 70,
+      "compounds_found": 4
+    },
+    {
+      "smiles": "C(=O)(N)N",
+      "similarity": 60,
+      "compounds_found": 7
+    },
+    {
+      "smiles": "C(CO)O",
+      "similarity": 80,
+      "compounds_found": 1
+    }
+  ]
+}

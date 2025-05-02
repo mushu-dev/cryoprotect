@@ -1,0 +1,264 @@
+{
+  "timestamp": "2025-04-18 13:21:27",
+  "project_id": "tsdlmynydfuypiugmkev",
+  "rls_verification": {
+    "molecules": {
+      "rls_enabled": "unknown"
+    },
+    "experiments": {
+      "rls_enabled": "unknown"
+    },
+    "predictions": {
+      "rls_enabled": "unknown"
+    },
+    "mixtures": {
+      "rls_enabled": "unknown"
+    },
+    "mixture_components": {
+      "rls_enabled": "unknown"
+    },
+    "property_types": {
+      "rls_enabled": "unknown"
+    },
+    "calculation_methods": {
+      "rls_enabled": "unknown"
+    },
+    "user_profile": {
+      "rls_enabled": "unknown"
+    },
+    "experiment_mixtures": {
+      "rls_enabled": "unknown"
+    },
+    "predictions_old": {
+      "rls_enabled": "unknown"
+    },
+    "projects": {
+      "rls_enabled": "unknown"
+    },
+    "teams": {
+      "rls_enabled": "unknown"
+    }
+  },
+  "role_testing": {
+    "anonymous": {
+      "molecules": {
+        "expected": "public_only",
+        "actual": "unknown",
+        "passed": false
+      },
+      "experiments": {
+        "expected": "public_only",
+        "actual": "unknown",
+        "passed": false
+      },
+      "predictions": {
+        "expected": "public_only",
+        "actual": "unknown",
+        "passed": false
+      },
+      "mixtures": {
+        "expected": "public_only",
+        "actual": "unknown",
+        "passed": false
+      },
+      "mixture_components": {
+        "expected": "public_only",
+        "actual": "unknown",
+        "passed": false
+      },
+      "property_types": {
+        "expected": "read",
+        "actual": "unknown",
+        "passed": false
+      },
+      "calculation_methods": {
+        "expected": "read",
+        "actual": "unknown",
+        "passed": false
+      },
+      "user_profile": {
+        "expected": "public_only",
+        "actual": "unknown",
+        "passed": false
+      },
+      "experiment_mixtures": {
+        "expected": "public_only",
+        "actual": "unknown",
+        "passed": false
+      },
+      "predictions_old": {
+        "expected": "public_only",
+        "actual": "unknown",
+        "passed": false
+      },
+      "projects": {
+        "expected": "public_only",
+        "actual": "unknown",
+        "passed": false
+      },
+      "teams": {
+        "expected": "public_only",
+        "actual": "unknown",
+        "passed": false
+      }
+    },
+    "authenticated": {
+      "molecules": {
+        "expected": "restricted_access",
+        "actual": "restricted_access",
+        "passed": true,
+        "policies": []
+      },
+      "experiments": {
+        "expected": "restricted_access",
+        "actual": "restricted_access",
+        "passed": true,
+        "policies": []
+      },
+      "predictions": {
+        "expected": "restricted_access",
+        "actual": "restricted_access",
+        "passed": true,
+        "policies": []
+      },
+      "mixtures": {
+        "expected": "restricted_access",
+        "actual": "restricted_access",
+        "passed": true,
+        "policies": []
+      },
+      "mixture_components": {
+        "expected": "restricted_access",
+        "actual": "restricted_access",
+        "passed": true,
+        "policies": []
+      },
+      "property_types": {
+        "expected": "read",
+        "actual": "read",
+        "passed": true
+      },
+      "calculation_methods": {
+        "expected": "read",
+        "actual": "read",
+        "passed": true
+      },
+      "user_profile": {
+        "expected": "restricted_access",
+        "actual": "restricted_access",
+        "passed": true,
+        "policies": []
+      },
+      "experiment_mixtures": {
+        "expected": "restricted_access",
+        "actual": "restricted_access",
+        "passed": true,
+        "policies": []
+      },
+      "predictions_old": {
+        "expected": "restricted_access",
+        "actual": "restricted_access",
+        "passed": true,
+        "policies": []
+      },
+      "projects": {
+        "expected": "restricted_access",
+        "actual": "restricted_access",
+        "passed": true,
+        "policies": []
+      },
+      "teams": {
+        "expected": "restricted_access",
+        "actual": "restricted_access",
+        "passed": true,
+        "policies": []
+      }
+    },
+    "service_role": {
+      "molecules": {
+        "expected": "full_access",
+        "actual": "missing_policy",
+        "passed": false
+      },
+      "experiments": {
+        "expected": "full_access",
+        "actual": "missing_policy",
+        "passed": false
+      },
+      "predictions": {
+        "expected": "full_access",
+        "actual": "missing_policy",
+        "passed": false
+      },
+      "mixtures": {
+        "expected": "full_access",
+        "actual": "missing_policy",
+        "passed": false
+      },
+      "mixture_components": {
+        "expected": "full_access",
+        "actual": "missing_policy",
+        "passed": false
+      },
+      "property_types": {
+        "expected": "full_access",
+        "actual": "missing_policy",
+        "passed": false
+      },
+      "calculation_methods": {
+        "expected": "full_access",
+        "actual": "missing_policy",
+        "passed": false
+      },
+      "user_profile": {
+        "expected": "full_access",
+        "actual": "missing_policy",
+        "passed": false
+      },
+      "experiment_mixtures": {
+        "expected": "full_access",
+        "actual": "missing_policy",
+        "passed": false
+      },
+      "predictions_old": {
+        "expected": "full_access",
+        "actual": "missing_policy",
+        "passed": false
+      },
+      "projects": {
+        "expected": "full_access",
+        "actual": "missing_policy",
+        "passed": false
+      },
+      "teams": {
+        "expected": "full_access",
+        "actual": "missing_policy",
+        "passed": false
+      }
+    }
+  },
+  "summary": {
+    "tables_checked": 12,
+    "tables_with_rls_enabled": 0,
+    "tables_with_verified_policies": 0,
+    "tables_with_issues": 0
+  },
+  "role_testing_summary": {
+    "anonymous": {
+      "passed": 0,
+      "total": 12,
+      "success_rate": "0.0%"
+    },
+    "authenticated": {
+      "passed": 12,
+      "total": 12,
+      "success_rate": "100.0%"
+    },
+    "service_role": {
+      "passed": 0,
+      "total": 12,
+      "success_rate": "0.0%"
+    }
+  },
+  "overall_success": false
+}

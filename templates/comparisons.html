@@ -1,91 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Comparisons - CryoProtect Analyzer</title>
-  
-  <!-- Supabase Configuration -->
-  <meta name="supabase-url" content="{{ supabase_url }}">
-  <meta name="supabase-key" content="{{ supabase_key }}">
-  
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  
-  <!-- Bootstrap Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-  
-  <!-- Custom CSS -->
-  <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
-</head>
-<body>
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="/">
-        <i class="bi bi-snow2"></i> CryoProtect <span>Analyzer</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/molecules">Molecules</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/mixtures">Mixtures</a>
-          </li>
-          <li class="nav-item dropdown nav-authenticated d-none">
-            <a class="nav-link dropdown-toggle active" href="#" id="analysisDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Analysis
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="analysisDropdown">
-              <li><a class="dropdown-item" href="/predictions">Predictions</a></li>
-              <li><a class="dropdown-item" href="/experiments">Experiments</a></li>
-              <li><a class="dropdown-item active" href="/comparisons">Comparisons</a></li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="navbar-nav">
-          <li class="nav-item nav-unauthenticated">
-            <a class="nav-link" href="/login">Login</a>
-          </li>
-          <li class="nav-item dropdown nav-authenticated d-none">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-person-circle"></i> <span class="user-name">User</span>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-              <li><a class="dropdown-item" href="/profile">Profile</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#" id="logout-button">Logout</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+{% extends 'base.html' %}
 
-  <!-- Main Content -->
-  <main class="container py-4">
+{% set active_page = 'comparisons' %}
+{% set breadcrumbs = [
+  {'title': 'Home', 'url': '/'},
+  {'title': 'Mixtures', 'url': '/mixtures'},
+  {'title': 'Mixture Details', 'url': '/mixtures/' ~ mixture_id if mixture_id is defined else '#'},
+  {'title': 'Comparisons', 'url': '#'}
+] %}
+
+{% block title %}Comparisons - CryoProtect Analyzer{% endblock %}
+
+{% block content %}
     <!-- Mixture Information -->
     <div class="card mb-4">
       <div class="card-header">
-        Mixture Information
+        <h3 class="h5 mb-0">Mixture Information</h3>
       </div>
       <div class="card-body">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-12 col-md-6 mb-4 mb-md-0">
             <h4 id="mixture-name-display">Loading mixture...</h4>
             <p id="mixture-description-display">-</p>
           </div>
-          <div class="col-md-6">
+          <div class="col-12 col-md-6">
             <h5>Components</h5>
             <ul class="list-group" id="mixture-components-display">
               <!-- Components will be loaded here dynamically -->
@@ -98,23 +35,24 @@
     <!-- Comparison Form -->
     <div class="card mb-4">
       <div class="card-header">
-        Compare Prediction with Experiment
+        <h3 class="h5 mb-0">Compare Prediction with Experiment</h3>
       </div>
       <div class="card-body">
         <form id="comparison-form">
           <div class="row">
-            <div class="col-md-8">
+            <div class="col-12 col-md-8 mb-3 mb-md-0">
               <div class="mb-3">
                 <label for="comparison-property" class="form-label">Select Property</label>
-                <select class="form-select" id="comparison-property" required>
+                <select class="form-select" id="comparison-property" required aria-describedby="property-help">
                   <option value="">Select a property</option>
                   <!-- Property options will be loaded dynamically -->
                 </select>
+                <div id="property-help" class="form-text visually-hidden">Select a property to compare prediction with experimental results</div>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="mb-3 d-flex align-items-end h-100">
-                <button type="submit" class="btn btn-primary w-100">Compare</button>
+            <div class="col-12 col-md-4">
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Compare</button>
               </div>
             </div>
           </div>
@@ -123,21 +61,24 @@
     </div>
     
     <!-- Comparison Results -->
-    <div id="comparison-result">
+    <div id="comparison-result" aria-live="polite">
       <!-- Comparison results will be displayed here -->
       <div class="alert alert-info">
-        <i class="bi bi-info-circle"></i> Select a property above to compare prediction with experimental results.
+        <i class="bi bi-info-circle" aria-hidden="true"></i> Select a property above to compare prediction with experimental results.
       </div>
     </div>
     
     <!-- Comparison Chart -->
     <div class="card mt-4" id="comparison-chart-card" style="display: none;">
       <div class="card-header">
-        Comparison Chart
+        <h3 class="h5 mb-0">Comparison Chart</h3>
       </div>
       <div class="card-body">
         <div class="chart-container">
-          <canvas id="comparison-chart"></canvas>
+          <canvas id="comparison-chart" role="img" aria-label="Chart comparing predicted and experimental values"></canvas>
+          <div id="chart-description" class="visually-hidden">
+            This chart visually compares the predicted values with the experimental results for the selected property.
+          </div>
         </div>
       </div>
     </div>
@@ -145,7 +86,7 @@
     <!-- Explanation -->
     <div class="card mt-4">
       <div class="card-header">
-        About Comparisons
+        <h3 class="h5 mb-0">About Comparisons</h3>
       </div>
       <div class="card-body">
         <h5>Understanding the Comparison</h5>
@@ -159,9 +100,9 @@
         </ul>
         <p>The comparison is color-coded based on the percent error:</p>
         <ul>
-          <li><span class="badge bg-success">Good</span> Less than 5% error</li>
-          <li><span class="badge bg-warning">Warning</span> 5-10% error</li>
-          <li><span class="badge bg-danger">Bad</span> More than 10% error</li>
+          <li><span class="badge bg-success">Good</span> <span class="error-description">Less than 5% error</span></li>
+          <li><span class="badge bg-warning text-dark">Warning</span> <span class="error-description">5-10% error</span></li>
+          <li><span class="badge bg-danger">Bad</span> <span class="error-description">More than 10% error</span></li>
         </ul>
         <p>
           <strong>Note:</strong> Comparisons are only available for properties that have both predictions and experimental results.
@@ -169,40 +110,14 @@
         </p>
       </div>
     </div>
-  </main>
+{% endblock %}
 
-  <!-- Footer -->
-  <footer class="bg-light py-4 mt-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <p>&copy; 2025 CryoProtect Analyzer. All rights reserved.</p>
-        </div>
-        <div class="col-md-6 text-md-end">
-          <a href="#" class="text-decoration-none me-3">Privacy Policy</a>
-          <a href="#" class="text-decoration-none me-3">Terms of Service</a>
-          <a href="#" class="text-decoration-none">Contact</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+{% block extra_css %}
+<!-- No extra CSS for comparisons page -->
+{% endblock %}
 
-  <!-- Supabase JS -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  
-  <!-- Bootstrap JS Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
-  <!-- Custom JS -->
-  <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/api.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/charts.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
-  
-  <script>
+{% block extra_js %}
+<script>
     // Initialize page based on URL
     document.addEventListener('DOMContentLoaded', function() {
       // Handle form submission
@@ -216,7 +131,7 @@
         
         // Show loading state
         document.getElementById('comparison-result').innerHTML = `
-          <div class="text-center py-3">
+          <div class="text-center py-3" aria-live="polite">
             <div class="spinner-border" role="status">
               <span class="visually-hidden">Loading...</span>
             </div>
@@ -228,8 +143,8 @@
         const mixtureId = getIdFromUrl();
         if (!mixtureId) {
           document.getElementById('comparison-result').innerHTML = `
-            <div class="alert alert-danger">
-              <i class="bi bi-exclamation-triangle"></i> Mixture ID not found in URL.
+            <div class="alert alert-danger" role="alert">
+              <i class="bi bi-exclamation-triangle" aria-hidden="true"></i> Mixture ID not found in URL.
             </div>
           `;
           return;
@@ -248,8 +163,8 @@
           .catch(error => {
             console.error('Error getting comparison:', error);
             document.getElementById('comparison-result').innerHTML = `
-              <div class="alert alert-danger">
-                <i class="bi bi-exclamation-triangle"></i> Error: ${error.message}
+              <div class="alert alert-danger" role="alert">
+                <i class="bi bi-exclamation-triangle" aria-hidden="true"></i> Error: ${error.message}
               </div>
             `;
             document.getElementById('comparison-chart-card').style.display = 'none';
@@ -268,6 +183,5 @@
       }
       return null;
     }
-  </script>
-</body>
-</html>
+</script>
+{% endblock %}

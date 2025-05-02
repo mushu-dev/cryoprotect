@@ -1,0 +1,60 @@
+{
+  "timestamp": "2025-04-18T04:26:55.140750",
+  "project_id": "tsdlmynydfuypiugmkev",
+  "schema": "public",
+  "create_backups": true,
+  "test_only": false,
+  "status": "ERROR",
+  "backups": [],
+  "applied_improvements": [],
+  "errors": [
+    "Error creating backup of public.mixtures: [WinError 2] The system cannot find the file specified",
+    "Error creating backup of public.experiments: [WinError 2] The system cannot find the file specified",
+    "Error creating backup of public.predictions: [WinError 2] The system cannot find the file specified",
+    "Error creating backup of public.mixture_components: [WinError 2] The system cannot find the file specified",
+    "Error creating backup of public.molecules: [WinError 2] The system cannot find the file specified",
+    "Error creating backup of public.molecular_properties: [WinError 2] The system cannot find the file specified",
+    "Error applying performance indexes: Failed to apply migration: [WinError 2] The system cannot find the file specified",
+    "Error configuring connection pooling: [WinError 2] The system cannot find the file specified"
+  ],
+  "test_results_before": {
+    "rls_filter": {
+      "error": "[WinError 2] The system cannot find the file specified"
+    },
+    "mixture_components_join": {
+      "error": "[WinError 2] The system cannot find the file specified"
+    },
+    "predictions_filter": {
+      "error": "[WinError 2] The system cannot find the file specified"
+    },
+    "experiments_join": {
+      "error": "[WinError 2] The system cannot find the file specified"
+    },
+    "molecule_text_search": {
+      "error": "[WinError 2] The system cannot find the file specified"
+    },
+    "property_type_join": {
+      "error": "[WinError 2] The system cannot find the file specified"
+    }
+  },
+  "test_results_after": {
+    "rls_filter": {
+      "error": "[WinError 2] The system cannot find the file specified"
+    },
+    "mixture_components_join": {
+      "error": "[WinError 2] The system cannot find the file specified"
+    },
+    "predictions_filter": {
+      "error": "[WinError 2] The system cannot find the file specified"
+    },
+    "experiments_join": {
+      "error": "[WinError 2] The system cannot find the file specified"
+    },
+    "molecule_text_search": {
+      "error": "[WinError 2] The system cannot find the file specified"
+    },
+    "property_type_join": {
+      "error": "[WinError 2] The system cannot find the file specified"
+    }
+  }
+}

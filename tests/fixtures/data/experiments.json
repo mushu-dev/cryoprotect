@@ -1,0 +1,59 @@
+[
+  {
+    "id": "exp-1",
+    "mixture_id": "mix-fixture-1",
+    "name": "Freezing Test 1",
+    "date_performed": "2025-04-15T09:30:00Z",
+    "conditions": {
+      "temperature": -20.0,
+      "pressure": 1.0,
+      "duration_hours": 24,
+      "notes": "Standard freezing test with 70/30 mixture"
+    },
+    "created_at": "2025-04-15T09:30:00Z",
+    "updated_at": "2025-04-15T09:30:00Z"
+  },
+  {
+    "id": "exp-2",
+    "mixture_id": "mix-fixture-1",
+    "name": "Rapid Cooling Test",
+    "date_performed": "2025-04-16T14:45:00Z",
+    "conditions": {
+      "temperature": -80.0,
+      "pressure": 1.0,
+      "duration_hours": 2,
+      "cooling_rate": "10C/min",
+      "notes": "Rapid cooling test with 70/30 mixture"
+    },
+    "created_at": "2025-04-16T14:45:00Z",
+    "updated_at": "2025-04-16T14:45:00Z"
+  },
+  {
+    "id": "exp-3",
+    "mixture_id": "mix-fixture-2",
+    "name": "Freezing Test 2",
+    "date_performed": "2025-04-17T10:15:00Z",
+    "conditions": {
+      "temperature": -20.0,
+      "pressure": 1.0,
+      "duration_hours": 24,
+      "notes": "Standard freezing test with 40/60 mixture"
+    },
+    "created_at": "2025-04-17T10:15:00Z",
+    "updated_at": "2025-04-17T10:15:00Z"
+  },
+  {
+    "id": "exp-4",
+    "mixture_id": "mix-fixture-2",
+    "name": "Long-term Storage Test",
+    "date_performed": "2025-04-01T08:00:00Z",
+    "conditions": {
+      "temperature": -150.0,
+      "pressure": 1.0,
+      "duration_hours": 720,
+      "notes": "30-day storage test with 40/60 mixture"
+    },
+    "created_at": "2025-04-01T08:00:00Z",
+    "updated_at": "2025-04-01T08:00:00Z"
+  }
+]

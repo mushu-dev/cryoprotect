@@ -1,0 +1,55 @@
+{
+  "timestamp": "2025-04-26T23:56:17.125584",
+  "row_counts": {
+    "molecules": 30,
+    "molecular_properties": 72,
+    "property_types": 50
+  },
+  "non_null_percentages": {
+    "smiles": "96.67%",
+    "inchikey": "96.67%",
+    "name": "100.00%",
+    "data_source_chembl": "33.33%"
+  },
+  "known_chembl_ids": {
+    "CHEMBL25": false,
+    "CHEMBL1": true,
+    "CHEMBL2": true,
+    "CHEMBL3": false,
+    "CHEMBL4": true,
+    "CHEMBL5": true,
+    "CHEMBL122972": true,
+    "CHEMBL261131": true,
+    "CHEMBL444162": true,
+    "CHEMBL510533": true,
+    "CHEMBL507352": true,
+    "CHEMBL573104": true,
+    "CHEMBL1078036": true,
+    "CHEMBL1078140": true,
+    "CHEMBL1078124": true,
+    "CHEMBL1398948": true
+  },
+  "data_integrity": {},
+  "schema_findings": {
+    "chembl_id_column": "The molecules table does not have a dedicated 'chembl_id' column. ChEMBL IDs are stored in the 'data_source' column with the format 'ChEMBL ID: CHEMBLXXXXXX'.",
+    "pubchem_cid_column": "The molecules table has 'pubchem_cid' and 'cid' columns, but they are all NULL.",
+    "data_source_column": "Found 33.33% of molecules with ChEMBL IDs in the data_source column."
+  },
+  "acceptance_criteria": {
+    "row_counts": {
+      "threshold": 1000,
+      "met": false,
+      "note": "The database has fewer records than the threshold, which may indicate incomplete data import."
+    },
+    "non_null_percentages": {
+      "threshold": "95.00%",
+      "met": false
+    },
+    "known_chembl_ids": {
+      "threshold": "At least one known ChEMBL ID",
+      "met": true,
+      "note": "ChEMBL IDs are stored in the data_source column, not in a dedicated chembl_id column."
+    }
+  },
+  "overall_result": false
+}

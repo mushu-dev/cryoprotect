@@ -1,0 +1,107 @@
+{
+  "timestamp": "2025-04-17 14:42:17",
+  "queries": [
+    {
+      "name": "Get all molecules with properties",
+      "query": "SELECT * FROM molecule_with_properties LIMIT 100",
+      "plan": null,
+      "execution_time_ms": null,
+      "row_count": 0,
+      "issues": [],
+      "suggestions": []
+    },
+    {
+      "name": "Get molecule by ID",
+      "query": "SELECT * FROM molecule_with_properties WHERE id = '9a384d5b-4b6d-4a48-9bca-346aaddcedfa'",
+      "plan": null,
+      "execution_time_ms": null,
+      "row_count": 0,
+      "issues": [],
+      "suggestions": []
+    },
+    {
+      "name": "Get all mixtures with components",
+      "query": "SELECT * FROM mixture_with_components LIMIT 100",
+      "plan": null,
+      "execution_time_ms": null,
+      "row_count": 0,
+      "issues": [],
+      "suggestions": []
+    },
+    {
+      "name": "Get mixture by ID",
+      "query": "SELECT * FROM mixture_with_components WHERE id = 'a1b2c3d4-e5f6-4a5b-9c8d-1a2b3c4d5e6f'",
+      "plan": null,
+      "execution_time_ms": null,
+      "row_count": 0,
+      "issues": [],
+      "suggestions": []
+    },
+    {
+      "name": "Get predictions for mixture",
+      "query": "\n            SELECT p.*, pt.name as property_name, cm.name as calculation_method_name\n            FROM predictions p\n            JOIN property_types pt ON p.property_type_id = pt.id\n            JOIN calculation_methods cm ON p.calculation_method_id = cm.id\n            WHERE p.mixture_id = 'a1b2c3d4-e5f6-4a5b-9c8d-1a2b3c4d5e6f'\n            LIMIT 100\n        ",
+      "plan": null,
+      "execution_time_ms": null,
+      "row_count": 0,
+      "issues": [],
+      "suggestions": []
+    },
+    {
+      "name": "Get experiments for mixture",
+      "query": "\n            SELECT e.*, pt.name as property_name\n            FROM experiments e\n            JOIN property_types pt ON e.property_type_id = pt.id\n            WHERE e.mixture_id = 'a1b2c3d4-e5f6-4a5b-9c8d-1a2b3c4d5e6f'\n        ",
+      "plan": null,
+      "execution_time_ms": null,
+      "row_count": 0,
+      "issues": [],
+      "suggestions": []
+    },
+    {
+      "name": "Compare predictions with experiments",
+      "query": "\n            SELECT \n                pt.name as property_name,\n                p.numeric_value as predicted_value,\n                e.numeric_value as experimental_value,\n                ABS(p.numeric_value - e.numeric_value) as absolute_difference,\n                (ABS(p.numeric_value - e.numeric_value) / NULLIF(ABS(e.numeric_value), 0)) * 100 as percentage_difference,\n                p.confidence as prediction_confidence,\n                cm.name as calculation_method\n            FROM predictions p\n            JOIN experiments e ON p.mixture_id = e.mixture_id AND p.property_type_id = e.property_type_id\n            JOIN property_types pt ON p.property_type_id = pt.id\n            JOIN calculation_methods cm ON p.calculation_method_id = cm.id\n            WHERE p.mixture_id = 'a1b2c3d4-e5f6-4a5b-9c8d-1a2b3c4d5e6f'\n            AND (p.property_type_id = '367d0e2f-4d9f-4a76-8b51-b6936ac8ce22' OR '367d0e2f-4d9f-4a76-8b51-b6936ac8ce22' IS NULL)\n        ",
+      "plan": null,
+      "execution_time_ms": null,
+      "row_count": 0,
+      "issues": [],
+      "suggestions": []
+    },
+    {
+      "name": "Search molecules by name",
+      "query": "SELECT * FROM molecule WHERE name ILIKE '%glyc%' LIMIT 100",
+      "plan": null,
+      "execution_time_ms": null,
+      "row_count": 0,
+      "issues": [],
+      "suggestions": [
+        {
+          "type": "create_text_index",
+          "description": "Create a GIN index with pg_trgm extension on molecule.name to improve text search performance.",
+          "sql": "CREATE EXTENSION IF NOT EXISTS pg_trgm;\nCREATE INDEX idx_molecule_name_trgm ON molecule USING gin (name gin_trgm_ops);"
+        }
+      ]
+    },
+    {
+      "name": "Search mixtures by name",
+      "query": "SELECT * FROM mixture WHERE name ILIKE '%glyc%' LIMIT 100",
+      "plan": null,
+      "execution_time_ms": null,
+      "row_count": 0,
+      "issues": [],
+      "suggestions": [
+        {
+          "type": "create_text_index",
+          "description": "Create a GIN index with pg_trgm extension on mixture.name to improve text search performance.",
+          "sql": "CREATE EXTENSION IF NOT EXISTS pg_trgm;\nCREATE INDEX idx_mixture_name_trgm ON mixture USING gin (name gin_trgm_ops);"
+        }
+      ]
+    },
+    {
+      "name": "Get molecules with specific property value range",
+      "query": "\n            SELECT m.*, mp.value\n            FROM molecule m\n            JOIN molecular_property mp ON m.id = mp.molecule_id\n            JOIN property_types pt ON mp.property_type_id = pt.id\n            WHERE pt.name = 'Molecular Weight'\n            AND mp.value BETWEEN -10 AND 10\n            LIMIT 100\n        ",
+      "plan": null,
+      "execution_time_ms": null,
+      "row_count": 0,
+      "issues": [],
+      "suggestions": []
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "timestamp": "2025-04-29T20:51:57.718907",
+  "cross_references": {
+    "source_overlap": {
+      "total_molecules": 723,
+      "molecules_with_both_sources": 0,
+      "pubchem_only": 693,
+      "chembl_only": 10,
+      "both_percent": 0.0,
+      "pubchem_only_percent": 95.85,
+      "chembl_only_percent": 1.38
+    },
+    "identifier_conflicts": {
+      "total_molecules": 6,
+      "conflicts_found": 1,
+      "conflicts": [
+        {
+          "type": "chembl_id",
+          "value": "CHEMBL388978",
+          "internal_id_1": "CRYO001",
+          "internal_id_2": "CRYO006"
+        }
+      ]
+    }
+  },
+  "assessments": {
+    "cross_references": "FAILURE"
+  },
+  "overall_assessment": "FAILURE"
+}

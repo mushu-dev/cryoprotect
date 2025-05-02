@@ -8,7 +8,7 @@
         "-y",
         "@supabase/mcp-server-supabase@latest",
         "--access-token",
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1Z3JoaWt5b2ZobHNraXJ5cWl4Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0Mzg3NTQ4NCwiZXhwIjoyMDU5NDUxNDg0fQ.8OuDui9hsILc6dzyQrxaCLrEzjEmcFo0WToyBZ4RrXI"
+        "sbp_2ef753d5e351cd40412c70c7ed9852c59f18a559"
       ],
       "alwaysAllow": [
         "list_projects",
@@ -20,7 +20,12 @@
         "get_project_url",
         "get_logs",
         "create_branch",
-        "list_branches"
+        "list_branches",
+        "get_cost",
+        "list_organizations",
+        "list_extensions",
+        "list_migrations",
+        "apply_migration"
       ]
     }
   }

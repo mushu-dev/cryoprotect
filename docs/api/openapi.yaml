@@ -1,0 +1,3035 @@
+openapi: 3.0.2
+info:
+  title: CryoProtect Analyzer API
+  description: "The CryoProtect Analyzer API provides RESTful endpoints for interacting\
+    \ with the CryoProtect system.\n\nThis API allows you to:\n- Manage molecules\
+    \ and mixtures\n- Run predictions and analyze results\n- Manage experiments\n\
+    - Compare properties of molecules and mixtures\n- Perform batch operations\n-\
+    \ Export data in various formats\n- Authenticate and manage user sessions\n\n\
+    ## Authentication\n\nThe API uses JWT (JSON Web Token) authentication. To access\
+    \ protected endpoints, you need to include an `Authorization` header with a valid\
+    \ token.\n\n```\nAuthorization: Bearer your_token_here\n```\n\nTokens can be obtained\
+    \ by using the `/auth/login` endpoint.\n\n## Error Handling\n\nThe API uses standard\
+    \ HTTP status codes to indicate the success or failure of requests:\n\n| Status\
+    \ Code | Description |\n|-------------|-------------|\n| 200 | OK - The request\
+    \ was successful |\n| 201 | Created - A new resource was created |\n| 400 | Bad\
+    \ Request - The request was invalid |\n| 401 | Unauthorized - Authentication is\
+    \ required or failed |\n| 403 | Forbidden - The user does not have permission\
+    \ |\n| 404 | Not Found - The resource was not found |\n| 409 | Conflict - The\
+    \ request conflicts with the current state |\n| 422 | Unprocessable Entity - Validation\
+    \ error |\n| 429 | Too Many Requests - Rate limit exceeded |\n| 500 | Internal\
+    \ Server Error - An unexpected error occurred |\n| 503 | Service Unavailable -\
+    \ The service is temporarily unavailable |\n\nError responses include a JSON object\
+    \ with details about the error:\n\n```json\n{\n  \"message\": \"Error message\"\
+    ,\n  \"details\": \"Additional details about the error\"\n}\n```\n\n## Rate Limiting\n\
+    \nThe API implements rate limiting to prevent abuse. Rate limits vary by endpoint\
+    \ and user role.\n\nRate limit headers are included in responses:\n\n| Header\
+    \ | Description |\n|--------|-------------|\n| X-RateLimit-Limit | The maximum\
+    \ number of requests allowed in the current time window |\n| X-RateLimit-Remaining\
+    \ | The number of requests remaining in the current time window |\n| X-RateLimit-Reset\
+    \ | The time (in Unix timestamp) when the current rate limit window resets |\n\
+    | Retry-After | The number of seconds to wait before making another request (only\
+    \ included when rate limit is exceeded) |\n\nWhen a rate limit is exceeded, the\
+    \ API responds with a 429 Too Many Requests status code.\n\n## Recovery Procedures\n\
+    \nIn case of errors, follow these recovery procedures:\n\n1. **Authentication\
+    \ Errors (401)**: Refresh your token using the `/auth/refresh` endpoint or log\
+    \ in again.\n2. **Permission Errors (403)**: Verify that the user has the necessary\
+    \ permissions.\n3. **Not Found Errors (404)**: Check that the resource ID is correct.\n\
+    4. **Validation Errors (422)**: Fix the validation issues in the request payload.\n\
+    5. **Rate Limit Errors (429)**: Wait for the time specified in the `Retry-After`\
+    \ header before retrying.\n6. **Server Errors (500, 503)**: Wait and retry the\
+    \ request. If the error persists, contact support.\n"
+  version: v1
+  contact:
+    name: CryoProtect Support
+    email: support@cryoprotect.com
+servers:
+- url: http://localhost:5000
+  description: Local development server
+- url: https://api.cryoprotect.com
+  description: Production server
+tags:
+- name: Authentication
+  description: Authentication endpoints
+- name: Molecules
+  description: Endpoints for managing molecules
+- name: Mixtures
+  description: Endpoints for managing mixtures
+- name: Predictions
+  description: Endpoints for running and managing predictions
+- name: Experiments
+  description: Endpoints for managing experiments
+- name: Comparisons
+  description: Endpoints for comparing molecules and mixtures
+- name: Batch Operations
+  description: Endpoints for performing batch operations
+- name: Export
+  description: Endpoints for exporting data
+- name: RDKit
+  description: Endpoints for RDKit functionality
+- name: Scoring
+  description: Endpoints for scoring molecules and mixtures
+- name: Dashboard
+  description: Endpoints for dashboard data
+- name: User Profile
+  description: Endpoints for managing user profiles
+- name: Teams
+  description: Endpoints for managing teams
+- name: System
+  description: System-related endpoints
+- name: RBAC
+  description: Role-Based Access Control endpoints
+- name: Session Management
+  description: Endpoints for managing user sessions
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token obtained from the /auth/login endpoint
+  schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+        details:
+          type: string
+          description: Additional details about the error
+      required:
+      - message
+    Molecule:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the molecule
+        cid:
+          type: integer
+          description: PubChem Compound ID
+        name:
+          type: string
+          description: Name of the molecule
+        molecular_formula:
+          type: string
+          description: Molecular formula
+        smiles:
+          type: string
+          description: SMILES representation of the molecule
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update timestamp
+      required:
+      - id
+      - smiles
+    MoleculeList:
+      type: object
+      properties:
+        molecules:
+          type: array
+          items:
+            $ref: '#/components/schemas/Molecule'
+        total:
+          type: integer
+          description: Total number of molecules
+        limit:
+          type: integer
+          description: Maximum number of molecules returned
+        offset:
+          type: integer
+          description: Number of molecules skipped
+    MoleculeProperties:
+      type: object
+      properties:
+        hydrogen_bonding:
+          type: object
+          properties:
+            donors:
+              type: integer
+              description: Number of hydrogen bond donors
+            acceptors:
+              type: integer
+              description: Number of hydrogen bond acceptors
+            total:
+              type: integer
+              description: Total number of hydrogen bonds
+        logp:
+          type: number
+          format: float
+          description: Calculated LogP value
+        tpsa:
+          type: number
+          format: float
+          description: Topological Polar Surface Area
+        molecular_properties:
+          type: object
+          properties:
+            molecular_weight:
+              type: number
+              format: float
+              description: Molecular weight
+            exact_mass:
+              type: number
+              format: float
+              description: Exact mass
+            heavy_atom_count:
+              type: integer
+              description: Number of heavy atoms
+            atom_count:
+              type: integer
+              description: Total number of atoms
+            rotatable_bond_count:
+              type: integer
+              description: Number of rotatable bonds
+            ring_count:
+              type: integer
+              description: Number of rings
+            aromatic_ring_count:
+              type: integer
+              description: Number of aromatic rings
+            fraction_csp3:
+              type: number
+              format: float
+              description: Fraction of sp3 hybridized carbons
+        functional_groups:
+          type: object
+          additionalProperties:
+            type: integer
+          description: Counts of functional groups
+        permeability:
+          type: object
+          properties:
+            rule_of_5_violations:
+              type: integer
+              description: Number of Lipinski's Rule of 5 violations
+            veber_violations:
+              type: integer
+              description: Number of Veber rule violations
+            bbb_permeant:
+              type: boolean
+              description: Blood-brain barrier permeability prediction
+            intestinal_absorption:
+              type: boolean
+              description: Intestinal absorption prediction
+            estimated_log_papp:
+              type: number
+              format: float
+              description: Estimated log Papp value
+    MixtureComponent:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the component
+        mixture_id:
+          type: string
+          format: uuid
+          description: ID of the mixture this component belongs to
+        molecule_id:
+          type: string
+          format: uuid
+          description: ID of the molecule
+        concentration:
+          type: number
+          format: float
+          description: Concentration of the molecule in the mixture
+        concentration_unit:
+          type: string
+          description: Unit of concentration (e.g., mM, %)
+        molecule:
+          $ref: '#/components/schemas/Molecule'
+      required:
+      - id
+      - mixture_id
+      - molecule_id
+      - concentration
+      - concentration_unit
+    Mixture:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the mixture
+        name:
+          type: string
+          description: Name of the mixture
+        description:
+          type: string
+          description: Description of the mixture
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update timestamp
+        mixture_components:
+          type: array
+          items:
+            $ref: '#/components/schemas/MixtureComponent'
+      required:
+      - id
+      - name
+    MixtureList:
+      type: object
+      properties:
+        mixtures:
+          type: array
+          items:
+            $ref: '#/components/schemas/Mixture'
+        total:
+          type: integer
+          description: Total number of mixtures
+        limit:
+          type: integer
+          description: Maximum number of mixtures returned
+        offset:
+          type: integer
+          description: Number of mixtures skipped
+    Prediction:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the prediction
+        mixture_id:
+          type: string
+          format: uuid
+          description: ID of the mixture
+        molecule_id:
+          type: string
+          format: uuid
+          description: ID of the molecule (if applicable)
+        model:
+          type: string
+          description: Prediction model used
+        score:
+          type: number
+          format: float
+          description: Prediction score
+        properties:
+          type: object
+          additionalProperties: true
+          description: Additional prediction properties
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+      required:
+      - id
+      - model
+      - score
+    Experiment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the experiment
+        mixture_id:
+          type: string
+          format: uuid
+          description: ID of the mixture
+        name:
+          type: string
+          description: Name of the experiment
+        description:
+          type: string
+          description: Description of the experiment
+        protocol:
+          type: string
+          description: Experiment protocol
+        results:
+          type: object
+          additionalProperties: true
+          description: Experiment results
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update timestamp
+        experiment_properties:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Property name
+              value:
+                type: string
+                description: Property value
+              unit:
+                type: string
+                description: Property unit
+      required:
+      - id
+      - mixture_id
+      - name
+    ComparisonItem:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: ID of the molecule or mixture
+        name:
+          type: string
+          description: Name of the molecule or mixture
+        type:
+          type: string
+          enum:
+          - molecule
+          - mixture
+          description: Type of the item
+        molecular_weight:
+          type: number
+          format: float
+          description: Molecular weight
+        logP:
+          type: number
+          format: float
+          description: LogP value
+        TPSA:
+          type: number
+          format: float
+          description: Topological Polar Surface Area
+        toxicity:
+          type: string
+          description: Toxicity level
+        vitrification_probability:
+          type: number
+          format: float
+          description: Vitrification probability
+      required:
+      - id
+      - name
+      - type
+    Comparison:
+      type: object
+      properties:
+        comparison:
+          type: array
+          items:
+            $ref: '#/components/schemas/ComparisonItem'
+      required:
+      - comparison
+    BatchOperation:
+      type: object
+      properties:
+        operation:
+          type: string
+          enum:
+          - property_calculation
+          - mixture_optimization
+          - predictive_scoring
+          - export
+          description: The batch operation to perform
+        entity_type:
+          type: string
+          enum:
+          - molecule
+          - mixture
+          - experiment
+          description: The type of entity to process
+        ids:
+          type: array
+          items:
+            type: string
+          description: List of IDs to process in batch
+      required:
+      - operation
+      - entity_type
+      - ids
+    BatchResult:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - SUCCESS
+          - COMPLETED_WITH_WARNINGS
+          - ERROR
+          description: Status of the batch operation
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: ID of the processed item
+              result:
+                type: object
+                additionalProperties: true
+                description: Result data
+          description: Results of the batch operation
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: ID of the item that failed
+              error:
+                type: string
+                description: Error message
+          description: Errors encountered during the batch operation
+      required:
+      - status
+      - results
+      - errors
+    ExportRequest:
+      type: object
+      properties:
+        format:
+          type: string
+          enum:
+          - csv
+          - json
+          - excel
+          - pdf
+          description: Export file format
+        data_type:
+          type: string
+          enum:
+          - protocols
+          - experiments
+          - molecules
+          - mixtures
+          - predictions
+          - comparisons
+          description: Type of data to export
+        id:
+          type: string
+          description: ID of the item to export (required for protocols)
+        include_related:
+          type: boolean
+          description: Include related data (where supported)
+      required:
+      - format
+      - data_type
+    UserProfile:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: User ID
+        email:
+          type: string
+          format: email
+          description: User email
+        role:
+          type: string
+          description: User role
+        roles:
+          type: array
+          items:
+            type: string
+          description: User roles
+        permissions:
+          type: array
+          items:
+            type: string
+          description: User permissions
+        user_metadata:
+          type: object
+          additionalProperties: true
+          description: Additional user metadata
+      required:
+      - id
+      - email
+    AuthResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Authentication message
+        user:
+          $ref: '#/components/schemas/UserProfile'
+        token:
+          type: object
+          properties:
+            access_token:
+              type: string
+              description: JWT access token
+            refresh_token:
+              type: string
+              description: JWT refresh token
+      required:
+      - message
+      - user
+    MFAChallenge:
+      type: object
+      properties:
+        challenge_id:
+          type: string
+          format: uuid
+          description: MFA challenge ID
+        expires_at:
+          type: string
+          format: date-time
+          description: Expiration timestamp
+        code:
+          type: string
+          description: MFA code (only included in testing mode)
+      required:
+      - challenge_id
+      - expires_at
+    DashboardStats:
+      type: object
+      properties:
+        molecules_count:
+          type: integer
+          description: Total number of molecules
+        mixtures_count:
+          type: integer
+          description: Total number of mixtures
+        experiments_count:
+          type: integer
+          description: Total number of experiments
+        predictions_count:
+          type: integer
+          description: Total number of predictions
+        recent_activity:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: Activity type
+              item_id:
+                type: string
+                description: ID of the related item
+              timestamp:
+                type: string
+                format: date-time
+                description: Activity timestamp
+      required:
+      - molecules_count
+      - mixtures_count
+      - experiments_count
+      - predictions_count
+  responses:
+    BadRequest:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Permission denied
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+paths:
+  /health:
+    get:
+      summary: Health check endpoint
+      description: Check if the API is running and can connect to the database
+      operationId: healthCheck
+      tags:
+      - System
+      responses:
+        '200':
+          description: API is running
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  version:
+                    type: string
+                    example: v1
+                  database:
+                    type: string
+                    example: connected
+                  timestamp:
+                    type: string
+                    format: date-time
+                required:
+                - status
+                - version
+                - database
+                - timestamp
+        '500':
+          description: API is experiencing issues
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  version:
+                    type: string
+                    example: v1
+                  error:
+                    type: string
+                    example: Database connection failed
+                  timestamp:
+                    type: string
+                    format: date-time
+                required:
+                - status
+                - version
+                - error
+                - timestamp
+  /auth/login:
+    post:
+      summary: User login
+      description: Authenticate a user and get an access token
+      operationId: login
+      tags:
+      - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: User email
+                password:
+                  type: string
+                  format: password
+                  description: User password
+              required:
+              - email
+              - password
+      responses:
+        '200':
+          description: Authentication successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /auth/logout:
+    post:
+      summary: User logout
+      description: Log out the current user and invalidate their token
+      operationId: logout
+      tags:
+      - Authentication
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                refresh_token:
+                  type: string
+                  description: Refresh token (optional if using HTTP-only cookies)
+      responses:
+        '200':
+          description: Logout successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Logout successful
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /auth/refresh:
+    post:
+      summary: Refresh token
+      description: Get a new access token using a refresh token
+      operationId: refreshToken
+      tags:
+      - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                refresh_token:
+                  type: string
+                  description: Refresh token (optional if using HTTP-only cookies)
+      responses:
+        '200':
+          description: Token refreshed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Session refreshed
+                  token:
+                    type: object
+                    properties:
+                      access_token:
+                        type: string
+                        description: New access token
+                      refresh_token:
+                        type: string
+                        description: New refresh token (null if using HTTP-only cookies)
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Invalid or expired refresh token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /auth/validate:
+    get:
+      summary: Validate token
+      description: Validate the current token and get user information
+      operationId: validateToken
+      tags:
+      - Authentication
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Token is valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Token is valid
+                  user:
+                    $ref: '#/components/schemas/UserProfile'
+        '401':
+          description: Invalid token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /auth/register:
+    post:
+      summary: User registration
+      description: Register a new user
+      operationId: register
+      tags:
+      - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: User email
+                password:
+                  type: string
+                  format: password
+                  description: User password
+              required:
+              - email
+              - password
+      responses:
+        '201':
+          description: Registration successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Registration successful
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                        description: User ID
+                      email:
+                        type: string
+                        format: email
+                        description: User email
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /auth/reset-password:
+    post:
+      summary: Reset password
+      description: Request a password reset email
+      operationId: resetPassword
+      tags:
+      - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: User email
+              required:
+              - email
+      responses:
+        '200':
+          description: Password reset email sent
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Password reset email sent
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /auth/update-password:
+    post:
+      summary: Update password
+      description: Update the user's password
+      operationId: updatePassword
+      tags:
+      - Authentication
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  format: password
+                  description: New password
+              required:
+              - password
+      responses:
+        '200':
+          description: Password updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Password updated successfully
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /auth/mfa/initiate:
+    post:
+      summary: Initiate MFA challenge
+      description: Initiate a Multi-Factor Authentication challenge
+      operationId: initiateMFA
+      tags:
+      - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: User email
+              required:
+              - email
+      responses:
+        '200':
+          description: MFA challenge initiated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: MFA challenge initiated
+                  mfa:
+                    $ref: '#/components/schemas/MFAChallenge'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /auth/mfa/verify:
+    post:
+      summary: Verify MFA challenge
+      description: Verify a Multi-Factor Authentication challenge
+      operationId: verifyMFA
+      tags:
+      - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                challenge_id:
+                  type: string
+                  format: uuid
+                  description: MFA challenge ID
+                code:
+                  type: string
+                  description: MFA verification code
+              required:
+              - challenge_id
+              - code
+      responses:
+        '200':
+          description: MFA verification successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '400':
+          description: Invalid request or verification failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/v1/molecules:
+    get:
+      summary: Get molecules
+      description: Get a list of molecules
+      operationId: getMolecules
+      tags:
+      - Molecules
+      parameters:
+      - name: limit
+        in: query
+        description: Maximum number of molecules to return
+        schema:
+          type: integer
+          default: 10
+      - name: offset
+        in: query
+        description: Number of molecules to skip
+        schema:
+          type: integer
+          default: 0
+      - name: sort_by
+        in: query
+        description: Field to sort by
+        schema:
+          type: string
+          default: created_at
+      - name: sort_order
+        in: query
+        description: Sort order
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      responses:
+        '200':
+          description: List of molecules
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MoleculeList'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create molecule
+      description: Create a new molecule
+      operationId: createMolecule
+      tags:
+      - Molecules
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cid:
+                  type: integer
+                  description: PubChem Compound ID
+                name:
+                  type: string
+                  description: Name of the molecule
+                molecular_formula:
+                  type: string
+                  description: Molecular formula
+                smiles:
+                  type: string
+                  description: SMILES representation of the molecule
+              required:
+              - cid
+              - smiles
+      responses:
+        '201':
+          description: Molecule created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Molecule'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/v1/molecules/{molecule_id}:
+    get:
+      summary: Get molecule
+      description: Get a specific molecule by ID
+      operationId: getMolecule
+      tags:
+      - Molecules
+      parameters:
+      - name: molecule_id
+        in: path
+        description: Molecule ID
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Molecule details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Molecule'
+        '404':
+          description: Molecule not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update molecule
+      description: Update a specific molecule by ID
+      operationId: updateMolecule
+      tags:
+      - Molecules
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: molecule_id
+        in: path
+        description: Molecule ID
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name of the molecule
+                molecular_formula:
+                  type: string
+                  description: Molecular formula
+                smiles:
+                  type: string
+                  description: SMILES representation of the molecule
+      responses:
+        '200':
+          description: Molecule updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Molecule'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Molecule not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete molecule
+      description: Delete a specific molecule by ID
+      operationId: deleteMolecule
+      tags:
+      - Molecules
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: molecule_id
+        in: path
+        description: Molecule ID
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '204':
+          description: Molecule deleted
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Molecule not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/v1/molecules/{molecule_id}/calculate-properties:
+    post:
+      summary: Calculate molecule properties
+      description: Calculate properties for a specific molecule
+      operationId: calculateMoleculeProperties
+      tags:
+      - Molecules
+      - RDKit
+      parameters:
+      - name: molecule_id
+        in: path
+        description: Molecule ID
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Calculated properties
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MoleculeProperties'
+        '404':
+          description: Molecule not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/v1/molecules/{molecule_id}/score:
+    get:
+      summary: Get molecule score
+      description: Get the score for a specific molecule
+      operationId: getMoleculeScore
+      tags:
+      - Molecules
+      - Scoring
+      parameters:
+      - name: molecule_id
+        in: path
+        description: Molecule ID
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Molecule score
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  molecule_id:
+                    type: string
+                    format: uuid
+                    description: Molecule ID
+                  score:
+                    type: number
+                    format: float
+                    description: Molecule score
+                  properties:
+                    type: object
+                    additionalProperties: true
+                    description: Score properties
+                required:
+                - molecule_id
+                - score
+        '404':
+          description: Molecule not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/v1/mixtures:
+    get:
+      summary: Get mixtures
+      description: Get a list of mixtures
+      operationId: getMixtures
+      tags:
+      - Mixtures
+      parameters:
+      - name: limit
+        in: query
+        description: Maximum number of mixtures to return
+        schema:
+          type: integer
+          default: 10
+      - name: offset
+        in: query
+        description: Number of mixtures to skip
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: List of mixtures
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MixtureList'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create mixture
+      description: Create a new mixture
+      operationId: createMixture
+      tags:
+      - Mixtures
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name of the mixture
+                description:
+                  type: string
+                  description: Description of the mixture
+                components:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      molecule_id:
+                        type: string
+                        format: uuid
+                        description: ID of the molecule
+                      concentration:
+                        type: number
+                        format: float
+                        description: Concentration of the molecule in the mixture
+                      concentration_unit:
+                        type: string
+                        description: Unit of concentration (e.g., mM, %)
+                    required:
+                    - molecule_id
+                    - concentration
+                    - concentration_unit
+              required:
+              - name
+              - components
+      responses:
+        '201':
+          description: Mixture created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mixture'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/v1/mixtures/{mixture_id}:
+    get:
+      summary: Get mixture
+      description: Get a specific mixture by ID
+      operationId: getMixture
+      tags:
+      - Mixtures
+      parameters:
+      - name: mixture_id
+        in: path
+        description: Mixture ID
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Mixture details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mixture'
+        '404':
+          description: Mixture not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update mixture
+      description: Update a specific mixture by ID
+      operationId: updateMixture
+      tags:
+      - Mixtures
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: mixture_id
+        in: path
+        description: Mixture ID
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name of the mixture
+                description:
+                  type: string
+                  description: Description of the mixture
+                components:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                        description: ID of the component (required for updates)
+                      molecule_id:
+                        type: string
+                        format: uuid
+                        description: ID of the molecule
+                      concentration:
+                        type: number
+                        format: float
+                        description: Concentration of the molecule in the mixture
+                      concentration_unit:
+                        type: string
+                        description: Unit of concentration (e.g., mM, %)
+      responses:
+        '200':
+          description: Mixture updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mixture'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Mixture not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete mixture
+      description: Delete a specific mixture by ID
+      operationId: deleteMixture
+      tags:
+      - Mixtures
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: mixture_id
+        in: path
+        description: Mixture ID
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '204':
+          description: Mixture deleted
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Mixture not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/v1/mixtures/{mixture_id}/score:
+    get:
+      summary: Get mixture score
+      description: Get the score for a specific mixture
+      operationId: getMixtureScore
+      tags:
+      - Mixtures
+      - Scoring
+      parameters:
+      - name: mixture_id
+        in: path
+        description: Mixture ID
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Mixture score
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mixture_id:
+                    type: string
+                    format: uuid
+                    description: Mixture ID
+                  score:
+                    type: number
+                    format: float
+                    description: Mixture score
+                  properties:
+                    type: object
+                    additionalProperties: true
+                    description: Score properties
+                required:
+                - mixture_id
+                - score
+        '404':
+          description: Mixture not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/v1/mixtures/{mixture_id}/predictions:
+    get:
+      summary: Get mixture predictions
+      description: Get predictions for a specific mixture
+      operationId: getMixturePredictions
+      tags:
+      - Mixtures
+      - Predictions
+      parameters:
+      - name: mixture_id
+        in: path
+        description: Mixture ID
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: List of predictions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  predictions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Prediction'
+                  total:
+                    type: integer
+                    description: Total number of predictions
+                required:
+                - predictions
+                - total
+        '404':
+          description: Mixture not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create mixture prediction
+      description: Create a new prediction for a specific mixture
+      operationId: createMixturePrediction
+      tags:
+      - Mixtures
+      - Predictions
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: mixture_id
+        in: path
+        description: Mixture ID
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model:
+                  type: string
+                  description: Prediction model to use
+                parameters:
+                  type: object
+                  additionalProperties: true
+                  description: Model-specific parameters
+              required:
+              - model
+      responses:
+        '201':
+          description: Prediction created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Prediction'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Mixture not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/v1/compare-properties:
+    post:
+      summary: Compare properties
+      description: Compare properties of molecules and/or mixtures
+      operationId: compareProperties
+      tags:
+      - Comparisons
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                  description: List of molecule and/or mixture IDs to compare
+              required:
+              - ids
+      responses:
+        '200':
+          description: Comparison results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comparison'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: One or more items not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/v1/batch:
+    post:
+      summary: Batch operation
+      description: Perform a batch operation on multiple items
+      operationId: batchOperation
+      tags:
+      - Batch Operations
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchOperation'
+      responses:
+        '200':
+          description: Batch operation results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchResult'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/v1/export:
+    post:
+      summary: Export data
+      description: Export data in various formats
+      operationId: exportData
+      tags:
+      - Export
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExportRequest'
+      responses:
+        '200':
+          description: Export successful
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/v1/rdkit/properties:
+    post:
+      summary: Calculate molecule properties
+      description: Calculate properties for a molecule using RDKit
+      operationId: calculateRDKitProperties
+      tags:
+      - RDKit
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                smiles:
+                  type: string
+                  description: SMILES representation of the molecule
+              required:
+              - smiles
+      responses:
+        '200':
+          description: Calculated properties
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MoleculeProperties'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/v1/rdkit/visualization:
+    post:
+      summary: Generate molecule visualization
+      description: Generate a visualization of a molecule using RDKit
+      operationId: generateRDKitVisualization
+      tags:
+      - RDKit
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                smiles:
+                  type: string
+                  description: SMILES representation of the molecule
+                width:
+                  type: integer
+                  description: Width of the visualization in pixels
+                  default: 400
+                height:
+                  type: integer
+                  description: Height of the visualization in pixels
+                  default: 300
+              required:
+              - smiles
+      responses:
+        '200':
+          description: Molecule visualization
+          content:
+            image/svg+xml:
+              schema:
+                type: string
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/v1/rdkit/substructure:
+    post:
+      summary: Substructure search
+      description: Search for molecules containing a specific substructure
+      operationId: substructureSearch
+      tags:
+      - RDKit
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                smarts:
+                  type: string
+                  description: SMARTS pattern for the substructure
+                limit:
+                  type: integer
+                  description: Maximum number of results to return
+                  default: 10
+              required:
+              - smarts
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  molecules:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Molecule'
+                  total:
+                    type: integer
+                    description: Total number of matching molecules
+                required:
+                - molecules
+                - total
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/v1/rdkit/similarity:
+    post:
+      summary: Similarity search
+      description: Search for molecules similar to a reference molecule
+      operationId: similaritySearch
+      tags:
+      - RDKit
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                smiles:
+                  type: string
+                  description: SMILES representation of the reference molecule
+                threshold:
+                  type: number
+                  format: float
+                  description: Similarity threshold (0.0 to 1.0)
+                  default: 0.7
+                limit:
+                  type: integer
+                  description: Maximum number of results to return
+                  default: 10
+              required:
+              - smiles
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  molecules:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        molecule:
+                          $ref: '#/components/schemas/Molecule'
+                        similarity:
+                          type: number
+                          format: float
+                          description: Similarity score (0.0 to 1.0)
+                      required:
+                      - molecule
+                      - similarity
+                  total:
+                    type: integer
+                    description: Total number of matching molecules
+                required:
+                - molecules
+                - total
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/v1/rdkit-enhanced/batch-calculate:
+    post:
+      summary: Batch calculate properties
+      description: Calculate properties for multiple molecules in batch
+      operationId: batchCalculateProperties
+      tags:
+      - RDKit
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                molecules:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: ID for the molecule (used in response)
+                      smiles:
+                        type: string
+                        description: SMILES representation of the molecule
+                    required:
+                    - id
+                    - smiles
+              required:
+              - molecules
+      responses:
+        '200':
+          description: Batch calculation results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: ID of the molecule
+                        properties:
+                          $ref: '#/components/schemas/MoleculeProperties'
+                      required:
+                      - id
+                      - properties
+                required:
+                - results
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/v1/scoring/molecules:
+    post:
+      summary: Score molecules
+      description: Score one or more molecules
+      operationId: scoreMolecules
+      tags:
+      - Scoring
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                molecules:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                        description: Molecule ID
+                      smiles:
+                        type: string
+                        description: SMILES representation of the molecule (alternative
+                          to ID)
+                    oneOf:
+                    - required:
+                      - id
+                    - required:
+                      - smiles
+                model:
+                  type: string
+                  description: Scoring model to use
+              required:
+              - molecules
+              - model
+      responses:
+        '200':
+          description: Scoring results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  scores:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        molecule_id:
+                          type: string
+                          format: uuid
+                          description: Molecule ID
+                        score:
+                          type: number
+                          format: float
+                          description: Score value
+                        properties:
+                          type: object
+                          additionalProperties: true
+                          description: Score properties
+                      required:
+                      - score
+                required:
+                - scores
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/v1/dashboard:
+    get:
+      summary: Get dashboard data
+      description: Get data for the dashboard
+      operationId: getDashboardData
+      tags:
+      - Dashboard
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Dashboard data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardStats'
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/v1/user_profile:
+    get:
+      summary: Get user profile
+      description: Get the current user's profile
+      operationId: getUserProfile
+      tags:
+      - User Profile
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: User profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update user profile
+      description: Update the current user's profile
+      operationId: updateUserProfile
+      tags:
+      - User Profile
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_data:
+                  type: object
+                  additionalProperties: true
+                  description: User profile data
+              required:
+              - user_data
+      responses:
+        '200':
+          description: User profile updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Profile updated successfully
+                  user:
+                    $ref: '#/components/schemas/UserProfile'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/v1/test/rate-limit:
+    get:
+      summary: Test rate limiting
+      description: Test endpoint to demonstrate rate limiting (limited to 5 requests
+        per minute)
+      operationId: testRateLimit
+      tags:
+      - System
+      responses:
+        '200':
+          description: Rate limit test response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: Rate limit test endpoint
+                  timestamp:
+                    type: string
+                    format: date-time
+                required:
+                - status
+                - message
+                - timestamp
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Rate limit exceeded
+                  details:
+                    type: string
+                    example: 5 per minute
+                  retry_after:
+                    type: integer
+                    example: 30
+                required:
+                - message
+  /api/v1/mixture-analysis/properties/{mixture_id}:
+    get:
+      summary: Get predicted properties for a mixture
+      description: Calculates various physicochemical properties of a mixture based
+        on its components and their concentrations.
+      operationId: getMixtureProperties
+      tags:
+      - Mixture Analysis
+      parameters:
+      - name: mixture_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: ID of the mixture to analyze
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Predicted mixture properties
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mixture_id:
+                    type: string
+                  mixture_name:
+                    type: string
+                  properties:
+                    type: object
+                    additionalProperties: true
+                  raw_properties:
+                    type: object
+                    additionalProperties: true
+                required:
+                - mixture_id
+                - properties
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /api/v1/mixture-analysis/compatibility/{mixture_id}:
+    get:
+      summary: Analyze compatibility between mixture components
+      description: Evaluates chemical and physical compatibility between all components
+        in the mixture.
+      operationId: getMixtureCompatibility
+      tags:
+      - Mixture Analysis
+      parameters:
+      - name: mixture_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: ID of the mixture to analyze
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Compatibility analysis results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mixture_id:
+                    type: string
+                  mixture_name:
+                    type: string
+                  compatibility:
+                    type: object
+                    additionalProperties: true
+                required:
+                - mixture_id
+                - compatibility
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /api/v1/mixture-analysis/synergy/{mixture_id}:
+    get:
+      summary: Analyze synergistic or antagonistic effects in a mixture
+      description: Evaluates how components interact to produce effects that are greater
+        than or less than the sum of their individual effects.
+      operationId: getMixtureSynergy
+      tags:
+      - Mixture Analysis
+      parameters:
+      - name: mixture_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: ID of the mixture to analyze
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Synergy analysis results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mixture_id:
+                    type: string
+                  mixture_name:
+                    type: string
+                  synergy:
+                    type: object
+                    additionalProperties: true
+                required:
+                - mixture_id
+                - synergy
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /api/v1/mixture-analysis/optimize/{mixture_id}:
+    post:
+      summary: Optimize the composition of a mixture
+      description: Adjusts component concentrations to achieve a target property value
+        or maximize overall effectiveness.
+      operationId: optimizeMixture
+      tags:
+      - Mixture Analysis
+      parameters:
+      - name: mixture_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: ID of the mixture to optimize
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                target_property:
+                  type: string
+                  description: Property to optimize for
+                  default: Cryoprotection Score
+                target_value:
+                  type: number
+                  description: Target value for the property
+                constraints:
+                  type: object
+                  description: Constraints for optimization
+                  additionalProperties: true
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Optimized mixture composition
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mixture_id:
+                    type: string
+                  mixture_name:
+                    type: string
+                  original_composition:
+                    type: object
+                    additionalProperties: true
+                  optimized_composition:
+                    type: object
+                    additionalProperties: true
+                  target_property:
+                    type: string
+                  target_value:
+                    type: number
+                  achieved_value:
+                    type: number
+                  improvement:
+                    type: number
+                required:
+                - mixture_id
+                - optimized_composition
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /api/v1/predictive-models:
+    get:
+      summary: Get a list of available predictive models
+      description: Retrieves information about all available predictive models.
+      operationId: getAvailableModels
+      tags:
+      - Predictive Models
+      responses:
+        '200':
+          description: List of available models
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    property_name:
+                      type: string
+                    algorithm:
+                      type: string
+                    algorithm_name:
+                      type: string
+                    hyperparameters:
+                      type: object
+                      additionalProperties: true
+                    trained_date:
+                      type: string
+                      format: date-time
+                    metrics:
+                      type: object
+                      additionalProperties: true
+                    feature_importance:
+                      type: object
+                      additionalProperties: true
+        '500':
+          $ref: '#/components/responses/ServerError'
+    post:
+      summary: Train a new predictive model
+      description: Trains a machine learning model to predict the specified property.
+      operationId: trainModel
+      tags:
+      - Predictive Models
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                property_name:
+                  type: string
+                  description: Property to predict
+                algorithm:
+                  type: string
+                  description: Machine learning algorithm to use
+                  default: random_forest
+                  enum:
+                  - random_forest
+                  - gradient_boosting
+                  - svm
+                  - neural_network
+                hyperparameters:
+                  type: object
+                  description: Algorithm-specific hyperparameters
+                  additionalProperties: true
+              required:
+              - property_name
+      security:
+      - bearerAuth: []
+      responses:
+        '201':
+          description: Trained model information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  property_name:
+                    type: string
+                  algorithm:
+                    type: string
+                  algorithm_name:
+                    type: string
+                  hyperparameters:
+                    type: object
+                    additionalProperties: true
+                  trained_date:
+                    type: string
+                    format: date-time
+                  metrics:
+                    type: object
+                    additionalProperties: true
+                  feature_importance:
+                    type: object
+                    additionalProperties: true
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /api/v1/predictive-models/predict/{mixture_id}:
+    get:
+      summary: Get a prediction for a mixture
+      description: Predicts the cryoprotection effectiveness of a mixture using the
+        specified machine learning algorithm.
+      operationId: predictMixture
+      tags:
+      - Predictive Models
+      parameters:
+      - name: mixture_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: ID of the mixture to predict for
+      - name: algorithm
+        in: query
+        schema:
+          type: string
+          enum:
+          - random_forest
+          - gradient_boosting
+          - svm
+          - neural_network
+          default: random_forest
+        description: Algorithm to use for prediction
+      responses:
+        '200':
+          description: Prediction results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  property_name:
+                    type: string
+                  prediction:
+                    type: number
+                  confidence:
+                    type: number
+                  confidence_interval:
+                    type: object
+                    properties:
+                      lower:
+                        type: number
+                      upper:
+                        type: number
+                  algorithm:
+                    type: string
+                  algorithm_name:
+                    type: string
+                  feature_importance:
+                    type: object
+                    additionalProperties: true
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /api/v1/scoring/molecule:
+    post:
+      summary: Calculate cryoprotection score for a molecule
+      description: Evaluates a molecule's potential effectiveness as a cryoprotectant
+        based on its physicochemical properties and structural features.
+      operationId: scoreMolecule
+      tags:
+      - Scoring
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                molecule_data:
+                  type: string
+                  description: Molecule data in the specified format
+                input_format:
+                  type: string
+                  description: Format of the input data
+                  default: smiles
+                  enum:
+                  - smiles
+                  - inchi
+                  - mol
+                store_result:
+                  type: boolean
+                  description: Whether to store the result in the database
+                  default: false
+              required:
+              - molecule_data
+      responses:
+        '200':
+          description: Cryoprotection score results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  overall_score:
+                    type: integer
+                  component_scores:
+                    type: object
+                    properties:
+                      hydrogen_bonding:
+                        type: integer
+                      logp:
+                        type: integer
+                      molecular_size:
+                        type: integer
+                      tpsa:
+                        type: integer
+                      functional_groups:
+                        type: integer
+                      permeability:
+                        type: integer
+                  properties:
+                    type: object
+                    additionalProperties: true
+                required:
+                - overall_score
+                - component_scores
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /api/v1/scoring/mixture/{mixture_id}:
+    post:
+      summary: Calculate cryoprotection score for a mixture
+      description: Evaluates a mixture's potential effectiveness as a cryoprotectant
+        based on its components and their properties.
+      operationId: scoreMixture
+      tags:
+      - Scoring
+      parameters:
+      - name: mixture_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: ID of the mixture to score
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                store_result:
+                  type: boolean
+                  description: Whether to store the result in the database
+                  default: true
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Mixture cryoprotection score results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mixture_id:
+                    type: string
+                  name:
+                    type: string
+                  overall_score:
+                    type: integer
+                  component_scores:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        molecule_id:
+                          type: string
+                        name:
+                          type: string
+                        concentration:
+                          type: number
+                        concentration_unit:
+                          type: string
+                        score:
+                          type: integer
+                required:
+                - mixture_id
+                - overall_score
+                - component_scores
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'

@@ -1,0 +1,12 @@
+{
+  "timestamp": "2025-04-29T09:43:55.359804",
+  "data_source": "ChEMBL",
+  "counts": {},
+  "null_checks": {},
+  "consistency_checks": {},
+  "property_completeness": {},
+  "reference_compounds": {},
+  "assessments": {
+    "reference_compounds": "ERROR"
+  }
+}

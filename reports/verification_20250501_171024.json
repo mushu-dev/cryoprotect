@@ -1,0 +1,37 @@
+{
+  "timestamp": "2025-05-01T17:10:25.737940",
+  "success": false,
+  "molecule_counts": {
+    "total_molecules": 786,
+    "with_pubchem_cid": 693,
+    "with_chembl_id": 73,
+    "with_cross_references": 0,
+    "with_properties": 519
+  },
+  "reference_compounds": {
+    "total_reference_compounds": 9,
+    "found_reference_compounds": 9,
+    "missing_reference_compounds": [],
+    "incomplete_reference_compounds": [
+      "CHEMBL1098659",
+      "CHEMBL1487",
+      "CHEMBL262548",
+      "CHEMBL388978",
+      "CHEMBL500033",
+      "CHEMBL6196",
+      "CHEMBL66195",
+      "CHEMBL6752",
+      "CHEMBL967"
+    ],
+    "complete_reference_compounds": [],
+    "details": {
+      "CHEMBL1098659": {
+        "status": "incomplete",
+        "name": "CHEMBL1098659",
+        "missing_properties": [
+          "logP",
+          "h_bond_donors",
+          "h_bond_acceptors"
+        ],
+        "properties": {
+          "alogp": 

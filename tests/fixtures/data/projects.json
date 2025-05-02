@@ -1,0 +1,34 @@
+[
+  {
+    "id": "proj-1",
+    "name": "Novel Cryoprotectant Mixtures",
+    "description": "Research project focused on developing novel cryoprotectant mixtures",
+    "team_id": "team-1",
+    "created_at": "2025-01-15T00:00:00Z",
+    "updated_at": "2025-01-15T00:00:00Z"
+  },
+  {
+    "id": "proj-2",
+    "name": "Toxicity Reduction",
+    "description": "Project focused on reducing toxicity of effective cryoprotectants",
+    "team_id": "team-2",
+    "created_at": "2025-02-01T00:00:00Z",
+    "updated_at": "2025-02-01T00:00:00Z"
+  },
+  {
+    "id": "proj-3",
+    "name": "Predictive Modeling Enhancement",
+    "description": "Project to improve predictive models for cryoprotectant effectiveness",
+    "team_id": "team-3",
+    "created_at": "2025-03-01T00:00:00Z",
+    "updated_at": "2025-03-01T00:00:00Z"
+  },
+  {
+    "id": "proj-4",
+    "name": "Long-term Storage Optimization",
+    "description": "Project focused on optimizing mixtures for long-term cryogenic storage",
+    "team_id": "team-1",
+    "created_at": "2025-04-01T00:00:00Z",
+    "updated_at": "2025-04-01T00:00:00Z"
+  }
+]

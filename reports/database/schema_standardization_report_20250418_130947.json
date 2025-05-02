@@ -1,0 +1,21 @@
+{
+  "timestamp": "2025-04-18 13:09:47",
+  "project_id": "tsdlmynydfuypiugmkev",
+  "standardization_successful": false,
+  "tables_found": 10,
+  "foreign_keys_found": 2,
+  "singular_tables_remaining": [],
+  "missing_plural_tables": [
+    "molecules",
+    "mixtures",
+    "predictions",
+    "experiments",
+    "experiment_properties",
+    "mixture_components",
+    "calculation_methods",
+    "property_types",
+    "projects",
+    "teams"
+  ],
+  "outdated_foreign_key_references": []
+}

@@ -1,0 +1,71 @@
+# Filebeat configuration for CryoProtect v2
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /logs/*.log
+    - /logs/**/*.log
+  json.keys_under_root: true
+  json.add_error_key: true
+  json.message_key: message
+  tags: ["cryoprotect", "application"]
+
+- type: container
+  enabled: true
+  paths:
+    - /var/lib/docker/containers/*/*.log
+  json.keys_under_root: true
+  json.add_error_key: true
+  json.message_key: log
+  processors:
+    - add_docker_metadata:
+        host: "unix:///var/run/docker.sock"
+  tags: ["cryoprotect", "docker"]
+
+# Processors for all inputs
+processors:
+  - add_host_metadata: ~
+  - add_cloud_metadata: ~
+  - add_docker_metadata: ~
+  - add_kubernetes_metadata: ~
+
+# Output configuration
+output.elasticsearch:
+  hosts: ["elasticsearch:9200"]
+  indices:
+    - index: "filebeat-cryoprotect-%{+yyyy.MM.dd}"
+      when.contains:
+        tags: "cryoprotect"
+    - index: "filebeat-docker-%{+yyyy.MM.dd}"
+      when.contains:
+        tags: "docker"
+
+# Alternative output to Logstash
+#output.logstash:
+#  hosts: ["logstash:5044"]
+#  loadbalance: true
+#  ssl.enabled: false
+
+# Logging settings
+logging.level: info
+logging.to_files: true
+logging.files:
+  path: /var/log/filebeat
+  name: filebeat
+  keepfiles: 7
+  permissions: 0644
+
+# Template settings
+setup.template.settings:
+  index.number_of_shards: 1
+  index.number_of_replicas: 0
+
+# Kibana settings
+setup.kibana:
+  host: "kibana:5601"
+
+# ILM settings
+setup.ilm.enabled: true
+setup.ilm.rollover_alias: "filebeat"
+setup.ilm.pattern: "{now/d}-000001"
+setup.ilm.policy_name: "filebeat-policy"

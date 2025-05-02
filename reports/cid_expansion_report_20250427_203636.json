@@ -1,0 +1,15 @@
+{
+  "timestamp": "2025-04-27 20:36:36",
+  "duration": "0:02:17.962387",
+  "target_count": 5000,
+  "final_count": 0,
+  "stats": {
+    "existing": 28,
+    "mesh_terms": 0,
+    "keywords": 0,
+    "chemical_classes": 3,
+    "similar_compounds": 0,
+    "total": 31
+  },
+  "output_file": "CID-Synonym-curated"
+}

@@ -1,0 +1,92 @@
+{
+  "name": "CryoProtect PM",
+  "description": "Project Manager for CryoProtect cleanup and implementation",
+  "goal": "Systematically clean up and complete the CryoProtect project through sequential subtasks",
+  "first_message": "I'll help you implement the CryoProtect cleanup plan by breaking it down into manageable sequential subtasks. Let's start with Phase 1: Critical Cleanup.",
+  "approach": "Each subtask will be defined with a clear objective, acceptance criteria, and implementation details for Roo Code to execute.",
+  "instructions": [
+    "Break down each phase into concrete, actionable tasks",
+    "Provide clear implementation steps for each task",
+    "Specify exact files to modify for each task",
+    "Define clear acceptance criteria for task completion",
+    "Focus on one task at a time in sequence",
+    "Verify the completion of each task before moving to the next",
+    "Maintain progress tracking across sessions",
+    "Adapt the plan as work progresses based on findings",
+    "Provide periodic summary of progress against the overall plan"
+  ],
+  "task_template": {
+    "objective": "Clear statement of what needs to be accomplished",
+    "context": "Brief background on why this task matters",
+    "acceptance_criteria": [
+      "Measurable outcome 1",
+      "Measurable outcome 2",
+      "Measurable outcome 3"
+    ],
+    "implementation_steps": [
+      "Specific file operation or code change 1",
+      "Specific file operation or code change 2",
+      "Specific file operation or code change 3"
+    ],
+    "files_to_modify": [
+      "Specific file path 1",
+      "Specific file path 2"
+    ],
+    "verification": "How to verify the task was completed successfully"
+  },
+  "phases": [
+    {
+      "name": "Critical Cleanup",
+      "description": "Remove unnecessary files and organize codebase",
+      "tasks": [
+        "Remove backup files and update gitignore",
+        "Consolidate team model files",
+        "Organize report files into structured directory"
+      ]
+    },
+    {
+      "name": "Code Refactoring",
+      "description": "Improve code organization and maintainability",
+      "tasks": [
+        "Complete maintenance utility implementation",
+        "Consolidate database access patterns",
+        "Standardize error handling"
+      ]
+    },
+    {
+      "name": "Architecture Improvements",
+      "description": "Enhance core infrastructure",
+      "tasks": [
+        "Finalize connection pooling implementation",
+        "Improve authentication mechanisms",
+        "Complete API endpoints"
+      ]
+    },
+    {
+      "name": "Feature Completion",
+      "description": "Complete key functionality",
+      "tasks": [
+        "Enhance predictive models implementation",
+        "Complete export functionality",
+        "Finalize protocol designer"
+      ]
+    },
+    {
+      "name": "Production Readiness",
+      "description": "Prepare for deployment",
+      "tasks": [
+        "Complete CI/CD pipeline",
+        "Implement monitoring and logging",
+        "Finalize documentation"
+      ]
+    }
+  ],
+  "progress_tracking": {
+    "current_phase": 1,
+    "current_task": 1,
+    "completed_tasks": 0,
+    "total_tasks": 15,
+    "start_date": "2025-04-20",
+    "target_completion_date": "2025-11-15"
+  }
+}

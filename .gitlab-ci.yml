@@ -1,0 +1,419 @@
+# CryoProtect v2 GitLab CI/CD Pipeline
+# Optimized for Docker build, test, and blue/green deployment
+
+stages:
+  - test
+  - build
+  - scan
+  - deploy-staging
+  - deploy-production
+  - blue-green-deploy
+
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ""
+  DOCKER_HOST: tcp://docker:2376
+  DOCKER_TLS_VERIFY: 1
+  DOCKER_CERT_PATH: "$CI_PROJECT_DIR/.docker"
+  CONTAINER_TEST_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  CONTAINER_RELEASE_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
+  CONTAINER_LATEST_IMAGE: $CI_REGISTRY_IMAGE:latest
+  CONTAINER_STAGING_IMAGE: $CI_REGISTRY_IMAGE:staging
+  CONTAINER_PRODUCTION_IMAGE: $CI_REGISTRY_IMAGE:production
+  PYTHON_VERSION: "3.9"
+  NODE_VERSION: "18"
+
+# Cache dependencies between jobs
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - .pip-cache/
+    - node_modules/
+
+# Test stage
+python-tests:
+  stage: test
+  image: continuumio/miniconda3:4.12.0
+  before_script:
+    - apt-get update && apt-get install -y curl
+    - conda env create -f environment.yml
+    - source activate cryoprotect
+    - pip install -r requirements_updated.txt
+    - pip install pytest pytest-cov pytest-xdist safety
+  script:
+    - source activate cryoprotect
+    - python -m pytest tests/python --cov=. --cov-report=xml:coverage-python.xml -v
+    - safety check -r requirements_updated.txt --output json > safety-report.json
+    # Check for critical vulnerabilities and fail if found
+    - python security/scan_python_safety.py --requirements requirements_updated.txt --format json --output safety-report.json --exit-on-critical
+  artifacts:
+    paths:
+      - coverage-python.xml
+      - safety-report.json
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage-python.xml
+    expire_in: 1 week
+
+node-tests:
+  stage: test
+  image: node:${NODE_VERSION}-alpine
+  before_script:
+    - npm ci
+  script:
+    - npm test -- --coverage
+    - npm audit --json > npm-audit.json
+    # Check for critical vulnerabilities and fail if found
+    - node security/scan_js_eslint.js --path ./static/js --format json --output eslint-security-results.json --exit-on-critical
+  artifacts:
+    paths:
+      - coverage/
+      - npm-audit.json
+    expire_in: 1 week
+  only:
+    - branches
+    - tags
+
+integration-tests:
+  stage: test
+  image: continuumio/miniconda3:4.12.0
+  services:
+    - name: postgres:13-alpine
+      alias: postgres
+  variables:
+    POSTGRES_DB: cryoprotect_test
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: postgres
+    DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/cryoprotect_test"
+  before_script:
+    - apt-get update && apt-get install -y curl
+    - conda env create -f environment.yml
+    - source activate cryoprotect
+    - pip install -r requirements_updated.txt
+    - pip install pytest pytest-cov pytest-xdist
+  script:
+    - source activate cryoprotect
+    - python -m pytest tests/integration --cov=. --cov-report=xml:coverage-integration.xml -v
+  artifacts:
+    paths:
+      - coverage-integration.xml
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage-integration.xml
+    expire_in: 1 week
+  only:
+    - branches
+    - tags
+
+# Build stage
+build-docker:
+  stage: build
+  image: docker:20.10.16
+  services:
+    - docker:20.10.16-dind
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - |
+      # Set version based on tag or commit
+      if [[ -n "$CI_COMMIT_TAG" ]]; then
+        VERSION=${CI_COMMIT_TAG}
+        echo "Building release version: $VERSION"
+      else
+        VERSION="${CI_COMMIT_REF_SLUG}-$(echo $CI_COMMIT_SHA | cut -c1-8)"
+        echo "Building development version: $VERSION"
+      fi
+    - |
+      # Build the Docker image with build args
+      docker build \
+        --build-arg FLASK_ENV=${CI_ENVIRONMENT_NAME:-development} \
+        --build-arg APP_VERSION=$VERSION \
+        --cache-from $CONTAINER_TEST_IMAGE \
+        --tag $CONTAINER_TEST_IMAGE \
+        .
+    - |
+      # Run tests inside the container
+      docker run --name cryoprotect-test -d $CONTAINER_TEST_IMAGE
+      docker exec cryoprotect-test conda run -n cryoprotect python verify_rdkit.py
+      docker exec cryoprotect-test conda run -n cryoprotect curl -s http://localhost:5000/health
+      docker stop cryoprotect-test
+    - docker push $CONTAINER_TEST_IMAGE
+    - |
+      # Tag and push additional images if this is a tag build
+      if [[ -n "$CI_COMMIT_TAG" ]]; then
+        docker tag $CONTAINER_TEST_IMAGE $CONTAINER_RELEASE_IMAGE
+        docker push $CONTAINER_RELEASE_IMAGE
+      fi
+  artifacts:
+    reports:
+      dotenv: build.env
+  only:
+    - branches
+    - tags
+
+# Security scanning stage
+security-scan:
+  stage: scan
+  image: aquasec/trivy:latest
+  variables:
+    TRIVY_NO_PROGRESS: "true"
+    TRIVY_CACHE_DIR: .trivycache/
+  cache:
+    paths:
+      - .trivycache/
+  script:
+    - chmod +x ./scripts/scan_docker_image.sh
+    - ./scripts/scan_docker_image.sh --format json --output trivy-results.json --severity CRITICAL,HIGH,MEDIUM --exit-code 1 --fail-on CRITICAL $CONTAINER_TEST_IMAGE
+    
+    # Run additional security scans
+    - python security/scan_python_bandit.py --path . --format json --output bandit-results.json --exit-on-critical
+    - python security/scan_python_safety.py --requirements requirements.txt --format json --output safety-results.json --exit-on-critical
+    - node security/scan_js_eslint.js --path ./static/js --format json --output eslint-security-results.json --exit-on-critical
+    - |
+      # Check for critical vulnerabilities
+      CRITICAL_COUNT=$(cat trivy-results.json | grep -c "CRITICAL" || true)
+      HIGH_COUNT=$(cat trivy-results.json | grep -c "HIGH" || true)
+      MEDIUM_COUNT=$(cat trivy-results.json | grep -c "MEDIUM" || true)
+      
+      echo "Vulnerability summary:"
+      echo "- Critical: $CRITICAL_COUNT"
+      echo "- High: $HIGH_COUNT"
+      echo "- Medium: $MEDIUM_COUNT"
+      
+      # Create a summary report
+      cat > vulnerability-summary.json << EOF
+      {
+        "scan_date": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+        "image": "$CONTAINER_TEST_IMAGE",
+        "summary": {
+          "critical": $CRITICAL_COUNT,
+          "high": $HIGH_COUNT,
+          "medium": $MEDIUM_COUNT
+        }
+      }
+      EOF
+  artifacts:
+    paths:
+      - trivy-results.json
+      - vulnerability-summary.json
+      - bandit-results.json
+      - safety-results.json
+      - eslint-security-results.json
+    reports:
+      junit: vulnerability-summary.json
+    expire_in: 3 months
+  only:
+    - branches
+    - tags
+
+# Generate SBOM
+generate-sbom:
+  stage: scan
+  image: aquasec/trivy:latest
+  script:
+    - chmod +x ./scripts/generate_sbom.sh
+    - mkdir -p ./sbom
+    - ./scripts/generate_sbom.sh --format cyclonedx --output sbom.json --store-dir ./sbom --version ${CI_COMMIT_TAG:-$CI_COMMIT_REF_SLUG} $CONTAINER_TEST_IMAGE
+    - |
+      # Create SBOM metadata
+      cat > sbom-metadata.json << EOF
+      {
+        "image": "$CONTAINER_TEST_IMAGE",
+        "version": "${CI_COMMIT_TAG:-$CI_COMMIT_REF_SLUG}",
+        "commit_sha": "$CI_COMMIT_SHA",
+        "pipeline_id": "$CI_PIPELINE_ID",
+        "generated_at": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+      }
+      EOF
+  artifacts:
+    paths:
+      - sbom.json
+      - sbom-metadata.json
+      - ./sbom/
+    expire_in: 6 months
+  only:
+    - tags
+    - main
+
+# Deploy to staging
+deploy-staging:
+  stage: deploy-staging
+  image: alpine:latest
+  variables:
+    GIT_STRATEGY: none
+  before_script:
+    - apk add --no-cache openssh-client bash curl
+    - eval $(ssh-agent -s)
+    - echo "$STAGING_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "$STAGING_SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - |
+      # Deploy to staging environment
+      ssh $STAGING_SSH_USER@$STAGING_SSH_HOST "
+        # Create Docker secrets for sensitive values
+        echo '$STAGING_SUPABASE_URL' | docker secret create cryoprotect_supabase_url - || docker secret rm cryoprotect_supabase_url && echo '$STAGING_SUPABASE_URL' | docker secret create cryoprotect_supabase_url -
+        echo '$STAGING_SUPABASE_KEY' | docker secret create cryoprotect_supabase_key - || docker secret rm cryoprotect_supabase_key && echo '$STAGING_SUPABASE_KEY' | docker secret create cryoprotect_supabase_key -
+        echo '$STAGING_SECRET_KEY' | docker secret create cryoprotect_secret_key - || docker secret rm cryoprotect_secret_key && echo '$STAGING_SECRET_KEY' | docker secret create cryoprotect_secret_key -
+        echo '$STAGING_REDIS_URL' | docker secret create cryoprotect_redis_url - || docker secret rm cryoprotect_redis_url && echo '$STAGING_REDIS_URL' | docker secret create cryoprotect_redis_url -
+        
+        # Pull the latest image
+        docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+        docker pull $CONTAINER_TEST_IMAGE
+        docker tag $CONTAINER_TEST_IMAGE $CONTAINER_STAGING_IMAGE
+        
+        # Set environment variables
+        export FLASK_ENV=staging
+        export USE_EXTERNAL_SECRETS=true
+        export APP_VERSION=${CI_COMMIT_TAG:-$CI_COMMIT_REF_SLUG}
+        
+        # Deploy with docker-compose
+        docker-compose up -d
+      "
+  environment:
+    name: staging
+    url: https://staging.cryoprotect.example.com
+  only:
+    - main
+    - tags
+
+# Deploy to production
+deploy-production:
+  stage: deploy-production
+  image: alpine:latest
+  variables:
+    GIT_STRATEGY: none
+  before_script:
+    - apk add --no-cache openssh-client bash curl
+    - eval $(ssh-agent -s)
+    - echo "$PRODUCTION_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "$PRODUCTION_SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - |
+      # Deploy to production environment
+      ssh $PRODUCTION_SSH_USER@$PRODUCTION_SSH_HOST "
+        # Create Docker secrets for sensitive values
+        echo '$PRODUCTION_SUPABASE_URL' | docker secret create cryoprotect_supabase_url - || docker secret rm cryoprotect_supabase_url && echo '$PRODUCTION_SUPABASE_URL' | docker secret create cryoprotect_supabase_url -
+        echo '$PRODUCTION_SUPABASE_KEY' | docker secret create cryoprotect_supabase_key - || docker secret rm cryoprotect_supabase_key && echo '$PRODUCTION_SUPABASE_KEY' | docker secret create cryoprotect_supabase_key -
+        echo '$PRODUCTION_SECRET_KEY' | docker secret create cryoprotect_secret_key - || docker secret rm cryoprotect_secret_key && echo '$PRODUCTION_SECRET_KEY' | docker secret create cryoprotect_secret_key -
+        echo '$PRODUCTION_REDIS_URL' | docker secret create cryoprotect_redis_url - || docker secret rm cryoprotect_redis_url && echo '$PRODUCTION_REDIS_URL' | docker secret create cryoprotect_redis_url -
+        
+        # Pull the latest image
+        docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+        docker pull $CONTAINER_RELEASE_IMAGE
+        docker tag $CONTAINER_RELEASE_IMAGE $CONTAINER_PRODUCTION_IMAGE
+        
+        # Set environment variables
+        export FLASK_ENV=production
+        export USE_EXTERNAL_SECRETS=true
+        export APP_VERSION=$CI_COMMIT_TAG
+        
+        # Deploy with docker-compose
+        docker-compose up -d
+      "
+  environment:
+    name: production
+    url: https://cryoprotect.example.com
+  only:
+    - tags
+  when: manual
+
+# Blue/Green deployment
+blue-green-deployment:
+  stage: blue-green-deploy
+  image: alpine:latest
+  variables:
+    GIT_STRATEGY: none
+  before_script:
+    - apk add --no-cache openssh-client bash curl
+    - eval $(ssh-agent -s)
+    - echo "$PRODUCTION_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "$PRODUCTION_SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - |
+      # Generate SBOM for production image
+      apk add --no-cache docker
+      docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+      
+      # Install Trivy
+      apk add --no-cache curl
+      curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+      
+      # Generate SBOM for production image
+      mkdir -p ./sbom
+      trivy image --format cyclonedx --output sbom-production.json $CONTAINER_RELEASE_IMAGE
+      
+      # Create SBOM metadata
+      cat > sbom-production-metadata.json << EOF
+      {
+        "image": "$CONTAINER_RELEASE_IMAGE",
+        "version": "$CI_COMMIT_TAG",
+        "commit_sha": "$CI_COMMIT_SHA",
+        "pipeline_id": "$CI_PIPELINE_ID",
+        "generated_at": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+        "environment": "production"
+      }
+      EOF
+      
+      # Deploy using blue/green deployment
+      ssh $PRODUCTION_SSH_USER@$PRODUCTION_SSH_HOST "
+        # Create SBOM directory
+        mkdir -p /var/log/cryoprotect/sbom
+        
+        # Pull the latest image
+        docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+        docker pull $CONTAINER_RELEASE_IMAGE
+        
+        # Set environment variables
+        export FLASK_ENV=production
+        export USE_EXTERNAL_SECRETS=true
+        export APP_VERSION=$CI_COMMIT_TAG
+        
+        # Determine active environment and deploy to inactive environment
+        if grep -q 'proxy_pass http://blue' /etc/nginx/conf.d/active.conf; then
+          echo 'Blue environment is active, deploying to green...'
+          ./scripts/deploy-green.sh --version $CI_COMMIT_TAG
+        else
+          echo 'Green environment is active, deploying to blue...'
+          ./scripts/deploy-blue.sh --version $CI_COMMIT_TAG
+        fi
+        
+        # Run security scan on deployed image
+        ./scripts/scan_docker_image.sh --format json --output /var/log/cryoprotect/security/scan-$CI_COMMIT_TAG.json --severity CRITICAL,HIGH,MEDIUM $CONTAINER_RELEASE_IMAGE
+        
+        # Run health checks
+        ./scripts/check-health.sh --verbose
+        
+        # Switch traffic to new environment
+        if grep -q 'proxy_pass http://blue' /etc/nginx/conf.d/active.conf; then
+          echo 'Switching traffic to green environment...'
+          ./scripts/switch-to-green.sh
+        else
+          echo 'Switching traffic to blue environment...'
+          ./scripts/switch-to-blue.sh
+        fi
+      "
+      
+      # Copy SBOM files to production server
+      scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no \
+        sbom-production.json \
+        sbom-production-metadata.json \
+        $PRODUCTION_SSH_USER@$PRODUCTION_SSH_HOST:/var/log/cryoprotect/sbom/
+  environment:
+    name: production
+    url: https://cryoprotect.example.com
+  only:
+    - tags
+  when: manual
+  needs:
+    - deploy-production

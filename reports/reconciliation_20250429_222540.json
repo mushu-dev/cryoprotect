@@ -1,0 +1,13 @@
+{
+  "timestamp": "2025-04-29T22:25:40.387274",
+  "molecules_updated": 2,
+  "cross_references_added": 2,
+  "conflicts_resolved": 0,
+  "details": {
+    "XSQUKJJJFZCRTK-UHFFFAOYSA-N": {
+      "pubchem_molecule": "CRYO005",
+      "chembl_molecule": "CRYO006",
+      "action": "cross_references_added"
+    }
+  }
+}

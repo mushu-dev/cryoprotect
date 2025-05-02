@@ -1,0 +1,70 @@
+{
+  "auth": {
+    "status_code": 200,
+    "response": {
+      "message": "Authentication successful",
+      "user": {
+        "email": "eluecheelip@gmail.com",
+        "id": "748b5eb7-15dd-4019-b128-ae9d80d9d446"
+      }
+    },
+    "success": false
+  },
+  "health": {
+    "status_code": 200,
+    "expected_status": 200,
+    "response": {
+      "status": "ok",
+      "version": "v1"
+    },
+    "success": true
+  },
+  "molecules": {
+    "status_code": 404,
+    "expected_status": 200,
+    "response": {
+      "message": "Resource not found"
+    },
+    "success": false
+  },
+  "molecule_detail": {
+    "status_code": 404,
+    "expected_status": 200,
+    "response": {
+      "message": "Resource not found"
+    },
+    "success": false
+  },
+  "molecule_create": {
+    "status_code": 404,
+    "expected_status": 200,
+    "response": {
+      "message": "Resource not found"
+    },
+    "success": false
+  },
+  "molecule_properties": {
+    "status_code": 404,
+    "expected_status": 200,
+    "response": {
+      "message": "Resource not found"
+    },
+    "success": false
+  },
+  "molecule_visualization": {
+    "status_code": 404,
+    "expected_status": 200,
+    "response": {
+      "message": "Resource not found"
+    },
+    "success": false
+  },
+  "mixtures": {
+    "status_code": 404,
+    "expected_status": 200,
+    "response": {
+      "message": "Resource not found"
+    },
+    "success": false
+  }
+}

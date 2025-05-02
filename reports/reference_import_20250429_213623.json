@@ -1,0 +1,45 @@
+{
+  "timestamp": "2025-04-29T21:36:23.770361",
+  "total_compounds": 9,
+  "imported": 0,
+  "updated": 0,
+  "failed": 9,
+  "details": {
+    "CHEMBL388978": {
+      "status": "failed",
+      "error": "'ResilientChEMBLClient' object has no attribute 'get_compound'"
+    },
+    "CHEMBL1098659": {
+      "status": "failed",
+      "error": "'ResilientChEMBLClient' object has no attribute 'get_compound'"
+    },
+    "CHEMBL66195": {
+      "status": "failed",
+      "error": "'ResilientChEMBLClient' object has no attribute 'get_compound'"
+    },
+    "CHEMBL500033": {
+      "status": "failed",
+      "error": "'ResilientChEMBLClient' object has no attribute 'get_compound'"
+    },
+    "CHEMBL1487": {
+      "status": "failed",
+      "error": "'ResilientChEMBLClient' object has no attribute 'get_compound'"
+    },
+    "CHEMBL6196": {
+      "status": "failed",
+      "error": "'ResilientChEMBLClient' object has no attribute 'get_compound'"
+    },
+    "CHEMBL967": {
+      "status": "failed",
+      "error": "'ResilientChEMBLClient' object has no attribute 'get_compound'"
+    },
+    "CHEMBL262548": {
+      "status": "failed",
+      "error": "'ResilientChEMBLClient' object has no attribute 'get_compound'"
+    },
+    "CHEMBL6752": {
+      "status": "failed",
+      "error": "'ResilientChEMBLClient' object has no attribute 'get_compound'"
+    }
+  }
+}

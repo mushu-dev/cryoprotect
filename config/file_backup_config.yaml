@@ -1,0 +1,189 @@
+# CryoProtect v2 File Backup Configuration
+# This file defines the configuration for the file backup system
+
+# File backup sources
+sources:
+  # Static files (CSS, JS, images, etc.)
+  static:
+    enabled: true
+    path: "static"
+    description: "Application static assets"
+    priority: 1  # Higher priority files are backed up first
+
+  # User uploaded content
+  uploads:
+    enabled: true
+    path: "chemical_data"
+    description: "User-uploaded chemical data files"
+    priority: 2
+
+  # Configuration files
+  config:
+    enabled: true
+    path: "config"
+    description: "Application configuration files"
+    priority: 3
+    # Special handling for config files
+    version_control:
+      enabled: true
+      init_if_missing: true
+      commit_message: "Automated backup commit {timestamp}"
+      author_name: "CryoProtect Backup"
+      author_email: "backup@cryoprotect.example.com"
+
+  # Database migration files
+  migrations:
+    enabled: true
+    path: "migrations"
+    description: "Database migration scripts"
+    priority: 4
+
+  # Documentation files
+  docs:
+    enabled: true
+    path: "docs"
+    description: "Project documentation"
+    priority: 5
+
+# Backup targets
+targets:
+  # Local filesystem backup
+  local:
+    enabled: true
+    path: "backups/files"
+    description: "Local filesystem backup"
+
+  # Amazon S3 backup
+  s3:
+    enabled: false
+    bucket: "cryoprotect-backups"
+    prefix: "file-backups/"
+    region: "us-east-1"
+    # Credentials should be provided via environment variables
+    # AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+
+  # SFTP backup
+  sftp:
+    enabled: false
+    host: "backup.example.com"
+    port: 22
+    username: "backup-user"
+    # Use either password or key_file, not both
+    password: ""  # Leave empty to use key-based authentication
+    key_file: "config/sftp_key"
+    remote_path: "/backups/cryoprotect/files"
+
+# Exclusion patterns (applied to all sources)
+exclusions:
+  patterns:
+    - "**/.DS_Store"        # macOS metadata files
+    - "**/__pycache__/**"   # Python cache directories
+    - "**/*.pyc"            # Python compiled files
+    - "**/node_modules/**"  # Node.js dependencies
+    - "**/.git/**"          # Git repositories (except for config when version_control is enabled)
+    - "**/*.log"            # Log files
+    - "**/*.tmp"            # Temporary files
+    - "**/*.bak"            # Backup files
+    - "**/~*"               # Temporary editor files
+    - "**/*.swp"            # Vim swap files
+  
+  # Sensitive file patterns (never backed up to remote targets)
+  sensitive:
+    - "**/*_key"            # Key files
+    - "**/*.pem"            # PEM certificates
+    - "**/*.key"            # Key files
+    - "**/*.env"            # Environment files
+    - "**/credentials.json" # Credential files
+
+# Synchronization options
+sync:
+  # Frequency settings (in cron format)
+  frequency:
+    static: "0 2 * * *"     # 2 AM daily
+    uploads: "0 */12 * * *" # Every 12 hours
+    config: "0 */6 * * *"   # Every 6 hours
+    migrations: "0 3 * * *" # 3 AM daily
+    docs: "0 4 * * 1"       # 4 AM on Mondays
+  
+  # Conflict resolution strategy
+  conflict_resolution:
+    strategy: "newer"  # Options: newer, larger, always_backup
+    backup_conflicting: true  # Create backup of conflicting files
+  
+  # Dry run option (for testing)
+  dry_run:
+    enabled: false
+    verbose: true
+  
+  # Parallel processing
+  parallel:
+    enabled: true
+    max_workers: 4  # Maximum number of parallel workers
+
+# Retention policies
+retention:
+  # How long to keep backups (in days)
+  static: 30
+  uploads: 60
+  config: 90
+  migrations: 90
+  docs: 60
+  
+  # Minimum number of backups to keep regardless of age
+  min_backups:
+    static: 5
+    uploads: 10
+    config: 20
+    migrations: 20
+    docs: 10
+
+# Version control integration (for config files)
+version_control:
+  enabled: true
+  type: "git"  # Currently only git is supported
+  
+  # Git-specific settings
+  git:
+    # Create bundle files for complete repository backup
+    create_bundle: true
+    # Backup frequency for git bundles (in cron format)
+    bundle_frequency: "0 3 * * 0"  # 3 AM on Sundays
+    # Retention period for git bundles (in days)
+    bundle_retention: 90
+
+# Compression settings
+compression:
+  enabled: true
+  method: "tar.gz"  # Options: zip, tar.gz
+  level: 9  # Compression level (1-9, where 9 is highest compression)
+
+# Encryption settings
+encryption:
+  enabled: false
+  method: "aes256"
+  key_file: "config/backup_encryption_key"
+
+# Notification settings
+notifications:
+  success:
+    enabled: true
+    channels: ["email", "log"]
+  
+  failure:
+    enabled: true
+    channels: ["email", "log", "slack"]
+  
+  # Only send notifications for these events
+  events:
+    - "backup_start"
+    - "backup_complete"
+    - "backup_error"
+    - "retention_applied"
+
+# Logging settings
+logging:
+  level: "INFO"  # Options: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  file: "logs/file_backup.log"
+  max_size: 10485760  # 10 MB
+  backup_count: 5  # Keep 5 rotated log files
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"

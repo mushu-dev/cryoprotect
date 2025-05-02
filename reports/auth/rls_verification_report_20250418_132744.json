@@ -1,0 +1,644 @@
+{
+  "timestamp": "2025-04-18 13:27:44",
+  "project_id": "tsdlmynydfuypiugmkev",
+  "rls_verification": {
+    "molecules": {
+      "rls_enabled": "yes"
+    },
+    "experiments": {
+      "rls_enabled": "yes"
+    },
+    "predictions": {
+      "rls_enabled": "yes"
+    },
+    "mixtures": {
+      "rls_enabled": "yes"
+    },
+    "mixture_components": {
+      "rls_enabled": "yes"
+    },
+    "property_types": {
+      "rls_enabled": "yes"
+    },
+    "calculation_methods": {
+      "rls_enabled": "yes"
+    },
+    "user_profile": {
+      "rls_enabled": "yes"
+    },
+    "experiment_mixtures": {
+      "rls_enabled": "yes"
+    },
+    "predictions_old": {
+      "rls_enabled": "yes"
+    },
+    "projects": {
+      "rls_enabled": "yes"
+    },
+    "teams": {
+      "rls_enabled": "yes"
+    }
+  },
+  "role_testing": {
+    "anonymous": {
+      "molecules": {
+        "expected": "public_only",
+        "actual": "public_only",
+        "passed": true
+      },
+      "experiments": {
+        "expected": "public_only",
+        "actual": "public_only",
+        "passed": true
+      },
+      "predictions": {
+        "expected": "public_only",
+        "actual": "public_only",
+        "passed": true
+      },
+      "mixtures": {
+        "expected": "public_only",
+        "actual": "public_only",
+        "passed": true
+      },
+      "mixture_components": {
+        "expected": "public_only",
+        "actual": "public_only",
+        "passed": true
+      },
+      "property_types": {
+        "expected": "read",
+        "actual": "public_only",
+        "passed": true
+      },
+      "calculation_methods": {
+        "expected": "read",
+        "actual": "public_only",
+        "passed": true
+      },
+      "user_profile": {
+        "expected": "public_only",
+        "actual": "public_only",
+        "passed": true
+      },
+      "experiment_mixtures": {
+        "expected": "public_only",
+        "actual": "public_only",
+        "passed": true
+      },
+      "predictions_old": {
+        "expected": "public_only",
+        "actual": "public_only",
+        "passed": true
+      },
+      "projects": {
+        "expected": "public_only",
+        "actual": "public_only",
+        "passed": true
+      },
+      "teams": {
+        "expected": "public_only",
+        "actual": "public_only",
+        "passed": true
+      }
+    },
+    "authenticated": {
+      "molecules": {
+        "expected": "restricted_access",
+        "actual": "restricted_access",
+        "passed": true,
+        "policies": [
+          {
+            "name": "Owner access",
+            "roles": [
+              "authenticated"
+            ],
+            "operation": "ALL",
+            "expression": "auth.uid() = created_by",
+            "with_check": "auth.uid() = created_by"
+          },
+          {
+            "name": "Public read access",
+            "roles": [
+              "authenticated",
+              "anon"
+            ],
+            "operation": "SELECT",
+            "expression": "is_public = true",
+            "with_check": null
+          },
+          {
+            "name": "Team member access",
+            "roles": [
+              "authenticated"
+            ],
+            "operation": "ALL",
+            "expression": "team_id IN (SELECT team_id FROM user_teams WHERE user_id = auth.uid())",
+            "with_check": "team_id IN (SELECT team_id FROM user_teams WHERE user_id = auth.uid())"
+          },
+          {
+            "name": "Service role bypass",
+            "roles": [
+              "service_role"
+            ],
+            "operation": "ALL",
+            "expression": "true",
+            "with_check": "true"
+          }
+        ]
+      },
+      "experiments": {
+        "expected": "restricted_access",
+        "actual": "restricted_access",
+        "passed": true,
+        "policies": [
+          {
+            "name": "Owner access",
+            "roles": [
+              "authenticated"
+            ],
+            "operation": "ALL",
+            "expression": "auth.uid() = created_by",
+            "with_check": "auth.uid() = created_by"
+          },
+          {
+            "name": "Public read access",
+            "roles": [
+              "authenticated",
+              "anon"
+            ],
+            "operation": "SELECT",
+            "expression": "is_public = true",
+            "with_check": null
+          },
+          {
+            "name": "Team member access",
+            "roles": [
+              "authenticated"
+            ],
+            "operation": "ALL",
+            "expression": "team_id IN (SELECT team_id FROM user_teams WHERE user_id = auth.uid())",
+            "with_check": "team_id IN (SELECT team_id FROM user_teams WHERE user_id = auth.uid())"
+          },
+          {
+            "name": "Service role bypass",
+            "roles": [
+              "service_role"
+            ],
+            "operation": "ALL",
+            "expression": "true",
+            "with_check": "true"
+          }
+        ]
+      },
+      "predictions": {
+        "expected": "restricted_access",
+        "actual": "restricted_access",
+        "passed": true,
+        "policies": [
+          {
+            "name": "Owner access",
+            "roles": [
+              "authenticated"
+            ],
+            "operation": "ALL",
+            "expression": "auth.uid() = created_by",
+            "with_check": "auth.uid() = created_by"
+          },
+          {
+            "name": "Public read access",
+            "roles": [
+              "authenticated",
+              "anon"
+            ],
+            "operation": "SELECT",
+            "expression": "is_public = true",
+            "with_check": null
+          },
+          {
+            "name": "Team member access",
+            "roles": [
+              "authenticated"
+            ],
+            "operation": "ALL",
+            "expression": "team_id IN (SELECT team_id FROM user_teams WHERE user_id = auth.uid())",
+            "with_check": "team_id IN (SELECT team_id FROM user_teams WHERE user_id = auth.uid())"
+          },
+          {
+            "name": "Service role bypass",
+            "roles": [
+              "service_role"
+            ],
+            "operation": "ALL",
+            "expression": "true",
+            "with_check": "true"
+          }
+        ]
+      },
+      "mixtures": {
+        "expected": "restricted_access",
+        "actual": "restricted_access",
+        "passed": true,
+        "policies": [
+          {
+            "name": "Owner access",
+            "roles": [
+              "authenticated"
+            ],
+            "operation": "ALL",
+            "expression": "auth.uid() = created_by",
+            "with_check": "auth.uid() = created_by"
+          },
+          {
+            "name": "Public read access",
+            "roles": [
+              "authenticated",
+              "anon"
+            ],
+            "operation": "SELECT",
+            "expression": "is_public = true",
+            "with_check": null
+          },
+          {
+            "name": "Team member access",
+            "roles": [
+              "authenticated"
+            ],
+            "operation": "ALL",
+            "expression": "team_id IN (SELECT team_id FROM user_teams WHERE user_id = auth.uid())",
+            "with_check": "team_id IN (SELECT team_id FROM user_teams WHERE user_id = auth.uid())"
+          },
+          {
+            "name": "Service role bypass",
+            "roles": [
+              "service_role"
+            ],
+            "operation": "ALL",
+            "expression": "true",
+            "with_check": "true"
+          }
+        ]
+      },
+      "mixture_components": {
+        "expected": "restricted_access",
+        "actual": "restricted_access",
+        "passed": true,
+        "policies": [
+          {
+            "name": "Owner access",
+            "roles": [
+              "authenticated"
+            ],
+            "operation": "ALL",
+            "expression": "auth.uid() = created_by",
+            "with_check": "auth.uid() = created_by"
+          },
+          {
+            "name": "Public read access",
+            "roles": [
+              "authenticated",
+              "anon"
+            ],
+            "operation": "SELECT",
+            "expression": "is_public = true",
+            "with_check": null
+          },
+          {
+            "name": "Team member access",
+            "roles": [
+              "authenticated"
+            ],
+            "operation": "ALL",
+            "expression": "team_id IN (SELECT team_id FROM user_teams WHERE user_id = auth.uid())",
+            "with_check": "team_id IN (SELECT team_id FROM user_teams WHERE user_id = auth.uid())"
+          },
+          {
+            "name": "Service role bypass",
+            "roles": [
+              "service_role"
+            ],
+            "operation": "ALL",
+            "expression": "true",
+            "with_check": "true"
+          }
+        ]
+      },
+      "property_types": {
+        "expected": "read",
+        "actual": "read",
+        "passed": true
+      },
+      "calculation_methods": {
+        "expected": "read",
+        "actual": "read",
+        "passed": true
+      },
+      "user_profile": {
+        "expected": "restricted_access",
+        "actual": "restricted_access",
+        "passed": true,
+        "policies": [
+          {
+            "name": "Owner access",
+            "roles": [
+              "authenticated"
+            ],
+            "operation": "ALL",
+            "expression": "auth.uid() = created_by",
+            "with_check": "auth.uid() = created_by"
+          },
+          {
+            "name": "Public read access",
+            "roles": [
+              "authenticated",
+              "anon"
+            ],
+            "operation": "SELECT",
+            "expression": "is_public = true",
+            "with_check": null
+          },
+          {
+            "name": "Team member access",
+            "roles": [
+              "authenticated"
+            ],
+            "operation": "ALL",
+            "expression": "team_id IN (SELECT team_id FROM user_teams WHERE user_id = auth.uid())",
+            "with_check": "team_id IN (SELECT team_id FROM user_teams WHERE user_id = auth.uid())"
+          },
+          {
+            "name": "Service role bypass",
+            "roles": [
+              "service_role"
+            ],
+            "operation": "ALL",
+            "expression": "true",
+            "with_check": "true"
+          }
+        ]
+      },
+      "experiment_mixtures": {
+        "expected": "restricted_access",
+        "actual": "restricted_access",
+        "passed": true,
+        "policies": [
+          {
+            "name": "Owner access",
+            "roles": [
+              "authenticated"
+            ],
+            "operation": "ALL",
+            "expression": "auth.uid() = created_by",
+            "with_check": "auth.uid() = created_by"
+          },
+          {
+            "name": "Public read access",
+            "roles": [
+              "authenticated",
+              "anon"
+            ],
+            "operation": "SELECT",
+            "expression": "is_public = true",
+            "with_check": null
+          },
+          {
+            "name": "Team member access",
+            "roles": [
+              "authenticated"
+            ],
+            "operation": "ALL",
+            "expression": "team_id IN (SELECT team_id FROM user_teams WHERE user_id = auth.uid())",
+            "with_check": "team_id IN (SELECT team_id FROM user_teams WHERE user_id = auth.uid())"
+          },
+          {
+            "name": "Service role bypass",
+            "roles": [
+              "service_role"
+            ],
+            "operation": "ALL",
+            "expression": "true",
+            "with_check": "true"
+          }
+        ]
+      },
+      "predictions_old": {
+        "expected": "restricted_access",
+        "actual": "restricted_access",
+        "passed": true,
+        "policies": [
+          {
+            "name": "Owner access",
+            "roles": [
+              "authenticated"
+            ],
+            "operation": "ALL",
+            "expression": "auth.uid() = created_by",
+            "with_check": "auth.uid() = created_by"
+          },
+          {
+            "name": "Public read access",
+            "roles": [
+              "authenticated",
+              "anon"
+            ],
+            "operation": "SELECT",
+            "expression": "is_public = true",
+            "with_check": null
+          },
+          {
+            "name": "Team member access",
+            "roles": [
+              "authenticated"
+            ],
+            "operation": "ALL",
+            "expression": "team_id IN (SELECT team_id FROM user_teams WHERE user_id = auth.uid())",
+            "with_check": "team_id IN (SELECT team_id FROM user_teams WHERE user_id = auth.uid())"
+          },
+          {
+            "name": "Service role bypass",
+            "roles": [
+              "service_role"
+            ],
+            "operation": "ALL",
+            "expression": "true",
+            "with_check": "true"
+          }
+        ]
+      },
+      "projects": {
+        "expected": "restricted_access",
+        "actual": "restricted_access",
+        "passed": true,
+        "policies": [
+          {
+            "name": "Owner access",
+            "roles": [
+              "authenticated"
+            ],
+            "operation": "ALL",
+            "expression": "auth.uid() = created_by",
+            "with_check": "auth.uid() = created_by"
+          },
+          {
+            "name": "Public read access",
+            "roles": [
+              "authenticated",
+              "anon"
+            ],
+            "operation": "SELECT",
+            "expression": "is_public = true",
+            "with_check": null
+          },
+          {
+            "name": "Team member access",
+            "roles": [
+              "authenticated"
+            ],
+            "operation": "ALL",
+            "expression": "team_id IN (SELECT team_id FROM user_teams WHERE user_id = auth.uid())",
+            "with_check": "team_id IN (SELECT team_id FROM user_teams WHERE user_id = auth.uid())"
+          },
+          {
+            "name": "Service role bypass",
+            "roles": [
+              "service_role"
+            ],
+            "operation": "ALL",
+            "expression": "true",
+            "with_check": "true"
+          }
+        ]
+      },
+      "teams": {
+        "expected": "restricted_access",
+        "actual": "restricted_access",
+        "passed": true,
+        "policies": [
+          {
+            "name": "Owner access",
+            "roles": [
+              "authenticated"
+            ],
+            "operation": "ALL",
+            "expression": "auth.uid() = created_by",
+            "with_check": "auth.uid() = created_by"
+          },
+          {
+            "name": "Public read access",
+            "roles": [
+              "authenticated",
+              "anon"
+            ],
+            "operation": "SELECT",
+            "expression": "is_public = true",
+            "with_check": null
+          },
+          {
+            "name": "Team member access",
+            "roles": [
+              "authenticated"
+            ],
+            "operation": "ALL",
+            "expression": "team_id IN (SELECT team_id FROM user_teams WHERE user_id = auth.uid())",
+            "with_check": "team_id IN (SELECT team_id FROM user_teams WHERE user_id = auth.uid())"
+          },
+          {
+            "name": "Service role bypass",
+            "roles": [
+              "service_role"
+            ],
+            "operation": "ALL",
+            "expression": "true",
+            "with_check": "true"
+          }
+        ]
+      }
+    },
+    "service_role": {
+      "molecules": {
+        "expected": "full_access",
+        "actual": "full_access",
+        "passed": true
+      },
+      "experiments": {
+        "expected": "full_access",
+        "actual": "full_access",
+        "passed": true
+      },
+      "predictions": {
+        "expected": "full_access",
+        "actual": "full_access",
+        "passed": true
+      },
+      "mixtures": {
+        "expected": "full_access",
+        "actual": "full_access",
+        "passed": true
+      },
+      "mixture_components": {
+        "expected": "full_access",
+        "actual": "full_access",
+        "passed": true
+      },
+      "property_types": {
+        "expected": "full_access",
+        "actual": "full_access",
+        "passed": true
+      },
+      "calculation_methods": {
+        "expected": "full_access",
+        "actual": "full_access",
+        "passed": true
+      },
+      "user_profile": {
+        "expected": "full_access",
+        "actual": "full_access",
+        "passed": true
+      },
+      "experiment_mixtures": {
+        "expected": "full_access",
+        "actual": "full_access",
+        "passed": true
+      },
+      "predictions_old": {
+        "expected": "full_access",
+        "actual": "full_access",
+        "passed": true
+      },
+      "projects": {
+        "expected": "full_access",
+        "actual": "full_access",
+        "passed": true
+      },
+      "teams": {
+        "expected": "full_access",
+        "actual": "full_access",
+        "passed": true
+      }
+    }
+  },
+  "summary": {
+    "tables_checked": 12,
+    "tables_with_rls_enabled": 12,
+    "tables_with_verified_policies": 0,
+    "tables_with_issues": 0
+  },
+  "role_testing_summary": {
+    "anonymous": {
+      "passed": 12,
+      "total": 12,
+      "success_rate": "100.0%"
+    },
+    "authenticated": {
+      "passed": 12,
+      "total": 12,
+      "success_rate": "100.0%"
+    },
+    "service_role": {
+      "passed": 12,
+      "total": 12,
+      "success_rate": "100.0%"
+    }
+  },
+  "overall_success": true
+}

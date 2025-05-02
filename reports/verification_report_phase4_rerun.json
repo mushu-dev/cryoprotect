@@ -1,0 +1,269 @@
+{
+  "timestamp": "2025-05-01T17:28:19.453412",
+  "level": "comprehensive",
+  "schema_verification": {
+    "success": false,
+    "issues": [
+      {
+        "type": "column_type_mismatch",
+        "severity": "error",
+        "message": "Column 'id' in table 'molecules' has type 'uuid', expected 'varchar'"
+      },
+      {
+        "type": "column_type_mismatch",
+        "severity": "error",
+        "message": "Column 'name' in table 'molecules' has type 'character varying', expected 'varchar'"
+      },
+      {
+        "type": "missing_column",
+        "severity": "error",
+        "message": "Column 'properties' is missing from table 'molecules'"
+      },
+      {
+        "type": "column_nullability_mismatch",
+        "severity": "warning",
+        "message": "Column 'created_at' in table 'molecules' has nullability=False, expected True"
+      },
+      {
+        "type": "column_nullability_mismatch",
+        "severity": "warning",
+        "message": "Column 'updated_at' in table 'molecules' has nullability=False, expected True"
+      },
+      {
+        "type": "column_type_mismatch",
+        "severity": "error",
+        "message": "Column 'id' in table 'mixtures' has type 'uuid', expected 'varchar'"
+      },
+      {
+        "type": "column_type_mismatch",
+        "severity": "error",
+        "message": "Column 'name' in table 'mixtures' has type 'character varying', expected 'varchar'"
+      },
+      {
+        "type": "missing_column",
+        "severity": "error",
+        "message": "Column 'properties' is missing from table 'mixtures'"
+      },
+      {
+        "type": "column_nullability_mismatch",
+        "severity": "warning",
+        "message": "Column 'created_at' in table 'mixtures' has nullability=False, expected True"
+      },
+      {
+        "type": "column_nullability_mismatch",
+        "severity": "warning",
+        "message": "Column 'updated_at' in table 'mixtures' has nullability=False, expected True"
+      },
+      {
+        "type": "column_type_mismatch",
+        "severity": "error",
+        "message": "Column 'id' in table 'mixture_components' has type 'uuid', expected 'varchar'"
+      },
+      {
+        "type": "column_type_mismatch",
+        "severity": "error",
+        "message": "Column 'mixture_id' in table 'mixture_components' has type 'uuid', expected 'varchar'"
+      },
+      {
+        "type": "column_type_mismatch",
+        "severity": "error",
+        "message": "Column 'molecule_id' in table 'mixture_components' has type 'uuid', expected 'varchar'"
+      },
+      {
+        "type": "column_nullability_mismatch",
+        "severity": "warning",
+        "message": "Column 'concentration' in table 'mixture_components' has nullability=False, expected True"
+      },
+      {
+        "type": "missing_column",
+        "severity": "error",
+        "message": "Column 'units' is missing from table 'mixture_components'"
+      },
+      {
+        "type": "missing_column",
+        "severity": "error",
+        "message": "Column 'properties' is missing from table 'mixture_components'"
+      },
+      {
+        "type": "column_nullability_mismatch",
+        "severity": "warning",
+        "message": "Column 'created_at' in table 'mixture_components' has nullability=False, expected True"
+      },
+      {
+        "type": "column_nullability_mismatch",
+        "severity": "warning",
+        "message": "Column 'updated_at' in table 'mixture_components' has nullability=False, expected True"
+      },
+      {
+        "type": "column_type_mismatch",
+        "severity": "error",
+        "message": "Column 'id' in table 'molecular_properties' has type 'uuid', expected 'varchar'"
+      },
+      {
+        "type": "column_type_mismatch",
+        "severity": "error",
+        "message": "Column 'molecule_id' in table 'molecular_properties' has type 'uuid', expected 'varchar'"
+      },
+      {
+        "type": "missing_column",
+        "severity": "error",
+        "message": "Column 'property_name' is missing from table 'molecular_properties'"
+      },
+      {
+        "type": "missing_column",
+        "severity": "error",
+        "message": "Column 'property_value' is missing from table 'molecular_properties'"
+      },
+      {
+        "type": "missing_column",
+        "severity": "error",
+        "message": "Column 'property_type' is missing from table 'molecular_properties'"
+      },
+      {
+        "type": "missing_column",
+        "severity": "error",
+        "message": "Column 'source' is missing from table 'molecular_properties'"
+      },
+      {
+        "type": "column_nullability_mismatch",
+        "severity": "warning",
+        "message": "Column 'created_at' in table 'molecular_properties' has nullability=False, expected True"
+      },
+      {
+        "type": "column_nullability_mismatch",
+        "severity": "warning",
+        "message": "Column 'updated_at' in table 'molecular_properties' has nullability=False, expected True"
+      },
+      {
+        "type": "column_type_mismatch",
+        "severity": "error",
+        "message": "Column 'id' in table 'calculation_methods' has type 'uuid', expected 'varchar'"
+      },
+      {
+        "type": "column_type_mismatch",
+        "severity": "error",
+        "message": "Column 'name' in table 'calculation_methods' has type 'character varying', expected 'varchar'"
+      },
+      {
+        "type": "column_type_mismatch",
+        "severity": "error",
+        "message": "Column 'version' in table 'calculation_methods' has type 'character varying', expected 'varchar'"
+      },
+      {
+        "type": "missing_column",
+        "severity": "error",
+        "message": "Column 'parameters' is missing from table 'calculation_methods'"
+      },
+      {
+        "type": "column_nullability_mismatch",
+        "severity": "warning",
+        "message": "Column 'created_at' in table 'calculation_methods' has nullability=False, expected True"
+      },
+      {
+        "type": "column_nullability_mismatch",
+        "severity": "warning",
+        "message": "Column 'updated_at' in table 'calculation_methods' has nullability=False, expected True"
+      },
+      {
+        "type": "column_type_mismatch",
+        "severity": "error",
+        "message": "Column 'id' in table 'experiments' has type 'uuid', expected 'varchar'"
+      },
+      {
+        "type": "column_type_mismatch",
+        "severity": "error",
+        "message": "Column 'name' in table 'experiments' has type 'text', expected 'varchar'"
+      },
+      {
+        "type": "column_nullability_mismatch",
+        "severity": "error",
+        "message": "Column 'name' in table 'experiments' has nullability=True, expected False"
+      },
+      {
+        "type": "column_type_mismatch",
+        "severity": "error",
+        "message": "Column 'mixture_id' in table 'experiments' has type 'uuid', expected 'varchar'"
+      },
+      {
+        "type": "missing_column",
+        "severity": "error",
+        "message": "Column 'protocol' is missing from table 'experiments'"
+      },
+      {
+        "type": "missing_column",
+        "severity": "error",
+        "message": "Column 'results' is missing from table 'experiments'"
+      },
+      {
+        "type": "column_nullability_mismatch",
+        "severity": "warning",
+        "message": "Column 'created_at' in table 'experiments' has nullability=False, expected True"
+      },
+      {
+        "type": "column_nullability_mismatch",
+        "severity": "warning",
+        "message": "Column 'updated_at' in table 'experiments' has nullability=False, expected True"
+      },
+      {
+        "type": "column_type_mismatch",
+        "severity": "error",
+        "message": "Column 'id' in table 'predictions' has type 'uuid', expected 'varchar'"
+      },
+      {
+        "type": "missing_column",
+        "severity": "error",
+        "message": "Column 'name' is missing from table 'predictions'"
+      },
+      {
+        "type": "missing_column",
+        "severity": "error",
+        "message": "Column 'description' is missing from table 'predictions'"
+      },
+      {
+        "type": "column_type_mismatch",
+        "severity": "error",
+        "message": "Column 'mixture_id' in table 'predictions' has type 'uuid', expected 'varchar'"
+      },
+      {
+        "type": "column_type_mismatch",
+        "severity": "error",
+        "message": "Column 'calculation_method_id' in table 'predictions' has type 'uuid', expected 'varchar'"
+      },
+      {
+        "type": "column_nullability_mismatch",
+        "severity": "warning",
+        "message": "Column 'calculation_method_id' in table 'predictions' has nullability=False, expected True"
+      },
+      {
+        "type": "missing_column",
+        "severity": "error",
+        "message": "Column 'results' is missing from table 'predictions'"
+      },
+      {
+        "type": "column_nullability_mismatch",
+        "severity": "warning",
+        "message": "Column 'created_at' in table 'predictions' has nullability=False, expected True"
+      },
+      {
+        "type": "column_nullability_mismatch",
+        "severity": "warning",
+        "message": "Column 'updated_at' in table 'predictions' has nullability=False, expected True"
+      }
+    ]
+  },
+  "constraint_verification": {
+    "success": true,
+    "issues": []
+  },
+  "json_property_verification": {
+    "success": false,
+    "issues": [
+      {
+        "type": "verification_error",
+        "severity": "error",
+        "message": "Error during JSON property verification: column \"properties\" does not exist\nLINE 4:                     count(properties->'pubchem') as pubchem_...\n                                  ^\n"
+      }
+    ]
+  },
+  "success": false
+}

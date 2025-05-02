@@ -1,0 +1,72 @@
+{
+  "timestamp": "2025-05-01T00:32:48.442423",
+  "total_compounds": 9,
+  "imported": 9,
+  "updated": 0,
+  "failed": 0,
+  "details": {
+    "CHEMBL388978": {
+      "status": "partial",
+      "internal_id": "CRYO001",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "invalid input syntax for type uuid: \"CRYO001\"\nLINE 4:                         VALUES ('CRYO001', 'CHEMBL388978', '...\n                                        ^\n"
+    },
+    "CHEMBL1098659": {
+      "status": "partial",
+      "internal_id": "CRYO002",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "invalid input syntax for type uuid: \"CRYO002\"\nLINE 4:                         VALUES ('CRYO002', 'CHEMBL1098659', ...\n                                        ^\n"
+    },
+    "CHEMBL66195": {
+      "status": "partial",
+      "internal_id": "CRYO003",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "invalid input syntax for type uuid: \"CRYO003\"\nLINE 4:                         VALUES ('CRYO003', 'CHEMBL66195', ''...\n                                        ^\n"
+    },
+    "CHEMBL500033": {
+      "status": "partial",
+      "internal_id": "CRYO004",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "invalid input syntax for type uuid: \"CRYO004\"\nLINE 4:                         VALUES ('CRYO004', 'CHEMBL500033', '...\n                                        ^\n"
+    },
+    "CHEMBL1487": {
+      "status": "partial",
+      "internal_id": "CRYO005",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "invalid input syntax for type uuid: \"CRYO005\"\nLINE 4:                         VALUES ('CRYO005', 'CHEMBL1487', '',...\n                                        ^\n"
+    },
+    "CHEMBL6196": {
+      "status": "partial",
+      "internal_id": "CRYO0007",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "invalid input syntax for type uuid: \"CRYO0007\"\nLINE 4:                         VALUES ('CRYO0007', 'CHEMBL6196', ''...\n                                        ^\n"
+    },
+    "CHEMBL967": {
+      "status": "partial",
+      "internal_id": "CRYO0008",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "invalid input syntax for type uuid: \"CRYO0008\"\nLINE 4:                         VALUES ('CRYO0008', 'CHEMBL967', '',...\n                                        ^\n"
+    },
+    "CHEMBL262548": {
+      "status": "partial",
+      "internal_id": "CRYO0009",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "invalid input syntax for type uuid: \"CRYO0009\"\nLINE 4:                         VALUES ('CRYO0009', 'CHEMBL262548', ...\n                                        ^\n"
+    },
+    "CHEMBL6752": {
+      "status": "partial",
+      "internal_id": "CRYO0010",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "invalid input syntax for type uuid: \"CRYO0010\"\nLINE 4:                         VALUES ('CRYO0010', 'CHEMBL6752', ''...\n                                        ^\n"
+    }
+  }
+}

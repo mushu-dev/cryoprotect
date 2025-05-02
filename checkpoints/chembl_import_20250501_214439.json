@@ -1,0 +1,35 @@
+{
+  "smiles": "CS(=O)C",
+  "similarity": 80,
+  "batch": 2,
+  "molecules_imported": 0,
+  "properties_imported": 0,
+  "processed_compounds": [
+    "CHEMBL504",
+    "CHEMBL692"
+  ],
+  "batches_processed": 2,
+  "search_terms_used": [],
+  "similarity_searches": [
+    {
+      "smiles": "C(C(CO)O)O",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(C(CO)O)O",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(C(CO)O)O",
+      "similarity": 60,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CS(=O)C",
+      "similarity": 80,
+      "compounds_found": 1
+    }
+  ]
+}

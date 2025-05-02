@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  cryoprotect:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      # For development, mount the project directory as a volume
+      # This allows for code changes without rebuilding the image
+      - .:/app
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+      # Load sensitive values from .env file for development
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_KEY=${SUPABASE_KEY}
+      - SECRET_KEY=${SECRET_KEY:-dev-secret-key-please-change-in-production}
+      - REDIS_URL=${REDIS_URL:-}
+      # Add other environment variables as needed
+    restart: unless-stopped
+    # Use the entrypoint script to handle environment variables
+    entrypoint: ["/app/docker-entrypoint.sh"]
+    command: ["/opt/conda/envs/cryoprotect/bin/python", "app.py"]

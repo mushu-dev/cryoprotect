@@ -1,0 +1,231 @@
+version: '3.8'
+
+services:
+  # NGINX load balancer
+  nginx:
+    image: nginx:1.25-alpine
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./nginx/scripts:/usr/local/bin:ro
+    depends_on:
+      cryoprotect-blue:
+        condition: service_healthy
+      cryoprotect-green:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+    networks:
+      - cryoprotect-network
+    logging:
+      driver: ${LOG_DRIVER:-json-file}
+      options:
+        max-size: ${LOG_MAX_SIZE:-10m}
+        max-file: ${LOG_MAX_FILE:-3}
+        compress: ${LOG_COMPRESS:-true}
+
+  # Blue environment
+  cryoprotect-blue:
+    image: ghcr.io/${GITHUB_REPOSITORY:-yourusername/cryoprotect}/cryoprotect:${BLUE_VERSION:-latest}
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=${FLASK_ENV:-production}
+      - DEPLOYMENT_COLOR=blue
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - METRICS_ENABLED=${METRICS_ENABLED:-true}
+    deploy:
+      resources:
+        limits:
+          memory: ${BLUE_MEM_LIMIT:-512M}
+          cpus: ${BLUE_CPU_LIMIT:-0.5}
+        reservations:
+          memory: ${BLUE_MEM_RESERVATION:-256M}
+          cpus: ${BLUE_CPU_RESERVATION:-0.25}
+      replicas: ${BLUE_REPLICAS:-1}
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    secrets:
+      - source: supabase_url
+        target: SUPABASE_URL
+        mode: 0400
+      - source: supabase_key
+        target: SUPABASE_KEY
+        mode: 0400
+      - source: secret_key
+        target: SECRET_KEY
+        mode: 0400
+      - source: redis_url
+        target: REDIS_URL
+        mode: 0400
+    volumes:
+      - cryoprotect-blue-logs:/app/logs
+    logging:
+      driver: ${LOG_DRIVER:-json-file}
+      options:
+        max-size: ${LOG_MAX_SIZE:-10m}
+        max-file: ${LOG_MAX_FILE:-3}
+        compress: ${LOG_COMPRESS:-true}
+        tag: "blue"
+    restart: unless-stopped
+    healthcheck:
+      test: [
+        "CMD-SHELL",
+        "curl -f http://localhost:5000/health && curl -f http://localhost:5000/health/readiness || exit 1"
+      ]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    networks:
+      - cryoprotect-network
+    labels:
+      - "com.cryoprotect.environment=blue"
+      - "com.cryoprotect.version=${BLUE_VERSION:-latest}"
+
+  # Green environment
+  cryoprotect-green:
+    image: ghcr.io/${GITHUB_REPOSITORY:-yourusername/cryoprotect}/cryoprotect:${GREEN_VERSION:-latest}
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=${FLASK_ENV:-production}
+      - DEPLOYMENT_COLOR=green
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - METRICS_ENABLED=${METRICS_ENABLED:-true}
+    deploy:
+      resources:
+        limits:
+          memory: ${GREEN_MEM_LIMIT:-512M}
+          cpus: ${GREEN_CPU_LIMIT:-0.5}
+        reservations:
+          memory: ${GREEN_MEM_RESERVATION:-256M}
+          cpus: ${GREEN_CPU_RESERVATION:-0.25}
+      replicas: ${GREEN_REPLICAS:-1}
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    secrets:
+      - source: supabase_url
+        target: SUPABASE_URL
+        mode: 0400
+      - source: supabase_key
+        target: SUPABASE_KEY
+        mode: 0400
+      - source: secret_key
+        target: SECRET_KEY
+        mode: 0400
+      - source: redis_url
+        target: REDIS_URL
+        mode: 0400
+    volumes:
+      - cryoprotect-green-logs:/app/logs
+    logging:
+      driver: ${LOG_DRIVER:-json-file}
+      options:
+        max-size: ${LOG_MAX_SIZE:-10m}
+        max-file: ${LOG_MAX_FILE:-3}
+        compress: ${LOG_COMPRESS:-true}
+        tag: "green"
+    restart: unless-stopped
+    healthcheck:
+      test: [
+        "CMD-SHELL",
+        "curl -f http://localhost:5000/health && curl -f http://localhost:5000/health/readiness || exit 1"
+      ]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    networks:
+      - cryoprotect-network
+    labels:
+      - "com.cryoprotect.environment=green"
+      - "com.cryoprotect.version=${GREEN_VERSION:-latest}"
+
+  # Prometheus for metrics collection
+  prometheus:
+    image: prom/prometheus:v2.45.0
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    ports:
+      - "9090:9090"
+    networks:
+      - cryoprotect-network
+    profiles:
+      - monitoring
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:9090/-/healthy || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # Grafana for metrics visualization
+  grafana:
+    image: grafana/grafana:10.0.3
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+    ports:
+      - "3000:3000"
+    networks:
+      - cryoprotect-network
+    depends_on:
+      - prometheus
+    profiles:
+      - monitoring
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:3000/api/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+networks:
+  cryoprotect-network:
+    driver: bridge
+
+volumes:
+  cryoprotect-blue-logs:
+  cryoprotect-green-logs:
+  prometheus-data:
+  grafana-data:
+
+# Define secrets
+secrets:
+  supabase_url:
+    external: ${USE_EXTERNAL_SECRETS:-true}
+    name: ${SUPABASE_URL_SECRET:-cryoprotect_supabase_url}
+  supabase_key:
+    external: ${USE_EXTERNAL_SECRETS:-true}
+    name: ${SUPABASE_KEY_SECRET:-cryoprotect_supabase_key}
+  secret_key:
+    external: ${USE_EXTERNAL_SECRETS:-true}
+    name: ${SECRET_KEY_SECRET:-cryoprotect_secret_key}
+  redis_url:
+    external: ${USE_EXTERNAL_SECRETS:-true}
+    name: ${REDIS_URL_SECRET:-cryoprotect_redis_url}

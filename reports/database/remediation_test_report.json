@@ -1,0 +1,25 @@
+{
+  "timestamp": "2025-04-17T13:40:24.082010",
+  "molecule_table": {
+    "is_populated": true,
+    "count": 15
+  },
+  "orphaned_records": {
+    "mixture_component": {
+      "has_orphans": false,
+      "orphan_count": 0,
+      "total_count": 11
+    },
+    "molecular_property": {
+      "has_orphans": false,
+      "orphan_count": 0,
+      "total_count": 26
+    },
+    "prediction": {
+      "has_orphans": false,
+      "orphan_count": 0,
+      "total_count": 0
+    }
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,55 @@
+{
+  "backup_dir": "backup/data",
+  "retention": {
+    "daily": 7,
+    "weekly": 4,
+    "monthly": 6,
+    "yearly": 2
+  },
+  "schedule": {
+    "daily": "02:00",
+    "weekly": "sunday",
+    "monthly": 1
+  },
+  "cross_region": {
+    "enabled": false,
+    "method": "s3",
+    "config": {
+      "s3": {
+        "bucket": "your-backup-bucket",
+        "region": "us-west-2",
+        "prefix": "cryoprotect-backups/"
+      },
+      "azure": {
+        "connection_string": "your-connection-string",
+        "container": "your-container",
+        "prefix": "cryoprotect-backups/"
+      },
+      "gcp": {
+        "bucket": "your-backup-bucket",
+        "prefix": "cryoprotect-backups/"
+      },
+      "sftp": {
+        "host": "your-sftp-server",
+        "port": 22,
+        "username": "your-username",
+        "password": "",
+        "key_file": "path/to/key_file",
+        "remote_path": "/path/to/backups/"
+      }
+    }
+  },
+  "verification": {
+    "enabled": true,
+    "methods": ["checksum", "restore_test"]
+  },
+  "compression": {
+    "enabled": true,
+    "method": "zip"
+  },
+  "encryption": {
+    "enabled": false,
+    "method": "aes256",
+    "key_file": ""
+  }
+}

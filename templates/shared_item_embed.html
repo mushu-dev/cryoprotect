@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CryoProtect Analyzer - Embedded Content</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+    }
+    
+    .embed-container {
+      padding: 10px;
+      border: 1px solid #e0e0e0;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+    
+    .embed-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .embed-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0;
+    }
+    
+    .embed-logo {
+      font-size: 12px;
+      color: #6c757d;
+    }
+    
+    .embed-logo a {
+      color: #0d6efd;
+      text-decoration: none;
+    }
+    
+    .embed-content {
+      overflow: auto;
+    }
+    
+    .chart-container {
+      height: 250px;
+      margin-bottom: 15px;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    
+    th, td {
+      padding: 6px;
+      border: 1px solid #e0e0e0;
+    }
+    
+    th {
+      background-color: #f8f9fa;
+      font-weight: 600;
+    }
+    
+    .embed-footer {
+      margin-top: 15px;
+      padding-top: 10px;
+      border-top: 1px solid #e0e0e0;
+      font-size: 11px;
+      color: #6c757d;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="embed-container">
+    <div class="embed-header">
+      <h1 class="embed-title">
+        {% if data_type == 'molecules' %}
+          {{ item_data.name }}
+        {% elif data_type == 'mixtures' %}
+          {{ item_data.name }}
+        {% elif data_type == 'predictions' %}
+          Predictions
+        {% elif data_type == 'experiments' %}
+          Experiments
+        {% elif data_type == 'comparisons' %}
+          Comparisons
+        {% else %}
+          CryoProtect Analyzer Data
+        {% endif %}
+      </h1>
+      <div class="embed-logo">
+        <a href="/" target="_blank">CryoProtect Analyzer</a>
+      </div>
+    </div>
+    
+    <div class="embed-content">
+      {% if data_type == 'mixtures' %}
+      <!-- Mixture Content -->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="chart-container">
+            <canvas id="mixture-composition-chart" 
+              data-components="{{ item_data.components|tojson|safe }}"
+            ></canvas>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <table>
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Concentration</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for component in item_data.components %}
+              <tr>
+                <td>{{ component.molecule_name }}</td>
+                <td>{{ component.concentration }} {{ component.concentration_unit }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      {% if item_data.predictions %}
+      <div class="mt-3">
+        <h5>Predictions</h5>
+        <table>
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Value</th>
+              <th>Confidence</th>
+              <th>Method</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for prediction in item_data.predictions %}
+            <tr>
+              <td>{{ prediction.property_types.name }}</td>
+              <td>
+                {% if prediction.numeric_value is not none %}
+                  {{ prediction.numeric_value }}
+                {% elif prediction.text_value is not none %}
+                  {{ prediction.text_value }}
+                {% elif prediction.boolean_value is not none %}
+                  {{ prediction.boolean_value }}
+                {% else %}
+                  N/A
+                {% endif %}
+              </td>
+              <td>{{ prediction.confidence }}</td>
+              <td>{{ prediction.calculation_methods.name }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% endif %}
+      
+      {% elif data_type == 'molecules' %}
+      <!-- Molecule Content -->
+      <div class="row">
+        <div class="col-md-6">
+          <table>
+            <tr>
+              <th>Name</th>
+              <td>{{ item_data.name }}</td>
+            </tr>
+            <tr>
+              <th>Formula</th>
+              <td>{{ item_data.molecular_formula }}</td>
+            </tr>
+            <tr>
+              <th>SMILES</th>
+              <td>{{ item_data.smiles }}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-md-6 text-center">
+          <img src="https://pubchem.ncbi.nlm.nih.gov/image/imgsrv.fcgi?cid={{ item_data.cid }}&t=l" alt="Molecular Structure" class="img-fluid" style="max-height: 150px;">
+        </div>
+      </div>
+      
+      {% elif data_type == 'predictions' or data_type == 'experiments' %}
+      <!-- Predictions or Experiments Content -->
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Value</th>
+            {% if data_type == 'predictions' %}
+            <th>Confidence</th>
+            <th>Method</th>
+            {% else %}
+            <th>Conditions</th>
+            <th>Date Performed</th>
+            {% endif %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in item_data %}
+          <tr>
+            <td>{{ item.property_types.name }}</td>
+            <td>
+              {% if item.numeric_value is not none %}
+                {{ item.numeric_value }}
+              {% elif item.text_value is not none %}
+                {{ item.text_value }}
+              {% elif item.boolean_value is not none %}
+                {{ item.boolean_value }}
+              {% else %}
+                N/A
+              {% endif %}
+            </td>
+            {% if data_type == 'predictions' %}
+            <td>{{ item.confidence }}</td>
+            <td>{{ item.calculation_methods.name }}</td>
+            {% else %}
+            <td>{{ item.experimental_conditions }}</td>
+            <td>{{ item.date_performed }}</td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      
+      {% elif data_type == 'comparisons' %}
+      <!-- Comparisons Content -->
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Predicted Value</th>
+            <th>Experimental Value</th>
+            <th>Difference</th>
+            <th>% Error</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in item_data %}
+          <tr>
+            <td>{{ item.property_name }}</td>
+            <td>{{ item.prediction_value }}</td>
+            <td>{{ item.experiment_value }}</td>
+            <td>{{ item.difference }}</td>
+            <td>{{ item.percent_error }}%</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+    </div>
+    
+    <div class="embed-footer">
+      Powered by CryoProtect Analyzer | Data shared via CryoProtect Sharing
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize charts if needed
+      if (document.getElementById('mixture-composition-chart')) {
+        // Initialize mixture composition chart
+        const chartElement = document.getElementById('mixture-composition-chart');
+        const ctx = chartElement.getContext('2d');
+        
+        // Get component data from data attribute
+        let componentsData = [];
+        if (chartElement.dataset.components) {
+          componentsData = JSON.parse(chartElement.dataset.components);
+        }
+        
+        const labels = componentsData.map(comp => comp.molecule_name);
+        const data = componentsData.map(comp => comp.concentration);
+        
+        // Create pie chart
+        new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: labels,
+            datasets: [{
+              data: data,
+              backgroundColor: [
+                '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40',
+                '#8BC34A', '#FF5722', '#607D8B', '#E91E63', '#3F51B5', '#009688'
+              ]
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'right',
+                labels: {
+                  boxWidth: 10,
+                  font: {
+                    size: 10
+                  }
+                }
+              },
+              title: {
+                display: true,
+                text: 'Mixture Composition',
+                font: {
+                  size: 14
+                }
+              }
+            }
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

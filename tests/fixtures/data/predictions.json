@@ -1,0 +1,112 @@
+[
+  {
+    "id": "pred-1",
+    "molecule_id": "mol-fixture-1",
+    "mixture_id": null,
+    "property_type_id": "prop-type-10",
+    "calculation_method_id": "calc-method-2",
+    "predicted_value": 85.2,
+    "confidence": 0.92,
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  },
+  {
+    "id": "pred-2",
+    "molecule_id": "mol-fixture-2",
+    "mixture_id": null,
+    "property_type_id": "prop-type-10",
+    "calculation_method_id": "calc-method-2",
+    "predicted_value": 78.5,
+    "confidence": 0.89,
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  },
+  {
+    "id": "pred-3",
+    "molecule_id": null,
+    "mixture_id": "mix-fixture-1",
+    "property_type_id": "prop-type-10",
+    "calculation_method_id": "calc-method-3",
+    "predicted_value": 83.1,
+    "confidence": 0.85,
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  },
+  {
+    "id": "pred-4",
+    "molecule_id": null,
+    "mixture_id": "mix-fixture-2",
+    "property_type_id": "prop-type-10",
+    "calculation_method_id": "calc-method-3",
+    "predicted_value": 81.2,
+    "confidence": 0.87,
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  },
+  {
+    "id": "pred-5",
+    "molecule_id": "mol-fixture-1",
+    "mixture_id": null,
+    "property_type_id": "prop-type-5",
+    "calculation_method_id": "calc-method-1",
+    "predicted_value": 900000,
+    "confidence": 0.95,
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  },
+  {
+    "id": "pred-6",
+    "molecule_id": "mol-fixture-2",
+    "mixture_id": null,
+    "property_type_id": "prop-type-5",
+    "calculation_method_id": "calc-method-1",
+    "predicted_value": 1000000,
+    "confidence": 0.97,
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  },
+  {
+    "id": "pred-7",
+    "molecule_id": null,
+    "mixture_id": "mix-fixture-1",
+    "property_type_id": "prop-type-5",
+    "calculation_method_id": "calc-method-3",
+    "predicted_value": 930000,
+    "confidence": 0.82,
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  },
+  {
+    "id": "pred-8",
+    "molecule_id": null,
+    "mixture_id": "mix-fixture-2",
+    "property_type_id": "prop-type-5",
+    "calculation_method_id": "calc-method-3",
+    "predicted_value": 960000,
+    "confidence": 0.84,
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  },
+  {
+    "id": "pred-9",
+    "molecule_id": "mol-fixture-1",
+    "mixture_id": null,
+    "property_type_id": "prop-type-6",
+    "calculation_method_id": "calc-method-5",
+    "predicted_value": "Low",
+    "confidence": 0.91,
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  },
+  {
+    "id": "pred-10",
+    "molecule_id": "mol-fixture-2",
+    "mixture_id": null,
+    "property_type_id": "prop-type-6",
+    "calculation_method_id": "calc-method-5",
+    "predicted_value": "Very Low",
+    "confidence": 0.94,
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  }
+]

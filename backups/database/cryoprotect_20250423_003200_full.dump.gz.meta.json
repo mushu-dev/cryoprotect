@@ -1,0 +1,10 @@
+{
+  "timestamp": "2025-04-23T00:32:00.000000",
+  "database": "cryoprotect",
+  "backup_type": "full",
+  "backup_file": "cryoprotect_20250423_003200_full.dump.gz",
+  "size_bytes": 82,
+  "host": "localhost",
+  "port": 5432,
+  "backup_tool_version": "1.0.0"
+}

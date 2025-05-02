@@ -1,0 +1,21 @@
+{
+  "timestamp": "2025-04-23T00:49:10.592674",
+  "verified_backups": [
+    {
+      "file": "corrupt_backup.dump.gz",
+      "path": "backups/database/corrupt_backup.dump.gz",
+      "timestamp": "2025-04-23T00:49:10.592674",
+      "checks": {
+        "file_integrity": true,
+        "backup_format": false,
+        "metadata": false,
+        "hash_calculation": true
+      },
+      "hash": "f6435d5cd2000d3702761410946c139b03aaf6ba1e54ab6fed133ab04585ec6e",
+      "status": "failed"
+    }
+  ],
+  "total_backups": 1,
+  "passed": 0,
+  "failed": 1
+}

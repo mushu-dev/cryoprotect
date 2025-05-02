@@ -1,0 +1,191 @@
+{
+  "mixtures": [
+    {
+      "name": "DMSO/EG Mixture",
+      "description": "Standard 1:1 DMSO/Ethylene glycol mixture for vitrification",
+      "components": [
+        {
+          "molecule_name": "Dimethyl sulfoxide",
+          "concentration": 50.0,
+          "concentration_unit": "%",
+          "role": "cryoprotectant"
+        },
+        {
+          "molecule_name": "Ethylene glycol",
+          "concentration": 50.0,
+          "concentration_unit": "%",
+          "role": "cryoprotectant"
+        }
+      ],
+      "properties": {
+        "glass_transition_temp": -132.5,
+        "total_cryoprotection_score": 8.7,
+        "toxicity_score": 6.5,
+        "permeability_score": 9.2
+      },
+      "application": "Vitrification of embryos and oocytes"
+    },
+    {
+      "name": "Glycerol/Trehalose Mixture",
+      "description": "Combination of penetrating and non-penetrating cryoprotectants",
+      "components": [
+        {
+          "molecule_name": "Glycerol",
+          "concentration": 70.0,
+          "concentration_unit": "%",
+          "role": "penetrating cryoprotectant"
+        },
+        {
+          "molecule_name": "Trehalose",
+          "concentration": 30.0,
+          "concentration_unit": "%",
+          "role": "non-penetrating cryoprotectant"
+        }
+      ],
+      "properties": {
+        "glass_transition_temp": -45.6,
+        "total_cryoprotection_score": 7.9,
+        "toxicity_score": 8.8,
+        "permeability_score": 6.3
+      },
+      "application": "Slow freezing of cells and tissues"
+    },
+    {
+      "name": "PG/EG/DMSO Mixture",
+      "description": "Triple cryoprotectant mixture for improved vitrification",
+      "components": [
+        {
+          "molecule_name": "Propylene glycol",
+          "concentration": 33.3,
+          "concentration_unit": "%",
+          "role": "cryoprotectant"
+        },
+        {
+          "molecule_name": "Ethylene glycol",
+          "concentration": 33.3,
+          "concentration_unit": "%",
+          "role": "cryoprotectant"
+        },
+        {
+          "molecule_name": "Dimethyl sulfoxide",
+          "concentration": 33.4,
+          "concentration_unit": "%",
+          "role": "cryoprotectant"
+        }
+      ],
+      "properties": {
+        "glass_transition_temp": -124.3,
+        "total_cryoprotection_score": 9.1,
+        "toxicity_score": 7.2,
+        "permeability_score": 8.9
+      },
+      "application": "Vitrification of complex tissues"
+    },
+    {
+      "name": "Sucrose/PVA Solution",
+      "description": "Non-penetrating cryoprotectant mixture",
+      "components": [
+        {
+          "molecule_name": "Sucrose",
+          "concentration": 80.0,
+          "concentration_unit": "%",
+          "role": "non-penetrating cryoprotectant"
+        },
+        {
+          "molecule_name": "Polyvinyl alcohol",
+          "concentration": 20.0,
+          "concentration_unit": "%",
+          "role": "non-penetrating cryoprotectant"
+        }
+      ],
+      "properties": {
+        "glass_transition_temp": 79.4,
+        "total_cryoprotection_score": 6.8,
+        "toxicity_score": 9.5,
+        "permeability_score": 3.2
+      },
+      "application": "Freeze-drying of biological materials"
+    },
+    {
+      "name": "Methanol/Glycerol Mixture",
+      "description": "Low molecular weight cryoprotectant mixture",
+      "components": [
+        {
+          "molecule_name": "Methanol",
+          "concentration": 60.0,
+          "concentration_unit": "%",
+          "role": "cryoprotectant"
+        },
+        {
+          "molecule_name": "Glycerol",
+          "concentration": 40.0,
+          "concentration_unit": "%",
+          "role": "cryoprotectant"
+        }
+      ],
+      "properties": {
+        "glass_transition_temp": -142.2,
+        "total_cryoprotection_score": 7.3,
+        "toxicity_score": 5.8,
+        "permeability_score": 8.1
+      },
+      "application": "Cryopreservation of fish embryos"
+    },
+    {
+      "name": "Proline/Betaine/Trehalose Mixture",
+      "description": "Natural cryoprotectant mixture inspired by extremophile organisms",
+      "components": [
+        {
+          "molecule_name": "Proline",
+          "concentration": 40.0,
+          "concentration_unit": "%",
+          "role": "osmolyte"
+        },
+        {
+          "molecule_name": "Betaine",
+          "concentration": 30.0,
+          "concentration_unit": "%",
+          "role": "osmolyte"
+        },
+        {
+          "molecule_name": "Trehalose",
+          "concentration": 30.0,
+          "concentration_unit": "%",
+          "role": "non-penetrating cryoprotectant"
+        }
+      ],
+      "properties": {
+        "glass_transition_temp": 77.5,
+        "total_cryoprotection_score": 8.2,
+        "toxicity_score": 9.7,
+        "permeability_score": 5.4
+      },
+      "application": "Preservation of drought-sensitive biological materials"
+    },
+    {
+      "name": "1,3-Propanediol/HES Mixture",
+      "description": "Mixture combining small penetrating and large non-penetrating cryoprotectants",
+      "components": [
+        {
+          "molecule_name": "1,3-Propanediol",
+          "concentration": 65.0,
+          "concentration_unit": "%",
+          "role": "penetrating cryoprotectant"
+        },
+        {
+          "molecule_name": "Hydroxyethyl starch",
+          "concentration": 35.0,
+          "concentration_unit": "%",
+          "role": "non-penetrating cryoprotectant"
+        }
+      ],
+      "properties": {
+        "glass_transition_temp": -38.9,
+        "total_cryoprotection_score": 7.6,
+        "toxicity_score": 8.3,
+        "permeability_score": 6.7
+      },
+      "application": "Blood cell cryopreservation"
+    }
+  ]
+}

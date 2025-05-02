@@ -1,0 +1,52 @@
+[
+  {
+    "id": "user-prof-1",
+    "user_id": "user-1",
+    "name": "Dr. Jane Smith",
+    "email": "jane.smith@example.com",
+    "team_id": "team-1",
+    "role": "admin",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z"
+  },
+  {
+    "id": "user-prof-2",
+    "user_id": "user-2",
+    "name": "Dr. John Doe",
+    "email": "john.doe@example.com",
+    "team_id": "team-1",
+    "role": "scientist",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z"
+  },
+  {
+    "id": "user-prof-3",
+    "user_id": "user-3",
+    "name": "Dr. Emily Chen",
+    "email": "emily.chen@example.com",
+    "team_id": "team-2",
+    "role": "scientist",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z"
+  },
+  {
+    "id": "user-prof-4",
+    "user_id": "user-4",
+    "name": "Dr. Michael Johnson",
+    "email": "michael.johnson@example.com",
+    "team_id": "team-3",
+    "role": "scientist",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z"
+  },
+  {
+    "id": "user-prof-5",
+    "user_id": "user-5",
+    "name": "Sarah Williams",
+    "email": "sarah.williams@example.com",
+    "team_id": "team-1",
+    "role": "user",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z"
+  }
+]

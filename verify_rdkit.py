@@ -10,7 +10,10 @@ import os
 import sys
 import logging
 import json
-from typing import Dict, Any
+import argparse
+import random
+import datetime
+from typing import Dict, Any, List, Optional
 
 # Configure logging
 logging.basicConfig(
@@ -88,27 +91,55 @@ def test_property_calculation() -> bool:
         logger.error(f"Error testing property calculation: {str(e)}")
         return False
 
-def test_visualization() -> bool:
+def test_visualization(reference_molecules: bool = False) -> bool:
     """Test visualization functionality."""
     logger.info("Testing visualization...")
     try:
         from api.rdkit_utils import generate_molecule_svg
         
-        # Test with ethanol
-        ethanol_smiles = "CCO"
-        svg = generate_molecule_svg(ethanol_smiles)
-        
-        # Check that we got an SVG string
-        if not isinstance(svg, str) or not svg:
-            logger.error("Failed to generate SVG")
-            return False
-        
-        if "<svg" not in svg or "</svg>" not in svg:
-            logger.error("Generated string is not a valid SVG")
-            return False
-        
-        logger.info("Visualization successful")
-        return True
+        # Test molecules
+        if reference_molecules:
+            logger.info("Testing visualization with reference molecules")
+            # Common cryoprotectants
+            test_molecules = [
+                ("DMSO", "CS(=O)C"),
+                ("Glycerol", "C(C(CO)O)O"),
+                ("Ethylene glycol", "C(CO)O"),
+                ("Propylene glycol", "CC(CO)O"),
+                ("Trehalose", "C1C(C(C(C(C1O)OC2C(C(C(C(O2)CO)O)O)O)O)O)O")
+            ]
+            
+            success_count = 0
+            for name, smiles in test_molecules:
+                logger.info(f"Testing visualization of {name} ({smiles})")
+                svg = generate_molecule_svg(smiles)
+                
+                # Check that we got a valid SVG string
+                if isinstance(svg, str) and svg and "<svg" in svg and "</svg>" in svg:
+                    logger.info(f"Successfully generated SVG for {name}")
+                    success_count += 1
+                else:
+                    logger.error(f"Failed to generate SVG for {name}")
+            
+            success_rate = success_count / len(test_molecules) * 100
+            logger.info(f"Visualization success rate: {success_rate:.1f}% ({success_count}/{len(test_molecules)})")
+            return success_count == len(test_molecules)
+        else:
+            # Test with ethanol
+            ethanol_smiles = "CCO"
+            svg = generate_molecule_svg(ethanol_smiles)
+            
+            # Check that we got an SVG string
+            if not isinstance(svg, str) or not svg:
+                logger.error("Failed to generate SVG")
+                return False
+            
+            if "<svg" not in svg or "</svg>" not in svg:
+                logger.error("Generated string is not a valid SVG")
+                return False
+            
+            logger.info("Visualization successful")
+            return True
     except Exception as e:
         logger.error(f"Error testing visualization: {str(e)}")
         return False
@@ -155,6 +186,140 @@ def test_similarity_calculation() -> bool:
         logger.error(f"Error testing similarity calculation: {str(e)}")
         return False
 
+def test_3d_coords() -> bool:
+    """Test 3D coordinate generation functionality."""
+    logger.info("Testing 3D coordinate generation...")
+    try:
+        from rdkit import Chem
+        from rdkit.Chem import AllChem
+        
+        # Test molecules
+        test_molecules = [
+            ("DMSO", "CS(=O)C"),
+            ("Glycerol", "C(C(CO)O)O"),
+            ("Ethylene glycol", "C(CO)O"),
+            ("Propylene glycol", "CC(CO)O"),
+            ("Trehalose", "C1C(C(C(C(C1O)OC2C(C(C(C(O2)CO)O)O)O)O)O)O")
+        ]
+        
+        success_count = 0
+        for name, smiles in test_molecules:
+            logger.info(f"Testing 3D coordinate generation for {name} ({smiles})")
+            mol = Chem.MolFromSmiles(smiles)
+            if mol is None:
+                logger.error(f"Failed to parse SMILES for {name}")
+                continue
+                
+            # Add hydrogens
+            mol = Chem.AddHs(mol)
+            
+            # Generate 3D coordinates
+            success = AllChem.EmbedMolecule(mol, randomSeed=42)
+            if success == 0:  # 0 means success in RDKit
+                # Optimize the structure
+                success = AllChem.UFFOptimizeMolecule(mol, maxIters=200)
+                if success == 0:
+                    logger.info(f"Successfully generated 3D coordinates for {name}")
+                    success_count += 1
+                else:
+                    logger.error(f"Failed to optimize 3D structure for {name}")
+            else:
+                logger.error(f"Failed to generate 3D coordinates for {name}")
+        
+        success_rate = success_count / len(test_molecules) * 100
+        logger.info(f"3D coordinate generation success rate: {success_rate:.1f}% ({success_count}/{len(test_molecules)})")
+        return success_count == len(test_molecules)
+    except Exception as e:
+        logger.error(f"Error testing 3D coordinate generation: {str(e)}")
+        return False
+
+def test_random_samples(num_samples: int = 50) -> bool:
+    """Test visualization with random samples from the database."""
+    logger.info(f"Testing visualization with {num_samples} random samples from the database...")
+    try:
+        import psycopg2
+        from api.rdkit_utils import generate_molecule_svg
+        from config import get_db_config
+        
+        # Connect to the database
+        db_config = get_db_config()
+        conn = psycopg2.connect(
+            host=db_config.get('host', 'localhost'),
+            port=db_config.get('port', 5432),
+            dbname=db_config.get('dbname', 'postgres'),
+            user=db_config.get('user', 'postgres'),
+            password=db_config.get('password', '')
+        )
+        
+        # Get random molecules from the database
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT id, name, smiles FROM molecules ORDER BY RANDOM() LIMIT {num_samples}")
+        molecules = cursor.fetchall()
+        
+        if not molecules:
+            logger.error("No molecules found in the database")
+            return False
+        
+        # Test visualization for each molecule
+        success_count = 0
+        failed_molecules = []
+        
+        for mol_id, name, smiles in molecules:
+            if not smiles:
+                logger.warning(f"Molecule {mol_id} ({name}) has no SMILES string")
+                continue
+                
+            logger.info(f"Testing visualization of {name} (ID: {mol_id})")
+            try:
+                svg = generate_molecule_svg(smiles)
+                
+                # Check that we got a valid SVG string
+                if isinstance(svg, str) and svg and "<svg" in svg and "</svg>" in svg:
+                    logger.info(f"Successfully generated SVG for {name}")
+                    success_count += 1
+                else:
+                    logger.error(f"Failed to generate SVG for {name}")
+                    failed_molecules.append((mol_id, name, smiles))
+            except Exception as e:
+                logger.error(f"Error generating SVG for {name}: {str(e)}")
+                failed_molecules.append((mol_id, name, smiles))
+        
+        # Close database connection
+        cursor.close()
+        conn.close()
+        
+        # Calculate success rate
+        total_tested = len(molecules)
+        success_rate = (success_count / total_tested * 100) if total_tested > 0 else 0
+        logger.info(f"Visualization success rate: {success_rate:.1f}% ({success_count}/{total_tested})")
+        
+        # Generate report
+        report = {
+            "timestamp": datetime.datetime.now().isoformat(),
+            "test_type": "random_samples_visualization",
+            "total_samples": total_tested,
+            "successful": success_count,
+            "failed": total_tested - success_count,
+            "success_rate": success_rate,
+            "failed_molecules": [
+                {"id": mol_id, "name": name, "smiles": smiles}
+                for mol_id, name, smiles in failed_molecules
+            ]
+        }
+        
+        # Save report to file
+        os.makedirs("reports", exist_ok=True)
+        report_path = "reports/visualization_validation_report.json"
+        with open(report_path, 'w') as f:
+            json.dump(report, f, indent=2)
+        
+        logger.info(f"Saved visualization validation report to {report_path}")
+        
+        return success_rate >= 90  # Consider test successful if at least 90% of molecules can be visualized
+    except Exception as e:
+        logger.error(f"Error testing random samples: {str(e)}")
+        return False
+
 def run_all_tests() -> Dict[str, bool]:
     """Run all tests and return results."""
     results = {
@@ -168,6 +333,15 @@ def run_all_tests() -> Dict[str, bool]:
     
     return results
 
+def parse_arguments():
+    """Parse command line arguments."""
+    parser = argparse.ArgumentParser(description="Verify RDKit integration")
+    parser.add_argument("--test-visualization", action="store_true", help="Test visualization with reference molecules")
+    parser.add_argument("--test-3d-coords", action="store_true", help="Test 3D coordinate generation")
+    parser.add_argument("--test-random-samples", type=int, metavar="N", help="Test visualization with N random samples from the database")
+    parser.add_argument("--all", action="store_true", help="Run all tests")
+    return parser.parse_args()
+
 def main():
     """Main function."""
     logger.info("Starting RDKit verification...")
@@ -175,24 +349,60 @@ def main():
     # Add the parent directory to the path so we can import the api package
     sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
     
-    # Run all tests
-    results = run_all_tests()
+    # Parse command line arguments
+    args = parse_arguments()
     
-    # Print results
-    logger.info("Verification results:")
-    all_passed = True
-    for test_name, passed in results.items():
-        status = "PASSED" if passed else "FAILED"
-        logger.info(f"  {test_name}: {status}")
-        if not passed:
-            all_passed = False
-    
-    # Print overall result
-    if all_passed:
-        logger.info("All tests passed! RDKit integration is working correctly.")
+    # Determine which tests to run
+    if args.all or (not args.test_visualization and not args.test_3d_coords and args.test_random_samples is None):
+        # Run all basic tests
+        results = run_all_tests()
+        
+        # Print results
+        logger.info("Verification results:")
+        all_passed = True
+        for test_name, passed in results.items():
+            status = "PASSED" if passed else "FAILED"
+            logger.info(f"  {test_name}: {status}")
+            if not passed:
+                all_passed = False
+        
+        # Print overall result
+        if all_passed:
+            logger.info("All tests passed! RDKit integration is working correctly.")
+        else:
+            logger.error("Some tests failed. Please check the logs for details.")
+            sys.exit(1)
     else:
-        logger.error("Some tests failed. Please check the logs for details.")
-        sys.exit(1)
+        # Run specific tests based on arguments
+        all_passed = True
+        
+        if args.test_visualization:
+            logger.info("Running visualization test with reference molecules...")
+            vis_passed = test_visualization(reference_molecules=True)
+            status = "PASSED" if vis_passed else "FAILED"
+            logger.info(f"Visualization test: {status}")
+            all_passed = all_passed and vis_passed
+        
+        if args.test_3d_coords:
+            logger.info("Running 3D coordinate generation test...")
+            coords_passed = test_3d_coords()
+            status = "PASSED" if coords_passed else "FAILED"
+            logger.info(f"3D coordinate generation test: {status}")
+            all_passed = all_passed and coords_passed
+        
+        if args.test_random_samples is not None:
+            logger.info(f"Running visualization test with {args.test_random_samples} random samples...")
+            samples_passed = test_random_samples(args.test_random_samples)
+            status = "PASSED" if samples_passed else "FAILED"
+            logger.info(f"Random samples visualization test: {status}")
+            all_passed = all_passed and samples_passed
+        
+        # Print overall result
+        if all_passed:
+            logger.info("All requested tests passed! RDKit integration is working correctly.")
+        else:
+            logger.error("Some tests failed. Please check the logs for details.")
+            sys.exit(1)
 
 if __name__ == "__main__":
     main()

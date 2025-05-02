@@ -1,0 +1,16 @@
+# Logstash configuration for CryoProtect v2
+http.host: "0.0.0.0"
+xpack.monitoring.elasticsearch.hosts: [ "http://elasticsearch:9200" ]
+
+# Pipeline settings
+pipeline.ordered: auto
+pipeline.workers: 2
+pipeline.batch.size: 125
+pipeline.batch.delay: 50
+
+# Queue settings
+queue.type: memory
+queue.max_bytes: 1024mb
+
+# Log settings
+log.level: info

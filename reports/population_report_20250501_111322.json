@@ -1,0 +1,386 @@
+{
+  "start_time": "2025-05-01T11:07:29.301756",
+  "end_time": "2025-05-01T11:13:22.649751",
+  "overall_status": "success",
+  "steps": {
+    "reference": {
+      "id": "reference",
+      "name": "Reference Compounds Import",
+      "start_time": "2025-05-01T11:07:30.169765",
+      "end_time": "2025-05-01T11:12:18.987843",
+      "status": "success",
+      "error": null,
+      "details": {
+        "result": {
+          "timestamp": "2025-05-01T11:07:31.001081",
+          "total_compounds": 9,
+          "imported": 9,
+          "updated": 0,
+          "failed": 0,
+          "details": {
+            "CHEMBL388978": {
+              "status": "success",
+              "internal_id": "CRYO001",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "properties_added": 3
+            },
+            "CHEMBL1098659": {
+              "status": "success",
+              "internal_id": "CRYO002",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "properties_added": 3
+            },
+            "CHEMBL66195": {
+              "status": "success",
+              "internal_id": "CRYO003",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "properties_added": 3
+            },
+            "CHEMBL500033": {
+              "status": "success",
+              "internal_id": "CRYO004",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "properties_added": 3
+            },
+            "CHEMBL1487": {
+              "status": "success",
+              "internal_id": "CRYO005",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "properties_added": 3
+            },
+            "CHEMBL6196": {
+              "status": "success",
+              "internal_id": "CRYO0007",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "properties_added": 3
+            },
+            "CHEMBL967": {
+              "status": "success",
+              "internal_id": "CRYO0008",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "properties_added": 3
+            },
+            "CHEMBL262548": {
+              "status": "success",
+              "internal_id": "CRYO0009",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "properties_added": 3
+            },
+            "CHEMBL6752": {
+              "status": "success",
+              "internal_id": "CRYO0010",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "properties_added": 3
+            }
+          }
+        }
+      }
+    },
+    "chembl": {
+      "id": "chembl",
+      "name": "ChEMBL Data Import",
+      "start_time": "2025-05-01T11:12:18.989927",
+      "end_time": "2025-05-01T11:12:27.691457",
+      "status": "success",
+      "error": null,
+      "details": {
+        "exit_code": 0
+      }
+    },
+    "reconcile": {
+      "id": "reconcile",
+      "name": "Cross-Reference Reconciliation",
+      "start_time": "2025-05-01T11:12:27.693083",
+      "end_time": "2025-05-01T11:12:29.067867",
+      "status": "success",
+      "error": null,
+      "details": {
+        "result": {
+          "timestamp": "2025-05-01T11:12:27.693083",
+          "molecules_updated": 0,
+          "cross_references_added": 0,
+          "conflicts_resolved": 0,
+          "details": {}
+        }
+      }
+    },
+    "pubchem": {
+      "id": "pubchem",
+      "name": "PubChem Property Enhancement",
+      "start_time": "2025-05-01T11:12:29.067867",
+      "end_time": "2025-05-01T11:12:30.329837",
+      "status": "success",
+      "error": null,
+      "details": {
+        "result": {
+          "timestamp": "2025-05-01T11:12:29.815696",
+          "total_molecules": 0,
+          "molecules_enhanced": 0,
+          "molecules_skipped": 0,
+          "molecules_failed": 0,
+          "details": {}
+        }
+      }
+    },
+    "performance": {
+      "id": "performance",
+      "name": "Database Performance Optimization",
+      "start_time": "2025-05-01T11:12:30.331960",
+      "end_time": "2025-05-01T11:13:22.644764",
+      "status": "success",
+      "error": null,
+      "details": {
+        "result": {
+          "before_metrics": {
+            "test_duration": 18.342235,
+            "operations": {
+              "get_molecules": {
+                "count": 5,
+                "min_ms": 408.0522060394287,
+                "max_ms": 422.3301410675049,
+                "avg_ms": 413.8155460357666,
+                "median_ms": 409.8365306854248,
+                "p95_ms": 422.3301410675049,
+                "p99_ms": 422.3301410675049
+              },
+              "get_molecule_by_id": {
+                "count": 5,
+                "min_ms": 395.59459686279297,
+                "max_ms": 414.2422676086426,
+                "avg_ms": 404.3874740600586,
+                "median_ms": 403.0334949493408,
+                "p95_ms": 414.2422676086426,
+                "p99_ms": 414.2422676086426
+              },
+              "get_mixtures": {
+                "count": 5,
+                "min_ms": 394.0625190734863,
+                "max_ms": 461.81607246398926,
+                "avg_ms": 423.03833961486816,
+                "median_ms": 412.20760345458984,
+                "p95_ms": 461.81607246398926,
+                "p99_ms": 461.81607246398926
+              },
+              "get_mixture_by_id": {
+                "count": 5,
+                "min_ms": 393.89681816101074,
+                "max_ms": 642.6775455474854,
+                "avg_ms": 481.0532569885254,
+                "median_ms": 443.5884952545166,
+                "p95_ms": 642.6775455474854,
+                "p99_ms": 642.6775455474854
+              },
+              "get_predictions": {
+                "count": 5,
+                "min_ms": 424.55315589904785,
+                "max_ms": 501.22928619384766,
+                "avg_ms": 442.6176071166992,
+                "median_ms": 428.59578132629395,
+                "p95_ms": 501.22928619384766,
+                "p99_ms": 501.22928619384766
+              },
+              "get_experiments": {
+                "count": 5,
+                "min_ms": 401.918888092041,
+                "max_ms": 549.9849319458008,
+                "avg_ms": 452.2621154785156,
+                "median_ms": 432.6620101928711,
+                "p95_ms": 549.9849319458008,
+                "p99_ms": 549.9849319458008
+              },
+              "search_molecules_by_name": {
+                "count": 5,
+                "min_ms": 422.8196144104004,
+                "max_ms": 482.79714584350586,
+                "avg_ms": 441.9229507446289,
+                "median_ms": 431.7445755004883,
+                "p95_ms": 482.79714584350586,
+                "p99_ms": 482.79714584350586
+              },
+              "filter_by_property": {
+                "count": 5,
+                "min_ms": 410.0909233093262,
+                "max_ms": 492.39540100097656,
+                "avg_ms": 440.34557342529297,
+                "median_ms": 436.9473457336426,
+                "p95_ms": 492.39540100097656,
+                "p99_ms": 492.39540100097656
+              }
+            }
+          },
+          "after_metrics": {
+            "test_duration": 17.072669,
+            "operations": {
+              "get_molecules": {
+                "count": 5,
+                "min_ms": 377.3338794708252,
+                "max_ms": 626.5606880187988,
+                "avg_ms": 453.03192138671875,
+                "median_ms": 391.2630081176758,
+                "p95_ms": 626.5606880187988,
+                "p99_ms": 626.5606880187988
+              },
+              "get_molecule_by_id": {
+                "count": 5,
+                "min_ms": 366.99461936950684,
+                "max_ms": 406.80885314941406,
+                "avg_ms": 386.5992546081543,
+                "median_ms": 381.4127445220947,
+                "p95_ms": 406.80885314941406,
+                "p99_ms": 406.80885314941406
+              },
+              "get_mixtures": {
+                "count": 5,
+                "min_ms": 373.51465225219727,
+                "max_ms": 425.6734848022461,
+                "avg_ms": 397.20911979675293,
+                "median_ms": 391.690731048584,
+                "p95_ms": 425.6734848022461,
+                "p99_ms": 425.6734848022461
+              },
+              "get_mixture_by_id": {
+                "count": 5,
+                "min_ms": 375.3771781921387,
+                "max_ms": 410.10475158691406,
+                "avg_ms": 394.96617317199707,
+                "median_ms": 394.28257942199707,
+                "p95_ms": 410.10475158691406,
+                "p99_ms": 410.10475158691406
+              },
+              "get_predictions": {
+                "count": 5,
+                "min_ms": 368.7121868133545,
+                "max_ms": 451.5495300292969,
+                "avg_ms": 398.68083000183105,
+                "median_ms": 398.85878562927246,
+                "p95_ms": 451.5495300292969,
+                "p99_ms": 451.5495300292969
+              },
+              "get_experiments": {
+                "count": 5,
+                "min_ms": 362.64681816101074,
+                "max_ms": 428.28941345214844,
+                "avg_ms": 387.80179023742676,
+                "median_ms": 376.8465518951416,
+                "p95_ms": 428.28941345214844,
+                "p99_ms": 428.28941345214844
+              },
+              "search_molecules_by_name": {
+                "count": 5,
+                "min_ms": 381.72054290771484,
+                "max_ms": 434.5734119415283,
+                "avg_ms": 405.1551342010498,
+                "median_ms": 401.4585018157959,
+                "p95_ms": 434.5734119415283,
+                "p99_ms": 434.5734119415283
+              },
+              "filter_by_property": {
+                "count": 5,
+                "min_ms": 382.2453022003174,
+                "max_ms": 429.32677268981934,
+                "avg_ms": 404.9004077911377,
+                "median_ms": 403.6374092102051,
+                "p95_ms": 429.32677268981934,
+                "p99_ms": 429.32677268981934
+              }
+            }
+          },
+          "analysis_before": {
+            "bottlenecks": [],
+            "slow_operations": [
+              {
+                "operation": "get_mixture_by_id",
+                "p95_ms": 642.6775455474854,
+                "avg_ms": 481.0532569885254
+              },
+              {
+                "operation": "get_predictions",
+                "p95_ms": 501.22928619384766,
+                "avg_ms": 442.6176071166992
+              },
+              {
+                "operation": "get_experiments",
+                "p95_ms": 549.9849319458008,
+                "avg_ms": 452.2621154785156
+              }
+            ]
+          },
+          "analysis_after": {
+            "bottlenecks": [],
+            "slow_operations": [
+              {
+                "operation": "get_molecules",
+                "p95_ms": 626.5606880187988,
+                "avg_ms": 453.03192138671875
+              }
+            ]
+          },
+          "recommendations_before": [
+            {
+              "operation": "get_predictions",
+              "issue": "Slow read performance",
+              "recommendation": "Consider adding indexes on mixture_id, property_type_id, and calculation_method_id in the predictions table."
+            },
+            {
+              "operation": "get_experiments",
+              "issue": "Slow read performance",
+              "recommendation": "Consider adding indexes on mixture_id and property_type_id in the experiments table."
+            },
+            {
+              "issue": "General optimization",
+              "recommendation": "Consider implementing query caching for frequently accessed data."
+            }
+          ],
+          "created_indexes": [
+            "idx_mixtures_created_by",
+            "idx_experiments_created_by",
+            "idx_predictions_created_by",
+            "idx_molecular_properties_created_by",
+            "idx_calculation_methods_created_by",
+            "idx_mixture_components_mixture_id",
+            "idx_mixture_components_molecule_id",
+            "idx_mixture_components_concentration",
+            "idx_experiments_mixture_id",
+            "idx_experiments_property_type_id",
+            "idx_experiments_date",
+            "idx_mixture_components_mixture_molecule",
+            "idx_experiments_mixture_property",
+            "idx_predictions_mixture_property",
+            "idx_predictions_calculation_method",
+            "idx_predictions_confidence",
+            "idx_predictions_numeric_value",
+            "idx_molecular_properties_property_type",
+            "idx_molecular_properties_molecule_id",
+            "idx_molecular_properties_numeric_value",
+            "idx_molecular_properties_molecule_property",
+            "idx_predictions_method_property",
+            "idx_molecule_name_trgm",
+            "idx_mixture_name_trgm",
+            "idx_property_type_name_trgm",
+            "idx_molecule_name",
+            "idx_mixture_name",
+            "idx_property_type_name"
+          ],
+          "failed_indexes": [],
+          "errors": [
+            "Error applying additional_indexes: column \"unit_id\" does not exist\n"
+          ]
+        }
+      }
+    }
+  },
+  "duration_seconds": 353.347995,
+  "duration_formatted": "0h 5m 53s",
+  "status_counts": {
+    "success": 5
+  }
+}

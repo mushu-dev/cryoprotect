@@ -56,21 +56,57 @@ const Charts = (function() {
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        aspectRatio: function() {
+          // Adjust aspect ratio based on screen width
+          return window.innerWidth < 768 ? 1 : 2;
+        },
+        onResize: function(chart, size) {
+          // Dynamically adjust font sizes on resize
+          const fontSize = size.width < 768 ? 14 : size.width < 992 ? 16 : 18;
+          chart.options.plugins.title.font.size = fontSize;
+          chart.options.scales.x.ticks.font.size = fontSize - 2;
+          chart.options.scales.y.ticks.font.size = fontSize - 2;
+        },
         plugins: {
           title: {
             display: true,
             text: 'Top Molecules by Total Score',
             font: {
-              size: 16
+              size: 16,
+              weight: 'bold'
+            },
+            padding: {
+              top: 10,
+              bottom: 15
             }
           },
           legend: {
-            display: false
+            display: false,
+            position: function() {
+              // Adjust legend position based on screen width
+              return window.innerWidth < 768 ? 'bottom' : 'top';
+            },
+            labels: {
+              boxWidth: function() {
+                return window.innerWidth < 768 ? 10 : 15;
+              },
+              padding: function() {
+                return window.innerWidth < 768 ? 8 : 15;
+              }
+            }
           },
           tooltip: {
             callbacks: {
               label: function(context) {
                 return `Score: ${context.raw}`;
+              }
+            },
+            // Enhanced touch interaction for mobile
+            usePointStyle: true,
+            boxPadding: 6,
+            bodyFont: {
+              size: function() {
+                return window.innerWidth < 768 ? 12 : 14;
               }
             }
           }
@@ -78,6 +114,15 @@ const Charts = (function() {
         scales: {
           y: {
             beginAtZero: true,
+            ticks: {
+              font: {
+                size: 12
+              },
+              // Ensure enough ticks on small screens but not too many
+              maxTicksLimit: function() {
+                return window.innerWidth < 768 ? 5 : 8;
+              }
+            },
             title: {
               display: true,
               text: 'Total Score'
@@ -85,8 +130,21 @@ const Charts = (function() {
           },
           x: {
             ticks: {
-              maxRotation: 45,
-              minRotation: 45
+              font: {
+                size: 12
+              },
+              // Dynamically adjust rotation based on screen width and label length
+              maxRotation: function() {
+                return window.innerWidth < 768 ? 90 : 45;
+              },
+              minRotation: function() {
+                return window.innerWidth < 768 ? 45 : 0;
+              },
+              autoSkip: true,
+              autoSkipPadding: 10,
+              maxTicksLimit: function() {
+                return window.innerWidth < 768 ? 5 : 10;
+              }
             }
           }
         }

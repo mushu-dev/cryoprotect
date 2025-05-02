@@ -1,0 +1,70 @@
+{
+  "current_position": 20,
+  "current_chunk_size": 10,
+  "processed_cids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "chunk_stats_history": [
+    {
+      "chunk_id": 0,
+      "chunk_size": 5,
+      "start_time": 1745820201.4719818,
+      "end_time": 1745820201.4719818,
+      "response_time": 0.0,
+      "success_count": 2,
+      "error_count": 3,
+      "skip_count": 0,
+      "error_rate": 0.6,
+      "success_rate": 0.4,
+      "cids": [
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "chunk_id": 1,
+      "chunk_size": 5,
+      "start_time": 1745820201.4921322,
+      "end_time": 1745820201.4921322,
+      "response_time": 0.0,
+      "success_count": 3,
+      "error_count": 2,
+      "skip_count": 0,
+      "error_rate": 0.4,
+      "success_rate": 0.6,
+      "cids": [
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    }
+  ],
+  "elapsed_seconds": 2.5423531532287598,
+  "timestamp": "2025-04-28T00:03:21.514335",
+  "status": "Completed",
+  "progress_percentage": 100.0
+}

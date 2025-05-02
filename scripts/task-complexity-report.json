@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "generatedAt": "2025-05-01T22:28:11.780Z",
+    "tasksAnalyzed": 10,
+    "thresholdScore": 5,
+    "projectName": "Your Project Name",
+    "usedResearch": false
+  },
+  "complexityAnalysis": [
+    {
+      "taskId": 1,
+      "taskTitle": "Project Setup and Environment Configuration",
+      "complexityScore": 6,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Break down the project setup task into specific subtasks covering repository creation, version control configuration, build tool setup, coding standards implementation, package management, and development server configuration. Include specific tools and technologies to be used.",
+      "reasoning": "This task involves multiple technical components that need to be properly configured. While not algorithmically complex, it requires careful attention to detail and proper integration of various development tools. The foundation established here will impact all subsequent development."
+    },
+    {
+      "taskId": 2,
+      "taskTitle": "Database Schema Design and Implementation",
+      "complexityScore": 8,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Divide the database schema design task into subtasks covering data modeling, relationship mapping, constraint definition, index optimization, migration script creation, and data access layer implementation. Include specific database technologies and ORM considerations.",
+      "reasoning": "Database design requires deep technical knowledge and careful planning. The complexity is high due to the need to properly model relationships, optimize for performance, and ensure data integrity. Poor database design can lead to significant technical debt later."
+    },
+    {
+      "taskId": 3,
+      "taskTitle": "User Authentication System",
+      "complexityScore": 7,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Break down the authentication system implementation into subtasks covering user registration flow, login mechanism, password reset functionality, JWT/session implementation, role-based access control, and secure password storage. Include security considerations for each component.",
+      "reasoning": "Authentication systems have moderate algorithmic complexity but high security implications. The task requires implementing multiple user flows and security mechanisms. Any vulnerabilities could compromise the entire application, making careful implementation critical."
+    },
+    {
+      "taskId": 4,
+      "taskTitle": "Core API Development",
+      "complexityScore": 9,
+      "recommendedSubtasks": 7,
+      "expansionPrompt": "Divide the core API development into subtasks covering endpoint design, request validation, business logic implementation, response formatting, error handling, logging integration, and API security middleware. Group endpoints by functional domain.",
+      "reasoning": "This task has high complexity due to the breadth of functionality required and the need to implement business logic correctly. It involves multiple technical considerations including security, performance, and proper API design. This is the backbone of the application."
+    },
+    {
+      "taskId": 5,
+      "taskTitle": "Frontend Foundation and Core Components",
+      "complexityScore": 7,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Break down the frontend foundation task into subtasks covering framework setup, component architecture design, design system implementation, reusable UI component development, and state management configuration. Include specific technologies and architectural patterns.",
+      "reasoning": "Setting up the frontend architecture requires significant planning and technical expertise. The decisions made here will affect all subsequent frontend development. The complexity comes from establishing patterns that are both flexible and maintainable."
+    },
+    {
+      "taskId": 6,
+      "taskTitle": "Frontend-Backend Integration",
+      "complexityScore": 6,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Divide the frontend-backend integration task into subtasks covering API client service implementation, authentication token management, data fetching strategies, caching implementation, and error/loading state handling. Include considerations for network reliability.",
+      "reasoning": "This integration task has moderate complexity due to the need to handle various states (loading, error, success) and implement proper authentication flows. It requires coordination between frontend and backend teams and careful handling of asynchronous operations."
+    },
+    {
+      "taskId": 7,
+      "taskTitle": "Advanced Feature Implementation",
+      "complexityScore": 8,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Break down the advanced feature implementation into subtasks covering notification system, user preferences management, advanced search functionality, reporting capabilities, and any specialized domain-specific features. Prioritize these features based on business value.",
+      "reasoning": "This task has high complexity due to the diverse nature of the features and their potential interdependencies. Each advanced feature likely requires both frontend and backend components and may involve complex business logic or algorithms."
+    },
+    {
+      "taskId": 8,
+      "taskTitle": "Performance Optimization",
+      "complexityScore": 8,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Divide the performance optimization task into subtasks covering server-side caching implementation, database query optimization, frontend bundle optimization, asset loading strategies, code splitting/lazy loading, and performance monitoring setup. Include measurement criteria for each optimization.",
+      "reasoning": "Performance optimization requires deep technical knowledge across the stack. The complexity comes from identifying bottlenecks, implementing appropriate solutions, and measuring their impact. This often involves making tradeoffs between different performance aspects."
+    },
+    {
+      "taskId": 9,
+      "taskTitle": "Testing and Quality Assurance",
+      "complexityScore": 7,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Break down the testing and QA task into subtasks covering unit test implementation, integration testing, end-to-end test automation, security testing, cross-browser compatibility testing, and accessibility compliance verification. Include test coverage targets.",
+      "reasoning": "Comprehensive testing requires implementing multiple testing strategies across the application. The complexity comes from ensuring adequate coverage, setting up proper test environments, and automating tests where possible. This task is critical for application reliability."
+    },
+    {
+      "taskId": 10,
+      "taskTitle": "Deployment and Documentation",
+      "complexityScore": 6,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Divide the deployment and documentation task into subtasks covering production environment configuration, CI/CD pipeline setup, deployment script creation, user documentation writing, API documentation generation, and developer documentation preparation. Include considerations for different deployment environments.",
+      "reasoning": "This task involves both technical deployment aspects and documentation creation. While not algorithmically complex, it requires careful attention to detail and consideration of different user audiences. Proper documentation and deployment are essential for project handover and maintenance."
+    }
+  ]
+}

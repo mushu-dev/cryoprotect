@@ -1,0 +1,46 @@
+{
+  "timestamp": "20250427_171132",
+  "summary": {
+    "migration": {
+      "status": "success",
+      "message": "Migration applied successfully"
+    },
+    "import": {
+      "status": "error",
+      "message": "ChEMBL import failed with exit code 2"
+    },
+    "reconciliation": {
+      "status": "skipped",
+      "message": "Step was skipped"
+    },
+    "verification": {
+      "status": "skipped",
+      "all_requirements_met": false
+    }
+  },
+  "details": {
+    "migration": {
+      "status": "success",
+      "message": "Migration applied successfully",
+      "verification": {
+        "column_exists": false,
+        "error": "Command '['python', 'temp_mcp_script.py']' returned non-zero exit status 1."
+      }
+    },
+    "import": {
+      "status": "error",
+      "message": "ChEMBL import failed with exit code 2",
+      "summary": null
+    },
+    "reconciliation": {
+      "status": "skipped",
+      "message": "Step was skipped",
+      "report_path": null,
+      "report_summary": null
+    },
+    "verification": {
+      "status": "skipped",
+      "message": "Step was skipped"
+    }
+  }
+}

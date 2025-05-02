@@ -1,0 +1,35 @@
+{
+  "table_name": "molecular_properties",
+  "columns": [
+    "id",
+    "molecule_id",
+    "property_type_id",
+    "numeric_value",
+    "text_value",
+    "boolean_value",
+    "unit",
+    "created_by",
+    "data_source",
+    "version",
+    "modification_history",
+    "created_at",
+    "updated_at",
+    "sensitivity_level"
+  ],
+  "sample_row": {
+    "id": "bc50a25e-3e38-4a7f-bb51-ea41059cf541",
+    "molecule_id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+    "property_type_id": "6ff67057-fc79-4b96-a604-de5d08b49f51",
+    "numeric_value": -1.35,
+    "text_value": null,
+    "boolean_value": null,
+    "unit": "",
+    "created_by": "bf6495aa-c4ab-4ec6-8f89-95fc88e4dbc0",
+    "data_source": "CryoProtect Database",
+    "version": null,
+    "modification_history": null,
+    "created_at": "2025-04-22T21:47:27.973288+00:00",
+    "updated_at": "2025-04-22T21:47:27.973288+00:00",
+    "sensitivity_level": null
+  }
+}

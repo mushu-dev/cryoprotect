@@ -1,0 +1,159 @@
+/**
+ * CryoProtect Analyzer - Feedback and Error Handling Styles
+ */
+
+/* Toast Container */
+.toast-container {
+  z-index: 1060;
+}
+
+/* Toast Styles */
+.toast {
+  min-width: 250px;
+  max-width: 350px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  border-left: 4px solid transparent;
+  opacity: 0.95;
+}
+
+.toast .toast-header {
+  border-bottom-color: rgba(0, 0, 0, 0.05);
+}
+
+.toast .toast-header.border-success {
+  border-left: 4px solid var(--bs-success);
+}
+
+.toast .toast-header.border-danger {
+  border-left: 4px solid var(--bs-danger);
+}
+
+.toast .toast-header.border-warning {
+  border-left: 4px solid var(--bs-warning);
+}
+
+.toast .toast-header.border-info {
+  border-left: 4px solid var(--bs-info);
+}
+
+/* Modal Styles */
+.modal-header.bg-danger,
+.modal-header.bg-warning,
+.modal-header.bg-success,
+.modal-header.bg-info,
+.modal-header.bg-primary {
+  color: white;
+}
+
+/* Form Validation Styles */
+.field-requirements {
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.field-requirements .requirement {
+  display: inline-block;
+  margin-right: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.field-requirements .requirement i {
+  margin-right: 0.25rem;
+}
+
+/* Password Strength Meter */
+.password-strength-meter {
+  margin-top: 0.5rem;
+}
+
+.password-strength-meter .progress {
+  height: 0.5rem;
+}
+
+.password-strength-meter .password-strength-text {
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Validation Error Styles */
+.invalid-feedback {
+  display: block;
+  font-weight: 500;
+}
+
+/* Screen Reader Only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Animated Feedback */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+  }
+}
+
+.is-invalid:focus {
+  animation: pulse 1.5s;
+}
+
+/* Inline Error Messages */
+.inline-error {
+  display: flex;
+  align-items: center;
+  color: var(--bs-danger);
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.inline-error i {
+  margin-right: 0.25rem;
+}
+
+/* Success Feedback */
+.feedback-success {
+  color: var(--bs-success);
+  display: flex;
+  align-items: center;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.feedback-success i {
+  margin-right: 0.25rem;
+}
+
+/* Accessibility Enhancements */
+:focus {
+  outline: 2px solid var(--bs-primary);
+  outline-offset: 2px;
+}
+
+.btn:focus, .form-control:focus, .form-select:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Focus visible only when using keyboard */
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
+
+.js-focus-visible .focus-visible {
+  outline: 2px solid var(--bs-primary);
+  outline-offset: 2px;
+}

@@ -1,0 +1,3474 @@
+{
+  "timestamp": "2025-05-01T00:46:30.615663",
+  "total_molecules": 693,
+  "molecules_enhanced": 691,
+  "molecules_skipped": 0,
+  "molecules_failed": 2,
+  "details": {
+    "9b5b9bbd-ad2c-46ec-a1d9-279fe46a0549": {
+      "status": "enhanced",
+      "name": "Ethylene Glycol",
+      "pubchem_cid": 174
+    },
+    "6abe3da4-9c5d-4357-95bf-629db4b64b00": {
+      "status": "enhanced",
+      "name": "Glycine",
+      "pubchem_cid": 750
+    },
+    "0e4f6a81-cdd5-468f-b675-3241d7241299": {
+      "status": "enhanced",
+      "name": "Betaine",
+      "pubchem_cid": 247
+    },
+    "cccb105e-d639-4f3c-8016-4137d2604b49": {
+      "status": "enhanced",
+      "name": "Acetamide",
+      "pubchem_cid": 178
+    },
+    "6fc659c3-3c2c-4707-86c4-6634f5a955b4": {
+      "status": "enhanced",
+      "name": "Formaldehyde",
+      "pubchem_cid": 712
+    },
+    "e4cdd842-d2f1-4cfd-8144-f0f92354009f": {
+      "status": "enhanced",
+      "name": "1-Butanol",
+      "pubchem_cid": 263
+    },
+    "26502df5-955a-4ada-8ebe-27a0417b12de": {
+      "status": "enhanced",
+      "name": "Dimethyl Sulfoxide",
+      "pubchem_cid": 679
+    },
+    "af8a92f7-64a5-4f9d-a7a7-2f14b7f4fc0d": {
+      "status": "enhanced",
+      "name": "Formamide",
+      "pubchem_cid": 713
+    },
+    "891ce8cf-9202-415c-9f0b-1a902c3a99dd": {
+      "status": "enhanced",
+      "name": "Ethanol",
+      "pubchem_cid": 702
+    },
+    "403caf0d-7b3b-4daa-8ef4-719a3daf782f": {
+      "status": "enhanced",
+      "name": "Acetone",
+      "pubchem_cid": 180
+    },
+    "0482a736-da67-44db-8c05-e16e00778078": {
+      "status": "enhanced",
+      "name": "Glycerin",
+      "pubchem_cid": 753
+    },
+    "916b17be-aa3d-4d6e-ab21-dfd9a8a20b22": {
+      "status": "enhanced",
+      "name": "1-Octanol",
+      "pubchem_cid": 957
+    },
+    "8a8b6779-2af3-4f4b-a829-188a2edf1a35": {
+      "status": "enhanced",
+      "name": "Phosphate Ion",
+      "pubchem_cid": 1061
+    },
+    "23a34e2f-811b-4dd6-b7da-1d554d87bf32": {
+      "status": "enhanced",
+      "name": "Methanol",
+      "pubchem_cid": 887
+    },
+    "82026528-4266-4752-93ad-728e80661d58": {
+      "status": "enhanced",
+      "name": "Diethyl Ether",
+      "pubchem_cid": 3283
+    },
+    "e37f9d80-be70-417b-af24-3e0ce030f8a4": {
+      "status": "enhanced",
+      "name": "Inositol",
+      "pubchem_cid": 892
+    },
+    "c7b24e15-7d9c-4887-aba7-ece5b96234f4": {
+      "status": "enhanced",
+      "name": "Propylene Glycol",
+      "pubchem_cid": 1030
+    },
+    "3d104beb-dbfb-468f-8a2d-77e50002216c": {
+      "status": "enhanced",
+      "name": "Isopropyl Alcohol",
+      "pubchem_cid": 3776
+    },
+    "7a982e2a-e7b0-4e69-aeda-84d6b5d5f7f7": {
+      "status": "enhanced",
+      "name": "Glyceric acid",
+      "pubchem_cid": 752
+    },
+    "c616b14a-4d2a-4dd7-871b-d5e6977afd46": {
+      "status": "enhanced",
+      "name": "1-Propanol",
+      "pubchem_cid": 1031
+    },
+    "02dedcbc-8dae-4108-8347-76e4bec13aaa": {
+      "status": "enhanced",
+      "name": "Sorbitol",
+      "pubchem_cid": 5780
+    },
+    "4bfdba1a-b2a3-4602-b8c0-bd10493bacc2": {
+      "status": "enhanced",
+      "name": "D-Glucose",
+      "pubchem_cid": 5793
+    },
+    "a21ae25b-f287-4b21-a04c-672173686671": {
+      "status": "enhanced",
+      "name": "Cysteine",
+      "pubchem_cid": 5862
+    },
+    "78034005-9fdd-4c26-b525-abff1ea916ff": {
+      "status": "enhanced",
+      "name": "Glutamine",
+      "pubchem_cid": 5961
+    },
+    "babc35d7-909b-46b7-95af-764547a2b602": {
+      "status": "enhanced",
+      "name": "Aspartic Acid",
+      "pubchem_cid": 5960
+    },
+    "c74d181a-b1d2-49f7-8bcd-3f636638ad8a": {
+      "status": "enhanced",
+      "name": "Alanine",
+      "pubchem_cid": 5950
+    },
+    "0dea7b78-7a66-4f5c-b2d5-79f622009b7c": {
+      "status": "enhanced",
+      "name": "Serine",
+      "pubchem_cid": 5951
+    },
+    "de933231-a085-4d31-a3e9-186d7f61c78a": {
+      "status": "enhanced",
+      "name": "Lysine",
+      "pubchem_cid": 5962
+    },
+    "c97ff8ca-8b15-4ceb-8125-22379697a0e8": {
+      "status": "enhanced",
+      "name": "Sucrose",
+      "pubchem_cid": 5988
+    },
+    "9f199b23-1891-4823-b68d-735d90b7ac4e": {
+      "status": "enhanced",
+      "name": "Thymidine",
+      "pubchem_cid": 5789
+    },
+    "68ced6d2-d5a3-4bf2-ad3f-9d55e017ddbc": {
+      "status": "enhanced",
+      "name": "Uridine",
+      "pubchem_cid": 6029
+    },
+    "aa21b3cb-5cc7-4be4-9dcb-a93fa1ee4f2b": {
+      "status": "enhanced",
+      "name": "Adenosine Phosphate",
+      "pubchem_cid": 6083
+    },
+    "6fddb978-6741-4a37-b4ea-1001eda83f47": {
+      "status": "enhanced",
+      "name": "Tyrosine",
+      "pubchem_cid": 6057
+    },
+    "2d0b6b19-6713-40e9-a554-79ff886c0c46": {
+      "status": "enhanced",
+      "name": "Uridine Monophosphate",
+      "pubchem_cid": 6030
+    },
+    "350a7197-6e7e-4ccf-8659-ce080c8f0a08": {
+      "status": "enhanced",
+      "name": "Phenylalanine",
+      "pubchem_cid": 6140
+    },
+    "aa958db9-7e39-4300-aec2-49e22bc2be6b": {
+      "status": "enhanced",
+      "name": "Leucine",
+      "pubchem_cid": 6106
+    },
+    "a24c3c04-7916-469c-a6ed-f079b5c4c52a": {
+      "status": "enhanced",
+      "name": "beta-Lactose",
+      "pubchem_cid": 6134
+    },
+    "d8c9acf6-0323-42e7-b41f-5a663c1deac6": {
+      "status": "enhanced",
+      "name": "D-Galactose",
+      "pubchem_cid": 6036
+    },
+    "048cfae8-8093-4894-bdfc-d873aca6397b": {
+      "status": "enhanced",
+      "name": "5'-Cytidylic acid",
+      "pubchem_cid": 6131
+    },
+    "a1aa38b3-ba63-47e4-9e0a-01ac8359ccfe": {
+      "status": "enhanced",
+      "name": "Methionine",
+      "pubchem_cid": 6137
+    },
+    "fa841b0d-05ce-41b4-9225-3b351cf7136c": {
+      "status": "enhanced",
+      "name": "Cytidine",
+      "pubchem_cid": 6175
+    },
+    "98748ed8-eb5f-4aee-b531-4887804e284c": {
+      "status": "enhanced",
+      "name": "Tryptophan",
+      "pubchem_cid": 6305
+    },
+    "da61a906-97f8-4d03-be38-708df4e1fb57": {
+      "status": "enhanced",
+      "name": "1-Pentanol",
+      "pubchem_cid": 6276
+    },
+    "44388b71-317b-4853-97af-b184c4365949": {
+      "status": "enhanced",
+      "name": "Valine",
+      "pubchem_cid": 6287
+    },
+    "cb98aa08-5582-47a1-95e1-f80e42219a1d": {
+      "status": "enhanced",
+      "name": "Mannitol",
+      "pubchem_cid": 6251
+    },
+    "98344f05-12ff-4497-9860-7636b49009a9": {
+      "status": "enhanced",
+      "name": "l-Isoleucine",
+      "pubchem_cid": 6306
+    },
+    "4629733e-cf42-4e0f-910d-10b86863a28e": {
+      "status": "enhanced",
+      "name": "Threonine",
+      "pubchem_cid": 6288
+    },
+    "0f301d82-96e8-4f94-81dd-6cbb377a3e70": {
+      "status": "enhanced",
+      "name": "Asparagine",
+      "pubchem_cid": 6267
+    },
+    "6a8b7591-08d9-4909-b9a4-8dbd49723f95": {
+      "status": "enhanced",
+      "name": "Arginine",
+      "pubchem_cid": 6322
+    },
+    "5e219aca-d5b8-4b4d-ac9c-a2d3746ee8c7": {
+      "status": "enhanced",
+      "name": "Histidine",
+      "pubchem_cid": 6274
+    },
+    "47d07320-7ed6-4e2d-b0b4-15aca77c7858": {
+      "status": "enhanced",
+      "name": "Propionamide",
+      "pubchem_cid": 6578
+    },
+    "637a685a-3f79-4114-b402-a7364537bc30": {
+      "status": "enhanced",
+      "name": "Methyl Acetate",
+      "pubchem_cid": 6584
+    },
+    "513388eb-4883-445b-b5ce-a202f8ad3a9f": {
+      "status": "enhanced",
+      "name": "Propyl acetate",
+      "pubchem_cid": 7997
+    },
+    "0082297e-3d97-4c22-805d-f16d85465f87": {
+      "status": "enhanced",
+      "name": "Ethyl propionate",
+      "pubchem_cid": 7749
+    },
+    "174b553c-d2d3-4d4f-8c7b-87f0fb356da1": {
+      "status": "enhanced",
+      "name": "Dipropyl ether",
+      "pubchem_cid": 8114
+    },
+    "50b5ef84-ebe3-4b09-87ac-3a95e274e60b": {
+      "status": "enhanced",
+      "name": "1-Hexanol",
+      "pubchem_cid": 8103
+    },
+    "3d945377-60af-4763-9322-173e1d2d7d06": {
+      "status": "enhanced",
+      "name": "Propyl propionate",
+      "pubchem_cid": 7803
+    },
+    "d2422c9a-4568-4176-b0e0-670f45cf32f0": {
+      "status": "enhanced",
+      "name": "Acetal",
+      "pubchem_cid": 7765
+    },
+    "bf40c500-6d0e-436f-8b75-86962c684813": {
+      "status": "enhanced",
+      "name": "Adonitol",
+      "pubchem_cid": 6912
+    },
+    "f9e64f2e-00cb-4277-b282-e382aa80dbb8": {
+      "status": "enhanced",
+      "name": "Trehalose",
+      "pubchem_cid": 7427
+    },
+    "400efd4a-854d-4d95-ba23-763618fdf990": {
+      "status": "enhanced",
+      "name": "Diethylene glycol",
+      "pubchem_cid": 8117
+    },
+    "60af990b-6d16-4a50-ac7a-8c01ac568c37": {
+      "status": "enhanced",
+      "name": "Triethylene Glycol",
+      "pubchem_cid": 8172
+    },
+    "9cecbf6b-fe24-494a-bdff-74cccdae500b": {
+      "status": "enhanced",
+      "name": "Heptanol",
+      "pubchem_cid": 8129
+    },
+    "52c27f1b-071d-4f50-8f94-c4419a5f3b50": {
+      "status": "enhanced",
+      "name": "Dibutyl ether",
+      "pubchem_cid": 8909
+    },
+    "770d609e-4788-4769-afe5-c40068d29131": {
+      "status": "enhanced",
+      "name": "Thymidine Monophosphate",
+      "pubchem_cid": 9700
+    },
+    "5e7ad7d4-d9b7-44b2-b945-c787ebb1426f": {
+      "status": "enhanced",
+      "name": "Dimethyl Ether",
+      "pubchem_cid": 8254
+    },
+    "d2332630-944b-4d4a-a374-429ba841ef84": {
+      "status": "enhanced",
+      "name": "Tetraethylene Glycol",
+      "pubchem_cid": 8200
+    },
+    "0c5152b1-bd7f-4f7f-b631-a35cc6edeaae": {
+      "status": "enhanced",
+      "name": "1,3-Propanediol",
+      "pubchem_cid": 10442
+    },
+    "98171bdf-6236-491e-8886-346c378f4857": {
+      "status": "enhanced",
+      "name": "Ethyl Acetate",
+      "pubchem_cid": 8857
+    },
+    "feadb0cf-25b3-4876-81bd-558c957b479b": {
+      "status": "enhanced",
+      "name": "Sulfoxide",
+      "pubchem_cid": 8442
+    },
+    "9205d384-f259-469d-81ae-40688f167162": {
+      "status": "enhanced",
+      "name": "Cellobiose",
+      "pubchem_cid": 10712
+    },
+    "4e0954ee-89f6-4472-b05b-8b820772d291": {
+      "status": "enhanced",
+      "name": "Valeramide",
+      "pubchem_cid": 12298
+    },
+    "b9184332-bda8-4858-bb54-13caf077f590": {
+      "status": "enhanced",
+      "name": "Butyramide",
+      "pubchem_cid": 10927
+    },
+    "f66fbce4-2c98-43f1-88b6-ff553117e284": {
+      "status": "enhanced",
+      "name": "Ethyl propyl ether",
+      "pubchem_cid": 12340
+    },
+    "d4216424-0bc6-47ad-8e53-c2ab5a489cd1": {
+      "status": "enhanced",
+      "name": "Methyl propionate",
+      "pubchem_cid": 11124
+    },
+    "935fc1b0-1cea-4cc8-bab6-c7f7fd5ab6b7": {
+      "status": "enhanced",
+      "name": "Methyl propyl ether",
+      "pubchem_cid": 11182
+    },
+    "2d18422e-c226-40ed-a638-90e98eb11c42": {
+      "status": "enhanced",
+      "name": "Galactitol",
+      "pubchem_cid": 11850
+    },
+    "a6aca661-b0f1-401f-9e8e-b437fdfc6550": {
+      "status": "enhanced",
+      "name": "Ethyl methyl ether",
+      "pubchem_cid": 10903
+    },
+    "7df05526-cdd2-45f9-bc60-d5664a024411": {
+      "status": "enhanced",
+      "name": "Hexanamide",
+      "pubchem_cid": 12332
+    },
+    "94eda51f-cd31-4eff-aea0-bbf2a9d959e9": {
+      "status": "enhanced",
+      "name": "L-Fucose",
+      "pubchem_cid": 17106
+    },
+    "1e8f1781-7b0a-46d7-a72e-764baba39a2e": {
+      "status": "enhanced",
+      "name": "D-Mannose",
+      "pubchem_cid": 18950
+    },
+    "6fd426ec-f726-4b6f-8117-22d6aee957d4": {
+      "status": "enhanced",
+      "name": "Adenosine",
+      "pubchem_cid": 60961
+    },
+    "178b3692-6a71-4d15-83b7-790102530485": {
+      "status": "enhanced",
+      "name": "Xanthosine",
+      "pubchem_cid": 64959
+    },
+    "94f75c49-138a-43aa-afad-ddbc8b5f0608": {
+      "status": "enhanced",
+      "name": "Glucosides",
+      "pubchem_cid": 64689
+    },
+    "03afd087-36a8-4af0-99aa-37751eea52b8": {
+      "status": "enhanced",
+      "name": "Benzofurazan, 7-(4-benzyl-1-piperazinyl)-4-nitro-, 1-oxide",
+      "pubchem_cid": 43795
+    },
+    "1c47b471-894d-42cc-9a7d-b300bcbc7d39": {
+      "status": "enhanced",
+      "name": "Butyl Acetate",
+      "pubchem_cid": 31272
+    },
+    "496e4251-521e-436a-be53-7a341f61a987": {
+      "status": "enhanced",
+      "name": "Glutamic Acid",
+      "pubchem_cid": 33032
+    },
+    "29040d52-afab-4893-a554-48e9f4d45f48": {
+      "status": "enhanced",
+      "name": "Octanamide",
+      "pubchem_cid": 69414
+    },
+    "3824da82-7fdf-4419-9ed8-4d6d69e8d55e": {
+      "status": "enhanced",
+      "name": "Tetrapropylene glycol",
+      "pubchem_cid": 91234
+    },
+    "80937473-30c5-4d3c-91ef-25e02e02a274": {
+      "status": "enhanced",
+      "name": "L-Rhamnose",
+      "pubchem_cid": 25310
+    },
+    "2cc9c785-15da-430d-8449-6e56460b365e": {
+      "status": "enhanced",
+      "name": "Arabitol",
+      "pubchem_cid": 94154
+    },
+    "0991ec15-65e1-4b7a-8813-74bba0e4f7b9": {
+      "status": "enhanced",
+      "name": "Butanediol",
+      "pubchem_cid": 165788
+    },
+    "9571c5bf-d048-449e-bc82-564784d6b8be": {
+      "status": "enhanced",
+      "name": "2-[4-(4-Chlorophenyl)piperazin-1-yl]propanamide",
+      "pubchem_cid": 258965
+    },
+    "cd2cd59d-7906-4b4a-9984-1c2fc8c4c915": {
+      "status": "enhanced",
+      "name": "D-Xylose",
+      "pubchem_cid": 135191
+    },
+    "317ad9db-5db4-4815-9895-28b6068941f6": {
+      "status": "enhanced",
+      "name": "Heptanamide",
+      "pubchem_cid": 136449
+    },
+    "6dd3a4fd-9afe-45e7-8143-9db74114a29f": {
+      "status": "enhanced",
+      "name": "Proline",
+      "pubchem_cid": 145742
+    },
+    "a05a47c6-5231-47ad-b3b9-cba826298d5a": {
+      "status": "enhanced",
+      "name": "Hydroxyl Radical",
+      "pubchem_cid": 157350
+    },
+    "6a27540f-14bb-451e-ac1d-cba71f23462d": {
+      "status": "enhanced",
+      "name": "Propanediol",
+      "pubchem_cid": 134919
+    },
+    "7f520cd2-ff5a-4f0c-9ddb-f8eecf808da2": {
+      "status": "enhanced",
+      "name": "D-Threitol",
+      "pubchem_cid": 169019
+    },
+    "d706260a-a6ae-47aa-9f8f-94ae4dbec0dd": {
+      "status": "enhanced",
+      "name": "Erythritol",
+      "pubchem_cid": 222285
+    },
+    "4b9657f1-0702-44b0-99c4-aee749db52b0": {
+      "status": "enhanced",
+      "name": "H-Glu-Gly-OH",
+      "pubchem_cid": 302428
+    },
+    "0782537a-b4e2-41b9-abb0-7e006e957385": {
+      "status": "enhanced",
+      "name": "Maltose",
+      "pubchem_cid": 439186
+    },
+    "0178bb6a-fb04-4ccd-93d7-b5cad130cee7": {
+      "status": "enhanced",
+      "name": "3H-isoxazolo[3,4,5-ef][1,4]benzoxazepin-4(5H)-imine",
+      "pubchem_cid": 639376
+    },
+    "0d051db7-efde-460d-b57f-c3ed3422931b": {
+      "status": "enhanced",
+      "name": "L-Arabinose",
+      "pubchem_cid": 439195
+    },
+    "6bfbfcc2-0462-42c6-9020-03b0ac056836": {
+      "status": "enhanced",
+      "name": "6-O-alpha-D-mannopyranosyl-alpha-D-mannopyranose",
+      "pubchem_cid": 439557
+    },
+    "8b894fdf-7cfb-4024-86bf-f0fe54f7103e": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 621593
+    },
+    "716a2f71-9845-4037-9a28-6d5f1320b42b": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 1192209
+    },
+    "15c75c1a-ff45-4a2f-8900-e727621f250d": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 812747
+    },
+    "2d3e04a1-125f-41dc-b73b-7e60e5d782de": {
+      "status": "enhanced",
+      "name": "N-(4-chlorophenyl)-2-methoxyacetamide",
+      "pubchem_cid": 681890
+    },
+    "62d166c9-29e0-4b93-a7fa-ceff20172ee8": {
+      "status": "enhanced",
+      "name": "Ethyl 5-{[(4-chloroanilino)carbonyl]amino}-2,4-dimethyl-1H-pyrrole-3-carboxylate",
+      "pubchem_cid": 959516
+    },
+    "23474245-d05d-475c-b41b-a30bf16dce6e": {
+      "status": "enhanced",
+      "name": "(5Z)-1-(4-chlorophenyl)-5-[(2,4,6-trimethoxyphenyl)methylidene]-1,3-diazinane-2,4,6-trione",
+      "pubchem_cid": 1353353
+    },
+    "d97e6251-703a-4bbe-b711-42ab887b0740": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 2591497
+    },
+    "e0487c3c-7667-4c8f-82d8-15aba457b047": {
+      "status": "enhanced",
+      "name": "D-Fructose",
+      "pubchem_cid": 2723872
+    },
+    "8b6cb24e-9a48-4d54-93b9-91987b042540": {
+      "status": "enhanced",
+      "name": "[2-(Benzylamino)-2-oxoethyl] 2,2-dichloro-1-methylcyclopropane-1-carboxylate",
+      "pubchem_cid": 3634157
+    },
+    "259cc2d9-055c-4ba2-8d58-3d820e5d8297": {
+      "status": "enhanced",
+      "name": "(9S,11S)-11-(4-bromophenyl)-9-pyridin-4-yl-8-oxa-12,13,15,17-tetrazatetracyclo[8.7.0.02,7.012,16]heptadeca-1(10),2,4,6,13,15-hexaene",
+      "pubchem_cid": 1885407
+    },
+    "e160b464-ef0d-4ef8-ab76-a25c073674cd": {
+      "status": "enhanced",
+      "name": "3,4-dimethoxy-N'-[1-(4-methylphenyl)-2,5-dioxopyrrolidin-3-yl]-N'-(2-methylpropanoyl)benzohydrazide",
+      "pubchem_cid": 3425766
+    },
+    "f24242de-9616-4e81-9b3c-e5fc18a51f28": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 1655669
+    },
+    "d3d96f6e-313c-4967-b2ce-fb4d0eb1f5e7": {
+      "status": "enhanced",
+      "name": "ethyl 6-amino-5-cyano-4-(7-methoxy-1,3-benzodioxol-5-yl)-2-propyl-4H-pyran-3-carboxylate",
+      "pubchem_cid": 3702964
+    },
+    "af9b34e3-2cb9-4d19-8a68-a32f02489e5e": {
+      "status": "enhanced",
+      "name": "N'-[(3-chloro-5-ethoxy-4-prop-2-ynoxyphenyl)methylideneamino]-N-(3,4-dichlorophenyl)propanediamide",
+      "pubchem_cid": 3553064
+    },
+    "9ffce21e-9c0e-4660-abfe-c4ef07bc76a1": {
+      "status": "enhanced",
+      "name": "N-(2-chlorophenyl)-9,10-dioxo-9,10-dihydroanthracene-2-sulfonamide",
+      "pubchem_cid": 2838032
+    },
+    "8a5abeb1-0763-4912-b5cb-b4ae34f5eaa0": {
+      "status": "enhanced",
+      "name": "2-(4-Benzylidene-5-oxo-2-phenylimidazol-1-yl)naphthalene-1,5-disulfonic acid",
+      "pubchem_cid": 3763997
+    },
+    "915542eb-f2e6-41f8-bae3-44a86f408339": {
+      "status": "enhanced",
+      "name": "Phosphatidylethanolamine",
+      "pubchem_cid": 5327011
+    },
+    "f5676d97-26ad-4aa1-aeae-c4021bf986a2": {
+      "status": "enhanced",
+      "name": "N-[4-[4-(4-fluorobenzoyl)piperazin-1-yl]phenyl]-2-[[5-(2-methoxyphenyl)-1,3,4-oxadiazol-2-yl]sulfanyl]acetamide",
+      "pubchem_cid": 3905930
+    },
+    "8a6a0581-b5c9-47bc-9129-819ea11f6bea": {
+      "status": "enhanced",
+      "name": "2-[5-(furan-2-ylmethylidene)-2,4-dioxo-1,3-thiazolidin-3-yl]-N-[2-(1H-indol-3-yl)ethyl]acetamide",
+      "pubchem_cid": 4900423
+    },
+    "7fcaf001-34ef-4cb9-a567-750e9ca9fb0a": {
+      "status": "enhanced",
+      "name": "4-(4-fluorophenyl)-2-methyl-N-phenyl-1,4-dihydropyrimido[1,2-a]benzimidazole-3-carboxamide",
+      "pubchem_cid": 5312105
+    },
+    "a84285bc-c321-4d9c-bc3c-e6475b5a866a": {
+      "status": "enhanced",
+      "name": "N-benzyl-2-[benzylcarbamoyl(prop-2-enyl)amino]-N-[(6-methyl-4-oxochromen-3-yl)methyl]acetamide",
+      "pubchem_cid": 4548124
+    },
+    "bbc385bf-7743-44ce-9f16-8ae0f0c2a9cd": {
+      "status": "enhanced",
+      "name": "N-[4-(4-ethylphenyl)-1,3-thiazol-2-yl]pentanamide",
+      "pubchem_cid": 4345751
+    },
+    "e8170514-cb0f-448a-8b8a-c1b11bd8505d": {
+      "status": "enhanced",
+      "name": "(6,7-dimethoxy-1-thiophen-2-yl-3,4-dihydro-1H-isoquinolin-2-yl)-(4-fluorophenyl)methanone",
+      "pubchem_cid": 4252848
+    },
+    "747ba1e5-82f4-4a82-86c0-49158efd16ed": {
+      "status": "enhanced",
+      "name": "3-(4-Bromophenyl)-1-(2-chlorophenyl)-1H-pyrazole-5-carboxylic acid",
+      "pubchem_cid": 3814205
+    },
+    "6a29f797-6fe9-4733-b69f-19007fd790ab": {
+      "status": "enhanced",
+      "name": "(4E)-4-[1,3-benzodioxol-5-yl(hydroxy)methylidene]-1-(2-morpholin-4-ylethyl)-5-pyridin-2-ylpyrrolidine-2,3-dione",
+      "pubchem_cid": 6221057
+    },
+    "3c10a9b9-7287-45e7-a952-75e8b02f5de9": {
+      "status": "enhanced",
+      "name": "Phosphonate",
+      "pubchem_cid": 6326969
+    },
+    "565d1d92-8062-4382-9a1d-5da8e781d0b5": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 6582406
+    },
+    "087a604b-6541-4b7f-9930-aa19c617db22": {
+      "status": "enhanced",
+      "name": "[2-[2,5-dimethyl-1-(1,3-thiazol-2-yl)pyrrol-3-yl]-2-oxoethyl] (2S)-2-hydroxy-2-phenylacetate",
+      "pubchem_cid": 7834273
+    },
+    "1f6e2c95-5f7c-4b02-9a80-00ed6626587b": {
+      "status": "enhanced",
+      "name": "2,4-Diethyl-3-sulfanylidene-1,2,4-thiadiazolidin-5-one",
+      "pubchem_cid": 6539149
+    },
+    "ff269007-2cbf-44ef-bb84-12171a1a574e": {
+      "status": "enhanced",
+      "name": "[2-(5-Bromothiophen-2-yl)-2-oxoethyl] 3-ethoxy-4-methoxybenzoate",
+      "pubchem_cid": 7903821
+    },
+    "719f413d-c78d-40c5-ae5a-bcfd1b5941be": {
+      "status": "enhanced",
+      "name": "(1R,2S,3S,4S)-3-[(4-methylphenyl)methylcarbamoyl]bicyclo[2.2.1]hept-5-ene-2-carboxylic acid",
+      "pubchem_cid": 6593008
+    },
+    "3c0400f0-5588-48b3-b708-08aee79e7045": {
+      "status": "enhanced",
+      "name": "N-(2,3-dihydro-1,4-benzodioxin-6-yl)-2-[(1S)-3-oxo-1,2-dihydroisoindol-1-yl]acetamide",
+      "pubchem_cid": 7692752
+    },
+    "71caffff-4d26-474e-a8b9-94536451bbb7": {
+      "status": "enhanced",
+      "name": "[2-[(4-chlorophenyl)methyl-methylamino]-2-oxoethyl] 2-(4-oxo-3H-phthalazin-1-yl)acetate",
+      "pubchem_cid": 7789877
+    },
+    "59cd1732-fec2-4d4d-9117-d74872a911d7": {
+      "status": "enhanced",
+      "name": "N-(3-cyanothiophen-2-yl)-2-[(4-methyl-5-pyridin-4-yl-1,2,4-triazol-3-yl)sulfanyl]acetamide",
+      "pubchem_cid": 7895019
+    },
+    "5bbd7994-82e3-4f1e-a856-64486340731a": {
+      "status": "enhanced",
+      "name": "1-[5-Acetyl-3-(phenoxymethyl)-6-phenyl-[1,2,4]triazolo[3,4-b][1,3,4]thiadiazin-7-yl]ethanone",
+      "pubchem_cid": 7566256
+    },
+    "af33a855-d3d3-4151-8219-f6f3b62e059d": {
+      "status": "enhanced",
+      "name": "5-ethyl-N-[(1R)-1-(4-methoxyphenyl)ethyl]thiophene-3-carboxamide",
+      "pubchem_cid": 8062903
+    },
+    "0ada86af-6385-4e33-a03f-cea65d55029f": {
+      "status": "enhanced",
+      "name": "7-chloro-2-(furan-2-yl)-N-(2-methoxyethyl)quinazolin-4-amine",
+      "pubchem_cid": 8080658
+    },
+    "5256234f-b263-4825-a36e-f5d5de238d55": {
+      "status": "enhanced",
+      "name": "[(2S)-1-(carbamoylamino)-3-methyl-1-oxobutan-2-yl] 5,6,7,8-tetrahydronaphthalene-2-carboxylate",
+      "pubchem_cid": 8263546
+    },
+    "dc3e7432-0c04-4b27-92fb-c1da5615116f": {
+      "status": "enhanced",
+      "name": "4-(1H-imidazol-5-yl)-N-methoxycyclohexan-1-amine",
+      "pubchem_cid": 9815546
+    },
+    "3cf882bc-1651-4ab3-9afd-41e16e5587ab": {
+      "status": "enhanced",
+      "name": "N-[4-[4-(2-methylphenyl)piperazin-1-yl]-4-oxobutyl]adamantane-1-carboxamide",
+      "pubchem_cid": 8382914
+    },
+    "4f233f30-b6bc-4099-a2fa-b0a52dd22f1a": {
+      "status": "enhanced",
+      "name": "(2S)-2-[[2-(2-tert-butyl-4-ethylphenoxy)acetyl]amino]-4-methylsulfanylbutanoic acid",
+      "pubchem_cid": 9157592
+    },
+    "961fbe91-a076-4011-9110-68a2bd5faf64": {
+      "status": "enhanced",
+      "name": "[(1R)-1-(4-methylphenyl)ethyl] 3-morpholin-4-ylsulfonylbenzoate",
+      "pubchem_cid": 8922383
+    },
+    "c45f8054-1a9e-4ff6-911c-678099b1fff8": {
+      "status": "enhanced",
+      "name": "2-[4-[(Z)-[[2-(ethylamino)-2-oxoacetyl]hydrazinylidene]methyl]-2-methoxyphenoxy]acetate",
+      "pubchem_cid": 8989979
+    },
+    "844e3cc8-90d4-4016-b801-789b449fb70b": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 9781157
+    },
+    "95391ab3-2103-4208-921d-5592934e06e7": {
+      "status": "enhanced",
+      "name": "N-[(1S)-1-cyclopropylethyl]-2-[(3,4-dichlorophenyl)methyl-methylamino]acetamide",
+      "pubchem_cid": 8125804
+    },
+    "1f80441f-054e-4fef-90ea-417e19af1f1b": {
+      "status": "enhanced",
+      "name": "2-chloro-5-(2-phenyl-5-(pyridin-4-yl)-1H-imidazol-4-yl)phenol",
+      "pubchem_cid": 9950176
+    },
+    "9b622320-9673-4917-b04b-985c6cd0bba8": {
+      "status": "enhanced",
+      "name": "7-chloro-6-[[(1R,5S)-8-methyl-8-azabicyclo[3.2.1]octan-3-yl]sulfanyl]-3H-1,3-benzoxazol-2-one",
+      "pubchem_cid": 10193348
+    },
+    "905531cb-b8e7-484f-9725-3eb687172e86": {
+      "status": "enhanced",
+      "name": "(2S,3R)-3-azido-2-hydroxy-2-methyl-3-phenylpropanoic acid",
+      "pubchem_cid": 10632764
+    },
+    "7a9a3835-bca7-4bbd-a364-80b1bbdc9141": {
+      "status": "enhanced",
+      "name": "2-[(2R,6S)-1-(2-hydroxyethyl)-6-pentylpiperidin-2-yl]acetic acid",
+      "pubchem_cid": 10658819
+    },
+    "ef3b37c4-96ca-4971-8a9a-6b40f04214b2": {
+      "status": "enhanced",
+      "name": "D-Ribose",
+      "pubchem_cid": 10975657
+    },
+    "83f7bb81-71f2-4205-a7b9-903047ed68f1": {
+      "status": "enhanced",
+      "name": "N-[(1S,2S)-2-aminocyclohexyl]-1-[(1S)-7,7-dimethyl-2-oxo-1-bicyclo[2.2.1]heptanyl]methanesulfonamide",
+      "pubchem_cid": 10314466
+    },
+    "050d2ae8-61f1-42a8-bb47-28eb6fd62b63": {
+      "status": "enhanced",
+      "name": "dimethyl 5-(benzenesulfonyl)-5,6-dihydro-4H-1-benzothiophene-7,7-dicarboxylate",
+      "pubchem_cid": 10363222
+    },
+    "fc40613d-d371-4b3a-a008-5fd5ce3d3324": {
+      "status": "enhanced",
+      "name": "3-(10-ethoxy-2,2,4-trimethyl-4a,5,6,12a-tetrahydro-1H-naphtho[2,1-f]quinolin-5-yl)propan-1-ol",
+      "pubchem_cid": 10134335
+    },
+    "d5055946-4824-4efa-87d8-00845c960e5a": {
+      "status": "enhanced",
+      "name": "[(2R,3R)-2-(4-methoxyphenyl)-1-methylpyrrolidin-3-yl]methyl benzenesulfonate",
+      "pubchem_cid": 10642337
+    },
+    "b7aed615-4e81-4b0c-ace1-b3e92d8f465e": {
+      "status": "enhanced",
+      "name": "[(2R,3R)-5-[2-(dimethylamino)ethyl]-2-(4-methoxyphenyl)-7-methyl-4-oxo-2,3-dihydro-1,5-benzothiazepin-3-yl] 4-nitrobenzoate",
+      "pubchem_cid": 10554341
+    },
+    "c6c65c85-4788-4a30-bed5-91ed65b0f73c": {
+      "status": "enhanced",
+      "name": "3-(3,4-Dichlorophenyl)-7-methoxy-1,3-benzoxazine-2,4-dione",
+      "pubchem_cid": 11089033
+    },
+    "44d64958-4f93-4122-b6f5-04b50e3e9ef4": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 13049234
+    },
+    "9efefd64-93e4-4742-89cf-79e580b00503": {
+      "status": "enhanced",
+      "name": "[4-[4-(Phenylsulfamoyl)phenoxy]sulfonylphenyl] 4-hydroxybenzenesulfonate",
+      "pubchem_cid": 11318986
+    },
+    "1ff6d24c-436e-4d14-92b7-79a11d3da523": {
+      "status": "enhanced",
+      "name": "2,6-Diamino-4,8-dioxofuro[2,3-f][1]benzofuran-3,7-dicarbonitrile",
+      "pubchem_cid": 12492307
+    },
+    "ad897215-6470-450a-804f-a010699c85ac": {
+      "status": "enhanced",
+      "name": "Methyl 4-(2,4-difluorophenyl)-2,6,6-trimethyl-5-oxo-1,4,7,8-tetrahydroquinoline-3-carboxylate",
+      "pubchem_cid": 11846111
+    },
+    "58fef4d3-5049-40fb-b5f0-01c3604ea0ad": {
+      "status": "enhanced",
+      "name": "7-Chloro-2,3-dihydro-2,3-dimethyl-4h-thieno[2,3-b]thiochromen-4-one",
+      "pubchem_cid": 11403324
+    },
+    "f7c5813d-94cc-4eea-8693-424e16f38443": {
+      "status": "enhanced",
+      "name": "1-[(2R,3R,4S,5R)-3,4-dihydroxy-2-[[(4-methoxyphenyl)-diphenylmethoxy]methyl]-5-(phenylmethoxymethyl)oxolan-2-yl]-5-methylpyrimidine-2,4-dione",
+      "pubchem_cid": 11498340
+    },
+    "4fb1effa-0d6a-418f-8b41-80c94bd66105": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 12896013
+    },
+    "32c1bc27-478d-47d4-8047-4bbfc9756fa3": {
+      "status": "enhanced",
+      "name": "methyl (2Z)-N-[4-(dimethylamino)benzoyl]pyridine-2-carbohydrazonate",
+      "pubchem_cid": 11285903
+    },
+    "952c6690-7e38-47a1-a1dc-6bb0b88978cf": {
+      "status": "enhanced",
+      "name": "8-methyl-7-nitro-3,4-dihydro-2H-pyrimido[2,1-b][1,3]benzothiazole",
+      "pubchem_cid": 13338581
+    },
+    "0cf005ec-98f6-43e6-87fd-024a7c3d22d9": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 13452147
+    },
+    "3c652f75-0838-45d5-8ed4-90b5b2f532ef": {
+      "status": "enhanced",
+      "name": "1-[2-[(2-Amino-3-methylpentanoyl)amino]-4-methylpentanoyl]pyrrolidine-2-carboxylic acid",
+      "pubchem_cid": 14889701
+    },
+    "385b150f-ca9a-4ec0-9a60-fc114b178ca4": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 14569161
+    },
+    "ab49d6ab-e4ae-43eb-b14b-ffe07a209eb8": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 14385857
+    },
+    "6daf6d77-cb96-4a62-b38d-1286dc69c324": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 14411574
+    },
+    "0a676ece-5633-452d-8cc2-666640209fb5": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 14687283
+    },
+    "04c024ec-2a82-4868-aeac-ec3a73db9c9c": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 13494764
+    },
+    "7637d51f-10f1-49be-bdc1-197d0ba4a364": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 14587888
+    },
+    "1a353afb-4d3e-4347-ae6f-b1fd711e8f7d": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 14526412
+    },
+    "449a9f61-93b7-4670-aecc-8761db1294ca": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 14748527
+    },
+    "69e62b55-dbe3-4322-843d-7d400797ddff": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 14934486
+    },
+    "bb81d998-d954-4552-8917-d5ea17ea9d3a": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 15587076
+    },
+    "f051f6c2-afc4-4efb-920b-2393d04272c5": {
+      "status": "enhanced",
+      "name": "N-(4-hydroxy-1,1-dioxidotetrahydrothiophen-3-yl)-2-(2,3,5-trimethyl-7-oxo-7H-furo[3,2-g]chromen-6-yl)acetamide",
+      "pubchem_cid": 16426624
+    },
+    "fea0c73c-b047-4b3b-88bc-3e5f3443f955": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 15920085
+    },
+    "dec5d6e8-649c-48fa-a4c2-1d27e85f9ef6": {
+      "status": "enhanced",
+      "name": "(2S,3R)-1-benzyl-2-(hydroxymethyl)pyrrolidin-3-ol",
+      "pubchem_cid": 15945950
+    },
+    "3a8e805e-091c-42f9-85c2-c23142caeadd": {
+      "status": "enhanced",
+      "name": "2-[[2-[(4-benzyl-5-pyridin-3-yl-1,2,4-triazol-3-yl)sulfanyl]acetyl]amino]-N-phenylbenzamide",
+      "pubchem_cid": 16542648
+    },
+    "d56b40a8-4185-4e40-816d-524f624de038": {
+      "status": "enhanced",
+      "name": "Bis[(1-oxo-2,6,7-trioxa-1lambda5-phosphabicyclo[2.2.2]octan-4-yl)methyl] hydrogen phosphate",
+      "pubchem_cid": 15369655
+    },
+    "1a8f5195-a3ba-4f69-9b64-0525cca91400": {
+      "status": "enhanced",
+      "name": "Deae-cellulose",
+      "pubchem_cid": 16211032
+    },
+    "2dd01e60-66a3-42ab-b649-8c5326417dfe": {
+      "status": "enhanced",
+      "name": "4-[5-(4-Fluorophenyl)-4-pyridin-4-YL-1H-imidazol-2-YL]-1-acetylpiperidine",
+      "pubchem_cid": 15454842
+    },
+    "bd48a2dd-395d-4795-a219-ce18992eb615": {
+      "status": "enhanced",
+      "name": "N,N-diethyl-2-[[5-(4-methylphenyl)-1H-1,2,4-triazol-3-yl]sulfanyl]-2-phenylacetamide",
+      "pubchem_cid": 16306410
+    },
+    "e6e0a722-492a-4694-af51-ee68eefb4fa3": {
+      "status": "enhanced",
+      "name": "2-[1-(2,5-dimethylphenyl)imidazol-2-yl]sulfanyl-N-[2-[(5Z)-2,4-dioxo-5-(pyridin-3-ylmethylidene)-1,3-thiazolidin-3-yl]ethyl]acetamide",
+      "pubchem_cid": 16578919
+    },
+    "01c6af65-ce56-44f6-9a00-8b2c1f23821f": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 17625871
+    },
+    "0939a97b-97f2-472a-87e8-15064995f923": {
+      "status": "enhanced",
+      "name": "1,7-dimethyl-3-(methylamino)-2,3-dihydro-1H-inden-4-ol",
+      "pubchem_cid": 16777386
+    },
+    "1057dc57-6a4d-4b76-ac2f-4d8ada2e2621": {
+      "status": "enhanced",
+      "name": "6-Chloro-3-[[4-(4-methoxyphenyl)piperazin-1-yl]methyl]-1,3-benzoxazole-2-thione",
+      "pubchem_cid": 18096406
+    },
+    "f92fdbc3-0602-4bed-84e5-d9a306017450": {
+      "status": "enhanced",
+      "name": "N-(3-chloro-2-methylphenyl)-2-[6-(3-methylphenyl)-2-oxo-10-thia-1,5,6,8-tetrazatricyclo[7.3.0.03,7]dodeca-3(7),4,8-trien-12-yl]acetamide",
+      "pubchem_cid": 16859671
+    },
+    "c40149f7-0d54-4578-8bc6-41b68ba3e58c": {
+      "status": "enhanced",
+      "name": "2-[2-(benzylamino)-2-oxoethyl]sulfanyl-N-[2-(4-methoxyphenyl)ethyl]acetamide",
+      "pubchem_cid": 17430239
+    },
+    "893e6bf0-cafa-465f-95ba-d7f8cb182276": {
+      "status": "enhanced",
+      "name": "Methyl 4-[[2-(4-fluorophenoxy)propanoylamino]methyl]benzoate",
+      "pubchem_cid": 17413312
+    },
+    "3ce19b74-2c3d-4135-8743-56b435a9d743": {
+      "status": "enhanced",
+      "name": "N-(2-methylphenyl)-2-[1-(3-methylphenyl)tetrazol-5-yl]sulfanylpropanamide",
+      "pubchem_cid": 18082257
+    },
+    "5059c22e-ceb2-40cf-9599-3c5ed73ee341": {
+      "status": "enhanced",
+      "name": "2-(3-(4-fluorophenyl)ureido)-N-(naphthalen-1-yl)thiazole-4-carboxamide",
+      "pubchem_cid": 16948991
+    },
+    "c078fd04-c7ee-4e21-8c8e-6d7a872cb99f": {
+      "status": "enhanced",
+      "name": "N-(5-(2,4-dimethylbenzyl)-1,3,4-oxadiazol-2-yl)-3-(ethylthio)benzamide",
+      "pubchem_cid": 16917767
+    },
+    "22e14e74-03c0-41c5-a703-29a43014989c": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 18204055
+    },
+    "da697b9b-87dd-44c0-9c16-59813ae552b5": {
+      "status": "enhanced",
+      "name": "1-Isopropyl-5-methyl-1H-pyrazole-4-carbaldehyde",
+      "pubchem_cid": 19620099
+    },
+    "1f0f79d5-9e55-42c4-9c01-ea5025f86b90": {
+      "status": "enhanced",
+      "name": "(2-Hydroxy-1-phosphonocyclobutyl)phosphonic acid",
+      "pubchem_cid": 19821560
+    },
+    "93247ffc-c831-411d-8dcf-aa87e72d4f4d": {
+      "status": "enhanced",
+      "name": "2-[2-(4-Chloro-3,5-dimethylpyrazol-1-yl)ethyl]-5-[2-(4-chloro-3-methylpyrazol-1-yl)ethyl]-1,3,4-oxadiazole",
+      "pubchem_cid": 19552483
+    },
+    "debffdb6-b4fb-4ad3-bf33-fc9f02e5a853": {
+      "status": "enhanced",
+      "name": "tert-butyl N-[1-(furan-2-yl)-1-hydroxy-4-methylpentan-2-yl]carbamate",
+      "pubchem_cid": 19378574
+    },
+    "d607fd72-f067-41e5-bdf2-ae322d4c86f5": {
+      "status": "enhanced",
+      "name": "(3-Fluoro-2-methylphenyl)(phenyl)methanone",
+      "pubchem_cid": 19957171
+    },
+    "2a14be47-8981-4d44-9656-71d8816e0fc6": {
+      "status": "enhanced",
+      "name": "5-chloro-N-propan-2-yl-4-(1-propyl-3,6-dihydro-2H-pyridin-5-yl)-1,3-thiazol-2-amine",
+      "pubchem_cid": 19889515
+    },
+    "9f0b4c4b-423e-4e3c-87b1-4153a5d51fe2": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 19216871
+    },
+    "a17297f2-c835-44ce-9cf1-ea6f4bb64cca": {
+      "status": "enhanced",
+      "name": "Oxiran-2-ylmethyl naphthalene-1-sulfonate",
+      "pubchem_cid": 18704249
+    },
+    "9ab8f269-7abf-4fb3-ab83-eb73945e19b1": {
+      "status": "enhanced",
+      "name": "2-[4-[[[6-(2-Chlorophenyl)-7-oxo-5,8-dihydropyrimido[4,5-d]pyrimidin-2-yl]amino]methyl]piperidin-1-yl]acetic acid",
+      "pubchem_cid": 18425463
+    },
+    "a96da315-708f-46e9-aeaf-e877b00b0600": {
+      "status": "enhanced",
+      "name": "H-DL-Pro-DL-xiIle-DL-Pro-DL-Leu-OH",
+      "pubchem_cid": 20013322
+    },
+    "90585a05-b5f8-45f3-88a8-d1bf8cdd91a5": {
+      "status": "enhanced",
+      "name": "2-(1,3,5-Triphenylpyrazol-4-yl)acetonitrile",
+      "pubchem_cid": 20542698
+    },
+    "90ae023b-ce92-4350-9b1c-37d5e74a0f9a": {
+      "status": "enhanced",
+      "name": "(1S,3R,6S,7R,8R,9S,10R)-3,7-dinitro-11-oxatricyclo[6.2.1.01,6]undecane-9,10-diol",
+      "pubchem_cid": 21627219
+    },
+    "baa7d98e-6da3-4802-ae7c-c9a2a120cde5": {
+      "status": "enhanced",
+      "name": "2-Acetyl-10-amino-2-hexyltridecanoic acid",
+      "pubchem_cid": 21259452
+    },
+    "fd159ae9-28c9-4d8b-a2d8-e650f70501fa": {
+      "status": "enhanced",
+      "name": "4-[[2-(4-oxo-2-pyrrolidin-1-yl-1,3-thiazol-5-yl)acetyl]amino]-N-(2-phenoxyethyl)benzamide",
+      "pubchem_cid": 22109898
+    },
+    "11e57ab2-548c-432b-a150-e559c9a5a732": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 20512629
+    },
+    "5408c295-1b4c-4319-812e-53bc9e84131b": {
+      "status": "enhanced",
+      "name": "N-[4-[4-amino-2-(2-methoxyethyl)-6,7,8,9-tetrahydroimidazo[4,5-c]quinolin-1-yl]butyl]butane-1-sulfonamide",
+      "pubchem_cid": 20714003
+    },
+    "edd715de-2a75-4d6b-906c-8151282226fe": {
+      "status": "enhanced",
+      "name": "3,3-Dipropyl-1,2-dihydroindole",
+      "pubchem_cid": 21560679
+    },
+    "4db85d1b-bf52-4a67-8c3c-518a5f6fd462": {
+      "status": "enhanced",
+      "name": "4-bromo-N-[3-(4-chloro-3,5-dimethylpyrazol-1-yl)propyl]benzenesulfonamide",
+      "pubchem_cid": 22207599
+    },
+    "ca05e70c-1627-49b8-9e54-71f2df669666": {
+      "status": "enhanced",
+      "name": "3-Phenylbicyclo[2.2.2]octan-2-amine",
+      "pubchem_cid": 21501579
+    },
+    "dfb6456e-bdcf-4f8a-b703-424f0dc00864": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 22246505
+    },
+    "833ad7d9-3026-41bc-9e49-7a4307be2b0d": {
+      "status": "enhanced",
+      "name": "ethyl (1S,3aS,4R,5R,7aS)-5-ethyl-2-(6-hydroxyhexyl)-1-[(4-methoxyphenyl)carbamoyl]-3-oxo-3a,4,5,7a-tetrahydro-1H-isoindole-4-carboxylate",
+      "pubchem_cid": 23921081
+    },
+    "7f85ae19-69b8-4aef-acee-356862b557d9": {
+      "status": "enhanced",
+      "name": "ethyl (E)-3-[4-[[2-[1-(4-fluorophenyl)pyrazolo[3,4-d]pyrimidin-4-yl]sulfanylacetyl]amino]phenyl]prop-2-enoate",
+      "pubchem_cid": 24601377
+    },
+    "1db806d2-6694-4467-ab99-a26d6c5e9d7e": {
+      "status": "enhanced",
+      "name": "(5-Iodothiophen-2-yl)-oxo-acetic acid",
+      "pubchem_cid": 22997650
+    },
+    "30e64078-b704-48a5-bd84-d208dacb3d06": {
+      "status": "enhanced",
+      "name": "[(2S,4S)-4-hydroxy-3-methylidenepentan-2-yl] but-3-enoate",
+      "pubchem_cid": 23726587
+    },
+    "ea1958e8-11fb-4ba3-a3ea-5e37b4e74e10": {
+      "status": "enhanced",
+      "name": "Dichlorophosphinothioyloxy-tris(dimethylamino)phosphanium",
+      "pubchem_cid": 23415016
+    },
+    "fc6e342d-7ce2-4c74-a1cb-36c6c59807ef": {
+      "status": "enhanced",
+      "name": "Methyl 2-[2-(2-methoxyphenyl)-2-oxoethyl]sulfanyl-4-oxo-3-(2-phenylethyl)quinazoline-7-carboxylate",
+      "pubchem_cid": 24345767
+    },
+    "7eac4156-fc18-4b8b-aa0a-0dd00191b302": {
+      "status": "enhanced",
+      "name": "N-[1-(4-methoxyphenyl)-2,5-dioxopyrrolidin-3-yl]-N-(thiophen-2-ylmethyl)furan-2-carboxamide",
+      "pubchem_cid": 23915229
+    },
+    "1febb8d9-ed28-4fc9-9bfd-b7f7cf6fb7e8": {
+      "status": "enhanced",
+      "name": "6-(5-bromoquinolin-8-yl)oxy-N-butan-2-yl-5-nitropyrimidin-4-amine",
+      "pubchem_cid": 22537620
+    },
+    "a04b00f7-f3c5-4422-b7ca-e2c2f3fb0156": {
+      "status": "enhanced",
+      "name": "[(E,1S)-7-(hydroxyamino)-1-[4-(2-hydroxyethoxy)phenyl]-7-oxohept-5-enyl] N-phenylcarbamate",
+      "pubchem_cid": 24114640
+    },
+    "2d4e1dc4-cf82-4b25-9348-dd97c54b920d": {
+      "status": "enhanced",
+      "name": "(2s)-2-[[(2s)-2-Acetamido-5-[[n-(Methylcarbamoyl)carbamimidoyl]amino]pentanoyl]-Methyl-Amino]-3-Phenyl-Propanoic Acid",
+      "pubchem_cid": 24755478
+    },
+    "dde4149d-134c-4f44-8202-a0d55aa38516": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 25472594
+    },
+    "de4a7a2e-0e10-45d0-9641-6a01e374c987": {
+      "status": "enhanced",
+      "name": "N-[1-(3-chloro-4-fluorophenyl)ethyl]-5-(7-chloro-1H-indazol-5-yl)-1,3,4-oxadiazol-2-amine",
+      "pubchem_cid": 25109070
+    },
+    "99b9284e-b5de-4c3b-b65a-8257f934866f": {
+      "status": "enhanced",
+      "name": "N-[3-[[(2S)-2-methylbutanoyl]amino]phenyl]furan-2-carboxamide",
+      "pubchem_cid": 25559290
+    },
+    "0654979c-f173-41f3-af19-703fd53da224": {
+      "status": "enhanced",
+      "name": "2-[2-[(6-amino-1-benzyl-2,4-dioxopyrimidin-5-yl)-butylamino]-2-oxoethyl]sulfanyl-N-(4-methoxyphenyl)acetamide",
+      "pubchem_cid": 24983128
+    },
+    "e316efe8-3eac-4edd-95df-e84a7b8b1933": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 25742924
+    },
+    "f0840a2d-5b6b-4ac2-aeb6-1d1dd0e5032f": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 24932882
+    },
+    "bc4f809d-c97e-412e-9559-5fee44163ce4": {
+      "status": "enhanced",
+      "name": "6-[4-[[(3R)-3-methyl-4-[5-(trifluoromethyl)pyridin-2-yl]piperazin-1-yl]methyl]-1H-pyrazol-5-yl]-3H-1,3-benzoxazol-2-one",
+      "pubchem_cid": 25141796
+    },
+    "796dfdca-457f-4981-8f8a-c206e360ee8a": {
+      "status": "enhanced",
+      "name": "N-deuterio-N-[1,1-dideuterio-2-(7-methoxynaphthalen-1-yl)ethyl]acetamide",
+      "pubchem_cid": 25176531
+    },
+    "8622d954-674b-4589-8585-8dba3877f9f7": {
+      "status": "enhanced",
+      "name": "(3S)-3-[2-(1,3-benzothiazol-2-yl)-5-methyl-3-oxo-1H-pyrazol-4-yl]-1-phenylpyrrolidine-2,5-dione",
+      "pubchem_cid": 25823995
+    },
+    "c72815e6-38e4-4a96-94b7-e37dad241e71": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 25883063
+    },
+    "74d6f5b4-2136-4300-849d-89cb7406713d": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 27300128
+    },
+    "dd4c1f0d-9ebc-4480-8e64-2999feeb34ae": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 26669508
+    },
+    "2506bb54-51aa-45df-9e4f-dfbfcfeeb8cb": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 27202679
+    },
+    "5f87fbf4-4c42-4028-b42a-43bc40f5a5ab": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 26505777
+    },
+    "df64951b-113f-4874-8009-473b92066b5d": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 26800053
+    },
+    "539c5d80-5aee-4b08-98a6-871a4275c7f2": {
+      "status": "enhanced",
+      "name": "2,3-dimethyl-N-(4-methyl-3-morpholin-4-ylsulfonylphenyl)-1H-indole-5-carboxamide",
+      "pubchem_cid": 26759731
+    },
+    "e1a220f9-9eba-4980-b90e-061ca88a5128": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 26786758
+    },
+    "9615a286-edf8-4973-aed0-9a8286090195": {
+      "status": "enhanced",
+      "name": "1-Bromo-2-iodo-3-methyl-5-(trifluoromethoxy)benzene",
+      "pubchem_cid": 26598286
+    },
+    "6706841c-3860-4a58-87b2-33131cd5825d": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 26764754
+    },
+    "9c02ff54-c311-47e2-8cc8-564d7d00ea07": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 27909914
+    },
+    "554aa785-016a-4c0b-967b-974894a709b8": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 29881300
+    },
+    "f3bb7f1c-2999-4274-825d-372d2b4594ac": {
+      "status": "enhanced",
+      "name": "1-benzylsulfonyl-3,4-dihydro-2H-quinolin-6-amine",
+      "pubchem_cid": 29562038
+    },
+    "a3f7bb90-c216-42ee-9ac1-208b763fd3f2": {
+      "status": "enhanced",
+      "name": "(Z)-3-(1,3-benzoxazol-2-yl)-4-(2-fluorophenyl)but-3-enoic acid",
+      "pubchem_cid": 29989617
+    },
+    "541d2378-ec02-48e5-a9ce-b2be30074406": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 28188209
+    },
+    "061373cd-f153-4c8a-9003-d5ddf3b1169c": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 29937411
+    },
+    "3e100362-7c4c-4675-932b-6ef1f5de1949": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 29397845
+    },
+    "91239b34-93a4-4bbc-8cbb-a099f54377c4": {
+      "status": "enhanced",
+      "name": "(2S)-2-amino-4-methyl-N-(1,3-thiazol-2-yl)pentanamide",
+      "pubchem_cid": 28196846
+    },
+    "318acaa9-d8d1-4797-957b-70867d6adbc8": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 29671174
+    },
+    "f6fc4ac7-d7eb-4815-9606-700c53aeb48b": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 29169965
+    },
+    "978bfaa1-2ec6-4e5f-a5b7-a41b5f88d21d": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 30112169
+    },
+    "e15b50d6-6c7c-409a-bfd8-92a4faa38e05": {
+      "status": "enhanced",
+      "name": "(5-Morpholin-4-ylsulfonyl-1-propylbenzimidazol-2-yl)methyl 2-(2-methylphenyl)acetate",
+      "pubchem_cid": 30801589
+    },
+    "95a32927-1997-40cc-8bab-c64d96af7665": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 30131134
+    },
+    "3c3e3209-02d6-4a3b-8e72-43bb22a637d2": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 30688119
+    },
+    "dfe5d5c4-c3ce-462d-8a22-69beede1e026": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 30547123
+    },
+    "295c94b6-355e-4cd4-aaac-8a4b2cbd9957": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 30628503
+    },
+    "de609ee7-c547-4a10-aaa5-1b01458700da": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 30274363
+    },
+    "6143f003-b6fc-4533-8e72-13cc4f7b3e20": {
+      "status": "enhanced",
+      "name": "(3S)-N-[(2R)-butan-2-yl]-5-oxo-1-(3-propan-2-ylphenyl)pyrrolidine-3-carboxamide",
+      "pubchem_cid": 30783077
+    },
+    "7f29b0a9-8c9d-4a98-86bd-97969da017ef": {
+      "status": "enhanced",
+      "name": "4-chloro-N-[(2S)-2-(3,4-dihydro-1H-isoquinolin-2-yl)-2-pyridin-3-ylethyl]-3-nitrobenzamide",
+      "pubchem_cid": 30716593
+    },
+    "a3f0e4c0-4b70-40c7-be37-08ef49a62fce": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 30428309
+    },
+    "1a6057fc-2658-4538-b2af-79c9c03aa342": {
+      "status": "enhanced",
+      "name": "[4-[(2-Phenyl-1,3-thiazol-4-yl)methyl]piperazin-1-yl]-[4-(pyridin-3-ylmethoxy)phenyl]methanone",
+      "pubchem_cid": 30841049
+    },
+    "c4f1b029-0cee-4602-97c9-bf0f3ed960b5": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 32096954
+    },
+    "7919ca7e-fd1c-43a7-81e3-2b1c217226d5": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 32234148
+    },
+    "eeb79925-d1d2-4d18-8ce5-7df6cc86f1e8": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 31327100
+    },
+    "314eb421-dbf6-4333-b5c1-a490df727b06": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 32259847
+    },
+    "2d9af314-2adf-4ba3-913a-72afc0069035": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 31145930
+    },
+    "8cb6ba24-6256-4a13-b90b-1c9e07ce8dfd": {
+      "status": "enhanced",
+      "name": "2-(4-chlorophenyl)-N-methyl-N-[(2-methylphenyl)methyl]-1,3-thiazole-4-carboxamide",
+      "pubchem_cid": 31237491
+    },
+    "bff2bbf6-b4e1-4695-a239-4b492717aadd": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 31853068
+    },
+    "25a2a480-3310-49ac-8ba0-1a6e5bc65a27": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 31716077
+    },
+    "2f5e5220-4822-41e2-8890-555595944834": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 31446208
+    },
+    "3989e337-41af-46a8-a72d-5da345e8fe4a": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 32267518
+    },
+    "a3d06460-6977-4eaf-a92f-26113eb63c34": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 32833312
+    },
+    "5e4efebe-e529-4254-86da-768bfe2777f5": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 32709265
+    },
+    "21f4857b-ca42-429f-82fe-a6db0c1efbf4": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 33481278
+    },
+    "8f3f553b-6d31-4dad-bf99-87663d3f40b2": {
+      "status": "enhanced",
+      "name": "[(2S)-1-[[(1S)-1-(4-fluorophenyl)ethyl]amino]-1-oxopropan-2-yl] 2-oxo-3,4-dihydro-1H-quinoline-6-carboxylate",
+      "pubchem_cid": 32362230
+    },
+    "03dd580d-38d0-47f3-978e-ae5ad0cb0f6c": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 33588982
+    },
+    "424cee51-b1c0-47e9-897e-402796b8af9c": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 32465821
+    },
+    "0f995be2-119f-43a5-84f8-aba55a5ac8d6": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 33459585
+    },
+    "dc802521-d471-4490-8838-9e9aa1ea2c0c": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 33195816
+    },
+    "a001ab2e-84d0-4c95-866b-a952667c45c7": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 33077851
+    },
+    "119274b3-6655-4598-96f6-de385959210a": {
+      "status": "enhanced",
+      "name": "4-chloro-N-[4-(1H-indol-3-yl)-1,3-thiazol-2-yl]-3-[methoxy(methyl)sulfamoyl]benzamide",
+      "pubchem_cid": 33622824
+    },
+    "cd41d383-90b7-45ce-b5bb-f533b0c45808": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 33957746
+    },
+    "98e85124-d999-4891-844e-07fda8f84b22": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 35918801
+    },
+    "6b31f2e6-6499-442c-8964-b5d9ca04d71d": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 34198373
+    },
+    "dd25a714-f5de-463b-a61d-573b08c1ce66": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 36325480
+    },
+    "83308dee-5b13-4d4a-b45f-c67a2ffec995": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 36385753
+    },
+    "ca690695-aee4-4fad-8c53-f13299bb7527": {
+      "status": "enhanced",
+      "name": "Ethyl 1-[2-(4-fluorophenyl)-4-methyl-1,3-thiazole-5-carbonyl]piperidine-4-carboxylate",
+      "pubchem_cid": 35512709
+    },
+    "c83df001-b38e-4f9c-8f59-474375aad564": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 33845174
+    },
+    "2fafb684-0b76-4997-81a4-2d5577e98126": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 34855195
+    },
+    "b78f9a91-34c4-4820-8159-792759e73a79": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 34882548
+    },
+    "36a11df7-4c53-4666-abc6-57cfabacbea9": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 36846983
+    },
+    "a68796a9-1e7c-4050-804d-5706df8b1747": {
+      "status": "enhanced",
+      "name": "5-chloro-N-[[2-(ethoxymethyl)phenyl]methyl]thiophene-2-sulfonamide",
+      "pubchem_cid": 37623222
+    },
+    "55d3335e-5146-43f5-b6b9-ad61c63bf7ce": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 37596258
+    },
+    "429609e4-e269-44bd-9faf-c1c202df9ea5": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 37023747
+    },
+    "f0b4476a-a673-4b6c-bf4b-c94e7e2addc6": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 37294113
+    },
+    "cf51c5dd-ace7-433f-b757-5091f7bcb450": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 37355137
+    },
+    "4598284d-cf8d-4ea8-bc0d-d7edf78a5940": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 37182810
+    },
+    "b182f3e1-d495-4cb7-83c3-993770970dac": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 37241680
+    },
+    "6ae93610-47ab-4e1d-ac6c-55173595af7b": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 37138694
+    },
+    "9bd1c31d-ee4c-4874-8dea-e71d7a87de0b": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 37547511
+    },
+    "f70e9d68-f150-4ee0-94f2-6b68b0e6f86c": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 37826027
+    },
+    "1f0e0cec-9fdb-427a-a19d-815bc8a8b7f7": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 38890457
+    },
+    "794868a9-8d84-4a67-a762-51880c7e3acc": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 39163609
+    },
+    "ee8af511-9cb2-4528-bd15-5d6bfc3f1a84": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 38910641
+    },
+    "8f3399ae-0ed9-4e36-8dfe-1e80b2d4da2c": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 39168369
+    },
+    "437eb0c9-2d82-4e04-9925-bbca301e8793": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 38902277
+    },
+    "2adaa469-f7e3-4d68-972d-98827e6e22c7": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 39255783
+    },
+    "f3a3ab58-ed6b-4dd9-b818-1dceb9393364": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 38585565
+    },
+    "eadf1ab0-239d-4270-8e44-b9fde6fcab91": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 38566127
+    },
+    "ae4bb02c-24a1-462a-8324-00ea1c53a6d9": {
+      "status": "enhanced",
+      "name": "2-chloro-N-cyclopropyl-4-(methanesulfonamido)benzamide",
+      "pubchem_cid": 37895067
+    },
+    "75e3c00e-e178-4e8f-816d-03fbcf40813d": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 39443527
+    },
+    "e080251c-6a02-4b65-bf08-ffd1779177cd": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 40119545
+    },
+    "861abf8e-f1bf-48b3-8d03-bfd7bfe2ddd7": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 40099521
+    },
+    "cebe18ec-4dcd-429d-b77a-2ca7aaee9360": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 39635878
+    },
+    "e68358d4-0603-4b71-9996-f3182a316fb2": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 39686027
+    },
+    "c0baae4a-c3a7-4757-b23e-e934ec4e7022": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 39773910
+    },
+    "a3afaff2-c04b-4938-98b3-cc03f5e65952": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 39905368
+    },
+    "0912d73f-ab41-49b5-a0a8-73cd708692db": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 39558596
+    },
+    "031e0bd0-53fd-4bab-b871-28b8e8fa54c6": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 39620163
+    },
+    "64d72a17-f537-421b-99b0-6d61cd85b46d": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 39748469
+    },
+    "60bea53c-633f-4b0a-81a6-480a6b185c57": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 40476053
+    },
+    "39f6214c-034e-4185-8ef7-02aa8a41ce17": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 41756743
+    },
+    "c98990bb-2c0b-4491-8823-af919fa90a9a": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 41952048
+    },
+    "136fb222-c2de-48c6-987c-f18f88c89731": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 41299787
+    },
+    "e9c2f578-d8f9-4fb0-84dc-e24657478f93": {
+      "status": "enhanced",
+      "name": "(2S)-2-(4-chlorophenyl)-3-(furan-2-carbonyl)-4-hydroxy-1-(5-methylsulfanyl-1,3,4-thiadiazol-2-yl)-2H-pyrrol-5-one",
+      "pubchem_cid": 40937342
+    },
+    "e0da7822-efcf-4abe-8516-8f487620a907": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 41955527
+    },
+    "e9a42186-e057-43bf-bca3-a692d196dd8e": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 40907226
+    },
+    "c72d7dc9-9e0a-4b4b-be4e-68dbca5acb45": {
+      "status": "enhanced",
+      "name": "N-(5-(3,4-dimethylphenyl)-1,3,4-oxadiazol-2-yl)-2-(thiophen-2-yl)acetamide",
+      "pubchem_cid": 41340222
+    },
+    "06b462f2-2f42-4204-9deb-4290fbfb2a15": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 41915726
+    },
+    "03aa61d7-c7f5-481e-9dba-742cea1a6963": {
+      "status": "enhanced",
+      "name": "4-[(2R)-4-oxo-3-[(1S)-1-phenylethyl]-1,2-dihydroquinazolin-2-yl]benzonitrile",
+      "pubchem_cid": 40790569
+    },
+    "bbb056ca-eb64-41de-88ff-4c87d9b1136d": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 42080004
+    },
+    "ed4e855a-78c3-4a21-ba5d-7d508bd9eea1": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 43941002
+    },
+    "083c98ec-bced-487f-a42d-e18a59295e37": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 42181567
+    },
+    "62d4f147-e38a-417a-88ad-6ef95f88a4da": {
+      "status": "enhanced",
+      "name": "N-[1-(3,4-dipropoxyphenyl)ethyl]-2-[(5-methyl-1,2,4-oxadiazol-3-yl)methoxy]benzamide",
+      "pubchem_cid": 43039909
+    },
+    "141e9224-a9e6-42d4-ba28-554ab575ad79": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 42135853
+    },
+    "41c3eadb-bfca-4088-a486-bf311d722bd5": {
+      "status": "enhanced",
+      "name": "3-amino-N-propan-2-yl-N-propylbenzenesulfonamide",
+      "pubchem_cid": 43269148
+    },
+    "4d69dc18-b94f-4d86-aca0-4c58f7f77132": {
+      "status": "enhanced",
+      "name": "3-[1-(Quinolin-3-ylamino)ethyl]phenol",
+      "pubchem_cid": 43691284
+    },
+    "751f31f2-f8a8-4be5-b18e-6284e440ed2c": {
+      "status": "enhanced",
+      "name": "2-(3-fluorophenyl)sulfonyl-1-thiophen-2-yl-3,4-dihydro-1H-pyrrolo[1,2-a]pyrazine",
+      "pubchem_cid": 43994385
+    },
+    "d4435ffd-94c3-46cb-9639-50f4dece2d6f": {
+      "status": "enhanced",
+      "name": "2-(5-chloro-2-fluoroanilino)-N-(cyclopropylmethyl)acetamide",
+      "pubchem_cid": 43438476
+    },
+    "a8c84994-24c5-40b8-984a-08cc751048bd": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 42419497
+    },
+    "a46ac211-545d-4448-9263-6107e04cb639": {
+      "status": "enhanced",
+      "name": "2-(4-chlorophenyl)-N-[4-[[4-(furan-2-ylmethyl)piperazin-1-yl]methyl]phenyl]acetamide",
+      "pubchem_cid": 44072450
+    },
+    "e63aa30c-2ff3-42cf-b88e-752ff4805c92": {
+      "status": "enhanced",
+      "name": "S-(2-acetamidoethyl) (2R)-2-[(2-methylpropan-2-yl)oxycarbonylamino]propanethioate",
+      "pubchem_cid": 44565140
+    },
+    "7b526316-610e-445c-a098-24853cd7a000": {
+      "status": "enhanced",
+      "name": "Glycolipids",
+      "pubchem_cid": 44176376
+    },
+    "f1f00140-8abd-4bd8-9f8b-7c3a350db40a": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 44791234
+    },
+    "4a2974e9-5699-4dca-bc15-0bbaca67f532": {
+      "status": "enhanced",
+      "name": "(2S)-2-hydroxy-3-[4-(4-methylphenoxy)-N-methylsulfonylanilino]propanoic acid",
+      "pubchem_cid": 44454769
+    },
+    "036107b3-77cf-42a7-9922-fc1202c957e5": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 44670758
+    },
+    "6f1f638a-fe78-40d8-9efc-6c531ae61682": {
+      "status": "enhanced",
+      "name": "3-(Dimethylamino)-1-ethyl-6-methyl-2(1H)-quinolinone",
+      "pubchem_cid": 45095752
+    },
+    "3375c3fb-cb32-48cd-aae9-2a488dbe8bd4": {
+      "status": "enhanced",
+      "name": "N-heptylpiperazin-1-amine",
+      "pubchem_cid": 44592924
+    },
+    "5f26338b-db4e-40df-90fc-66548b170d3f": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 45004093
+    },
+    "c70c6d49-c571-4a16-bba7-17f6aa0af8e7": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 44990747
+    },
+    "0a141b3b-957c-4c30-93dc-ef5890e2ed47": {
+      "status": "enhanced",
+      "name": "{4-[1-(2-Phenylethyl)-4-piperidinyl]-2,3,4,5-tetrahydro-1,4-benzoxazepin-7-yl}(3-pyridinyl)methanol",
+      "pubchem_cid": 45176533
+    },
+    "76462eb9-8396-454d-8d13-ce3eeadb0081": {
+      "status": "enhanced",
+      "name": "(S)-N-hexyl-7-(2-(hydroxyamino)-2-oxoethoxy)-1,2,3,4-tetrahydroisoquinoline-3-carboxamide hydrochloride",
+      "pubchem_cid": 46228611
+    },
+    "c496704e-5754-4b46-b931-131e3c3b12bb": {
+      "status": "enhanced",
+      "name": "N-(tert-butyl)-3-[4-(trifluoromethyl)benzoyl]-1-piperidinecarboxamide",
+      "pubchem_cid": 45208919
+    },
+    "88e495c5-8ccc-41dd-9a51-cc2406b3edc0": {
+      "status": "enhanced",
+      "name": "5-[[5-[(2-chlorophenoxy)methyl]-4-methyl-1,2,4-triazol-3-yl]sulfanylmethyl]-7-oxo-1H-pyrazolo[1,5-a]pyrimidine-3-carbonitrile",
+      "pubchem_cid": 45901541
+    },
+    "7d921eec-eff7-4687-be0a-93b945832128": {
+      "status": "enhanced",
+      "name": "1-[3-(3,5-Dimethylpyrazol-1-yl)-2-methylpropyl]-3-[2-(2-methyl-1,3-thiazol-4-yl)ethyl]urea",
+      "pubchem_cid": 45827804
+    },
+    "2c06ebfb-a377-4f8e-9271-620ccb82a752": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 46480152
+    },
+    "9069906a-03e9-432f-8953-a90143d33348": {
+      "status": "enhanced",
+      "name": "4-Methoxy-N-{3-[2-(5-methyl-1H-1,3-benzodiazol-2-YL)ethyl]phenyl}benzamide",
+      "pubchem_cid": 46328360
+    },
+    "e2545d99-60d0-4729-933a-76d753e83a2b": {
+      "status": "enhanced",
+      "name": "7-[2-(4-Chlorophenyl)-2-oxoethyl]-3-(2-methylphenyl)-1-[(oxolan-2-YL)methyl]-2,3,6,7-tetrahydro-1H-purine-2,6-dione",
+      "pubchem_cid": 46061256
+    },
+    "ee4864a3-e76c-406d-84ad-c0511c9fac5f": {
+      "status": "enhanced",
+      "name": "[2-[(8-methyl-2,4-dioxo-1,3-diazaspiro[4.5]decan-3-yl)amino]-2-oxoethyl] (E)-3-(2-nitrophenyl)prop-2-enoate",
+      "pubchem_cid": 45691863
+    },
+    "d092f8e2-ad48-4140-b946-030309240e43": {
+      "status": "enhanced",
+      "name": "N-[2-(3-amino-3-oxopropoxy)phenyl]-3-[5-(4-methylphenyl)-4-oxothieno[2,3-d]pyrimidin-3-yl]propanamide",
+      "pubchem_cid": 45906303
+    },
+    "11cc3a7e-2840-489e-ad84-03e693fadb03": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 46502518
+    },
+    "7963d26f-3fa2-4aeb-b2dd-5cf9506f59a2": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 47173114
+    },
+    "d4403857-e042-4c37-9135-cc41c3b9bd0e": {
+      "status": "enhanced",
+      "name": "2-methyl-N'-[2-(5-sulfanylidene-3-thiophen-2-yl-1H-1,2,4-triazol-4-yl)acetyl]benzohydrazide",
+      "pubchem_cid": 46666723
+    },
+    "3a26bcac-dee6-4ea8-a3ce-1467be09b8c0": {
+      "status": "enhanced",
+      "name": "[1-(2,5-Difluoroanilino)-1-oxopropan-2-yl] 4-propan-2-yloxybenzoate",
+      "pubchem_cid": 46619250
+    },
+    "0dc507b9-3662-4032-a626-4d60c6379219": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 47225556
+    },
+    "b682bcfa-76aa-46f3-bcc0-db2bfa85e687": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 47438572
+    },
+    "35d97d2d-8c7a-477f-8b16-813f1773fd2e": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 46664118
+    },
+    "2c8ab196-6e10-4d33-8fbd-c6fdd75bed66": {
+      "status": "enhanced",
+      "name": "[2-[2-(4-Chlorophenyl)sulfanylanilino]-2-oxoethyl] 1,3-dimethylpyrazolo[3,4-b]pyridine-5-carboxylate",
+      "pubchem_cid": 46513910
+    },
+    "cd18e68a-78dd-4ae0-a3b9-7c09c49df690": {
+      "status": "enhanced",
+      "name": "N-(3-ethoxybenzyl)-N-(2-hydroxyethyl)-2-(1H-pyrazol-1-yl)benzamide",
+      "pubchem_cid": 46984844
+    },
+    "02f7933e-ce12-4d1e-9c20-0a2d28858607": {
+      "status": "enhanced",
+      "name": "3-(5-Methylfuran-2-yl)-1-[3-(2-methylpyrazolo[1,5-a]pyrimidin-7-yl)piperidin-1-yl]propan-1-one",
+      "pubchem_cid": 46952308
+    },
+    "8d5c1086-b511-439f-8604-6814d257d2f4": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 47788494
+    },
+    "5e6282b7-7110-431c-bf24-4662b1bd3862": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 48599152
+    },
+    "77336da9-36c4-4c94-9528-bb2feb4aa846": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 47840037
+    },
+    "731477d6-e8dd-4f8c-a2c5-ac85a2962418": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 48177433
+    },
+    "5bd8feaa-4db0-4e89-8c82-600f4cfcef84": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 48227829
+    },
+    "f1760713-9448-4938-aa21-9c76021d7529": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 48130782
+    },
+    "3af5b96b-b037-4336-a025-b2e37134c58a": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 47977287
+    },
+    "27e0f2e1-f0d7-48ce-9f43-26efada9300d": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 48489944
+    },
+    "d825cefb-2c7a-4030-ae30-6ff06cc454a5": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 48351954
+    },
+    "59f2691d-19f8-4464-8d94-a9bf3ee2056b": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 48355690
+    },
+    "a558c1b4-c6aa-4b81-a9d5-c7afd05b103e": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 48720041
+    },
+    "5fced389-c37a-4411-86d5-a920e850f69d": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 48744359
+    },
+    "f6213486-2503-4c60-bdfc-fb0d7bb4598c": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 49972153
+    },
+    "10745e75-fd5d-47bb-8d27-85a423fe0c85": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 49361072
+    },
+    "b3ab0da0-fc23-4215-9ab3-54d58426fa0a": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 48733039
+    },
+    "f84e3c1c-3c6a-4418-a6c4-85fed66d183f": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 50192647
+    },
+    "dbd744ce-5b30-4e72-84b5-80afdd55e2a9": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 48791431
+    },
+    "755deaba-ad2e-45c0-af90-f6b88f96066f": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 49297163
+    },
+    "8fa28b2e-7a66-49e6-895e-f381cb4c3796": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 49386131
+    },
+    "49295286-ee0b-4ea5-85e8-7178786a62ae": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 50338449
+    },
+    "5eeaf42b-4aa7-4c71-a8ec-e26d8c798fa1": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 50350591
+    },
+    "6dac62cf-d562-4d55-b65a-207e2a252f5c": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 50570911
+    },
+    "7c9f3c41-5f0f-4aa8-a6b5-59eed78002b3": {
+      "status": "enhanced",
+      "name": "2-(N-(4-chlorophenyl)sulfonyl-2-methylanilino)acetyl chloride",
+      "pubchem_cid": 50889982
+    },
+    "d2296ff9-1680-42a3-904c-8ba979734897": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 51517173
+    },
+    "ef42cfbb-48d5-4d61-b765-3d2c46f8bf75": {
+      "status": "enhanced",
+      "name": "[2-(1,3-Benzothiazol-2-yl)pyrrolidin-1-yl]-(5,6-dichloropyridin-3-yl)methanone",
+      "pubchem_cid": 51143375
+    },
+    "f08baaea-6e3c-4963-96f8-d39e750026e2": {
+      "status": "enhanced",
+      "name": "3-[2-(2-methyl-1H-indol-1-yl)ethyl]-5,6,7,8-tetrahydropyrido[4',3':4,5]thieno[2,3-d]pyrimidin-4(3H)-one",
+      "pubchem_cid": 50950596
+    },
+    "1bd6297d-4a2d-4260-a941-78269d3e347c": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 51456805
+    },
+    "69aa8fed-aea5-4934-ae2c-a1af49cfa689": {
+      "status": "enhanced",
+      "name": "tert-butyl N-[2-methyl-1-[[3-(methylcarbamoyl)phenyl]methylamino]-1-oxopropan-2-yl]carbamate",
+      "pubchem_cid": 51095390
+    },
+    "b69de622-36df-4446-881a-b2afe6fb2c8f": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 50443260
+    },
+    "a6b40ffd-7ccd-4662-8799-3d579aa29741": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 51585552
+    },
+    "87028199-079a-48c9-bcf4-12d9a3a326f3": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 51650749
+    },
+    "be218f52-07a1-4435-8413-6aeed4644183": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 51695814
+    },
+    "6d292fa6-2fa2-4ce6-bdc1-c12514107573": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 53444072
+    },
+    "a463e6f3-efef-42be-9255-9b40ccb54ed9": {
+      "status": "enhanced",
+      "name": "1-[5-(3-Fluorobenzoyl)-1-methyl-1H,4H,5H,6H,7H-pyrazolo[4,3-C]pyridine-3-carbonyl]-N-phenylpiperidine-3-carboxamide",
+      "pubchem_cid": 53018204
+    },
+    "8d31dd90-4429-4bdd-8441-3cfc1157b066": {
+      "status": "enhanced",
+      "name": "Ethyl 2-oxo-7-phenylsulfanylbicyclo[3.2.0]hept-6-ene-1-carboxylate",
+      "pubchem_cid": 53388094
+    },
+    "27d88f18-e66d-4495-be1e-12f8e7cb504e": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 52891724
+    },
+    "7c54be5f-3fbd-4084-b49f-bbfe9ee57a8a": {
+      "status": "enhanced",
+      "name": "6-chloro-N-(4-chlorophenyl)-2,3-dihydro-1,4-benzodioxine-7-carboxamide",
+      "pubchem_cid": 52107154
+    },
+    "1c48ea0d-1a57-4f3f-8e4e-d390a2c72415": {
+      "status": "enhanced",
+      "name": "N,N-diethyl-7-iodohept-2-ynamide",
+      "pubchem_cid": 53235766
+    },
+    "6e261af7-e9b4-4813-a640-98508d0ba5db": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 52295593
+    },
+    "a4c7e4a8-ea18-482f-bb6d-270a98b058b3": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 52190314
+    },
+    "fceec35b-e9a1-4bf0-8e56-6e7299a97ba3": {
+      "status": "enhanced",
+      "name": "1-(2,3-dihydro-1H-inden-1-yl)-3-propan-2-yl-1-prop-2-ynylurea",
+      "pubchem_cid": 53518996
+    },
+    "22142c87-794f-4041-9bb9-ddef3bb880e1": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 53882606
+    },
+    "63d661ac-f014-4365-90b2-b0087ae304a7": {
+      "status": "enhanced",
+      "name": "N-ethyl-2-(oxolan-2-ylmethylamino)-N-phenylacetamide",
+      "pubchem_cid": 54815424
+    },
+    "c110d929-8d49-4a5c-9703-1e33729f62da": {
+      "status": "enhanced",
+      "name": "N-cycloheptyl-3,4-dimethoxy-N-methyl-5-prop-2-enylbenzamide",
+      "pubchem_cid": 55469944
+    },
+    "720a45aa-01a8-486f-9afc-6ece144d46fd": {
+      "status": "enhanced",
+      "name": "3-(5-amino-3,4-dihydro-1H-isoquinolin-2-yl)azepan-2-one",
+      "pubchem_cid": 54904174
+    },
+    "b5375ce6-d7db-4dd4-a30f-e008b3c905b3": {
+      "status": "enhanced",
+      "name": "4-Chloro-2-(2,5-dimethylthiophen-3-yl)-5,6,7,8-tetrahydroquinazoline",
+      "pubchem_cid": 54978017
+    },
+    "ce808e47-0292-4fd1-ace9-15101e72e2a2": {
+      "status": "enhanced",
+      "name": "(E)-3-[5-(4-chlorophenyl)thiophen-2-yl]-N-(1,1-dioxothiolan-3-yl)-N',N'-dimethylprop-2-enehydrazide",
+      "pubchem_cid": 55555054
+    },
+    "d46fe978-cd43-4ad4-b212-fd325eb1dba7": {
+      "status": "enhanced",
+      "name": "[(2S,5S)-5-[4-(methylamino)benzimidazol-1-yl]oxolan-2-yl]methanol",
+      "pubchem_cid": 54038491
+    },
+    "a7f92119-0e6b-402e-b933-d28aa71a6d32": {
+      "status": "enhanced",
+      "name": "1-[1-[(4-Fluorophenyl)methyl]-2,5-dimethylpyrrol-3-yl]-2-(4-methylsulfonylphenoxy)ethanone",
+      "pubchem_cid": 55358882
+    },
+    "55ea00b9-39f8-4cc0-ba7a-ed26faaf07e7": {
+      "status": "enhanced",
+      "name": "3-[3-(4-bromophenyl)-1,2,4-oxadiazol-5-yl]-N-ethylbutan-2-amine",
+      "pubchem_cid": 55203000
+    },
+    "d9e95a70-20a8-4aa2-a398-4657ff202932": {
+      "status": "enhanced",
+      "name": "2-chloro-N-(2,3-dihydro-1,4-benzodioxin-3-ylmethyl)-5-methylsulfonylbenzenesulfonamide",
+      "pubchem_cid": 55598097
+    },
+    "5c16f76b-9c77-46fd-aeb7-588025040ade": {
+      "status": "enhanced",
+      "name": "2-[4-[cyclohexyl(methyl)sulfamoyl]piperazin-1-yl]-N-(4-ethoxyphenyl)propanamide",
+      "pubchem_cid": 55626275
+    },
+    "03945e41-2ec4-4b46-9daa-d90a9f7dec26": {
+      "status": "enhanced",
+      "name": "N-[4-[(3-nitro-4-pyrrolidin-1-ylbenzoyl)amino]-3-(trifluoromethyl)phenyl]furan-3-carboxamide",
+      "pubchem_cid": 55782409
+    },
+    "6fb858eb-4eb4-4299-9bd3-5dd295c4fbc8": {
+      "status": "enhanced",
+      "name": "N-[(3-fluoro-4-imidazol-1-ylphenyl)methyl]-2-[[4-(4-methoxyphenyl)-5-methyl-1,2,4-triazol-3-yl]sulfanyl]acetamide",
+      "pubchem_cid": 56072233
+    },
+    "74bbef02-9172-4ccd-a436-6ce87faf617f": {
+      "status": "enhanced",
+      "name": "(2S)-N-[(3-butoxyphenyl)methyl]-1-(4-methylphenyl)sulfonylpyrrolidine-2-carboxamide",
+      "pubchem_cid": 55940170
+    },
+    "bc273427-1c44-49bf-90ec-6c75040bfe81": {
+      "status": "enhanced",
+      "name": "2-(8-chloronaphthalen-1-yl)sulfanyl-N-[2-(1-methylpiperidin-4-yl)ethyl]acetamide",
+      "pubchem_cid": 56319523
+    },
+    "807f661c-2569-407e-be81-42d328151851": {
+      "status": "enhanced",
+      "name": "[3-(2-Amino-2-oxoethoxy)phenyl]methyl 2,6-dimethylquinoline-4-carboxylate",
+      "pubchem_cid": 56202452
+    },
+    "c3178ce2-867b-42c8-9fa1-357d9c5abd5f": {
+      "status": "enhanced",
+      "name": "3-Hydroxy-3-{[(1H-indol-6-ylmethyl)amino]methyl}-1-(3-phenylpropyl)piperidin-2-one",
+      "pubchem_cid": 56719729
+    },
+    "cbe37694-c372-4109-ad5f-c0107348f4a9": {
+      "status": "enhanced",
+      "name": "2-[4-[[3-(3-Nitrophenyl)-1,2,4-oxadiazol-5-yl]methyl]piperazin-1-yl]-1-pyrrolidin-1-ylethanone",
+      "pubchem_cid": 55625838
+    },
+    "796a2252-ff36-4994-9c2c-051c52e22e53": {
+      "status": "enhanced",
+      "name": "2-[2-(4-fluoroanilino)-2-oxoethyl]sulfanyl-N-[[3-(2-oxopiperidin-1-yl)phenyl]methyl]acetamide",
+      "pubchem_cid": 56040630
+    },
+    "b84d2e4f-9a63-4fea-ad12-d970b816ebd2": {
+      "status": "enhanced",
+      "name": "1-[2-[1-(5-Methylfuran-2-yl)ethylamino]-2-oxoethyl]cyclopentane-1-carboxylic acid",
+      "pubchem_cid": 56810689
+    },
+    "973a546a-4122-48ba-b026-6bc3d8c2db5e": {
+      "status": "enhanced",
+      "name": "[3,4-Difluoro-2-(2-fluoro-4-iodoanilino)phenyl]-[3-hydroxy-3-[(2-hydroxyanilino)methyl]azetidin-1-yl]methanone",
+      "pubchem_cid": 59469083
+    },
+    "b101510e-c29b-400e-a92d-964460ea02a8": {
+      "status": "enhanced",
+      "name": "2-[4-[4-(4-Amino-5-oxo-7,8-dihydropyrimido[5,4-f][1,4]oxazepin-6-yl)phenyl]cyclohex-3-en-1-yl]acetic acid",
+      "pubchem_cid": 59302508
+    },
+    "955d8fa2-d1e4-46f8-9562-4d9f09c8ac69": {
+      "status": "enhanced",
+      "name": "5-[3-(4-Fluoro-phenyl)-5-methyl-3H-[1,2,3]triazol-4-ylmethoxy]-pyrazine-2-carboxylic acid morpholin-4-ylamide",
+      "pubchem_cid": 57335973
+    },
+    "689330cd-575f-4fef-a062-ff90b42db01f": {
+      "status": "enhanced",
+      "name": "N'-(4-amino-2-hydroxyphenyl)-N-methyloxamide",
+      "pubchem_cid": 60013303
+    },
+    "7ab5b7dc-a548-4c26-b724-64dd27999766": {
+      "status": "enhanced",
+      "name": "2-Ethylhexane-1-sulfinate",
+      "pubchem_cid": 57225037
+    },
+    "623a36da-fbd7-44dc-a67e-024174c36438": {
+      "status": "enhanced",
+      "name": "N-[(1R)-2-oxocyclopentyl]-1,3-benzodioxole-5-carboxamide",
+      "pubchem_cid": 58413640
+    },
+    "e60fce5d-7402-409b-bd5d-465ad95a47f9": {
+      "status": "enhanced",
+      "name": "3-[6-(Propan-2-ylamino)pyrimidin-4-yl]-6-pyridin-4-ylpyrazolo[1,5-a]pyrimidin-2-amine",
+      "pubchem_cid": 57674286
+    },
+    "4a3b428a-41e8-4b93-a309-d7e61252b143": {
+      "status": "enhanced",
+      "name": "3-(1-Cyclopropylpiperidin-4-yl)-5-(4-methylphenyl)-1,2,4-oxadiazole",
+      "pubchem_cid": 59657786
+    },
+    "38ae95e7-29c1-4a7f-b6ae-bba468d90023": {
+      "status": "enhanced",
+      "name": "5-methyl-2-[4-(4-methylimidazolidin-2-yl)phenyl]-4,5-dihydro-1H-imidazole",
+      "pubchem_cid": 58864853
+    },
+    "e8a0337e-e626-4a08-92ae-f130b41a6e69": {
+      "status": "enhanced",
+      "name": "(4-Benzyl-2-methylpiperazin-1-yl)-(3-methoxy-4-methylphenyl)methanone",
+      "pubchem_cid": 60335872
+    },
+    "0bf32ac5-c8d1-465c-91c4-c70dd0bf1a30": {
+      "status": "enhanced",
+      "name": "N-[3-[(3-fluorophenyl)carbamoyl]phenyl]-4-(4-nitrophenyl)piperazine-1-carboxamide",
+      "pubchem_cid": 60488647
+    },
+    "a1295194-7e5a-43f2-abf4-82c1bc3ee31e": {
+      "status": "enhanced",
+      "name": "1-[3-(2,3-Dihydroindole-1-carbonyl)phenyl]-3-[4-[2-(hydroxymethyl)pyrrolidin-1-yl]butyl]urea",
+      "pubchem_cid": 60340187
+    },
+    "18dc636f-a899-430a-bd7e-59b20afa7751": {
+      "status": "enhanced",
+      "name": "[4-(Butan-2-ylamino)-1-methylpiperidin-4-yl]methanol",
+      "pubchem_cid": 61047807
+    },
+    "a64ca389-c1d0-4525-9a2d-f80ae7386d9a": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 60583225
+    },
+    "b518e0f9-208f-425a-9ea5-9b591f5291af": {
+      "status": "enhanced",
+      "name": "2-naphthalen-2-yl-N-(2-sulfamoylethyl)acetamide",
+      "pubchem_cid": 61067014
+    },
+    "a2588541-2e07-4bcb-a6f0-1059bb8f2082": {
+      "status": "enhanced",
+      "name": "1-(3,5-Difluorophenyl)-2-(3-methoxyphenyl)ethanone",
+      "pubchem_cid": 61080076
+    },
+    "e825cb2a-58c8-44c0-8b2a-b8867d1e9444": {
+      "status": "enhanced",
+      "name": "(E)-4-oxo-4-[(2,6,6-trimethyl-5,7-dihydro-4H-1-benzofuran-4-yl)amino]but-2-enoic acid",
+      "pubchem_cid": 60941271
+    },
+    "19a282f5-23bc-4eb3-857d-a75def3d455f": {
+      "status": "enhanced",
+      "name": "4-amino-2-chloro-N-[3-(dimethylamino)propyl]-N-(2-methoxyethyl)benzamide",
+      "pubchem_cid": 61114626
+    },
+    "e9cc0959-2aac-47b6-86a9-f6f25f88aced": {
+      "status": "enhanced",
+      "name": "N-[4-cyano-2-(trifluoromethyl)phenyl]-1H-pyrazole-4-carboxamide",
+      "pubchem_cid": 61258778
+    },
+    "b242844b-973a-4001-b7ec-053f33096296": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 61419640
+    },
+    "e5746537-9ed7-4616-9e00-e788197f4196": {
+      "status": "enhanced",
+      "name": "N-[[1-(4-methylcyclohexyl)pyrrolidin-3-yl]methyl]cyclopropanamine",
+      "pubchem_cid": 62513388
+    },
+    "26c54cd0-9928-4adb-acdf-8b2907fbcaba": {
+      "status": "enhanced",
+      "name": "N-[(3-chlorophenyl)methyl]-2-(2-formylpiperidin-1-yl)-N-methylacetamide",
+      "pubchem_cid": 62656258
+    },
+    "fffff9f3-433e-4251-bad5-448994b728fb": {
+      "status": "failed",
+      "name": "N-(4-ethyl-5-methyl-1,3-thiazol-2-yl)-2-(methylamino)pyrimidine-5-sulfonamide",
+      "pubchem_cid": 62153156
+    },
+    "871968f3-1745-4af1-a060-2bbe359a57d3": {
+      "status": "failed",
+      "name": "2,2-Diethyl-5-(2,2,2-trifluoroethoxy)pentan-1-amine",
+      "pubchem_cid": 62723900
+    },
+    "f97095a0-d083-4bd1-9275-54842a05ebf7": {
+      "status": "enhanced",
+      "name": "1-[2-[Cyclopropyl(2-methylpropyl)amino]-4-methyl-1,3-thiazol-5-yl]ethanone",
+      "pubchem_cid": 62751655
+    },
+    "b5250a46-43af-4612-9fa4-c91629f332be": {
+      "status": "enhanced",
+      "name": "2-(5,6-dimethylbenzimidazol-1-yl)-N-methylcyclooctan-1-amine",
+      "pubchem_cid": 61752060
+    },
+    "45f82c1e-e7fb-4c3f-8588-49c1f93a9f85": {
+      "status": "enhanced",
+      "name": "1-(4-Fluorophenyl)-1-[4-(2-methylpropyl)piperazin-1-yl]propan-2-amine",
+      "pubchem_cid": 62777950
+    },
+    "d9f2b582-e63b-479a-93a6-a8236be64bd5": {
+      "status": "enhanced",
+      "name": "N-ethyl-N'-methyl-1-(2-methylphenyl)-N'-(2-methylpropyl)propane-1,3-diamine",
+      "pubchem_cid": 62629234
+    },
+    "85fd7055-3db4-4e4e-b455-6b5b7f04d5a7": {
+      "status": "enhanced",
+      "name": "2-Methyl-2-[(2-nitrophenyl)methylsulfonylamino]propanoic acid",
+      "pubchem_cid": 62022787
+    },
+    "3bb1d8fa-630d-4e75-bf21-eb65d341a9f7": {
+      "status": "enhanced",
+      "name": "3-[(3-Aminocyclobutyl)amino]-1-propylpyrazin-2-one",
+      "pubchem_cid": 62927607
+    },
+    "cff44188-552f-467a-9c6b-2f4589e2195f": {
+      "status": "enhanced",
+      "name": "4-(3-aminoazetidin-1-yl)-N-propan-2-ylbenzenesulfonamide",
+      "pubchem_cid": 63759994
+    },
+    "a7e3271e-e067-491a-b464-a9798e57ed7e": {
+      "status": "enhanced",
+      "name": "4,6-Dimethyl-1-(3-methylsulfonylpropyl)-2-oxopyridine-3-carboxylic acid",
+      "pubchem_cid": 63191431
+    },
+    "0c0f8805-c5ae-487e-8bdc-6fd71b8847c7": {
+      "status": "enhanced",
+      "name": "2-[[3-(Dimethylamino)propyl-methylamino]methyl]-5-fluorobenzenecarboximidamide",
+      "pubchem_cid": 63694546
+    },
+    "d8ee040f-ad8c-4562-9dc7-b680a730dfee": {
+      "status": "enhanced",
+      "name": "[4-(1-Aminobutan-2-yl)piperazin-1-yl]-(6-methylpyridin-2-yl)methanone",
+      "pubchem_cid": 63341418
+    },
+    "f81e5f95-7080-4630-b281-9060da813850": {
+      "status": "enhanced",
+      "name": "(5-amino-1H-indazol-3-yl)-(2,2-dimethylpyrrolidin-1-yl)methanone",
+      "pubchem_cid": 63216299
+    },
+    "58e0d0a0-0f48-4862-9082-399cf3c9c899": {
+      "status": "enhanced",
+      "name": "2-Amino-2-cyclopropyl-3-[methyl(3-methylbutyl)amino]propanoic acid",
+      "pubchem_cid": 63916469
+    },
+    "23917e83-b8d5-414d-b068-9e1142c11e0d": {
+      "status": "enhanced",
+      "name": "2-(5-Fluoro-2-methylphenyl)cyclohexan-1-one",
+      "pubchem_cid": 62801595
+    },
+    "13829c37-bad4-4a7c-996e-26a2cde619f1": {
+      "status": "enhanced",
+      "name": "2-[3-(5-cyclopentyl-1H-1,2,4-triazol-3-yl)phenyl]ethanamine",
+      "pubchem_cid": 63793896
+    },
+    "3d7bed94-bfc6-494e-a7a6-92ec744bd7cf": {
+      "status": "enhanced",
+      "name": "3-Tert-butyl-5-phenyl-1,3-diazinane-2,4-dione",
+      "pubchem_cid": 62882796
+    },
+    "bf64d5b5-1f77-4914-b4b9-6d8b748ba646": {
+      "status": "enhanced",
+      "name": "3-[2-Amino-2-(1-methylpyrazol-4-yl)ethyl]pyridin-4-amine",
+      "pubchem_cid": 65195328
+    },
+    "67747237-2c51-4289-908c-80b5dc886f14": {
+      "status": "enhanced",
+      "name": "4-Ethyl-6-[(4-methylcyclohexyl)carbamoylamino]hexanoic acid",
+      "pubchem_cid": 64350263
+    },
+    "53746fa3-cb37-43b6-8b36-98591ae0da23": {
+      "status": "enhanced",
+      "name": "5-(2-Ethylcyclohexyl)oxy-2-methyl-2-(propylamino)pentan-1-ol",
+      "pubchem_cid": 64802131
+    },
+    "50ec24d6-6ce3-4d6d-8150-2051c441ed02": {
+      "status": "enhanced",
+      "name": "4-N-(1H-pyrazol-4-ylmethyl)quinazoline-4,6-diamine",
+      "pubchem_cid": 64588900
+    },
+    "9a8e3764-bd8e-42b6-9d7d-f64e2f52542a": {
+      "status": "enhanced",
+      "name": "2-[4-[(4-Methoxy-2-methylanilino)methyl]pyrazol-1-yl]ethanol",
+      "pubchem_cid": 64829803
+    },
+    "795f02c4-3192-4ab2-be69-a5aa7cd342ca": {
+      "status": "enhanced",
+      "name": "1-Bromo-4-(3-chlorobutan-2-yl)-2-fluoro-5-nitrobenzene",
+      "pubchem_cid": 66110341
+    },
+    "c3369320-a529-4d84-91e7-cb18852fdaf0": {
+      "status": "enhanced",
+      "name": "3-amino-N-(4-bromo-2,6-difluorophenyl)-2,2-dimethyl-3-sulfanylidenepropanamide",
+      "pubchem_cid": 65469212
+    },
+    "f34684bf-425f-492f-aa2a-9d0e858a3f9f": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 64427557
+    },
+    "ead7d8cd-942f-4070-a738-a2ee6c7a710e": {
+      "status": "enhanced",
+      "name": "N-ethyl-3-(3-fluoro-4-methoxyphenyl)-2-phenylpropan-1-amine",
+      "pubchem_cid": 65431904
+    },
+    "a609c6f9-710e-4658-a522-f4c1f791e988": {
+      "status": "enhanced",
+      "name": "N-[2-(3-methylcyclohexyl)ethyl]-1-methylsulfonylpropan-2-amine",
+      "pubchem_cid": 64631391
+    },
+    "a065f5fd-7513-4782-b023-befa0eb6ee86": {
+      "status": "enhanced",
+      "name": "2-(Thiophen-3-ylsulfamoylamino)ethanol",
+      "pubchem_cid": 67363632
+    },
+    "44ab7aa4-584c-474e-9f3a-bbc8a7ef9a22": {
+      "status": "enhanced",
+      "name": "tert-butyl (3aR*,4R*,9bR*)-4-(1-{[(2,2-dimethylpropanoyl)oxy]methyl}-1H-imidazol-2-yl)-8-fluoro-2,3,3a,4,5,9b-hexahydro-1H-pyrrolo[3,2-c]quinoline-1-carboxylate",
+      "pubchem_cid": 67155228
+    },
+    "79d35ca6-ad28-49e9-aaaf-21c3081ad3d8": {
+      "status": "enhanced",
+      "name": "3-[4-[(1-ethylpyrrol-3-yl)methylamino]phenyl]-1H-imidazol-2-one",
+      "pubchem_cid": 66414778
+    },
+    "63df27b2-346d-46d2-a6bb-721e87f5be68": {
+      "status": "enhanced",
+      "name": "(2S)-3-[3,4-bis(3-methylbutan-2-yloxycarbonyloxy)phenyl]-2-methoxycarbonyloxy-2-(propan-2-ylamino)propanoic acid",
+      "pubchem_cid": 66943721
+    },
+    "88d35792-7d32-4e12-b0e2-859d3c5f2704": {
+      "status": "enhanced",
+      "name": "1,3-Diazaspiro[5.5]undecan-2-one",
+      "pubchem_cid": 67516447
+    },
+    "dee3d977-4026-48f5-80ec-cd9d0c061673": {
+      "status": "enhanced",
+      "name": "1-[4-[2-Methyl-7-(2-morpholin-4-ylethylamino)-4-oxoquinazolin-3-yl]phenyl]-3-(5-methylthiophen-2-yl)sulfonylurea",
+      "pubchem_cid": 68208127
+    },
+    "66a3c14d-a9dc-4cd1-b6aa-256d6fcf99e3": {
+      "status": "enhanced",
+      "name": "Ac-N(Me)Tyr-Glu-Phe-NH2",
+      "pubchem_cid": 67111479
+    },
+    "e0fd04e1-45c9-48c7-a028-d3d288bb14a5": {
+      "status": "enhanced",
+      "name": "4-amino-5-ethyl-N-(3-ethyl-2-methylcyclopentyl)-2-methylpyrazole-3-carboxamide",
+      "pubchem_cid": 66118257
+    },
+    "559ef95a-db82-4a24-868d-6487c460673a": {
+      "status": "enhanced",
+      "name": "2-(aminomethyl)-N-methyl-N-(2-phenylethyl)-1,3-thiazole-4-carboxamide",
+      "pubchem_cid": 66375720
+    },
+    "7a2ce3b3-3454-4e5a-bdf5-d7f572e556b0": {
+      "status": "enhanced",
+      "name": "4-[2-(1-Aminoethyl)-1,3-thiazole-4-carbonyl]-3,3-dimethylpiperazin-2-one",
+      "pubchem_cid": 66388784
+    },
+    "b2afeb11-4eb2-4f3a-891c-c207d1695609": {
+      "status": "enhanced",
+      "name": "2-Methoxy-4-pyridazin-4-ylbenzoic acid",
+      "pubchem_cid": 69735226
+    },
+    "e6dedf7e-2b63-46c6-8973-6e959aa4500d": {
+      "status": "enhanced",
+      "name": "(Z)-2-(2-hydroxyethylsulfanyl)-3-(6-methyl-1H-indol-3-yl)-1-(3,4,5-trimethoxyphenyl)prop-2-en-1-one",
+      "pubchem_cid": 69907547
+    },
+    "b7d3762f-3cfd-40c5-9731-063ac79e21da": {
+      "status": "enhanced",
+      "name": "N-[4-[(2-amino-1,3-benzoxazol-6-yl)sulfonyl-(2-methylpropyl)amino]-3-hydroxy-1-phenylbutan-2-yl]-2-(3,5-dimethylpyridin-4-yl)oxyacetamide",
+      "pubchem_cid": 69347095
+    },
+    "30910610-dff0-4d9e-99ea-4cd27cc7c68c": {
+      "status": "enhanced",
+      "name": "N-[(2S,3R)-2-methyl-1-azabicyclo[2.2.2]octan-3-yl]-3-(trifluoromethyl)furo[2,3-c]pyridine-5-carboxamide",
+      "pubchem_cid": 69634248
+    },
+    "b1bb29ec-7121-4265-9d5e-6244c039fe94": {
+      "status": "enhanced",
+      "name": "(E)-3-(hydroxymethoxy)-3-phenylprop-2-enehydrazide",
+      "pubchem_cid": 69535306
+    },
+    "4aed86a9-81dc-48bb-a2e4-e5468a3fccd7": {
+      "status": "enhanced",
+      "name": "methyl [3-[4-(8-methyl-2-oxo-4H-3,1-benzoxazin-1-yl)piperidin-1-yl]sulfonylthiophen-2-yl] carbonate",
+      "pubchem_cid": 69027192
+    },
+    "5057d0d0-6492-468d-bf1e-72b0dec0d828": {
+      "status": "enhanced",
+      "name": "7-[2-(5,7-Dichloroquinolin-8-yl)oxyethyl]-5-hydroxy-4-methyl-2-naphthalen-1-yl-3a,5,6,7a-tetrahydro-4,7-epoxyisoindole-1,3-dione",
+      "pubchem_cid": 69795252
+    },
+    "6fdd4e59-d001-461c-aaf6-dabd70d2332d": {
+      "status": "enhanced",
+      "name": "[4-[[2-[4-(4-Carbamoyl-3-fluorophenyl)phenyl]-1-cyanoethyl]carbamoyl]oxan-4-yl]carbamic acid",
+      "pubchem_cid": 68430619
+    },
+    "06a1e409-f899-4841-b8f9-64ccf6d463b6": {
+      "status": "enhanced",
+      "name": "2-[(1-Acetyl-4-hydroxypyrrolidine-2-carbonyl)amino]pentanedioic acid",
+      "pubchem_cid": 69044184
+    },
+    "cbf8a10d-2979-4b05-a6fa-e97a850ca62a": {
+      "status": "enhanced",
+      "name": "2-Methyl-4-(3-methyl-1,2,4-oxadiazol-5-yl)-1,3-oxazole-5-carboxamide",
+      "pubchem_cid": 68803726
+    },
+    "242e03b4-53c9-4a14-bb0c-b950d34d436f": {
+      "status": "enhanced",
+      "name": "2-Chloro-4-[5-fluoro-4-(3-hydroxy-oxetan-3-yl)-pyridin-3-yl]-benzonitrile",
+      "pubchem_cid": 69937824
+    },
+    "1f15cbe5-d8b6-43a7-bb62-d3d017ff2a0d": {
+      "status": "enhanced",
+      "name": "[3,5-Bis(3-chlorophenyl)-2,3-dihydrothiophen-4-yl]-pyridin-3-ylmethanol",
+      "pubchem_cid": 70883312
+    },
+    "ea07d982-4dd0-4636-9965-ed6b3722545b": {
+      "status": "enhanced",
+      "name": "N-(2,4-dibromo-6-methoxyphenyl)nitramide",
+      "pubchem_cid": 70612726
+    },
+    "e4f77c2e-acd8-44c2-993a-4584af09b991": {
+      "status": "enhanced",
+      "name": "5-Methyl-4-thiophen-2-yltriazine",
+      "pubchem_cid": 70355298
+    },
+    "6ba44657-3d73-408c-a120-cdff2b78adce": {
+      "status": "enhanced",
+      "name": "2-[(2S)-2-[5-(6-methoxynaphthalen-2-yl)thiophen-2-yl]-1,1-dioxothian-2-yl]acetic acid",
+      "pubchem_cid": 69913408
+    },
+    "385496de-4783-49e3-8de5-6dae95432d1a": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 70079025
+    },
+    "a2679bb4-296f-4daf-b9cd-08d7e06f038f": {
+      "status": "enhanced",
+      "name": "7-[[ethyl(3-methylbutyl)amino]methyl]-1,3,10,11-tetrahydroxy-12-oxo-4,4a,5,5a,6,12a-hexahydro-1H-tetracene-2-carboxamide",
+      "pubchem_cid": 70797011
+    },
+    "4ce65dba-89f9-464f-90d3-d2f8cb73d965": {
+      "status": "enhanced",
+      "name": "4-methyl-2-{2-oxo-2-[4-(2-pyridinylamino)-1-piperidinyl]ethyl}-1(2H)-phthalazinone",
+      "pubchem_cid": 70721384
+    },
+    "70583cd1-d343-45fc-857d-6d1f0ad7b096": {
+      "status": "enhanced",
+      "name": "6-Methoxy-1,3-dimethylnaphthalene-2-carboxylic acid",
+      "pubchem_cid": 70196680
+    },
+    "576283a1-8b40-41f4-adef-6d23e6bf5d30": {
+      "status": "enhanced",
+      "name": "benzyl (4S)-4-[(3R)-3-[(2-methylpropan-2-yl)oxycarbonylamino]pyrrolidin-1-yl]azepane-1-carboxylate",
+      "pubchem_cid": 70928465
+    },
+    "be186e0f-074c-4097-af3a-368f124fa449": {
+      "status": "enhanced",
+      "name": "4-[(1-methylpiperidin-4-yl)amino]-2H-phthalazin-1-one",
+      "pubchem_cid": 71720181
+    },
+    "5424cb61-0d93-4099-a08d-6f2389080d7f": {
+      "status": "enhanced",
+      "name": "(1S,2R,5R,6S,7R,8R,11R,13R,17S,18R)-18-[(2S,3R,4S,6R)-4-(dimethylamino)-3-hydroxy-6-methyloxan-2-yl]oxy-5-ethyl-6,7-dihydroxy-2,6,8,11,13,17-hexamethyl-1'-(pyridin-2-ylmethyl)spiro[4,14,16-trioxa-9-azabicyclo[11.3.2]octadecane-15,4'-piperidine]-3-one",
+      "pubchem_cid": 73349782
+    },
+    "edb0a435-5af5-40ba-ba07-cc14d1b3f03d": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 73233479
+    },
+    "7862c34c-a5d2-436b-af44-bd659fd7fabe": {
+      "status": "enhanced",
+      "name": "(1S,2R,3S,4S,6S)-6-hydroxy-1'-methyl-3-nitro-2,4-diphenylspiro[cyclohexane-1,3'-indole]-2'-one",
+      "pubchem_cid": 71657988
+    },
+    "06b45a00-f00e-457a-9e63-f09ad8698c78": {
+      "status": "enhanced",
+      "name": "N-[1-[[1-(2-fluoroethyl)piperidin-4-yl]-phenylmethyl]pyrazol-4-yl]-6,6-dimethyl-1,4,5,7-tetrahydroindazole-3-carboxamide",
+      "pubchem_cid": 73293783
+    },
+    "225734aa-e206-4e92-b44d-0b2198853909": {
+      "status": "enhanced",
+      "name": "(2-Prop-2-ynoxyphenyl) 1-acetylpiperidine-4-carboxylate",
+      "pubchem_cid": 72021095
+    },
+    "3bbd6ea5-6945-4cb2-badb-4182e77159ca": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 72252004
+    },
+    "fabbf83f-ebc0-424c-b05f-c3a80cd8ff2e": {
+      "status": "enhanced",
+      "name": "1,3,3-Trimethyl-2-(2-pyrrolidin-1-ium-1-ylideneethylidene)indole",
+      "pubchem_cid": 72486838
+    },
+    "64cf04d0-0e99-4055-8b53-8dfacb872968": {
+      "status": "enhanced",
+      "name": "3-{[3-cyclopropyl-1-(3,4-difluorophenyl)-1H-1,2,4-triazol-5-yl]methyl}pyridine",
+      "pubchem_cid": 72853159
+    },
+    "b43ce566-6aa2-451b-9908-b25524b79d0a": {
+      "status": "enhanced",
+      "name": "N-[(1-ethyl-1H-imidazol-2-yl)methyl]-N-methyl-N'-[4-(propylthio)phenyl]urea",
+      "pubchem_cid": 72908543
+    },
+    "b918ab23-b701-4705-a11c-fa06c05d6379": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 74439951
+    },
+    "f3ffb43b-4f38-477a-b254-5e74e10c136f": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 73410780
+    },
+    "33a9a9cc-ad62-4af2-9627-593e62d8337a": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 73580250
+    },
+    "882a5eb0-2b2d-4334-b589-d3bccf3ca91b": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 74391476
+    },
+    "7b85fb8b-6d51-4f77-9a9d-06da98342bda": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 74154061
+    },
+    "7afc4166-f009-4c3a-b4e2-6fa6f9b0e8f2": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 75033048
+    },
+    "46581b51-2919-4f67-9c8a-07d60ef97906": {
+      "status": "enhanced",
+      "name": "3-morpholin-4-yl-3H-pyridazin-6-one",
+      "pubchem_cid": 74053273
+    },
+    "894b6f55-e4d3-4b6f-9b6c-10a6d8adbf18": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 74632809
+    },
+    "384914ac-4722-4fd9-98d0-1060a77a0f2b": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 75080027
+    },
+    "ec963f1e-6d6a-413d-945d-8197740c2694": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 73832161
+    },
+    "53fe5082-443e-407c-8a1f-560802c22d89": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 76137631
+    },
+    "3244aff1-95a8-4352-bf07-1d4aebc50dbe": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 76164541
+    },
+    "e0ba0b26-4e22-4ae3-b274-3bf3e031c986": {
+      "status": "enhanced",
+      "name": "N-(3-amino-3-hydroxyimino-2-methylpropyl)-N-ethyl-1,3-thiazole-4-carboxamide",
+      "pubchem_cid": 76982221
+    },
+    "8d995c6e-1c2a-4fac-ad8b-eeacba12c248": {
+      "status": "enhanced",
+      "name": "4-[(4-Phenylbenzoyl)amino]thiophene-3-carboxylic acid",
+      "pubchem_cid": 76325568
+    },
+    "6e57622c-e224-4ab4-b55f-6fa7fdb9531f": {
+      "status": "enhanced",
+      "name": "2-amino-N-(2-chloro-5-nitrophenyl)-3,3-dimethylbutanamide",
+      "pubchem_cid": 76887980
+    },
+    "73aab11d-3788-4802-8425-606c7d7e1d9d": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 76659192
+    },
+    "0b5eb295-5d0e-4847-a45d-ccaf3f4b6916": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 75889440
+    },
+    "e4f03db6-8845-460e-abbd-d6c947ac37df": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 75645759
+    },
+    "057d5af3-46d9-4c88-affc-ad859af241ad": {
+      "status": "enhanced",
+      "name": "[3-hydroxyazonoyl-5-[[(1R)-1-(4-methoxyphenyl)ethyl]carbamoyl]-2-methyl-phenyl]azinic acid",
+      "pubchem_cid": 76336528
+    },
+    "933c1635-4bdd-4956-92df-d2a830842d72": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 75635562
+    },
+    "e4a13abf-b5b7-4cdb-a578-8588b3a1e8ff": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 77998028
+    },
+    "9922c1b3-e033-4d25-b1ec-5fa5bfd9d79f": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 77483575
+    },
+    "166e05ef-e5fb-4818-b6d6-2d0ff247a8f4": {
+      "status": "enhanced",
+      "name": "2-[(5-Amino-2-chlorophenyl)sulfanylmethyl]benzoic acid",
+      "pubchem_cid": 79134599
+    },
+    "bf064317-6571-46d3-bb4b-042822f70d56": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 78101055
+    },
+    "5ae4c2cb-60d3-44f5-9809-092801e33afd": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 77053739
+    },
+    "3085fd68-16f6-4d8c-b622-977be0e361a5": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 77987898
+    },
+    "17b7a439-bcf7-473b-b1e8-2e5ea54fa2a8": {
+      "status": "enhanced",
+      "name": "Ethyl 2-[benzyl-[(3-methyl-1,2,4-oxadiazol-5-yl)methyl]amino]acetate",
+      "pubchem_cid": 78978684
+    },
+    "5229c3e9-ada7-4d4d-9566-e9fa77014a94": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 78483919
+    },
+    "b4f3c184-1389-4008-9408-6aecc28fbceb": {
+      "status": "enhanced",
+      "name": "3-[(2-Bromophenyl)methyl]-3-(2-chlorophenyl)azetidine",
+      "pubchem_cid": 79460897
+    },
+    "a62785c2-5584-4331-aacc-b42fb03cb885": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 78436394
+    },
+    "beab1a6a-33ec-486f-b585-706bc65cd4f8": {
+      "status": "enhanced",
+      "name": "(1-Methylpyrazol-4-yl)-(thiolan-2-yl)methanamine",
+      "pubchem_cid": 80623168
+    },
+    "5a2d4f92-2fc9-4846-b5ae-4f007d66e660": {
+      "status": "enhanced",
+      "name": "N-cyano-2-(2-hydroxyphenyl)acetamide",
+      "pubchem_cid": 80740821
+    },
+    "b481f50f-cda5-4de6-9466-0e7af21973c7": {
+      "status": "enhanced",
+      "name": "1-N-(1-phenylpropan-2-yl)cyclobutane-1,3-diamine",
+      "pubchem_cid": 80562418
+    },
+    "00743e22-8264-43a3-b58d-d86c52c49394": {
+      "status": "enhanced",
+      "name": "5-amino-N-[3-(dimethylamino)-2,2-dimethylpropyl]-4-nitrothiophene-2-sulfonamide",
+      "pubchem_cid": 80745506
+    },
+    "35b196c7-0e57-4d12-ba02-81e6590ce789": {
+      "status": "enhanced",
+      "name": "1-N-[1-(3-fluoro-4-methylphenyl)ethyl]-2-N,2-N,2-trimethylpropane-1,2-diamine",
+      "pubchem_cid": 80202990
+    },
+    "ae7e6efa-4f8a-4464-bab6-0789b5f9b106": {
+      "status": "enhanced",
+      "name": "3-(4,4-Diethylpiperidin-1-yl)cyclopentan-1-one",
+      "pubchem_cid": 79643521
+    },
+    "e29ee150-48a8-4e95-8f3e-d4110b8afdd1": {
+      "status": "enhanced",
+      "name": "2-Chloro-5-(1,3-thiazol-2-ylmethyl)aniline",
+      "pubchem_cid": 79825176
+    },
+    "74ec0967-db8c-471f-9dcc-18232d23b2be": {
+      "status": "enhanced",
+      "name": "4-Methoxy-2-(1,3,4-thiadiazol-2-ylsulfanyl)aniline",
+      "pubchem_cid": 80457277
+    },
+    "3499fe13-78a7-4043-9aa6-37bcc0d6f334": {
+      "status": "enhanced",
+      "name": "N-[1-(furan-2-yl)propan-2-yl]-2-methylthian-3-amine",
+      "pubchem_cid": 79956926
+    },
+    "6138373e-2fd8-41e9-9cc9-aa802b9d91b7": {
+      "status": "enhanced",
+      "name": "2-[Butyl-(6-chloro-2-ethyl-5-methylpyrimidin-4-yl)amino]ethanol",
+      "pubchem_cid": 80970931
+    },
+    "0443d26e-5cfc-4f1c-bc8c-1c2cca7f09a9": {
+      "status": "enhanced",
+      "name": "6-Bromo-8-chloro-1-methyl-2-oxoquinoline-4-carboxylic acid",
+      "pubchem_cid": 82184300
+    },
+    "547fc89f-a3e3-474c-a78c-676078f6096b": {
+      "status": "enhanced",
+      "name": "2-(2-Chloro-5-methylphenoxy)-4-methoxybenzenecarbothioamide",
+      "pubchem_cid": 81303001
+    },
+    "e0ca6768-fe73-481e-abc5-5c3e960cdcb1": {
+      "status": "enhanced",
+      "name": "1-Pentylsulfinylpropan-2-amine",
+      "pubchem_cid": 81188625
+    },
+    "a0974a3d-8ea0-4e0d-b43e-3c3e3294ddfe": {
+      "status": "enhanced",
+      "name": "5-(7-Bicyclo[4.1.0]heptanyl)-2-(1,1-dioxothiolan-3-yl)-4-methylpyrazol-3-amine",
+      "pubchem_cid": 81630530
+    },
+    "8e221985-0a1b-48ba-913f-bae552477196": {
+      "status": "enhanced",
+      "name": "2-bromo-5-chloro-N-[(2-propan-2-yl-1,2,4-triazol-3-yl)methyl]aniline",
+      "pubchem_cid": 81279740
+    },
+    "47706713-ed79-409b-aa93-400a09a78406": {
+      "status": "enhanced",
+      "name": "2-[(2-Bromo-4-methylphenyl)methyl-propan-2-ylamino]acetic acid",
+      "pubchem_cid": 81795563
+    },
+    "cc9407a9-38e1-4102-abcb-f4d53e09774c": {
+      "status": "enhanced",
+      "name": "3-[2-(5-Aminopentyl)benzimidazol-1-yl]propane-1,2-diol",
+      "pubchem_cid": 82024754
+    },
+    "3649d784-9c08-4680-ae9f-fe4da65e5a12": {
+      "status": "enhanced",
+      "name": "2,3,3-trimethyl-N-[1-(4-methylsulfonylphenyl)ethyl]butan-1-amine",
+      "pubchem_cid": 81337847
+    },
+    "34c55a22-8fae-4df1-be5c-37a3c18ceb02": {
+      "status": "enhanced",
+      "name": "2-[(2,6-dimethyloxan-4-yl)amino]-N-methylbenzenesulfonamide",
+      "pubchem_cid": 81851109
+    },
+    "78f91eb0-e194-42b1-99b4-4c4fd8521b4e": {
+      "status": "enhanced",
+      "name": "4-chloro-N-(4-chloro-3-nitrophenyl)pyridine-3-carboxamide",
+      "pubchem_cid": 81225023
+    },
+    "9a105433-3ddb-4552-b949-a6a302a4153e": {
+      "status": "enhanced",
+      "name": "[1-(4-Chlorophenyl)-5-(4-fluorophenyl)triazol-4-yl]methanamine",
+      "pubchem_cid": 82200825
+    },
+    "9b2b627e-b6a4-4d1c-b2f6-7da0303a0071": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 83464903
+    },
+    "591a8d1a-5c34-4ac9-9bf7-ed5812b0d923": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 83364385
+    },
+    "47bd66e2-1fef-4c42-b3d2-349eee8a93b6": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 83412115
+    },
+    "c2d511ae-9fa4-43b6-9160-e7bff23a4a04": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 83523345
+    },
+    "4146aab9-91ac-4776-a31d-39ef4551e10f": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 83605271
+    },
+    "f1b077f9-e25c-48d6-b50d-cfc4df26d90f": {
+      "status": "enhanced",
+      "name": "[1-[1-(5-Bromo-2-fluorophenyl)ethyl]piperidin-3-yl]methanamine",
+      "pubchem_cid": 82971116
+    },
+    "56f7f4a0-bdca-4d1c-a29e-b3e53e32f12e": {
+      "status": "enhanced",
+      "name": "(2R)-2-[(1-propan-2-ylpyrazol-3-yl)methylamino]propanoic acid",
+      "pubchem_cid": 83194022
+    },
+    "e45b913a-57e2-4277-9935-ec1c45f418b4": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 83653999
+    },
+    "f0092c3c-db15-487b-9393-55bd30ca4b6b": {
+      "status": "enhanced",
+      "name": "(1-Ethylbenzimidazol-5-yl)-pyrrolidin-2-ylmethanone",
+      "pubchem_cid": 82497400
+    },
+    "5121fae8-570c-41bb-9700-ac67425d161d": {
+      "status": "enhanced",
+      "name": "1-(6-Ethyl-2,3-dimethoxyphenyl)ethanone",
+      "pubchem_cid": 84676024
+    },
+    "adb95f16-1b4e-4402-9fa5-c00138c07109": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 83748798
+    },
+    "cab16e71-c991-4ee2-b9e0-51eb3fe5f6cf": {
+      "status": "enhanced",
+      "name": "2-[(Cyclopropylamino)methyl]pyrimidine-5-carboxylic acid",
+      "pubchem_cid": 84664585
+    },
+    "e2a57156-7539-4b7b-8602-807ad098650e": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 84844277
+    },
+    "f4ba7532-02f9-473a-8627-c1cc17d71e0a": {
+      "status": "enhanced",
+      "name": "3-Bromo-2-methylindazol-7-ol",
+      "pubchem_cid": 84725902
+    },
+    "41826127-858c-48d6-ab06-259b106f7b63": {
+      "status": "enhanced",
+      "name": "2-Bromothieno[2,3-c]pyridin-4-amine",
+      "pubchem_cid": 84049371
+    },
+    "5e5ca955-594b-4eb7-967b-f03e3406b9be": {
+      "status": "enhanced",
+      "name": "2-[2-(1-aminoethyl)-5-methoxybenzimidazol-1-yl]-N-butan-2-ylacetamide",
+      "pubchem_cid": 84354579
+    },
+    "2950a5f4-9d18-459c-84d8-66ae9f073ba1": {
+      "status": "enhanced",
+      "name": "3-(2-Oxopiperidin-4-yl)pentanoic acid",
+      "pubchem_cid": 84066976
+    },
+    "5af66419-b11b-40e9-8ce1-475b1bf433a9": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 84077073
+    },
+    "3b983219-276c-4425-b57c-c820c99d6dc0": {
+      "status": "enhanced",
+      "name": "2-(3-Ethyl-7-methyl-5,6,7,8-tetrahydroimidazo[1,5-a]pyridin-1-yl)ethanamine",
+      "pubchem_cid": 83865421
+    },
+    "f21ca4c2-33e4-4412-ace1-7ed2507b8ede": {
+      "status": "enhanced",
+      "name": "Tert-butyl 4-[[2-[4-[(1R)-3-oxocyclopentyl]phenoxy]-acetyl]-amino]-piperidine-1-carboxylate",
+      "pubchem_cid": 86698079
+    },
+    "b5778a45-290c-45e6-aca6-9c5ba6e8b0ac": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 86152374
+    },
+    "470e015a-e314-4a78-aeb8-33a656cfd950": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 85446813
+    },
+    "85c5441f-aab2-46e9-9e4c-e9be36bc9a57": {
+      "status": "enhanced",
+      "name": "2-[(2-hydroxyphenyl)methylidene]-6-methyl-4,9-dihydro-3H-carbazol-1-one",
+      "pubchem_cid": 85492931
+    },
+    "580afdf0-dd3e-4662-8a31-1052f966a71a": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 85983800
+    },
+    "ac09fddc-ccf9-4fef-bff8-614834d8387d": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 85777080
+    },
+    "95be50ad-f751-4fa5-97c3-28fc4bd2abd8": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 86401616
+    },
+    "b0edb3eb-2cd3-4511-a32e-24fd23ceb042": {
+      "status": "enhanced",
+      "name": "(3S)-3-[[(3R)-1-(3-piperidin-4-ylpropanoyl)piperidine-3-carbonyl]amino]pent-4-ynoic acid",
+      "pubchem_cid": 86757991
+    },
+    "94b9948f-2501-4fbf-b1fb-cd0d9b3c2e89": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 85096924
+    },
+    "42f799a0-6130-492f-afa1-d0a2da4d5665": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 85482177
+    },
+    "52d635cf-d4e5-4de4-8145-66b892bc5568": {
+      "status": "enhanced",
+      "name": "3-[[2-(1-benzofuran-2-yl)pyridin-4-yl]amino]-4-[[(1R)-1-phenylethyl]amino]cyclobut-3-ene-1,2-dione",
+      "pubchem_cid": 87659739
+    },
+    "dcd0ed0c-c541-4949-9a20-dffeec4d1ef3": {
+      "status": "enhanced",
+      "name": "tert-butyl N-[(2S)-1-diazo-1-(2,5-difluorophenyl)-3-oxobutan-2-yl]carbamate",
+      "pubchem_cid": 87717570
+    },
+    "cd320f02-7a16-4687-8427-00bf0da8febf": {
+      "status": "enhanced",
+      "name": "2-Chloro-6-[12-(3-chloro-2-formyl-5-methylsulfanylphenyl)-3,12-diaza-6,9-diazoniadispiro[5.2.59.26]hexadecan-3-yl]-4-(sulfanylmethyl)benzaldehyde",
+      "pubchem_cid": 87174246
+    },
+    "86fe0551-ade6-4ab4-8a5e-7cb85e3b9427": {
+      "status": "enhanced",
+      "name": "(2S,3S)-2-methyl-3-[[(2E)-2-[2-[(2-methylpropan-2-yl)oxycarbonylamino]propoxyimino]-2-thiophen-2-ylacetyl]amino]-4-oxoazetidine-1-sulfonic acid",
+      "pubchem_cid": 88151440
+    },
+    "752abab1-6d3c-4124-896d-57063e5e70d9": {
+      "status": "enhanced",
+      "name": "(2S,4R,4bR)-1-cyclopropyl-4-hydroxy-2,4b-dimethyl-7-oxo-3,4,4a,5,6,9,10,10a-octahydro-1H-phenanthrene-2-carbaldehyde",
+      "pubchem_cid": 88556907
+    },
+    "bb002a86-0b52-4d0d-915d-0bf7038667a7": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 87236141
+    },
+    "41a148c8-f8f2-45c2-ab9e-296ee8c83e9d": {
+      "status": "enhanced",
+      "name": "5-amino-3-benzyl-N-phenyloxadiazol-3-ium-4-carboximidate",
+      "pubchem_cid": 87665014
+    },
+    "cf5e0369-2348-4dff-a796-191d9741a5aa": {
+      "status": "enhanced",
+      "name": "N-(2-methoxy-6-methylphenyl)formamide",
+      "pubchem_cid": 87310191
+    },
+    "a8c83f26-0df6-456c-9d53-4ed1e0903b9e": {
+      "status": "enhanced",
+      "name": "(2R)-1-[2-(4-acetylpiperazin-1-yl)-7-oxo-6-propan-2-yl-5H-pyrrolo[3,4-d]pyrimidin-4-yl]-1-benzylpyrrolidin-1-ium-2-carboxamide",
+      "pubchem_cid": 87555533
+    },
+    "4376ccb3-854d-473d-be92-4980945641ce": {
+      "status": "enhanced",
+      "name": "(5R)-N-(2-fluoroethyl)-2-oxo-3-[4-(4-oxo-2,3-dihydro-1H-pyridin-2-yl)phenyl]-1,3-oxazolidine-5-carboxamide",
+      "pubchem_cid": 88022022
+    },
+    "689977a9-b557-4bb6-b4db-22affecdac2e": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 88636680
+    },
+    "d9ca7778-d4c3-4a02-bc9a-4bd3f8bdfb6f": {
+      "status": "enhanced",
+      "name": "1-Methyl-3-[2-[[5-[2-(methylcarbamothioylamino)ethylsulfanylmethyl]pyridazin-4-yl]methylsulfanyl]ethyl]thiourea",
+      "pubchem_cid": 88760843
+    },
+    "1f4c2bc9-228e-454d-a261-e021f9d2ee9e": {
+      "status": "enhanced",
+      "name": "3-[6-[(2,6-dichlorophenyl)methylsulfonyl]spiro[2H-1-benzofuran-3,4'-piperidine]-1'-yl]propanal",
+      "pubchem_cid": 88582692
+    },
+    "df16f01f-3512-4443-8f01-9b2be36ddd27": {
+      "status": "enhanced",
+      "name": "6-[[(2S)-2-aminocyclohexyl]amino]-5-fluoro-2-[(3-fluoro-1-methylindazol-6-yl)amino]pyridine-3-carboxamide",
+      "pubchem_cid": 89551614
+    },
+    "1bca0ba6-39d2-4df7-9bd2-dc358bdb6102": {
+      "status": "enhanced",
+      "name": "1-(9H-fluoren-9-ylmethoxycarbonyl)-6-methoxy-2,3,4,9-tetrahydropyrido[3,4-b]indole-1-carboxylic acid",
+      "pubchem_cid": 89691342
+    },
+    "f7006cef-da09-4738-872c-3e70b27eed44": {
+      "status": "enhanced",
+      "name": "13-Iodo-4lambda3-ioda-2-azatricyclo[8.4.0.03,8]tetradeca-1(10),3(8),4,6,11,13-hexaen-9-one",
+      "pubchem_cid": 88906315
+    },
+    "f60c9120-855d-4201-a2a4-b49b48915d21": {
+      "status": "enhanced",
+      "name": "4-[(9-cyclopentyl-5-methyl-6-oxospiro[7,8-dihydro-4H-pyrimido[4,5-b][1,4]diazepin-3-ium-3,1'-aziridin-1-ium]-2-yl)amino]-3-methoxy-N-(1-methylpiperidin-3-yl)benzamide",
+      "pubchem_cid": 89653264
+    },
+    "fc0dfa29-a0ef-4c80-90ce-0cb4f93b3752": {
+      "status": "enhanced",
+      "name": "5-[2-Amino-2-(5-oxopentoxymethyl)-3-(3-oxopropoxy)propoxy]pentanal",
+      "pubchem_cid": 88883692
+    },
+    "12f23466-15e4-424a-9200-2386456757a8": {
+      "status": "enhanced",
+      "name": "5-[(E)-3-[3-chloro-2-fluoro-6-(tetrazol-1-yl)phenyl]prop-2-enoyl]-N-[4-(1H-imidazol-2-yl)phenyl]-1,3-dimethyl-6,7-dihydro-4H-pyrazolo[4,3-c]pyridine-4-carboxamide",
+      "pubchem_cid": 89501307
+    },
+    "f6f5a974-ca56-4471-9374-f26c0a4c7555": {
+      "status": "enhanced",
+      "name": "3-[[3,4,6-trichloro-5-methoxy-3-(trifluoromethyl)cyclohexa-1,5-dien-1-yl]methyl]-1H-imidazole-2-thione",
+      "pubchem_cid": 88608800
+    },
+    "ec78b4d0-44e6-4dc2-8b35-a097e72d9e45": {
+      "status": "enhanced",
+      "name": "(5S,6S)-5-amino-1-hydroxy-2-(hydroxymethyl)-6-methyloctan-4-one",
+      "pubchem_cid": 90335946
+    },
+    "6a33a1f8-0a5a-4b32-a83a-12cfa34892db": {
+      "status": "enhanced",
+      "name": "methyl 4-((3-oxo-3H-spiro[isobenzofuran-1,4'-piperidin]-1'-yl)sulfonyl)benzoate",
+      "pubchem_cid": 90618399
+    },
+    "ba9edeb4-2686-4142-b054-0b52871434bf": {
+      "status": "enhanced",
+      "name": "N-{8-[2-(4-Methoxyphenyl)acetyl]-8-azabicyclo[3.2.1]octan-3-YL}pyridine-4-carboxamide",
+      "pubchem_cid": 91912247
+    },
+    "ca2ec57b-2558-45dc-973f-8b6d803f05a6": {
+      "status": "enhanced",
+      "name": "Tert-butyl 2-pyrazolo[3,4-b]pyridin-2-ylacetate",
+      "pubchem_cid": 89726291
+    },
+    "37ba9d3d-ae6d-4589-ac1c-e0e4230e5c77": {
+      "status": "enhanced",
+      "name": "2-(4-Chlorophenyl)-5-nitrosopyrimidine-4,6-diamine",
+      "pubchem_cid": 91623075
+    },
+    "43817a57-8c64-4b79-8c96-e64f82b9f9b9": {
+      "status": "enhanced",
+      "name": "2-(5-Methoxy-1,3-benzothiazol-2-yl)-5-methyl-3a,4,7,7a-tetrahydroisoindole-1,3-quinone",
+      "pubchem_cid": 91897419
+    },
+    "649f23c9-bdea-45d0-b2d5-ccd4709b639e": {
+      "status": "enhanced",
+      "name": "1-(Difluoromethoxy)-3-(trifluoromethoxy)benzene",
+      "pubchem_cid": 90998731
+    },
+    "38e56cbb-2be4-4266-bf62-7fad63ba9c0b": {
+      "status": "enhanced",
+      "name": "(6,7-dihydroisoxazolo[4,5-c]pyridin-5(4H)-yl)(quinoxalin-2-yl)methanone",
+      "pubchem_cid": 92076567
+    },
+    "a0581de2-46d9-4b76-8615-3384db08831d": {
+      "status": "enhanced",
+      "name": "1-(3-((3-(dimethylamino)pyrazin-2-yl)oxy)piperidin-1-yl)-2-(1-methyl-1H-indol-3-yl)ethanone",
+      "pubchem_cid": 92103650
+    },
+    "38787d6d-d01f-4348-9939-527b95251edd": {
+      "status": "enhanced",
+      "name": "1-(4-Propan-2-yl-1,4-diazoniabicyclo[2.2.2]octan-1-yl)propan-2-one",
+      "pubchem_cid": 89910513
+    },
+    "05aac6da-f0df-47f9-b0a4-33154b9dc43c": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 92274241
+    },
+    "87413060-221e-48c7-bdc8-58d4b1395969": {
+      "status": "enhanced",
+      "name": "(1S,4S)-N-(furan-2-ylmethyl)-N-((1-methyl-1,4,5,6-tetrahydrocyclopenta[c]pyrazol-3-yl)methyl)bicyclo[2.2.1]hept-5-ene-2-carboxamide",
+      "pubchem_cid": 92109503
+    },
+    "1ea9aadf-116a-4221-b78d-e9c775edeef5": {
+      "status": "enhanced",
+      "name": "1-[(4-bromophenyl)methylsulfonyl]-N-[(1R)-1-(2,5-dimethylphenyl)ethyl]piperidine-4-carboxamide",
+      "pubchem_cid": 92677077
+    },
+    "d0619bad-37d6-4e6c-a3d7-34506dddb046": {
+      "status": "enhanced",
+      "name": "2-[(2R)-5-(cyanomethylsulfanyl)-3-oxo-2H-imidazo[1,2-c]quinazolin-2-yl]-N-(furan-2-ylmethyl)acetamide",
+      "pubchem_cid": 92189025
+    },
+    "f246754c-7599-4fa9-8099-8a1901efcfc9": {
+      "status": "enhanced",
+      "name": "(2R)-N-(3-ethoxypropyl)-2-(4-methyl-2-oxopyrimido[1,2-b]indazol-6-yl)propanamide",
+      "pubchem_cid": 92186414
+    },
+    "9a46aeca-4d4a-4310-a2a5-bb3532239ddc": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 92435054
+    },
+    "c1d441b1-8862-4e23-99a8-9751e8c9ce7d": {
+      "status": "enhanced",
+      "name": "(2S)-2-(5-pyrrolidin-1-ylsulfonylindol-1-yl)-N-(thiophen-2-ylmethyl)propanamide",
+      "pubchem_cid": 92723150
+    },
+    "d0f54402-7395-414b-94d5-0682c53bd722": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 92829056
+    },
+    "1d44838b-237e-43a6-b5a7-8653aa81f15c": {
+      "status": "enhanced",
+      "name": "(2S)-2-[bis(2-chloroethyl)amino]-2-oxo-1,3,2lambda5-oxazaphosphinan-4-one",
+      "pubchem_cid": 92143147
+    },
+    "d39cf83f-de7c-4152-947b-fb4f2241afd9": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 92308801
+    },
+    "da51793d-8dac-4133-83e3-e65273bca833": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 94106096
+    },
+    "2fa5adb3-21ef-4cde-a876-9359cb7d3615": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 93922539
+    },
+    "e75d06ca-4c03-414d-9534-ec4a95c49a4d": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 93865009
+    },
+    "6b228cdc-69d8-4603-8324-7349ce8c0512": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 93032321
+    },
+    "3c0d8632-d6be-41e4-a99d-ba7572e98665": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 93755334
+    },
+    "a2bb9916-f493-44df-b506-9b540d5b633a": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 94475292
+    },
+    "bc4d77d3-8680-40f1-a964-48c70488bf1d": {
+      "status": "enhanced",
+      "name": "2-[(1R)-1-(2,6-difluorophenyl)ethyl]sulfanyl-6-methylpyrimidin-4-amine",
+      "pubchem_cid": 95352069
+    },
+    "f3f593e8-0b38-498b-b00b-0fd192575a17": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 95395886
+    },
+    "41898491-0786-47d1-a506-b2ff304d851b": {
+      "status": "enhanced",
+      "name": "(3S)-3,5,5-trimethyl-N-[2-(2H-tetrazol-5-yl)phenyl]hexanamide",
+      "pubchem_cid": 95246522
+    },
+    "a7403fc3-c1b3-4e66-8ce0-d9de5d02b906": {
+      "status": "enhanced",
+      "name": "6-(4-Tert-butylphenyl)-2-oxo-1-propan-2-ylpyridine-3-carboxylic acid",
+      "pubchem_cid": 93797550
+    },
+    "3b575a33-ea58-4678-8e80-fbab4304ade2": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 95581760
+    },
+    "a5dd3f43-ee39-4b3a-a311-4d9327f89cff": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 95950419
+    },
+    "b19bc6a2-822c-48cf-9b97-e6ad01f2870e": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 96467290
+    },
+    "fc3189d7-529a-4beb-b5e5-1b7957275d62": {
+      "status": "enhanced",
+      "name": "3-[2-methyl-6-[(2S)-pyrrolidin-2-yl]pyrimidin-4-yl]propanamide",
+      "pubchem_cid": 95823583
+    },
+    "1e1ac379-ddc7-4543-ac27-528c663aaef2": {
+      "status": "enhanced",
+      "name": "N-[(2S)-2-(4-chlorophenoxy)propyl]-4-ethoxypiperidine-1-carboxamide",
+      "pubchem_cid": 96195055
+    },
+    "a161e170-2468-452f-aedb-24a8991a12b1": {
+      "status": "enhanced",
+      "name": "N-cyclopentyl-1-[(3R)-1,1-dioxothiolan-3-yl]-3,5-dimethylpyrazole-4-carboxamide",
+      "pubchem_cid": 95860048
+    },
+    "b0cf04af-67a5-4ad2-85a6-1f80bb39c0d6": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 96649743
+    },
+    "a78dbd56-8089-4f56-b1e1-50509ffc2e0a": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 96695133
+    },
+    "1c6aeafd-89a0-42f5-ac48-f955cf6c4add": {
+      "status": "enhanced",
+      "name": "6-[[(2S)-2-(5-methoxy-1,3-dimethylpyrazol-4-yl)pyrrolidin-1-yl]methyl]imidazo[2,1-b][1,3]thiazole",
+      "pubchem_cid": 96017258
+    },
+    "ae1343d3-8c9b-4cac-ac7d-1cbdedee56b9": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 95735821
+    },
+    "7426d490-ccf1-42c0-affb-551ef1cfd5ae": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 97926092
+    },
+    "11ac62a8-4462-4e25-9079-b2acef2e3449": {
+      "status": "enhanced",
+      "name": "ethyl (1R,5S,6R,7R)-4-oxo-3-phenyl-10-oxa-3-azatricyclo[5.2.1.01,5]dec-8-ene-6-carboxylate",
+      "pubchem_cid": 98142807
+    },
+    "a2a507ff-6893-4097-a6d9-760cd117d390": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 97525169
+    },
+    "a4da50db-f5c1-48a5-9f0b-c94b7516fcce": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 98008164
+    },
+    "19228129-7a40-461f-acbf-2098497bd92e": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 96984673
+    },
+    "4db246e8-f035-4f82-9ec9-6a2221bf9e8a": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 97546515
+    },
+    "b3895d34-045b-449a-b117-d34f15454892": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 98937178
+    },
+    "636cc660-0163-4eb4-bd1a-871d83bfdf4b": {
+      "status": "enhanced",
+      "name": "N-[(2S)-1-hydroxypropan-2-yl]-2-[2-methyl-4-(4-methylphenyl)-1,3-thiazol-5-yl]acetamide",
+      "pubchem_cid": 97850394
+    },
+    "2b223887-bf94-48f4-b801-467f0301aa51": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 98929129
+    },
+    "d6e5e720-a2f9-494a-aa52-838e1faa96e5": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 96933755
+    },
+    "fc384024-2e47-4c6b-ae7c-1b0d41c2bc42": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 99597140
+    },
+    "a646a93f-6362-4c14-9dad-5dce3cf63c26": {
+      "status": "enhanced",
+      "name": "N-methyl-3-[[[(1R)-7-methyl-1,2,3,4-tetrahydronaphthalen-1-yl]amino]methyl]benzenesulfonamide",
+      "pubchem_cid": 99718499
+    },
+    "f62d630c-b405-4bbf-a30b-026185971ee0": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 99253329
+    },
+    "0925db4f-2fb4-476b-978f-8fa5069a2ba7": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 99446846
+    },
+    "098edfba-181f-4d0c-af2b-5771361c4fec": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 99305038
+    },
+    "814bafb4-b189-4e7b-a5da-90a52d94bac0": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 99178781
+    },
+    "d731d8ad-9501-490a-9511-3de9d6b5e9ac": {
+      "status": "enhanced",
+      "name": "N,N-dimethyl-4-[(4-methyl-[1,2,4]triazolo[4,3-a]benzimidazol-1-yl)sulfanyl]butanamide",
+      "pubchem_cid": 99824819
+    },
+    "e7c4f8ce-1654-4fc2-b15b-a04f5c4c8a3a": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 99631038
+    },
+    "950b6c60-5221-45a9-8623-42b77a3fbe73": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 99084430
+    },
+    "e25c6215-6364-47a0-aa73-0996ed518e88": {
+      "status": "enhanced",
+      "name": "1-[(3S,5R,8R,9S,10S,13S,14S)-3-hydroxy-10,13,16-trimethyl-2,3,4,5,6,7,8,9,11,12,14,15-dodecahydro-1H-cyclopenta[a]phenanthren-17-yl]ethanone",
+      "pubchem_cid": 99573348
+    },
+    "a8c9ee70-7b67-4ce4-820f-d144b118c94d": {
+      "status": "enhanced",
+      "name": "Inosine",
+      "pubchem_cid": 135398641
+    },
+    "be2a9fa4-7d6e-4a00-9a7b-163d6fdc20ef": {
+      "status": "enhanced",
+      "name": "None",
+      "pubchem_cid": 99973142
+    },
+    "47137a7d-38be-4246-b1f3-d4f1a67fdb29": {
+      "status": "enhanced",
+      "name": "Guanosine",
+      "pubchem_cid": 135398635
+    }
+  }
+}

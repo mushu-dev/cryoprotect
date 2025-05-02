@@ -1,0 +1,51 @@
+{
+  "validation_time": "2025-04-17T00:25:30.123456",
+  "summary": {
+    "molecules_checked": 15,
+    "properties_checked": 87,
+    "missing_required_fields": 2,
+    "invalid_numeric_values": 3,
+    "duplicate_molecules": 1,
+    "orphaned_properties": 0,
+    "invalid_property_references": 0,
+    "total_issues": 6
+  },
+  "issues": [
+    {
+      "type": "missing_required_fields",
+      "description": "Molecule 3fa85f64-5717-4562-b3fc-2c963f66afa6 is missing required field: formula",
+      "entity_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "severity": "ERROR"
+    },
+    {
+      "type": "missing_required_fields",
+      "description": "Molecule 7bc85f64-5717-4562-b3fc-2c963f66afa6 is missing required field: molecular_weight",
+      "entity_id": "7bc85f64-5717-4562-b3fc-2c963f66afa6",
+      "severity": "ERROR"
+    },
+    {
+      "type": "invalid_numeric_values",
+      "description": "Property 9fa85f64-5717-4562-b3fc-2c963f66afa6 (LogP) has value 12.5 outside valid range (-10-10)",
+      "entity_id": "9fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "severity": "WARNING"
+    },
+    {
+      "type": "invalid_numeric_values",
+      "description": "Property 5fa85f64-5717-4562-b3fc-2c963f66afa6 (TPSA) has value 550.2 outside valid range (0-500)",
+      "entity_id": "5fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "severity": "WARNING"
+    },
+    {
+      "type": "invalid_numeric_values",
+      "description": "Property 2fa85f64-5717-4562-b3fc-2c963f66afa6 (H-Bond Donors) has value 25 outside valid range (0-20)",
+      "entity_id": "2fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "severity": "WARNING"
+    },
+    {
+      "type": "duplicate_molecules",
+      "description": "Duplicate molecule with InChIKey LFQSCWFLJHTTHZ-UHFFFAOYSA-N. IDs: 1fa85f64-5717-4562-b3fc-2c963f66afa6, 8fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "entity_id": "8fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "severity": "ERROR"
+    }
+  ]
+}

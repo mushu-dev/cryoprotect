@@ -1,0 +1,1 @@
+{"timestamp": 1746129152.3800204, "data": {"ChEMBL ID": "CHEMBL6196", "Error": "Circuit 'chembl_api' is open", "ErrorType": "CircuitBreakerError", "Timestamp": "2025-05-01T13:52:32.380020"}, "is_error": true}

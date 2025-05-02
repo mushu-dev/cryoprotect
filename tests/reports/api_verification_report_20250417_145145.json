@@ -1,0 +1,171 @@
+{
+  "status": "COMPLETED_WITH_WARNINGS",
+  "summary": {
+    "total": 16,
+    "implemented": 13,
+    "functional": 2,
+    "discrepancies": 14
+  },
+  "results": [
+    {
+      "endpoint": "/health",
+      "method": "GET",
+      "description": "Health check endpoint",
+      "implemented": "Implemented",
+      "functional": "Functional",
+      "error_handling": "Proper",
+      "status_code": 200,
+      "notes": "Returns expected response"
+    },
+    {
+      "endpoint": "/api/v1/molecules",
+      "method": "GET",
+      "description": "Get a list of all molecules",
+      "implemented": "Implemented",
+      "functional": "Not Functional",
+      "error_handling": "Improper",
+      "status_code": 500,
+      "notes": "Unexpected status code: 500"
+    },
+    {
+      "endpoint": "/api/v1/molecules/30ce2527-d265-4dc5-9dc2-4b3c169e54f6",
+      "method": "GET",
+      "description": "Get detailed information about a specific molecule",
+      "implemented": "Implemented",
+      "functional": "Not Functional",
+      "error_handling": "Improper",
+      "status_code": 500,
+      "notes": "Unexpected status code: 500"
+    },
+    {
+      "endpoint": "/api/v1/molecules",
+      "method": "POST",
+      "description": "Create a new molecule",
+      "implemented": "Error",
+      "functional": "Error",
+      "error_handling": "Error",
+      "status_code": "Error",
+      "notes": "Object of type Response is not JSON serializable"
+    },
+    {
+      "endpoint": "/api/v1/molecules/30ce2527-d265-4dc5-9dc2-4b3c169e54f6/properties",
+      "method": "GET",
+      "description": "Get properties of a specific molecule",
+      "implemented": "Implemented",
+      "functional": "Not Functional",
+      "error_handling": "Proper",
+      "status_code": 404,
+      "notes": "Unexpected status code: 404"
+    },
+    {
+      "endpoint": "/api/v1/molecules/30ce2527-d265-4dc5-9dc2-4b3c169e54f6/visualization",
+      "method": "GET",
+      "description": "Get SVG visualization of a specific molecule",
+      "implemented": "Implemented",
+      "functional": "Not Functional",
+      "error_handling": "Proper",
+      "status_code": 404,
+      "notes": "Unexpected status code: 404"
+    },
+    {
+      "endpoint": "/api/v1/mixtures",
+      "method": "GET",
+      "description": "Get a list of all mixtures",
+      "implemented": "Implemented",
+      "functional": "Not Functional",
+      "error_handling": "Improper",
+      "status_code": 500,
+      "notes": "Unexpected status code: 500"
+    },
+    {
+      "endpoint": "/api/v1/mixtures/ceaaafb5-90bc-4a71-aadc-a93a63ed43db",
+      "method": "GET",
+      "description": "Get detailed information about a specific mixture",
+      "implemented": "Implemented",
+      "functional": "Not Functional",
+      "error_handling": "Improper",
+      "status_code": 500,
+      "notes": "Unexpected status code: 500"
+    },
+    {
+      "endpoint": "/api/v1/compare-properties",
+      "method": "POST",
+      "description": "Compare molecular and mixture properties",
+      "implemented": "Implemented",
+      "functional": "Not Functional",
+      "error_handling": "Improper",
+      "status_code": 500,
+      "notes": "Unexpected status code: 500"
+    },
+    {
+      "endpoint": "/api/v1/batch",
+      "method": "POST",
+      "description": "Perform batch operations",
+      "implemented": "Error",
+      "functional": "Error",
+      "error_handling": "Error",
+      "status_code": "Error",
+      "notes": "Object of type Response is not JSON serializable"
+    },
+    {
+      "endpoint": "/api/v1/export",
+      "method": "POST",
+      "description": "Export protocols and results",
+      "implemented": "Error",
+      "functional": "Error",
+      "error_handling": "Error",
+      "status_code": "Error",
+      "notes": "Object of type Response is not JSON serializable"
+    },
+    {
+      "endpoint": "/api/v1/rdkit/properties",
+      "method": "POST",
+      "description": "Calculate molecular properties using RDKit",
+      "implemented": "Implemented",
+      "functional": "Functional",
+      "error_handling": "Proper",
+      "status_code": 200,
+      "notes": "Returns expected response"
+    },
+    {
+      "endpoint": "/api/v1/rdkit/visualize",
+      "method": "POST",
+      "description": "Generate molecule visualization using RDKit",
+      "implemented": "Implemented",
+      "functional": "Not Functional",
+      "error_handling": "Proper",
+      "status_code": 404,
+      "notes": "Unexpected status code: 404"
+    },
+    {
+      "endpoint": "/api/v1/mixtures/ceaaafb5-90bc-4a71-aadc-a93a63ed43db/predictions",
+      "method": "GET",
+      "description": "Get predictions for a mixture",
+      "implemented": "Implemented",
+      "functional": "Not Functional",
+      "error_handling": "Improper",
+      "status_code": 500,
+      "notes": "Unexpected status code: 500"
+    },
+    {
+      "endpoint": "/api/v1/mixtures/ceaaafb5-90bc-4a71-aadc-a93a63ed43db/experiments",
+      "method": "GET",
+      "description": "Get experiments for a mixture",
+      "implemented": "Implemented",
+      "functional": "Not Functional",
+      "error_handling": "Improper",
+      "status_code": 500,
+      "notes": "Unexpected status code: 500"
+    },
+    {
+      "endpoint": "/api/v1/mixtures/ceaaafb5-90bc-4a71-aadc-a93a63ed43db/compare",
+      "method": "GET",
+      "description": "Compare prediction with experiment for a mixture",
+      "implemented": "Implemented",
+      "functional": "Not Functional",
+      "error_handling": "Proper",
+      "status_code": 404,
+      "notes": "Unexpected status code: 404"
+    }
+  ]
+}

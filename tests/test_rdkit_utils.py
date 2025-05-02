@@ -4,13 +4,14 @@ CryoProtect Analyzer - RDKit Utilities Tests
 This module contains unit tests for the RDKit utilities.
 """
 
-import unittest
 import json
 import os
 import sys
 
 # Add the parent directory to the path so we can import the api package
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from tests.base_test_case import BaseTestCase
 
 from api.rdkit_utils import (
     parse_molecule, calculate_hydrogen_bonding, calculate_logp,
@@ -19,7 +20,7 @@ from api.rdkit_utils import (
     perform_substructure_search, calculate_similarity
 )
 
-class TestRDKitUtils(unittest.TestCase):
+class TestRDKitUtils(BaseTestCase):
     """Test cases for RDKit utilities."""
     
     def setUp(self):

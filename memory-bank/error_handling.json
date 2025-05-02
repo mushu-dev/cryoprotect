@@ -1,0 +1,23 @@
+[
+  {
+    "timestamp": "2025-04-17T18:19:44-06:00",
+    "description": "Improved error handling in api/resources.py",
+    "details": [
+      "All exception handlers now log errors with exc_info=True for full stack trace visibility",
+      "Ensures better debugging and error traceability across all API resources"
+    ],
+    "status": "SUCCESS"
+  },
+  {
+    "timestamp": "2025-04-17T19:49:13-06:00",
+    "description": "Implemented robust Supabase error handling across CryoProtect API",
+    "details": [
+      "Replaced all direct Supabase response error checks with a unified handle_supabase_error function in api/utils.py.",
+      "handle_supabase_error is compatible with both old and new Supabase client versions, handling error attributes, data dicts, and Pydantic models.",
+      "All Supabase client calls are now wrapped in try/except blocks and use handle_supabase_error for error detection and status code mapping.",
+      "Enhanced error detection for AuthApiErrorResponse, StorageAPIError, RLS/authorization, and duplicate/exists errors.",
+      "Model and resource layers updated for consistent error handling and improved maintainability."
+    ],
+    "status": "SUCCESS"
+  }
+]

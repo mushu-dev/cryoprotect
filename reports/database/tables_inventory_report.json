@@ -1,0 +1,210 @@
+{
+  "inventory_date": "2025-04-18",
+  "project_id": "tsdlmynydfuypiugmkev",
+  "tables": [
+    {
+      "table_name": "molecule",
+      "row_count": 15,
+      "last_modified": "2025-04-17 09:12:40.779225+00",
+      "classification": "required",
+      "category": "core",
+      "recommendation": "keep"
+    },
+    {
+      "table_name": "mixture",
+      "row_count": 5,
+      "last_modified": "2025-04-17 09:23:39.010385+00",
+      "classification": "required",
+      "category": "core",
+      "recommendation": "keep"
+    },
+    {
+      "table_name": "experiment",
+      "row_count": 5,
+      "last_modified": "2025-04-17 09:27:34.382819+00",
+      "classification": "required",
+      "category": "core",
+      "recommendation": "keep"
+    },
+    {
+      "table_name": "prediction",
+      "row_count": 60,
+      "last_modified": "2025-04-17 23:31:50.05494+00",
+      "classification": "required",
+      "category": "core",
+      "recommendation": "keep"
+    },
+    {
+      "table_name": "calculation_method",
+      "row_count": 7,
+      "last_modified": "2025-04-17 23:31:36.666234+00",
+      "classification": "required",
+      "category": "core",
+      "recommendation": "keep"
+    },
+    {
+      "table_name": "mixture_component",
+      "row_count": 11,
+      "last_modified": "2025-04-17 13:39:52.832776+00",
+      "classification": "required",
+      "category": "core",
+      "recommendation": "keep"
+    },
+    {
+      "table_name": "molecular_property",
+      "row_count": 26,
+      "last_modified": "2025-04-17 13:38:51.981478+00",
+      "classification": "required",
+      "category": "core",
+      "recommendation": "keep"
+    },
+    {
+      "table_name": "experiment_property",
+      "row_count": 11,
+      "last_modified": "2025-04-17 09:27:47.560395+00",
+      "classification": "required",
+      "category": "core",
+      "recommendation": "keep"
+    },
+    {
+      "table_name": "property_types",
+      "row_count": 15,
+      "last_modified": "2025-04-17 05:46:21.839479+00",
+      "classification": "required",
+      "category": "core",
+      "recommendation": "keep"
+    },
+    {
+      "table_name": "team",
+      "row_count": 2,
+      "last_modified": "2025-04-17 09:30:18.173085+00",
+      "classification": "required",
+      "category": "core",
+      "recommendation": "keep"
+    },
+    {
+      "table_name": "project",
+      "row_count": 1,
+      "last_modified": "2025-04-17 06:18:02.579342+00",
+      "classification": "required",
+      "category": "core",
+      "recommendation": "keep"
+    },
+    {
+      "table_name": "user_profile",
+      "row_count": 156,
+      "last_modified": "2025-04-17 16:25:54.907923+00",
+      "classification": "required",
+      "category": "core",
+      "recommendation": "keep"
+    },
+    {
+      "table_name": "project_membership",
+      "row_count": 1,
+      "last_modified": null,
+      "classification": "required",
+      "category": "core",
+      "recommendation": "keep"
+    },
+    {
+      "table_name": "molecules",
+      "row_count": 0,
+      "last_modified": null,
+      "classification": "duplicate",
+      "category": "empty duplicate",
+      "recommendation": "drop"
+    },
+    {
+      "table_name": "experiments",
+      "row_count": 0,
+      "last_modified": null,
+      "classification": "duplicate",
+      "category": "empty duplicate",
+      "recommendation": "drop"
+    },
+    {
+      "table_name": "predictions",
+      "row_count": 0,
+      "last_modified": null,
+      "classification": "duplicate",
+      "category": "empty duplicate",
+      "recommendation": "drop"
+    },
+    {
+      "table_name": "projects",
+      "row_count": 0,
+      "last_modified": null,
+      "classification": "duplicate",
+      "category": "empty duplicate",
+      "recommendation": "drop"
+    },
+    {
+      "table_name": "protocols",
+      "row_count": 0,
+      "last_modified": null,
+      "classification": "obsolete",
+      "category": "empty",
+      "recommendation": "drop"
+    },
+    {
+      "table_name": "experiment_mixture_link",
+      "row_count": 0,
+      "last_modified": null,
+      "classification": "obsolete",
+      "category": "empty",
+      "recommendation": "drop"
+    },
+    {
+      "table_name": "experiment_with_results",
+      "row_count": null,
+      "last_modified": null,
+      "classification": "view",
+      "category": "view",
+      "recommendation": "verify and keep if used"
+    },
+    {
+      "table_name": "mixture_with_components",
+      "row_count": null,
+      "last_modified": null,
+      "classification": "view",
+      "category": "view",
+      "recommendation": "verify and keep if used"
+    },
+    {
+      "table_name": "mixtures_with_components",
+      "row_count": 5,
+      "last_modified": null,
+      "classification": "view",
+      "category": "view",
+      "recommendation": "verify and keep if used"
+    },
+    {
+      "table_name": "molecule_with_properties",
+      "row_count": null,
+      "last_modified": null,
+      "classification": "view",
+      "category": "view",
+      "recommendation": "verify and keep if used"
+    },
+    {
+      "table_name": "molecules_with_properties",
+      "row_count": null,
+      "last_modified": null,
+      "classification": "view",
+      "category": "view",
+      "recommendation": "verify and keep if used"
+    }
+  ],
+  "summary": {
+    "total_tables": 24,
+    "required_tables": 13,
+    "duplicate_tables": 4,
+    "obsolete_tables": 2,
+    "view_tables": 5
+  },
+  "recommendations": {
+    "keep": 13,
+    "drop": 6,
+    "verify": 5
+  }
+}

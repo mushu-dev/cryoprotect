@@ -1,0 +1,13 @@
+{
+  "timestamp": "2025-04-17T18:17:22.571093",
+  "empty_tables": [
+    "molecule",
+    "prediction"
+  ],
+  "foreign_key_issues": [
+    "mixture_component.molecule_id \u2192 molecule.id",
+    "molecular_property.molecule_id \u2192 molecule.id"
+  ],
+  "scientific_issues": [],
+  "status": "FAIL"
+}

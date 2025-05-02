@@ -1,0 +1,29 @@
+{
+  "timestamp": "2025-04-18T04:24:04.122615",
+  "project_id": "tsdlmynydfuypiugmkev",
+  "schema": "public",
+  "format": "both",
+  "backup_directory": "production_backups\\backup_20250418_042403",
+  "components": {
+    "schema": {
+      "status": "FAILED"
+    },
+    "tables": {
+      "status": "FAILED"
+    },
+    "indexes": {
+      "status": "FAILED"
+    },
+    "rls_policies": {
+      "status": "FAILED"
+    },
+    "functions": {
+      "status": "FAILED"
+    },
+    "full_backup_script": {
+      "status": "SUCCESS"
+    }
+  },
+  "status": "COMPLETED_WITH_WARNINGS",
+  "warnings": "Failed to backup components: schema, tables, indexes, rls_policies, functions"
+}

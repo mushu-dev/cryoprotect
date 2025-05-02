@@ -1,0 +1,46 @@
+{
+  "timestamp": "2025-05-01T11:06:52.937279",
+  "mode": "resume",
+  "stats": {
+    "total": 0,
+    "processed": 0,
+    "success": 0,
+    "error": 0,
+    "success_rate_percent": 0,
+    "errors_by_category": {}
+  },
+  "performance": {
+    "elapsed_seconds": 0.009798,
+    "compounds_per_second": 0.0,
+    "average_batch_time": 0
+  },
+  "discovery_strategy": {
+    "search_terms": [
+      "cryoprotectant",
+      "antifreeze",
+      "cryopreservation",
+      "cell preservation"
+    ],
+    "fetch_all": false,
+    "use_reference_seeds": true,
+    "similarity_threshold": 70,
+    "expand_similar": false
+  },
+  "filtering_strategy": {
+    "filter_properties": true,
+    "property_filters": {
+      "min_mw": 30.0,
+      "max_mw": 500.0,
+      "min_hba": 2,
+      "min_hbd": 1,
+      "max_alogp": 3.0
+    },
+    "use_smarts": false,
+    "smarts_classes": [
+      "all"
+    ],
+    "rdkit_available": true
+  },
+  "start_time": "2025-05-01T11:06:52.927481",
+  "end_time": "2025-05-01T11:06:52.937279"
+}

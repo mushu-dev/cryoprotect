@@ -1,0 +1,271 @@
+<!-- 
+  CryoProtect Analyzer - Export and Sharing Components
+  
+  This file contains reusable HTML components for export and sharing functionality.
+  Include this file in other templates using:
+  {% include 'export_sharing_components.html' %}
+-->
+
+<!-- Export Container -->
+<div class="export-container">
+  <h3>Export Data</h3>
+  <div class="export-options">
+    <div class="export-option">
+      <label for="export-format">Export Format:</label>
+      <select id="export-format" class="export-format-select">
+        <option value="csv">CSV</option>
+        <option value="json">JSON</option>
+        <option value="excel">Excel</option>
+        <option value="pdf">PDF</option>
+      </select>
+    </div>
+    
+    <div class="export-option format-option csv">
+      <label for="csv-delimiter">CSV Delimiter:</label>
+      <select id="csv-delimiter">
+        <option value="comma">Comma (,)</option>
+        <option value="semicolon">Semicolon (;)</option>
+        <option value="tab">Tab</option>
+      </select>
+    </div>
+    
+    <div class="export-option format-option excel">
+      <label for="excel-sheet-name">Sheet Name:</label>
+      <input type="text" id="excel-sheet-name" value="Data">
+    </div>
+    
+    <div class="export-option format-option pdf">
+      <label for="pdf-orientation">Orientation:</label>
+      <select id="pdf-orientation">
+        <option value="portrait">Portrait</option>
+        <option value="landscape">Landscape</option>
+      </select>
+    </div>
+  </div>
+  
+  <div class="include-related-container">
+    <input type="checkbox" id="include-related" class="include-related-checkbox">
+    <label for="include-related">Include related data (predictions, experiments, etc.)</label>
+  </div>
+  
+  <button class="export-btn" data-type="{{ data_type }}" data-id="{{ item_id }}">Export</button>
+</div>
+
+<!-- Visualization Export Container -->
+<div class="export-container visualization-export-container">
+  <h3>Export Visualization</h3>
+  <div class="export-options">
+    <div class="export-option">
+      <label for="visualization-format">Export Format:</label>
+      <select id="visualization-format" class="export-format-select">
+        <option value="png">PNG</option>
+        <option value="svg">SVG</option>
+        <option value="pdf">PDF</option>
+      </select>
+    </div>
+    
+    <div class="export-option">
+      <label for="visualization-width">Width (px):</label>
+      <input type="number" id="visualization-width" value="800" min="100" max="3000">
+    </div>
+    
+    <div class="export-option">
+      <label for="visualization-height">Height (px):</label>
+      <input type="number" id="visualization-height" value="600" min="100" max="3000">
+    </div>
+    
+    <div class="export-option">
+      <label for="visualization-style">Style:</label>
+      <select id="visualization-style">
+        <option value="default">Default</option>
+        <option value="dark">Dark</option>
+        <option value="seaborn">Seaborn</option>
+      </select>
+    </div>
+  </div>
+  
+  <button class="export-visualization-btn" data-chart-type="{{ chart_type }}" data-chart-id="{{ chart_id }}">Export Visualization</button>
+</div>
+
+<!-- Report Generation Container -->
+<div class="export-container report-container">
+  <h3>Generate Report</h3>
+  
+  <div class="report-options">
+    <div class="report-option">
+      <label for="report-title">Report Title:</label>
+      <input type="text" id="report-title" placeholder="Enter report title">
+    </div>
+    
+    <div class="report-option">
+      <label for="report-template">Template (Optional):</label>
+      <select id="report-template">
+        <option value="">None (Custom Report)</option>
+        {% for template in report_templates %}
+        <option value="{{ template.id }}">{{ template.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+  
+  <div id="report-sections">
+    <!-- Report sections will be added here dynamically -->
+    <div class="report-section" data-section-id="section-1">
+      <div class="report-section-header">
+        <h4>Section 1</h4>
+        <button class="remove-section-btn" data-section-id="section-1">Remove</button>
+      </div>
+      
+      <div class="report-section-content-container">
+        <label for="section-1-title">Section Title:</label>
+        <input type="text" id="section-1-title" class="report-section-title" placeholder="Enter section title">
+      </div>
+      
+      <div class="report-section-content-container">
+        <label for="section-1-content">Content:</label>
+        <textarea id="section-1-content" class="report-section-content" placeholder="Enter section content"></textarea>
+      </div>
+      
+      <div class="visualization-options">
+        <label for="section-1-visualization">Include Visualization:</label>
+        <select id="section-1-visualization" class="visualization-type-select">
+          <option value="none">None</option>
+          <option value="property_comparison">Property Comparison</option>
+          <option value="mixture_composition">Mixture Composition</option>
+          <option value="prediction_accuracy">Prediction Accuracy</option>
+          <option value="custom">Custom Chart</option>
+        </select>
+      </div>
+      
+      <div class="data-table-options">
+        <label for="section-1-data-table">Include Data Table:</label>
+        <select id="section-1-data-table" class="data-table-select">
+          <option value="none">None</option>
+          <option value="molecules">Molecules</option>
+          <option value="mixtures">Mixtures</option>
+          <option value="predictions">Predictions</option>
+          <option value="experiments">Experiments</option>
+          <option value="comparisons">Comparisons</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  
+  <button id="add-section-btn" class="add-section-btn">Add Section</button>
+  
+  <div class="report-generation-options">
+    <div class="report-option">
+      <input type="checkbox" id="include-visualizations" checked>
+      <label for="include-visualizations">Include Visualizations</label>
+    </div>
+    
+    <div class="report-option">
+      <input type="checkbox" id="include-data-tables" checked>
+      <label for="include-data-tables">Include Data Tables</label>
+    </div>
+    
+    <div class="report-option">
+      <input type="checkbox" id="save-as-template">
+      <label for="save-as-template">Save as Template</label>
+    </div>
+    
+    <div class="report-option template-name-container" style="display: none;">
+      <label for="template-name">Template Name:</label>
+      <input type="text" id="template-name" placeholder="Enter template name">
+    </div>
+  </div>
+  
+  <button id="generate-report-btn" class="generate-report-btn">Generate Report</button>
+</div>
+
+<!-- Share Container -->
+<div class="share-container">
+  <h3>Share Results</h3>
+  <div class="share-options">
+    <div class="share-option">
+      <label for="share-type">Share Method:</label>
+      <select id="share-type" class="share-type-select">
+        <option value="link">Link</option>
+        <option value="email">Email</option>
+        <option value="embed">Embed</option>
+      </select>
+    </div>
+    
+    <div class="share-option share-option-email email" style="display: none;">
+      <label for="share-recipients">Recipients (comma-separated):</label>
+      <input type="text" id="share-recipients" class="share-recipients-input" placeholder="email1@example.com, email2@example.com">
+    </div>
+    
+    <div class="share-option share-option-email email" style="display: none;">
+      <label for="share-message">Message (optional):</label>
+      <textarea id="share-message" class="share-message-textarea" placeholder="Enter a message to include with the shared item"></textarea>
+    </div>
+  </div>
+  
+  <div class="password-protected-container">
+    <input type="checkbox" id="password-protected" class="password-protected-checkbox">
+    <label for="password-protected">Password Protected</label>
+  </div>
+  
+  <div class="share-password-field" style="display: none;">
+    <label for="share-password">Password:</label>
+    <input type="password" id="share-password" class="share-password-input">
+  </div>
+  
+  <div class="share-expiration-container">
+    <label for="share-expiration">Expiration:</label>
+    <select id="share-expiration" class="share-expiration-select">
+      <option value="3600">1 hour</option>
+      <option value="86400" selected>1 day</option>
+      <option value="604800">1 week</option>
+      <option value="2592000">30 days</option>
+      <option value="0">Never</option>
+    </select>
+  </div>
+  
+  <button class="share-btn" data-type="{{ data_type }}" data-id="{{ item_id }}">Share</button>
+</div>
+
+<!-- Loading Indicator -->
+<div id="loading-indicator">
+  <div class="spinner"></div>
+</div>
+
+<!-- Share Link Dialog Template -->
+<template id="share-link-dialog-template">
+  <div class="share-dialog">
+    <div class="share-dialog-content">
+      <h3>Share Link</h3>
+      <p>Use the link below to share this item:</p>
+      <div class="share-url-container">
+        <input type="text" class="share-url-input" readonly>
+        <button class="copy-url-btn">Copy</button>
+      </div>
+      <p class="password-notice" style="display: none;">This link is password protected.</p>
+      <div class="share-dialog-actions">
+        <button class="share-dialog-close-btn">Close</button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<!-- Embed Code Dialog Template -->
+<template id="embed-code-dialog-template">
+  <div class="share-dialog">
+    <div class="share-dialog-content">
+      <h3>Embed Code</h3>
+      <p>Use the code below to embed this item in your website:</p>
+      <div class="embed-code-container">
+        <textarea class="embed-code-textarea" readonly></textarea>
+        <button class="copy-embed-btn">Copy</button>
+      </div>
+      <div class="share-dialog-actions">
+        <button class="share-dialog-close-btn">Close</button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<!-- Include CSS and JavaScript -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/export-sharing.css') }}">
+<script src="{{ url_for('static', filename='js/export-sharing.js') }}"></script>

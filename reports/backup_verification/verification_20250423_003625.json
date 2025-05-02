@@ -1,0 +1,21 @@
+{
+  "timestamp": "2025-04-23T00:36:25.300490",
+  "verified_backups": [
+    {
+      "file": "cryoprotect_20250423_003200_full.dump.gz",
+      "path": "backups/database\\cryoprotect_20250423_003200_full.dump.gz",
+      "timestamp": "2025-04-23T00:36:25.288572",
+      "checks": {
+        "file_integrity": true,
+        "backup_format": true,
+        "metadata": true,
+        "hash_calculation": true
+      },
+      "hash": "06952a86967050a6e5896b4c5bb9ee1dedf6b1e636bf1728b70effbe32b5ea07",
+      "status": "passed"
+    }
+  ],
+  "total_backups": 1,
+  "passed": 1,
+  "failed": 0
+}

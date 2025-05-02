@@ -1,0 +1,14 @@
+{
+  "timestamp": "2025-04-27 20:41:47",
+  "duration": "0:02:03.974392",
+  "target_count": 5000,
+  "final_count": 148,
+  "stats": {
+    "existing": 28,
+    "search_terms": 112,
+    "property_ranges": 0,
+    "functional_groups": 8,
+    "total": 148
+  },
+  "output_file": "CID-Synonym-curated"
+}

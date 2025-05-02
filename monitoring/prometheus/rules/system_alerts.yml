@@ -1,0 +1,92 @@
+groups:
+  - name: system_alerts
+    rules:
+      # High CPU usage alert
+      - alert: HighCpuUsage
+        expr: cryoprotect_cpu_usage_percent > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage detected"
+          description: "CPU usage is above 80% for the last 5 minutes ({{ $value | printf \"%.2f\" }}%)"
+
+      # Critical CPU usage alert
+      - alert: CriticalCpuUsage
+        expr: cryoprotect_cpu_usage_percent > 95
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Critical CPU usage detected"
+          description: "CPU usage is above 95% for the last 2 minutes ({{ $value | printf \"%.2f\" }}%)"
+
+      # High memory usage alert
+      - alert: HighMemoryUsage
+        expr: cryoprotect_memory_usage_bytes{type="used"} / cryoprotect_memory_usage_bytes{type="total"} > 0.8
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage detected"
+          description: "Memory usage is above 80% for the last 5 minutes ({{ $value | printf \"%.2f\" }}%)"
+
+      # Critical memory usage alert
+      - alert: CriticalMemoryUsage
+        expr: cryoprotect_memory_usage_bytes{type="used"} / cryoprotect_memory_usage_bytes{type="total"} > 0.95
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Critical memory usage detected"
+          description: "Memory usage is above 95% for the last 2 minutes ({{ $value | printf \"%.2f\" }}%)"
+
+      # High disk usage alert
+      - alert: HighDiskUsage
+        expr: cryoprotect_disk_usage_bytes{type="used"} / cryoprotect_disk_usage_bytes{type="total"} > 0.8
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High disk usage detected"
+          description: "Disk usage is above 80% for the last 5 minutes ({{ $value | printf \"%.2f\" }}%)"
+
+      # Critical disk usage alert
+      - alert: CriticalDiskUsage
+        expr: cryoprotect_disk_usage_bytes{type="used"} / cryoprotect_disk_usage_bytes{type="total"} > 0.95
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Critical disk usage detected"
+          description: "Disk usage is above 95% for the last 2 minutes ({{ $value | printf \"%.2f\" }}%)"
+
+      # Connection pool exhaustion alert
+      - alert: ConnectionPoolExhaustion
+        expr: cryoprotect_db_connection_pool_size{state="active"} / cryoprotect_db_connection_pool_size{state="max"} > 0.9
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Database connection pool near exhaustion"
+          description: "More than 90% of database connections are in use ({{ $value | printf \"%.2f\" }}%)"
+
+      # Node down alert
+      - alert: NodeDown
+        expr: up{job="node-exporter"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Node exporter is down"
+          description: "Node exporter has been down for more than 1 minute"
+
+      # API service down alert
+      - alert: ApiServiceDown
+        expr: up{job="cryoprotect-api"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "CryoProtect API service is down"
+          description: "CryoProtect API service has been down for more than 1 minute"

@@ -1,0 +1,25 @@
+{
+  "processed_compounds": [
+    "CHEMBL123"
+  ],
+  "successful_compounds": [
+    "CHEMBL123"
+  ],
+  "failed_compounds": {},
+  "current_batch": 0,
+  "total_processed": 1,
+  "success_count": 1,
+  "error_count": 0,
+  "start_time": "2025-05-01T21:35:07.316423",
+  "last_updated": "2025-05-01T21:35:07.320333",
+  "config": {},
+  "compound_data": {
+    "CHEMBL123": {
+      "operation_id": "test-operation",
+      "processing_time": 1.5,
+      "property_count": 5,
+      "timestamp": 1746156907.316423
+    }
+  },
+  "elapsed_seconds": 0.00391
+}

@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block title %}Protocol Designer - CryoProtect Analyzer{% endblock %}
+
+{% block styles %}
+<style>
+    .protocol-item {
+        transition: all 0.3s ease;
+    }
+    
+    .protocol-item:hover {
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+    
+    .protocol-checkbox {
+        margin-right: 10px;
+    }
+    
+    #loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        display: none;
+    }
+    
+    .spinner-border {
+        width: 3rem;
+        height: 3rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Concentration Gradient Protocol Designer</h1>
+    
+    <div id="alert-container"></div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Design Protocol</h4>
+                </div>
+                <div class="card-body">
+                    <form id="protocol-form">
+                        <div class="form-group">
+                            <label for="mixture-select">Cryoprotectant Mixture</label>
+                            <select class="form-control" id="mixture-select" required>
+                                <option value="">Loading mixtures...</option>
+                            </select>
+                            <small class="form-text text-muted">Select the cryoprotectant mixture to use</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="target-concentration">Target Concentration (%)</label>
+                            <input type="number" class="form-control" id="target-concentration" min="0.1" step="0.1" value="10.0" required>
+                            <small class="form-text text-muted">Final concentration of cryoprotectant</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="sample-type-select">Sample Type</label>
+                            <select class="form-control" id="sample-type-select" required>
+                                <option value="cell_line">Cell Line</option>
+                                <option value="primary_cells">Primary Cells</option>
+                                <option value="tissue">Tissue</option>
+                                <option value="organoid">Organoid</option>
+                                <option value="embryo">Embryo</option>
+                            </select>
+                            <small class="form-text text-muted">Type of biological sample being cryopreserved</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="starting-temperature">Starting Temperature (°C)</label>
+                            <input type="number" class="form-control" id="starting-temperature" min="-10" max="37" step="0.1" value="4.0" required>
+                            <small class="form-text text-muted">Initial temperature for the protocol</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="target-temperature">Target Temperature (°C) <small class="text-muted">(Optional)</small></label>
+                            <input type="number" class="form-control" id="target-temperature" min="-10" max="37" step="0.1">
+                            <small class="form-text text-muted">Final temperature for the protocol (leave blank for automatic calculation)</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="step-count">Number of Steps <small class="text-muted">(Optional)</small></label>
+                            <input type="number" class="form-control" id="step-count" min="2" max="20" step="1">
+                            <small class="form-text text-muted">Number of steps in the protocol (leave blank for automatic calculation)</small>
+                        </div>
+                        
+                        <button type="button" id="design-protocol-btn" class="btn btn-primary">Design Protocol</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div id="protocol-list-container" class="card" style="display: none;">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4>Saved Protocols</h4>
+                    <button type="button" id="compare-protocols-btn" class="btn btn-sm btn-info" disabled>Compare Selected</button>
+                </div>
+                <div class="card-body">
+                    <div id="protocol-list">
+                        <p>No protocols available.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="protocol-results" class="mt-4" style="display: none;">
+        <div class="card">
+            <div class="card-header">
+                <h4>Protocol Results</h4>
+            </div>
+            <div class="card-body">
+                <div class="text-center mb-4">
+                    <button type="button" id="save-protocol-btn" class="btn btn-success" disabled>Save Protocol</button>
+                </div>
+                
+                <div id="protocol-visualization" class="text-center mb-4">
+                    <!-- Visualization will be inserted here -->
+                </div>
+                
+                <div id="protocol-steps">
+                    <!-- Steps will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Loading overlay -->
+<div id="loading-overlay">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/protocol-designer.js') }}"></script>
+{% endblock %}

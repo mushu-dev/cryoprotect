@@ -1,0 +1,37 @@
+{
+  "timestamp": "2025-04-18T12:40:59.058593",
+  "project_id": "tsdlmynydfuypiugmkev",
+  "schema": "public",
+  "create_backups": false,
+  "test_only": true,
+  "analyze_queries": false,
+  "connection_pooling": false,
+  "rollback_on_failure": false,
+  "status": "TEST_ONLY",
+  "backups": [],
+  "applied_improvements": [],
+  "errors": [],
+  "test_results_before": {
+    "rls_filter": {
+      "error": "[WinError 2] The system cannot find the file specified"
+    },
+    "mixture_components_join": {
+      "error": "[WinError 2] The system cannot find the file specified"
+    },
+    "predictions_filter": {
+      "error": "[WinError 2] The system cannot find the file specified"
+    },
+    "experiments_join": {
+      "error": "[WinError 2] The system cannot find the file specified"
+    },
+    "molecule_text_search": {
+      "error": "[WinError 2] The system cannot find the file specified"
+    },
+    "property_type_join": {
+      "error": "[WinError 2] The system cannot find the file specified"
+    }
+  },
+  "test_results_after": {},
+  "query_analysis": {},
+  "optimized_views": []
+}

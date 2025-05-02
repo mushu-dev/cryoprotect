@@ -1,0 +1,106 @@
+{
+  "start_time": "2025-05-01T00:36:59.210932",
+  "end_time": "2025-05-01T00:37:15.455933",
+  "overall_status": "error",
+  "steps": {
+    "reference": {
+      "id": "reference",
+      "name": "Reference Compounds Import",
+      "start_time": "2025-05-01T00:37:00.116243",
+      "end_time": "2025-05-01T00:37:15.426134",
+      "status": "success",
+      "error": null,
+      "details": {
+        "result": {
+          "timestamp": "2025-05-01T00:37:01.000450",
+          "total_compounds": 9,
+          "imported": 9,
+          "updated": 0,
+          "failed": 0,
+          "details": {
+            "CHEMBL388978": {
+              "status": "partial",
+              "internal_id": "CRYO001",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "invalid input syntax for type uuid: \"CRYO001\"\nLINE 4:                         VALUES ('CRYO001', 'CHEMBL388978', '...\n                                        ^\n"
+            },
+            "CHEMBL1098659": {
+              "status": "partial",
+              "internal_id": "CRYO002",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "invalid input syntax for type uuid: \"CRYO002\"\nLINE 4:                         VALUES ('CRYO002', 'CHEMBL1098659', ...\n                                        ^\n"
+            },
+            "CHEMBL66195": {
+              "status": "partial",
+              "internal_id": "CRYO003",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "invalid input syntax for type uuid: \"CRYO003\"\nLINE 4:                         VALUES ('CRYO003', 'CHEMBL66195', ''...\n                                        ^\n"
+            },
+            "CHEMBL500033": {
+              "status": "partial",
+              "internal_id": "CRYO004",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "invalid input syntax for type uuid: \"CRYO004\"\nLINE 4:                         VALUES ('CRYO004', 'CHEMBL500033', '...\n                                        ^\n"
+            },
+            "CHEMBL1487": {
+              "status": "partial",
+              "internal_id": "CRYO005",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "invalid input syntax for type uuid: \"CRYO005\"\nLINE 4:                         VALUES ('CRYO005', 'CHEMBL1487', '',...\n                                        ^\n"
+            },
+            "CHEMBL6196": {
+              "status": "partial",
+              "internal_id": "CRYO0007",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "invalid input syntax for type uuid: \"CRYO0007\"\nLINE 4:                         VALUES ('CRYO0007', 'CHEMBL6196', ''...\n                                        ^\n"
+            },
+            "CHEMBL967": {
+              "status": "partial",
+              "internal_id": "CRYO0008",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "invalid input syntax for type uuid: \"CRYO0008\"\nLINE 4:                         VALUES ('CRYO0008', 'CHEMBL967', '',...\n                                        ^\n"
+            },
+            "CHEMBL262548": {
+              "status": "partial",
+              "internal_id": "CRYO0009",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "invalid input syntax for type uuid: \"CRYO0009\"\nLINE 4:                         VALUES ('CRYO0009', 'CHEMBL262548', ...\n                                        ^\n"
+            },
+            "CHEMBL6752": {
+              "status": "partial",
+              "internal_id": "CRYO0010",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "invalid input syntax for type uuid: \"CRYO0010\"\nLINE 4:                         VALUES ('CRYO0010', 'CHEMBL6752', ''...\n                                        ^\n"
+            }
+          }
+        }
+      }
+    },
+    "chembl": {
+      "id": "chembl",
+      "name": "ChEMBL Data Import",
+      "start_time": "2025-05-01T00:37:15.427185",
+      "end_time": "2025-05-01T00:37:15.453925",
+      "status": "error",
+      "error": "with_retry() got an unexpected keyword argument 'backoff'",
+      "details": {
+        "traceback": "Traceback (most recent call last):\n  File \"populate_database.py\", line 336, in _execute_step\n    result = func()\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\import_full_chembl.py\", line 271, in main\n    from chembl.worker import ChEMBLWorker\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 30, in <module>\n    class ChEMBLWorker:\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 602, in ChEMBLWorker\n    @with_retry(max_retries=3, backoff=2.0)\nTypeError: with_retry() got an unexpected keyword argument 'backoff'\n"
+      }
+    }
+  },
+  "duration_seconds": 16.245001,
+  "duration_formatted": "0h 0m 16s",
+  "status_counts": {
+    "success": 1,
+    "error": 1
+  }
+}

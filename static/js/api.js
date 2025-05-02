@@ -20,7 +20,14 @@ const API = (function() {
    * @param {Object} options - Request options
    * @returns {Promise} Promise that resolves with the response data
    */
-  async function request(endpoint, options = {}) {
+  /**
+   * Make an API request with enhanced error handling
+   * @param {string} endpoint - API endpoint
+   * @param {Object} options - Request options
+   * @param {Object} retryOptions - Retry options
+   * @returns {Promise} Promise that resolves with the response data
+   */
+  async function request(endpoint, options = {}, retryOptions = { retries: 0, delay: 1000 }) {
     // Merge default options with provided options
     const requestOptions = {
       ...defaultOptions,
@@ -31,36 +38,210 @@ const API = (function() {
       }
     };
     
-    // Add authentication token if available
+    // Add authentication token only for modifying requests (not for GET)
+    const method = (requestOptions.method || 'GET').toUpperCase();
     const token = Auth.getToken();
-    if (token) {
+    if (token && method !== 'GET') {
       requestOptions.headers['Authorization'] = `Bearer ${token}`;
     }
     
+    // Add request ID for tracking
+    const requestId = Date.now().toString(36) + Math.random().toString(36).substr(2);
+    requestOptions.headers['X-Request-ID'] = requestId;
+    
     try {
+      // Attempt the fetch request
       const response = await fetch(`${API_BASE_URL}${endpoint}`, requestOptions);
       
-      // Parse response JSON
-      const data = await response.json();
+      // Try to parse response as JSON
+      let data;
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        data = await response.json();
+      } else {
+        // Handle non-JSON responses
+        const text = await response.text();
+        data = { message: text };
+      }
       
       // Check if response is successful
       if (!response.ok) {
-        throw new Error(data.message || `API request failed with status ${response.status}`);
+        // Create an enhanced error object with additional context
+        const error = createApiError(response.status, data, endpoint);
+        
+        // Log the error with request details
+        console.error(`API Error [${requestId}]:`, {
+          endpoint,
+          status: response.status,
+          method: requestOptions.method || 'GET',
+          error: error.message,
+          details: error.details
+        });
+        
+        throw error;
       }
       
       return data;
     } catch (error) {
-      console.error('API request error:', error);
-      throw error;
+      // Check if it's a network error and retries are available
+      if (error.name === 'TypeError' && retryOptions.retries > 0) {
+        console.warn(`Network error, retrying... (${retryOptions.retries} attempts left)`);
+        
+        // Wait before retrying
+        await new Promise(resolve => setTimeout(resolve, retryOptions.delay));
+        
+        // Retry with one less retry attempt
+        return request(endpoint, options, {
+          retries: retryOptions.retries - 1,
+          delay: retryOptions.delay * 1.5 // Exponential backoff
+        });
+      }
+      
+      // If it's already an ApiError, just rethrow it
+      if (error.isApiError) {
+        throw error;
+      }
+      
+      // For other errors, create a generic API error
+      const apiError = new Error(error.message || 'An unexpected error occurred');
+      apiError.isApiError = true;
+      apiError.originalError = error;
+      apiError.errorType = 'NETWORK_ERROR';
+      apiError.userMessage = 'Unable to connect to the server. Please check your internet connection and try again.';
+      
+      console.error('API request error:', apiError);
+      throw apiError;
     }
   }
   
   /**
-   * Get all molecules
-   * @returns {Promise} Promise that resolves with the molecules data
+   * Create an API error with enhanced context
+   * @param {number} status - HTTP status code
+   * @param {Object} data - Response data
+   * @param {string} endpoint - API endpoint
+   * @returns {Error} Enhanced error object
    */
-  function getMolecules() {
-    return request('/molecules');
+  function createApiError(status, data, endpoint) {
+    const error = new Error(data.message || `API request failed with status ${status}`);
+    error.isApiError = true;
+    error.status = status;
+    error.endpoint = endpoint;
+    error.details = data.details || {};
+    
+    // Categorize errors for better handling
+    if (status === 401) {
+      error.errorType = 'AUTHENTICATION_ERROR';
+      error.userMessage = 'Your session has expired. Please log in again.';
+    } else if (status === 403) {
+      error.errorType = 'AUTHORIZATION_ERROR';
+      error.userMessage = 'You do not have permission to perform this action.';
+    } else if (status === 404) {
+      error.errorType = 'NOT_FOUND_ERROR';
+      error.userMessage = 'The requested resource was not found.';
+    } else if (status === 422) {
+      error.errorType = 'VALIDATION_ERROR';
+      error.userMessage = 'There was a problem with the data you submitted.';
+      
+      // Format validation errors for better display
+      if (data.details && data.details.errors) {
+        error.validationErrors = data.details.errors;
+        error.userMessage = formatValidationErrors(data.details.errors);
+      }
+    } else if (status >= 500) {
+      error.errorType = 'SERVER_ERROR';
+      error.userMessage = 'The server encountered an error. Please try again later.';
+    } else {
+      error.errorType = 'UNKNOWN_ERROR';
+      error.userMessage = 'An unexpected error occurred. Please try again.';
+    }
+    
+    return error;
+  }
+  
+  /**
+   * Format validation errors into a user-friendly message
+   * @param {Object} errors - Validation errors object
+   * @returns {string} Formatted error message
+   */
+  function formatValidationErrors(errors) {
+    if (!errors || typeof errors !== 'object') {
+      return 'Invalid data submitted.';
+    }
+    
+    const errorMessages = [];
+    
+    for (const field in errors) {
+      if (Object.prototype.hasOwnProperty.call(errors, field)) {
+        const fieldErrors = errors[field];
+        const fieldName = formatFieldName(field);
+        
+        if (Array.isArray(fieldErrors)) {
+          errorMessages.push(`${fieldName}: ${fieldErrors.join(', ')}`);
+        } else {
+          errorMessages.push(`${fieldName}: ${fieldErrors}`);
+        }
+      }
+    }
+    
+    return errorMessages.length > 0
+      ? `Please correct the following: ${errorMessages.join('; ')}`
+      : 'There was a problem with the data you submitted.';
+  }
+  
+  /**
+   * Format a field name for display
+   * @param {string} field - Field name
+   * @returns {string} Formatted field name
+   */
+  function formatFieldName(field) {
+    return field
+      .replace(/_/g, ' ')
+      .replace(/([A-Z])/g, ' $1')
+      .replace(/^./, str => str.toUpperCase())
+      .trim();
+  }
+  
+  /**
+   * Get molecules with pagination support
+   * @param {Object} options - Pagination and filtering options
+   * @param {number} options.limit - Maximum number of items to return (default: 20)
+   * @param {number} options.offset - Number of items to skip (default: 0)
+   * @param {string} options.search - Search term for filtering molecules
+   * @param {string} options.sort - Field to sort by
+   * @param {string} options.order - Sort order ('asc' or 'desc')
+   * @returns {Promise} Promise that resolves with the molecules data and pagination metadata
+   */
+  function getMolecules(options = {}) {
+    // Build query parameters
+    const params = new URLSearchParams();
+    
+    // Add pagination parameters
+    if (options.limit !== undefined) {
+      params.append('limit', options.limit);
+    }
+    
+    if (options.offset !== undefined) {
+      params.append('offset', options.offset);
+    }
+    
+    // Add search parameter if provided
+    if (options.search) {
+      params.append('search', options.search);
+    }
+    
+    // Add sort parameters if provided
+    if (options.sort) {
+      params.append('sort', options.sort);
+    }
+    
+    if (options.order) {
+      params.append('order', options.order);
+    }
+    
+    // Build the URL with query parameters
+    const url = params.toString() ? `/molecules?${params.toString()}` : '/molecules';
+    
+    return request(url);
   }
   
   /**

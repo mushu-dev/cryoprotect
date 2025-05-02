@@ -1,0 +1,50 @@
+{
+  "report_id": "0b2d1c73-4257-4665-9958-11cb6a7e6280",
+  "timestamp": "2025-04-26T18:15:49.245832",
+  "event_type": "completion_summary",
+  "status": "success",
+  "processing": {
+    "start_time": "2025-04-26T18:15:01.565131",
+    "end_time": "2025-04-26T18:15:49.222237",
+    "duration_seconds": 47.66,
+    "duration_minutes": 0.79,
+    "duration_hours": 0.0132
+  },
+  "performance": {
+    "molecules_per_hour": 0.0,
+    "molecules_per_minute": 0.0,
+    "molecules_per_second": 0.0
+  },
+  "results": {
+    "total_processed": 0,
+    "total_imported": 0,
+    "total_duplicates": 5,
+    "total_skipped": 51,
+    "success_rate_percent": 0,
+    "duplicate_rate_percent": 0,
+    "skip_rate_percent": 0
+  },
+  "checkpoint": {
+    "last_completed_batch": 1,
+    "total_processed": 0,
+    "total_imported": 0,
+    "total_duplicates": 5,
+    "total_skipped": 51,
+    "timestamp": "2025-04-26T18:15:49.222237",
+    "batch_size": 100,
+    "total_batches": 2
+  },
+  "system": {
+    "hostname": "Edward-IdeaPad",
+    "platform": "Windows-10-10.0.26100-SP0",
+    "python_version": "3.9.22",
+    "processor": "Intel64 Family 6 Model 140 Stepping 2, GenuineIntel",
+    "cpu_count": 4,
+    "logical_cpu_count": 8,
+    "memory_total_gb": 15.79,
+    "memory_available_gb": 3.41,
+    "memory_percent": 78.3,
+    "disk_usage_percent": 89.4
+  },
+  "process_id": 27024
+}

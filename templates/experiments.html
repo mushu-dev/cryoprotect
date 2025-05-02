@@ -1,83 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Experiments - CryoProtect Analyzer</title>
-  
-  <!-- Supabase Configuration -->
-  <meta name="supabase-url" content="{{ supabase_url }}">
-  <meta name="supabase-key" content="{{ supabase_key }}">
-  
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  
-  <!-- Bootstrap Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-  
-  <!-- Custom CSS -->
-  <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
-</head>
-<body>
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="/">
-        <i class="bi bi-snow2"></i> CryoProtect <span>Analyzer</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/molecules">Molecules</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/mixtures">Mixtures</a>
-          </li>
-          <li class="nav-item dropdown nav-authenticated d-none">
-            <a class="nav-link dropdown-toggle active" href="#" id="analysisDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Analysis
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="analysisDropdown">
-              <li><a class="dropdown-item" href="/predictions">Predictions</a></li>
-              <li><a class="dropdown-item active" href="/experiments">Experiments</a></li>
-              <li><a class="dropdown-item" href="/comparisons">Comparisons</a></li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="navbar-nav">
-          <li class="nav-item nav-unauthenticated">
-            <a class="nav-link" href="/login">Login</a>
-          </li>
-          <li class="nav-item dropdown nav-authenticated d-none">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-person-circle"></i> <span class="user-name">User</span>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-              <li><a class="dropdown-item" href="/profile">Profile</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#" id="logout-button">Logout</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+{% extends 'base.html' %}
 
-  <!-- Main Content -->
-  <main class="container py-4">
+{% set active_page = 'experiments' %}
+{% set breadcrumbs = [
+  {'title': 'Home', 'url': '/'},
+  {'title': 'Mixtures', 'url': '/mixtures'},
+  {'title': 'Mixture Details', 'url': '/mixtures/' ~ mixture_id if mixture_id is defined else '#'},
+  {'title': 'Experiments', 'url': '#'}
+] %}
+
+{% block title %}Experiments - CryoProtect Analyzer{% endblock %}
+
+{% block content %}
     <!-- Mixture Information -->
     <div class="card mb-4">
       <div class="card-header">
-        Mixture Information
+        <h3 class="h5 mb-0">Mixture Information</h3>
       </div>
       <div class="card-body">
         <div class="row">
@@ -100,13 +37,13 @@
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>Experiments</h2>
         <a href="#" class="btn btn-primary requires-auth disabled" id="add-experiment-btn">
-          <i class="bi bi-plus-circle"></i> Record Experiment
+          <i class="bi bi-plus-circle" aria-hidden="true"></i> Record Experiment
         </a>
       </div>
       
       <div id="experiments-container">
         <!-- Experiments will be loaded here dynamically -->
-        <div class="text-center py-5">
+        <div class="text-center py-5" aria-live="polite">
           <div class="spinner-border" role="status">
             <span class="visually-hidden">Loading...</span>
           </div>
@@ -117,39 +54,50 @@
     
     <!-- Add Experiment View -->
     <div id="add-experiment-view" style="display: none;">
+      {% set workflow_steps = [
+        {'title': 'Select Property'},
+        {'title': 'Enter Value'},
+        {'title': 'Describe Conditions'},
+        {'title': 'Set Date'}
+      ] %}
+      {% set current_step = 0 %}
+      {% include 'shared/progress_indicator.html' %}
+      
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>Record Experiment</h2>
         <button type="button" class="btn btn-outline-secondary" id="back-to-experiments-btn">
-          <i class="bi bi-arrow-left"></i> Back to Experiments
+          <i class="bi bi-arrow-left" aria-hidden="true"></i> Back to Experiments
         </button>
       </div>
       
       <div class="card">
         <div class="card-header">
-          Experiment Details
+          <h3 class="h5 mb-0">Experiment Details</h3>
         </div>
         <div class="card-body">
           <form id="experiment-form">
             <div class="mb-3">
               <label for="experiment-property" class="form-label">Property</label>
-              <select class="form-select" id="experiment-property" required>
+              <select class="form-select" id="experiment-property" required aria-describedby="property-help">
                 <option value="">Select a property</option>
                 <!-- Property options will be loaded dynamically -->
               </select>
+              <div id="property-help" class="form-text visually-hidden">Select the property you measured in this experiment</div>
             </div>
             <div class="mb-3">
               <label for="experiment-value" class="form-label">Value</label>
-              <input type="text" class="form-control" id="experiment-value" required>
-              <div class="form-text">Enter a numeric value, text, or boolean (true/false) depending on the property type.</div>
+              <input type="text" class="form-control" id="experiment-value" required aria-describedby="value-help">
+              <div id="value-help" class="form-text">Enter a numeric value, text, or boolean (true/false) depending on the property type.</div>
             </div>
             <div class="mb-3">
               <label for="experiment-conditions" class="form-label">Experimental Conditions</label>
-              <textarea class="form-control" id="experiment-conditions" rows="3"></textarea>
-              <div class="form-text">Describe the conditions under which the experiment was performed (e.g., temperature, pressure, equipment used).</div>
+              <textarea class="form-control" id="experiment-conditions" rows="3" aria-describedby="conditions-help"></textarea>
+              <div id="conditions-help" class="form-text">Describe the conditions under which the experiment was performed (e.g., temperature, pressure, equipment used).</div>
             </div>
             <div class="mb-3">
               <label for="experiment-date" class="form-label">Date Performed</label>
-              <input type="date" class="form-control" id="experiment-date" required>
+              <input type="date" class="form-control" id="experiment-date" required aria-describedby="date-help">
+              <div id="date-help" class="form-text visually-hidden">The date when the experiment was performed</div>
             </div>
             <div class="d-grid gap-2">
               <button type="submit" class="btn btn-primary">Record Experiment</button>
@@ -158,40 +106,14 @@
         </div>
       </div>
     </div>
-  </main>
+{% endblock %}
 
-  <!-- Footer -->
-  <footer class="bg-light py-4 mt-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <p>&copy; 2025 CryoProtect Analyzer. All rights reserved.</p>
-        </div>
-        <div class="col-md-6 text-md-end">
-          <a href="#" class="text-decoration-none me-3">Privacy Policy</a>
-          <a href="#" class="text-decoration-none me-3">Terms of Service</a>
-          <a href="#" class="text-decoration-none">Contact</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+{% block extra_css %}
+<!-- No extra CSS for experiments page -->
+{% endblock %}
 
-  <!-- Supabase JS -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  
-  <!-- Bootstrap JS Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
-  <!-- Custom JS -->
-  <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/api.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/charts.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
-  
-  <script>
+{% block extra_js %}
+<script>
     // Initialize page based on URL
     document.addEventListener('DOMContentLoaded', function() {
       // Add event listener for the "Record Experiment" button
@@ -199,6 +121,8 @@
         event.preventDefault();
         document.getElementById('experiments-list-view').style.display = 'none';
         document.getElementById('add-experiment-view').style.display = 'block';
+        // Set focus to the first form field for keyboard accessibility
+        document.getElementById('experiment-property').focus();
       });
       
       // Add event listener for the "Back to Experiments" button
@@ -206,12 +130,45 @@
         event.preventDefault();
         document.getElementById('experiments-list-view').style.display = 'block';
         document.getElementById('add-experiment-view').style.display = 'none';
+        // Return focus to the add experiment button
+        document.getElementById('add-experiment-btn').focus();
       });
       
       // Set default date to today
       const today = new Date().toISOString().split('T')[0];
       document.getElementById('experiment-date').value = today;
     });
-  </script>
-</body>
-</html>
+  // Add event listeners for form fields to update progress indicator
+  document.getElementById('experiment-property').addEventListener('change', function() {
+    if (this.value) {
+      document.querySelectorAll('.progress-step')[0].classList.add('completed');
+      document.querySelectorAll('.progress-step')[1].classList.add('active');
+      document.querySelectorAll('.progress-step')[0].classList.remove('active');
+    }
+  });
+  
+  document.getElementById('experiment-value').addEventListener('input', function() {
+    if (this.value) {
+      document.querySelectorAll('.progress-step')[1].classList.add('completed');
+      document.querySelectorAll('.progress-step')[2].classList.add('active');
+      document.querySelectorAll('.progress-step')[1].classList.remove('active');
+    }
+  });
+  
+  document.getElementById('experiment-conditions').addEventListener('input', function() {
+    if (this.value) {
+      document.querySelectorAll('.progress-step')[2].classList.add('completed');
+      document.querySelectorAll('.progress-step')[3].classList.add('active');
+      document.querySelectorAll('.progress-step')[2].classList.remove('active');
+    }
+  });
+  
+  document.getElementById('experiment-date').addEventListener('change', function() {
+    if (this.value) {
+      document.querySelectorAll('.progress-step')[3].classList.add('completed');
+      document.querySelectorAll('.progress-step')[3].classList.remove('active');
+    }
+  });
+</script>
+{% endblock %}
+<script src="{{ url_for('static', filename='js/lab-verification.js') }}"></script>

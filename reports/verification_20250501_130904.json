@@ -1,0 +1,207 @@
+{
+  "timestamp": "2025-05-01T13:09:06.017311",
+  "success": false,
+  "molecule_counts": {
+    "total_molecules": 777,
+    "with_pubchem_cid": 693,
+    "with_chembl_id": 64,
+    "with_cross_references": 0,
+    "with_properties": 519
+  },
+  "reference_compounds": {
+    "total_reference_compounds": 9,
+    "found_reference_compounds": 9,
+    "missing_reference_compounds": [],
+    "incomplete_reference_compounds": [
+      "CHEMBL388978",
+      "CHEMBL1098659",
+      "CHEMBL66195",
+      "CHEMBL500033",
+      "CHEMBL1487",
+      "CHEMBL6196",
+      "CHEMBL967",
+      "CHEMBL262548",
+      "CHEMBL6752"
+    ],
+    "complete_reference_compounds": [],
+    "details": {
+      "CHEMBL388978": {
+        "status": "incomplete",
+        "name": "CHEMBL388978",
+        "missing_properties": [
+          "logP",
+          "h_bond_donors",
+          "h_bond_acceptors"
+        ],
+        "properties": {}
+      },
+      "CHEMBL1098659": {
+        "status": "incomplete",
+        "name": "CHEMBL1098659",
+        "missing_properties": [
+          "logP",
+          "h_bond_donors",
+          "h_bond_acceptors"
+        ],
+        "properties": {}
+      },
+      "CHEMBL66195": {
+        "status": "incomplete",
+        "name": "CHEMBL66195",
+        "missing_properties": [
+          "logP",
+          "h_bond_donors",
+          "h_bond_acceptors"
+        ],
+        "properties": {}
+      },
+      "CHEMBL500033": {
+        "status": "incomplete",
+        "name": "CHEMBL500033",
+        "missing_properties": [
+          "logP",
+          "h_bond_donors",
+          "h_bond_acceptors"
+        ],
+        "properties": {}
+      },
+      "CHEMBL1487": {
+        "status": "incomplete",
+        "name": "CHEMBL1487",
+        "missing_properties": [
+          "logP",
+          "h_bond_donors",
+          "h_bond_acceptors"
+        ],
+        "properties": {}
+      },
+      "CHEMBL6196": {
+        "status": "incomplete",
+        "name": "CHEMBL6196",
+        "missing_properties": [
+          "logP",
+          "h_bond_donors",
+          "h_bond_acceptors"
+        ],
+        "properties": {}
+      },
+      "CHEMBL967": {
+        "status": "incomplete",
+        "name": "CHEMBL967",
+        "missing_properties": [
+          "logP",
+          "h_bond_donors",
+          "h_bond_acceptors"
+        ],
+        "properties": {}
+      },
+      "CHEMBL262548": {
+        "status": "incomplete",
+        "name": "CHEMBL262548",
+        "missing_properties": [
+          "logP",
+          "h_bond_donors",
+          "h_bond_acceptors"
+        ],
+        "properties": {}
+      },
+      "CHEMBL6752": {
+        "status": "incomplete",
+        "name": "CHEMBL6752",
+        "missing_properties": [
+          "logP",
+          "h_bond_donors",
+          "h_bond_acceptors"
+        ],
+        "properties": {}
+      }
+    }
+  },
+  "property_completeness": {
+    "property_counts": {
+      "heavy_atoms": 506,
+      "psa": 36,
+      "alogp": 36,
+      "LogP": 13,
+      "Molecular Weight": 10,
+      "TPSA": 1,
+      "Cell Permeability": 1,
+      "Glass Transition Temperature": 1,
+      "Hydrogen Bond Acceptor Count": 1,
+      "Hydrogen Bond Donor Count": 1
+    },
+    "molecules_with_complete_properties": 0,
+    "molecules_with_incomplete_properties": 1,
+    "total_molecules_with_properties": 519,
+    "property_completeness_percentage": 0
+  },
+  "query_performance": {
+    "queries": [
+      {
+        "name": "Fetch single molecule by ID",
+        "query": "\n            SELECT * FROM molecules \n            ORDER BY created_at DESC \n            LIMIT 1\n            ",
+        "runs": [
+          452.3491859436035,
+          447.60704040527344,
+          406.9173336029053,
+          403.63621711730957,
+          410.8133316040039
+        ],
+        "average_ms": 424.26462173461914,
+        "min_ms": 403.63621711730957,
+        "max_ms": 452.3491859436035
+      },
+      {
+        "name": "Fetch molecule with properties",
+        "query": "\n            SELECT m.*, \n                array_agg(pt.name) as property_names,\n                array_agg(\n                    CASE \n                        WHEN mp.numeric_value IS NOT NULL THEN mp.numeric_value::text\n                        ELSE mp.text_value\n                    END\n                ) as property_values\n            FROM molecules m\n            JOIN molecular_properties mp ON m.id = mp.molecule_id\n            JOIN property_types pt ON mp.property_type_id = pt.id\n            GROUP BY m.id\n            LIMIT 1\n            ",
+        "runs": [
+          419.7578430175781,
+          398.2892036437988,
+          450.29377937316895,
+          419.30603981018066,
+          467.8068161010742
+        ],
+        "average_ms": 431.09073638916016,
+        "min_ms": 398.2892036437988,
+        "max_ms": 467.8068161010742
+      },
+      {
+        "name": "Search molecules by name",
+        "query": "\n            SELECT * FROM molecules\n            WHERE LOWER(name) LIKE LOWER(%s)\n            LIMIT 10\n            ",
+        "runs": [
+          420.92347145080566,
+          417.73247718811035,
+          416.0571098327637,
+          423.4578609466553,
+          421.42248153686523
+        ],
+        "average_ms": 419.91868019104004,
+        "min_ms": 416.0571098327637,
+        "max_ms": 423.4578609466553
+      },
+      {
+        "name": "Count molecules by property value range",
+        "query": "\n            SELECT COUNT(*) FROM molecules m\n            JOIN molecular_properties mp ON m.id = mp.molecule_id\n            JOIN property_types pt ON mp.property_type_id = pt.id\n            WHERE pt.name = 'logP' AND mp.numeric_value BETWEEN -1 AND 3\n            ",
+        "runs": [
+          424.1604804992676,
+          402.9843807220459,
+          426.1913299560547,
+          433.79878997802734,
+          502.86293029785156
+        ],
+        "average_ms": 437.9995822906494,
+        "min_ms": 402.9843807220459,
+        "max_ms": 502.86293029785156
+      }
+    ],
+    "overall_average_ms": 428.3184051513672,
+    "performance_acceptable": false
+  },
+  "summary": {
+    "total_molecules": 777,
+    "reference_compounds_complete": 0,
+    "reference_compounds_total": 9,
+    "property_completeness_percentage": 0,
+    "average_query_time_ms": 428.3184051513672
+  }
+}

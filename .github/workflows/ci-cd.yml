@@ -1,0 +1,644 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master, staging ]
+    tags:
+      - 'v*.*.*'
+  pull_request:
+    branches: [ main, master, staging ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        test-group: [python, node, integration]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Fetch all history for proper versioning
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Set up Conda
+      uses: conda-incubator/setup-miniconda@v2
+      with:
+        auto-update-conda: true
+        python-version: 3.9
+        
+    - name: Cache Conda packages
+      uses: actions/cache@v3
+      with:
+        path: ~/conda_pkgs_dir
+        key: ${{ runner.os }}-conda-${{ hashFiles('environment.yml') }}
+        restore-keys: |
+          ${{ runner.os }}-conda-
+    
+    - name: Set up Node.js
+      if: matrix.test-group == 'node' || matrix.test-group == 'integration'
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      shell: bash -l {0}
+      run: |
+        conda env create -f environment.yml
+        conda activate cryoprotect
+        pip install -r requirements_updated.txt
+        pip install safety pytest-xdist pytest-cov
+        
+    - name: Install Node dependencies
+      if: matrix.test-group == 'node' || matrix.test-group == 'integration'
+      run: npm ci
+        
+    - name: Run Python vulnerability scan
+      if: matrix.test-group == 'python'
+      shell: bash -l {0}
+      run: |
+        conda activate cryoprotect
+        safety check -r requirements_updated.txt --output json > safety-report.json
+        # Check for critical vulnerabilities and fail if found
+        python security/scan_python_safety.py --requirements requirements_updated.txt --format json --output safety-report.json --exit-on-critical
+        
+    - name: Run Node vulnerability scan
+      if: matrix.test-group == 'node'
+      run: |
+        npm audit --json > npm-audit.json
+        # Check for critical vulnerabilities and fail if found
+        node security/scan_js_eslint.js --path ./static/js --format json --output eslint-security-results.json --exit-on-critical
+        
+    - name: Run Python tests
+      if: matrix.test-group == 'python'
+      shell: bash -l {0}
+      run: |
+        conda activate cryoprotect
+        python -m pytest tests/python --cov=. --cov-report=xml:coverage-python.xml --cov-report=html:reports/htmlcov/python -v
+        
+    - name: Run Node tests
+      if: matrix.test-group == 'node'
+      run: |
+        npm test -- --coverage --coverageDirectory=reports/htmlcov/node
+        
+    - name: Run integration tests
+      if: matrix.test-group == 'integration'
+      shell: bash -l {0}
+      run: |
+        conda activate cryoprotect
+        python -m pytest tests/integration --cov=. --cov-report=xml:coverage-integration.xml --cov-report=html:reports/htmlcov/integration -v
+        
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results-${{ matrix.test-group }}
+        path: |
+          reports/htmlcov/${{ matrix.test-group }}
+          *coverage*.xml
+          safety-report.json
+          npm-audit.json
+        retention-days: 14
+        
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        files: coverage-*.xml
+        flags: ${{ matrix.test-group }}
+        fail_ci_if_error: false
+        verbose: true
+
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Bandit and Safety
+        run: |
+          python -m pip install --upgrade pip
+          pip install bandit safety
+
+      - name: Run Bandit (Python static analysis)
+        run: |
+          bandit -r ./api ./scripts ./ --exclude tests -f json -o bandit-results.json
+          # Check for critical vulnerabilities and fail if found
+          python security/scan_python_bandit.py --path . --format json --output bandit-results.json --exit-on-critical
+  
+      - name: Run Safety (Python dependency check)
+        run: |
+          safety check -r requirements.txt --json > safety-results.json
+          # Check for critical vulnerabilities and fail if found
+          python security/scan_python_safety.py --requirements requirements.txt --format json --output safety-results.json --exit-on-critical
+  
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Prepare ESLint environment
+        run: |
+          if [ ! -f package.json ]; then
+            npm init -y
+          fi
+          npm install --save-dev eslint eslint-plugin-security eslint-plugin-no-unsanitized
+
+      - name: Create ESLint config (if missing)
+        run: |
+          if [ ! -f .eslintrc.json ]; then
+            echo '{
+              "env": { "browser": true, "es2021": true },
+              "extends": "eslint:recommended",
+              "plugins": ["security", "no-unsanitized"],
+              "rules": {
+                "security/detect-object-injection": "warn",
+                "no-unsanitized/method": "warn",
+                "no-unsanitized/property": "warn"
+              }
+            }' > .eslintrc.json
+          fi
+
+      - name: Run ESLint with security plugins
+        run: |
+          npx eslint static/js/ --ext .js -f json -o eslint-security-results.json
+          # Check for critical vulnerabilities and fail if found
+          node security/scan_js_eslint.js --path ./static/js --format json --output eslint-security-results.json --exit-on-critical
+  
+      - name: Run OWASP Dependency-Check
+        uses: dependency-check/Dependency-Check_Action@main
+        with:
+          project: 'CryoProtect v2'
+          path: '.'
+          format: 'JSON'
+          out: 'dependency-check-results.json'
+          args: '--failOnCVSS 7'
+
+      - name: Upload security scan results
+        uses: actions/upload-artifact@v3
+        with:
+          name: security-scan-results
+          path: |
+            bandit-results.json
+            safety-results.json
+            eslint-security-results.json
+            dependency-check-results.json
+        
+  docker:
+    name: Build and Test Docker
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Fetch all history for proper versioning
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+      
+    - name: Cache Docker layers
+      uses: actions/cache@v3
+      with:
+        path: /tmp/.buildx-cache
+        key: ${{ runner.os }}-buildx-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-buildx-
+      
+    - name: Extract metadata for Docker
+      id: meta
+      uses: docker/metadata-action@v4
+      with:
+        images: cryoprotect
+        tags: |
+          type=ref,event=branch
+          type=ref,event=pr
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+          type=sha
+    
+    - name: Build Docker image
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        push: false
+        load: true
+        tags: cryoprotect:test
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        
+    - name: Move cache
+      run: |
+        rm -rf /tmp/.buildx-cache
+        mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+        
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: cryoprotect:test
+        format: 'sarif'
+        output: 'trivy-results.sarif'
+        severity: 'CRITICAL,HIGH'
+        exit-code: '1'
+        ignore-unfixed: false
+        
+    - name: Upload Trivy scan results
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: 'trivy-results.sarif'
+        
+    - name: Test Docker image
+      run: |
+        docker run --name cryoprotect-test -d -p 5000:5000 cryoprotect:test
+        sleep 10
+        docker exec cryoprotect-test conda run -n cryoprotect python verify_rdkit.py || { echo "RDKit verification failed"; docker logs cryoprotect-test; exit 1; }
+        docker exec cryoprotect-test conda run -n cryoprotect curl -s http://localhost:5000/health || { echo "Health check failed"; docker logs cryoprotect-test; exit 1; }
+        docker stop cryoprotect-test
+        
+  version:
+    name: Determine Version
+    runs-on: ubuntu-latest
+    needs: docker
+    outputs:
+      version: ${{ steps.set-version.outputs.version }}
+      is_release: ${{ steps.set-version.outputs.is_release }}
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Fetch all history for proper versioning
+    
+    - name: Set version
+      id: set-version
+      run: |
+        # Check if this is a tag push
+        if [[ "${{ github.ref }}" == refs/tags/v* ]]; then
+          VERSION=${GITHUB_REF#refs/tags/v}
+          echo "is_release=true" >> $GITHUB_OUTPUT
+        else
+          # Use semantic versioning with git describe
+          VERSION=$(git describe --tags --always --dirty | sed 's/^v//')
+          if [[ ! $VERSION =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then
+            # If no tag exists, use 0.1.0-sha
+            SHA=$(git rev-parse --short HEAD)
+            VERSION="0.1.0-$SHA"
+          fi
+          echo "is_release=false" >> $GITHUB_OUTPUT
+        fi
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+        echo "Version: $VERSION"
+  
+  deploy-staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: [docker, version]
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' || github.ref == 'refs/heads/staging')
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Fetch all history for proper versioning
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+      
+    - name: Cache Docker layers
+      uses: actions/cache@v3
+      with:
+        path: /tmp/.buildx-cache
+        key: ${{ runner.os }}-buildx-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-buildx-
+      
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v2
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        push: true
+        build-args: |
+          FLASK_ENV=staging
+          APP_VERSION=${{ needs.version.outputs.version }}
+        tags: |
+          ghcr.io/${{ github.repository }}/cryoprotect:staging
+          ghcr.io/${{ github.repository }}/cryoprotect:${{ needs.version.outputs.version }}
+          ghcr.io/${{ github.repository }}/cryoprotect:${{ github.sha }}
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+        
+    - name: Move cache
+      run: |
+        rm -rf /tmp/.buildx-cache
+        mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+          
+    - name: Deploy to staging
+      env:
+        STAGING_SSH_HOST: ${{ secrets.STAGING_SSH_HOST }}
+        STAGING_SSH_USER: ${{ secrets.STAGING_SSH_USER }}
+        STAGING_SSH_KEY: ${{ secrets.STAGING_SSH_KEY }}
+      run: |
+        echo "Deploying to staging environment..."
+        # Write SSH key to file
+        mkdir -p ~/.ssh
+        echo "$STAGING_SSH_KEY" > ~/.ssh/staging_key
+        chmod 600 ~/.ssh/staging_key
+        
+        # Create Docker secrets on staging server
+        ssh -i ~/.ssh/staging_key -o StrictHostKeyChecking=no $STAGING_SSH_USER@$STAGING_SSH_HOST "
+          # Create Docker secrets for sensitive values
+          echo '${{ secrets.STAGING_SUPABASE_URL }}' | docker secret create cryoprotect_supabase_url - || docker secret rm cryoprotect_supabase_url && echo '${{ secrets.STAGING_SUPABASE_URL }}' | docker secret create cryoprotect_supabase_url - &&
+          echo '${{ secrets.STAGING_SUPABASE_KEY }}' | docker secret create cryoprotect_supabase_key - || docker secret rm cryoprotect_supabase_key && echo '${{ secrets.STAGING_SUPABASE_KEY }}' | docker secret create cryoprotect_supabase_key - &&
+          echo '${{ secrets.STAGING_SECRET_KEY }}' | docker secret create cryoprotect_secret_key - || docker secret rm cryoprotect_secret_key && echo '${{ secrets.STAGING_SECRET_KEY }}' | docker secret create cryoprotect_secret_key - &&
+          
+          # Pull the latest image
+          docker pull ghcr.io/${{ github.repository }}/cryoprotect:staging &&
+          
+          # Set non-sensitive environment variables
+          export FLASK_ENV=staging &&
+          export USE_EXTERNAL_SECRETS=true &&
+          
+          # Deploy with docker-compose
+          docker-compose up -d
+        "
+        
+  deploy-production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: [deploy-staging, version]
+    if: needs.version.outputs.is_release == 'true' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Fetch all history for proper versioning
+    
+    - name: Create GitHub Release
+      if: needs.version.outputs.is_release == 'true'
+      uses: softprops/action-gh-release@v1
+      with:
+        name: Release v${{ needs.version.outputs.version }}
+        tag_name: v${{ needs.version.outputs.version }}
+        generate_release_notes: true
+        files: |
+          LICENSE
+          README.md
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Deploy to production
+      env:
+        PRODUCTION_SSH_HOST: ${{ secrets.PRODUCTION_SSH_HOST }}
+        PRODUCTION_SSH_USER: ${{ secrets.PRODUCTION_SSH_USER }}
+        PRODUCTION_SSH_KEY: ${{ secrets.PRODUCTION_SSH_KEY }}
+        APP_VERSION: ${{ needs.version.outputs.version }}
+      run: |
+        echo "Deploying version $APP_VERSION to production environment..."
+        # Write SSH key to file
+        mkdir -p ~/.ssh
+        echo "$PRODUCTION_SSH_KEY" > ~/.ssh/production_key
+        chmod 600 ~/.ssh/production_key
+        
+        # Create Docker secrets on production server
+        ssh -i ~/.ssh/production_key -o StrictHostKeyChecking=no $PRODUCTION_SSH_USER@$PRODUCTION_SSH_HOST "
+          # Create Docker secrets for sensitive values
+          echo '${{ secrets.PRODUCTION_SUPABASE_URL }}' | docker secret create cryoprotect_supabase_url - || docker secret rm cryoprotect_supabase_url && echo '${{ secrets.PRODUCTION_SUPABASE_URL }}' | docker secret create cryoprotect_supabase_url - &&
+          echo '${{ secrets.PRODUCTION_SUPABASE_KEY }}' | docker secret create cryoprotect_supabase_key - || docker secret rm cryoprotect_supabase_key && echo '${{ secrets.PRODUCTION_SUPABASE_KEY }}' | docker secret create cryoprotect_supabase_key - &&
+          echo '${{ secrets.PRODUCTION_SECRET_KEY }}' | docker secret create cryoprotect_secret_key - || docker secret rm cryoprotect_secret_key && echo '${{ secrets.PRODUCTION_SECRET_KEY }}' | docker secret create cryoprotect_secret_key - &&
+          echo '${{ secrets.REDIS_URL }}' | docker secret create cryoprotect_redis_url - || docker secret rm cryoprotect_redis_url && echo '${{ secrets.REDIS_URL }}' | docker secret create cryoprotect_redis_url - &&
+          
+          # Pull and tag the image
+          docker pull ghcr.io/${{ github.repository }}/cryoprotect:$APP_VERSION &&
+          docker tag ghcr.io/${{ github.repository }}/cryoprotect:$APP_VERSION ghcr.io/${{ github.repository }}/cryoprotect:production &&
+          
+          # Set non-sensitive environment variables
+          export FLASK_ENV=production &&
+          export USE_EXTERNAL_SECRETS=true &&
+          export APP_VERSION=$APP_VERSION &&
+          
+          # Deploy with docker-compose
+          docker-compose up -d
+        "
+        
+    - name: Notify deployment status
+      if: always()
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_CHANNEL: deployments
+        SLACK_COLOR: ${{ job.status }}
+        SLACK_TITLE: Production Deployment v${{ needs.version.outputs.version }}
+        SLACK_MESSAGE: 'Deployment to production ${{ job.status }} ! :rocket:'
+        SLACK_FOOTER: 'CryoProtect v2 CI/CD Pipeline'
+        
+  blue-green-deployment:
+    name: Blue/Green Deployment
+    runs-on: ubuntu-latest
+    needs: [deploy-production, version]
+    if: needs.version.outputs.is_release == 'true' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Fetch all history for proper versioning
+    
+    - name: Generate SBOM
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: ghcr.io/${{ github.repository }}/cryoprotect:${{ needs.version.outputs.version }}
+        format: 'cyclonedx'
+        output: 'sbom.json'
+    
+    - name: Upload SBOM
+      uses: actions/upload-artifact@v3
+      with:
+        name: sbom-${{ needs.version.outputs.version }}
+        path: sbom.json
+        retention-days: 90
+    
+    - name: Deploy to inactive environment
+      env:
+        PRODUCTION_SSH_HOST: ${{ secrets.PRODUCTION_SSH_HOST }}
+        PRODUCTION_SSH_USER: ${{ secrets.PRODUCTION_SSH_USER }}
+        PRODUCTION_SSH_KEY: ${{ secrets.PRODUCTION_SSH_KEY }}
+        APP_VERSION: ${{ needs.version.outputs.version }}
+      run: |
+        echo "Deploying version $APP_VERSION using blue/green deployment..."
+        # Write SSH key to file
+        mkdir -p ~/.ssh
+        echo "$PRODUCTION_SSH_KEY" > ~/.ssh/production_key
+        chmod 600 ~/.ssh/production_key
+        
+        # Create deployment timestamp for tracking
+        DEPLOY_TIMESTAMP=$(date -u +"%Y%m%d%H%M%S")
+        
+        # Determine active environment and deploy to inactive environment
+        ssh -i ~/.ssh/production_key -o StrictHostKeyChecking=no $PRODUCTION_SSH_USER@$PRODUCTION_SSH_HOST "
+          # Create Docker secrets for sensitive values
+          echo '${{ secrets.PRODUCTION_SUPABASE_URL }}' | docker secret create cryoprotect_supabase_url_${DEPLOY_TIMESTAMP} - || true
+          echo '${{ secrets.PRODUCTION_SUPABASE_KEY }}' | docker secret create cryoprotect_supabase_key_${DEPLOY_TIMESTAMP} - || true
+          echo '${{ secrets.PRODUCTION_SECRET_KEY }}' | docker secret create cryoprotect_secret_key_${DEPLOY_TIMESTAMP} - || true
+          echo '${{ secrets.REDIS_URL }}' | docker secret create cryoprotect_redis_url_${DEPLOY_TIMESTAMP} - || true
+          
+          # Create secret rotation timestamp
+          date +%s > /tmp/secret_rotation_timestamp
+          docker secret create secret_rotation_timestamp_${DEPLOY_TIMESTAMP} /tmp/secret_rotation_timestamp
+          rm /tmp/secret_rotation_timestamp
+          
+          # Set environment variables
+          export DEPLOY_TIMESTAMP=${DEPLOY_TIMESTAMP}
+          export SUPABASE_URL_SECRET=cryoprotect_supabase_url_${DEPLOY_TIMESTAMP}
+          export SUPABASE_KEY_SECRET=cryoprotect_supabase_key_${DEPLOY_TIMESTAMP}
+          export SECRET_KEY_SECRET=cryoprotect_secret_key_${DEPLOY_TIMESTAMP}
+          export REDIS_URL_SECRET=cryoprotect_redis_url_${DEPLOY_TIMESTAMP}
+          export SECRET_ROTATION_TIMESTAMP=secret_rotation_timestamp_${DEPLOY_TIMESTAMP}
+          
+          # Check which environment is currently active
+          if grep -q 'proxy_pass http://blue' /etc/nginx/conf.d/active.conf; then
+            echo 'Blue environment is active, deploying to green...'
+            export GREEN_VERSION=$APP_VERSION
+            ./scripts/deploy-green.sh --version $APP_VERSION
+          else
+            echo 'Green environment is active, deploying to blue...'
+            export BLUE_VERSION=$APP_VERSION
+            ./scripts/deploy-blue.sh --version $APP_VERSION
+          fi
+        "
+    
+    - name: Run health checks
+      env:
+        PRODUCTION_SSH_HOST: ${{ secrets.PRODUCTION_SSH_HOST }}
+        PRODUCTION_SSH_USER: ${{ secrets.PRODUCTION_SSH_USER }}
+        PRODUCTION_SSH_KEY: ${{ secrets.PRODUCTION_SSH_KEY }}
+      run: |
+        echo "Running health checks..."
+        ssh -i ~/.ssh/production_key -o StrictHostKeyChecking=no $PRODUCTION_SSH_USER@$PRODUCTION_SSH_HOST "
+          # Run comprehensive health checks
+          ./scripts/check-health.sh --verbose
+          
+          # Verify database connectivity
+          if grep -q 'proxy_pass http://blue' /etc/nginx/conf.d/active.conf; then
+            docker exec \$(docker ps --filter 'name=cryoprotect-green' --quiet) /opt/conda/envs/cryoprotect/bin/python -c 'from database.utils.health_check import check_database_connection; print(check_database_connection())'
+          else
+            docker exec \$(docker ps --filter 'name=cryoprotect-blue' --quiet) /opt/conda/envs/cryoprotect/bin/python -c 'from database.utils.health_check import check_database_connection; print(check_database_connection())'
+          fi
+        "
+    
+    - name: Switch traffic to new environment
+      env:
+        PRODUCTION_SSH_HOST: ${{ secrets.PRODUCTION_SSH_HOST }}
+        PRODUCTION_SSH_USER: ${{ secrets.PRODUCTION_SSH_USER }}
+        PRODUCTION_SSH_KEY: ${{ secrets.PRODUCTION_SSH_KEY }}
+      run: |
+        echo "Switching traffic to new environment..."
+        ssh -i ~/.ssh/production_key -o StrictHostKeyChecking=no $PRODUCTION_SSH_USER@$PRODUCTION_SSH_HOST "
+          # Check which environment was just deployed to
+          if grep -q 'proxy_pass http://blue' /etc/nginx/conf.d/active.conf; then
+            echo 'Switching traffic to green environment...'
+            ./scripts/switch-to-green.sh
+            
+            # Verify the switch was successful
+            if ! grep -q 'proxy_pass http://green' /etc/nginx/conf.d/active.conf; then
+              echo 'ERROR: Traffic switch to green environment failed!'
+              exit 1
+            fi
+          else
+            echo 'Switching traffic to blue environment...'
+            ./scripts/switch-to-blue.sh
+            
+            # Verify the switch was successful
+            if ! grep -q 'proxy_pass http://blue' /etc/nginx/conf.d/active.conf; then
+              echo 'ERROR: Traffic switch to blue environment failed!'
+              exit 1
+            fi
+          fi
+          
+          # Verify the application is responding after the switch
+          curl -f http://localhost/health || {
+            echo 'ERROR: Application health check failed after traffic switch!'
+            exit 1
+          }
+        "
+    
+    - name: Clean up old secrets
+      if: success()
+      env:
+        PRODUCTION_SSH_HOST: ${{ secrets.PRODUCTION_SSH_HOST }}
+        PRODUCTION_SSH_USER: ${{ secrets.PRODUCTION_SSH_USER }}
+        PRODUCTION_SSH_KEY: ${{ secrets.PRODUCTION_SSH_KEY }}
+        DEPLOY_TIMESTAMP: ${{ env.DEPLOY_TIMESTAMP }}
+      run: |
+        echo "Cleaning up old secrets..."
+        ssh -i ~/.ssh/production_key -o StrictHostKeyChecking=no $PRODUCTION_SSH_USER@$PRODUCTION_SSH_HOST "
+          # List all secrets
+          SECRETS=\$(docker secret ls --format '{{.Name}}' | grep -E 'cryoprotect_(supabase_url|supabase_key|secret_key|redis_url)_[0-9]+' || true)
+          
+          # Get current secrets
+          CURRENT_TIMESTAMP=\$(date -u +%Y%m%d%H%M%S)
+          CURRENT_SECRETS=\"cryoprotect_supabase_url_${DEPLOY_TIMESTAMP} cryoprotect_supabase_key_${DEPLOY_TIMESTAMP} cryoprotect_secret_key_${DEPLOY_TIMESTAMP} cryoprotect_redis_url_${DEPLOY_TIMESTAMP} secret_rotation_timestamp_${DEPLOY_TIMESTAMP}\"
+          
+          # Remove old secrets (keep the current ones)
+          for SECRET in \$SECRETS; do
+            if ! echo \"\$CURRENT_SECRETS\" | grep -q \"\$SECRET\"; then
+              echo \"Removing old secret: \$SECRET\"
+              docker service update --secret-rm \$SECRET cryoprotect-blue cryoprotect-green 2>/dev/null || true
+              docker secret rm \$SECRET 2>/dev/null || true
+            fi
+          done
+        "
+    
+    - name: Notify deployment status
+      if: always()
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_CHANNEL: deployments
+        SLACK_COLOR: ${{ job.status }}
+        SLACK_TITLE: Blue/Green Deployment v${{ needs.version.outputs.version }}
+        SLACK_MESSAGE: 'Blue/Green deployment ${{ job.status }} ! :rocket:'
+        SLACK_FOOTER: 'CryoProtect v2 CI/CD Pipeline'
+    
+    - name: Send deployment notification email
+      if: always()
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: ${{ secrets.MAIL_SERVER }}
+        server_port: ${{ secrets.MAIL_PORT }}
+        username: ${{ secrets.MAIL_USERNAME }}
+        password: ${{ secrets.MAIL_PASSWORD }}
+        subject: "CryoProtect v2 - Blue/Green Deployment ${{ job.status }}"
+        body: |
+          Blue/Green Deployment Status: ${{ job.status }}
+          Version: ${{ needs.version.outputs.version }}
+          Commit: ${{ github.sha }}
+          Deployed by: ${{ github.actor }}
+          
+          See details: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        to: ${{ secrets.DEVOPS_EMAIL }},${{ secrets.QA_EMAIL }},${{ secrets.PRODUCT_EMAIL }}
+        from: CryoProtect CI/CD <${{ secrets.MAIL_USERNAME }}>

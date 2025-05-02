@@ -8,7 +8,8 @@
     "apply-migration": "node migrations/apply_migration.js",
     "example:js": "node examples/cryoprotect_db_example.js",
     "example:py": "python examples/cryoprotect_db_example.py",
-    "analyze": "python PubChem_CryoProtectants.py"
+    "analyze": "python PubChem_CryoProtectants.py",
+    "taskmaster": "npx -y --package=task-master-ai task-master-ai"
   },
   "keywords": [
     "cryoprotectant",
@@ -21,7 +22,11 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@supabase/supabase-js": "^2.39.0"
+    "@supabase/supabase-js": "^2.39.0",
+    "3dmol": "^2.0.3",
+    "d3": "^7.8.5",
+    "plotly.js-dist": "^2.27.1",
+    "chart.js": "^4.4.1"
   },
   "devDependencies": {
     "dotenv": "^16.3.1"

@@ -1,0 +1,14 @@
+<!-- Progress Indicator -->
+<div class="progress-indicator mb-4">
+  <div class="progress-steps">
+    {% for step in workflow_steps %}
+      <div class="progress-step {% if loop.index0 < current_step %}completed{% elif loop.index0 == current_step %}active{% endif %}">
+        <div class="step-number">{{ loop.index }}</div>
+        <div class="step-label">{{ step.title }}</div>
+        {% if not loop.last %}
+          <div class="step-connector"></div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>

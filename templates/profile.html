@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - CryoProtect Analyzer</title>
+  
+  <!-- Supabase Configuration -->
+  <meta name="supabase-url" content="{{ supabase_url }}">
+  <meta name="supabase-key" content="{{ supabase_key }}">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+</head>
+<body>
+  <!-- Skip Navigation Link -->
+  <a href="#main-content" class="skip-link visually-hidden-focusable">Skip to main content</a>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <i class="bi bi-snow2" aria-hidden="true"></i> CryoProtect <span>Analyzer</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/molecules">Molecules</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/mixtures">Mixtures</a>
+          </li>
+        </ul>
+        <div class="dropdown">
+          <button class="btn btn-outline-primary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+            <i class="bi bi-person-circle" aria-hidden="true"></i> <span id="username-display">User</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item active" href="/profile" aria-current="page">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#" id="logout-link">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container py-4" id="main-content">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="mb-0">User Profile</h4>
+          </div>
+          <div class="card-body">
+            <div id="profile-loading" class="text-center py-4" aria-live="polite">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <p class="mt-2">Loading profile information...</p>
+            </div>
+            
+            <div id="profile-content" style="display: none;">
+              <form id="profile-form">
+                <div class="mb-3">
+                  <label for="profile-email" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="profile-email" readonly aria-describedby="email-help">
+                  <div id="email-help" class="form-text visually-hidden">Your account email address (cannot be changed)</div>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="profile-name" class="form-label">Full Name</label>
+                  <input type="text" class="form-control" id="profile-name" aria-describedby="name-help">
+                  <div id="name-help" class="form-text visually-hidden">Your full name</div>
+                </div>
+                
+                <div class="mb-4">
+                  <label for="profile-organization" class="form-label">Organization</label>
+                  <input type="text" class="form-control" id="profile-organization" aria-describedby="organization-help">
+                  <div id="organization-help" class="form-text visually-hidden">Your organization or institution</div>
+                </div>
+                
+                <div class="d-grid gap-2">
+                  <button type="submit" class="btn btn-primary">Update Profile</button>
+                </div>
+              </form>
+              
+              <hr class="my-4">
+              
+              <h5>Change Password</h5>
+              <form id="password-form" novalidate>
+                <div class="mb-3">
+                  <label for="current-password" class="form-label">Current Password</label>
+                  <input type="password" class="form-control" id="current-password" required aria-describedby="current-password-help">
+                  <div id="current-password-help" class="form-text visually-hidden">Enter your current password</div>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="new-password" class="form-label">New Password</label>
+                  <input type="password" class="form-control" id="new-password" required aria-describedby="new-password-help">
+                  <div id="new-password-help" class="form-text">Password must be at least 8 characters long.</div>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="confirm-new-password" class="form-label">Confirm New Password</label>
+                  <input type="password" class="form-control" id="confirm-new-password" required aria-describedby="confirm-password-help">
+                  <div id="confirm-password-help" class="form-text visually-hidden">Re-enter your new password to confirm</div>
+                </div>
+                
+                <div class="d-grid gap-2">
+                  <button type="submit" class="btn btn-outline-primary">Change Password</button>
+                </div>
+              </form>
+            </div>
+            
+            <div id="profile-error" class="alert alert-danger mt-3" style="display: none;" role="alert" aria-live="assertive"></div>
+            <div id="profile-success" class="alert alert-success mt-3" style="display: none;" role="alert" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-light py-4 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6 mb-3 mb-md-0 text-center text-md-start">
+          <p>&copy; 2025 CryoProtect Analyzer. All rights reserved.</p>
+        </div>
+        <div class="col-12 col-md-6 text-center text-md-end">
+          <a href="#" class="text-decoration-none me-3">Privacy Policy</a>
+          <a href="#" class="text-decoration-none me-3">Terms of Service</a>
+          <a href="#" class="text-decoration-none">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Supabase JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom JS -->
+  <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/auth-ui.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

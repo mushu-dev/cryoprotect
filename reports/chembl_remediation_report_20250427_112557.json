@@ -1,0 +1,42 @@
+{
+  "timestamp": "20250427_112557",
+  "summary": {
+    "migration": {
+      "status": "skipped",
+      "message": "Step was skipped"
+    },
+    "import": {
+      "status": "skipped",
+      "message": "Step was skipped"
+    },
+    "reconciliation": {
+      "status": "skipped",
+      "message": "Step was skipped"
+    },
+    "verification": {
+      "status": "unknown",
+      "all_requirements_met": false
+    }
+  },
+  "details": {
+    "migration": {
+      "status": "skipped",
+      "message": "Step was skipped"
+    },
+    "import": {
+      "status": "skipped",
+      "message": "Step was skipped",
+      "summary": null
+    },
+    "reconciliation": {
+      "status": "skipped",
+      "message": "Step was skipped",
+      "report_path": null,
+      "report_summary": null
+    },
+    "verification": {
+      "status": "skipped",
+      "message": "Step was skipped"
+    }
+  }
+}

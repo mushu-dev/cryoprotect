@@ -1,0 +1,13 @@
+{
+  "timestamp": "2025-04-23T00:40:26.394497",
+  "backup_file": "backups/database\\cryoprotect_20250423_003200_full.dump",
+  "restore_options": {
+    "clean": true,
+    "create": false,
+    "no_owner": true,
+    "no_privileges": false,
+    "schema": "public",
+    "table": null
+  },
+  "success": true
+}

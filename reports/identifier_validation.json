@@ -1,0 +1,18 @@
+{
+  "total_molecules": 6,
+  "pubchem_ids": 6,
+  "chembl_ids": 5,
+  "cas_numbers": 6,
+  "inchi_keys": 6,
+  "smiles": 6,
+  "names": 18,
+  "cross_reference_issues": [
+    {
+      "internal_id": "CRYO006",
+      "name": "Sorbitol",
+      "issues": [
+        "ChEMBL ID CHEMBL388978 resolves to CRYO001 instead of CRYO006"
+      ]
+    }
+  ]
+}

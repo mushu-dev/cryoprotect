@@ -1,0 +1,39 @@
+{
+  "indexes_added": 5,
+  "tables_modified": [
+    "mixture_components",
+    "molecules"
+  ],
+  "details": [
+    {
+      "name": "molecules_properties_pubchem_cid_idx",
+      "table": "molecules",
+      "elapsed_time": 0.5063347816467285,
+      "description": "Expression index on PubChem CID for faster identifier-based searches"
+    },
+    {
+      "name": "molecules_properties_chembl_id_idx",
+      "table": "molecules",
+      "elapsed_time": 0.5146381855010986,
+      "description": "Expression index on ChEMBL ID for faster identifier-based searches"
+    },
+    {
+      "name": "molecules_properties_inchi_key_idx",
+      "table": "molecules",
+      "elapsed_time": 0.5122342109680176,
+      "description": "Expression index on InChI Key for faster structure-based searches"
+    },
+    {
+      "name": "mixture_components_mixture_id_idx",
+      "table": "mixture_components",
+      "elapsed_time": 0.5081405639648438,
+      "description": "Index on mixture_id for faster mixture component lookups"
+    },
+    {
+      "name": "mixture_components_molecule_id_idx",
+      "table": "mixture_components",
+      "elapsed_time": 0.5057649612426758,
+      "description": "Index on molecule_id for faster compound usage lookups"
+    }
+  ]
+}

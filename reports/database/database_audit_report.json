@@ -1,0 +1,524 @@
+{
+  "timestamp": "2025-04-17T03:30:29.064624",
+  "summary": {
+    "total_tables": 11,
+    "empty_tables": 0,
+    "populated_tables": 11,
+    "integrity_issues": 13,
+    "completeness_issues": 0
+  },
+  "table_counts": {
+    "molecule": 15,
+    "mixture": 5,
+    "mixture_component": 7,
+    "experiment": 5,
+    "experiment_property": 11,
+    "molecular_property": 18,
+    "prediction": 12,
+    "calculation_method": 3,
+    "project": 1,
+    "team": 2,
+    "user_profile": 45
+  },
+  "integrity_results": {
+    "mixture": {
+      "project": {
+        "status": "PASS",
+        "details": "Foreign key integrity check passed for mixture.project_id"
+      },
+      "user_profile": {
+        "status": "ERROR",
+        "details": "Error: {'code': '42703', 'details': None, 'hint': None, 'message': 'column mixture.user_profile_id does not exist'}"
+      }
+    },
+    "mixture_component": {
+      "mixture": {
+        "status": "PASS",
+        "details": "Foreign key integrity check passed for mixture_component.mixture_id"
+      },
+      "molecule": {
+        "status": "PASS",
+        "details": "Foreign key integrity check passed for mixture_component.molecule_id"
+      }
+    },
+    "experiment": {
+      "mixture": {
+        "status": "PASS",
+        "details": "Foreign key integrity check passed for experiment.mixture_id"
+      },
+      "project": {
+        "status": "PASS",
+        "details": "Foreign key integrity check passed for experiment.project_id"
+      },
+      "user_profile": {
+        "status": "ERROR",
+        "details": "Error: {'code': '42703', 'details': None, 'hint': None, 'message': 'column experiment.user_profile_id does not exist'}"
+      }
+    },
+    "experiment_property": {
+      "experiment": {
+        "status": "PASS",
+        "details": "Foreign key integrity check passed for experiment_property.experiment_id"
+      },
+      "calculation_method": {
+        "status": "ERROR",
+        "details": "Error: {'code': '42703', 'details': None, 'hint': None, 'message': 'column experiment_property.calculation_method_id does not exist'}"
+      },
+      "user_profile": {
+        "status": "ERROR",
+        "details": "Error: {'code': '42703', 'details': None, 'hint': None, 'message': 'column experiment_property.user_profile_id does not exist'}"
+      }
+    },
+    "molecular_property": {
+      "molecule": {
+        "status": "PASS",
+        "details": "Foreign key integrity check passed for molecular_property.molecule_id"
+      },
+      "calculation_method": {
+        "status": "ERROR",
+        "details": "Error: {'code': '42703', 'details': None, 'hint': None, 'message': 'column molecular_property.calculation_method_id does not exist'}"
+      },
+      "experiment": {
+        "status": "UNKNOWN",
+        "details": "No foreign keys found in molecular_property.experiment_id"
+      },
+      "user_profile": {
+        "status": "ERROR",
+        "details": "Error: {'code': '42703', 'details': None, 'hint': None, 'message': 'column molecular_property.user_profile_id does not exist'}"
+      }
+    },
+    "prediction": {
+      "molecule": {
+        "status": "PASS",
+        "details": "Foreign key integrity check passed for prediction.molecule_id"
+      },
+      "calculation_method": {
+        "status": "ERROR",
+        "details": "Error: {'code': '42703', 'details': None, 'hint': None, 'message': 'column prediction.calculation_method_id does not exist'}"
+      },
+      "user_profile": {
+        "status": "ERROR",
+        "details": "Error: {'code': '42703', 'details': None, 'hint': None, 'message': 'column prediction.user_profile_id does not exist'}"
+      }
+    },
+    "calculation_method": {
+      "user_profile": {
+        "status": "ERROR",
+        "details": "Error: {'code': '42703', 'details': None, 'hint': None, 'message': 'column calculation_method.user_profile_id does not exist'}"
+      }
+    },
+    "project": {
+      "team": {
+        "status": "UNKNOWN",
+        "details": "No foreign keys found in project.team_id"
+      },
+      "user_profile": {
+        "status": "ERROR",
+        "details": "Error: {'code': '42703', 'details': None, 'hint': None, 'message': 'column project.user_profile_id does not exist'}"
+      }
+    },
+    "team": {
+      "user_profile": {
+        "status": "ERROR",
+        "details": "Error: {'code': '42703', 'details': None, 'hint': None, 'message': 'column team.user_profile_id does not exist'}"
+      }
+    }
+  },
+  "completeness_results": {
+    "molecule": {
+      "status": "COMPLETE",
+      "total_rows": 15,
+      "missing_data": {
+        "name": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        },
+        "smiles": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        },
+        "inchi": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        },
+        "inchikey": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        },
+        "formula": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        },
+        "molecular_weight": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        }
+      },
+      "details": "molecule data completeness: COMPLETE"
+    },
+    "mixture": {
+      "status": "COMPLETE",
+      "total_rows": 5,
+      "missing_data": {
+        "name": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        },
+        "description": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        }
+      },
+      "details": "mixture data completeness: COMPLETE"
+    },
+    "mixture_component": {
+      "status": "COMPLETE",
+      "total_rows": 7,
+      "missing_data": {
+        "molecule_id": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        },
+        "mixture_id": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        },
+        "amount": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        },
+        "amount_unit": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        }
+      },
+      "details": "mixture_component data completeness: COMPLETE"
+    },
+    "experiment": {
+      "status": "COMPLETE",
+      "total_rows": 5,
+      "missing_data": {
+        "name": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        },
+        "description": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        },
+        "mixture_id": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        }
+      },
+      "details": "experiment data completeness: COMPLETE"
+    },
+    "experiment_property": {
+      "status": "COMPLETE",
+      "total_rows": 11,
+      "missing_data": {
+        "experiment_id": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        },
+        "property_type": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        },
+        "value": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        },
+        "unit": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        }
+      },
+      "details": "experiment_property data completeness: COMPLETE"
+    },
+    "molecular_property": {
+      "status": "COMPLETE",
+      "total_rows": 18,
+      "missing_data": {
+        "molecule_id": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        },
+        "property_type": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        },
+        "value": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        },
+        "unit": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        }
+      },
+      "details": "molecular_property data completeness: COMPLETE"
+    },
+    "prediction": {
+      "status": "COMPLETE",
+      "total_rows": 12,
+      "missing_data": {
+        "molecule_id": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        },
+        "property_type": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        },
+        "predicted_value": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        },
+        "unit": {
+          "missing_count": 0,
+          "missing_percentage": 0.0
+        }
+      },
+      "details": "prediction data completeness: COMPLETE"
+    }
+  },
+  "dependency_graph": {
+    "nodes": [
+      {
+        "id": "molecule",
+        "label": "molecule\n(15 rows)",
+        "size": 3,
+        "color": "#66cc00"
+      },
+      {
+        "id": "mixture",
+        "label": "mixture\n(5 rows)",
+        "size": 3,
+        "color": "#66cc00"
+      },
+      {
+        "id": "mixture_component",
+        "label": "mixture_component\n(7 rows)",
+        "size": 3,
+        "color": "#66cc00"
+      },
+      {
+        "id": "experiment",
+        "label": "experiment\n(5 rows)",
+        "size": 3,
+        "color": "#66cc00"
+      },
+      {
+        "id": "experiment_property",
+        "label": "experiment_property\n(11 rows)",
+        "size": 3,
+        "color": "#66cc00"
+      },
+      {
+        "id": "molecular_property",
+        "label": "molecular_property\n(18 rows)",
+        "size": 3,
+        "color": "#66cc00"
+      },
+      {
+        "id": "prediction",
+        "label": "prediction\n(12 rows)",
+        "size": 3,
+        "color": "#66cc00"
+      },
+      {
+        "id": "calculation_method",
+        "label": "calculation_method\n(3 rows)",
+        "size": 3,
+        "color": "#66cc00"
+      },
+      {
+        "id": "project",
+        "label": "project\n(1 rows)",
+        "size": 3,
+        "color": "#66cc00"
+      },
+      {
+        "id": "team",
+        "label": "team\n(2 rows)",
+        "size": 3,
+        "color": "#66cc00"
+      },
+      {
+        "id": "user_profile",
+        "label": "user_profile\n(45 rows)",
+        "size": 4.5,
+        "color": "#66cc00"
+      }
+    ],
+    "edges": [
+      {
+        "from": "project",
+        "to": "mixture",
+        "arrows": "to"
+      },
+      {
+        "from": "user_profile",
+        "to": "mixture",
+        "arrows": "to"
+      },
+      {
+        "from": "mixture",
+        "to": "mixture_component",
+        "arrows": "to"
+      },
+      {
+        "from": "molecule",
+        "to": "mixture_component",
+        "arrows": "to"
+      },
+      {
+        "from": "mixture",
+        "to": "experiment",
+        "arrows": "to"
+      },
+      {
+        "from": "project",
+        "to": "experiment",
+        "arrows": "to"
+      },
+      {
+        "from": "user_profile",
+        "to": "experiment",
+        "arrows": "to"
+      },
+      {
+        "from": "experiment",
+        "to": "experiment_property",
+        "arrows": "to"
+      },
+      {
+        "from": "calculation_method",
+        "to": "experiment_property",
+        "arrows": "to"
+      },
+      {
+        "from": "user_profile",
+        "to": "experiment_property",
+        "arrows": "to"
+      },
+      {
+        "from": "molecule",
+        "to": "molecular_property",
+        "arrows": "to"
+      },
+      {
+        "from": "calculation_method",
+        "to": "molecular_property",
+        "arrows": "to"
+      },
+      {
+        "from": "experiment",
+        "to": "molecular_property",
+        "arrows": "to"
+      },
+      {
+        "from": "user_profile",
+        "to": "molecular_property",
+        "arrows": "to"
+      },
+      {
+        "from": "molecule",
+        "to": "prediction",
+        "arrows": "to"
+      },
+      {
+        "from": "calculation_method",
+        "to": "prediction",
+        "arrows": "to"
+      },
+      {
+        "from": "user_profile",
+        "to": "prediction",
+        "arrows": "to"
+      },
+      {
+        "from": "user_profile",
+        "to": "calculation_method",
+        "arrows": "to"
+      },
+      {
+        "from": "team",
+        "to": "project",
+        "arrows": "to"
+      },
+      {
+        "from": "user_profile",
+        "to": "project",
+        "arrows": "to"
+      },
+      {
+        "from": "user_profile",
+        "to": "team",
+        "arrows": "to"
+      }
+    ]
+  },
+  "population_recommendations": [
+    {
+      "table": "calculation_method",
+      "priority": 2,
+      "status": "SPARSE",
+      "recommendation": "Add more data to calculation_method table (Priority 2)",
+      "dependencies": [
+        "user_profile"
+      ]
+    },
+    {
+      "table": "team",
+      "priority": 2,
+      "status": "SPARSE",
+      "recommendation": "Add more data to team table (Priority 2)",
+      "dependencies": [
+        "user_profile"
+      ]
+    },
+    {
+      "table": "project",
+      "priority": 3,
+      "status": "SPARSE",
+      "recommendation": "Add more data to project table (Priority 3)",
+      "dependencies": [
+        "team",
+        "user_profile"
+      ]
+    },
+    {
+      "table": "mixture",
+      "priority": 4,
+      "status": "SPARSE",
+      "recommendation": "Add more data to mixture table (Priority 4)",
+      "dependencies": [
+        "project",
+        "user_profile"
+      ]
+    },
+    {
+      "table": "mixture_component",
+      "priority": 5,
+      "status": "SPARSE",
+      "recommendation": "Add more data to mixture_component table (Priority 5)",
+      "dependencies": [
+        "mixture",
+        "molecule"
+      ]
+    },
+    {
+      "table": "experiment",
+      "priority": 5,
+      "status": "SPARSE",
+      "recommendation": "Add more data to experiment table (Priority 5)",
+      "dependencies": [
+        "mixture",
+        "project",
+        "user_profile"
+      ]
+    }
+  ]
+}

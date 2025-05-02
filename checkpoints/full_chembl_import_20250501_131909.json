@@ -1,0 +1,44 @@
+{
+  "processed_compounds": [],
+  "successful_compounds": [],
+  "failed_compounds": {},
+  "current_batch": 0,
+  "total_processed": 0,
+  "success_count": 0,
+  "error_count": 0,
+  "start_time": "2025-05-01T13:19:02.548774",
+  "last_updated": "2025-05-01T13:19:09.199662",
+  "config": {
+    "mode": "dry-run",
+    "workers": 4,
+    "batch_size": 10,
+    "limit": 5,
+    "search_terms": [
+      "cryoprotectant",
+      "antifreeze",
+      "cryopreservation",
+      "cell preservation"
+    ],
+    "fetch_all": false,
+    "include_refs": false,
+    "expand_similar": false,
+    "search_terms_all": false,
+    "use_reference_seeds": false,
+    "similarity": 70,
+    "filter_properties": true,
+    "property_filters": {
+      "min_mw": 30.0,
+      "max_mw": 500.0,
+      "min_hba": 2,
+      "min_hbd": 1,
+      "max_alogp": 3.0
+    },
+    "use_smarts": false,
+    "smarts_classes": [
+      "all"
+    ],
+    "rdkit_available": true,
+    "total_compounds": 0
+  },
+  "elapsed_seconds": 6.650888
+}

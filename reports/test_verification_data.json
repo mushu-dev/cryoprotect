@@ -1,0 +1,102 @@
+{
+  "timestamp": "2025-04-29T02:13:45.123456",
+  "data_source": "TestData",
+  "counts": {
+    "molecules": 1250,
+    "properties": 3750,
+    "properties_per_molecule": 3.0
+  },
+  "null_checks": {
+    "molecules": {
+      "total": 1250,
+      "null_name": 25,
+      "null_smiles": 50,
+      "null_chembl_id": 150,
+      "null_name_percent": 2.0,
+      "null_smiles_percent": 4.0,
+      "null_chembl_id_percent": 12.0
+    },
+    "properties": {
+      "total": 3750,
+      "null_value": 125,
+      "null_property_type": 0,
+      "null_value_percent": 3.33,
+      "null_property_type_percent": 0.0
+    }
+  },
+  "consistency_checks": {
+    "molecules_without_properties": 15,
+    "orphaned_properties": 5,
+    "duplicate_molecules": 0
+  },
+  "property_completeness": {
+    "LogP": {
+      "total_molecules": 1250,
+      "molecules_with_property": 1200,
+      "coverage_percent": 96.0
+    },
+    "MolecularWeight": {
+      "total_molecules": 1250,
+      "molecules_with_property": 1250,
+      "coverage_percent": 100.0
+    },
+    "TPSA": {
+      "total_molecules": 1250,
+      "molecules_with_property": 950,
+      "coverage_percent": 76.0
+    },
+    "HBondDonorCount": {
+      "total_molecules": 1250,
+      "molecules_with_property": 1100,
+      "coverage_percent": 88.0
+    },
+    "HBondAcceptorCount": {
+      "total_molecules": 1250,
+      "molecules_with_property": 1100,
+      "coverage_percent": 88.0
+    },
+    "RotatableBondCount": {
+      "total_molecules": 1250,
+      "molecules_with_property": 850,
+      "coverage_percent": 68.0
+    },
+    "average_coverage": 86.0
+  },
+  "reference_compounds": {
+    "CHEMBL1": {
+      "present": true,
+      "actual_name": "Aspirin",
+      "property_count": 6
+    },
+    "CHEMBL2": {
+      "present": true,
+      "actual_name": "Paracetamol",
+      "property_count": 6
+    },
+    "CHEMBL3": {
+      "present": false
+    },
+    "CHEMBL4": {
+      "present": true,
+      "actual_name": "Ibuprofen",
+      "property_count": 5
+    },
+    "CHEMBL5": {
+      "present": false
+    },
+    "summary": {
+      "total": 5,
+      "present": 3,
+      "missing": 2,
+      "success_rate": 0.6
+    }
+  },
+  "assessments": {
+    "counts": "SUCCESS",
+    "null_checks": "WARNING",
+    "consistency_checks": "WARNING",
+    "property_completeness": "SUCCESS",
+    "reference_compounds": "WARNING"
+  },
+  "overall_assessment": "WARNING"
+}

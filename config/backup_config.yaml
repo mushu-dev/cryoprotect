@@ -1,0 +1,64 @@
+# Database configuration
+database:
+  host: localhost
+  port: 5432
+  username: postgres
+  password: ${POSTGRES_PASSWORD}  # Use environment variable
+  database: cryoprotect
+
+# Backup storage paths
+local_backup_dir: backups/database
+file_backup_dir: backups/files
+config_backup_dir: backups/config
+
+# Retention policy (in days)
+retention:
+  full_backup: 30     # Keep full backups for 30 days
+  incremental_backup: 7  # Keep incremental backups for 7 days
+  file_backup: 30     # Keep file backups for 30 days
+  config_backup: 90   # Keep config backups for 90 days
+
+# Backup schedules (cron format)
+schedules:
+  full_backup: "0 1 * * *"        # 1 AM daily
+  incremental_backup: "0 */6 * * *"  # Every 6 hours
+  file_backup: "0 2 * * *"        # 2 AM daily
+  config_backup: "0 3 * * 0"      # 3 AM on Sundays
+  verification: "0 4 * * *"       # 4 AM daily
+  test_restore: "0 5 * * 0"       # 5 AM on Sundays
+  retention: "0 6 * * *"          # 6 AM daily
+
+# AWS S3 configuration
+aws:
+  enabled: false
+  access_key: ${AWS_ACCESS_KEY}  # Use environment variable
+  secret_key: ${AWS_SECRET_KEY}  # Use environment variable
+  region: us-east-1
+  bucket: cryoprotect-backups
+  prefix: database-backups
+
+# Notification configuration
+notifications:
+  email:
+    enabled: true
+    from: backup@example.com
+    to: admin@example.com
+    smtp_server: smtp.example.com
+    smtp_port: 587
+    smtp_username: ${SMTP_USERNAME}  # Use environment variable
+    smtp_password: ${SMTP_PASSWORD}  # Use environment variable
+  
+  slack:
+    enabled: false
+    webhook_url: ${SLACK_WEBHOOK}  # Use environment variable
+    channel: "#backups"
+
+# Compression configuration
+compression:
+  enabled: true
+  level: 9  # Maximum compression
+
+# Encryption configuration
+encryption:
+  enabled: true
+  key_file: config/backup_encryption_key

@@ -1,0 +1,19 @@
+{
+  "timestamp": "2025-04-27T20:19:58.514385",
+  "statistics": {
+    "total_processed": 28,
+    "total_imported": 25,
+    "total_skipped": 3,
+    "total_errors": 0,
+    "rate_limit_errors": 0,
+    "success_rate": 89.29,
+    "error_rate": 0.0,
+    "rate_limit_error_rate": 0.0
+  },
+  "performance": {
+    "elapsed_time_seconds": 96.56793665885925,
+    "elapsed_time_formatted": "0:01:36",
+    "compounds_per_second": 0.29
+  },
+  "status": "Incomplete"
+}

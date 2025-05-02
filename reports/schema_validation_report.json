@@ -1,0 +1,174 @@
+{
+  "timestamp": "2025-04-29T17:37:45",
+  "validation_status": {
+    "success": false,
+    "message": "Database schema exists but differs from expected structure"
+  },
+  "table_verification": {
+    "success": true,
+    "message": "All required tables exist",
+    "tables": {
+      "molecules": true,
+      "molecular_properties": true,
+      "mixture_components": true,
+      "mixtures": true,
+      "calculation_methods": true,
+      "experiments": true,
+      "predictions": true
+    }
+  },
+  "schema_verification": {
+    "success": false,
+    "message": "Schema structure differs from expected",
+    "issues": [
+      {
+        "type": "schema_mismatch",
+        "severity": "error",
+        "message": "The 'molecules' table does not have a 'properties' column for JSON data"
+      },
+      {
+        "type": "schema_difference",
+        "severity": "info",
+        "message": "The 'molecules' table has individual columns for properties instead of a JSON structure"
+      }
+    ]
+  },
+  "actual_schema": {
+    "molecules": {
+      "columns": [
+        "id",
+        "name",
+        "smiles",
+        "inchi",
+        "inchikey",
+        "formula",
+        "molecular_weight",
+        "created_by",
+        "is_public",
+        "data_source",
+        "version",
+        "modification_history",
+        "created_at",
+        "updated_at",
+        "pubchem_cid",
+        "cid",
+        "pubchem_link",
+        "molecular_formula",
+        "chembl_id"
+      ],
+      "sample_row": {
+        "id": "3d1f22dc-d7be-4d04-928b-2024349410d9",
+        "name": "TestMol4",
+        "smiles": null,
+        "inchi": null,
+        "inchikey": null,
+        "formula": null,
+        "molecular_weight": null,
+        "created_by": null,
+        "is_public": true,
+        "data_source": "MCP_Verification_Atomic",
+        "version": 1,
+        "modification_history": null,
+        "created_at": "2025-04-27T01:38:26.359811+00:00",
+        "updated_at": "2025-04-27T03:30:29.811993+00:00",
+        "pubchem_cid": null,
+        "cid": null,
+        "pubchem_link": null,
+        "molecular_formula": null,
+        "chembl_id": null
+      }
+    },
+    "molecular_properties": {
+      "columns": [
+        "id",
+        "molecule_id",
+        "property_type_id",
+        "numeric_value",
+        "text_value",
+        "boolean_value",
+        "unit",
+        "created_by",
+        "data_source",
+        "version",
+        "modification_history",
+        "created_at",
+        "updated_at",
+        "sensitivity_level"
+      ],
+      "sample_row": {
+        "id": "bc50a25e-3e38-4a7f-bb51-ea41059cf541",
+        "molecule_id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+        "property_type_id": "6ff67057-fc79-4b96-a604-de5d08b49f51",
+        "numeric_value": -1.35,
+        "text_value": null,
+        "boolean_value": null,
+        "unit": "",
+        "created_by": "bf6495aa-c4ab-4ec6-8f89-95fc88e4dbc0",
+        "data_source": "CryoProtect Database",
+        "version": null,
+        "modification_history": null,
+        "created_at": "2025-04-22T21:47:27.973288+00:00",
+        "updated_at": "2025-04-22T21:47:27.973288+00:00",
+        "sensitivity_level": null
+      }
+    }
+  },
+  "expected_schema": {
+    "molecules": {
+      "columns": [
+        "id",
+        "name",
+        "properties",
+        "created_at",
+        "updated_at"
+      ],
+      "properties_structure": {
+        "pubchem": {
+          "basic": {
+            "molecular_weight": "numeric"
+          },
+          "identifiers": {
+            "inchi_key": "string",
+            "smiles": "string"
+          },
+          "properties": {
+            "logP": "numeric",
+            "h_bond_donor_count": "numeric",
+            "h_bond_acceptor_count": "numeric"
+          }
+        },
+        "chembl": {
+          "molecule_properties": {
+            "full_mwt": "numeric",
+            "alogp": "numeric",
+            "hba": "numeric",
+            "hbd": "numeric"
+          }
+        },
+        "rdkit": {
+          "properties": {
+            "molecular_weight": "numeric"
+          }
+        }
+      }
+    }
+  },
+  "recommendations": [
+    {
+      "type": "schema_adaptation",
+      "description": "Adapt verification scripts to work with the actual schema structure",
+      "details": "The verification scripts should be modified to check for individual property columns in the molecules table instead of a JSON 'properties' column"
+    },
+    {
+      "type": "code_update",
+      "description": "Update application code that expects a 'properties' JSON column",
+      "details": "Any code that expects to access properties via a JSON structure (e.g., properties->'pubchem'->'basic'->>'molecular_weight') should be updated to access the individual columns directly"
+    },
+    {
+      "type": "documentation",
+      "description": "Update documentation to reflect the actual schema structure",
+      "details": "Documentation should be updated to describe the actual database schema with individual property columns instead of a JSON structure"
+    }
+  ],
+  "conclusion": "The database schema validation has identified that while all required tables exist, the structure of the tables differs from what was expected. The 'molecules' table has individual columns for properties instead of a JSON 'properties' column with nested data. This requires adaptation of verification scripts and application code to work with the actual schema structure."
+}

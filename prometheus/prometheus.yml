@@ -1,0 +1,89 @@
+# Prometheus configuration for CryoProtect blue/green deployment
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  scrape_timeout: 10s
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          # - alertmanager:9093
+
+# Rule files to load
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+# Scrape configurations
+scrape_configs:
+  # Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # NGINX metrics
+  - job_name: 'nginx'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['nginx:8080']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+        replacement: 'nginx'
+
+  # Blue environment metrics
+  - job_name: 'cryoprotect-blue'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['cryoprotect-blue:5000']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+        replacement: 'blue'
+      - source_labels: [__address__]
+        target_label: environment
+        replacement: 'blue'
+
+  # Green environment metrics
+  - job_name: 'cryoprotect-green'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['cryoprotect-green:5000']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+        replacement: 'green'
+      - source_labels: [__address__]
+        target_label: environment
+        replacement: 'green'
+
+  # Docker metrics
+  - job_name: 'docker'
+    static_configs:
+      - targets: ['host.docker.internal:9323']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+        replacement: 'docker'
+
+  # Node exporter for host metrics
+  - job_name: 'node'
+    static_configs:
+      - targets: ['host.docker.internal:9100']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+        replacement: 'host'
+
+# Active environment detection
+- job_name: 'active-environment'
+  metrics_path: /active
+  static_configs:
+    - targets: ['nginx:8080']
+  metric_relabel_configs:
+    - source_labels: [content]
+      regex: '.*ACTIVE_COLOR: (blue|green).*'
+      target_label: active_environment
+      replacement: '$1'

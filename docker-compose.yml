@@ -1,16 +1,648 @@
-version: '3'
+version: '3.8'
 
 services:
   cryoprotect:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - FLASK_ENV=${FLASK_ENV:-production}
+        - BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+        - VCS_REF=${VCS_REF:-latest}
+    image: ${DOCKER_REGISTRY:-ghcr.io}/${DOCKER_NAMESPACE:-cryoprotect}/cryoprotect:${IMAGE_TAG:-latest}
     ports:
-      - "5000:5000"
+      - "${HOST_PORT:-5000}:5000"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=${FLASK_ENV:-production}
+      # Logging configuration
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - LOG_TO_FILE=1
+      - LOG_TO_CONSOLE=1
+      - LOG_TO_ELK=${LOG_TO_ELK:-1}
+      - LOG_JSON_FORMAT=1
+      - ELASTICSEARCH_HOST=elasticsearch:9200
+      - ELASTICSEARCH_INDEX=cryoprotect-logs
+      # Monitoring configuration
+      - PROMETHEUS_METRICS=1
+      - PROMETHEUS_ENDPOINT=/metrics
+      # Backup configuration
+      - BACKUP_ENABLED=${BACKUP_ENABLED:-1}
+      - BACKUP_SCHEDULE_DAILY=${BACKUP_SCHEDULE_DAILY:-02:00}
+      - BACKUP_SCHEDULE_WEEKLY=${BACKUP_SCHEDULE_WEEKLY:-sunday}
+      - BACKUP_SCHEDULE_MONTHLY=${BACKUP_SCHEDULE_MONTHLY:-1}
+      - BACKUP_RETENTION_DAILY=${BACKUP_RETENTION_DAILY:-7}
+      - BACKUP_RETENTION_WEEKLY=${BACKUP_RETENTION_WEEKLY:-4}
+      - BACKUP_RETENTION_MONTHLY=${BACKUP_RETENTION_MONTHLY:-6}
+      - BACKUP_RETENTION_YEARLY=${BACKUP_RETENTION_YEARLY:-2}
+      - BACKUP_COMPRESSION=${BACKUP_COMPRESSION:-1}
+      - BACKUP_VERIFICATION=${BACKUP_VERIFICATION:-1}
+      # Security configuration
+      - STRICT_SECRET_MODE=${STRICT_SECRET_MODE:-true}
+      - STRICT_ENV_MODE=${STRICT_ENV_MODE:-true}
+      - STRICT_ROTATION_MODE=${STRICT_ROTATION_MODE:-false}
+    deploy:
+      replicas: ${SERVICE_REPLICAS:-1}
+      update_config:
+        parallelism: 1
+        delay: 10s
+        order: start-first
+        failure_action: rollback
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      resources:
+        limits:
+          memory: ${MEM_LIMIT:-512M}
+          cpus: ${CPU_LIMIT:-0.5}
+        reservations:
+          memory: ${MEM_RESERVATION:-256M}
+          cpus: ${CPU_RESERVATION:-0.25}
+    secrets:
+      - source: supabase_url
+        target: SUPABASE_URL
+        mode: 0400
+      - source: supabase_key
+        target: SUPABASE_KEY
+        mode: 0400
+      - source: secret_key
+        target: SECRET_KEY
+        mode: 0400
+      - source: redis_url
+        target: REDIS_URL
+        mode: 0400
     volumes:
+      - cryoprotect-logs:/app/logs
+      - cryoprotect-backups:/app/backup/data
+    logging:
+      driver: ${LOG_DRIVER:-json-file}
+      options:
+        max-size: ${LOG_MAX_SIZE:-10m}
+        max-file: ${LOG_MAX_FILE:-3}
+        compress: ${LOG_COMPRESS:-true}
+        tag: "{{.Name}}/{{.ID}}"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    restart: unless-stopped
+    init: true
+    security_opt:
+      - no-new-privileges:true
+    read_only: ${READ_ONLY:-false}
+    tmpfs:
+      - /tmp:size=100M,mode=1777
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+      prometheus:
+        condition: service_started
+      redis:
+        condition: service_healthy
+    networks:
+      - app-network
+      - elk-network
+      - monitoring-network
+    profiles:
+      - prod
+      - staging
+      - all
+
+  # Development configuration with volume mount
+  cryoprotect-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - FLASK_ENV=development
+    image: ${DOCKER_REGISTRY:-ghcr.io}/${DOCKER_NAMESPACE:-cryoprotect}/cryoprotect:${DEV_IMAGE_TAG:-dev}
+    ports:
+      - "${DEV_HOST_PORT:-5000}:5000"
+    volumes:
+      # For development, mount the project directory as a volume
       - .:/app
+      - dev-cache:/app/cache
     environment:
       - FLASK_APP=app.py
       - FLASK_ENV=development
-      # Uncomment and set these values for your Supabase instance
-      # - SUPABASE_URL=your_supabase_url
-      # - SUPABASE_KEY=your_supabase_key
+      # Load sensitive values from .env file for development
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_KEY=${SUPABASE_KEY}
+      - SECRET_KEY=${SECRET_KEY:-dev-secret-key-please-change-in-production}
+      - REDIS_URL=${REDIS_URL:-}
+      # Logging configuration for development
+      - LOG_LEVEL=DEBUG
+      - LOG_TO_FILE=1
+      - LOG_TO_CONSOLE=1
+      - LOG_TO_ELK=0
+      - LOG_JSON_FORMAT=1
+      # Monitoring configuration
+      - PROMETHEUS_METRICS=1
+      - PROMETHEUS_ENDPOINT=/metrics
+      # Development-specific settings
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+      - FLASK_DEBUG=1
+      - STRICT_SECRET_MODE=false
+      - STRICT_ENV_MODE=false
+    deploy:
+      resources:
+        limits:
+          memory: ${DEV_MEM_LIMIT:-1G}
+          cpus: ${DEV_CPU_LIMIT:-1.0}
+    logging:
+      driver: ${DEV_LOG_DRIVER:-json-file}
+      options:
+        max-size: ${DEV_LOG_MAX_SIZE:-20m}
+        max-file: ${DEV_LOG_MAX_FILE:-5}
     restart: unless-stopped
+    entrypoint: ["/app/docker-entrypoint.sh"]
+    command: ["/opt/conda/envs/cryoprotect/bin/python", "-m", "flask", "run", "--host=0.0.0.0", "--port=5000", "--reload"]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    networks:
+      - app-network
+      - monitoring-network
+    profiles:
+      - dev
+      - all
+
+  # Redis for caching and rate limiting
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis-data:/data
+    command: ["redis-server", "--appendonly", "yes", "--maxmemory", "${REDIS_MAXMEMORY:-256mb}", "--maxmemory-policy", "allkeys-lru"]
+    deploy:
+      resources:
+        limits:
+          memory: ${REDIS_MEM_LIMIT:-256M}
+          cpus: ${REDIS_CPU_LIMIT:-0.3}
+        reservations:
+          memory: ${REDIS_MEM_RESERVATION:-128M}
+          cpus: ${REDIS_CPU_RESERVATION:-0.1}
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: ${LOG_DRIVER:-json-file}
+      options:
+        max-size: ${LOG_MAX_SIZE:-10m}
+        max-file: ${LOG_MAX_FILE:-3}
+        compress: ${LOG_COMPRESS:-true}
+        tag: "{{.Name}}/{{.ID}}"
+    restart: unless-stopped
+    networks:
+      - app-network
+    profiles:
+      - prod
+      - staging
+      - dev
+      - all
+
+  # Elasticsearch service
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.9
+    container_name: elasticsearch
+    environment:
+      - node.name=elasticsearch
+      - cluster.name=cryoprotect-elk
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms${ES_HEAP_SIZE:-512m} -Xmx${ES_HEAP_SIZE:-512m}"
+      - xpack.security.enabled=true
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD:-changeme}
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    networks:
+      - elk-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=10s", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    restart: unless-stopped
+    profiles:
+      - elk
+      - prod
+      - staging
+      - all
+
+  # Logstash service
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.17.9
+    container_name: logstash
+    volumes:
+      - ./elk/logstash/pipeline:/usr/share/logstash/pipeline
+      - ./elk/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+    ports:
+      - "5044:5044"
+      - "5000:5000/tcp"
+      - "5000:5000/udp"
+      - "9600:9600"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - elk-network
+    depends_on:
+      - elasticsearch
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9600/_node/stats", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+    profiles:
+      - elk
+      - prod
+      - staging
+      - all
+
+  # Kibana service
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.17.9
+    container_name: kibana
+    ports:
+      - "5601:5601"
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+      ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+    networks:
+      - elk-network
+    depends_on:
+      - elasticsearch
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5601/api/status", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    restart: unless-stopped
+    profiles:
+      - elk
+      - prod
+      - staging
+      - all
+
+  # Filebeat service for log shipping
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:7.17.9
+    container_name: filebeat
+    volumes:
+      - ./elk/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - cryoprotect-logs:/logs:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    deploy:
+      resources:
+        limits:
+          memory: ${FILEBEAT_MEM_LIMIT:-256M}
+          cpus: ${FILEBEAT_CPU_LIMIT:-0.3}
+        reservations:
+          memory: ${FILEBEAT_MEM_RESERVATION:-128M}
+          cpus: ${FILEBEAT_CPU_RESERVATION:-0.1}
+    healthcheck:
+      test: ["CMD-SHELL", "filebeat test config -c /usr/share/filebeat/filebeat.yml && filebeat test output -c /usr/share/filebeat/filebeat.yml || exit 1"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    logging:
+      driver: ${LOG_DRIVER:-json-file}
+      options:
+        max-size: ${LOG_MAX_SIZE:-10m}
+        max-file: ${LOG_MAX_FILE:-3}
+        compress: ${LOG_COMPRESS:-true}
+        tag: "{{.Name}}/{{.ID}}"
+    networks:
+      - elk-network
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+      logstash:
+        condition: service_healthy
+    restart: unless-stopped
+    user: root
+    profiles:
+      - elk
+      - prod
+      - staging
+      - all
+
+  # Prometheus for metrics collection
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: cryoprotect-prometheus
+    volumes:
+      - ./monitoring/prometheus:/etc/prometheus
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+      - '--storage.tsdb.retention.time=${PROMETHEUS_RETENTION:-15d}'
+    ports:
+      - "9090:9090"
+    deploy:
+      resources:
+        limits:
+          memory: ${PROMETHEUS_MEM_LIMIT:-512M}
+          cpus: ${PROMETHEUS_CPU_LIMIT:-0.5}
+        reservations:
+          memory: ${PROMETHEUS_MEM_RESERVATION:-256M}
+          cpus: ${PROMETHEUS_CPU_RESERVATION:-0.2}
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:9090/-/healthy || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    logging:
+      driver: ${LOG_DRIVER:-json-file}
+      options:
+        max-size: ${LOG_MAX_SIZE:-10m}
+        max-file: ${LOG_MAX_FILE:-3}
+        compress: ${LOG_COMPRESS:-true}
+        tag: "{{.Name}}/{{.ID}}"
+    restart: unless-stopped
+    networks:
+      - monitoring-network
+    profiles:
+      - monitoring
+      - prod
+      - staging
+      - all
+
+  # Grafana for metrics visualization
+  grafana:
+    image: grafana/grafana:latest
+    container_name: cryoprotect-grafana
+    volumes:
+      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./monitoring/grafana/datasources:/etc/grafana/provisioning/datasources
+      - grafana_data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_INSTALL_PLUGINS=grafana-piechart-panel
+    secrets:
+      - source: grafana_admin_password
+        target: GF_SECURITY_ADMIN_PASSWORD
+    deploy:
+      resources:
+        limits:
+          memory: ${GRAFANA_MEM_LIMIT:-256M}
+          cpus: ${GRAFANA_CPU_LIMIT:-0.3}
+        reservations:
+          memory: ${GRAFANA_MEM_RESERVATION:-128M}
+          cpus: ${GRAFANA_CPU_RESERVATION:-0.1}
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:3000/api/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    logging:
+      driver: ${LOG_DRIVER:-json-file}
+      options:
+        max-size: ${LOG_MAX_SIZE:-10m}
+        max-file: ${LOG_MAX_FILE:-3}
+        compress: ${LOG_COMPRESS:-true}
+        tag: "{{.Name}}/{{.ID}}"
+    restart: unless-stopped
+    networks:
+      - monitoring-network
+    depends_on:
+      prometheus:
+        condition: service_started
+    profiles:
+      - monitoring
+      - prod
+      - staging
+      - all
+
+  # Alertmanager for alert handling
+  alertmanager:
+    image: prom/alertmanager:latest
+    container_name: cryoprotect-alertmanager
+    volumes:
+      - ./monitoring/alertmanager:/etc/alertmanager
+      - alertmanager_data:/alertmanager
+    command:
+      - '--config.file=/etc/alertmanager/alertmanager.yml'
+      - '--storage.path=/alertmanager'
+    ports:
+      - "9093:9093"
+    deploy:
+      resources:
+        limits:
+          memory: ${ALERTMANAGER_MEM_LIMIT:-256M}
+          cpus: ${ALERTMANAGER_CPU_LIMIT:-0.3}
+        reservations:
+          memory: ${ALERTMANAGER_MEM_RESERVATION:-128M}
+          cpus: ${ALERTMANAGER_CPU_RESERVATION:-0.1}
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:9093/-/healthy || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    logging:
+      driver: ${LOG_DRIVER:-json-file}
+      options:
+        max-size: ${LOG_MAX_SIZE:-10m}
+        max-file: ${LOG_MAX_FILE:-3}
+        compress: ${LOG_COMPRESS:-true}
+        tag: "{{.Name}}/{{.ID}}"
+    restart: unless-stopped
+    networks:
+      - monitoring-network
+    depends_on:
+      prometheus:
+        condition: service_healthy
+    profiles:
+      - monitoring
+      - prod
+      - staging
+      - all
+
+  # Node-exporter for system metrics
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: cryoprotect-node-exporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
+    ports:
+      - "9100:9100"
+    deploy:
+      resources:
+        limits:
+          memory: ${NODE_EXPORTER_MEM_LIMIT:-128M}
+          cpus: ${NODE_EXPORTER_CPU_LIMIT:-0.2}
+        reservations:
+          memory: ${NODE_EXPORTER_MEM_RESERVATION:-64M}
+          cpus: ${NODE_EXPORTER_CPU_RESERVATION:-0.1}
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:9100/metrics || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: ${LOG_DRIVER:-json-file}
+      options:
+        max-size: ${LOG_MAX_SIZE:-10m}
+        max-file: ${LOG_MAX_FILE:-3}
+        compress: ${LOG_COMPRESS:-true}
+        tag: "{{.Name}}/{{.ID}}"
+    restart: unless-stopped
+    networks:
+      - monitoring-network
+    profiles:
+      - monitoring
+      - prod
+      - staging
+      - all
+
+  # Backup scheduler service
+  backup-scheduler:
+    build: .
+    entrypoint: ["/app/docker-entrypoint.sh"]
+    command: ["python", "-m", "backup.backup_manager", "--schedule"]
+    volumes:
+      - cryoprotect-backups:/app/backup/data
+      - ./backup/config.json:/app/backup/config.json
+    deploy:
+      resources:
+        limits:
+          memory: ${BACKUP_MEM_LIMIT:-256M}
+          cpus: ${BACKUP_CPU_LIMIT:-0.3}
+        reservations:
+          memory: ${BACKUP_MEM_RESERVATION:-128M}
+          cpus: ${BACKUP_CPU_RESERVATION:-0.1}
+    secrets:
+      - source: supabase_url
+        target: SUPABASE_URL
+        mode: 0400
+      - source: supabase_key
+        target: SUPABASE_KEY
+        mode: 0400
+      - source: supabase_project_id
+        target: SUPABASE_PROJECT_ID
+        mode: 0400
+    healthcheck:
+      test: ["CMD", "python", "-m", "backup.backup_manager", "--status"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+    logging:
+      driver: ${LOG_DRIVER:-json-file}
+      options:
+        max-size: ${LOG_MAX_SIZE:-10m}
+        max-file: ${LOG_MAX_FILE:-3}
+        compress: ${LOG_COMPRESS:-true}
+        tag: "{{.Name}}/{{.ID}}"
+    restart: unless-stopped
+    networks:
+      - app-network
+    profiles:
+      - backup
+      - prod
+      - staging
+      - all
+
+# Define secrets
+secrets:
+  # Production secrets
+  supabase_url:
+    external: ${USE_EXTERNAL_SECRETS:-true}  # Use external secrets in production
+    name: ${SUPABASE_URL_SECRET:-cryoprotect_supabase_url}  # Default name if not specified
+  supabase_key:
+    external: ${USE_EXTERNAL_SECRETS:-true}
+    name: ${SUPABASE_KEY_SECRET:-cryoprotect_supabase_key}
+  supabase_project_id:
+    external: ${USE_EXTERNAL_SECRETS:-true}
+    name: ${SUPABASE_PROJECT_ID_SECRET:-cryoprotect_supabase_project_id}
+  secret_key:
+    external: ${USE_EXTERNAL_SECRETS:-true}
+    name: ${SECRET_KEY_SECRET:-cryoprotect_secret_key}
+  redis_url:
+    external: ${USE_EXTERNAL_SECRETS:-true}
+    name: ${REDIS_URL_SECRET:-cryoprotect_redis_url}
+  grafana_admin_password:
+    external: ${USE_EXTERNAL_SECRETS:-true}
+    name: ${GRAFANA_ADMIN_PASSWORD_SECRET:-cryoprotect_grafana_admin_password}
+
+networks:
+  app-network:
+    driver: bridge
+  elk-network:
+    driver: bridge
+  monitoring-network:
+    driver: bridge
+
+volumes:
+  # Application data
+  cryoprotect-logs:
+    driver: ${VOLUME_DRIVER:-local}
+    driver_opts:
+      type: ${VOLUME_TYPE:-none}
+      o: ${VOLUME_OPTIONS:-bind}
+      device: ${LOGS_VOLUME_PATH:-./logs}
+  cryoprotect-backups:
+    driver: ${VOLUME_DRIVER:-local}
+    driver_opts:
+      type: ${VOLUME_TYPE:-none}
+      o: ${VOLUME_OPTIONS:-bind}
+      device: ${BACKUPS_VOLUME_PATH:-./backup/data}
+  dev-cache:
+    driver: local
+  
+  # Service data
+  elasticsearch-data:
+    driver: ${VOLUME_DRIVER:-local}
+    name: ${ELASTICSEARCH_VOLUME_NAME:-cryoprotect_elasticsearch_data}
+  prometheus_data:
+    driver: ${VOLUME_DRIVER:-local}
+    name: ${PROMETHEUS_VOLUME_NAME:-cryoprotect_prometheus_data}
+  alertmanager_data:
+    driver: ${VOLUME_DRIVER:-local}
+    name: ${ALERTMANAGER_VOLUME_NAME:-cryoprotect_alertmanager_data}
+  grafana_data:
+    driver: ${VOLUME_DRIVER:-local}
+    name: ${GRAFANA_VOLUME_NAME:-cryoprotect_grafana_data}
+  redis-data:
+    driver: ${VOLUME_DRIVER:-local}
+    name: ${REDIS_VOLUME_NAME:-cryoprotect_redis_data}

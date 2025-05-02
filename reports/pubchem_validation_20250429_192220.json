@@ -1,0 +1,11 @@
+{
+  "timestamp": "2025-04-29T19:22:15.988001",
+  "data_source": "pubchem",
+  "counts": {},
+  "property_completeness": {},
+  "assessments": {
+    "counts": "ERROR",
+    "property_completeness": "ERROR"
+  },
+  "overall_assessment": "INCOMPLETE"
+}

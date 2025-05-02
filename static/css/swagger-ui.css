@@ -1,0 +1,131 @@
+/**
+ * Custom styles for Swagger UI
+ */
+
+/* Header customization */
+.swagger-ui .topbar {
+    background-color: #1976D2 !important;
+    padding: 10px 0;
+}
+
+.swagger-ui .topbar .download-url-wrapper .select-label {
+    color: white !important;
+}
+
+/* Main content customization */
+.swagger-ui .info {
+    margin: 30px 0;
+}
+
+.swagger-ui .info .title {
+    font-size: 36px;
+    color: #1976D2;
+}
+
+.swagger-ui .info .title small.version-stamp {
+    background-color: #1976D2;
+}
+
+.swagger-ui .info .base-url {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Operation blocks */
+.swagger-ui .opblock.opblock-get {
+    border-color: #61affe;
+    background: rgba(97, 175, 254, 0.1);
+}
+
+.swagger-ui .opblock.opblock-post {
+    border-color: #49cc90;
+    background: rgba(73, 204, 144, 0.1);
+}
+
+.swagger-ui .opblock.opblock-put {
+    border-color: #fca130;
+    background: rgba(252, 161, 48, 0.1);
+}
+
+.swagger-ui .opblock.opblock-delete {
+    border-color: #f93e3e;
+    background: rgba(249, 62, 62, 0.1);
+}
+
+.swagger-ui .opblock.opblock-patch {
+    border-color: #50e3c2;
+    background: rgba(80, 227, 194, 0.1);
+}
+
+/* Operation buttons */
+.swagger-ui .opblock .opblock-summary-method {
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Models section */
+.swagger-ui section.models {
+    border-color: #1976D2;
+}
+
+.swagger-ui section.models.is-open h4 {
+    border-bottom-color: #1976D2;
+}
+
+/* Response section */
+.swagger-ui .responses-table .response-col_status {
+    font-weight: bold;
+}
+
+/* Code blocks */
+.swagger-ui .highlight-code {
+    background-color: #f7f7f7;
+}
+
+/* Buttons */
+.swagger-ui .btn {
+    transition: all 0.3s ease;
+}
+
+.swagger-ui .btn.execute {
+    background-color: #1976D2;
+    color: white;
+    border-color: #1976D2;
+}
+
+.swagger-ui .btn.execute:hover {
+    background-color: #1565C0;
+}
+
+/* Authorize button */
+.swagger-ui .auth-wrapper .authorize {
+    color: #1976D2;
+    border-color: #1976D2;
+}
+
+.swagger-ui .auth-wrapper .authorize:hover {
+    background-color: rgba(25, 118, 210, 0.1);
+}
+
+/* Schema section */
+.swagger-ui .model-box {
+    background: rgba(25, 118, 210, 0.05);
+}
+
+/* Improve readability */
+.swagger-ui .markdown p, 
+.swagger-ui .markdown li {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .swagger-ui .info .title {
+        font-size: 28px;
+    }
+    
+    .swagger-ui .opblock-summary-path {
+        max-width: 180px;
+    }
+}

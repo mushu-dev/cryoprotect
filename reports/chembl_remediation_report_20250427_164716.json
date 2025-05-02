@@ -1,0 +1,47 @@
+{
+  "timestamp": "20250427_164716",
+  "summary": {
+    "migration": {
+      "status": "error",
+      "message": "Migration failed: Command '['python', 'temp_mcp_script.py']' returned non-zero exit status 1."
+    },
+    "import": {
+      "status": "skipped",
+      "message": "Step was skipped"
+    },
+    "reconciliation": {
+      "status": "skipped",
+      "message": "Step was skipped"
+    },
+    "verification": {
+      "status": "skipped",
+      "all_requirements_met": false
+    }
+  },
+  "details": {
+    "migration": {
+      "status": "error",
+      "message": "Migration failed: Command '['python', 'temp_mcp_script.py']' returned non-zero exit status 1.",
+      "details": {
+        "error": "Command '['python', 'temp_mcp_script.py']' returned non-zero exit status 1.",
+        "stdout": "{\"error\": \"Unsupported tool: supabase.apply_migration\"}\n",
+        "stderr": ""
+      }
+    },
+    "import": {
+      "status": "skipped",
+      "message": "Step was skipped",
+      "summary": null
+    },
+    "reconciliation": {
+      "status": "skipped",
+      "message": "Step was skipped",
+      "report_path": null,
+      "report_summary": null
+    },
+    "verification": {
+      "status": "skipped",
+      "message": "Step was skipped"
+    }
+  }
+}

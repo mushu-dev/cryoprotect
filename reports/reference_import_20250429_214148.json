@@ -1,0 +1,45 @@
+{
+  "timestamp": "2025-04-29T21:41:48.398940",
+  "total_compounds": 9,
+  "imported": 0,
+  "updated": 0,
+  "failed": 9,
+  "details": {
+    "CHEMBL388978": {
+      "status": "failed",
+      "error": "connection to server at \"localhost\" (::1), port 5432 failed: FATAL:  password authentication failed for user \"postgres\"\n"
+    },
+    "CHEMBL1098659": {
+      "status": "failed",
+      "error": "connection to server at \"localhost\" (::1), port 5432 failed: FATAL:  password authentication failed for user \"postgres\"\n"
+    },
+    "CHEMBL66195": {
+      "status": "failed",
+      "error": "connection to server at \"localhost\" (::1), port 5432 failed: FATAL:  password authentication failed for user \"postgres\"\n"
+    },
+    "CHEMBL500033": {
+      "status": "failed",
+      "error": "connection to server at \"localhost\" (::1), port 5432 failed: FATAL:  password authentication failed for user \"postgres\"\n"
+    },
+    "CHEMBL1487": {
+      "status": "failed",
+      "error": "connection to server at \"localhost\" (::1), port 5432 failed: FATAL:  password authentication failed for user \"postgres\"\n"
+    },
+    "CHEMBL6196": {
+      "status": "failed",
+      "error": "connection to server at \"localhost\" (::1), port 5432 failed: FATAL:  password authentication failed for user \"postgres\"\n"
+    },
+    "CHEMBL967": {
+      "status": "failed",
+      "error": "connection to server at \"localhost\" (::1), port 5432 failed: FATAL:  password authentication failed for user \"postgres\"\n"
+    },
+    "CHEMBL262548": {
+      "status": "failed",
+      "error": "connection to server at \"localhost\" (::1), port 5432 failed: FATAL:  password authentication failed for user \"postgres\"\n"
+    },
+    "CHEMBL6752": {
+      "status": "failed",
+      "error": "connection to server at \"localhost\" (::1), port 5432 failed: FATAL:  password authentication failed for user \"postgres\"\n"
+    }
+  }
+}

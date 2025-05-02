@@ -1,7 +1,19 @@
 @echo off
-echo Setting up CryoProtect Analyzer environment...
+echo Setting up CryoProtect v2 environment...
+
+:: Check for .env file and create from template if it doesn't exist
+if not exist .env (
+    echo Creating .env file from template...
+    copy .env.template .env
+    echo ✅ Created .env file from template
+    echo ⚠️ IMPORTANT: You need to update the .env file with your credentials
+    echo    Please edit the .env file and fill in the required values marked with [YOUR-*]
+) else (
+    echo ✅ .env file already exists
+)
 
 :: Try to create a new conda environment
+echo Creating conda environment...
 call conda create -n cryoprotect python=3.9 -y
 if %ERRORLEVEL% neq 0 (
     echo Failed to create conda environment. Trying with mamba...
@@ -44,4 +56,16 @@ if %ERRORLEVEL% neq 0 (
     exit /b 1
 )
 
-echo Environment setup complete! Activate with: conda activate cryoprotect
+:: Print next steps
+echo.
+echo 🎉 Environment setup complete! 🎉
+echo.
+echo Next steps:
+echo 1. Activate the environment with: conda activate cryoprotect
+echo 2. Edit the .env file to fill in your Supabase credentials and other required values
+echo 3. Run the application with: run_app.bat
+echo 4. For debugging, use: python debug_app.py
+echo.
+echo For RDKit troubleshooting, see: README_RDKit_Troubleshooting.md
+echo For API documentation, see: README_API.md
+echo For authentication setup, see: README_Authentication.md

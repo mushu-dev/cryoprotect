@@ -1,0 +1,72 @@
+groups:
+  - name: api_alerts
+    rules:
+      # High error rate alert
+      - alert: HighErrorRate
+        expr: sum(rate(cryoprotect_http_requests_total{status=~"5.."}[5m])) / sum(rate(cryoprotect_http_requests_total[5m])) > 0.05
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High error rate detected"
+          description: "Error rate is above 5% for the last 5 minutes ({{ $value | printf \"%.2f\" }})"
+
+      # High latency alert
+      - alert: HighLatency
+        expr: histogram_quantile(0.95, sum(rate(cryoprotect_http_request_duration_seconds_bucket[5m])) by (le, endpoint)) > 1
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High API latency detected"
+          description: "95th percentile latency for {{ $labels.endpoint }} is above 1 second ({{ $value | printf \"%.2f\" }}s)"
+
+      # Endpoint down alert
+      - alert: EndpointDown
+        expr: sum(rate(cryoprotect_http_requests_total{status=~"5.."}[5m])) by (endpoint) / sum(rate(cryoprotect_http_requests_total[5m])) by (endpoint) > 0.8
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Endpoint {{ $labels.endpoint }} is down"
+          description: "Endpoint {{ $labels.endpoint }} has a high error rate ({{ $value | printf \"%.2f\" }})"
+
+      # High request rate alert
+      - alert: HighRequestRate
+        expr: sum(rate(cryoprotect_http_requests_total[1m])) > 100
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High request rate detected"
+          description: "Request rate is above 100 requests per second ({{ $value | printf \"%.2f\" }} req/s)"
+
+      # Database query latency alert
+      - alert: HighDatabaseLatency
+        expr: histogram_quantile(0.95, sum(rate(cryoprotect_db_query_duration_seconds_bucket[5m])) by (le, operation, table)) > 0.5
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High database query latency detected"
+          description: "95th percentile latency for {{ $labels.operation }} on {{ $labels.table }} is above 0.5 seconds ({{ $value | printf \"%.2f\" }}s)"
+
+      # Database error rate alert
+      - alert: DatabaseErrors
+        expr: sum(increase(cryoprotect_errors_total{endpoint="database"}[5m])) > 10
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Database errors detected"
+          description: "More than 10 database errors in the last 5 minutes ({{ $value }})"
+
+      # High number of in-progress requests
+      - alert: TooManyInProgressRequests
+        expr: sum(cryoprotect_http_requests_in_progress) > 50
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Too many in-progress requests"
+          description: "More than 50 requests are currently in progress ({{ $value }})"

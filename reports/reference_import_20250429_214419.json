@@ -1,0 +1,63 @@
+{
+  "timestamp": "2025-04-29T21:44:19.817281",
+  "total_compounds": 9,
+  "imported": 9,
+  "updated": 0,
+  "failed": 0,
+  "details": {
+    "CHEMBL388978": {
+      "status": "success",
+      "internal_id": "CRYO001",
+      "is_new": 1.0,
+      "has_pubchem": false
+    },
+    "CHEMBL1098659": {
+      "status": "success",
+      "internal_id": "CRYO002",
+      "is_new": 1.0,
+      "has_pubchem": false
+    },
+    "CHEMBL66195": {
+      "status": "success",
+      "internal_id": "CRYO003",
+      "is_new": 1.0,
+      "has_pubchem": false
+    },
+    "CHEMBL500033": {
+      "status": "success",
+      "internal_id": "CRYO004",
+      "is_new": 1.0,
+      "has_pubchem": false
+    },
+    "CHEMBL1487": {
+      "status": "success",
+      "internal_id": "CRYO005",
+      "is_new": 1.0,
+      "has_pubchem": false
+    },
+    "CHEMBL6196": {
+      "status": "success",
+      "internal_id": "CRYO0007",
+      "is_new": 1.0,
+      "has_pubchem": false
+    },
+    "CHEMBL967": {
+      "status": "success",
+      "internal_id": "CRYO0008",
+      "is_new": 1.0,
+      "has_pubchem": false
+    },
+    "CHEMBL262548": {
+      "status": "success",
+      "internal_id": "CRYO0009",
+      "is_new": 1.0,
+      "has_pubchem": false
+    },
+    "CHEMBL6752": {
+      "status": "success",
+      "internal_id": "CRYO0010",
+      "is_new": 1.0,
+      "has_pubchem": false
+    }
+  }
+}

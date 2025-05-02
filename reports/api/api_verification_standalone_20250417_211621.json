@@ -1,0 +1,171 @@
+{
+  "status": "COMPLETED_WITH_WARNINGS",
+  "summary": {
+    "total": 16,
+    "implemented": 12,
+    "functional": 4,
+    "discrepancies": 12
+  },
+  "results": [
+    {
+      "endpoint": "GET /health",
+      "description": "Health check endpoint",
+      "implemented": "Implemented",
+      "functional": "Functional",
+      "error_handling": "Proper",
+      "status_code": 200,
+      "notes": "Returns expected response",
+      "response": "{'status': 'ok', 'version': 'v1'}"
+    },
+    {
+      "endpoint": "GET /api/v1/molecules",
+      "description": "Get a list of all molecules",
+      "implemented": "Implemented",
+      "functional": "Not Functional",
+      "error_handling": "Improper",
+      "status_code": 500,
+      "notes": "Unexpected status code: 500",
+      "response": "{'message': \"Error fetching molecules: {'code': '22023', 'details': None, 'hint': None, 'message': 'field name must not be null'}\"}"
+    },
+    {
+      "endpoint": "GET /api/v1/molecules/7888755f-c474-4108-a08f-bee50b7fb658",
+      "description": "Get detailed information about a specific molecule",
+      "implemented": "Implemented",
+      "functional": "Not Functional",
+      "error_handling": "Proper",
+      "status_code": 404,
+      "notes": "Unexpected status code: 404",
+      "response": "{'message': 'Molecule with ID 7888755f-c474-4108-a08f-bee50b7fb658 not found'}"
+    },
+    {
+      "endpoint": "POST /api/v1/molecules",
+      "description": "Create a new molecule",
+      "implemented": "Error",
+      "functional": "Error",
+      "error_handling": "Error",
+      "status_code": "Error",
+      "notes": "Object of type Response is not JSON serializable",
+      "response": "Object of type Response is not JSON serializable"
+    },
+    {
+      "endpoint": "GET /api/v1/molecules/7888755f-c474-4108-a08f-bee50b7fb658/properties",
+      "description": "Get properties of a specific molecule",
+      "implemented": "Implemented",
+      "functional": "Not Functional",
+      "error_handling": "Proper",
+      "status_code": 404,
+      "notes": "Unexpected status code: 404",
+      "response": "{'message': 'Resource not found'}"
+    },
+    {
+      "endpoint": "GET /api/v1/molecules/7888755f-c474-4108-a08f-bee50b7fb658/visualization",
+      "description": "Get SVG visualization of a specific molecule",
+      "implemented": "Implemented",
+      "functional": "Not Functional",
+      "error_handling": "Proper",
+      "status_code": 404,
+      "notes": "Unexpected status code: 404",
+      "response": "{'message': 'Resource not found'}"
+    },
+    {
+      "endpoint": "GET /api/v1/mixtures",
+      "description": "Get a list of all mixtures",
+      "implemented": "Error",
+      "functional": "Error",
+      "error_handling": "Error",
+      "status_code": "Error",
+      "notes": "'str' object has no attribute 'isoformat'",
+      "response": "'str' object has no attribute 'isoformat'"
+    },
+    {
+      "endpoint": "GET /api/v1/mixtures/0a5a6520-f9a2-4f33-a7d5-271d7ffcec78",
+      "description": "Get detailed information about a specific mixture",
+      "implemented": "Implemented",
+      "functional": "Not Functional",
+      "error_handling": "Improper",
+      "status_code": 500,
+      "notes": "Unexpected status code: 500",
+      "response": "{'message': 'Error fetching mixture: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.'}"
+    },
+    {
+      "endpoint": "POST /api/v1/compare-properties",
+      "description": "Compare molecular and mixture properties",
+      "implemented": "Implemented",
+      "functional": "Not Functional",
+      "error_handling": "Improper",
+      "status_code": 500,
+      "notes": "Unexpected status code: 500",
+      "response": "{'message': \"Error in property comparison: Error getting molecule with properties: name 'handle_supabase_error' is not defined\"}"
+    },
+    {
+      "endpoint": "POST /api/v1/batch",
+      "description": "Perform batch operations",
+      "implemented": "Error",
+      "functional": "Error",
+      "error_handling": "Error",
+      "status_code": "Error",
+      "notes": "Object of type Response is not JSON serializable",
+      "response": "Object of type Response is not JSON serializable"
+    },
+    {
+      "endpoint": "POST /api/v1/export",
+      "description": "Export protocols and results",
+      "implemented": "Error",
+      "functional": "Error",
+      "error_handling": "Error",
+      "status_code": "Error",
+      "notes": "Object of type Response is not JSON serializable",
+      "response": "Object of type Response is not JSON serializable"
+    },
+    {
+      "endpoint": "POST /api/v1/rdkit/properties",
+      "description": "Calculate molecular properties using RDKit",
+      "implemented": "Implemented",
+      "functional": "Functional",
+      "error_handling": "Proper",
+      "status_code": 200,
+      "notes": "Returns expected response",
+      "response": "{'hydrogen_bonding': {'donors': 1, 'acceptors': 1, 'total': 2}, 'logp': -0.0014000000000000123, 'tpsa': 20.23, 'molecular_properties': {'molecular_weight': 46.06900000000002, 'exact_mass': 46.04186481..."
+    },
+    {
+      "endpoint": "POST /api/v1/rdkit/visualize",
+      "description": "Generate molecule visualization using RDKit",
+      "implemented": "Implemented",
+      "functional": "Not Functional",
+      "error_handling": "Proper",
+      "status_code": 404,
+      "notes": "Unexpected status code: 404",
+      "response": "{'message': 'Resource not found'}"
+    },
+    {
+      "endpoint": "GET /api/v1/mixtures/0a5a6520-f9a2-4f33-a7d5-271d7ffcec78/predictions",
+      "description": "Get predictions for a mixture",
+      "implemented": "Implemented",
+      "functional": "Functional",
+      "error_handling": "Proper",
+      "status_code": 200,
+      "notes": "Returns expected response",
+      "response": "[]"
+    },
+    {
+      "endpoint": "GET /api/v1/mixtures/0a5a6520-f9a2-4f33-a7d5-271d7ffcec78/experiments",
+      "description": "Get experiments for a mixture",
+      "implemented": "Implemented",
+      "functional": "Functional",
+      "error_handling": "Proper",
+      "status_code": 200,
+      "notes": "Returns expected response",
+      "response": "[]"
+    },
+    {
+      "endpoint": "GET /api/v1/mixtures/0a5a6520-f9a2-4f33-a7d5-271d7ffcec78/compare",
+      "description": "Compare prediction with experiment for a mixture",
+      "implemented": "Implemented",
+      "functional": "Not Functional",
+      "error_handling": "Improper",
+      "status_code": 500,
+      "notes": "Unexpected status code: 500",
+      "response": "{'message': 'Error comparing prediction with experiment: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.'}"
+    }
+  ]
+}

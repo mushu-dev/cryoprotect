@@ -1,0 +1,217 @@
+{
+  "term": "cryopreservation",
+  "batch": 18,
+  "molecules_imported": 0,
+  "properties_imported": 0,
+  "processed_compounds": [
+    "CHEMBL3184026",
+    "CHEMBL2096635",
+    "CHEMBL3560381",
+    "CHEMBL3707233",
+    "CHEMBL125278",
+    "CHEMBL297569",
+    "CHEMBL96",
+    "CHEMBL3289669",
+    "CHEMBL286398",
+    "CHEMBL16502",
+    "CHEMBL773",
+    "CHEMBL284116",
+    "CHEMBL2096648",
+    "CHEMBL457299",
+    "CHEMBL504",
+    "CHEMBL1995464",
+    "CHEMBL985",
+    "CHEMBL1256511",
+    "CHEMBL692",
+    "CHEMBL5483025"
+  ],
+  "batches_processed": 330,
+  "search_terms_used": [
+    {
+      "term": "trehalose",
+      "compounds_found": 1000
+    },
+    {
+      "term": "cryoprotectant",
+      "compounds_found": 1000
+    },
+    {
+      "term": "antifreeze",
+      "compounds_found": 1000
+    },
+    {
+      "term": "glycol",
+      "compounds_found": 1000
+    },
+    {
+      "term": "dimethyl sulfoxide",
+      "compounds_found": 1000
+    },
+    {
+      "term": "glucose",
+      "compounds_found": 1000
+    },
+    {
+      "term": "propylene glycol",
+      "compounds_found": 1000
+    },
+    {
+      "term": "sorbitol",
+      "compounds_found": 1000
+    },
+    {
+      "term": "ethylene glycol",
+      "compounds_found": 1000
+    },
+    {
+      "term": "glycerol",
+      "compounds_found": 1000
+    },
+    {
+      "term": "dmso",
+      "compounds_found": 1000
+    },
+    {
+      "term": "freeze protection",
+      "compounds_found": 1000
+    },
+    {
+      "term": "mannitol",
+      "compounds_found": 1000
+    },
+    {
+      "term": "cryoprotection",
+      "compounds_found": 1000
+    },
+    {
+      "term": "sucrose",
+      "compounds_found": 1000
+    },
+    {
+      "term": "cryopreservation",
+      "compounds_found": 1000
+    }
+  ],
+  "similarity_searches": [
+    {
+      "smiles": "C(C(CO)O)O",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(C(CO)O)O",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(C(CO)O)O",
+      "similarity": 60,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CS(=O)C",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CS(=O)C",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CS(=O)C",
+      "similarity": 60,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(CC(=O)O)N",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(CC(=O)O)N",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(CC(=O)O)N",
+      "similarity": 60,
+      "compounds_found": 5
+    },
+    {
+      "smiles": "CC(C)(C)O",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CC(C)(C)O",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CC(C)(C)O",
+      "similarity": 60,
+      "compounds_found": 2
+    },
+    {
+      "smiles": "C(=O)(N)N",
+      "similarity": 80,
+      "compounds_found": 4
+    },
+    {
+      "smiles": "C(=O)(N)N",
+      "similarity": 70,
+      "compounds_found": 4
+    },
+    {
+      "smiles": "C(=O)(N)N",
+      "similarity": 60,
+      "compounds_found": 7
+    },
+    {
+      "smiles": "C(CO)O",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(CO)O",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(CO)O",
+      "similarity": 60,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CC(CO)O",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CC(CO)O",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CC(CO)O",
+      "similarity": 60,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(C(=O)O)N",
+      "similarity": 80,
+      "compounds_found": 2
+    },
+    {
+      "smiles": "C(C(=O)O)N",
+      "similarity": 70,
+      "compounds_found": 2
+    },
+    {
+      "smiles": "C(C(=O)O)N",
+      "similarity": 60,
+      "compounds_found": 2
+    }
+  ]
+}

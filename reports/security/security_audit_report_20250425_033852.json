@@ -1,0 +1,61 @@
+{
+  "timestamp": "2025-04-25T03:38:52.746872Z",
+  "findings": [
+    {
+      "category": "Authentication",
+      "check": "JWT token expiry",
+      "result": "PASS",
+      "severity": "info",
+      "remediation": "Ensure tokens have reasonable expiry and are validated on each request."
+    },
+    {
+      "category": "Authentication",
+      "check": "Role-Based Access Control (RBAC)",
+      "result": "PASS",
+      "severity": "info",
+      "remediation": "Verify RBAC is enforced for all sensitive endpoints."
+    },
+    {
+      "category": "API Endpoint Security",
+      "check": "CSRF Protection",
+      "result": "WARN",
+      "severity": "medium",
+      "remediation": "Implement CSRF tokens for state-changing endpoints."
+    },
+    {
+      "category": "API Endpoint Security",
+      "check": "Input Validation",
+      "result": "PASS",
+      "severity": "info",
+      "remediation": "Ensure all user input is validated and sanitized."
+    },
+    {
+      "category": "API Endpoint Security",
+      "check": "Rate Limiting",
+      "result": "PASS",
+      "severity": "info",
+      "remediation": "Apply rate limiting to prevent abuse."
+    },
+    {
+      "category": "Data Protection",
+      "check": "Row Level Security (RLS)",
+      "result": "PASS",
+      "severity": "info",
+      "remediation": "Ensure RLS is enabled and tested for all tables with sensitive data."
+    },
+    {
+      "category": "Data Protection",
+      "check": "Encryption at Rest",
+      "result": "WARN",
+      "severity": "high",
+      "remediation": "Verify that all sensitive data is encrypted at rest."
+    },
+    {
+      "category": "Data Protection",
+      "check": "Access Controls",
+      "result": "PASS",
+      "severity": "info",
+      "remediation": "Review access controls for least privilege."
+    }
+  ]
+}

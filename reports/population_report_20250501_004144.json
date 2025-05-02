@@ -1,0 +1,134 @@
+{
+  "start_time": "2025-05-01T00:40:26.915745",
+  "end_time": "2025-05-01T00:41:44.653074",
+  "overall_status": "error",
+  "steps": {
+    "reference": {
+      "id": "reference",
+      "name": "Reference Compounds Import",
+      "start_time": "2025-05-01T00:40:28.205749",
+      "end_time": "2025-05-01T00:41:34.722963",
+      "status": "success",
+      "error": null,
+      "details": {
+        "result": {
+          "timestamp": "2025-05-01T00:40:29.939307",
+          "total_compounds": 9,
+          "imported": 9,
+          "updated": 0,
+          "failed": 0,
+          "details": {
+            "CHEMBL388978": {
+              "status": "success",
+              "internal_id": "CRYO001",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "properties_added": 3
+            },
+            "CHEMBL1098659": {
+              "status": "success",
+              "internal_id": "CRYO002",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "properties_added": 3
+            },
+            "CHEMBL66195": {
+              "status": "success",
+              "internal_id": "CRYO003",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "properties_added": 3
+            },
+            "CHEMBL500033": {
+              "status": "success",
+              "internal_id": "CRYO004",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "properties_added": 3
+            },
+            "CHEMBL1487": {
+              "status": "success",
+              "internal_id": "CRYO005",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "properties_added": 3
+            },
+            "CHEMBL6196": {
+              "status": "success",
+              "internal_id": "CRYO0007",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "properties_added": 3
+            },
+            "CHEMBL967": {
+              "status": "success",
+              "internal_id": "CRYO0008",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "properties_added": 3
+            },
+            "CHEMBL262548": {
+              "status": "success",
+              "internal_id": "CRYO0009",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "properties_added": 3
+            },
+            "CHEMBL6752": {
+              "status": "success",
+              "internal_id": "CRYO0010",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "properties_added": 3
+            }
+          }
+        }
+      }
+    },
+    "chembl": {
+      "id": "chembl",
+      "name": "ChEMBL Data Import",
+      "start_time": "2025-05-01T00:41:34.722963",
+      "end_time": "2025-05-01T00:41:41.918849",
+      "status": "success",
+      "error": null,
+      "details": {
+        "exit_code": 0
+      }
+    },
+    "reconcile": {
+      "id": "reconcile",
+      "name": "Cross-Reference Reconciliation",
+      "start_time": "2025-05-01T00:41:41.918849",
+      "end_time": "2025-05-01T00:41:43.464055",
+      "status": "success",
+      "error": null,
+      "details": {
+        "result": {
+          "timestamp": "2025-05-01T00:41:41.927098",
+          "molecules_updated": 0,
+          "cross_references_added": 0,
+          "conflicts_resolved": 0,
+          "details": {}
+        }
+      }
+    },
+    "pubchem": {
+      "id": "pubchem",
+      "name": "PubChem Property Enhancement",
+      "start_time": "2025-05-01T00:41:43.467222",
+      "end_time": "2025-05-01T00:41:44.653074",
+      "status": "error",
+      "error": "0",
+      "details": {
+        "traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\enhance_pubchem_properties.py\", line 365, in process_batch\n    success, is_enhanced = future.result()\n  File \"C:\\Users\\1edwa\\anaconda3\\lib\\concurrent\\futures\\_base.py\", line 432, in result\n    return self.__get_result()\n  File \"C:\\Users\\1edwa\\anaconda3\\lib\\concurrent\\futures\\_base.py\", line 388, in __get_result\n    raise self._exception\n  File \"C:\\Users\\1edwa\\anaconda3\\lib\\concurrent\\futures\\thread.py\", line 57, in run\n    result = self.fn(*self.args, **self.kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\enhance_pubchem_properties.py\", line 286, in _enhance_molecule\n    molecule_id = molecule[0]\nKeyError: 0\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"populate_database.py\", line 379, in _execute_step\n    result = func(**kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\enhance_pubchem_properties.py\", line 458, in enhance_pubchem_properties\n    return enhancer.enhance_properties(output_report)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\enhance_pubchem_properties.py\", line 424, in enhance_properties\n    process_in_batches(\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 260, in process_in_batches\n    result = process_func(batch)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\enhance_pubchem_properties.py\", line 391, in process_batch\n    logger.error(f\"Error processing molecule {molecule[0]}: {str(e)}\")\nKeyError: 0\n"
+      }
+    }
+  },
+  "duration_seconds": 77.737329,
+  "duration_formatted": "0h 1m 17s",
+  "status_counts": {
+    "success": 3,
+    "error": 1
+  }
+}

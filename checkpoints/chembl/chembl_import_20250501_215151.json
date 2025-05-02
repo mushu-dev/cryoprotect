@@ -1,0 +1,707 @@
+{
+  "processed_compounds": [
+    "CHEMBL5483025",
+    "CHEMBL1256511",
+    "CHEMBL692",
+    "CHEMBL125278",
+    "CHEMBL286398",
+    "CHEMBL16502",
+    "CHEMBL985",
+    "CHEMBL1995464",
+    "CHEMBL3707233",
+    "CHEMBL297569",
+    "CHEMBL504",
+    "CHEMBL773",
+    "CHEMBL2096635",
+    "CHEMBL457299",
+    "CHEMBL284116",
+    "CHEMBL96",
+    "CHEMBL3289669",
+    "CHEMBL3184026",
+    "CHEMBL2096648",
+    "CHEMBL3560381"
+  ],
+  "successful_compounds": [],
+  "failed_compounds": {
+    "CHEMBL692": "Aborted: Failed to insert molecule: Compound CHEMBL692",
+    "CHEMBL504": "Aborted: Failed to insert molecule: Compound CHEMBL504",
+    "CHEMBL297569": "Aborted: Failed to insert molecule: Compound CHEMBL297569",
+    "CHEMBL96": "Aborted: Failed to insert molecule: Compound CHEMBL96",
+    "CHEMBL5483025": "Aborted: Failed to insert molecule: Compound CHEMBL5483025",
+    "CHEMBL1256511": "Aborted: Failed to insert molecule: Compound CHEMBL1256511",
+    "CHEMBL284116": "Aborted: Failed to insert molecule: Compound CHEMBL284116",
+    "CHEMBL16502": "Aborted: Failed to insert molecule: Compound CHEMBL16502",
+    "CHEMBL3289669": "Aborted: Failed to insert molecule: Compound CHEMBL3289669",
+    "CHEMBL2096648": "Aborted: Failed to insert molecule: Compound CHEMBL2096648",
+    "CHEMBL2096635": "Aborted: Failed to insert molecule: Compound CHEMBL2096635",
+    "CHEMBL3184026": "Aborted: Failed to insert molecule: Compound CHEMBL3184026",
+    "CHEMBL985": "Aborted: Failed to insert molecule: Compound CHEMBL985",
+    "CHEMBL125278": "Aborted: Failed to insert molecule: Compound CHEMBL125278",
+    "CHEMBL1995464": "Aborted: Failed to insert molecule: Compound CHEMBL1995464",
+    "CHEMBL3560381": "Aborted: Failed to insert molecule: Compound CHEMBL3560381",
+    "CHEMBL457299": "Aborted: Failed to insert molecule: Compound CHEMBL457299",
+    "CHEMBL286398": "Aborted: Failed to insert molecule: Compound CHEMBL286398",
+    "CHEMBL3707233": "Aborted: Failed to insert molecule: Compound CHEMBL3707233",
+    "CHEMBL773": "Aborted: Failed to insert molecule: Compound CHEMBL773"
+  },
+  "current_batch": 11,
+  "total_processed": 20,
+  "success_count": 0,
+  "error_count": 20,
+  "start_time": "2025-05-01T21:44:25.930665",
+  "last_updated": "2025-05-01T21:51:51.918429",
+  "config": {},
+  "current_batch_size": 2,
+  "current_batch_start": "2025-05-01T21:45:40.554852",
+  "current_batch_processed": 2,
+  "compound_data": {
+    "CHEMBL692": {
+      "operation_id": "5d7c7603-215b-416a-ab7c-2588058797cb",
+      "error_type": "ValueError",
+      "error_category": "UNKNOWN",
+      "error_traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 173, in process_task\n    stored_id = self.store_compound_data(transformed_data, conn=conn)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 108, in wrapper\n    raise last_exception\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 93, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 135, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 655, in store_compound_data\n    raise ValueError(f\"Failed to insert molecule: {molecule.get('name')}\")\nValueError: Failed to insert molecule: Compound CHEMBL692\n",
+      "processing_time": 7.104639768600464,
+      "timestamp": 1746157473.0610685
+    },
+    "CHEMBL504": {
+      "operation_id": "1f8f1f45-2532-4167-9b38-acca9bc774ad",
+      "error_type": "ValueError",
+      "error_category": "UNKNOWN",
+      "error_traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 173, in process_task\n    stored_id = self.store_compound_data(transformed_data, conn=conn)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 108, in wrapper\n    raise last_exception\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 93, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 135, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 655, in store_compound_data\n    raise ValueError(f\"Failed to insert molecule: {molecule.get('name')}\")\nValueError: Failed to insert molecule: Compound CHEMBL504\n",
+      "processing_time": 6.750593423843384,
+      "timestamp": 1746157479.8739002
+    },
+    "CHEMBL297569": {
+      "operation_id": "ef53b139-ac4b-41b6-ac53-05bb7251771d",
+      "error_type": "ValueError",
+      "error_category": "UNKNOWN",
+      "error_traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 173, in process_task\n    stored_id = self.store_compound_data(transformed_data, conn=conn)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 108, in wrapper\n    raise last_exception\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 93, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 135, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 655, in store_compound_data\n    raise ValueError(f\"Failed to insert molecule: {molecule.get('name')}\")\nValueError: Failed to insert molecule: Compound CHEMBL297569\n",
+      "processing_time": 7.309778928756714,
+      "timestamp": 1746157487.3074803
+    },
+    "CHEMBL96": {
+      "operation_id": "65ac5304-3a93-4fe6-86fd-10c8a0f64f75",
+      "error_type": "ValueError",
+      "error_category": "UNKNOWN",
+      "error_traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 173, in process_task\n    stored_id = self.store_compound_data(transformed_data, conn=conn)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 108, in wrapper\n    raise last_exception\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 93, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 135, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 655, in store_compound_data\n    raise ValueError(f\"Failed to insert molecule: {molecule.get('name')}\")\nValueError: Failed to insert molecule: Compound CHEMBL96\n",
+      "processing_time": 6.38237452507019,
+      "timestamp": 1746157493.7709923
+    },
+    "CHEMBL5483025": {
+      "operation_id": "cc32fb9d-02fd-4c3a-887f-9f78d2e27c4e",
+      "error_type": "ValueError",
+      "error_category": "UNKNOWN",
+      "error_traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 173, in process_task\n    stored_id = self.store_compound_data(transformed_data, conn=conn)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 108, in wrapper\n    raise last_exception\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 93, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 135, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 655, in store_compound_data\n    raise ValueError(f\"Failed to insert molecule: {molecule.get('name')}\")\nValueError: Failed to insert molecule: Compound CHEMBL5483025\n",
+      "processing_time": 6.9536824226379395,
+      "timestamp": 1746157494.3423002
+    },
+    "CHEMBL1256511": {
+      "operation_id": "31a886d7-ef93-4aa8-a738-d76ea527436b",
+      "error_type": "ValueError",
+      "error_category": "UNKNOWN",
+      "error_traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 173, in process_task\n    stored_id = self.store_compound_data(transformed_data, conn=conn)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 108, in wrapper\n    raise last_exception\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 93, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 135, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 655, in store_compound_data\n    raise ValueError(f\"Failed to insert molecule: {molecule.get('name')}\")\nValueError: Failed to insert molecule: Compound CHEMBL1256511\n",
+      "processing_time": 7.110297679901123,
+      "timestamp": 1746157494.500449
+    },
+    "CHEMBL284116": {
+      "operation_id": "b72b052b-50bb-4d7c-80e3-ba62f7479850",
+      "error_type": "ValueError",
+      "error_category": "UNKNOWN",
+      "error_traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 173, in process_task\n    stored_id = self.store_compound_data(transformed_data, conn=conn)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 108, in wrapper\n    raise last_exception\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 93, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 135, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 655, in store_compound_data\n    raise ValueError(f\"Failed to insert molecule: {molecule.get('name')}\")\nValueError: Failed to insert molecule: Compound CHEMBL284116\n",
+      "processing_time": 7.189902067184448,
+      "timestamp": 1746157494.5805275
+    },
+    "CHEMBL16502": {
+      "operation_id": "851380f8-6062-4692-8847-7e159d96bdcb",
+      "error_type": "ValueError",
+      "error_category": "UNKNOWN",
+      "error_traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 173, in process_task\n    stored_id = self.store_compound_data(transformed_data, conn=conn)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 108, in wrapper\n    raise last_exception\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 93, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 135, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 655, in store_compound_data\n    raise ValueError(f\"Failed to insert molecule: {molecule.get('name')}\")\nValueError: Failed to insert molecule: Compound CHEMBL16502\n",
+      "processing_time": 6.85148811340332,
+      "timestamp": 1746157501.4616683
+    },
+    "CHEMBL3289669": {
+      "operation_id": "11a4da90-ee97-40ee-b375-b91bc06d22ae",
+      "error_type": "ValueError",
+      "error_category": "UNKNOWN",
+      "error_traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 173, in process_task\n    stored_id = self.store_compound_data(transformed_data, conn=conn)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 108, in wrapper\n    raise last_exception\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 93, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 135, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 655, in store_compound_data\n    raise ValueError(f\"Failed to insert molecule: {molecule.get('name')}\")\nValueError: Failed to insert molecule: Compound CHEMBL3289669\n",
+      "processing_time": 6.622144460678101,
+      "timestamp": 1746157508.1525464
+    },
+    "CHEMBL2096648": {
+      "operation_id": "984baa50-99f7-4eac-9a25-66e9ada955d8",
+      "error_type": "ValueError",
+      "error_category": "UNKNOWN",
+      "error_traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 173, in process_task\n    stored_id = self.store_compound_data(transformed_data, conn=conn)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 108, in wrapper\n    raise last_exception\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 93, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 135, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 655, in store_compound_data\n    raise ValueError(f\"Failed to insert molecule: {molecule.get('name')}\")\nValueError: Failed to insert molecule: Compound CHEMBL2096648\n",
+      "processing_time": 6.762169361114502,
+      "timestamp": 1746157514.9574475
+    },
+    "CHEMBL2096635": {
+      "operation_id": "6f10bb39-5c96-4bd1-af52-8f1aa7175dd0",
+      "error_type": "ValueError",
+      "error_category": "UNKNOWN",
+      "error_traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 173, in process_task\n    stored_id = self.store_compound_data(transformed_data, conn=conn)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 108, in wrapper\n    raise last_exception\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 93, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 135, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 655, in store_compound_data\n    raise ValueError(f\"Failed to insert molecule: {molecule.get('name')}\")\nValueError: Failed to insert molecule: Compound CHEMBL2096635\n",
+      "processing_time": 6.762169361114502,
+      "timestamp": 1746157514.9574475
+    },
+    "CHEMBL3184026": {
+      "operation_id": "c974629d-08d3-4d51-b6aa-8077c2ae66eb",
+      "error_type": "ValueError",
+      "error_category": "UNKNOWN",
+      "error_traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 173, in process_task\n    stored_id = self.store_compound_data(transformed_data, conn=conn)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 108, in wrapper\n    raise last_exception\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 93, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 135, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 655, in store_compound_data\n    raise ValueError(f\"Failed to insert molecule: {molecule.get('name')}\")\nValueError: Failed to insert molecule: Compound CHEMBL3184026\n",
+      "processing_time": 6.970614671707153,
+      "timestamp": 1746157515.1658928
+    },
+    "CHEMBL985": {
+      "operation_id": "97a1d196-c677-4ad8-916e-220cda98fc98",
+      "error_type": "ValueError",
+      "error_category": "UNKNOWN",
+      "error_traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 173, in process_task\n    stored_id = self.store_compound_data(transformed_data, conn=conn)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 108, in wrapper\n    raise last_exception\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 93, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 135, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 655, in store_compound_data\n    raise ValueError(f\"Failed to insert molecule: {molecule.get('name')}\")\nValueError: Failed to insert molecule: Compound CHEMBL985\n",
+      "processing_time": 7.378749370574951,
+      "timestamp": 1746157515.5740275
+    },
+    "CHEMBL125278": {
+      "operation_id": "8026150a-2e12-4a71-8f2c-91f992ea4bd2",
+      "error_type": "ValueError",
+      "error_category": "UNKNOWN",
+      "error_traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 173, in process_task\n    stored_id = self.store_compound_data(transformed_data, conn=conn)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 108, in wrapper\n    raise last_exception\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 93, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 135, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 655, in store_compound_data\n    raise ValueError(f\"Failed to insert molecule: {molecule.get('name')}\")\nValueError: Failed to insert molecule: Compound CHEMBL125278\n",
+      "processing_time": 7.010386228561401,
+      "timestamp": 1746157522.6307437
+    },
+    "CHEMBL1995464": {
+      "operation_id": "772346cf-0fa1-47e1-bf5a-0ba2cabad027",
+      "error_type": "ValueError",
+      "error_category": "UNKNOWN",
+      "error_traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 173, in process_task\n    stored_id = self.store_compound_data(transformed_data, conn=conn)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 108, in wrapper\n    raise last_exception\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 93, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 135, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 655, in store_compound_data\n    raise ValueError(f\"Failed to insert molecule: {molecule.get('name')}\")\nValueError: Failed to insert molecule: Compound CHEMBL1995464\n",
+      "processing_time": 7.146015882492065,
+      "timestamp": 1746157522.7654166
+    },
+    "CHEMBL3560381": {
+      "operation_id": "f36d6f17-eddf-4153-8d8d-0b60cde4732a",
+      "error_type": "ValueError",
+      "error_category": "UNKNOWN",
+      "error_traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 173, in process_task\n    stored_id = self.store_compound_data(transformed_data, conn=conn)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 108, in wrapper\n    raise last_exception\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 93, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 135, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 655, in store_compound_data\n    raise ValueError(f\"Failed to insert molecule: {molecule.get('name')}\")\nValueError: Failed to insert molecule: Compound CHEMBL3560381\n",
+      "processing_time": 7.380411624908447,
+      "timestamp": 1746157522.998751
+    },
+    "CHEMBL457299": {
+      "operation_id": "1c6adb25-93bc-4099-a973-c17c93bf3dab",
+      "error_type": "ValueError",
+      "error_category": "UNKNOWN",
+      "error_traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 173, in process_task\n    stored_id = self.store_compound_data(transformed_data, conn=conn)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 108, in wrapper\n    raise last_exception\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 93, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 135, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 655, in store_compound_data\n    raise ValueError(f\"Failed to insert molecule: {molecule.get('name')}\")\nValueError: Failed to insert molecule: Compound CHEMBL457299\n",
+      "processing_time": 6.659106254577637,
+      "timestamp": 1746157529.6874652
+    },
+    "CHEMBL286398": {
+      "operation_id": "edb4b591-ba75-4129-87bc-c5dfe8a2bf08",
+      "error_type": "ValueError",
+      "error_category": "UNKNOWN",
+      "error_traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 173, in process_task\n    stored_id = self.store_compound_data(transformed_data, conn=conn)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 108, in wrapper\n    raise last_exception\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 93, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 135, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 655, in store_compound_data\n    raise ValueError(f\"Failed to insert molecule: {molecule.get('name')}\")\nValueError: Failed to insert molecule: Compound CHEMBL286398\n",
+      "processing_time": 6.951034307479858,
+      "timestamp": 1746157536.7322874
+    },
+    "CHEMBL3707233": {
+      "operation_id": "38b2c756-efea-4525-9b04-f791c5dd179c",
+      "error_type": "ValueError",
+      "error_category": "UNKNOWN",
+      "error_traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 173, in process_task\n    stored_id = self.store_compound_data(transformed_data, conn=conn)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 108, in wrapper\n    raise last_exception\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 93, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 135, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 655, in store_compound_data\n    raise ValueError(f\"Failed to insert molecule: {molecule.get('name')}\")\nValueError: Failed to insert molecule: Compound CHEMBL3707233\n",
+      "processing_time": 6.667433977127075,
+      "timestamp": 1746157547.2259638
+    },
+    "CHEMBL773": {
+      "operation_id": "bacf192d-23df-4d8a-bdb4-fd499478b9d7",
+      "error_type": "ValueError",
+      "error_category": "UNKNOWN",
+      "error_traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 173, in process_task\n    stored_id = self.store_compound_data(transformed_data, conn=conn)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 108, in wrapper\n    raise last_exception\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 93, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\sql_executor.py\", line 135, in wrapper\n    return func(*args, **kwargs)\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\chembl\\worker.py\", line 655, in store_compound_data\n    raise ValueError(f\"Failed to insert molecule: {molecule.get('name')}\")\nValueError: Failed to insert molecule: Compound CHEMBL773\n",
+      "processing_time": 7.449585437774658,
+      "timestamp": 1746157548.0060294
+    }
+  },
+  "batches": {
+    "1": {
+      "processed": 1,
+      "success": 0,
+      "errors": 1,
+      "start_time": "2025-05-01T21:44:25.952243",
+      "end_time": "2025-05-01T21:44:33.061068",
+      "duration_seconds": 7.108825,
+      "items_per_second": 0.1406702232788119
+    },
+    "2": {
+      "processed": 1,
+      "success": 0,
+      "errors": 1,
+      "start_time": "2025-05-01T21:44:33.121262",
+      "end_time": "2025-05-01T21:44:39.873900",
+      "duration_seconds": 6.752638,
+      "items_per_second": 0.14809027227581278
+    },
+    "3": {
+      "processed": 1,
+      "success": 0,
+      "errors": 1,
+      "start_time": "2025-05-01T21:44:39.997701",
+      "end_time": "2025-05-01T21:44:47.307480",
+      "duration_seconds": 7.309779,
+      "items_per_second": 0.13680304151466138
+    },
+    "4": {
+      "processed": 4,
+      "success": 0,
+      "errors": 4,
+      "start_time": "2025-05-01T21:44:47.388617",
+      "end_time": "2025-05-01T21:44:54.580527",
+      "duration_seconds": 7.19191,
+      "items_per_second": 0.556180486129554
+    },
+    "5": {
+      "processed": 1,
+      "success": 0,
+      "errors": 1,
+      "start_time": "2025-05-01T21:44:54.606429",
+      "end_time": "2025-05-01T21:45:01.462899",
+      "duration_seconds": 6.85647,
+      "items_per_second": 0.145847644633463
+    },
+    "6": {
+      "processed": 1,
+      "success": 0,
+      "errors": 1,
+      "start_time": "2025-05-01T21:45:01.530402",
+      "end_time": "2025-05-01T21:45:08.152546",
+      "duration_seconds": 6.622144,
+      "items_per_second": 0.15100849513390227
+    },
+    "7": {
+      "processed": 4,
+      "success": 0,
+      "errors": 4,
+      "start_time": "2025-05-01T21:45:08.193015",
+      "end_time": "2025-05-01T21:45:15.574027",
+      "duration_seconds": 7.381012,
+      "items_per_second": 0.5419311064661594
+    },
+    "8": {
+      "processed": 3,
+      "success": 0,
+      "errors": 3,
+      "start_time": "2025-05-01T21:45:15.618339",
+      "end_time": "2025-05-01T21:45:23.000053",
+      "duration_seconds": 7.381714,
+      "items_per_second": 0.40640967666858946
+    },
+    "9": {
+      "processed": 1,
+      "success": 0,
+      "errors": 1,
+      "start_time": "2025-05-01T21:45:23.024327",
+      "end_time": "2025-05-01T21:45:29.687465",
+      "duration_seconds": 6.663138,
+      "items_per_second": 0.15007943704602847
+    },
+    "10": {
+      "processed": 1,
+      "success": 0,
+      "errors": 1,
+      "start_time": "2025-05-01T21:45:29.781253",
+      "end_time": "2025-05-01T21:45:36.732287",
+      "duration_seconds": 6.951034,
+      "items_per_second": 0.14386348851120567
+    },
+    "11": {
+      "processed": 2,
+      "success": 0,
+      "errors": 2,
+      "start_time": "2025-05-01T21:45:40.554852",
+      "end_time": "2025-05-01T21:45:48.006029",
+      "duration_seconds": 7.451177,
+      "items_per_second": 0.26841397003453277
+    }
+  },
+  "performance": {
+    "avg_items_per_second": 0.2575002052598511,
+    "total_duration_seconds": 77.66984099999999,
+    "batch_count": 11
+  },
+  "smiles": "C(C(=O)O)N",
+  "similarity": 80,
+  "batch": 13,
+  "molecules_imported": 20,
+  "properties_imported": 0,
+  "batches_processed": 645,
+  "search_terms_used": [
+    {
+      "term": "polyol",
+      "compounds_found": 1000
+    },
+    {
+      "term": "dmso",
+      "compounds_found": 1000
+    },
+    {
+      "term": "sorbitol",
+      "compounds_found": 1000
+    },
+    {
+      "term": "glycol",
+      "compounds_found": 1000
+    },
+    {
+      "term": "glucose",
+      "compounds_found": 1000
+    },
+    {
+      "term": "cryoprotection",
+      "compounds_found": 1000
+    },
+    {
+      "term": "dimethyl sulfoxide",
+      "compounds_found": 1000
+    },
+    {
+      "term": "freeze protection",
+      "compounds_found": 1000
+    },
+    {
+      "term": "antifreeze",
+      "compounds_found": 1000
+    },
+    {
+      "term": "sucrose",
+      "compounds_found": 1000
+    },
+    {
+      "term": "propylene glycol",
+      "compounds_found": 1000
+    },
+    {
+      "term": "mannitol",
+      "compounds_found": 1000
+    },
+    {
+      "term": "cryoprotectant",
+      "compounds_found": 1000
+    },
+    {
+      "term": "glycerol",
+      "compounds_found": 1000
+    },
+    {
+      "term": "cryopreservation",
+      "compounds_found": 1000
+    },
+    {
+      "term": "ethylene glycol",
+      "compounds_found": 1000
+    },
+    {
+      "term": "trehalose",
+      "compounds_found": 1000
+    },
+    {
+      "term": "sucrose",
+      "compounds_found": 1000
+    },
+    {
+      "term": "polyol",
+      "compounds_found": 1000
+    },
+    {
+      "term": "dmso",
+      "compounds_found": 1000
+    },
+    {
+      "term": "cryoprotectant",
+      "compounds_found": 1000
+    },
+    {
+      "term": "glycol",
+      "compounds_found": 1000
+    },
+    {
+      "term": "trehalose",
+      "compounds_found": 1000
+    },
+    {
+      "term": "glycerol",
+      "compounds_found": 1000
+    },
+    {
+      "term": "ethylene glycol",
+      "compounds_found": 1000
+    },
+    {
+      "term": "cryopreservation",
+      "compounds_found": 1000
+    },
+    {
+      "term": "antifreeze",
+      "compounds_found": 1000
+    },
+    {
+      "term": "glucose",
+      "compounds_found": 1000
+    },
+    {
+      "term": "sorbitol",
+      "compounds_found": 1000
+    },
+    {
+      "term": "mannitol",
+      "compounds_found": 1000
+    },
+    {
+      "term": "dimethyl sulfoxide",
+      "compounds_found": 1000
+    },
+    {
+      "term": "cryoprotection",
+      "compounds_found": 1000
+    }
+  ],
+  "similarity_searches": [
+    {
+      "smiles": "C(C(CO)O)O",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(C(CO)O)O",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(C(CO)O)O",
+      "similarity": 60,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CS(=O)C",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CS(=O)C",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CS(=O)C",
+      "similarity": 60,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(CC(=O)O)N",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(CC(=O)O)N",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(CC(=O)O)N",
+      "similarity": 60,
+      "compounds_found": 5
+    },
+    {
+      "smiles": "CC(C)(C)O",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CC(C)(C)O",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CC(C)(C)O",
+      "similarity": 60,
+      "compounds_found": 2
+    },
+    {
+      "smiles": "C(=O)(N)N",
+      "similarity": 80,
+      "compounds_found": 4
+    },
+    {
+      "smiles": "C(=O)(N)N",
+      "similarity": 70,
+      "compounds_found": 4
+    },
+    {
+      "smiles": "C(=O)(N)N",
+      "similarity": 60,
+      "compounds_found": 7
+    },
+    {
+      "smiles": "C(CO)O",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(CO)O",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(CO)O",
+      "similarity": 60,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CC(CO)O",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CC(CO)O",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CC(CO)O",
+      "similarity": 60,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(C(=O)O)N",
+      "similarity": 80,
+      "compounds_found": 2
+    },
+    {
+      "smiles": "C(C(=O)O)N",
+      "similarity": 70,
+      "compounds_found": 2
+    },
+    {
+      "smiles": "C(C(=O)O)N",
+      "similarity": 60,
+      "compounds_found": 2
+    },
+    {
+      "smiles": "C(C(CO)O)O",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(C(CO)O)O",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(C(CO)O)O",
+      "similarity": 60,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CS(=O)C",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CS(=O)C",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CS(=O)C",
+      "similarity": 60,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(CC(=O)O)N",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(CC(=O)O)N",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(CC(=O)O)N",
+      "similarity": 60,
+      "compounds_found": 5
+    },
+    {
+      "smiles": "CC(C)(C)O",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CC(C)(C)O",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CC(C)(C)O",
+      "similarity": 60,
+      "compounds_found": 2
+    },
+    {
+      "smiles": "C(=O)(N)N",
+      "similarity": 80,
+      "compounds_found": 4
+    },
+    {
+      "smiles": "C(=O)(N)N",
+      "similarity": 70,
+      "compounds_found": 4
+    },
+    {
+      "smiles": "C(=O)(N)N",
+      "similarity": 60,
+      "compounds_found": 7
+    },
+    {
+      "smiles": "C(CO)O",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(CO)O",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(CO)O",
+      "similarity": 60,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CC(CO)O",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CC(CO)O",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CC(CO)O",
+      "similarity": 60,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(C(=O)O)N",
+      "similarity": 80,
+      "compounds_found": 2
+    },
+    {
+      "smiles": "C(C(=O)O)N",
+      "similarity": 70,
+      "compounds_found": 2
+    },
+    {
+      "smiles": "C(C(=O)O)N",
+      "similarity": 60,
+      "compounds_found": 2
+    }
+  ],
+  "elapsed_seconds": 445.987764,
+  "term": "cryoprotection",
+  "status": "completed",
+  "end_time": "2025-05-01T21:47:30.555813"
+}

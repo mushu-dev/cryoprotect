@@ -1,0 +1,51 @@
+{
+  "timestamp": "2025-04-29T21:58:46.533199",
+  "mode": "resume",
+  "stats": {
+    "total": 500,
+    "processed": 500,
+    "success": 500,
+    "error": 0,
+    "success_rate_percent": 100.0,
+    "errors_by_category": {}
+  },
+  "performance": {
+    "elapsed_seconds": 71.263953,
+    "compounds_per_second": 7.016169872024921,
+    "average_batch_time": 1.4031885480880737
+  },
+  "search_terms": [
+    "glycerol",
+    "sorbitol",
+    "mannitol",
+    "xylitol",
+    "erythritol",
+    "trehalose",
+    "sucrose",
+    "glucose",
+    "lactose",
+    "maltose",
+    "dextran",
+    "ethanol",
+    "methanol",
+    "propanol",
+    "butanol",
+    "ethylene glycol",
+    "propylene glycol",
+    "formamide",
+    "acetamide",
+    "urea",
+    "hydroxyethyl starch",
+    "dimethyl sulfoxide",
+    "DMSO",
+    "glycine",
+    "alanine",
+    "proline",
+    "glutamine",
+    "lysine",
+    "arginine"
+  ],
+  "fetch_all": false,
+  "start_time": "2025-04-29T21:57:35.269246",
+  "end_time": "2025-04-29T21:58:46.533199"
+}

@@ -1,0 +1,37 @@
+================================================================================
+CryoProtect v2 - Performance Improvements Report
+================================================================================
+
+Timestamp: 2025-04-18T04:26:55.140750
+Project ID: tsdlmynydfuypiugmkev
+Schema: public
+Status: ERROR
+
+Applied Improvements:
+  None
+
+Errors:
+  - Error creating backup of public.mixtures: [WinError 2] The system cannot find the file specified
+  - Error creating backup of public.experiments: [WinError 2] The system cannot find the file specified
+  - Error creating backup of public.predictions: [WinError 2] The system cannot find the file specified
+  - Error creating backup of public.mixture_components: [WinError 2] The system cannot find the file specified
+  - Error creating backup of public.molecules: [WinError 2] The system cannot find the file specified
+  - Error creating backup of public.molecular_properties: [WinError 2] The system cannot find the file specified
+  - Error applying performance indexes: Failed to apply migration: [WinError 2] The system cannot find the file specified
+  - Error configuring connection pooling: [WinError 2] The system cannot find the file specified
+
+Performance Comparison:
+  Query                  | Before                | After
+  -----------------------|-----------------------|----------------------
+  rls_filter             | N/A                   | N/A                 
+  mixture_components_join | N/A                   | N/A                 
+  predictions_filter     | N/A                   | N/A                 
+  experiments_join       | N/A                   | N/A                 
+  molecule_text_search   | N/A                   | N/A                 
+  property_type_join     | N/A                   | N/A                 
+
+Recommendations:
+  1. Monitor query performance in production
+  2. Consider adding additional indexes if specific queries are still slow
+  3. Regularly analyze tables to update statistics
+  4. Consider implementing query caching for frequently accessed data

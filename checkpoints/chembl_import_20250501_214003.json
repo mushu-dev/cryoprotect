@@ -1,0 +1,65 @@
+{
+  "smiles": "C(CC(=O)O)N",
+  "similarity": 60,
+  "batch": 4,
+  "molecules_imported": 0,
+  "properties_imported": 0,
+  "processed_compounds": [
+    "CHEMBL504",
+    "CHEMBL1256511",
+    "CHEMBL297569",
+    "CHEMBL692",
+    "CHEMBL96",
+    "CHEMBL5483025",
+    "CHEMBL284116"
+  ],
+  "batches_processed": 4,
+  "search_terms_used": [],
+  "similarity_searches": [
+    {
+      "smiles": "C(C(CO)O)O",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(C(CO)O)O",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(C(CO)O)O",
+      "similarity": 60,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CS(=O)C",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CS(=O)C",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "CS(=O)C",
+      "similarity": 60,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(CC(=O)O)N",
+      "similarity": 80,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(CC(=O)O)N",
+      "similarity": 70,
+      "compounds_found": 1
+    },
+    {
+      "smiles": "C(CC(=O)O)N",
+      "similarity": 60,
+      "compounds_found": 5
+    }
+  ]
+}

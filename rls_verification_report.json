@@ -1,0 +1,63 @@
+{
+  "verification_timestamp": "2025-04-22T20:01:25.407982+00:00",
+  "rls_implementation": {
+    "tables_with_rls": {
+      "mixtures": {
+        "rls_enabled": true,
+        "policy_count": 7
+      },
+      "molecules": {
+        "rls_enabled": true,
+        "policy_count": 7
+      },
+      "migrations": {
+        "rls_enabled": true,
+        "policy_count": 2
+      },
+      "experiments": {
+        "rls_enabled": true,
+        "policy_count": 8
+      },
+      "mixture_components": {
+        "rls_enabled": true,
+        "policy_count": 6
+      },
+      "molecular_properties": {
+        "rls_enabled": true,
+        "policy_count": 6
+      },
+      "experiment_properties": {
+        "rls_enabled": true,
+        "policy_count": 2
+      },
+      "scientific_data_audit": {
+        "rls_enabled": true,
+        "policy_count": 3
+      }
+    },
+    "views_with_security_invoker": {
+      "experiment_with_results": true,
+      "mixture_with_components": true,
+      "molecule_with_properties": true
+    },
+    "performance_indexes": [
+      "idx_mixture_components_mixture_id",
+      "idx_molecular_properties_molecule_id",
+      "idx_user_profile_team_id",
+      "idx_experiments_project_id",
+      "idx_mixtures_project_id",
+      "idx_experiment_properties_experiment_id"
+    ],
+    "audit_triggers": [
+      "audit_molecules_trigger",
+      "audit_mixtures_trigger",
+      "audit_experiments_trigger"
+    ],
+    "summary": {
+      "total_rls_policies": 41,
+      "audit_triggers_count": 3,
+      "tables_with_rls_count": 8,
+      "performance_indexes_count": 6
+    }
+  }
+}

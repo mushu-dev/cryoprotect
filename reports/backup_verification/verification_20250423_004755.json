@@ -1,0 +1,34 @@
+{
+  "timestamp": "2025-04-23T00:47:55.396601",
+  "verified_backups": [
+    {
+      "file": "cryoprotect_20250423_004747_full.dump.gz",
+      "path": "backups/database\\cryoprotect_20250423_004747_full.dump.gz",
+      "timestamp": "2025-04-23T00:47:55.340787",
+      "checks": {
+        "file_integrity": true,
+        "backup_format": true,
+        "metadata": true,
+        "hash_calculation": true
+      },
+      "hash": "6a567ab53e1a9e84c25915be3cafc798cdc5f22c43f8a712df5c610d7d9c9d7f",
+      "status": "passed"
+    },
+    {
+      "file": "cryoprotect_20250423_003200_full.dump.gz",
+      "path": "backups/database\\cryoprotect_20250423_003200_full.dump.gz",
+      "timestamp": "2025-04-23T00:47:55.394590",
+      "checks": {
+        "file_integrity": true,
+        "backup_format": true,
+        "metadata": true,
+        "hash_calculation": true
+      },
+      "hash": "06952a86967050a6e5896b4c5bb9ee1dedf6b1e636bf1728b70effbe32b5ea07",
+      "status": "passed"
+    }
+  ],
+  "total_backups": 2,
+  "passed": 2,
+  "failed": 0
+}

@@ -1,0 +1,34 @@
+{
+  "timestamp": "2025-04-29T22:14:12.624752",
+  "total_molecules": 5,
+  "molecules_enhanced": 5,
+  "molecules_skipped": 0,
+  "molecules_failed": 0,
+  "details": {
+    "CRYO0001": {
+      "status": "enhanced",
+      "name": "Glycerol",
+      "pubchem_cid": "753"
+    },
+    "CRYO0005": {
+      "status": "enhanced",
+      "name": "Trehalose",
+      "pubchem_cid": "7427"
+    },
+    "CRYO0004": {
+      "status": "enhanced",
+      "name": "Propylene glycol",
+      "pubchem_cid": "1030"
+    },
+    "CRYO0003": {
+      "status": "enhanced",
+      "name": "Ethylene glycol",
+      "pubchem_cid": "174"
+    },
+    "CRYO0002": {
+      "status": "enhanced",
+      "name": "DMSO",
+      "pubchem_cid": "679"
+    }
+  }
+}

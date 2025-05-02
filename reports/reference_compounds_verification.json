@@ -1,0 +1,154 @@
+{
+  "timestamp": "2025-04-29T19:05:30-06:00",
+  "verification_status": {
+    "success": false,
+    "message": "Reference compounds are present but with incomplete data and missing ChEMBL IDs"
+  },
+  "reference_compounds_verification": {
+    "by_chembl_id": {
+      "success": false,
+      "message": "No reference compounds found when searching by ChEMBL IDs",
+      "details": {
+        "total_reference_compounds": 7,
+        "found_by_chembl_id": 0,
+        "missing_by_chembl_id": 7,
+        "missing_compounds": [
+          "CHEMBL25 (Aspirin)",
+          "CHEMBL1118 (Caffeine)",
+          "CHEMBL1234 (Glycerol)",
+          "CHEMBL444 (Glucose)",
+          "CHEMBL230130 (Ethylene glycol)",
+          "CHEMBL9335 (Dimethyl sulfoxide)",
+          "CHEMBL15151 (Trehalose)"
+        ]
+      }
+    },
+    "by_name": {
+      "success": true,
+      "message": "Most reference compounds found when searching by name",
+      "details": {
+        "total_reference_compounds": 7,
+        "found_by_name": 5,
+        "missing_by_name": 2,
+        "found_compounds": [
+          {
+            "name": "Dimethyl sulfoxide",
+            "data_source": ["CryoProtect Database", "PubChem"],
+            "has_properties": true,
+            "property_count": 6
+          },
+          {
+            "name": "Glycerol",
+            "data_source": ["CryoProtect Database"],
+            "has_properties": false,
+            "property_count": 0
+          },
+          {
+            "name": "Ethylene glycol",
+            "data_source": ["CryoProtect Database", "PubChem"],
+            "has_properties": false,
+            "property_count": 0
+          },
+          {
+            "name": "Trehalose",
+            "data_source": ["CryoProtect Database", "PubChem"],
+            "has_properties": false,
+            "property_count": 0
+          },
+          {
+            "name": "D-Glucose",
+            "data_source": ["PubChem"],
+            "has_properties": false,
+            "property_count": 0
+          }
+        ],
+        "missing_compounds": [
+          "Aspirin",
+          "Caffeine"
+        ]
+      }
+    }
+  },
+  "critical_properties_verification": {
+    "success": false,
+    "message": "Most molecules have basic properties but lack additional properties",
+    "details": {
+      "basic_properties": {
+        "total_molecules": 723,
+        "molecules_with_complete_basic_data": 722,
+        "molecules_with_incomplete_basic_data": 1,
+        "incomplete_percent": 0.14,
+        "incomplete_molecules": [
+          {
+            "id": "3d1f22dc-d7be-4d04-928b-2024349410d9",
+            "name": "TestMol4",
+            "data_source": "MCP_Verification_Atomic"
+          }
+        ]
+      },
+      "additional_properties": {
+        "reference_compounds_with_properties": {
+          "total": 5,
+          "with_properties": 1,
+          "without_properties": 4,
+          "with_properties_percent": 20
+        },
+        "dimethyl_sulfoxide_properties": [
+          {
+            "property_name": "LogP",
+            "numeric_value": -1.35,
+            "unit": ""
+          },
+          {
+            "property_name": "Glass Transition Temperature",
+            "numeric_value": -137,
+            "unit": "°C"
+          },
+          {
+            "property_name": "Hydrogen Bond Donor Count",
+            "numeric_value": 0,
+            "unit": ""
+          },
+          {
+            "property_name": "Hydrogen Bond Acceptor Count",
+            "numeric_value": 1,
+            "unit": ""
+          },
+          {
+            "property_name": "TPSA",
+            "numeric_value": 17.1,
+            "unit": "Å²"
+          },
+          {
+            "property_name": "Cell Permeability",
+            "numeric_value": 0.85,
+            "unit": "μm/s"
+          }
+        ]
+      }
+    }
+  },
+  "recommendations": [
+    {
+      "type": "data_linking",
+      "description": "Link existing molecules to their ChEMBL IDs",
+      "details": "Update the molecules table to include ChEMBL IDs for the reference compounds that are already in the database"
+    },
+    {
+      "type": "data_import",
+      "description": "Import missing reference compounds",
+      "details": "Import Aspirin and Caffeine into the database"
+    },
+    {
+      "type": "property_enrichment",
+      "description": "Add properties for all reference compounds",
+      "details": "Populate the molecular_properties table with properties for Glycerol, Ethylene glycol, Trehalose, and D-Glucose"
+    },
+    {
+      "type": "data_consistency",
+      "description": "Ensure consistent naming and identification",
+      "details": "Standardize the naming and identification of compounds across different data sources"
+    }
+  ],
+  "conclusion": "The database contains most of the reference cryoprotectant compounds, but they are not properly linked to their ChEMBL IDs and most of them lack additional properties. While the basic molecular data (molecular_weight, inchikey, smiles) is complete for almost all molecules, the additional properties that are important for cryoprotectant analysis are largely missing. Only Dimethyl sulfoxide (DMSO) has a complete set of properties. The database would benefit from linking existing molecules to their ChEMBL IDs, importing missing reference compounds, and enriching all reference compounds with additional properties."
+}

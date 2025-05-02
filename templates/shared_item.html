@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shared Item - CryoProtect Analyzer</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/export-sharing.css') }}" rel="stylesheet">
+  
+  <style>
+    .shared-banner {
+      background-color: #f8f9fa;
+      border-bottom: 1px solid #e9ecef;
+      padding: 10px 0;
+      margin-bottom: 20px;
+    }
+    
+    .password-form {
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f8f9fa;
+    }
+    
+    .shared-by {
+      font-size: 0.9rem;
+      color: #6c757d;
+      margin-bottom: 20px;
+    }
+    
+    .expiration-notice {
+      font-size: 0.9rem;
+      color: #dc3545;
+      margin-top: 10px;
+    }
+    
+    .shared-content {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Shared Banner -->
+  <div class="shared-banner">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <a href="/" class="text-decoration-none">
+            <i class="bi bi-snow2"></i> CryoProtect <span>Analyzer</span>
+          </a>
+          <span class="ms-2 badge bg-info">Shared Item</span>
+        </div>
+        <div>
+          <a href="/" class="btn btn-sm btn-outline-primary">Go to CryoProtect Analyzer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="container py-4">
+    {% if password_protected and not authenticated %}
+    <!-- Password Protection Form -->
+    <div class="password-form">
+      <h2 class="mb-4 text-center">Password Protected</h2>
+      <p class="text-center mb-4">This shared item is password protected. Please enter the password to view it.</p>
+      
+      {% if error %}
+      <div class="alert alert-danger">{{ error }}</div>
+      {% endif %}
+      
+      <form method="post" action="{{ url_for('shared_item', share_id=share_id) }}">
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary">Access Shared Item</button>
+        </div>
+      </form>
+    </div>
+    {% else %}
+    <!-- Shared Item Content -->
+    <div class="shared-content">
+      <h1>{{ item_title }}</h1>
+      
+      <div class="shared-by">
+        Shared by: {{ shared_by }}
+        {% if expiration %}
+        <span class="expiration-notice">Expires on: {{ expiration }}</span>
+        {% endif %}
+      </div>
+      
+      {% if data_type == 'mixtures' %}
+      <!-- Mixture Content -->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <div class="card-header">
+              Basic Information
+            </div>
+            <div class="card-body">
+              <p><strong>Description:</strong> {{ item_data.description }}</p>
+              <p><strong>Created:</strong> {{ item_data.created_at }}</p>
+            </div>
+          </div>
+          
+          <div class="card mb-4">
+            <div class="card-header">
+              Components
+            </div>
+            <div class="card-body">
+              <ul class="list-group">
+                {% for component in item_data.components %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  {{ component.molecule_name }}
+                  <span class="badge bg-primary rounded-pill">{{ component.concentration }} {{ component.concentration_unit }}</span>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <div class="card-header">
+              Composition
+            </div>
+            <div class="card-body">
+              <div class="chart-container">
+                <canvas id="mixture-composition-chart"
+                  {% if data_type == 'mixtures' %}
+                  data-components="{{ item_data.components|tojson|safe }}"
+                  {% endif %}
+                ></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {% if item_data.predictions %}
+      <div class="card mb-4">
+        <div class="card-header">
+          Predictions
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Value</th>
+                  <th>Confidence</th>
+                  <th>Method</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for prediction in item_data.predictions %}
+                <tr>
+                  <td>{{ prediction.property_types.name }}</td>
+                  <td>
+                    {% if prediction.numeric_value is not none %}
+                      {{ prediction.numeric_value }}
+                    {% elif prediction.text_value is not none %}
+                      {{ prediction.text_value }}
+                    {% elif prediction.boolean_value is not none %}
+                      {{ prediction.boolean_value }}
+                    {% else %}
+                      N/A
+                    {% endif %}
+                  </td>
+                  <td>{{ prediction.confidence }}</td>
+                  <td>{{ prediction.calculation_methods.name }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      
+      {% if item_data.experiments %}
+      <div class="card mb-4">
+        <div class="card-header">
+          Experiments
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Value</th>
+                  <th>Conditions</th>
+                  <th>Date Performed</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for experiment in item_data.experiments %}
+                <tr>
+                  <td>{{ experiment.property_types.name }}</td>
+                  <td>
+                    {% if experiment.numeric_value is not none %}
+                      {{ experiment.numeric_value }}
+                    {% elif experiment.text_value is not none %}
+                      {{ experiment.text_value }}
+                    {% elif experiment.boolean_value is not none %}
+                      {{ experiment.boolean_value }}
+                    {% else %}
+                      N/A
+                    {% endif %}
+                  </td>
+                  <td>{{ experiment.experimental_conditions }}</td>
+                  <td>{{ experiment.date_performed }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      
+      {% elif data_type == 'molecules' %}
+      <!-- Molecule Content -->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <div class="card-header">
+              Basic Information
+            </div>
+            <div class="card-body">
+              <p><strong>Name:</strong> {{ item_data.name }}</p>
+              <p><strong>Formula:</strong> {{ item_data.molecular_formula }}</p>
+              <p><strong>SMILES:</strong> {{ item_data.smiles }}</p>
+              <p><strong>PubChem CID:</strong> {{ item_data.cid }}</p>
+              <p><strong>PubChem Link:</strong> <a href="{{ item_data.pubchem_link }}" target="_blank">{{ item_data.pubchem_link }}</a></p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <div class="card-header">
+              Molecular Structure
+            </div>
+            <div class="card-body text-center">
+              <img src="https://pubchem.ncbi.nlm.nih.gov/image/imgsrv.fcgi?cid={{ item_data.cid }}&t=l" alt="Molecular Structure" class="img-fluid">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {% if item_data.properties %}
+      <div class="card mb-4">
+        <div class="card-header">
+          Molecular Properties
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for key, value in item_data.properties.items() %}
+                <tr>
+                  <td>{{ key }}</td>
+                  <td>{{ value }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      
+      {% elif data_type == 'predictions' or data_type == 'experiments' %}
+      <!-- Predictions or Experiments Content -->
+      <div class="card mb-4">
+        <div class="card-header">
+          {{ data_type|capitalize }}
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Value</th>
+                  {% if data_type == 'predictions' %}
+                  <th>Confidence</th>
+                  <th>Method</th>
+                  {% else %}
+                  <th>Conditions</th>
+                  <th>Date Performed</th>
+                  {% endif %}
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in item_data %}
+                <tr>
+                  <td>{{ item.property_types.name }}</td>
+                  <td>
+                    {% if item.numeric_value is not none %}
+                      {{ item.numeric_value }}
+                    {% elif item.text_value is not none %}
+                      {{ item.text_value }}
+                    {% elif item.boolean_value is not none %}
+                      {{ item.boolean_value }}
+                    {% else %}
+                      N/A
+                    {% endif %}
+                  </td>
+                  {% if data_type == 'predictions' %}
+                  <td>{{ item.confidence }}</td>
+                  <td>{{ item.calculation_methods.name }}</td>
+                  {% else %}
+                  <td>{{ item.experimental_conditions }}</td>
+                  <td>{{ item.date_performed }}</td>
+                  {% endif %}
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      {% elif data_type == 'comparisons' %}
+      <!-- Comparisons Content -->
+      <div class="card mb-4">
+        <div class="card-header">
+          Comparisons
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Predicted Value</th>
+                  <th>Experimental Value</th>
+                  <th>Difference</th>
+                  <th>% Error</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in item_data %}
+                <tr>
+                  <td>{{ item.property_name }}</td>
+                  <td>{{ item.prediction_value }}</td>
+                  <td>{{ item.experiment_value }}</td>
+                  <td>{{ item.difference }}</td>
+                  <td>{{ item.percent_error }}%</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      {% elif data_type == 'report' %}
+      <!-- Report Content -->
+      <div class="report-content">
+        {{ item_data|safe }}
+      </div>
+      
+      {% elif data_type == 'visualization' %}
+      <!-- Visualization Content -->
+      <div class="text-center">
+        <img src="data:image/png;base64,{{ item_data }}" alt="Shared Visualization" class="img-fluid">
+      </div>
+      {% endif %}
+      
+      <!-- Export Options -->
+      <div class="card mt-4">
+        <div class="card-header">
+          Export Options
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="export-format" class="form-label">Format:</label>
+                <select class="form-select" id="export-format">
+                  <option value="csv">CSV</option>
+                  <option value="json">JSON</option>
+                  <option value="excel">Excel</option>
+                  <option value="pdf">PDF</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-check mb-3 mt-4">
+                <input class="form-check-input" type="checkbox" id="include-related" checked>
+                <label class="form-check-label" for="include-related">
+                  Include related data
+                </label>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary export-data-btn" data-type="{{ data_type }}" data-id="{{ item_id }}">
+            <i class="bi bi-download"></i> Export
+          </button>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-light py-4 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p>&copy; 2025 CryoProtect Analyzer. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a href="#" class="text-decoration-none me-3">Privacy Policy</a>
+          <a href="#" class="text-decoration-none me-3">Terms of Service</a>
+          <a href="#" class="text-decoration-none">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Custom JS -->
+  <script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/export-sharing.js') }}"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize export functionality
+      document.querySelector('.export-data-btn')?.addEventListener('click', function() {
+        const format = document.getElementById('export-format').value;
+        const includeRelated = document.getElementById('include-related').checked;
+        const dataType = this.dataset.type;
+        const itemId = this.dataset.id;
+        
+        // Call the export function from export-sharing.js
+        ExportManager.exportData(dataType, itemId, format, includeRelated);
+      });
+      
+      // Initialize charts if needed
+      if (document.getElementById('mixture-composition-chart')) {
+        // Initialize mixture composition chart
+        const chartElement = document.getElementById('mixture-composition-chart');
+        const ctx = chartElement.getContext('2d');
+        
+        // Get component data from data attribute
+        let componentsData = [];
+        if (chartElement.dataset.components) {
+          componentsData = JSON.parse(chartElement.dataset.components);
+        }
+        
+        const labels = componentsData.map(comp => comp.molecule_name);
+        const data = componentsData.map(comp => comp.concentration);
+        
+        // Create pie chart
+        new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: labels,
+            datasets: [{
+              data: data,
+              backgroundColor: [
+                '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40',
+                '#8BC34A', '#FF5722', '#607D8B', '#E91E63', '#3F51B5', '#009688'
+              ]
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                position: 'right'
+              },
+              title: {
+                display: true,
+                text: 'Mixture Composition'
+              }
+            }
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

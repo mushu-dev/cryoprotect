@@ -1,0 +1,36 @@
+{
+  "timestamp": "2025-04-26T23:49:50.090847",
+  "row_counts": {
+    "molecules": 30,
+    "molecular_properties": 72,
+    "property_types": 50
+  },
+  "non_null_percentages": {
+    "chembl_id": "-1.00%",
+    "smiles": "96.67%"
+  },
+  "known_chembl_ids": {
+    "CHEMBL25": false,
+    "CHEMBL1": false,
+    "CHEMBL2": false,
+    "CHEMBL3": false,
+    "CHEMBL4": false,
+    "CHEMBL5": false
+  },
+  "data_integrity": {},
+  "acceptance_criteria": {
+    "row_counts": {
+      "threshold": 1000,
+      "met": false
+    },
+    "non_null_percentages": {
+      "threshold": "95.00%",
+      "met": true
+    },
+    "known_chembl_ids": {
+      "threshold": "At least one known ChEMBL ID",
+      "met": false
+    }
+  },
+  "overall_result": false
+}

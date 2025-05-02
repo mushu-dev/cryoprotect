@@ -1,0 +1,38 @@
+[
+  {
+    "id": "mix-comp-1",
+    "mixture_id": "mix-fixture-1",
+    "molecule_id": "mol-fixture-1",
+    "concentration": 70.0,
+    "concentration_unit": "%",
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  },
+  {
+    "id": "mix-comp-2",
+    "mixture_id": "mix-fixture-1",
+    "molecule_id": "mol-fixture-2",
+    "concentration": 30.0,
+    "concentration_unit": "%",
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  },
+  {
+    "id": "mix-comp-3",
+    "mixture_id": "mix-fixture-2",
+    "molecule_id": "mol-fixture-1",
+    "concentration": 40.0,
+    "concentration_unit": "%",
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  },
+  {
+    "id": "mix-comp-4",
+    "mixture_id": "mix-fixture-2",
+    "molecule_id": "mol-fixture-2",
+    "concentration": 60.0,
+    "concentration_unit": "%",
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  }
+]

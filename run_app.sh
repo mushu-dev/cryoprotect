@@ -5,6 +5,15 @@ echo "Starting CryoProtect Analyzer..."
 source $(conda info --base)/etc/profile.d/conda.sh
 conda activate cryoprotect
 
+# Verify and install required packages
+echo "Verifying required packages..."
+python verify_packages.py > /dev/null 2>&1
+if [ $? -ne 0 ]; then
+    echo "Some packages are missing or not accessible."
+    echo "Running package installation script..."
+    bash ./startup_packages.sh
+fi
+
 # Check if RDKit is installed
 python -c "from rdkit import Chem; print('RDKit check passed')" > /dev/null 2>&1
 if [ $? -ne 0 ]; then

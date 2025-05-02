@@ -1,0 +1,773 @@
+{% extends 'base.html' %}
+
+{% set active_page = 'molecules' %}
+{% set breadcrumbs = [
+  {'title': 'Home', 'url': '/'},
+  {'title': 'Molecules', 'url': '/molecules'},
+  {'title': 'Integrated Viewer', 'url': '/molecules/integrated'}
+] %}
+
+{% block title %}Integrated Molecular Viewer - CryoProtect Analyzer{% endblock %}
+
+{% block extra_css %}
+<style>
+  .viewer-container {
+    min-height: 400px;
+    position: relative;
+  }
+  
+  .measurement-info {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+  }
+  
+  .atom-info {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+  }
+  
+  .comparison-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  @media (min-width: 992px) {
+    .comparison-container {
+      flex-direction: row;
+    }
+    
+    .comparison-molecule {
+      flex: 1;
+      margin-right: 10px;
+    }
+    
+    .comparison-molecule:last-child {
+      margin-right: 0;
+    }
+  }
+  
+  /* Accessibility improvements */
+  .keyboard-shortcuts {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+  }
+  
+  .keyboard-shortcuts kbd {
+    display: inline-block;
+    padding: 3px 5px;
+    font-size: 11px;
+    line-height: 10px;
+    color: #444;
+    vertical-align: middle;
+    background-color: #fafbfc;
+    border: solid 1px #c6cbd1;
+    border-bottom-color: #959da5;
+    border-radius: 3px;
+    box-shadow: inset 0 -1px 0 #959da5;
+  }
+  
+  /* High contrast mode */
+  @media (forced-colors: active) {
+    .viewer-toolbar button.active {
+      border: 3px solid;
+    }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1>Integrated Molecular Viewer</h1>
+  <a href="/molecules" class="btn btn-outline-secondary">
+    <i class="bi bi-arrow-left"></i> Back to Molecules
+  </a>
+</div>
+
+<!-- Tabs -->
+<ul class="nav nav-tabs mb-4" id="viewerTabs" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="single-tab" data-bs-toggle="tab" data-bs-target="#single" type="button" role="tab" aria-controls="single" aria-selected="true">Single Molecule</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison" type="button" role="tab" aria-controls="comparison" aria-selected="false">Molecule Comparison</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="advanced-tab" data-bs-toggle="tab" data-bs-target="#advanced" type="button" role="tab" aria-controls="advanced" aria-selected="false">Advanced Analysis</button>
+  </li>
+</ul>
+
+<!-- Tab Content -->
+<div class="tab-content" id="viewerTabsContent">
+  <!-- Single Molecule Tab -->
+  <div class="tab-pane fade show active" id="single" role="tabpanel" aria-labelledby="single-tab">
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Molecule Selection</h5>
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="moleculeSelect" class="form-label">Select Molecule</label>
+              <select class="form-select" id="moleculeSelect" aria-label="Select a molecule">
+                <option value="" selected>-- Select a molecule --</option>
+                <!-- Molecules will be loaded here -->
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="smilesInput" class="form-label">Or Enter SMILES</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="smilesInput" placeholder="e.g., CCO for ethanol" aria-label="SMILES input">
+                <button class="btn btn-primary" id="visualizeBtn" type="button">Visualize</button>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="formatSelect" class="form-label">Input Format</label>
+              <select class="form-select" id="formatSelect" aria-label="Select input format">
+                <option value="smiles" selected>SMILES</option>
+                <option value="mol">MOL</option>
+                <option value="pdb">PDB</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card mt-4">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Basic Properties</h5>
+          </div>
+          <div class="card-body" id="basicProperties">
+            <p class="text-muted">Select a molecule to view properties</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-8 mb-4">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Molecular Structure</h5>
+          </div>
+          <div class="card-body">
+            <!-- Viewer Toolbar -->
+            <div id="viewerToolbar" class="viewer-toolbar btn-toolbar mb-3" role="toolbar" aria-label="Molecular viewer toolbar">
+              <!-- Toolbar buttons will be created by JavaScript -->
+            </div>
+            
+            <!-- Viewer Containers -->
+            <div class="row">
+              <div class="col-12">
+                <div class="viewer-container">
+                  <!-- 2D Viewer -->
+                  <div id="viewer2D" class="w-100 h-100" style="display: none;" aria-label="2D molecular structure viewer">
+                    <p class="text-muted text-center py-5">Select a molecule to visualize</p>
+                  </div>
+                  
+                  <!-- 3D Viewer -->
+                  <div id="viewer3D" class="w-100 h-100" aria-label="3D molecular structure viewer">
+                    <p class="text-muted text-center py-5">Select a molecule to visualize</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Measurement Info -->
+            <div id="measurementInfo" class="measurement-info" style="display: none;">
+              <h6>Measurements</h6>
+              <div id="measurementList">
+                <!-- Measurements will be displayed here -->
+              </div>
+            </div>
+            
+            <!-- Atom Info -->
+            <div id="atomInfo" class="atom-info" style="display: none;">
+              <h6>Selected Atoms</h6>
+              <div id="atomList">
+                <!-- Selected atoms will be displayed here -->
+              </div>
+            </div>
+            
+            <!-- Keyboard Shortcuts -->
+            <div class="keyboard-shortcuts">
+              <h6>Keyboard Shortcuts</h6>
+              <div class="row">
+                <div class="col-md-6">
+                  <ul class="list-unstyled mb-0">
+                    <li><kbd>2</kbd> - Switch to 2D view</li>
+                    <li><kbd>3</kbd> - Switch to 3D view</li>
+                    <li><kbd>R</kbd> - Reset view</li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <ul class="list-unstyled mb-0">
+                    <li><kbd>S</kbd> - Toggle spin</li>
+                    <li><kbd>M</kbd> - Toggle measurement mode</li>
+                    <li><kbd>F</kbd> - Toggle surface</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Molecule Comparison Tab -->
+  <div class="tab-pane fade" id="comparison" role="tabpanel" aria-labelledby="comparison-tab">
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title mb-0">First Molecule</h5>
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="molecule1Select" class="form-label">Select Molecule</label>
+              <select class="form-select" id="molecule1Select" aria-label="Select first molecule">
+                <option value="" selected>-- Select a molecule --</option>
+                <!-- Molecules will be loaded here -->
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="smiles1Input" class="form-label">Or Enter SMILES</label>
+              <input type="text" class="form-control" id="smiles1Input" placeholder="e.g., CCO for ethanol" aria-label="First molecule SMILES input">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Second Molecule</h5>
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="molecule2Select" class="form-label">Select Molecule</label>
+              <select class="form-select" id="molecule2Select" aria-label="Select second molecule">
+                <option value="" selected>-- Select a molecule --</option>
+                <!-- Molecules will be loaded here -->
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="smiles2Input" class="form-label">Or Enter SMILES</label>
+              <input type="text" class="form-control" id="smiles2Input" placeholder="e.g., CC(=O)O for acetic acid" aria-label="Second molecule SMILES input">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="d-grid gap-2 col-md-6 mx-auto mb-4">
+      <button class="btn btn-primary" id="compareBtn" type="button">Compare Molecules</button>
+    </div>
+    
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Comparison View</h5>
+      </div>
+      <div class="card-body">
+        <div class="comparison-container">
+          <div class="comparison-molecule mb-4 mb-lg-0">
+            <div id="comparisonToolbar1" class="viewer-toolbar btn-toolbar mb-3" role="toolbar" aria-label="First molecule toolbar">
+              <!-- Toolbar buttons will be created by JavaScript -->
+            </div>
+            <div class="viewer-container">
+              <div id="comparison2D1" class="w-100 h-100" style="display: none;" aria-label="First molecule 2D structure">
+                <p class="text-muted text-center py-5">Select molecules to compare</p>
+              </div>
+              <div id="comparison3D1" class="w-100 h-100" aria-label="First molecule 3D structure">
+                <p class="text-muted text-center py-5">Select molecules to compare</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="comparison-molecule">
+            <div id="comparisonToolbar2" class="viewer-toolbar btn-toolbar mb-3" role="toolbar" aria-label="Second molecule toolbar">
+              <!-- Toolbar buttons will be created by JavaScript -->
+            </div>
+            <div class="viewer-container">
+              <div id="comparison2D2" class="w-100 h-100" style="display: none;" aria-label="Second molecule 2D structure">
+                <p class="text-muted text-center py-5">Select molecules to compare</p>
+              </div>
+              <div id="comparison3D2" class="w-100 h-100" aria-label="Second molecule 3D structure">
+                <p class="text-muted text-center py-5">Select molecules to compare</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-4">
+          <h6>Similarity Analysis</h6>
+          <div id="similarityResults">
+            <p class="text-muted">Select molecules to analyze similarity</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Advanced Analysis Tab -->
+  <div class="tab-pane fade" id="advanced" role="tabpanel" aria-labelledby="advanced-tab">
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Molecule Selection</h5>
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="advancedMoleculeSelect" class="form-label">Select Molecule</label>
+              <select class="form-select" id="advancedMoleculeSelect" aria-label="Select molecule for advanced analysis">
+                <option value="" selected>-- Select a molecule --</option>
+                <!-- Molecules will be loaded here -->
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="advancedSmilesInput" class="form-label">Or Enter SMILES</label>
+              <input type="text" class="form-control" id="advancedSmilesInput" placeholder="e.g., CCO for ethanol" aria-label="SMILES input for advanced analysis">
+            </div>
+            <button class="btn btn-primary w-100" id="analyzeBtn" type="button">Analyze Molecule</button>
+          </div>
+        </div>
+        
+        <div class="card mt-4">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Analysis Options</h5>
+          </div>
+          <div class="card-body">
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="electrostaticCheck" checked>
+              <label class="form-check-label" for="electrostaticCheck">
+                Electrostatic Potential
+              </label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="cavityCheck" checked>
+              <label class="form-check-label" for="cavityCheck">
+                Cavity Detection
+              </label>
+            </div>
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="hbondCheck" checked>
+              <label class="form-check-label" for="hbondCheck">
+                Hydrogen Bond Network
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-8 mb-4">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Advanced Visualization</h5>
+          </div>
+          <div class="card-body">
+            <div id="advancedToolbar" class="viewer-toolbar btn-toolbar mb-3" role="toolbar" aria-label="Advanced visualization toolbar">
+              <!-- Toolbar buttons will be created by JavaScript -->
+            </div>
+            
+            <div class="viewer-container">
+              <div id="advanced2D" class="w-100 h-100" style="display: none;" aria-label="Advanced 2D visualization">
+                <p class="text-muted text-center py-5">Select a molecule to analyze</p>
+              </div>
+              <div id="advanced3D" class="w-100 h-100" aria-label="Advanced 3D visualization">
+                <p class="text-muted text-center py-5">Select a molecule to analyze</p>
+              </div>
+            </div>
+            
+            <div class="mt-4">
+              <h6>Analysis Results</h6>
+              <div id="analysisResults">
+                <p class="text-muted">Select a molecule and analysis options to view results</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<!-- 3Dmol.js -->
+<script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+
+<!-- Application Scripts -->
+<script src="{{ url_for('static', filename='js/api.js') }}"></script>
+<script src="{{ url_for('static', filename='js/rdkit.js') }}"></script>
+<script src="{{ url_for('static', filename='js/molecular-viewer.js') }}"></script>
+<script src="{{ url_for('static', filename='js/integrated-molecular-viewer.js') }}"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize viewers
+    const singleViewer = IntegratedMolecularViewer.init({
+      container2D: 'viewer2D',
+      container3D: 'viewer3D',
+      toolbar: 'viewerToolbar',
+      width: document.getElementById('viewer3D').clientWidth,
+      height: 400
+    });
+    
+    const comparisonViewer1 = IntegratedMolecularViewer.init({
+      container2D: 'comparison2D1',
+      container3D: 'comparison3D1',
+      toolbar: 'comparisonToolbar1',
+      width: document.getElementById('comparison3D1').clientWidth,
+      height: 400
+    });
+    
+    const comparisonViewer2 = IntegratedMolecularViewer.init({
+      container2D: 'comparison2D2',
+      container3D: 'comparison3D2',
+      toolbar: 'comparisonToolbar2',
+      width: document.getElementById('comparison3D2').clientWidth,
+      height: 400
+    });
+    
+    const advancedViewer = IntegratedMolecularViewer.init({
+      container2D: 'advanced2D',
+      container3D: 'advanced3D',
+      toolbar: 'advancedToolbar',
+      width: document.getElementById('advanced3D').clientWidth,
+      height: 400
+    });
+    
+    // Check for molecule ID and SMILES in URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const moleculeId = urlParams.get('id');
+    const smiles = urlParams.get('smiles');
+    
+    if (moleculeId && smiles) {
+      // If molecule ID and SMILES are provided in URL, load the molecule directly
+      loadMoleculeDetails(moleculeId);
+    }
+    
+    // Load molecules for dropdowns
+    loadMolecules();
+    
+    // Set up event listeners
+    document.getElementById('visualizeBtn').addEventListener('click', visualizeMolecule);
+    document.getElementById('compareBtn').addEventListener('click', compareMolecules);
+    document.getElementById('analyzeBtn').addEventListener('click', analyzeMolecule);
+    
+    // Initialize molecule select dropdowns
+    document.getElementById('moleculeSelect').addEventListener('change', function() {
+      const moleculeId = this.value;
+      if (moleculeId) {
+        loadMoleculeDetails(moleculeId, singleViewer);
+      }
+    });
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', function(event) {
+      // Only process if we're on the single molecule tab
+      if (document.getElementById('single').classList.contains('active')) {
+        if (event.key === '2') {
+          singleViewer.setViewType('2D');
+        } else if (event.key === '3') {
+          singleViewer.setViewType('3D');
+        } else if (event.key === 'r' || event.key === 'R') {
+          singleViewer.resetView();
+        } else if (event.key === 's' || event.key === 'S') {
+          singleViewer.toggleSpin();
+        } else if (event.key === 'm' || event.key === 'M') {
+          singleViewer.toggleMeasurementMode();
+        } else if (event.key === 'f' || event.key === 'F') {
+          singleViewer.toggleSurface();
+        }
+      }
+    });
+    
+    // Load molecules for dropdowns
+    async function loadMolecules() {
+      try {
+        const molecules = await API.getMolecules();
+        
+        // Populate molecule select dropdowns
+        const selects = [
+          document.getElementById('moleculeSelect'),
+          document.getElementById('molecule1Select'),
+          document.getElementById('molecule2Select'),
+          document.getElementById('advancedMoleculeSelect')
+        ];
+        
+        selects.forEach(select => {
+          if (!select) return;
+          
+          // Clear existing options except the first one
+          while (select.options.length > 1) {
+            select.remove(1);
+          }
+          
+          // Add molecule options
+          molecules.forEach(molecule => {
+            const option = document.createElement('option');
+            option.value = molecule.id;
+            option.textContent = molecule.name || `Compound ${molecule.cid}`;
+            select.appendChild(option);
+          });
+        });
+      } catch (error) {
+        console.error('Error loading molecules:', error);
+      }
+    }
+    
+    // Load molecule details for visualization
+    async function loadMoleculeDetails(moleculeId, viewer) {
+      try {
+        const molecule = await API.getMolecule(moleculeId);
+        
+        // Set SMILES input
+        document.getElementById('smilesInput').value = molecule.smiles;
+        
+        // Select the molecule in the dropdown
+        const moleculeSelect = document.getElementById('moleculeSelect');
+        if (moleculeSelect) {
+          moleculeSelect.value = moleculeId;
+        }
+        
+        // Visualize molecule
+        if (viewer) {
+          viewer.loadMolecule(molecule.smiles, 'smiles');
+        } else {
+          // If no viewer is specified, use the single viewer
+          singleViewer.loadMolecule(molecule.smiles, 'smiles');
+        }
+        
+        // Display basic properties
+        displayBasicProperties(molecule);
+        
+        // Switch to the Single Molecule tab
+        const singleTab = document.getElementById('single-tab');
+        if (singleTab) {
+          const tabInstance = new bootstrap.Tab(singleTab);
+          tabInstance.show();
+        }
+      } catch (error) {
+        console.error('Error loading molecule details:', error);
+      }
+    }
+    
+    // Display basic properties
+    function displayBasicProperties(molecule) {
+      const basicPropsContainer = document.getElementById('basicProperties');
+      basicPropsContainer.innerHTML = '';
+      
+      const tableResponsive = document.createElement('div');
+      tableResponsive.className = 'table-responsive';
+      
+      const table = document.createElement('table');
+      table.className = 'table table-sm';
+      
+      const tbody = document.createElement('tbody');
+      
+      // Add basic properties
+      const properties = [
+        { name: 'Name', value: molecule.name },
+        { name: 'Formula', value: molecule.molecular_formula },
+        { name: 'SMILES', value: molecule.smiles },
+        { name: 'PubChem', value: `<a href="${molecule.pubchem_link}" target="_blank">View on PubChem</a>` }
+      ];
+      
+      properties.forEach(prop => {
+        if (prop.value) {
+          const row = document.createElement('tr');
+          
+          const nameCell = document.createElement('th');
+          nameCell.textContent = prop.name;
+          row.appendChild(nameCell);
+          
+          const valueCell = document.createElement('td');
+          valueCell.innerHTML = prop.value;
+          row.appendChild(valueCell);
+          
+          tbody.appendChild(row);
+        }
+      });
+      
+      table.appendChild(tbody);
+      tableResponsive.appendChild(table);
+      basicPropsContainer.appendChild(tableResponsive);
+      
+      // Add button to calculate additional properties
+      const calcButton = document.createElement('button');
+      calcButton.className = 'btn btn-primary mt-3';
+      calcButton.textContent = 'Calculate Additional Properties';
+      calcButton.addEventListener('click', () => calculateAdditionalProperties(molecule.id));
+      basicPropsContainer.appendChild(calcButton);
+    }
+    
+    // Visualize molecule from SMILES input
+    function visualizeMolecule() {
+      const smiles = document.getElementById('smilesInput').value.trim();
+      const format = document.getElementById('formatSelect').value;
+      
+      if (!smiles) {
+        return;
+      }
+      
+      singleViewer.loadMolecule(smiles, format);
+    }
+    
+    // Compare molecules
+    function compareMolecules() {
+      const molecule1Select = document.getElementById('molecule1Select');
+      const molecule2Select = document.getElementById('molecule2Select');
+      const smiles1Input = document.getElementById('smiles1Input');
+      const smiles2Input = document.getElementById('smiles2Input');
+      
+      let molecule1Promise, molecule2Promise;
+      
+      // Get first molecule
+      if (molecule1Select.value) {
+        molecule1Promise = API.getMolecule(molecule1Select.value)
+          .then(molecule => molecule.smiles);
+      } else if (smiles1Input.value.trim()) {
+        molecule1Promise = Promise.resolve(smiles1Input.value.trim());
+      } else {
+        document.getElementById('similarityResults').innerHTML = '<div class="alert alert-warning">Please select or enter the first molecule</div>';
+        return;
+      }
+      
+      // Get second molecule
+      if (molecule2Select.value) {
+        molecule2Promise = API.getMolecule(molecule2Select.value)
+          .then(molecule => molecule.smiles);
+      } else if (smiles2Input.value.trim()) {
+        molecule2Promise = Promise.resolve(smiles2Input.value.trim());
+      } else {
+        document.getElementById('similarityResults').innerHTML = '<div class="alert alert-warning">Please select or enter the second molecule</div>';
+        return;
+      }
+      
+      // Load both molecules and calculate similarity
+      Promise.all([molecule1Promise, molecule2Promise])
+        .then(([smiles1, smiles2]) => {
+          // Load molecules in viewers
+          comparisonViewer1.loadMolecule(smiles1, 'smiles');
+          comparisonViewer2.loadMolecule(smiles2, 'smiles');
+          
+          // Calculate similarity
+          return window.RDKitAPI.calculateSimilarity(smiles1, smiles2);
+        })
+        .then(similarity => {
+          // Display similarity results
+          const resultsContainer = document.getElementById('similarityResults');
+          resultsContainer.innerHTML = '';
+          
+          const tableResponsive = document.createElement('div');
+          tableResponsive.className = 'table-responsive';
+          
+          const table = document.createElement('table');
+          table.className = 'table table-sm';
+          
+          const tbody = document.createElement('tbody');
+          
+          const metrics = [
+            { name: 'Tanimoto Similarity', value: similarity.tanimoto.toFixed(4) },
+            { name: 'Dice Similarity', value: similarity.dice.toFixed(4) },
+            { name: 'Fingerprint Type', value: similarity.fingerprint_type }
+          ];
+          
+          metrics.forEach(metric => {
+            const row = document.createElement('tr');
+            
+            const nameCell = document.createElement('th');
+            nameCell.textContent = metric.name;
+            row.appendChild(nameCell);
+            
+            const valueCell = document.createElement('td');
+            valueCell.textContent = metric.value;
+            row.appendChild(valueCell);
+            
+            tbody.appendChild(row);
+          });
+          
+          table.appendChild(tbody);
+          tableResponsive.appendChild(table);
+          resultsContainer.appendChild(tableResponsive);
+        })
+        .catch(error => {
+          console.error('Error comparing molecules:', error);
+          document.getElementById('similarityResults').innerHTML = `<div class="alert alert-danger">Error comparing molecules: ${error.message}</div>`;
+        });
+    }
+    
+    // Analyze molecule
+    function analyzeMolecule() {
+      const moleculeSelect = document.getElementById('advancedMoleculeSelect');
+      const smilesInput = document.getElementById('advancedSmilesInput');
+      
+      let moleculePromise;
+      
+      // Get molecule
+      if (moleculeSelect.value) {
+        moleculePromise = API.getMolecule(moleculeSelect.value)
+          .then(molecule => molecule.smiles);
+      } else if (smilesInput.value.trim()) {
+        moleculePromise = Promise.resolve(smilesInput.value.trim());
+      } else {
+        document.getElementById('analysisResults').innerHTML = '<div class="alert alert-warning">Please select or enter a molecule</div>';
+        return;
+      }
+      
+      // Load molecule and perform analysis
+      moleculePromise
+        .then(smiles => {
+          // Load molecule in viewer
+          advancedViewer.loadMolecule(smiles, 'smiles');
+          
+          // Get analysis options
+          const options = {
+            electrostatic: document.getElementById('electrostaticCheck').checked,
+            cavity: document.getElementById('cavityCheck').checked,
+            hbond: document.getElementById('hbondCheck').checked
+          };
+          
+          // Display analysis results
+          const resultsContainer = document.getElementById('analysisResults');
+          resultsContainer.innerHTML = '<div class="alert alert-info">Advanced analysis features will be implemented in a future update.</div>';
+          
+          // In a real implementation, we would call API endpoints for advanced analysis
+          // For now, we'll just show a placeholder message
+        })
+        .catch(error => {
+          console.error('Error analyzing molecule:', error);
+          document.getElementById('analysisResults').innerHTML = `<div class="alert alert-danger">Error analyzing molecule: ${error.message}</div>`;
+        });
+    }
+    
+    // Calculate additional properties
+    async function calculateAdditionalProperties(moleculeId) {
+      try {
+        const basicPropsContainer = document.getElementById('basicProperties');
+        
+        // Show loading indicator
+        basicPropsContainer.innerHTML = '<div class="text-center"><div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div><p class="mt-2">Calculating properties...</p></div>';
+        
+        // Get molecule SMILES
+        const molecule = await API.getMolecule(moleculeId);
+        
+        // Calculate properties
+        const properties = await window.RDKitAPI.calculateProperties(molecule.smiles);
+        
+        // Display properties
+        window.RDKitAPI.displayMolecularProperties(properties, basicPropsContainer);
+      } catch (error) {
+        console.error('Error calculating properties:', error);
+        document.getElementById('basicProperties').innerHTML = `<div class="alert alert-danger">Error calculating properties: ${error.message}</div>`;
+      }
+    }
+  });
+</script>
+{% endblock %}

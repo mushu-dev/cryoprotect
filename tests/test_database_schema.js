@@ -12,10 +12,22 @@
 
 const { createClient } = require('@supabase/supabase-js');
 
-// Replace with your Supabase URL and anon key
+/**
+ * RLS/Access Control Test Setup:
+ *
+ * To test RLS, set the following environment variables:
+ * - SUPABASE_URL: Your Supabase project URL
+ * - SUPABASE_KEY_AUTHORIZED: Service role key or JWT for a project member (authorized)
+ * - SUPABASE_KEY_UNAUTHORIZED: Anon/public key or JWT for a non-member (unauthorized)
+ */
 const supabaseUrl = process.env.SUPABASE_URL || 'https://your-project-ref.supabase.co';
-const supabaseKey = process.env.SUPABASE_KEY || 'your-anon-key';
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabaseKeyAuthorized = process.env.SUPABASE_KEY_AUTHORIZED || 'your-authorized-key';
+const supabaseKeyUnauthorized = process.env.SUPABASE_KEY_UNAUTHORIZED || 'your-unauthorized-key';
+const supabaseAuthorized = createClient(supabaseUrl, supabaseKeyAuthorized);
+const supabaseUnauthorized = createClient(supabaseUrl, supabaseKeyUnauthorized);
+
+// For legacy tests, keep the default client as authorized
+const supabase = supabaseAuthorized;
 
 // Test results tracking
 const testResults = {
@@ -580,8 +592,85 @@ async function testViews() {
     .eq('id', molecule.id);
 }
 
+/**
+ * RLS and Access Control Tests
+ * For each RLS-protected table, attempt SELECT, INSERT, UPDATE, DELETE as both authorized and unauthorized users.
+ */
+async function testRLSAccessControl() {
+  const tables = [
+    {
+      name: 'molecular_properties',
+      sampleRow: { molecule_id: '00000000-0000-0000-0000-000000000001', property_type_id: 1, numeric_value: 1.23 },
+      pk: ['molecule_id', 'property_type_id']
+    },
+    {
+      name: 'predictions',
+      sampleRow: { mixture_id: '00000000-0000-0000-0000-000000000002', property_type_id: 1, calculation_method_id: 1, numeric_value: 2.34, confidence: 0.9 },
+      pk: ['mixture_id', 'property_type_id', 'calculation_method_id']
+    },
+    {
+      name: 'experiment_property',
+      sampleRow: { experiment_id: '00000000-0000-0000-0000-000000000003', property_type: 'Test', value: 42, unit: 'unit', method_id: 1, provenance: 'test', created_by: 'test', data_source: 'test', version: 1, modification_history: '[]', created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+      pk: ['experiment_id', 'property_type']
+    }
+  ];
+
+  for (const { name, sampleRow, pk } of tables) {
+    // INSERT
+    await runTest(`[RLS] INSERT as authorized into ${name}`, async () => {
+      const { error } = await supabaseAuthorized.from(name).insert(sampleRow);
+      if (error) throw new Error(`Authorized insert failed: ${error.message}`);
+    });
+    await runTest(`[RLS] INSERT as unauthorized into ${name}`, async () => {
+      const { error } = await supabaseUnauthorized.from(name).insert(sampleRow);
+      if (!error || !/permission denied/i.test(error.message)) {
+        throw new Error(`Unauthorized insert should be denied, got: ${error ? error.message : 'no error'}`);
+      }
+    });
+
+    // SELECT
+    await runTest(`[RLS] SELECT as authorized from ${name}`, async () => {
+      const { error } = await supabaseAuthorized.from(name).select('*').limit(1);
+      if (error) throw new Error(`Authorized select failed: ${error.message}`);
+    });
+    await runTest(`[RLS] SELECT as unauthorized from ${name}`, async () => {
+      const { error } = await supabaseUnauthorized.from(name).select('*').limit(1);
+      if (!error || !/permission denied/i.test(error.message)) {
+        throw new Error(`Unauthorized select should be denied, got: ${error ? error.message : 'no error'}`);
+      }
+    });
+
+    // UPDATE
+    await runTest(`[RLS] UPDATE as authorized on ${name}`, async () => {
+      const { error } = await supabaseAuthorized.from(name).update({ test_update: true }).match(sampleRow);
+      // If no rows, error will be null, so we don't fail on 0 updated
+      if (error && !/no rows/i.test(error.message)) throw new Error(`Authorized update failed: ${error.message}`);
+    });
+    await runTest(`[RLS] UPDATE as unauthorized on ${name}`, async () => {
+      const { error } = await supabaseUnauthorized.from(name).update({ test_update: true }).match(sampleRow);
+      if (!error || !/permission denied/i.test(error.message)) {
+        throw new Error(`Unauthorized update should be denied, got: ${error ? error.message : 'no error'}`);
+      }
+    });
+
+    // DELETE
+    await runTest(`[RLS] DELETE as authorized from ${name}`, async () => {
+      const { error } = await supabaseAuthorized.from(name).delete().match(sampleRow);
+      // If no rows, error will be null, so we don't fail on 0 deleted
+      if (error && !/no rows/i.test(error.message)) throw new Error(`Authorized delete failed: ${error.message}`);
+    });
+    await runTest(`[RLS] DELETE as unauthorized from ${name}`, async () => {
+      const { error } = await supabaseUnauthorized.from(name).delete().match(sampleRow);
+      if (!error || !/permission denied/i.test(error.message)) {
+        throw new Error(`Unauthorized delete should be denied, got: ${error ? error.message : 'no error'}`);
+      }
+    });
+  }
+}
+
 // Run all tests
 async function runAllTests() {
+  await testRLSAccessControl();
   console.log('🧪 Starting CryoProtect Analyzer Database Schema Tests');
   
   await runTest('Tables exist', testTablesExist);

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "team-1",
+    "name": "Cryopreservation Research Team",
+    "description": "Primary research team focused on cryoprotectant development",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z"
+  },
+  {
+    "id": "team-2",
+    "name": "Toxicology Assessment Team",
+    "description": "Team focused on toxicology assessment of cryoprotectants",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z"
+  },
+  {
+    "id": "team-3",
+    "name": "Computational Modeling Team",
+    "description": "Team focused on computational modeling and prediction",
+    "created_at": "2025-01-01T00:00:00Z",
+    "updated_at": "2025-01-01T00:00:00Z"
+  }
+]

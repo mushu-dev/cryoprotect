@@ -1,0 +1,13 @@
+{
+  "timestamp": "2025-04-29T17:41:20.083705",
+  "counts": {
+    "total_count": 723,
+    "pubchem_count": 693,
+    "chembl_count": 10,
+    "smiles_count": 722,
+    "inchi_count": 722,
+    "inchikey_count": 722,
+    "molecular_weight_count": 722
+  },
+  "message": "Molecule property counts retrieved successfully"
+}

@@ -1,0 +1,333 @@
+{
+  "start_time": "2025-05-01T09:25:26.939417",
+  "end_time": "2025-05-01T09:28:48.542541",
+  "overall_status": "success",
+  "steps": {
+    "reference": {
+      "id": "reference",
+      "name": "Reference Compounds Import",
+      "start_time": "2025-05-01T09:25:28.146404",
+      "end_time": "2025-05-01T09:27:50.362863",
+      "status": "success",
+      "error": null,
+      "details": {
+        "result": {
+          "timestamp": "2025-05-01T09:25:28.989330",
+          "total_compounds": 9,
+          "imported": 18,
+          "updated": 0,
+          "failed": 0,
+          "details": {
+            "CHEMBL388978": {
+              "status": "partial",
+              "internal_id": "CRYO001",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "with_retry() got an unexpected keyword argument 'max_attempts'"
+            },
+            "CHEMBL1098659": {
+              "status": "partial",
+              "internal_id": "CRYO002",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "with_retry() got an unexpected keyword argument 'max_attempts'"
+            },
+            "CHEMBL66195": {
+              "status": "partial",
+              "internal_id": "CRYO003",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "with_retry() got an unexpected keyword argument 'max_attempts'"
+            },
+            "CHEMBL500033": {
+              "status": "partial",
+              "internal_id": "CRYO004",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "with_retry() got an unexpected keyword argument 'max_attempts'"
+            },
+            "CHEMBL1487": {
+              "status": "partial",
+              "internal_id": "CRYO005",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "with_retry() got an unexpected keyword argument 'max_attempts'"
+            },
+            "CHEMBL6196": {
+              "status": "partial",
+              "internal_id": "CRYO0007",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "with_retry() got an unexpected keyword argument 'max_attempts'"
+            },
+            "CHEMBL967": {
+              "status": "partial",
+              "internal_id": "CRYO0008",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "with_retry() got an unexpected keyword argument 'max_attempts'"
+            },
+            "CHEMBL262548": {
+              "status": "partial",
+              "internal_id": "CRYO0009",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "with_retry() got an unexpected keyword argument 'max_attempts'"
+            },
+            "CHEMBL6752": {
+              "status": "partial",
+              "internal_id": "CRYO0010",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "with_retry() got an unexpected keyword argument 'max_attempts'"
+            }
+          }
+        }
+      }
+    },
+    "chembl": {
+      "id": "chembl",
+      "name": "ChEMBL Data Import",
+      "start_time": "2025-05-01T09:27:50.366402",
+      "end_time": "2025-05-01T09:27:58.638901",
+      "status": "success",
+      "error": null,
+      "details": {
+        "exit_code": 0
+      }
+    },
+    "reconcile": {
+      "id": "reconcile",
+      "name": "Cross-Reference Reconciliation",
+      "start_time": "2025-05-01T09:27:58.638901",
+      "end_time": "2025-05-01T09:27:59.976882",
+      "status": "success",
+      "error": null,
+      "details": {
+        "result": {
+          "timestamp": "2025-05-01T09:27:58.638901",
+          "molecules_updated": 0,
+          "cross_references_added": 0,
+          "conflicts_resolved": 0,
+          "details": {}
+        }
+      }
+    },
+    "pubchem": {
+      "id": "pubchem",
+      "name": "PubChem Property Enhancement",
+      "start_time": "2025-05-01T09:27:59.978892",
+      "end_time": "2025-05-01T09:28:13.849578",
+      "status": "success",
+      "error": null,
+      "details": {
+        "result": {
+          "timestamp": "2025-05-01T09:28:00.220716",
+          "total_molecules": 2,
+          "molecules_enhanced": 2,
+          "molecules_skipped": 0,
+          "molecules_failed": 0,
+          "details": {
+            "fffff9f3-433e-4251-bad5-448994b728fb": {
+              "status": "enhanced",
+              "name": "N-(4-ethyl-5-methyl-1,3-thiazol-2-yl)-2-(methylamino)pyrimidine-5-sulfonamide",
+              "pubchem_cid": 62153156
+            },
+            "871968f3-1745-4af1-a060-2bbe359a57d3": {
+              "status": "enhanced",
+              "name": "2,2-Diethyl-5-(2,2,2-trifluoroethoxy)pentan-1-amine",
+              "pubchem_cid": 62723900
+            }
+          }
+        }
+      }
+    },
+    "performance": {
+      "id": "performance",
+      "name": "Database Performance Optimization",
+      "start_time": "2025-05-01T09:28:13.850646",
+      "end_time": "2025-05-01T09:28:48.540841",
+      "status": "success",
+      "error": null,
+      "details": {
+        "result": {
+          "before_metrics": {
+            "test_duration": 17.021575,
+            "operations": {
+              "get_molecules": {
+                "count": 5,
+                "min_ms": 396.8677520751953,
+                "max_ms": 513.2734775543213,
+                "avg_ms": 446.11501693725586,
+                "median_ms": 449.04017448425293,
+                "p95_ms": 513.2734775543213,
+                "p99_ms": 513.2734775543213
+              },
+              "get_molecule_by_id": {
+                "count": 5,
+                "min_ms": 373.013973236084,
+                "max_ms": 448.01831245422363,
+                "avg_ms": 394.6357727050781,
+                "median_ms": 377.8259754180908,
+                "p95_ms": 448.01831245422363,
+                "p99_ms": 448.01831245422363
+              },
+              "get_mixtures": {
+                "count": 5,
+                "min_ms": 376.10316276550293,
+                "max_ms": 423.3746528625488,
+                "avg_ms": 396.5362548828125,
+                "median_ms": 394.8783874511719,
+                "p95_ms": 423.3746528625488,
+                "p99_ms": 423.3746528625488
+              },
+              "get_predictions": {
+                "count": 5,
+                "min_ms": 393.9480781555176,
+                "max_ms": 435.0438117980957,
+                "avg_ms": 404.8640727996826,
+                "median_ms": 395.59030532836914,
+                "p95_ms": 435.0438117980957,
+                "p99_ms": 435.0438117980957
+              },
+              "get_experiments": {
+                "count": 5,
+                "min_ms": 380.53011894226074,
+                "max_ms": 408.9374542236328,
+                "avg_ms": 393.3255195617676,
+                "median_ms": 387.65430450439453,
+                "p95_ms": 408.9374542236328,
+                "p99_ms": 408.9374542236328
+              },
+              "search_molecules_by_name": {
+                "count": 5,
+                "min_ms": 376.76239013671875,
+                "max_ms": 432.0356845855713,
+                "avg_ms": 405.77759742736816,
+                "median_ms": 409.21688079833984,
+                "p95_ms": 432.0356845855713,
+                "p99_ms": 432.0356845855713
+              },
+              "filter_by_property": {
+                "count": 5,
+                "min_ms": 377.44879722595215,
+                "max_ms": 424.7751235961914,
+                "avg_ms": 401.0746955871582,
+                "median_ms": 402.5588035583496,
+                "p95_ms": 424.7751235961914,
+                "p99_ms": 424.7751235961914
+              }
+            }
+          },
+          "after_metrics": {
+            "test_duration": 16.67182,
+            "operations": {
+              "get_molecules": {
+                "count": 5,
+                "min_ms": 378.5977363586426,
+                "max_ms": 443.2203769683838,
+                "avg_ms": 413.0546569824219,
+                "median_ms": 409.46221351623535,
+                "p95_ms": 443.2203769683838,
+                "p99_ms": 443.2203769683838
+              },
+              "get_molecule_by_id": {
+                "count": 5,
+                "min_ms": 371.57249450683594,
+                "max_ms": 415.60983657836914,
+                "avg_ms": 390.9280300140381,
+                "median_ms": 383.223295211792,
+                "p95_ms": 415.60983657836914,
+                "p99_ms": 415.60983657836914
+              },
+              "get_mixtures": {
+                "count": 5,
+                "min_ms": 362.17617988586426,
+                "max_ms": 444.3056583404541,
+                "avg_ms": 395.42036056518555,
+                "median_ms": 394.42896842956543,
+                "p95_ms": 444.3056583404541,
+                "p99_ms": 444.3056583404541
+              },
+              "get_predictions": {
+                "count": 5,
+                "min_ms": 382.80630111694336,
+                "max_ms": 415.73476791381836,
+                "avg_ms": 401.3606548309326,
+                "median_ms": 403.9931297302246,
+                "p95_ms": 415.73476791381836,
+                "p99_ms": 415.73476791381836
+              },
+              "get_experiments": {
+                "count": 5,
+                "min_ms": 373.31223487854004,
+                "max_ms": 432.48534202575684,
+                "avg_ms": 399.7429370880127,
+                "median_ms": 397.28689193725586,
+                "p95_ms": 432.48534202575684,
+                "p99_ms": 432.48534202575684
+              },
+              "search_molecules_by_name": {
+                "count": 5,
+                "min_ms": 368.5579299926758,
+                "max_ms": 385.2124214172363,
+                "avg_ms": 377.05230712890625,
+                "median_ms": 379.70972061157227,
+                "p95_ms": 385.2124214172363,
+                "p99_ms": 385.2124214172363
+              },
+              "filter_by_property": {
+                "count": 5,
+                "min_ms": 380.76138496398926,
+                "max_ms": 469.0742492675781,
+                "avg_ms": 410.0745677947998,
+                "median_ms": 393.3098316192627,
+                "p95_ms": 469.0742492675781,
+                "p99_ms": 469.0742492675781
+              }
+            }
+          },
+          "analysis_before": {
+            "bottlenecks": [],
+            "slow_operations": [
+              {
+                "operation": "get_molecules",
+                "p95_ms": 513.2734775543213,
+                "avg_ms": 446.11501693725586
+              }
+            ]
+          },
+          "analysis_after": {
+            "bottlenecks": [],
+            "slow_operations": []
+          },
+          "recommendations_before": [
+            {
+              "operation": "get_molecules",
+              "issue": "Slow read performance",
+              "recommendation": "Consider adding indexes on commonly queried fields in the molecule and molecular_property tables."
+            },
+            {
+              "issue": "General optimization",
+              "recommendation": "Consider implementing query caching for frequently accessed data."
+            }
+          ],
+          "created_indexes": [],
+          "failed_indexes": [],
+          "errors": [
+            "Error applying rls_indexes: 'PoolerAdapter' object has no attribute 'transaction'",
+            "Error applying mixture_indexes: 'PoolerAdapter' object has no attribute 'transaction'",
+            "Error applying prediction_indexes: 'PoolerAdapter' object has no attribute 'transaction'",
+            "Error applying text_search_indexes: 'PoolerAdapter' object has no attribute 'transaction'",
+            "Error applying additional_indexes: 'PoolerAdapter' object has no attribute 'transaction'"
+          ]
+        }
+      }
+    }
+  },
+  "duration_seconds": 201.603124,
+  "duration_formatted": "0h 3m 21s",
+  "status_counts": {
+    "success": 5
+  }
+}

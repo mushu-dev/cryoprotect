@@ -1,0 +1,25 @@
+{
+  "timestamp": "2025-04-23T01:06:44.023280",
+  "source_directory": "backups/files",
+  "target_directory": "backups/target",
+  "sync_mode": "bidirectional",
+  "conflict_resolution": "newer",
+  "dry_run": true,
+  "files_scanned": {
+    "source": 1,
+    "target": 1
+  },
+  "comparison": {
+    "only_in_source": 0,
+    "only_in_target": 0,
+    "different": 1,
+    "identical": 0
+  },
+  "actions": {
+    "copied_to_target": 0,
+    "copied_to_source": 1,
+    "deleted_from_target": 0,
+    "deleted_from_source": 0,
+    "skipped": 0
+  }
+}

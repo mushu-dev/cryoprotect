@@ -1,0 +1,2 @@
+172.64.149.246    tsdlmynydfuypiugmkev.supabase.co
+2600:1f18:2e13:9d04:d2da:b6ad:4834:140d    db.tsdlmynydfuypiugmkev.supabase.co

@@ -1,0 +1,38 @@
+{
+  "molecules": {
+    "rls_enabled": "unknown"
+  },
+  "experiments": {
+    "rls_enabled": "unknown"
+  },
+  "predictions": {
+    "rls_enabled": "unknown"
+  },
+  "mixtures": {
+    "rls_enabled": "unknown"
+  },
+  "mixture_components": {
+    "rls_enabled": "unknown"
+  },
+  "property_types": {
+    "rls_enabled": "unknown"
+  },
+  "calculation_methods": {
+    "rls_enabled": "unknown"
+  },
+  "user_profile": {
+    "rls_enabled": "unknown"
+  },
+  "experiment_mixtures": {
+    "rls_enabled": "unknown"
+  },
+  "predictions_old": {
+    "rls_enabled": "unknown"
+  },
+  "projects": {
+    "rls_enabled": "unknown"
+  },
+  "teams": {
+    "rls_enabled": "unknown"
+  }
+}

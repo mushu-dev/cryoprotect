@@ -1,0 +1,106 @@
+{
+  "start_time": "2025-05-01T00:01:08.629646",
+  "end_time": "2025-05-01T00:03:28.528454",
+  "overall_status": "error",
+  "steps": {
+    "reference": {
+      "id": "reference",
+      "name": "Reference Compounds Import",
+      "start_time": "2025-05-01T00:01:09.833427",
+      "end_time": "2025-05-01T00:03:28.434086",
+      "status": "success",
+      "error": null,
+      "details": {
+        "result": {
+          "timestamp": "2025-05-01T00:01:10.926354",
+          "total_compounds": 9,
+          "imported": 9,
+          "updated": 0,
+          "failed": 0,
+          "details": {
+            "CHEMBL388978": {
+              "status": "partial",
+              "internal_id": "CRYO001",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "execute_query() takes from 2 to 3 positional arguments but 5 were given"
+            },
+            "CHEMBL1098659": {
+              "status": "partial",
+              "internal_id": "CRYO002",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "execute_query() takes from 2 to 3 positional arguments but 5 were given"
+            },
+            "CHEMBL66195": {
+              "status": "partial",
+              "internal_id": "CRYO003",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "execute_query() takes from 2 to 3 positional arguments but 5 were given"
+            },
+            "CHEMBL500033": {
+              "status": "partial",
+              "internal_id": "CRYO004",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "execute_query() takes from 2 to 3 positional arguments but 5 were given"
+            },
+            "CHEMBL1487": {
+              "status": "partial",
+              "internal_id": "CRYO005",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "execute_query() takes from 2 to 3 positional arguments but 5 were given"
+            },
+            "CHEMBL6196": {
+              "status": "partial",
+              "internal_id": "CRYO0007",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "execute_query() takes from 2 to 3 positional arguments but 5 were given"
+            },
+            "CHEMBL967": {
+              "status": "partial",
+              "internal_id": "CRYO0008",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "execute_query() takes from 2 to 3 positional arguments but 5 were given"
+            },
+            "CHEMBL262548": {
+              "status": "partial",
+              "internal_id": "CRYO0009",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "execute_query() takes from 2 to 3 positional arguments but 5 were given"
+            },
+            "CHEMBL6752": {
+              "status": "partial",
+              "internal_id": "CRYO0010",
+              "is_new": 1.0,
+              "has_pubchem": false,
+              "error": "execute_query() takes from 2 to 3 positional arguments but 5 were given"
+            }
+          }
+        }
+      }
+    },
+    "chembl": {
+      "id": "chembl",
+      "name": "ChEMBL Data Import",
+      "start_time": "2025-05-01T00:03:28.436803",
+      "end_time": "2025-05-01T00:03:28.526947",
+      "status": "error",
+      "error": "with_retry() got an unexpected keyword argument 'backoff'",
+      "details": {
+        "traceback": "Traceback (most recent call last):\n  File \"populate_database.py\", line 299, in _execute_step\n    func = self._import_module_function(step[\"module\"], step[\"function\"])\n  File \"populate_database.py\", line 258, in _import_module_function\n    module = importlib.import_module(module_name)\n  File \"C:\\Users\\1edwa\\anaconda3\\lib\\importlib\\__init__.py\", line 127, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n  File \"<frozen importlib._bootstrap>\", line 1014, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 991, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 975, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 671, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 783, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 219, in _call_with_frames_removed\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\import_full_chembl.py\", line 53, in <module>\n    class ChEMBLClient:\n  File \"c:\\Users\\1edwa\\Documents\\CryoProtect v2\\import_full_chembl.py\", line 69, in ChEMBLClient\n    @with_retry(max_retries=3, backoff=2.0)\nTypeError: with_retry() got an unexpected keyword argument 'backoff'\n"
+      }
+    }
+  },
+  "duration_seconds": 139.898808,
+  "duration_formatted": "0h 2m 19s",
+  "status_counts": {
+    "success": 1,
+    "error": 1
+  }
+}

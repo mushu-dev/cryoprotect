@@ -1,0 +1,44 @@
+{
+  "timestamp": "2025-04-29T19:37:30-06:00",
+  "data_source": "chembl",
+  "counts": {
+    "total_chembl_compounds": 10,
+    "chembl_properties": 10
+  },
+  "null_checks": {
+    "molecules": {
+      "total": 10,
+      "null_name": 0,
+      "null_smiles": 0,
+      "null_chembl_id": 0,
+      "null_name_percent": 0,
+      "null_smiles_percent": 0,
+      "null_chembl_id_percent": 0
+    }
+  },
+  "property_completeness": {
+    "molecular_weight": {
+      "count": 10,
+      "coverage_percent": 100
+    },
+    "alogp": {
+      "count": 10,
+      "coverage_percent": 100
+    },
+    "hba": {
+      "count": 0,
+      "coverage_percent": 0
+    },
+    "hbd": {
+      "count": 0,
+      "coverage_percent": 0
+    },
+    "average_coverage": 50
+  },
+  "assessments": {
+    "counts": "SUCCESS",
+    "null_checks": "SUCCESS",
+    "property_completeness": "WARNING"
+  },
+  "overall_assessment": "WARNING"
+}

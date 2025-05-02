@@ -1,0 +1,72 @@
+{
+  "timestamp": "2025-05-01T00:01:10.926354",
+  "total_compounds": 9,
+  "imported": 9,
+  "updated": 0,
+  "failed": 0,
+  "details": {
+    "CHEMBL388978": {
+      "status": "partial",
+      "internal_id": "CRYO001",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "execute_query() takes from 2 to 3 positional arguments but 5 were given"
+    },
+    "CHEMBL1098659": {
+      "status": "partial",
+      "internal_id": "CRYO002",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "execute_query() takes from 2 to 3 positional arguments but 5 were given"
+    },
+    "CHEMBL66195": {
+      "status": "partial",
+      "internal_id": "CRYO003",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "execute_query() takes from 2 to 3 positional arguments but 5 were given"
+    },
+    "CHEMBL500033": {
+      "status": "partial",
+      "internal_id": "CRYO004",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "execute_query() takes from 2 to 3 positional arguments but 5 were given"
+    },
+    "CHEMBL1487": {
+      "status": "partial",
+      "internal_id": "CRYO005",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "execute_query() takes from 2 to 3 positional arguments but 5 were given"
+    },
+    "CHEMBL6196": {
+      "status": "partial",
+      "internal_id": "CRYO0007",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "execute_query() takes from 2 to 3 positional arguments but 5 were given"
+    },
+    "CHEMBL967": {
+      "status": "partial",
+      "internal_id": "CRYO0008",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "execute_query() takes from 2 to 3 positional arguments but 5 were given"
+    },
+    "CHEMBL262548": {
+      "status": "partial",
+      "internal_id": "CRYO0009",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "execute_query() takes from 2 to 3 positional arguments but 5 were given"
+    },
+    "CHEMBL6752": {
+      "status": "partial",
+      "internal_id": "CRYO0010",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "execute_query() takes from 2 to 3 positional arguments but 5 were given"
+    }
+  }
+}

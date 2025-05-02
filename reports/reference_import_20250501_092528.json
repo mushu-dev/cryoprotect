@@ -1,0 +1,72 @@
+{
+  "timestamp": "2025-05-01T09:25:28.989330",
+  "total_compounds": 9,
+  "imported": 18,
+  "updated": 0,
+  "failed": 0,
+  "details": {
+    "CHEMBL388978": {
+      "status": "partial",
+      "internal_id": "CRYO001",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "with_retry() got an unexpected keyword argument 'max_attempts'"
+    },
+    "CHEMBL1098659": {
+      "status": "partial",
+      "internal_id": "CRYO002",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "with_retry() got an unexpected keyword argument 'max_attempts'"
+    },
+    "CHEMBL66195": {
+      "status": "partial",
+      "internal_id": "CRYO003",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "with_retry() got an unexpected keyword argument 'max_attempts'"
+    },
+    "CHEMBL500033": {
+      "status": "partial",
+      "internal_id": "CRYO004",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "with_retry() got an unexpected keyword argument 'max_attempts'"
+    },
+    "CHEMBL1487": {
+      "status": "partial",
+      "internal_id": "CRYO005",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "with_retry() got an unexpected keyword argument 'max_attempts'"
+    },
+    "CHEMBL6196": {
+      "status": "partial",
+      "internal_id": "CRYO0007",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "with_retry() got an unexpected keyword argument 'max_attempts'"
+    },
+    "CHEMBL967": {
+      "status": "partial",
+      "internal_id": "CRYO0008",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "with_retry() got an unexpected keyword argument 'max_attempts'"
+    },
+    "CHEMBL262548": {
+      "status": "partial",
+      "internal_id": "CRYO0009",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "with_retry() got an unexpected keyword argument 'max_attempts'"
+    },
+    "CHEMBL6752": {
+      "status": "partial",
+      "internal_id": "CRYO0010",
+      "is_new": 1.0,
+      "has_pubchem": false,
+      "error": "with_retry() got an unexpected keyword argument 'max_attempts'"
+    }
+  }
+}

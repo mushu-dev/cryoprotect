@@ -1,0 +1,240 @@
+{
+  "timestamp": "2025-04-27T00:11:31.974674",
+  "records_checked": 10,
+  "records_matched": 0,
+  "records_mismatched": 10,
+  "placeholder_data_found": false,
+  "overall_match_percentage": 0.0,
+  "details": [
+    {
+      "chembl_id": "CHEMBL122972",
+      "name": "2-ARACHIDONOYLGLYCEROL",
+      "smiles": "CCCCC/C=C\\\\C/C=C\\\\C/C=C\\\\C/C=C\\\\CCCC(=O)OC(CO)CO",
+      "comparison": {
+        "matching_properties": [],
+        "mismatched_properties": [
+          {
+            "property": "logp",
+            "db_value": 5.41,
+            "chembl_value": "5.03"
+          },
+          {
+            "property": "molecular weight",
+            "db_value": 378.55,
+            "chembl_value": "378.55"
+          }
+        ],
+        "missing_properties": [],
+        "match_percentage": 0.0
+      },
+      "placeholder_data": false
+    },
+    {
+      "chembl_id": "CHEMBL261131",
+      "name": "DIACYLGLYCEROL KINASE INHIBITOR II",
+      "smiles": "O=c1c2ccccc2[nH]c(=S)n1CCN1CCC(=C(c2ccc(F)cc2)c2ccc(F)cc2)CC1",
+      "comparison": {
+        "matching_properties": [],
+        "mismatched_properties": [
+          {
+            "property": "logp",
+            "db_value": 5.76,
+            "chembl_value": "5.94"
+          },
+          {
+            "property": "molecular weight",
+            "db_value": 489.59,
+            "chembl_value": "489.59"
+          }
+        ],
+        "missing_properties": [],
+        "match_percentage": 0.0
+      },
+      "placeholder_data": false
+    },
+    {
+      "chembl_id": "CHEMBL444162",
+      "name": "TRITETRADECYLTHIOACETYL GLYCEROL",
+      "smiles": "CCCCCCCCCCCCCCSCC(=O)OCC(COC(=O)CSCCCCCCCCCCCCCC)OC(=O)CSCCCCCCCCCCCCCC",
+      "comparison": {
+        "matching_properties": [],
+        "mismatched_properties": [
+          {
+            "property": "logp",
+            "db_value": 18.32,
+            "chembl_value": "16.29"
+          },
+          {
+            "property": "molecular weight",
+            "db_value": 903.54,
+            "chembl_value": "903.54"
+          }
+        ],
+        "missing_properties": [],
+        "match_percentage": 0.0
+      },
+      "placeholder_data": false
+    },
+    {
+      "chembl_id": "CHEMBL510533",
+      "name": "GLYCEROL MONOLAURATE",
+      "smiles": "CCCCCCCCCCCC(=O)OCC(O)CO",
+      "comparison": {
+        "matching_properties": [],
+        "mismatched_properties": [
+          {
+            "property": "logp",
+            "db_value": 3.3,
+            "chembl_value": "2.80"
+          },
+          {
+            "property": "molecular weight",
+            "db_value": 274.4,
+            "chembl_value": "274.40"
+          }
+        ],
+        "missing_properties": [],
+        "match_percentage": 0.0
+      },
+      "placeholder_data": false
+    },
+    {
+      "chembl_id": "CHEMBL507352",
+      "name": "PHOSPHATIDYL GLYCEROL",
+      "smiles": "CCCCC/C=C/C/C=C/CCCCCCCC(=O)OC(COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)OCC(O)CO",
+      "comparison": {
+        "matching_properties": [],
+        "mismatched_properties": [
+          {
+            "property": "logp",
+            "db_value": 11.1,
+            "chembl_value": "10.22"
+          },
+          {
+            "property": "molecular weight",
+            "db_value": 747.0,
+            "chembl_value": "747.00"
+          }
+        ],
+        "missing_properties": [],
+        "match_percentage": 0.0
+      },
+      "placeholder_data": false
+    },
+    {
+      "chembl_id": "CHEMBL573104",
+      "name": "GUAICYLGLYCEROL",
+      "smiles": "COc1cc(C(O)C(CO)CO)ccc1O",
+      "comparison": {
+        "matching_properties": [],
+        "mismatched_properties": [
+          {
+            "property": "logp",
+            "db_value": -0.52,
+            "chembl_value": "0.03"
+          },
+          {
+            "property": "molecular weight",
+            "db_value": 228.24,
+            "chembl_value": "228.24"
+          }
+        ],
+        "missing_properties": [],
+        "match_percentage": 0.0
+      },
+      "placeholder_data": false
+    },
+    {
+      "chembl_id": "CHEMBL1078036",
+      "name": "CIBOTIGLYCEROL",
+      "smiles": "CCCCCCCC/C=C\\CCCCC/C=C\\C(=O)OC[C@@H](O)CO[C@H]1O[C@H](CS(=O)(=O)[O-])[C@@H](O)[C@H](O)[C@H]1O.[Na+]",
+      "comparison": {
+        "matching_properties": [],
+        "mismatched_properties": [
+          {
+            "property": "logp",
+            "db_value": 3.78,
+            "chembl_value": "2.42"
+          },
+          {
+            "property": "molecular weight",
+            "db_value": 602.72,
+            "chembl_value": "602.72"
+          }
+        ],
+        "missing_properties": [],
+        "match_percentage": 0.0
+      },
+      "placeholder_data": false
+    },
+    {
+      "chembl_id": "CHEMBL1078140",
+      "name": "GLYCEROL MONOPALMITATE",
+      "smiles": "CCCCCCCCCCCCCCCC(=O)OCC(O)CO",
+      "comparison": {
+        "matching_properties": [],
+        "mismatched_properties": [
+          {
+            "property": "logp",
+            "db_value": 5.08,
+            "chembl_value": "4.36"
+          },
+          {
+            "property": "molecular weight",
+            "db_value": 330.51,
+            "chembl_value": "330.51"
+          }
+        ],
+        "missing_properties": [],
+        "match_percentage": 0.0
+      },
+      "placeholder_data": false
+    },
+    {
+      "chembl_id": "CHEMBL1078124",
+      "name": "GUAIACYL GLYCEROL",
+      "smiles": "COc1cc(C(O)C(O)CO)ccc1O",
+      "comparison": {
+        "matching_properties": [],
+        "mismatched_properties": [
+          {
+            "property": "logp",
+            "db_value": -0.52,
+            "chembl_value": "-0.21"
+          },
+          {
+            "property": "molecular weight",
+            "db_value": 214.22,
+            "chembl_value": "214.22"
+          }
+        ],
+        "missing_properties": [],
+        "match_percentage": 0.0
+      },
+      "placeholder_data": false
+    },
+    {
+      "chembl_id": "CHEMBL1398948",
+      "name": "MONOTHIOGLYCEROL",
+      "smiles": "OCC(O)CS",
+      "comparison": {
+        "matching_properties": [],
+        "mismatched_properties": [
+          {
+            "property": "logp",
+            "db_value": -0.74,
+            "chembl_value": "-0.73"
+          },
+          {
+            "property": "molecular weight",
+            "db_value": 108.16,
+            "chembl_value": "108.16"
+          }
+        ],
+        "missing_properties": [],
+        "match_percentage": 0.0
+      },
+      "placeholder_data": false
+    }
+  ]
+}

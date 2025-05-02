@@ -1,0 +1,204 @@
+{
+  "projectName": "CryoProtect v2 Database Population",
+  "overallStatus": "Phase 4.0: Direct PostgreSQL Database Population (ROO_DIRECT_DATABASE_POPULATION_DIRECTIVE.md)",
+  "directiveFile": "ROO_DIRECT_DATABASE_POPULATION_DIRECTIVE.md",
+  "highLevelPlan": [
+    {
+      "phase": "Initialization",
+      "status": "Done"
+    },
+    {
+      "phase": "Direct DB Connection",
+      "status": "Done"
+    },
+    {
+      "phase": "Core Tables Population",
+      "status": "Done"
+    },
+    {
+      "phase": "DB Schema Verification",
+      "status": "Done"
+    },
+    {
+      "phase": "Connection Issues Remediation",
+      "status": "Done"
+    },
+    {
+      "phase": "Population & Import Remediation",
+      "status": "In Progress"
+    },
+    {
+      "phase": "ChEMBL Integration",
+      "status": "Pending"
+    },
+    {
+      "phase": "Full Data Verification",
+      "status": "Pending"
+    },
+    {
+      "phase": "Final Optimization",
+      "status": "Pending"
+    }
+  ],
+  "tasks": {
+    "task-dbfix-p1.1": {
+      "description": "Implement robust connection pooling (`DbConnectionPoolManager`) as per DATABASE_POPULATION_ISSUES.md (Section 1). Include configurable pool size, connection timeout, and retry logic. Target file is db_connection_utils.py.",
+      "assignedTo": null,
+      "status": "Done",
+      "dependsOn": [],
+      "references": {
+        "guide": "DATABASE_POPULATION_ISSUES.md",
+        "sections": ["1.1", "1.2", "1.3"],
+        "utils": ["db_connection_utils.py", "connection_pool_wrapper.py"],
+        "stateFile": "project_state.json"
+      },
+      "outputs": [
+        "db_connection_utils.py",
+        "tests/unit/test_db_connection_utils.py"
+      ],
+      "log": [
+        "2025-05-01T14:22:00Z - Task created by Master Orchestrator for Phase 1.1 DB Remediation (Connection Pool).",
+        "2025-05-01T14:46:00Z - Marked as Done by Master Orchestrator. Connection pool with retry functionality implemented in db_connection_utils.py."
+      ]
+    },
+    "task-dbfix-p1.2": {
+      "description": "Implement robust transaction handling (`safe_transaction`) as per DATABASE_POPULATION_ISSUES.md (Section 2). Include deadlock detection and automatic transaction retry logic. Target file is db_connection_utils.py.",
+      "assignedTo": null,
+      "status": "Done",
+      "dependsOn": ["task-dbfix-p1.1"],
+      "references": {
+        "guide": "DATABASE_POPULATION_ISSUES.md",
+        "sections": ["2.1", "2.2", "2.3"],
+        "utils": ["db_connection_utils.py", "transaction_utils.py"],
+        "stateFile": "project_state.json"
+      },
+      "outputs": [
+        "transaction_utils.py",
+        "tests/unit/test_transaction_utils.py"
+      ],
+      "log": [
+        "2025-05-01T14:22:00Z - Task created by Master Orchestrator for Phase 1.2 DB Remediation (Transactions).",
+        "2025-05-01T14:47:00Z - Marked as Done by Master Orchestrator. Safe transaction context manager with deadlock handling implemented in transaction_utils.py."
+      ]
+    },
+    "task-dbfix-p2.1": {
+      "description": "Implement optimized batch insertion (`batch_insert`) as per DATABASE_POPULATION_ISSUES.md (Section 3.3.1). Include configurable batch sizes, error handling, and automatic retry. Target files likely include `batch_utils.py` or a new module.",
+      "assignedTo": null,
+      "status": "Done",
+      "dependsOn": ["task-dbfix-p1.2"],
+      "references": {
+        "guide": "DATABASE_POPULATION_ISSUES.md",
+        "sections": ["3.1", "3.2", "3.3.1"],
+        "utils": ["batch_utils.py", "transaction_utils.py"],
+        "stateFile": "project_state.json"
+      },
+      "outputs": [
+        "batch_utils.py",
+        "tests/unit/test_batch_utils.py"
+      ],
+      "log": [
+        "2025-05-01T14:49:00Z - Task created by Master Orchestrator for Phase 2.1 DB Remediation (Optimized Batch Insertion).",
+        "2025-05-01T15:15:00Z - Marked as Done by Master Orchestrator. Batch insertion with configurable batch sizes and retry logic implemented in batch_utils.py."
+      ]
+    },
+    "task-dbfix-p2.2": {
+      "description": "Implement resumable import with checkpointing (`resumable_batch_import`) as per DATABASE_POPULATION_ISSUES.md (Section 3.3.2). Integrate with batch processing logic from task-dbfix-p2.1. Target files likely include `batch_utils.py` or a master import script.",
+      "assignedTo": null,
+      "status": "Done",
+      "dependsOn": ["task-dbfix-p2.1"],
+      "references": {
+        "guide": "DATABASE_POPULATION_ISSUES.md",
+        "sections": ["3.1", "3.2", "3.3.2"],
+        "utils": ["batch_utils.py"],
+        "stateFile": "project_state.json"
+      },
+      "outputs": [
+        "batch_utils.py",
+        "tests/unit/test_batch_utils_resumable.py"
+      ],
+      "log": [
+        "2025-05-01T14:49:00Z - Task created by Master Orchestrator for Phase 2.2 DB Remediation (Resumable Import).",
+        "2025-05-01T15:17:00Z - Marked as Done by Master Orchestrator. Functionality implemented within batch_utils.py as part of task-dbfix-p2.1."
+      ]
+    },
+    "task-dbfix-p3.1": {
+      "description": "Implement property-based cryoprotectant identification (`find_potential_cryoprotectants`) as per DATABASE_POPULATION_ISSUES.md (Section 4.3.1). Integrate with ChEMBL client and DB connection utilities. Target files likely include `chembl/client.py` or a new ChEMBL search module.",
+      "assignedTo": null,
+      "status": "Pending",
+      "dependsOn": ["task-dbfix-p2.2"],
+      "references": {
+        "guide": "DATABASE_POPULATION_ISSUES.md",
+        "sections": ["4.1", "4.2", "4.3.1"],
+        "utils": ["db_connection_utils.py", "chembl/client.py"],
+        "stateFile": "project_state.json"
+      },
+      "outputs": [
+        "chembl_search_utils.py",
+        "tests/unit/test_chembl_search_property.py"
+      ],
+      "log": [
+        "2025-05-01T15:18:00Z - Task created by Master Orchestrator for Phase 3.1 DB Remediation (ChEMBL Property Search)."
+      ]
+    },
+    "task-dbfix-p3.2": {
+      "description": "Implement structural similarity search (`find_similar_compounds`) as per DATABASE_POPULATION_ISSUES.md (Section 4.3.2). Integrate with ChEMBL client. Target files likely include `chembl/client.py` or `chembl_search_utils.py`.",
+      "assignedTo": null,
+      "status": "Pending",
+      "dependsOn": ["task-dbfix-p3.1"],
+      "references": {
+        "guide": "DATABASE_POPULATION_ISSUES.md",
+        "sections": ["4.1", "4.2", "4.3.2"],
+        "utils": ["chembl/client.py", "chembl_search_utils.py"],
+        "stateFile": "project_state.json"
+      },
+      "outputs": [
+        "chembl_search_utils.py",
+        "tests/unit/test_chembl_search_similarity.py"
+      ],
+      "log": [
+        "2025-05-01T15:18:00Z - Task created by Master Orchestrator for Phase 3.2 DB Remediation (ChEMBL Similarity Search)."
+      ]
+    },
+    "task-dbfix-p3.3": {
+      "description": "Implement chemical class filtering using SMARTS patterns (`identify_compounds_by_chemical_class`) as per DATABASE_POPULATION_ISSUES.md (Section 4.3.3). Integrate with ChEMBL client and DB connection utilities. Target files likely include `chembl_search_utils.py`.",
+      "assignedTo": null,
+      "status": "Pending",
+      "dependsOn": ["task-dbfix-p3.2"],
+      "references": {
+        "guide": "DATABASE_POPULATION_ISSUES.md",
+        "sections": ["4.1", "4.2", "4.3.3"],
+        "utils": ["db_connection_utils.py", "chembl/client.py", "chembl_search_utils.py"],
+        "stateFile": "project_state.json"
+      },
+      "outputs": [
+        "chembl_search_utils.py",
+        "tests/unit/test_chembl_search_smarts.py"
+      ],
+      "log": [
+        "2025-05-01T15:18:00Z - Task created by Master Orchestrator for Phase 3.3 DB Remediation (ChEMBL SMARTS Search)."
+      ]
+    }
+  },
+  "journal": [
+    {
+      "timestamp": "2025-05-01T14:22:00Z",
+      "entry": "Initiating database remediation based on DATABASE_POPULATION_ISSUES.md. Updated high-level plan and created initial tasks for Phase 1 (Connection & Transaction Handling)."
+    },
+    {
+      "timestamp": "2025-05-01T14:47:00Z",
+      "entry": "Completed task-dbfix-p1.2: Implemented robust transaction management with safe_transaction context manager and lock-based property type creation. This addresses the transaction leaks and deadlocks identified in DATABASE_POPULATION_ISSUES.md section 2."
+    },
+    {
+      "timestamp": "2025-05-01T14:49:00Z",
+      "entry": "Completed Phase 1 (Connection & Transaction Handling). Initiating Phase 2 (Optimized Batch Processing) with tasks task-dbfix-p2.1 and task-dbfix-p2.2."
+    },
+    {
+      "timestamp": "2025-05-01T15:17:00Z", 
+      "entry": "Completed Phase 2 (Optimized Batch Processing). Tasks task-dbfix-p2.1 and task-dbfix-p2.2 are Done. Batch insertion and resumable import logic implemented in batch_utils.py."
+    },
+    {
+      "timestamp": "2025-05-01T15:18:00Z",
+      "entry": "Initiating Phase 3 (Enhanced ChEMBL Import) with tasks task-dbfix-p3.1, task-dbfix-p3.2, and task-dbfix-p3.3."
+    }
+  ]
+}

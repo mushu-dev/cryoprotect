@@ -1,0 +1,135 @@
+{
+  "CRYO001": {
+    "internal_id": "CRYO001",
+    "chembl_id": "CHEMBL388978",
+    "pubchem_cid": null,
+    "names": [
+      "CHEMBL388978"
+    ],
+    "inchi_key": "",
+    "smiles": "",
+    "formula": "Unknown",
+    "molecular_weight": 0.0,
+    "category": "reference"
+  },
+  "CRYO002": {
+    "internal_id": "CRYO002",
+    "chembl_id": "CHEMBL1098659",
+    "pubchem_cid": null,
+    "names": [
+      "CHEMBL1098659"
+    ],
+    "inchi_key": "",
+    "smiles": "",
+    "formula": "Unknown",
+    "molecular_weight": 0.0,
+    "category": "reference"
+  },
+  "CRYO003": {
+    "internal_id": "CRYO003",
+    "chembl_id": "CHEMBL66195",
+    "pubchem_cid": null,
+    "names": [
+      "CHEMBL66195"
+    ],
+    "inchi_key": "",
+    "smiles": "",
+    "formula": "Unknown",
+    "molecular_weight": 0.0,
+    "category": "reference"
+  },
+  "CRYO004": {
+    "internal_id": "CRYO004",
+    "chembl_id": "CHEMBL500033",
+    "pubchem_cid": null,
+    "names": [
+      "CHEMBL500033"
+    ],
+    "inchi_key": "",
+    "smiles": "",
+    "formula": "Unknown",
+    "molecular_weight": 0.0,
+    "category": "reference"
+  },
+  "CRYO005": {
+    "internal_id": "CRYO005",
+    "chembl_id": "CHEMBL1487",
+    "pubchem_cid": null,
+    "names": [
+      "CHEMBL1487"
+    ],
+    "inchi_key": "",
+    "smiles": "",
+    "formula": "Unknown",
+    "molecular_weight": 0.0,
+    "category": "reference"
+  },
+  "CRYO006": {
+    "internal_id": "CRYO006",
+    "pubchem_cid": "6057",
+    "chembl_id": "CHEMBL388978",
+    "cas_number": "50-70-4",
+    "names": [
+      "Sorbitol",
+      "D-Glucitol",
+      "D-Sorbitol"
+    ],
+    "inchi_key": "FBPFZTCFMRRESA-JGWLITMVSA-N",
+    "smiles": "C(C(C(C(C(CO)O)O)O)O)O",
+    "formula": "C6H14O6",
+    "molecular_weight": 182.17,
+    "category": "polyol"
+  },
+  "CRYO0007": {
+    "internal_id": "CRYO0007",
+    "chembl_id": "CHEMBL6196",
+    "pubchem_cid": null,
+    "names": [
+      "CHEMBL6196"
+    ],
+    "inchi_key": "",
+    "smiles": "",
+    "formula": "Unknown",
+    "molecular_weight": 0.0,
+    "category": "reference"
+  },
+  "CRYO0008": {
+    "internal_id": "CRYO0008",
+    "chembl_id": "CHEMBL967",
+    "pubchem_cid": null,
+    "names": [
+      "CHEMBL967"
+    ],
+    "inchi_key": "",
+    "smiles": "",
+    "formula": "Unknown",
+    "molecular_weight": 0.0,
+    "category": "reference"
+  },
+  "CRYO0009": {
+    "internal_id": "CRYO0009",
+    "chembl_id": "CHEMBL262548",
+    "pubchem_cid": null,
+    "names": [
+      "CHEMBL262548"
+    ],
+    "inchi_key": "",
+    "smiles": "",
+    "formula": "Unknown",
+    "molecular_weight": 0.0,
+    "category": "reference"
+  },
+  "CRYO0010": {
+    "internal_id": "CRYO0010",
+    "chembl_id": "CHEMBL6752",
+    "pubchem_cid": null,
+    "names": [
+      "CHEMBL6752"
+    ],
+    "inchi_key": "",
+    "smiles": "",
+    "formula": "Unknown",
+    "molecular_weight": 0.0,
+    "category": "reference"
+  }
+}

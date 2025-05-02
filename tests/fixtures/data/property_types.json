@@ -1,0 +1,82 @@
+[
+  {
+    "id": "prop-type-1",
+    "name": "Molecular Weight",
+    "data_type": "numeric",
+    "description": "The molecular weight of a compound in g/mol",
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  },
+  {
+    "id": "prop-type-2",
+    "name": "LogP",
+    "data_type": "numeric",
+    "description": "Octanol-water partition coefficient, a measure of lipophilicity",
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  },
+  {
+    "id": "prop-type-3",
+    "name": "Hydrogen Bond Donors",
+    "data_type": "numeric",
+    "description": "Number of hydrogen bond donor groups",
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  },
+  {
+    "id": "prop-type-4",
+    "name": "Hydrogen Bond Acceptors",
+    "data_type": "numeric",
+    "description": "Number of hydrogen bond acceptor groups",
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  },
+  {
+    "id": "prop-type-5",
+    "name": "Solubility",
+    "data_type": "numeric",
+    "description": "Water solubility in mg/L",
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  },
+  {
+    "id": "prop-type-6",
+    "name": "Toxicity",
+    "data_type": "text",
+    "description": "Toxicity classification",
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  },
+  {
+    "id": "prop-type-7",
+    "name": "Is Approved",
+    "data_type": "boolean",
+    "description": "Whether the compound is approved for use",
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  },
+  {
+    "id": "prop-type-8",
+    "name": "Melting Point",
+    "data_type": "numeric",
+    "description": "Melting point in degrees Celsius",
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  },
+  {
+    "id": "prop-type-9",
+    "name": "Boiling Point",
+    "data_type": "numeric",
+    "description": "Boiling point in degrees Celsius",
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  },
+  {
+    "id": "prop-type-10",
+    "name": "Cryoprotective Score",
+    "data_type": "numeric",
+    "description": "Calculated score for cryoprotective effectiveness",
+    "created_at": "2025-04-20T10:00:00Z",
+    "updated_at": "2025-04-20T10:00:00Z"
+  }
+]

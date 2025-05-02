@@ -1,0 +1,92 @@
+[
+  {
+    "id": "exp-prop-1",
+    "experiment_id": "exp-1",
+    "property_type_id": "prop-type-10",
+    "value": 82.5,
+    "unit": "score",
+    "created_at": "2025-04-15T15:30:00Z",
+    "updated_at": "2025-04-15T15:30:00Z"
+  },
+  {
+    "id": "exp-prop-2",
+    "experiment_id": "exp-1",
+    "property_type_id": "prop-type-5",
+    "value": 925000,
+    "unit": "mg/L",
+    "created_at": "2025-04-15T15:30:00Z",
+    "updated_at": "2025-04-15T15:30:00Z"
+  },
+  {
+    "id": "exp-prop-3",
+    "experiment_id": "exp-1",
+    "property_type_id": "prop-type-6",
+    "value": "Low",
+    "unit": "",
+    "created_at": "2025-04-15T15:30:00Z",
+    "updated_at": "2025-04-15T15:30:00Z"
+  },
+  {
+    "id": "exp-prop-4",
+    "experiment_id": "exp-2",
+    "property_type_id": "prop-type-10",
+    "value": 84.1,
+    "unit": "score",
+    "created_at": "2025-04-16T18:45:00Z",
+    "updated_at": "2025-04-16T18:45:00Z"
+  },
+  {
+    "id": "exp-prop-5",
+    "experiment_id": "exp-2",
+    "property_type_id": "prop-type-5",
+    "value": 922000,
+    "unit": "mg/L",
+    "created_at": "2025-04-16T18:45:00Z",
+    "updated_at": "2025-04-16T18:45:00Z"
+  },
+  {
+    "id": "exp-prop-6",
+    "experiment_id": "exp-3",
+    "property_type_id": "prop-type-10",
+    "value": 80.8,
+    "unit": "score",
+    "created_at": "2025-04-17T16:15:00Z",
+    "updated_at": "2025-04-17T16:15:00Z"
+  },
+  {
+    "id": "exp-prop-7",
+    "experiment_id": "exp-3",
+    "property_type_id": "prop-type-5",
+    "value": 955000,
+    "unit": "mg/L",
+    "created_at": "2025-04-17T16:15:00Z",
+    "updated_at": "2025-04-17T16:15:00Z"
+  },
+  {
+    "id": "exp-prop-8",
+    "experiment_id": "exp-3",
+    "property_type_id": "prop-type-6",
+    "value": "Very Low",
+    "unit": "",
+    "created_at": "2025-04-17T16:15:00Z",
+    "updated_at": "2025-04-17T16:15:00Z"
+  },
+  {
+    "id": "exp-prop-9",
+    "experiment_id": "exp-4",
+    "property_type_id": "prop-type-10",
+    "value": 79.5,
+    "unit": "score",
+    "created_at": "2025-05-01T08:00:00Z",
+    "updated_at": "2025-05-01T08:00:00Z"
+  },
+  {
+    "id": "exp-prop-10",
+    "experiment_id": "exp-4",
+    "property_type_id": "prop-type-5",
+    "value": 950000,
+    "unit": "mg/L",
+    "created_at": "2025-05-01T08:00:00Z",
+    "updated_at": "2025-05-01T08:00:00Z"
+  }
+]

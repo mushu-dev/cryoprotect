@@ -5,7 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CryoProtect Analyzer - Molecular Structure Viewer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://3Dmol.org/build/3Dmol-min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+      .molecular-viewer {
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+        overflow: hidden;
+      }
+      
+      .molecular-viewer canvas {
+        outline: none;
+      }
+      
+      /* Accessibility improvements */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+      
+      /* Focus indicators for keyboard navigation */
+      .btn:focus {
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.5);
+        z-index: 1;
+      }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -128,7 +160,7 @@
                     <div class="col-md-6">
                         <div class="card mb-4">
                             <div class="card-header">
-                                <h5 class="card-title">Molecular Structure</h5>
+                                <h5 class="card-title">2D Structure</h5>
                             </div>
                             <div class="card-body text-center" id="moleculeVisualization">
                                 <p class="text-muted">Select a molecule or enter SMILES to visualize</p>
@@ -142,6 +174,48 @@
                             </div>
                             <div class="card-body" id="basicProperties">
                                 <p class="text-muted">Select a molecule to view properties</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card mb-4">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="card-title">3D Molecular Viewer</h5>
+                                <div class="btn-toolbar" id="rdkit-viewer-toolbar" role="toolbar" aria-label="Molecular viewer controls">
+                                    <!-- Toolbar will be populated by JavaScript -->
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="rdkit-3d-viewer" class="molecular-viewer" style="height: 400px; width: 100%; position: relative;">
+                                    <div class="text-center py-5">
+                                        <p class="text-muted">Select a molecule or enter SMILES to view 3D structure</p>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <div class="d-flex justify-content-center" role="group" aria-label="Visualization style">
+                                        <button type="button" class="btn btn-outline-primary btn-sm me-1" id="rdkit-style-stick">
+                                            <i class="bi bi-diagram-3"></i> Stick
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-sm me-1" id="rdkit-style-sphere">
+                                            <i class="bi bi-circle"></i> Sphere
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary btn-sm me-1" id="rdkit-style-line">
+                                            <i class="bi bi-slash-lg"></i> Line
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm me-1" id="rdkit-toggle-surface">
+                                            <i class="bi bi-egg"></i> Surface
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm me-1" id="rdkit-toggle-spin">
+                                            <i class="bi bi-arrow-repeat"></i> Spin
+                                        </button>
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" id="rdkit-reset-view">
+                                            <i class="bi bi-arrow-counterclockwise"></i> Reset
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -332,9 +406,11 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
     <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
     <script src="{{ url_for('static', filename='js/api.js') }}"></script>
     <script src="{{ url_for('static', filename='js/rdkit.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/molecular-viewer.js') }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Load molecules for dropdowns
@@ -467,11 +543,107 @@
             const showAtoms = document.getElementById('showAtomsCheck').checked;
             
             try {
+                // 2D visualization
                 const visualization = await window.RDKitAPI.generateVisualization(smiles, 'smiles', width, height);
                 window.RDKitAPI.displayMolecularVisualization(visualization.svg, document.getElementById('moleculeVisualization'));
+                
+                // 3D visualization
+                MolecularViewer.initViewer('rdkit-3d-viewer', {
+                    backgroundColor: 'white',
+                    height: 400
+                });
+                
+                MolecularViewer.loadMoleculeFromSmiles('rdkit-3d-viewer', smiles, {
+                    style: 'stick',
+                    colorScheme: 'cyanCarbon',
+                    showLabels: showAtoms,
+                    showHydrogens: true
+                });
+                
+                // Set up viewer controls
+                setupRdkitViewerControls('rdkit-3d-viewer');
             } catch (error) {
                 document.getElementById('moleculeVisualization').innerHTML = `<div class="alert alert-danger">Error: ${error.message}</div>`;
+                document.getElementById('rdkit-3d-viewer').innerHTML = `<div class="alert alert-danger">Error loading 3D model: ${error.message}</div>`;
             }
+        }
+        
+        // Set up RDKit viewer controls
+        function setupRdkitViewerControls(viewerId) {
+            // Get the viewer instance
+            const viewer = $3Dmol.viewers[viewerId];
+            if (!viewer) return;
+            
+            // Style buttons
+            document.getElementById('rdkit-style-stick').addEventListener('click', function() {
+                viewer.setStyle({}, {stick: {radius: 0.15, colorscheme: 'cyanCarbon'}});
+                viewer.render();
+                updateRdkitActiveButton(this, 'rdkit-style');
+            });
+            
+            document.getElementById('rdkit-style-sphere').addEventListener('click', function() {
+                viewer.setStyle({}, {sphere: {scale: 0.25, colorscheme: 'cyanCarbon'}});
+                viewer.render();
+                updateRdkitActiveButton(this, 'rdkit-style');
+            });
+            
+            document.getElementById('rdkit-style-line').addEventListener('click', function() {
+                viewer.setStyle({}, {line: {colorscheme: 'cyanCarbon'}});
+                viewer.render();
+                updateRdkitActiveButton(this, 'rdkit-style');
+            });
+            
+            // Surface toggle
+            const surfaceBtn = document.getElementById('rdkit-toggle-surface');
+            surfaceBtn.dataset.state = 'off';
+            surfaceBtn.addEventListener('click', function() {
+                if (this.dataset.state === 'off') {
+                    viewer.addSurface($3Dmol.SurfaceType.VDW, {
+                        opacity: 0.7,
+                        color: 'white'
+                    });
+                    this.dataset.state = 'on';
+                    this.classList.add('active');
+                } else {
+                    viewer.removeAllSurfaces();
+                    this.dataset.state = 'off';
+                    this.classList.remove('active');
+                }
+                viewer.render();
+            });
+            
+            // Spin toggle
+            const spinBtn = document.getElementById('rdkit-toggle-spin');
+            spinBtn.dataset.state = 'off';
+            spinBtn.addEventListener('click', function() {
+                if (this.dataset.state === 'off') {
+                    viewer.spin(true);
+                    this.dataset.state = 'on';
+                    this.classList.add('active');
+                } else {
+                    viewer.spin(false);
+                    this.dataset.state = 'off';
+                    this.classList.remove('active');
+                }
+            });
+            
+            // Reset view
+            document.getElementById('rdkit-reset-view').addEventListener('click', function() {
+                viewer.zoomTo();
+                viewer.render();
+            });
+            
+            // Set stick as default active style
+            updateRdkitActiveButton(document.getElementById('rdkit-style-stick'), 'rdkit-style');
+        }
+        
+        // Update active button in a button group for RDKit viewer
+        function updateRdkitActiveButton(activeButton, groupPrefix) {
+            const buttons = document.querySelectorAll(`[id^="${groupPrefix}-"]`);
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            activeButton.classList.add('active');
         }
         
         // Calculate molecule properties

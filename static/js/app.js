@@ -51,8 +51,10 @@ function initializeAuth() {
       }
     })
     .catch(error => {
-      console.error('Authentication error:', error);
-      showToast('Authentication error', error.message, 'error');
+      ErrorHandler.handleApiError(error, {
+        toastTitle: 'Authentication Error',
+        redirectOnAuthError: false
+      });
     });
 }
 
@@ -143,8 +145,9 @@ function setupNavigation() {
           window.location.href = '/login';
         })
         .catch(error => {
-          console.error('Logout error:', error);
-          showToast('Logout error', error.message, 'error');
+          ErrorHandler.handleApiError(error, {
+            toastTitle: 'Logout Error'
+          });
         });
     });
   }
@@ -198,8 +201,15 @@ function initializeDashboard() {
       initializeDashboardCharts(molecules, mixtures);
     })
     .catch(error => {
-      console.error('Error loading dashboard data:', error);
-      showToast('Error', 'Failed to load dashboard data', 'error');
+      ErrorHandler.handleApiError(error, {
+        toastTitle: 'Dashboard Error',
+        modalTitle: 'Error Loading Dashboard',
+        showModal: true
+      });
+      
+      // Show empty state for dashboard
+      document.getElementById('dashboard-content')?.classList.add('dashboard-error');
+      document.getElementById('dashboard-error-message')?.classList.remove('d-none');
     });
 }
 
@@ -207,23 +217,26 @@ function initializeDashboard() {
  * Initialize molecules page
  */
 function initializeMoleculesPage() {
-  // Load molecules data
-  API.getMolecules()
-    .then(molecules => {
-      // Render molecules list or detail view
-      const moleculeId = getIdFromUrl();
-      if (moleculeId) {
-        // Detail view for a specific molecule
-        renderMoleculeDetail(moleculeId);
-      } else {
-        // List view for all molecules
-        renderMoleculesList(molecules);
+  // Check if we're on a detail page or list page
+  const moleculeId = getIdFromUrl();
+  if (moleculeId) {
+    // Detail view for a specific molecule
+    renderMoleculeDetail(moleculeId);
+  } else {
+    // List view is handled by compound_list.js
+    // The initialization happens in the DOMContentLoaded event in that file
+    // Just ensure we have the container ready
+    const container = document.getElementById('molecules-container');
+    if (!container) {
+      const mainContent = document.querySelector('.main-content');
+      if (mainContent) {
+        const newContainer = document.createElement('div');
+        newContainer.id = 'molecules-container';
+        newContainer.className = 'container-fluid';
+        mainContent.appendChild(newContainer);
       }
-    })
-    .catch(error => {
-      console.error('Error loading molecules:', error);
-      showToast('Error', 'Failed to load molecules data', 'error');
-    });
+    }
+  }
 }
 
 /**
@@ -244,8 +257,27 @@ function initializeMixturesPage() {
       }
     })
     .catch(error => {
-      console.error('Error loading mixtures:', error);
-      showToast('Error', 'Failed to load mixtures data', 'error');
+      ErrorHandler.handleApiError(error, {
+        toastTitle: 'Mixtures Error',
+        showModal: false
+      });
+      
+      // Show empty state for mixtures
+      const container = document.getElementById('mixtures-container');
+      if (container) {
+        container.innerHTML = `
+          <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading"><i class="bi bi-exclamation-triangle-fill me-2"></i>Error Loading Mixtures</h4>
+            <p>We encountered a problem while loading the mixtures data. Please try again later.</p>
+            <hr>
+            <p class="mb-0">
+              <button type="button" class="btn btn-outline-danger" onclick="initializeMixturesPage()">
+                <i class="bi bi-arrow-clockwise me-1"></i> Retry
+              </button>
+            </p>
+          </div>
+        `;
+      }
     });
 }
 
@@ -255,7 +287,11 @@ function initializeMixturesPage() {
 function initializePredictionsPage() {
   const mixtureId = getIdFromUrl();
   if (!mixtureId) {
-    showToast('Error', 'Mixture ID is required', 'error');
+    showErrorModal('Missing Information', 'Mixture ID is required to view predictions. Please select a mixture first.');
+    // Redirect to mixtures page after a delay
+    setTimeout(() => {
+      window.location.href = '/mixtures';
+    }, 3000);
     return;
   }
   
@@ -272,8 +308,27 @@ function initializePredictionsPage() {
       renderPredictions(predictions);
     })
     .catch(error => {
-      console.error('Error loading predictions:', error);
-      showToast('Error', 'Failed to load predictions data', 'error');
+      ErrorHandler.handleApiError(error, {
+        toastTitle: 'Predictions Error',
+        showModal: false
+      });
+      
+      // Show empty state for predictions
+      const container = document.getElementById('predictions-container');
+      if (container) {
+        container.innerHTML = `
+          <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading"><i class="bi bi-exclamation-triangle-fill me-2"></i>Error Loading Predictions</h4>
+            <p>We encountered a problem while loading the predictions data. Please try again later.</p>
+            <hr>
+            <p class="mb-0">
+              <button type="button" class="btn btn-outline-danger" onclick="initializePredictionsPage()">
+                <i class="bi bi-arrow-clockwise me-1"></i> Retry
+              </button>
+            </p>
+          </div>
+        `;
+      }
     });
 }
 
@@ -283,7 +338,11 @@ function initializePredictionsPage() {
 function initializeExperimentsPage() {
   const mixtureId = getIdFromUrl();
   if (!mixtureId) {
-    showToast('Error', 'Mixture ID is required', 'error');
+    showErrorModal('Missing Information', 'Mixture ID is required to view experiments. Please select a mixture first.');
+    // Redirect to mixtures page after a delay
+    setTimeout(() => {
+      window.location.href = '/mixtures';
+    }, 3000);
     return;
   }
   
@@ -300,8 +359,27 @@ function initializeExperimentsPage() {
       renderExperiments(experiments);
     })
     .catch(error => {
-      console.error('Error loading experiments:', error);
-      showToast('Error', 'Failed to load experiments data', 'error');
+      ErrorHandler.handleApiError(error, {
+        toastTitle: 'Experiments Error',
+        showModal: false
+      });
+      
+      // Show empty state for experiments
+      const container = document.getElementById('experiments-container');
+      if (container) {
+        container.innerHTML = `
+          <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading"><i class="bi bi-exclamation-triangle-fill me-2"></i>Error Loading Experiments</h4>
+            <p>We encountered a problem while loading the experiments data. Please try again later.</p>
+            <hr>
+            <p class="mb-0">
+              <button type="button" class="btn btn-outline-danger" onclick="initializeExperimentsPage()">
+                <i class="bi bi-arrow-clockwise me-1"></i> Retry
+              </button>
+            </p>
+          </div>
+        `;
+      }
     });
 }
 
@@ -311,7 +389,11 @@ function initializeExperimentsPage() {
 function initializeComparisonsPage() {
   const mixtureId = getIdFromUrl();
   if (!mixtureId) {
-    showToast('Error', 'Mixture ID is required', 'error');
+    showErrorModal('Missing Information', 'Mixture ID is required to view comparisons. Please select a mixture first.');
+    // Redirect to mixtures page after a delay
+    setTimeout(() => {
+      window.location.href = '/mixtures';
+    }, 3000);
     return;
   }
   
@@ -329,8 +411,28 @@ function initializeComparisonsPage() {
       setupComparisonForm(mixtureId);
     })
     .catch(error => {
-      console.error('Error initializing comparisons page:', error);
-      showToast('Error', 'Failed to initialize comparisons page', 'error');
+      ErrorHandler.handleApiError(error, {
+        toastTitle: 'Comparisons Error',
+        showModal: true,
+        modalTitle: 'Error Loading Comparisons'
+      });
+      
+      // Show empty state for comparisons
+      const container = document.getElementById('comparisons-container');
+      if (container) {
+        container.innerHTML = `
+          <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading"><i class="bi bi-exclamation-triangle-fill me-2"></i>Error Loading Comparisons</h4>
+            <p>We encountered a problem while loading the comparisons data. Please try again later.</p>
+            <hr>
+            <p class="mb-0">
+              <button type="button" class="btn btn-outline-danger" onclick="initializeComparisonsPage()">
+                <i class="bi bi-arrow-clockwise me-1"></i> Retry
+              </button>
+            </p>
+          </div>
+        `;
+      }
     });
 }
 
@@ -346,20 +448,33 @@ function initializeLoginPage() {
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
       
-      showSpinner();
+      // Show loading state
+      ErrorHandler.setFormLoading(loginForm, true);
+      
       Auth.signIn(email, password)
         .then(user => {
-          hideSpinner();
-          showToast('Success', 'Logged in successfully', 'success');
+          // Hide loading state
+          ErrorHandler.setFormLoading(loginForm, false);
+          
+          // Show success message
+          showSuccessToast('Login Successful', 'You have been logged in successfully');
+          
+          // Announce to screen readers
+          announceToScreenReader('Login successful. Redirecting to dashboard.');
           
           // Redirect to the dashboard or the page the user was trying to access
           const redirectUrl = new URLSearchParams(window.location.search).get('redirect') || '/';
           window.location.href = redirectUrl;
         })
         .catch(error => {
-          hideSpinner();
-          console.error('Login error:', error);
-          showToast('Login failed', error.message, 'error');
+          // Hide loading state
+          ErrorHandler.setFormLoading(loginForm, false);
+          
+          // Handle the error
+          ErrorHandler.handleFormError(loginForm, error);
+          
+          // Focus back on the email field for retry
+          document.getElementById('email')?.focus();
         });
     });
   }
@@ -367,30 +482,57 @@ function initializeLoginPage() {
 
 /**
  * Show a toast notification
+ * @param {string} title - The toast title
+ * @param {string} message - The toast message
+ * @param {string} type - The toast type (success, error, warning, info)
+ * @param {Object} options - Additional options
  */
-function showToast(title, message, type = 'info') {
-  // Create toast container if it doesn't exist
-  let toastContainer = document.querySelector('.toast-container');
+function showToast(title, message, type = 'info', options = {}) {
+  // Get toast container
+  const toastContainer = document.getElementById('toast-container');
   if (!toastContainer) {
-    toastContainer = document.createElement('div');
-    toastContainer.className = 'toast-container';
-    document.body.appendChild(toastContainer);
+    console.error('Toast container not found');
+    return;
   }
   
   // Create toast element
   const toastId = 'toast-' + Date.now();
   const toast = document.createElement('div');
-  toast.className = `toast ${type}`;
+  toast.className = 'toast';
   toast.id = toastId;
-  toast.setAttribute('role', 'alert');
-  toast.setAttribute('aria-live', 'assertive');
+  toast.setAttribute('role', 'status');
+  toast.setAttribute('aria-live', type === 'error' ? 'assertive' : 'polite');
   toast.setAttribute('aria-atomic', 'true');
   
-  // Set toast content
+  // Set toast content with appropriate icon and color
+  let iconClass = '';
+  let bgClass = '';
+  
+  switch (type) {
+    case 'success':
+      iconClass = 'bi-check-circle-fill text-success';
+      bgClass = 'border-success';
+      break;
+    case 'error':
+      iconClass = 'bi-exclamation-triangle-fill text-danger';
+      bgClass = 'border-danger';
+      break;
+    case 'warning':
+      iconClass = 'bi-exclamation-circle-fill text-warning';
+      bgClass = 'border-warning';
+      break;
+    case 'info':
+    default:
+      iconClass = 'bi-info-circle-fill text-info';
+      bgClass = 'border-info';
+      break;
+  }
+  
   toast.innerHTML = `
-    <div class="toast-header">
+    <div class="toast-header ${bgClass}">
+      <i class="bi ${iconClass} me-2"></i>
       <strong class="me-auto">${title}</strong>
-      <button type="button" class="btn-close toast-close-button" data-bs-dismiss="toast" aria-label="Close"></button>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="toast-body">
       ${message}
@@ -402,10 +544,196 @@ function showToast(title, message, type = 'info') {
   
   // Initialize and show the toast
   const bsToast = new bootstrap.Toast(toast, {
-    autohide: true,
-    delay: 5000
+    autohide: options.autohide !== false,
+    delay: options.delay || 5000
   });
+  
   bsToast.show();
+  
+  // Announce to screen readers
+  announceToScreenReader(message, type);
+  
+  // Return the toast instance for potential further manipulation
+  return { element: toast, instance: bsToast };
+}
+
+/**
+ * Show a success toast
+ * @param {string} title - The toast title
+ * @param {string} message - The toast message
+ * @param {Object} options - Additional options
+ */
+function showSuccessToast(title, message, options = {}) {
+  return showToast(title, message, 'success', options);
+}
+
+/**
+ * Show an error toast
+ * @param {string} title - The toast title
+ * @param {string} message - The toast message
+ * @param {Object} options - Additional options
+ */
+function showErrorToast(title, message, options = {}) {
+  return showToast(title, message, 'error', options);
+}
+
+/**
+ * Show a warning toast
+ * @param {string} title - The toast title
+ * @param {string} message - The toast message
+ * @param {Object} options - Additional options
+ */
+function showWarningToast(title, message, options = {}) {
+  return showToast(title, message, 'warning', options);
+}
+
+/**
+ * Show an info toast
+ * @param {string} title - The toast title
+ * @param {string} message - The toast message
+ * @param {Object} options - Additional options
+ */
+function showInfoToast(title, message, options = {}) {
+  return showToast(title, message, 'info', options);
+}
+
+/**
+ * Show a modal dialog
+ * @param {string} title - The modal title
+ * @param {string} message - The modal message
+ * @param {Object} options - Additional options
+ */
+function showModal(title, message, options = {}) {
+  // Get modal elements
+  const modal = document.getElementById('feedback-modal');
+  const modalTitle = document.getElementById('feedback-modal-title');
+  const modalBody = document.getElementById('feedback-modal-body');
+  const modalAction = document.getElementById('feedback-modal-action');
+  
+  if (!modal || !modalTitle || !modalBody || !modalAction) {
+    console.error('Modal elements not found');
+    return;
+  }
+  
+  // Set modal content
+  modalTitle.textContent = title;
+  modalBody.innerHTML = message;
+  
+  // Configure action button
+  if (options.actionText) {
+    modalAction.textContent = options.actionText;
+    modalAction.style.display = 'block';
+    
+    // Remove previous event listeners
+    const newModalAction = modalAction.cloneNode(true);
+    modalAction.parentNode.replaceChild(newModalAction, modalAction);
+    
+    // Add new event listener
+    if (options.onAction && typeof options.onAction === 'function') {
+      newModalAction.addEventListener('click', function() {
+        options.onAction();
+        bootstrap.Modal.getInstance(modal).hide();
+      });
+    }
+  } else {
+    modalAction.style.display = 'none';
+  }
+  
+  // Set modal type/style
+  const modalDialog = modal.querySelector('.modal-dialog');
+  modalDialog.className = 'modal-dialog modal-dialog-centered';
+  
+  if (options.size) {
+    modalDialog.classList.add(`modal-${options.size}`);
+  }
+  
+  if (options.type) {
+    const headerClass = `bg-${options.type} text-white`;
+    modal.querySelector('.modal-header').className = `modal-header ${headerClass}`;
+  } else {
+    modal.querySelector('.modal-header').className = 'modal-header';
+  }
+  
+  // Show the modal
+  const modalInstance = new bootstrap.Modal(modal);
+  modalInstance.show();
+  
+  // Set focus to the modal when it's shown
+  modal.addEventListener('shown.bs.modal', function() {
+    modalTitle.focus();
+  }, { once: true });
+  
+  // Announce to screen readers
+  announceToScreenReader(message, 'modal');
+  
+  // Return the modal instance for potential further manipulation
+  return { element: modal, instance: modalInstance };
+}
+
+/**
+ * Show a confirmation modal
+ * @param {string} title - The modal title
+ * @param {string} message - The modal message
+ * @param {Function} onConfirm - Function to call when confirmed
+ * @param {Object} options - Additional options
+ */
+function showConfirmModal(title, message, onConfirm, options = {}) {
+  return showModal(title, message, {
+    type: options.type || 'primary',
+    actionText: options.actionText || 'Confirm',
+    onAction: onConfirm,
+    size: options.size
+  });
+}
+
+/**
+ * Show an error modal
+ * @param {string} title - The modal title
+ * @param {string} message - The modal message
+ * @param {Object} options - Additional options
+ */
+function showErrorModal(title, message, options = {}) {
+  return showModal(title, message, {
+    type: 'danger',
+    actionText: options.actionText || 'OK',
+    onAction: options.onAction,
+    size: options.size
+  });
+}
+
+/**
+ * Announce a message to screen readers
+ * @param {string} message - The message to announce
+ * @param {string} type - The type of message
+ */
+function announceToScreenReader(message, type = 'info') {
+  const srAnnouncements = document.getElementById('sr-announcements');
+  if (!srAnnouncements) return;
+  
+  // Clear previous announcements
+  srAnnouncements.textContent = '';
+  
+  // Add prefix based on type
+  let prefix = '';
+  switch (type) {
+    case 'error':
+      prefix = 'Error: ';
+      break;
+    case 'warning':
+      prefix = 'Warning: ';
+      break;
+    case 'success':
+      prefix = 'Success: ';
+      break;
+    case 'modal':
+      prefix = 'Dialog opened: ';
+      break;
+    default:
+      prefix = '';
+  }
+  
+  // Set the announcement text
+  srAnnouncements.textContent = prefix + message;
 }
 
 /**
@@ -471,6 +799,18 @@ function renderMoleculeDetail(moleculeId) {
       document.getElementById('molecule-formula')?.textContent = molecule.molecular_formula || 'N/A';
       document.getElementById('molecule-smiles')?.textContent = molecule.smiles || 'N/A';
       
+      // Set PubChem link
+      const pubchemLink = document.getElementById('pubchem-link');
+      if (pubchemLink && molecule.cid) {
+        pubchemLink.href = `https://pubchem.ncbi.nlm.nih.gov/compound/${molecule.cid}`;
+      }
+      
+      // Set integrated viewer link
+      const integratedViewerLink = document.getElementById('integrated-viewer-link');
+      if (integratedViewerLink) {
+        integratedViewerLink.href = `/molecules/integrated?id=${moleculeId}&smiles=${encodeURIComponent(molecule.smiles)}`;
+      }
+      
       // Render properties
       renderMoleculeProperties(molecule.properties);
     })
@@ -480,30 +820,8 @@ function renderMoleculeDetail(moleculeId) {
     });
 }
 
-function renderMoleculesList(molecules) {
-  const container = document.getElementById('molecules-container');
-  if (!container) return;
-  
-  container.innerHTML = '';
-  
-  molecules.forEach(molecule => {
-    const card = document.createElement('div');
-    card.className = 'col-md-4 mb-4';
-    card.innerHTML = `
-      <div class="card molecule-card h-100">
-        <div class="card-header">${molecule.name || `CID: ${molecule.cid}`}</div>
-        <div class="card-body">
-          <p><strong>Formula:</strong> ${molecule.molecular_formula || 'N/A'}</p>
-          <p><strong>SMILES:</strong> ${molecule.smiles || 'N/A'}</p>
-        </div>
-        <div class="card-footer">
-          <a href="/molecules/${molecule.id}" class="btn btn-primary">View Details</a>
-        </div>
-      </div>
-    `;
-    container.appendChild(card);
-  });
-}
+// Note: renderMoleculesList function has been moved to compound_list.js
+// This comment is kept here to maintain the file structure and prevent confusion
 
 function renderMixtureDetail(mixtureId) {
   API.getMixture(mixtureId)
@@ -607,6 +925,7 @@ function renderExperiments(experiments) {
         <p><strong>Value:</strong> ${getExperimentValue(experiment)}</p>
         <p><strong>Conditions:</strong> ${experiment.experimental_conditions || 'Not specified'}</p>
         <p><strong>Date:</strong> ${experiment.date_performed}</p>
+        <div class="lab-verification-section mt-3" data-experiment-id="${experiment.id}"></div>
       </div>
     `;
     container.appendChild(card);

@@ -1,0 +1,40 @@
+{
+  "timestamp": "2025-04-29T19:27:00-06:00",
+  "data_source": "pubchem",
+  "counts": {
+    "pubchem_molecules": 693,
+    "pubchem_properties": 0
+  },
+  "null_checks": {
+    "molecules": {
+      "total": 693,
+      "null_name": 0,
+      "null_smiles": 0,
+      "null_pubchem_cid": 0,
+      "null_name_percent": 0,
+      "null_smiles_percent": 0,
+      "null_pubchem_cid_percent": 0
+    }
+  },
+  "property_completeness": {
+    "logP": {
+      "count": 0,
+      "coverage_percent": 0
+    },
+    "h_bond_donor_count": {
+      "count": 0,
+      "coverage_percent": 0
+    },
+    "h_bond_acceptor_count": {
+      "count": 0,
+      "coverage_percent": 0
+    },
+    "average_coverage": 0
+  },
+  "assessments": {
+    "counts": "SUCCESS",
+    "null_checks": "SUCCESS",
+    "property_completeness": "FAILURE"
+  },
+  "overall_assessment": "WARNING"
+}

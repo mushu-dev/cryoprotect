@@ -1,0 +1,122 @@
+================================================================================
+CryoProtect v2 Database Performance Optimization Report
+================================================================================
+Timestamp: 2025-05-01T13:08:08.804160
+
+Created Indexes:
+  - idx_mixtures_created_by
+  - idx_experiments_created_by
+  - idx_predictions_created_by
+  - idx_molecular_properties_created_by
+  - idx_calculation_methods_created_by
+  - idx_mixture_components_mixture_id
+  - idx_mixture_components_molecule_id
+  - idx_mixture_components_concentration
+  - idx_experiments_mixture_id
+  - idx_experiments_property_type_id
+  - idx_experiments_date
+  - idx_mixture_components_mixture_molecule
+  - idx_experiments_mixture_property
+  - idx_predictions_mixture_property
+  - idx_predictions_calculation_method
+  - idx_predictions_confidence
+  - idx_predictions_numeric_value
+  - idx_molecular_properties_property_type
+  - idx_molecular_properties_molecule_id
+  - idx_molecular_properties_numeric_value
+  - idx_molecular_properties_molecule_property
+  - idx_predictions_method_property
+  - idx_molecule_name_trgm
+  - idx_mixture_name_trgm
+  - idx_property_type_name_trgm
+  - idx_molecule_name
+  - idx_mixture_name
+  - idx_property_type_name
+
+Errors:
+  - Error applying additional_indexes: column "unit_id" does not exist
+
+
+Performance Improvements:
+  get_molecules:
+    Avg: 430.91ms -> 432.50ms (-0.37% improvement)
+    P95: 493.98ms -> 487.00ms (1.41% improvement)
+  get_molecule_by_id:
+    Avg: 428.80ms -> 387.72ms (9.58% improvement)
+    P95: 507.78ms -> 411.16ms (19.03% improvement)
+  get_mixtures:
+    Avg: 391.76ms -> 421.76ms (-7.66% improvement)
+    P95: 417.83ms -> 478.39ms (-14.49% improvement)
+  get_mixture_by_id:
+    Avg: 405.41ms -> 450.80ms (-11.20% improvement)
+    P95: 429.83ms -> 701.29ms (-63.16% improvement)
+  get_predictions:
+    Avg: 384.33ms -> 409.21ms (-6.47% improvement)
+    P95: 404.89ms -> 432.46ms (-6.81% improvement)
+  get_experiments:
+    Avg: 409.74ms -> 406.43ms (0.81% improvement)
+    P95: 447.55ms -> 441.26ms (1.41% improvement)
+  search_molecules_by_name:
+    Avg: 388.83ms -> 387.41ms (0.36% improvement)
+    P95: 417.73ms -> 431.01ms (-3.18% improvement)
+  filter_by_property:
+    Avg: 405.93ms -> 395.24ms (2.63% improvement)
+    P95: 417.91ms -> 414.37ms (0.85% improvement)
+
+Operation Performance (Before):
+  get_molecules:
+    Avg: 430.91ms
+    P95: 493.98ms
+  get_molecule_by_id:
+    Avg: 428.80ms
+    P95: 507.78ms
+  get_mixtures:
+    Avg: 391.76ms
+    P95: 417.83ms
+  get_mixture_by_id:
+    Avg: 405.41ms
+    P95: 429.83ms
+  get_predictions:
+    Avg: 384.33ms
+    P95: 404.89ms
+  get_experiments:
+    Avg: 409.74ms
+    P95: 447.55ms
+  search_molecules_by_name:
+    Avg: 388.83ms
+    P95: 417.73ms
+  filter_by_property:
+    Avg: 405.93ms
+    P95: 417.91ms
+
+Operation Performance (After):
+  get_molecules:
+    Avg: 432.50ms
+    P95: 487.00ms
+  get_molecule_by_id:
+    Avg: 387.72ms
+    P95: 411.16ms
+  get_mixtures:
+    Avg: 421.76ms
+    P95: 478.39ms
+  get_mixture_by_id:
+    Avg: 450.80ms
+    P95: 701.29ms
+  get_predictions:
+    Avg: 409.21ms
+    P95: 432.46ms
+  get_experiments:
+    Avg: 406.43ms
+    P95: 441.26ms
+  search_molecules_by_name:
+    Avg: 387.41ms
+    P95: 431.01ms
+  filter_by_property:
+    Avg: 395.24ms
+    P95: 414.37ms
+
+Recommendations:
+  Issue: General optimization
+  Recommendation: Consider implementing query caching for frequently accessed data.
+
+================================================================================

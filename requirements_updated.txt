@@ -1,29 +1,28 @@
-# CryoProtect Analyzer API Requirements
+# CryoProtect Analyzer API Requirements (Updated for 2025)
 
 # Flask and extensions
-Flask==2.3.3
-Flask-RESTful==0.3.10
-Flask-Cors==4.0.0
+flask==3.0.2
+flask-restful==0.3.10
+flask-cors==4.0.0
 flask-apispec==0.11.4
 
 # API documentation
 apispec==6.3.0
-marshmallow==3.20.1
+marshmallow==3.21.0
 
 # Supabase
-supabase==2.0.3
+supabase==2.1.0
 
 # Environment variables
-python-dotenv==1.0.0
+python-dotenv==1.0.1
 
 # Date handling
-python-dateutil==2.8.2
+# Removed python-dateutil (unused in codebase)
 
 # Utilities
-requests==2.31.0
-numpy==1.26.0
-Pillow==10.0.1
-ipython==8.12.0
+requests==2.32.3
 
-# RDKit - Note: Install via conda with: conda install -c conda-forge rdkit=2023.9.1
-# rdkit==2023.9.1
+# Email
+flask-mail==0.9.1
+
+# NOTE: All scientific packages (numpy, scipy, scikit-learn, pandas, matplotlib, seaborn, pillow, openpyxl, XlsxWriter, reportlab, pdfkit, rdkit) are managed via conda in environment.yml only.

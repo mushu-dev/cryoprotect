@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "last_updated": "2025-04-18T12:41:02.374589",
+  "query_cache": {
+    "test_performance_improvements_('tsdlmynydfuypiugmkev', 'public')_{}": {
+      "rls_filter": {
+        "error": "[WinError 2] The system cannot find the file specified"
+      },
+      "mixture_components_join": {
+        "error": "[WinError 2] The system cannot find the file specified"
+      },
+      "predictions_filter": {
+        "error": "[WinError 2] The system cannot find the file specified"
+      },
+      "experiments_join": {
+        "error": "[WinError 2] The system cannot find the file specified"
+      },
+      "molecule_text_search": {
+        "error": "[WinError 2] The system cannot find the file specified"
+      },
+      "property_type_join": {
+        "error": "[WinError 2] The system cannot find the file specified"
+      }
+    }
+  },
+  "verification_results": {}
+}

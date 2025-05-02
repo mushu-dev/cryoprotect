@@ -1,0 +1,7 @@
+{
+  "timestamp": "20250429_223023",
+  "success": false,
+  "exit_code": 1,
+  "output": "\nConfiguration Warnings:\n- Warning: Using default SECRET_KEY in DevelopmentConfig. This is fine for development but must be changed in production.\n\n",
+  "error": "2025-04-29 22:30:23,924 - connection_pool_wrapper - ERROR - Failed to initialize connection pool: could not translate host name \"db.tsdlmynydfuypiugmkev.supabase.co\" to address: No such host is known. \n\n2025-04-29 22:30:23,925 - __main__ - ERROR - Performance optimization failed: could not translate host name \"db.tsdlmynydfuypiugmkev.supabase.co\" to address: No such host is known. \n\n"
+}

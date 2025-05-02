@@ -1,83 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Predictions - CryoProtect Analyzer</title>
-  
-  <!-- Supabase Configuration -->
-  <meta name="supabase-url" content="{{ supabase_url }}">
-  <meta name="supabase-key" content="{{ supabase_key }}">
-  
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  
-  <!-- Bootstrap Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-  
-  <!-- Custom CSS -->
-  <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
-</head>
-<body>
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="/">
-        <i class="bi bi-snow2"></i> CryoProtect <span>Analyzer</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/molecules">Molecules</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/mixtures">Mixtures</a>
-          </li>
-          <li class="nav-item dropdown nav-authenticated d-none">
-            <a class="nav-link dropdown-toggle active" href="#" id="analysisDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Analysis
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="analysisDropdown">
-              <li><a class="dropdown-item active" href="/predictions">Predictions</a></li>
-              <li><a class="dropdown-item" href="/experiments">Experiments</a></li>
-              <li><a class="dropdown-item" href="/comparisons">Comparisons</a></li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="navbar-nav">
-          <li class="nav-item nav-unauthenticated">
-            <a class="nav-link" href="/login">Login</a>
-          </li>
-          <li class="nav-item dropdown nav-authenticated d-none">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi bi-person-circle"></i> <span class="user-name">User</span>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-              <li><a class="dropdown-item" href="/profile">Profile</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#" id="logout-button">Logout</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+{% extends 'base.html' %}
 
-  <!-- Main Content -->
-  <main class="container py-4">
+{% set active_page = 'predictions' %}
+{% set breadcrumbs = [
+  {'title': 'Home', 'url': '/'},
+  {'title': 'Mixtures', 'url': '/mixtures'},
+  {'title': 'Mixture Details', 'url': '/mixtures/' ~ mixture_id if mixture_id is defined else '#'},
+  {'title': 'Predictions', 'url': '#'}
+] %}
+
+{% block title %}Predictions - CryoProtect Analyzer{% endblock %}
+
+{% block content %}
     <!-- Mixture Information -->
     <div class="card mb-4">
       <div class="card-header">
-        Mixture Information
+        <h3 class="h5 mb-0">Mixture Information</h3>
       </div>
       <div class="card-body">
         <div class="row">
@@ -100,13 +37,13 @@
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>Predictions</h2>
         <a href="#" class="btn btn-primary requires-auth disabled" id="add-prediction-btn">
-          <i class="bi bi-plus-circle"></i> Add Prediction
+          <i class="bi bi-plus-circle" aria-hidden="true"></i> Add Prediction
         </a>
       </div>
       
       <div id="predictions-container">
         <!-- Predictions will be loaded here dynamically -->
-        <div class="text-center py-5">
+        <div class="text-center py-5" aria-live="polite">
           <div class="spinner-border" role="status">
             <span class="visually-hidden">Loading...</span>
           </div>
@@ -117,45 +54,56 @@
     
     <!-- Add Prediction View -->
     <div id="add-prediction-view" style="display: none;">
+      {% set workflow_steps = [
+        {'title': 'Select Property'},
+        {'title': 'Enter Value'},
+        {'title': 'Set Confidence'},
+        {'title': 'Choose Method'}
+      ] %}
+      {% set current_step = 0 %}
+      {% include 'shared/progress_indicator.html' %}
+      
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>Add Prediction</h2>
         <button type="button" class="btn btn-outline-secondary" id="back-to-predictions-btn">
-          <i class="bi bi-arrow-left"></i> Back to Predictions
+          <i class="bi bi-arrow-left" aria-hidden="true"></i> Back to Predictions
         </button>
       </div>
       
       <div class="card">
         <div class="card-header">
-          Prediction Details
+          <h3 class="h5 mb-0">Prediction Details</h3>
         </div>
         <div class="card-body">
           <form id="prediction-form">
             <div class="mb-3">
               <label for="prediction-property" class="form-label">Property</label>
-              <select class="form-select" id="prediction-property" required>
+              <select class="form-select" id="prediction-property" required aria-describedby="property-help">
                 <option value="">Select a property</option>
                 <!-- Property options will be loaded dynamically -->
               </select>
+              <div id="property-help" class="form-text visually-hidden">Select the property you want to predict</div>
             </div>
             <div class="mb-3">
               <label for="prediction-value" class="form-label">Value</label>
-              <input type="text" class="form-control" id="prediction-value" required>
-              <div class="form-text">Enter a numeric value, text, or boolean (true/false) depending on the property type.</div>
+              <input type="text" class="form-control" id="prediction-value" required aria-describedby="value-help">
+              <div id="value-help" class="form-text">Enter a numeric value, text, or boolean (true/false) depending on the property type.</div>
             </div>
             <div class="mb-3">
               <label for="prediction-confidence" class="form-label">Confidence (0-1)</label>
-              <input type="number" class="form-control" id="prediction-confidence" min="0" max="1" step="0.01" value="0.8" required>
-              <div class="form-text">Enter a value between 0 (low confidence) and 1 (high confidence).</div>
+              <input type="number" class="form-control" id="prediction-confidence" min="0" max="1" step="0.01" value="0.8" required aria-describedby="confidence-help">
+              <div id="confidence-help" class="form-text">Enter a value between 0 (low confidence) and 1 (high confidence).</div>
             </div>
             <div class="mb-3">
               <label for="prediction-method" class="form-label">Calculation Method</label>
-              <select class="form-select" id="prediction-method" required>
+              <select class="form-select" id="prediction-method" required aria-describedby="method-help">
                 <option value="">Select a method</option>
                 <option value="CryoProtect Scoring">CryoProtect Scoring</option>
                 <option value="Molecular Dynamics">Molecular Dynamics</option>
                 <option value="QSAR Model">QSAR Model</option>
                 <option value="Manual Estimation">Manual Estimation</option>
               </select>
+              <div id="method-help" class="form-text visually-hidden">Select the method used to calculate this prediction</div>
             </div>
             <div class="d-grid gap-2">
               <button type="submit" class="btn btn-primary">Add Prediction</button>
@@ -164,40 +112,14 @@
         </div>
       </div>
     </div>
-  </main>
+{% endblock %}
 
-  <!-- Footer -->
-  <footer class="bg-light py-4 mt-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <p>&copy; 2025 CryoProtect Analyzer. All rights reserved.</p>
-        </div>
-        <div class="col-md-6 text-md-end">
-          <a href="#" class="text-decoration-none me-3">Privacy Policy</a>
-          <a href="#" class="text-decoration-none me-3">Terms of Service</a>
-          <a href="#" class="text-decoration-none">Contact</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+{% block extra_css %}
+<!-- No extra CSS for predictions page -->
+{% endblock %}
 
-  <!-- Supabase JS -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  
-  <!-- Bootstrap JS Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
-  <!-- Custom JS -->
-  <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/api.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/charts.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
-  
-  <script>
+{% block extra_js %}
+<script>
     // Initialize page based on URL
     document.addEventListener('DOMContentLoaded', function() {
       // Add event listener for the "Add Prediction" button
@@ -205,6 +127,8 @@
         event.preventDefault();
         document.getElementById('predictions-list-view').style.display = 'none';
         document.getElementById('add-prediction-view').style.display = 'block';
+        // Set focus to the first form field for keyboard accessibility
+        document.getElementById('prediction-property').focus();
       });
       
       // Add event listener for the "Back to Predictions" button
@@ -212,8 +136,40 @@
         event.preventDefault();
         document.getElementById('predictions-list-view').style.display = 'block';
         document.getElementById('add-prediction-view').style.display = 'none';
+        // Return focus to the add prediction button
+        document.getElementById('add-prediction-btn').focus();
       });
     });
-  </script>
-</body>
-</html>
+  // Add event listeners for form fields to update progress indicator
+  document.getElementById('prediction-property').addEventListener('change', function() {
+    if (this.value) {
+      document.querySelectorAll('.progress-step')[0].classList.add('completed');
+      document.querySelectorAll('.progress-step')[1].classList.add('active');
+      document.querySelectorAll('.progress-step')[0].classList.remove('active');
+    }
+  });
+  
+  document.getElementById('prediction-value').addEventListener('input', function() {
+    if (this.value) {
+      document.querySelectorAll('.progress-step')[1].classList.add('completed');
+      document.querySelectorAll('.progress-step')[2].classList.add('active');
+      document.querySelectorAll('.progress-step')[1].classList.remove('active');
+    }
+  });
+  
+  document.getElementById('prediction-confidence').addEventListener('input', function() {
+    if (this.value) {
+      document.querySelectorAll('.progress-step')[2].classList.add('completed');
+      document.querySelectorAll('.progress-step')[3].classList.add('active');
+      document.querySelectorAll('.progress-step')[2].classList.remove('active');
+    }
+  });
+  
+  document.getElementById('prediction-method').addEventListener('change', function() {
+    if (this.value) {
+      document.querySelectorAll('.progress-step')[3].classList.add('completed');
+      document.querySelectorAll('.progress-step')[3].classList.remove('active');
+    }
+  });
+</script>
+{% endblock %}

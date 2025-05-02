@@ -1,0 +1,69 @@
+[
+  {
+    "timestamp": "2025-04-17T18:17:29-06:00",
+    "actions": [
+      "Ran fix_database_modular.py --action fix_all",
+      "Created missing tables: mixtures, calculation_methods",
+      "Attempted data copy from singular to plural tables",
+      "Ran verify_database_integrity.py"
+    ],
+    "results": {
+      "tables_created": ["mixtures", "calculation_methods"],
+      "data_copy": {
+        "experiment_to_experiments": "Partial failure due to NOT NULL constraint on property_type_id",
+        "prediction_to_predictions": "No data found"
+      },
+      "structure_verification": {
+        "predictions": "Invalid (missing exec_sql function in Supabase)",
+        "experiments": "Invalid (missing exec_sql function in Supabase)"
+      }
+    },
+    "issues": [
+      "Empty tables: molecule, prediction",
+      "Foreign key violations: mixture_component.molecule_id, molecular_property.molecule_id reference missing molecule IDs",
+      "NOT NULL constraint violation: property_type_id in experiments",
+      "Table structure verification failed for predictions and experiments (missing exec_sql function)"
+    ],
+    "verification_report": "database_integrity_report.json",
+    "status": "FAIL"
+  },
+  {
+    "timestamp": "2025-04-17T20:14:43-06:00",
+    "actions": [
+      "Attempted to apply schema fixes to predictions and experiments tables using fix_database_modular.py --action apply_schema_fixes"
+    ],
+    "results": {
+      "schema_fixes_applied": false,
+      "error": "Supabase instance does not have the public.exec_sql(sql) function enabled. All attempts to run raw SQL via supabase.rpc('exec_sql', ...) fail with 404 errors. This is a known limitation of Supabase's default configuration for security reasons.",
+      "recommendation": "Apply the following SQL manually in the Supabase SQL editor or using psql."
+    },
+    "sql_to_apply": [
+      "CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";",
+      "",
+      "-- Fix predictions table",
+      "ALTER TABLE public.predictions ",
+      "  ALTER COLUMN id TYPE UUID USING uuid_generate_v4(),",
+      "  ALTER COLUMN mixture_id TYPE UUID,",
+      "  ALTER COLUMN property_type_id TYPE UUID,",
+      "  ADD COLUMN IF NOT EXISTS calculation_method_id UUID,",
+      "  ADD COLUMN IF NOT EXISTS confidence NUMERIC,",
+      "  ADD COLUMN IF NOT EXISTS updated_at TIMESTAMPTZ DEFAULT NOW(),",
+      "  ADD COLUMN IF NOT EXISTS created_by UUID;",
+      "",
+      "-- Fix experiments table",
+      "ALTER TABLE public.experiments ",
+      "  ALTER COLUMN id TYPE UUID USING uuid_generate_v4(),",
+      "  ALTER COLUMN mixture_id TYPE UUID,",
+      "  ALTER COLUMN property_type_id TYPE UUID,",
+      "  ADD COLUMN IF NOT EXISTS experimental_conditions TEXT,",
+      "  ADD COLUMN IF NOT EXISTS date_performed DATE,",
+      "  ADD COLUMN IF NOT EXISTS updated_at TIMESTAMPTZ DEFAULT NOW(),",
+      "  ADD COLUMN IF NOT EXISTS created_by UUID;",
+      "",
+      "-- Add indexes",
+      "CREATE INDEX IF NOT EXISTS idx_pred_mixture ON public.predictions(mixture_id);",
+      "CREATE INDEX IF NOT EXISTS idx_exp_mixture ON public.experiments(mixture_id);"
+    ],
+    "status": "ERROR"
+  }
+]

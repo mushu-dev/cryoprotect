@@ -1,0 +1,15 @@
+{
+  "timestamp": "2025-04-29T19:20:39.307517",
+  "data_source": "pubchem",
+  "counts": {},
+  "null_checks": {},
+  "consistency_checks": {},
+  "property_completeness": {},
+  "reference_compounds": {},
+  "assessments": {
+    "counts": "ERROR",
+    "null_checks": "ERROR",
+    "property_completeness": "ERROR"
+  },
+  "overall_assessment": "INCOMPLETE"
+}

@@ -1,10 +1,25 @@
 """
 CryoProtect Analyzer API - RDKit Utilities
 
-This module provides functions for molecular property calculations using RDKit.
-It includes functions for calculating hydrogen bonding capacity, XLogP,
-topological polar surface area, molecular weight and volume, functional group
-identification, and permeability coefficient estimation.
+This module provides core scientific utilities for molecular property calculations using RDKit.
+
+Overview:
+    - Implements algorithms for calculating hydrogen bonding capacity, XLogP (partition coefficient),
+      topological polar surface area (TPSA), molecular weight, molecular volume, and other key descriptors.
+    - Identifies and counts functional groups using RDKit fragment analysis.
+    - Estimates permeability coefficients using established medicinal chemistry rules (e.g., Lipinski's Rule of 5, Veber rule)
+      and the BOILED-Egg model for blood-brain barrier and intestinal absorption prediction.
+    - Provides substructure search and molecular similarity calculations using various fingerprinting methods.
+
+Scientific Context:
+    These calculations are foundational in cheminformatics and drug design, as they relate to molecular bioavailability,
+    permeability, and pharmacokinetic properties. The algorithms implemented here are based on widely accepted
+    literature, including:
+        - Lipinski, C. A., et al. (1997). Experimental and computational approaches to estimate solubility and permeability in drug discovery and development settings. Advanced Drug Delivery Reviews, 23(1-3), 3-25.
+        - Veber, D. F., et al. (2002). Molecular properties that influence the oral bioavailability of drug candidates. Journal of Medicinal Chemistry, 45(12), 2615-2623.
+        - Daina, A., & Zoete, V. (2016). A BOILED-Egg to predict gastrointestinal absorption and brain penetration of small molecules. ChemMedChem, 11(11), 1117-1121.
+
+All functions and algorithms are designed to be accessible and maintainable for both developers and scientists.
 """
 
 import logging
@@ -23,10 +38,10 @@ try:
         from rdkit.Chem.Draw import IPythonConsole
         IPYTHON_AVAILABLE = True
     except ImportError:
-        logging.warning("IPython is not installed. Some visualization features may be limited.")
+        # Use module-level logger after it's defined
         IPYTHON_AVAILABLE = False
 except ImportError:
-    logging.error("RDKit is not installed. Please install it using conda: conda install -c conda-forge rdkit")
+    # Use module-level logger after it's defined
     raise
 
 # Set up logging
@@ -34,14 +49,22 @@ logger = logging.getLogger(__name__)
 
 def parse_molecule(mol_data: str, input_format: str = 'smiles') -> Optional[Chem.Mol]:
     """
-    Parse molecular data in various formats into an RDKit molecule object.
-    
+    Parses molecular data in various formats into an RDKit molecule object.
+
+    Scientific Rationale:
+        Molecular parsing is the first step in cheminformatics workflows.
+        SMILES, MOL, and SDF are standard formats for representing chemical structures.
+        Hydrogens are added and 3D coordinates are generated to enable property calculations that require 3D geometry.
+
     Args:
-        mol_data: Molecular data as a string (SMILES, MOL, SDF)
-        input_format: Format of the input data ('smiles', 'mol', 'sdf')
-        
+        mol_data (str): Molecular data as a string (SMILES, MOL, SDF).
+        input_format (str): Format of the input data ('smiles', 'mol', 'sdf').
+
     Returns:
-        RDKit Mol object or None if parsing fails
+        Optional[Chem.Mol]: RDKit Mol object or None if parsing fails.
+
+    References:
+        - Weininger, D. (1988). SMILES, a chemical language and information system. 1. Introduction to methodology and encoding rules. J. Chem. Inf. Comput. Sci., 28(1), 31-36.
     """
     try:
         if input_format.lower() == 'smiles':
@@ -74,13 +97,20 @@ def parse_molecule(mol_data: str, input_format: str = 'smiles') -> Optional[Chem
 
 def calculate_hydrogen_bonding(mol: Chem.Mol) -> Dict[str, int]:
     """
-    Calculate hydrogen bond donors and acceptors.
-    
+    Calculates the number of hydrogen bond donors and acceptors in a molecule.
+
+    Scientific Rationale:
+        Hydrogen bonding capacity is a key determinant of solubility, permeability, and bioavailability.
+        Lipinski's Rule of 5 uses these counts to predict drug-likeness.
+
     Args:
-        mol: RDKit Mol object
-        
+        mol (Chem.Mol): RDKit Mol object.
+
     Returns:
-        Dictionary with donor and acceptor counts
+        Dict[str, int]: Dictionary with donor, acceptor, and total counts.
+
+    References:
+        - Lipinski, C. A., et al. (1997). Advanced Drug Delivery Reviews, 23(1-3), 3-25.
     """
     if mol is None:
         return {"donors": 0, "acceptors": 0}
@@ -96,13 +126,20 @@ def calculate_hydrogen_bonding(mol: Chem.Mol) -> Dict[str, int]:
 
 def calculate_logp(mol: Chem.Mol) -> float:
     """
-    Calculate XLogP (partition coefficient).
-    
+    Calculates the XLogP (octanol-water partition coefficient) of a molecule.
+
+    Scientific Rationale:
+        LogP is a measure of hydrophobicity and is critical for predicting membrane permeability and solubility.
+        High logP values indicate lipophilicity, which can affect absorption and distribution.
+
     Args:
-        mol: RDKit Mol object
-        
+        mol (Chem.Mol): RDKit Mol object.
+
     Returns:
-        XLogP value
+        float: XLogP value.
+
+    References:
+        - Mannhold, R., et al. (2009). Calculation of molecular lipophilicity: State-of-the-art and comparison of logP methods on more than 96,000 compounds. J. Pharm. Sci., 98(3), 861-893.
     """
     if mol is None:
         return 0.0
@@ -111,13 +148,20 @@ def calculate_logp(mol: Chem.Mol) -> float:
 
 def calculate_tpsa(mol: Chem.Mol) -> float:
     """
-    Calculate topological polar surface area.
-    
+    Calculates the topological polar surface area (TPSA) of a molecule.
+
+    Scientific Rationale:
+        TPSA is a predictor of drug transport properties, including intestinal absorption and blood-brain barrier penetration.
+        Molecules with high TPSA tend to have lower membrane permeability.
+
     Args:
-        mol: RDKit Mol object
-        
+        mol (Chem.Mol): RDKit Mol object.
+
     Returns:
-        TPSA value in Å²
+        float: TPSA value in Å².
+
+    References:
+        - Ertl, P., et al. (2000). Fast calculation of molecular polar surface area as a sum of fragment-based contributions and its application to the prediction of drug transport properties. J. Med. Chem., 43(20), 3714-3717.
     """
     if mol is None:
         return 0.0
@@ -126,13 +170,24 @@ def calculate_tpsa(mol: Chem.Mol) -> float:
 
 def calculate_molecular_properties(mol: Chem.Mol) -> Dict[str, float]:
     """
-    Calculate basic molecular properties.
-    
+    Calculates a set of fundamental molecular properties.
+
+    Scientific Rationale:
+        These properties (molecular weight, heavy atom count, rotatable bonds, etc.) are used in medicinal chemistry
+        to assess drug-likeness, synthetic accessibility, and physical behavior.
+
     Args:
-        mol: RDKit Mol object
-        
+        mol (Chem.Mol): RDKit Mol object.
+
     Returns:
-        Dictionary of molecular properties
+        Dict[str, float]: Dictionary of molecular properties.
+
+    Notes:
+        - Molecular volume is calculated only if 3D coordinates are available.
+        - FractionCSP3 is a measure of saturation, relevant for oral bioavailability.
+
+    References:
+        - Lovering, F., et al. (2009). Escape from flatland: increasing saturation as an approach to improving clinical success. J. Med. Chem., 52(21), 6752-6756.
     """
     if mol is None:
         return {}
@@ -156,13 +211,24 @@ def calculate_molecular_properties(mol: Chem.Mol) -> Dict[str, float]:
 
 def identify_functional_groups(mol: Chem.Mol) -> Dict[str, int]:
     """
-    Identify and count functional groups in the molecule.
-    
+    Identifies and counts key functional groups in the molecule using RDKit fragment analysis.
+
+    Scientific Rationale:
+        Functional groups determine chemical reactivity, solubility, and biological activity.
+        This function uses RDKit's fragment-based approach to identify groups relevant to cryoprotectant and drug design.
+
     Args:
-        mol: RDKit Mol object
-        
+        mol (Chem.Mol): RDKit Mol object.
+
     Returns:
-        Dictionary of functional groups and their counts
+        Dict[str, int]: Dictionary of functional groups and their counts.
+
+    Notes:
+        - Only groups with nonzero counts are returned.
+        - The selection of groups is based on their relevance to cryoprotectant chemistry.
+
+    References:
+        - RDKit documentation: https://www.rdkit.org/docs/source/rdkit.Chem.Fragments.html
     """
     if mol is None:
         return {}
@@ -197,13 +263,23 @@ def identify_functional_groups(mol: Chem.Mol) -> Dict[str, int]:
 
 def estimate_permeability(mol: Chem.Mol) -> Dict[str, float]:
     """
-    Estimate permeability coefficients based on molecular properties.
-    
+    Estimates permeability coefficients and related properties using established medicinal chemistry rules.
+
+    Scientific Rationale:
+        - Lipinski's Rule of 5 and Veber rule are used to predict oral bioavailability and permeability.
+        - The BOILED-Egg model predicts blood-brain barrier (BBB) and intestinal absorption based on logP and TPSA.
+        - The estimated log Papp (apparent permeability) is a simplified model for passive membrane diffusion.
+
     Args:
-        mol: RDKit Mol object
-        
+        mol (Chem.Mol): RDKit Mol object.
+
     Returns:
-        Dictionary of permeability estimates
+        Dict[str, float]: Dictionary of permeability estimates and rule violations.
+
+    References:
+        - Lipinski, C. A., et al. (1997). Advanced Drug Delivery Reviews, 23(1-3), 3-25.
+        - Veber, D. F., et al. (2002). J. Med. Chem., 45(12), 2615-2623.
+        - Daina, A., & Zoete, V. (2016). ChemMedChem, 11(11), 1117-1121.
     """
     if mol is None:
         return {}
@@ -251,14 +327,26 @@ def estimate_permeability(mol: Chem.Mol) -> Dict[str, float]:
 
 def calculate_all_properties(mol_data: str, input_format: str = 'smiles') -> Dict[str, Any]:
     """
-    Calculate all molecular properties for a given molecule.
-    
+    Calculates all relevant molecular properties for a given molecule.
+
+    Scientific Rationale:
+        This function aggregates all property calculations into a single call, providing a comprehensive
+        profile of the molecule for downstream scientific analysis, scoring, or database storage.
+
     Args:
-        mol_data: Molecular data as a string (SMILES, MOL, SDF)
-        input_format: Format of the input data ('smiles', 'mol', 'sdf')
-        
+        mol_data (str): Molecular data as a string (SMILES, MOL, SDF).
+        input_format (str): Format of the input data ('smiles', 'mol', 'sdf').
+
     Returns:
-        Dictionary of all calculated properties
+        Dict[str, Any]: Dictionary of all calculated properties, including hydrogen bonding, logP, TPSA,
+                        molecular properties, functional groups, permeability, and structure identifiers.
+
+    Notes:
+        - Returns error information if parsing fails.
+        - Adds SMILES, InChI, and InChIKey for structure reference.
+
+    References:
+        - See individual property functions for literature references.
     """
     mol = parse_molecule(mol_data, input_format)
     
@@ -281,21 +369,29 @@ def calculate_all_properties(mol_data: str, input_format: str = 'smiles') -> Dic
     
     return properties
 
-def generate_molecule_svg(mol_data: str, input_format: str = 'smiles', 
-                         width: int = 400, height: int = 300, 
+def generate_molecule_svg(mol_data: str, input_format: str = 'smiles',
+                         width: int = 400, height: int = 300,
                          highlight_atoms: List[int] = None) -> str:
     """
-    Generate an SVG image of a molecule.
-    
+    Generates an SVG image of a molecule for visualization.
+
+    Scientific Rationale:
+        Molecular visualization is essential for interpreting chemical structure, functional groups, and
+        substructure matches. Highlighting atoms can be used to emphasize reactive sites or substructure matches.
+
     Args:
-        mol_data: Molecular data as a string (SMILES, MOL, SDF)
-        input_format: Format of the input data ('smiles', 'mol', 'sdf')
-        width: Image width in pixels
-        height: Image height in pixels
-        highlight_atoms: List of atom indices to highlight
-        
+        mol_data (str): Molecular data as a string (SMILES, MOL, SDF).
+        input_format (str): Format of the input data ('smiles', 'mol', 'sdf').
+        width (int): Image width in pixels.
+        height (int): Image height in pixels.
+        highlight_atoms (List[int], optional): List of atom indices to highlight.
+
     Returns:
-        SVG string representation of the molecule
+        str: SVG string representation of the molecule.
+
+    Notes:
+        - Hydrogens are removed for cleaner visualization.
+        - Stereo annotations are included for clarity.
     """
     mol = parse_molecule(mol_data, input_format)
     
@@ -324,19 +420,30 @@ def generate_molecule_svg(mol_data: str, input_format: str = 'smiles',
     
     return svg
 
-def perform_substructure_search(query_mol_data: str, target_mol_data: str, 
+def perform_substructure_search(query_mol_data: str, target_mol_data: str,
                                query_format: str = 'smarts', target_format: str = 'smiles') -> Dict[str, Any]:
     """
-    Perform a substructure search.
-    
+    Performs a substructure search to find occurrences of a query pattern within a target molecule.
+
+    Scientific Rationale:
+        Substructure searching is fundamental in cheminformatics for identifying motifs, pharmacophores,
+        or functional groups within larger molecules. SMARTS patterns allow for flexible substructure queries.
+
     Args:
-        query_mol_data: Query molecule data (usually SMARTS pattern)
-        target_mol_data: Target molecule data to search in
-        query_format: Format of the query data ('smarts', 'smiles')
-        target_format: Format of the target data ('smiles', 'mol', 'sdf')
-        
+        query_mol_data (str): Query molecule data (usually SMARTS pattern).
+        target_mol_data (str): Target molecule data to search in.
+        query_format (str): Format of the query data ('smarts', 'smiles').
+        target_format (str): Format of the target data ('smiles', 'mol', 'sdf').
+
     Returns:
-        Dictionary with search results
+        Dict[str, Any]: Dictionary with search results, including match status, count, atom indices, and visualization.
+
+    Notes:
+        - Returns a visualization with highlighted matches if found.
+        - Useful for SAR (structure-activity relationship) studies.
+
+    References:
+        - SMARTS language: https://www.daylight.com/dayhtml/doc/theory/theory.smarts.html
     """
     # Parse query molecule
     if query_format.lower() == 'smarts':
@@ -374,21 +481,30 @@ def perform_substructure_search(query_mol_data: str, target_mol_data: str,
     
     return result
 
-def calculate_similarity(mol1_data: str, mol2_data: str, 
+def calculate_similarity(mol1_data: str, mol2_data: str,
                         mol1_format: str = 'smiles', mol2_format: str = 'smiles',
                         fingerprint_type: str = 'morgan') -> Dict[str, float]:
     """
-    Calculate molecular similarity between two molecules.
-    
+    Calculates molecular similarity between two molecules using various fingerprinting methods.
+
+    Scientific Rationale:
+        Molecular similarity is a core concept in cheminformatics, used for virtual screening, clustering,
+        and SAR analysis. Fingerprints (e.g., Morgan, MACCS) encode molecular structure for rapid comparison.
+        Tanimoto and Dice coefficients are standard similarity metrics.
+
     Args:
-        mol1_data: First molecule data
-        mol2_data: Second molecule data
-        mol1_format: Format of the first molecule data
-        mol2_format: Format of the second molecule data
-        fingerprint_type: Type of fingerprint to use ('morgan', 'maccs', 'topological')
-        
+        mol1_data (str): First molecule data.
+        mol2_data (str): Second molecule data.
+        mol1_format (str): Format of the first molecule data.
+        mol2_format (str): Format of the second molecule data.
+        fingerprint_type (str): Type of fingerprint to use ('morgan', 'maccs', 'topological').
+
     Returns:
-        Dictionary with similarity metrics
+        Dict[str, float]: Dictionary with similarity metrics (Tanimoto, Dice) and fingerprint type.
+
+    References:
+        - Rogers, D., & Hahn, M. (2010). Extended-connectivity fingerprints. J. Chem. Inf. Model., 50(5), 742-754.
+        - Willett, P. (2014). Chemical similarity searching. J. Chem. Inf. Model., 54(1), 1-2.
     """
     from rdkit import DataStructs
     from rdkit.Chem import AllChem, MACCSkeys

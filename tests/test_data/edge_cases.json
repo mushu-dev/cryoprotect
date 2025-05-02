@@ -1,0 +1,204 @@
+{
+  "molecules": [
+    {
+      "name": "Water",
+      "smiles": "O",
+      "inchi": "InChI=1S/H2O/h1H2",
+      "inchikey": "XLYOFNOQVPJJNP-UHFFFAOYSA-N",
+      "formula": "H2O",
+      "molecular_weight": 18.015,
+      "properties": {
+        "melting_point": 0.0,
+        "boiling_point": 100.0,
+        "logp": -0.77,
+        "tpsa": 20.23,
+        "h_bond_donors": 1,
+        "h_bond_acceptors": 1,
+        "molecular_volume": 18.0,
+        "glass_transition_temp": -137.0
+      },
+      "description": "Smallest molecule with extreme hydrogen bonding properties",
+      "edge_case_type": "minimum_size"
+    },
+    {
+      "name": "Dextran",
+      "smiles": "C(C1C(C(C(C(C(C(C(C(C(C(C(C(C(C(C(C(C(C(C(CO)O)O)O)O)O)O)O)O)O)O)O)O)O)O)O)O)O)O)O)O",
+      "inchi": "InChI=1S/C20H40O20/c21-1-2(22)3(23)4(24)5(25)6(26)7(27)8(28)9(29)10(30)11(31)12(32)13(33)14(34)15(35)16(36)17(37)18(38)19(39)20(40)41/h2-20,21-40H,1H2/t2-,3-,4+,5-,6+,7-,8+,9-,10+,11-,12+,13-,14+,15-,16+,17-,18+,19-,20+/m1/s1",
+      "inchikey": "FBPFZTCFMRRESA-KRWDZBQOSA-N",
+      "formula": "C20H40O20",
+      "molecular_weight": 504.52,
+      "properties": {
+        "melting_point": null,
+        "boiling_point": null,
+        "logp": -7.92,
+        "tpsa": 320.0,
+        "h_bond_donors": 20,
+        "h_bond_acceptors": 20,
+        "molecular_volume": 485.3,
+        "glass_transition_temp": 224.0
+      },
+      "description": "Very large polysaccharide with extreme molecular weight",
+      "edge_case_type": "maximum_size"
+    },
+    {
+      "name": "Hexane",
+      "smiles": "CCCCCC",
+      "inchi": "InChI=1S/C6H14/c1-3-5-6-4-2/h3-6H2,1-2H3",
+      "inchikey": "VLKZOEOYAKHREP-UHFFFAOYSA-N",
+      "formula": "C6H14",
+      "molecular_weight": 86.175,
+      "properties": {
+        "melting_point": -95.3,
+        "boiling_point": 68.7,
+        "logp": 4.00,
+        "tpsa": 0.0,
+        "h_bond_donors": 0,
+        "h_bond_acceptors": 0,
+        "molecular_volume": 113.2,
+        "glass_transition_temp": -95.0
+      },
+      "description": "Extremely hydrophobic molecule with no hydrogen bonding capability",
+      "edge_case_type": "maximum_logp"
+    },
+    {
+      "name": "Phosphoric acid",
+      "smiles": "OP(=O)(O)O",
+      "inchi": "InChI=1S/H3O4P/c1-5(2,3)4/h(H3,1,2,3,4)",
+      "inchikey": "NBIIXXVUZAFLBC-UHFFFAOYSA-N",
+      "formula": "H3PO4",
+      "molecular_weight": 97.995,
+      "properties": {
+        "melting_point": 42.35,
+        "boiling_point": 158.0,
+        "logp": -2.15,
+        "tpsa": 94.83,
+        "h_bond_donors": 3,
+        "h_bond_acceptors": 4,
+        "molecular_volume": 64.8,
+        "glass_transition_temp": -20.0
+      },
+      "description": "Highly acidic compound with extreme hydrogen bonding",
+      "edge_case_type": "maximum_h_bonding_density"
+    },
+    {
+      "name": "Perfluorooctane",
+      "smiles": "C(C(C(C(C(C(C(F)(F)F)(F)F)(F)F)(F)F)(F)F)(F)F)(F)(F)F",
+      "inchi": "InChI=1S/C8HF17/c9-1(10,2(11,12)4(15,16)6(19,20)8(23,24,25)26)3(13,14)5(17,18)7(21,22)9/h1H",
+      "inchikey": "CJDDBWWLWZRFHL-UHFFFAOYSA-N",
+      "formula": "C8HF17",
+      "molecular_weight": 438.057,
+      "properties": {
+        "melting_point": -25.0,
+        "boiling_point": 103.0,
+        "logp": 7.93,
+        "tpsa": 0.0,
+        "h_bond_donors": 0,
+        "h_bond_acceptors": 0,
+        "molecular_volume": 275.6,
+        "glass_transition_temp": -50.0
+      },
+      "description": "Extremely hydrophobic fluorinated compound with unusual properties",
+      "edge_case_type": "extreme_hydrophobicity"
+    },
+    {
+      "name": "Sulfuric acid",
+      "smiles": "OS(=O)(=O)O",
+      "inchi": "InChI=1S/H2O4S/c1-5(2,3)4/h(H2,1,2,3,4)",
+      "inchikey": "QAOWNCQODCNURD-UHFFFAOYSA-N",
+      "formula": "H2SO4",
+      "molecular_weight": 98.079,
+      "properties": {
+        "melting_point": 10.31,
+        "boiling_point": 337.0,
+        "logp": -2.08,
+        "tpsa": 74.60,
+        "h_bond_donors": 2,
+        "h_bond_acceptors": 4,
+        "molecular_volume": 58.8,
+        "glass_transition_temp": -68.0
+      },
+      "description": "Strong acid with extreme reactivity",
+      "edge_case_type": "extreme_reactivity"
+    },
+    {
+      "name": "Sodium hydroxide",
+      "smiles": "[OH-].[Na+]",
+      "inchi": "InChI=1S/Na.H2O/h;1H2/q+1;/p-1",
+      "inchikey": "HEMHJVSKTPXQMS-UHFFFAOYSA-M",
+      "formula": "NaOH",
+      "molecular_weight": 39.997,
+      "properties": {
+        "melting_point": 318.0,
+        "boiling_point": 1388.0,
+        "logp": -0.77,
+        "tpsa": 20.23,
+        "h_bond_donors": 0,
+        "h_bond_acceptors": 1,
+        "molecular_volume": 18.1,
+        "glass_transition_temp": null
+      },
+      "description": "Strong base with extreme pH and ionic character",
+      "edge_case_type": "ionic_compound"
+    },
+    {
+      "name": "Benzene",
+      "smiles": "c1ccccc1",
+      "inchi": "InChI=1S/C6H6/c1-2-4-6-5-3-1/h1-6H",
+      "inchikey": "UHOVQNZJYSORNB-UHFFFAOYSA-N",
+      "formula": "C6H6",
+      "molecular_weight": 78.112,
+      "properties": {
+        "melting_point": 5.53,
+        "boiling_point": 80.1,
+        "logp": 2.13,
+        "tpsa": 0.0,
+        "h_bond_donors": 0,
+        "h_bond_acceptors": 0,
+        "molecular_volume": 87.8,
+        "glass_transition_temp": -108.0
+      },
+      "description": "Aromatic compound with no hydrogen bonding capability",
+      "edge_case_type": "aromatic_no_h_bonding"
+    },
+    {
+      "name": "Ammonium chloride",
+      "smiles": "[NH4+].[Cl-]",
+      "inchi": "InChI=1S/ClH.H3N/h1H;1H3/p-1",
+      "inchikey": "RWSXRVCMGQZWBV-UHFFFAOYSA-N",
+      "formula": "NH4Cl",
+      "molecular_weight": 53.491,
+      "properties": {
+        "melting_point": 338.0,
+        "boiling_point": null,
+        "logp": -4.37,
+        "tpsa": 0.0,
+        "h_bond_donors": 4,
+        "h_bond_acceptors": 0,
+        "molecular_volume": 51.2,
+        "glass_transition_temp": null
+      },
+      "description": "Ionic salt with extreme water solubility",
+      "edge_case_type": "extreme_water_solubility"
+    },
+    {
+      "name": "Cyclohexane",
+      "smiles": "C1CCCCC1",
+      "inchi": "InChI=1S/C6H12/c1-2-4-6-5-3-1/h1-6H2",
+      "inchikey": "XDTMQSROBMDMFD-UHFFFAOYSA-N",
+      "formula": "C6H12",
+      "molecular_weight": 84.159,
+      "properties": {
+        "melting_point": 6.47,
+        "boiling_point": 80.74,
+        "logp": 3.44,
+        "tpsa": 0.0,
+        "h_bond_donors": 0,
+        "h_bond_acceptors": 0,
+        "molecular_volume": 108.7,
+        "glass_transition_temp": -87.0
+      },
+      "description": "Cyclic alkane with no functional groups",
+      "edge_case_type": "no_functional_groups"
+    }
+  ]
+}

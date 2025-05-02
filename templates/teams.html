@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Collaboration - CryoProtect Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        .team-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        .team-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .team-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .member-list {
+            margin-top: 15px;
+        }
+        
+        .member-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .member-role {
+            background-color: #e0e0e0;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+        }
+        
+        .role-admin {
+            background-color: #ffcdd2;
+        }
+        
+        .role-editor {
+            background-color: #c8e6c9;
+        }
+        
+        .role-viewer {
+            background-color: #bbdefb;
+        }
+        
+        .resource-list {
+            margin-top: 15px;
+        }
+        
+        .resource-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .resource-type {
+            background-color: #e0e0e0;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+        }
+        
+        .type-project {
+            background-color: #fff9c4;
+        }
+        
+        .type-mixture {
+            background-color: #b3e5fc;
+        }
+        
+        .type-experiment {
+            background-color: #dcedc8;
+        }
+        
+        .comment-section {
+            margin-top: 20px;
+        }
+        
+        .comment {
+            padding: 10px;
+            border-left: 3px solid #ddd;
+            margin-bottom: 10px;
+        }
+        
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .comment-content {
+            margin-bottom: 5px;
+        }
+        
+        .comment-actions {
+            text-align: right;
+            font-size: 0.8em;
+        }
+        
+        .notification-badge {
+            background-color: #f44336;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 0.7em;
+            position: relative;
+            top: -8px;
+            left: -5px;
+        }
+        
+        .activity-feed {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+        }
+        
+        .activity-item {
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .activity-time {
+            font-size: 0.8em;
+            color: #666;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 50%;
+            max-width: 500px;
+        }
+        
+        .close-modal {
+            float: right;
+            cursor: pointer;
+            font-size: 1.5em;
+        }
+        
+        .tab-container {
+            margin-top: 20px;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab-button {
+            padding: 10px 15px;
+            cursor: pointer;
+            background-color: #f1f1f1;
+            border: none;
+            outline: none;
+        }
+        
+        .tab-button.active {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-bottom: 1px solid #fff;
+            margin-bottom: -1px;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CryoProtect Analyzer</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('dashboard_page') }}">Dashboard</a></li>
+                <li><a href="{{ url_for('molecules') }}">Molecules</a></li>
+                <li><a href="{{ url_for('mixtures') }}">Mixtures</a></li>
+                <li><a href="{{ url_for('experiments') }}">Experiments</a></li>
+                <li><a href="{{ url_for('predictions') }}">Predictions</a></li>
+                <li><a href="{{ url_for('comparisons') }}">Comparisons</a></li>
+                <li><a href="{{ url_for('protocol_designer_page') }}">Protocol Designer</a></li>
+                <li><a href="{{ url_for('teams_page') }}" class="active">Teams</a></li>
+                <li><a href="{{ url_for('profile_page') }}">Profile</a></li>
+                <li><a href="#" id="notifications-button">Notifications <span id="notification-badge" class="notification-badge">0</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Team Collaboration</h2>
+            <p>Create and manage research teams to collaborate on projects, mixtures, and experiments.</p>
+            
+            <div class="actions">
+                <button id="create-team-button" class="primary-button">Create New Team</button>
+            </div>
+            
+            <div id="teams-container">
+                <!-- Teams will be loaded here dynamically -->
+                <div class="loading">Loading teams...</div>
+            </div>
+        </section>
+        
+        <!-- Create Team Modal -->
+        <div id="create-team-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3>Create New Team</h3>
+                <form id="create-team-form">
+                    <div class="form-group">
+                        <label for="team-name">Team Name</label>
+                        <input type="text" id="team-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="team-description">Description</label>
+                        <textarea id="team-description" name="description" rows="3"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="primary-button">Create Team</button>
+                        <button type="button" class="secondary-button cancel-button">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Add Member Modal -->
+        <div id="add-member-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3>Add Team Member</h3>
+                <form id="add-member-form">
+                    <input type="hidden" id="team-id-member" name="team_id">
+                    <div class="form-group">
+                        <label for="member-email">User Email</label>
+                        <input type="email" id="member-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="member-role">Role</label>
+                        <select id="member-role" name="role" required>
+                            <option value="admin">Admin</option>
+                            <option value="editor">Editor</option>
+                            <option value="viewer" selected>Viewer</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="primary-button">Add Member</button>
+                        <button type="button" class="secondary-button cancel-button">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Share Resource Modal -->
+        <div id="share-resource-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3>Share Resource</h3>
+                <form id="share-resource-form">
+                    <input type="hidden" id="team-id-resource" name="team_id">
+                    <div class="form-group">
+                        <label for="resource-type">Resource Type</label>
+                        <select id="resource-type" name="resource_type" required>
+                            <option value="project">Project</option>
+                            <option value="mixture">Mixture</option>
+                            <option value="experiment">Experiment</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="resource-id">Resource ID</label>
+                        <input type="text" id="resource-id" name="resource_id" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="primary-button">Share Resource</button>
+                        <button type="button" class="secondary-button cancel-button">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Team Details Modal -->
+        <div id="team-details-modal" class="modal">
+            <div class="modal-content team-details-content">
+                <span class="close-modal">&times;</span>
+                <h3 id="team-details-name">Team Name</h3>
+                <p id="team-details-description">Team description will appear here.</p>
+                
+                <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" data-tab="members">Members</button>
+                        <button class="tab-button" data-tab="resources">Shared Resources</button>
+                        <button class="tab-button" data-tab="activity">Activity</button>
+                    </div>
+                    
+                    <div id="members-tab" class="tab-content active">
+                        <div class="actions">
+                            <button class="add-member-button primary-button">Add Member</button>
+                        </div>
+                        <div class="member-list">
+                            <!-- Members will be loaded here dynamically -->
+                        </div>
+                    </div>
+                    
+                    <div id="resources-tab" class="tab-content">
+                        <div class="actions">
+                            <button class="share-resource-button primary-button">Share Resource</button>
+                        </div>
+                        <div class="resource-list">
+                            <!-- Shared resources will be loaded here dynamically -->
+                        </div>
+                    </div>
+                    
+                    <div id="activity-tab" class="tab-content">
+                        <div class="activity-feed">
+                            <!-- Activity feed will be loaded here dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Notifications Modal -->
+        <div id="notifications-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3>Notifications</h3>
+                <div class="actions">
+                    <button id="mark-all-read-button" class="secondary-button">Mark All as Read</button>
+                </div>
+                <div id="notifications-list">
+                    <!-- Notifications will be loaded here dynamically -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 CryoProtect Analyzer</p>
+    </footer>
+
+    <script>
+        // Store Supabase configuration
+        const supabaseUrl = "{{ supabase_url }}";
+        const supabaseKey = "{{ supabase_key }}";
+    </script>
+    <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/teams.js') }}"></script>
+</body>
+</html>
