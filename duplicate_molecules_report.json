@@ -1,0 +1,3364 @@
+{
+  "name_duplicates": {
+    "groups": 9,
+    "total_molecules": 254,
+    "updated_molecules": 254,
+    "groups_data": [
+      {
+        "group_id": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+        "name": "none",
+        "count": 238,
+        "molecules": [
+          {
+            "id": "8b894fdf-7cfb-4024-86bf-f0fe54f7103e",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 621593,
+            "smiles": "CC(C)CCCN1C(=C(C(=O)NC1=O)C=C2C=CC(=O)C(=C2)OC)O",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:00:48.195029+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "15c75c1a-ff45-4a2f-8900-e727621f250d",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 812747,
+            "smiles": "C1=CC=C(C=C1)C[C@@H](C(=O)NC2=NN=C(S2)C3=CC=C(C=C3)F)N",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:21:16.116220+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "716a2f71-9845-4037-9a28-6d5f1320b42b",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 1192209,
+            "smiles": "C[C@@H]1CCCN(C1)CC2=C3C(=C(C(=C(O3)C(F)(F)F)C4=CC(=C(C=C4)OC)OC)O)C=CC2=O",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:28:41.596107+00:00",
+            "is_public": false,
+            "properties": {
+              "timestamp": "2025-05-01 23:37:11.793721+00",
+              "test_property": "test_value"
+            }
+          },
+          {
+            "id": "f24242de-9616-4e81-9b3c-e5fc18a51f28",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 1655669,
+            "smiles": "C[C@H](C1=CC=CC=C1)NC2=C(C(=O)N(C2=O)C3CCCCC3)Cl",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:11:50.103351+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "d97e6251-703a-4bbe-b711-42ab887b0740",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 2591497,
+            "smiles": "CC1=C(C=C(C=C1)S[C@H](C)C(=O)NC2=NC=C(C=C2)Cl)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:37:34.338181+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "565d1d92-8062-4382-9a1d-5da8e781d0b5",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 6582406,
+            "smiles": "CCC1=CC=CC=C1NC(=O)CSC2=C([C@@H]([C@@H](C(=C)N2)C(=O)OCC=C)C3=CC=CO3)C#N",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:05:18.866508+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "844e3cc8-90d4-4016-b801-789b449fb70b",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 9781157,
+            "smiles": "CC1=C(C(=NN1CC2=C(C=CC=C2Cl)Cl)C)/C=N/NC(=O)C3=CC=CC=C3",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:05:01.389679+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "4fb1effa-0d6a-418f-8b41-80c94bd66105",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 12896013,
+            "smiles": "C1=C[C@H]2[C@@]3(C(=C([C@@]3([C@@H]1N2N=O)C(F)(F)F)C(F)(F)F)C(F)(F)F)C(F)(F)F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:15:56.320983+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "44d64958-4f93-4122-b6f5-04b50e3e9ef4",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 13049234,
+            "smiles": "C[C@H](C1=CC=CC=C1)N2CCCOP2(=O)Cl",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:28:13.710012+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "0cf005ec-98f6-43e6-87fd-024a7c3d22d9",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 13452147,
+            "smiles": "C1=CC(=CC=C1CSC(=N)N=NC2=CC=C(C=C2)NN=C(N)N)[N+](=O)[O-]",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:27:23.178969+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "04c024ec-2a82-4868-aeac-ec3a73db9c9c",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 13494764,
+            "smiles": "C/C(=N/OC)/C1=CC=CC2=CC=CC=C21",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:28:25.839499+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "ab49d6ab-e4ae-43eb-b14b-ffe07a209eb8",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 14385857,
+            "smiles": "C1=CC=C(C=C1)S(=O)(=O)NC2=CC=C(C=C2)C3=NN=C(O3)C4=CC=C(C=C4)N",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:12:15.579846+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "6daf6d77-cb96-4a62-b38d-1286dc69c324",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 14411574,
+            "smiles": "CC1([C@@H]([C@H]2[C@@H](COC(O2)C3=CC=CC=C3)O[C@@H]1OC)NC(=O)C(F)(F)F)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:06:18.773861+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "1a353afb-4d3e-4347-ae6f-b1fd711e8f7d",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 14526412,
+            "smiles": "CC(=O)OC1CC(N(C=C1)C(=O)OC(C)(C)C)C(=O)OC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:00:44.479650+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "385b150f-ca9a-4ec0-9a60-fc114b178ca4",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 14569161,
+            "smiles": "CC1C2=C(C=C(C=C2)OC)N(C1=O)OC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:03:39.067360+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "7637d51f-10f1-49be-bdc1-197d0ba4a364",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 14587888,
+            "smiles": "C[C@@H](CO)[C@@H]1[C@@H]([C@@H]([C@H]2[C@@H]([C@@](CO[C@H]2O1)(C)OCC3=CC=CC=C3)OCC4=CC=CC=C4)OCC5=CC=CC=C5)COCOC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:25:32.859532+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "0a676ece-5633-452d-8cc2-666640209fb5",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 14687283,
+            "smiles": "C1CN\\2CCC1C(=O)/C2=C/C3=CC=CC3",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:27:08.553063+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "449a9f61-93b7-4670-aecc-8761db1294ca",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 14748527,
+            "smiles": "C1CCN(CC1)CCC2CCCCN2C3=CC(=NO3)C4=CC=CC=C4",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:01:49.239466+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "69e62b55-dbe3-4322-843d-7d400797ddff",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 14934486,
+            "smiles": "CC(C)[C@@H]1CCCN1N2[C@@H](CCCC2=O)CC(=O)C3=CC(=C(C=C3)OC)OC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:32:28.371506+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "bb81d998-d954-4552-8917-d5ea17ea9d3a",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 15587076,
+            "smiles": "CCOC(=O)C(C)OC1=CC=C(C=C1)NC2=NC3=C(C=C(C=C3)C)N=N2",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:05:44.675604+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "fea0c73c-b047-4b3b-88bc-3e5f3443f955",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 15920085,
+            "smiles": "C1=CC=C(C=C1)C(=O)/C=C(\\C(F)(F)F)/N",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:28:32.734696+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "01c6af65-ce56-44f6-9a00-8b2c1f23821f",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 17625871,
+            "smiles": "COC1=C(C=C(C=C1)Cl)NC(=O)CSC2=NN=C(N2CC=C)CCNC(=O)C3=CC=C(C=C3)F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:36:12.180274+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "22e14e74-03c0-41c5-a703-29a43014989c",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 18204055,
+            "smiles": "CCCN(CC1=NC(=O)C2=C(N1)C=C(C=C2)Cl)C(=O)CSC3=CC(=C(C=C3)F)F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:01:19.351129+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "9f0b4c4b-423e-4e3c-87b1-4153a5d51fe2",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 19216871,
+            "smiles": "CCCCSC1=NC2=NC(=C(C(N2N1)C3=CC=CC=N3)C(=O)NC4=CC=C(C=C4)C)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:04:30.045142+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "11e57ab2-548c-432b-a150-e559c9a5a732",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 20512629,
+            "smiles": "C1CC2=CC=CC=C2N(C1O)/N=N/N3C4C=CC=CC4=CC=C3O",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 02:58:43.778686+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "dfb6456e-bdcf-4f8a-b703-424f0dc00864",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 22246505,
+            "smiles": "CC(C1(CN(CC1C2=CC(=C(C=C2)OC)OCC#CC3=CC=CC=C3)C(=O)OC)C)O",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:09:35.079800+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "f0840a2d-5b6b-4ac2-aeb6-1d1dd0e5032f",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 24932882,
+            "smiles": "CC(C)C1=NC(=O)C2=C(N1)CN(CC2)CC3=C(C=C(C=C3)O)Cl",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:29:30.419366+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "dde4149d-134c-4f44-8202-a0d55aa38516",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 25472594,
+            "smiles": "C[C@H]1C[C@@H](CN(C1)S(=O)(=O)C2=C(C=CC(=C2)C(=O)NC3=CC(=C(C=C3)NC(=O)C)Cl)OC)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:27:43.239611+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "e316efe8-3eac-4edd-95df-e84a7b8b1933",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 25742924,
+            "smiles": "CCCCOC1=C(C=C(C=C1)C(=O)NNC(=O)C[C@H](C2=CC=CC=C2)C(=O)[O-])OC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:11:30.444499+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "c72815e6-38e4-4a96-94b7-e37dad241e71",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 25883063,
+            "smiles": "C1=CC=C(C(=C1)C(=O)NC2=NN=C(C=C2)SCC(=O)[O-])F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:03:42.496273+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "5f87fbf4-4c42-4028-b42a-43bc40f5a5ab",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 26505777,
+            "smiles": "CCCNC(=O)NC(=O)CNC1=CC=C(C=C1)Br",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:17:04.987378+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "dd4c1f0d-9ebc-4480-8e64-2999feeb34ae",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 26669508,
+            "smiles": "CC[C@@H]1C2=C(CCN1CC(=O)NC3=CC=C(C=C3)OC(F)F)SC=C2",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:34:25.909662+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "6706841c-3860-4a58-87b2-33131cd5825d",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 26764754,
+            "smiles": "CN(OC)S(=O)(=O)C1=CC=C(C=C1)C(=O)NC2=CC=CC=C2OC3=CC=CC=C3Cl",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:30:53.262471+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "e1a220f9-9eba-4980-b90e-061ca88a5128",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 26786758,
+            "smiles": "C1[C@H](OC(=O)C2=C1C=C(C=C2)C(=O)NC3=CC=C(C=C3)OCC#N)C4=CC=CC=C4",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:39:44.514926+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "df64951b-113f-4874-8009-473b92066b5d",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 26800053,
+            "smiles": "CC1=C(C=C(C=C1)Cl)NC(=O)C2=CC=C(C=C2)S(=O)(=O)N[C@H]3CCS(=O)(=O)C3",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:17:41.591158+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "2506bb54-51aa-45df-9e4f-dfbfcfeeb8cb",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 27202679,
+            "smiles": "CC(C)C1=CC=C(C=C1)S(=O)(=O)N2CCN(CC2)CC(=O)N[C@@H](CC3=CC=CC=C3)C(=O)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:33:36.126562+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "74d6f5b4-2136-4300-849d-89cb7406713d",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 27300128,
+            "smiles": "C[C@@H](C(=O)N1CCN(CC1)C2=CC=CC=C2)SC3=NC4=C(C(=CS4)C5=CC=CC=C5)C(=O)N3C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:01:44.609010+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "9c02ff54-c311-47e2-8cc8-564d7d00ea07",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 27909914,
+            "smiles": "CCC1=C(SC2=C1C(=O)N(C(=N2)SCC3=NN=C(O3)C4=CC=C(C=C4)OC)CCOC)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:26:17.375363+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "541d2378-ec02-48e5-a9ce-b2be30074406",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 28188209,
+            "smiles": "C1C[C@H](CN(C1)C(=O)CN)C(=O)N",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:21:27.535612+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "f6fc4ac7-d7eb-4815-9606-700c53aeb48b",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 29169965,
+            "smiles": "C[NH+]1CCN(CC1)CCCNS(=O)(=O)C2=CC3=C(C=C2)OCCO3",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:09:39.023568+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "3e100362-7c4c-4675-932b-6ef1f5de1949",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 29397845,
+            "smiles": "CC1(CC(CC([NH2+]1)(C)C)NC(=S)N(C[C@@H]2CCCO2)CC3=CC=C(C=C3)Cl)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:07:12.201310+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "318acaa9-d8d1-4797-957b-70867d6adbc8",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 29671174,
+            "smiles": "CCOC(=O)[C@](CC(=O)NCC1=CC(=C(C=C1)F)C)(C#N)C2=C(C=C(C=N2)C(F)(F)F)Cl",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:18:37.963153+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "554aa785-016a-4c0b-967b-974894a709b8",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 29881300,
+            "smiles": "C[C@H](C(=O)NC1=CC=CC=C1C(=O)NCCC2=CC=CC=C2)OC(=O)C3C[C@H]4CCC[C@@H](C3)C4=O",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:22:31.583280+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "061373cd-f153-4c8a-9003-d5ddf3b1169c",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 29937411,
+            "smiles": "CC1=CC=C(C=C1)C2=NN([C@@H](C2)C3=CC=CO3)C(=O)CSC4=NC=NC5=C4SC=C5",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:13:38.606636+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "978bfaa1-2ec6-4e5f-a5b7-a41b5f88d21d",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 30112169,
+            "smiles": "CC1=C(C=C(C=C1)N)NC(=O)[C@@H](C)OC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:33:51.988325+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "95a32927-1997-40cc-8bab-c64d96af7665",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 30131134,
+            "smiles": "CC(=O)C1=CC=CC=C1OCCSC2=NN=C(N2N)C3=CC(=CC=C3)Br",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:29:00.440919+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "de609ee7-c547-4a10-aaa5-1b01458700da",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 30274363,
+            "smiles": "CCCNC(=O)NC(=O)[C@@H](C)OC(=O)C1=CC=C(C=C1)S(=O)(=O)NC(C)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:03:08.203162+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "a3f0e4c0-4b70-40c7-be37-08ef49a62fce",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 30428309,
+            "smiles": "C[C@H]([C@H](C1=CC=CC=C1)N2CCCC2)NC(=O)COC(=O)C3=CC=CC=C3",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:09:49.002525+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "dfe5d5c4-c3ce-462d-8a22-69beede1e026",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 30547123,
+            "smiles": "CC[NH+](CC)[C@H](CNC(=O)CC1=C(N2C(=NC(=N2)SC)N=C1C)C)C3=CC(=CC=C3)OC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:40:07.971622+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "295c94b6-355e-4cd4-aaac-8a4b2cbd9957",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 30628503,
+            "smiles": "CC[C@@H](C1=CC=C(C=C1)Cl)NC(=O)COC(=O)C2=C(C=CC(=C2)Cl)[N+](=O)[O-]",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:31:40.438862+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "3c3e3209-02d6-4a3b-8e72-43bb22a637d2",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 30688119,
+            "smiles": "CC[C@@H](CNC(=O)COC(=O)C1=CC(=CC=C1)S(=O)(=O)N2CCC3=CC=CC=C32)C4=CC=CC=C4",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:35:10.736416+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "2d9af314-2adf-4ba3-913a-72afc0069035",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 31145930,
+            "smiles": "CN1C=CN=C1SCC(=O)NC2=CC=C(C=C2)C(=O)NC3=NC=C(S3)CC4=CC(=CC=C4)OC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:32:35.168545+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "eeb79925-d1d2-4d18-8ce5-7df6cc86f1e8",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 31327100,
+            "smiles": "CCC1=CC=C(C=C1)N2C[C@H](CC2=O)C(=O)N(C)CC3=CC(=C(C=C3)OC)F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:02:11.700306+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "2f5e5220-4822-41e2-8890-555595944834",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 31446208,
+            "smiles": "C1CCN(CC1)C(=O)N2CCN(CC2)C(=O)COC(=O)CCNC(=O)C3=CC=C(C=C3)[N+](=O)[O-]",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:11:16.501842+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "25a2a480-3310-49ac-8ba0-1a6e5bc65a27",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 31716077,
+            "smiles": "CC1=CC=CC=C1[C@@H](C)NC(=O)CSC2=NC3=CC=CC=C3C(=O)N2C(C)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:08:15.343915+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "bff2bbf6-b4e1-4695-a239-4b492717aadd",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 31853068,
+            "smiles": "CS(=O)(=O)CC[C@H](C(=O)NCCCOC1CCCCC1)NS(=O)(=O)C2=CC=CC=C2",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:22:19.484170+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "c4f1b029-0cee-4602-97c9-bf0f3ed960b5",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 32096954,
+            "smiles": "CC1=C(C(=NN1C2=CC=C(C=C2)F)C)/C=C/C(=O)O[C@H](C)C(=O)NC(=O)N[C@@H](C)COC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:25:11.554869+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "7919ca7e-fd1c-43a7-81e3-2b1c217226d5",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 32234148,
+            "smiles": "C[C@@H](C(=O)NC(=O)NCC1=CC=CS1)OC(=O)CC2=COC3=C2C=CC(=C3)O",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:15:44.572183+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "314eb421-dbf6-4333-b5c1-a490df727b06",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 32259847,
+            "smiles": "C[C@@H](C(=O)NC(=O)NC1=CC=CC=C1F)[N+]2=CC=C(C=C2)N(C)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:15:26.953497+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "3989e337-41af-46a8-a72d-5da345e8fe4a",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 32267518,
+            "smiles": "CCNC(=O)NC(=O)[C@@H](C)OC(=O)CCNC(=O)/C=C/C1=CC=CC=C1",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:06:27.070988+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "424cee51-b1c0-47e9-897e-402796b8af9c",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 32465821,
+            "smiles": "C1CC1C(=O)N2CCN(CC2)C(=O)C3=C(C4=CC=CC=C4O3)CSC5=CC=C(C=C5)Cl",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:30:33.037518+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "5e4efebe-e529-4254-86da-768bfe2777f5",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 32709265,
+            "smiles": "CC1=C(C(=CC=C1)N2C=CN=C2S[C@H](C)C(=O)NC3=C(C=C(C=C3)[N+](=O)[O-])C)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:38:41.880397+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "a3d06460-6977-4eaf-a92f-26113eb63c34",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 32833312,
+            "smiles": "C[C@H](C(=O)NC1=C(OC2=CC=CC=C21)C(=O)C)N3CCN(CC3)CC4=CC5=C(C=C4)OCO5",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:26:41.868794+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "a001ab2e-84d0-4c95-866b-a952667c45c7",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 33077851,
+            "smiles": "CC(C)CCCNC(=O)[C@@H]1CC(=O)N(C1)C2=CC(=CC=C2)Cl",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:07:59.737912+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "dc802521-d471-4490-8838-9e9aa1ea2c0c",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 33195816,
+            "smiles": "CC1=CC(=C(C=C1)OC)CNC(=O)[C@@H](C)N2C(=O)C3=C(C2=O)C=C(C=C3)Br",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:36:37.452768+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "0f995be2-119f-43a5-84f8-aba55a5ac8d6",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 33459585,
+            "smiles": "CN(CC1=CC=C(C=C1)C(=O)OC)CC(=O)NCC2=CC=C(C=C2)Cl",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:27:35.128682+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "21f4857b-ca42-429f-82fe-a6db0c1efbf4",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 33481278,
+            "smiles": "C1=CC=C(C(=C1)CCC(=O)OCC(=O)NC(=O)NCCC2=CC=CS2)F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:26:01.318136+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "03dd580d-38d0-47f3-978e-ae5ad0cb0f6c",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 33588982,
+            "smiles": "CC(=O)N1CCCN(CC1)CCC(=O)NC2=CC=C(C=C2)[N+](=O)[O-]",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:24:48.761780+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "c83df001-b38e-4f9c-8f59-474375aad564",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 33845174,
+            "smiles": "C[C@H](C(=O)N(C)C1=CC=CC=C1)OC(=O)C2=CC3=C(C(=C2)Cl)OCCCO3",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:32:47.516200+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "cd41d383-90b7-45ce-b5bb-f533b0c45808",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 33957746,
+            "smiles": "COC1=CC(=CC(=C1OC)OC)C2=NC3=CC=CC=C3C(=C2)C(=O)NNC(=O)C4=CC=C(C=C4)F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:23:02.490200+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "6b31f2e6-6499-442c-8964-b5d9ca04d71d",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 34198373,
+            "smiles": "C1C[NH+](CCN(C1)CCC(=O)NC2CC2)CC3=CC=CC=C3",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:26:05.147091+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "2fafb684-0b76-4997-81a4-2d5577e98126",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 34855195,
+            "smiles": "CC(C)[C@@H](C(=O)NC1=C(C=C(C=C1)F)F)SC2=NC=CN2C3=CC=CC=C3",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:04:17.041551+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "b78f9a91-34c4-4820-8159-792759e73a79",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 34882548,
+            "smiles": "CCCC12CN3CC(C1=O)(CN(C2)C3C4=CC=C(C=C4)OC(C)C)CC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:30:11.311663+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "98e85124-d999-4891-844e-07fda8f84b22",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 35918801,
+            "smiles": "CCCC1=CC=C(C=C1)NC(=O)C[NH+]2CCC(CC2)C(=O)NC3=NOC(=C3)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:16:11.810895+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "dd25a714-f5de-463b-a61d-573b08c1ce66",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 36325480,
+            "smiles": "CC1=CC=C(C=C1)OCC[NH+](C)[C@H](C)C(=O)C2=C(C(=C(N2)C)C(=O)C)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:39:07.805213+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "83308dee-5b13-4d4a-b45f-c67a2ffec995",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 36385753,
+            "smiles": "CCOC1=C(C=C(C(=C1)CC(=O)NC2=CN=C(C=C2)N3C=CC=N3)Br)OCC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:13:20.098990+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "36a11df7-4c53-4666-abc6-57cfabacbea9",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 36846983,
+            "smiles": "C1CCC[NH+](CC1)CC2=CSC(=N2)NC(=O)CC3=C(C=CC=C3Cl)Cl",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:10:50.650249+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "429609e4-e269-44bd-9faf-c1c202df9ea5",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 37023747,
+            "smiles": "C[C@@H](C(=O)N(CCCOC)C1=C(N(C(=O)NC1=O)CC(C)C)N)OC2=CC=CC=C2C#N",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:13:00.520200+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "6ae93610-47ab-4e1d-ac6c-55173595af7b",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 37138694,
+            "smiles": "CS(=O)(=O)NCCNC(=O)CSC1=CC=CC=C1",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 02:59:08.422115+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "4598284d-cf8d-4ea8-bc0d-d7edf78a5940",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 37182810,
+            "smiles": "COC1=CC=CC=C1NC(=O)C2CC[NH+](CC2)CC(=O)NC3=CC=NN3CC4=CC(=CC=C4)Cl",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 02:59:04.126325+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "b182f3e1-d495-4cb7-83c3-993770970dac",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 37241680,
+            "smiles": "C1CN(CCN1CC2=CSC=C2)C(=O)CCCN3C=NC4=CC=CC=C4C3=O",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:24:29.919717+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "f0b4476a-a673-4b6c-bf4b-c94e7e2addc6",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 37294113,
+            "smiles": "CN1C2=C(C=C(C=C2)S(=O)(=O)N3CCCCC3)N=C1CCC(=O)N4CCC[C@H]4C5=CC=C(C=C5)F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:06:35.433709+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "cf51c5dd-ace7-433f-b757-5091f7bcb450",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 37355137,
+            "smiles": "C[C@H](C1=CC=C(C=C1)C(F)(F)F)NC(=O)CN2C(=O)[C@@](NC2=O)(C)C3=CC4=CC=CC=C4C=C3",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:21:24.449186+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "9bd1c31d-ee4c-4874-8dea-e71d7a87de0b",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 37547511,
+            "smiles": "CC1=C(C=CC(=N1)C2=CC=CS2)C(=O)OCC3=NN=C4N3C5=CC=CC=C5C(=O)N4C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:13:25.053551+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "55d3335e-5146-43f5-b6b9-ad61c63bf7ce",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 37596258,
+            "smiles": "CC1=CC(=CC=C1)NC(=O)[C@H](C)NC2=CC(=CC=C2)OCC(F)(F)F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:10:42.297669+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "f70e9d68-f150-4ee0-94f2-6b68b0e6f86c",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 37826027,
+            "smiles": "CC(C)[C@H](C(=O)NC1=CC=CC(=C1)NC(=O)C)OC(=O)C2=C(C(=CC=C2)Cl)N",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:05:09.601630+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "eadf1ab0-239d-4270-8e44-b9fde6fcab91",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 38566127,
+            "smiles": "CC1=CC2=C(C=C1)NC(=C2CC(=O)OCC(=O)C3=CC=CC=C3F)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:34:16.476696+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "f3a3ab58-ed6b-4dd9-b818-1dceb9393364",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 38585565,
+            "smiles": "CC1=CC(=C(C=C1)C(=O)NC2=CC=C(C=C2)CC(=O)NCCOC)O",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:08:43.382421+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "1f0e0cec-9fdb-427a-a19d-815bc8a8b7f7",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 38890457,
+            "smiles": "CCOC1=CC(=C(C=C1)OCC)NS(=O)(=O)C2=C(C=CC(=C2)Cl)C#N",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:05:05.816419+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "437eb0c9-2d82-4e04-9925-bbca301e8793",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 38902277,
+            "smiles": "CC[C@@H]1CCCN(C1)C(=O)C2=C(C3=C(S2)N=CC(=C3)C(=O)C)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:14:39.717880+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "ee8af511-9cb2-4528-bd15-5d6bfc3f1a84",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 38910641,
+            "smiles": "CC(C)[C@@H](C(=O)N1CCN(CC1)C(=O)C2=CC=CO2)NC(=O)C3=CC=CS3",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:15:48.732386+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "794868a9-8d84-4a67-a762-51880c7e3acc",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 39163609,
+            "smiles": "C=CCN1C(=O)C2=C(N=C1NCC[NH3+])SC=C2C3=CC=C(C=C3)F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:36:05.613196+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "8f3399ae-0ed9-4e36-8dfe-1e80b2d4da2c",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 39168369,
+            "smiles": "C[C@@H](C1=CC=C(C=C1)OC(F)(F)F)NC(=O)C2=CC(=CC=C2)N3CCCC3=O",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 02:59:22.346271+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "2adaa469-f7e3-4d68-972d-98827e6e22c7",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 39255783,
+            "smiles": "C1=CC=C(C=C1)CS(=O)(=O)NCCNC(=O)CC2=CSC(=N2)NC(=O)C3=CC=CO3",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:06:10.887456+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "75e3c00e-e178-4e8f-816d-03fbcf40813d",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 39443527,
+            "smiles": "CN(C)C1=CC=C(C=C1)/C=C/C(=O)N2CCC[C@H]2C3=CC=CS3",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:12:46.751374+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "0912d73f-ab41-49b5-a0a8-73cd708692db",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 39558596,
+            "smiles": "CC1=CC(=CC=C1)C2=NN=C(O2)C3=CC=C(C=C3)C(=O)NC[C@@H](C)N4CCCCCC4",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:05:36.488384+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "031e0bd0-53fd-4bab-b871-28b8e8fa54c6",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 39620163,
+            "smiles": "CC1=C(C=C(C=C1)S(=O)(=O)N2CCN(CC2)S(=O)(=O)/C=C/C3=CC=CC=C3)Cl",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:35:56.967807+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "cebe18ec-4dcd-429d-b77a-2ca7aaee9360",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 39635878,
+            "smiles": "CC1=NC(=NO1)C2(CCCCC2)NS(=O)(=O)C3=C(C(=CC=C3)Cl)F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:29:22.197527+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "e68358d4-0603-4b71-9996-f3182a316fb2",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 39686027,
+            "smiles": "CC1=CC(=CC=C1)C2=NNC(=S)N2CC(=O)N[C@@H](C)C3=NN=C4N3C=CC=C4",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:22:51.308465+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "64d72a17-f537-421b-99b0-6d61cd85b46d",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 39748469,
+            "smiles": "CC1=CC=C(N1CCN2CC[NH+](CC2)[C@H](C)C(=O)NC(=O)NC3CCCCC3)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:18:45.865551+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "c0baae4a-c3a7-4757-b23e-e934ec4e7022",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 39773910,
+            "smiles": "CC1=CC(=NC=N1)S[C@H](C)C(=O)NC2=NC(=C(S2)C(=O)OCC3=CC=CC=C3)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:16:33.201805+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "a3afaff2-c04b-4938-98b3-cc03f5e65952",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 39905368,
+            "smiles": "CC1=C(N=NN1C2=CC=CC=C2OC)C(=O)NNC(=S)N[C@@H](C)COC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:10:38.453557+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "861abf8e-f1bf-48b3-8d03-bfd7bfe2ddd7",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 40099521,
+            "smiles": "C[C@H](C(=O)OCC1=CC(=O)N(C(=O)N1C)C)NC2=NS(=O)(=O)C3=CC=CC=C32",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:00:01.997184+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "e080251c-6a02-4b65-bf08-ffd1779177cd",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 40119545,
+            "smiles": "C[C@H](C1=CC=C(C=C1)C(C)C)NC(=O)COC(=O)C2=CC=C(C=C2)COC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:39:48.930071+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "60bea53c-633f-4b0a-81a6-480a6b185c57",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 40476053,
+            "smiles": "CC(C)CC[C@@](CC[NH+]1CCCCC1)(C2=CC=CC=C2)O",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:07:21.234820+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "e9a42186-e057-43bf-bca3-a692d196dd8e",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 40907226,
+            "smiles": "CC1=NC2=[N+](N1)[C@@H](CC(=O)N2)C(=O)NC3=CC=C(C=C3)C(=O)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:27:05.237810+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "136fb222-c2de-48c6-987c-f18f88c89731",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 41299787,
+            "smiles": "COC1=CC(=CC(=C1OC)OC)C[NH+]2CCN(CC2)C(=O)C(C3=CC=CC=C3)C4=CC=CC=C4",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:09:31.377114+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "39f6214c-034e-4185-8ef7-02aa8a41ce17",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 41756743,
+            "smiles": "CCOC1=CC=C(C=C1)[C@@H](C)NC(=O)C2=CC(=C(C=C2)OCC)OC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 02:58:38.665928+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "06b462f2-2f42-4204-9deb-4290fbfb2a15",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 41915726,
+            "smiles": "C[C@@H]1CCCCN1C(=O)COC(=O)CNS(=O)(=O)C2=CC(=CC(=C2)C(F)(F)F)C(F)(F)F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:22:27.154437+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "c98990bb-2c0b-4491-8823-af919fa90a9a",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 41952048,
+            "smiles": "CN1C(=NN=C1SCCS(=O)(=O)C2=CC=CC=C2)C3=CC=C(C=C3)F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:06:30.471079+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "e0da7822-efcf-4abe-8516-8f487620a907",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 41955527,
+            "smiles": "C[C@H](C(=O)NC(=O)NC)SC1=NC2=C(N1C3=CC=C(C=C3)F)C=CC(=C2)[N+](=O)[O-]",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:03:15.918634+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "bbb056ca-eb64-41de-88ff-4c87d9b1136d",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 42080004,
+            "smiles": "CCC1=CC=CC2=C1NC[C@@H](C2)C(C)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:30:16.275689+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "141e9224-a9e6-42d4-ba28-554ab575ad79",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 42135853,
+            "smiles": "COC1=CC=CC=C1C[C@@H](CO)C2=CC3=C(C=C2)OCO3",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:38:03.348538+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "083c98ec-bced-487f-a42d-e18a59295e37",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 42181567,
+            "smiles": "CC1=CC=C(C=C1)N2C(=CC(=N2)C(=O)[O-])C3=C(C=CC(=C3)OC)OC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:21:08.683309+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "a8c84994-24c5-40b8-984a-08cc751048bd",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 42419497,
+            "smiles": "C[C@@H]1C(=O)N(C2=C(O1)C=C(C=C2)NC(=O)C3=CC=CC=C3F)CC=C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:19:29.380128+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "ed4e855a-78c3-4a21-ba5d-7d508bd9eea1",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 43941002,
+            "smiles": "COC(=O)CN1C2=C(C=C(C=C2)F)SC1=NC(=O)CN3C4=CC=CC=C4N=N3",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:37:09.288138+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "036107b3-77cf-42a7-9922-fc1202c957e5",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 44670758,
+            "smiles": "COC1CC(=O)C2=C(N1)C3=C(C=C(C=N3)F)C(=O)N2C4=CC=CC=C4O",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:00:28.187866+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "f1f00140-8abd-4bd8-9f8b-7c3a350db40a",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 44791234,
+            "smiles": "CCOC(=O)CCCC(=O)N1CCOCCN(CCOCCOCC1)C(=O)CCCC(=O)OCC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:00:05.981568+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "c70c6d49-c571-4a16-bba7-17f6aa0af8e7",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 44990747,
+            "smiles": "CCS(=O)(=O)C1=CC=CC=C1C(=O)N=C2N(C3CCC(CC3S2)Cl)CC(=O)OC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:10:30.555967+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "5f26338b-db4e-40df-90fc-66548b170d3f",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 45004093,
+            "smiles": "C#CCN1C2C(CC(CC2SC1=NC(=O)CCSCC3=CC=CC=C3)F)F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:39:56.199566+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "2c06ebfb-a377-4f8e-9271-620ccb82a752",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 46480152,
+            "smiles": "C1CCN(CC1)C(=O)C2=CC=CC(=C2)CNC(=O)COC3=CC=C(C=C3)Cl",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:36:44.698015+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "11cc3a7e-2840-489e-ad84-03e693fadb03",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 46502518,
+            "smiles": "CC1=C/C(=C/NC2=CC=C(C=C2)C3=NC4=C(O3)C=CC=N4)/C(=O)C(=C1)Br",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:21:52.052720+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "35d97d2d-8c7a-477f-8b16-813f1773fd2e",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 46664118,
+            "smiles": "CN(C)C(=O)CN1CCN(CC1)C(=O)C2CCCN(C2)C(=O)C3=CC=CC4=CC=CC=C43",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:16:44.479371+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "7963d26f-3fa2-4aeb-b2dd-5cf9506f59a2",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 47173114,
+            "smiles": "C1CCC(C1)C(=O)NNC(=O)CN2C=C(C=N2)[N+](=O)[O-]",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:39:32.845335+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "0dc507b9-3662-4032-a626-4d60c6379219",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 47225556,
+            "smiles": "CCC(CC)NC(=O)C(=O)NC1=C(C=C(C=C1C)C)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:24:59.771771+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "b682bcfa-76aa-46f3-bcc0-db2bfa85e687",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 47438572,
+            "smiles": "CC1=CC=C(N1C2=NC(=CS2)CC(=O)NCC(=C)Br)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:08:51.659066+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "8d5c1086-b511-439f-8604-6814d257d2f4",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 47788494,
+            "smiles": "CC1=C(C=C(C=C1)C(=O)NCC2=CC=CC=C2N3CCOCC3)F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:37:39.791935+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "77336da9-36c4-4c94-9528-bb2feb4aa846",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 47840037,
+            "smiles": "CC1=C(N=CC=C1)NC(=O)CNC(=O)C2C3=CC=CC=C3C(=O)N2C4CC4",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:06:00.946972+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "3af5b96b-b037-4336-a025-b2e37134c58a",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 47977287,
+            "smiles": "CCCCNC(=O)C(C#N)C(=O)C1(CCOCC1)C2=CC=C(C=C2)OC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:11:59.315593+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "f1760713-9448-4938-aa21-9c76021d7529",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 48130782,
+            "smiles": "C1CCN(C1)C(=O)CCNC(=O)C2=CSC(=N2)C3=CC=CC=C3F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:02:49.947397+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "731477d6-e8dd-4f8c-a2c5-ac85a2962418",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 48177433,
+            "smiles": "CC(C)CC(=O)N(C)C(C)C1=CC=NC=C1",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:34:43.941920+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "5bd8feaa-4db0-4e89-8c82-600f4cfcef84",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 48227829,
+            "smiles": "CC(C1=C(C=CC=C1F)F)S(=O)(=O)C(C)C(=O)NC2CC2",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:29:13.319319+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "d825cefb-2c7a-4030-ae30-6ff06cc454a5",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 48351954,
+            "smiles": "CCCC(C(=O)N1CCN(CC1)CC2=NN=C3N2CCCCC3)NC(=O)N",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:02:57.756440+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "59f2691d-19f8-4464-8d94-a9bf3ee2056b",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 48355690,
+            "smiles": "CCCNC(=O)C1=C(C=C(C=C1)Cl)NC(=O)C(C)NS(=O)(=O)CCC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:23:47.020374+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "27e0f2e1-f0d7-48ce-9f43-26efada9300d",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 48489944,
+            "smiles": "CC1=NC=C(C=C1)OC(=O)CC2=C(N(N=C2C)C3=CC=CC=C3)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:00:20.409342+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "5e6282b7-7110-431c-bf24-4662b1bd3862",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 48599152,
+            "smiles": "CC1=CC(=C(C=C1)C2=NN=C(S2)NC(=O)CC(C3=CC=CS3)NC(=O)N)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:16:29.902838+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "a558c1b4-c6aa-4b81-a9d5-c7afd05b103e",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 48720041,
+            "smiles": "CC(C)N(C1=CN=CC=C1)C(=O)C(=O)NCC2=CC=C(C=C2)OC(F)(F)F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:36:53.763742+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "b3ab0da0-fc23-4215-9ab3-54d58426fa0a",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 48733039,
+            "smiles": "CC(C)N1CCN(CC1)C2=CC=C(C=C2)C(=O)NC3=CC(=CC=C3)NC(=O)C4CC4",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:18:03.200331+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "5fced389-c37a-4411-86d5-a920e850f69d",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 48744359,
+            "smiles": "CC1CCCCN1CCCNC(=O)NC2=NC(=NS2)C3=CC=CC=C3",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:20:54.657335+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "dbd744ce-5b30-4e72-84b5-80afdd55e2a9",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 48791431,
+            "smiles": "C1CCCN(CC1)CC2=CSC(=N2)NC(=O)N3CCCC3C4=CC=CN4",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:16:51.744865+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "755deaba-ad2e-45c0-af90-f6b88f96066f",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 49297163,
+            "smiles": "CC(C)C(CNC(=O)C(=O)NC1=CC2=C(C=C1)N(C(=O)N2C)C)N3CCOCC3",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:29:47.303505+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "10745e75-fd5d-47bb-8d27-85a423fe0c85",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 49361072,
+            "smiles": "CC1=CC=C(S1)C(=O)NC2CCN(CC2)C(=O)CC3=CC=C(C=C3)OC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:36:16.491851+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "8fa28b2e-7a66-49e6-895e-f381cb4c3796",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 49386131,
+            "smiles": "CCN1CCCC1CN(CCC(=O)OCC)C(=O)C2=CC=C(C=C2)OCC(=O)N",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:00:24.337947+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "f6213486-2503-4c60-bdfc-fb0d7bb4598c",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 49972153,
+            "smiles": "CC1CCN(CC1)C(=O)C2=CC(=C(C=C2)C)NC(=O)C(C)N3CCC(CC3)C(=O)NCCC(=O)NC4=C(C=CC(=C4)C(=O)NC5CCCC5)Cl",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:25:14.815702+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "f84e3c1c-3c6a-4418-a6c4-85fed66d183f",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 50192647,
+            "smiles": "CC1=C(C=CC(=C1)C(=O)N2CCOCC2)NC(=O)C(C)N3CCC(CC3)C(=O)NC(C(C)C)C(=O)NC4=CC=CC(=C4C)C(=O)NC5=CC=CC=C5",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:28:49.245377+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "49295286-ee0b-4ea5-85e8-7178786a62ae",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 50338449,
+            "smiles": "CC1=C(C=C(C=C1)C(=O)NC2=CC=CC=C2C)NC(=O)CCNC(=O)C3CCN(CC3)C(C)C(=O)NC4=CC=CC(=C4C)C(=O)N5CCCC5",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:23:56.508180+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "5eeaf42b-4aa7-4c71-a8ec-e26d8c798fa1",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 50350591,
+            "smiles": "CCCNC(=O)C1=CC(=C(C=C1)OC)NC(=O)C2CCCN2C(=O)C3CCN(CC3)CC(=O)NC4=CC=CC(=C4C)C(=O)N5CCCC(C5)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:32:16.558685+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "b69de622-36df-4446-881a-b2afe6fb2c8f",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 50443260,
+            "smiles": "CC1=C(C=CC(=C1)F)NC(=O)C2=C(C(=CC=C2)NC(=O)C(C)N3CCC(CC3)C(=O)NC(C)C(=O)NC4=CC(=C(C=C4)C(=O)N)Cl)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:19:04.618245+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "6dac62cf-d562-4d55-b65a-207e2a252f5c",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 50570911,
+            "smiles": "C1CC(N(C1)C(=O)C2CCN(CC2)CC(=O)NC3=CC(=C(C=C3)Cl)C(=O)N4CCOCC4)C(=O)NC5=CC=CC(=C5)C(=O)NC6=CC=CC=C6",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:33:48.503348+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "1bd6297d-4a2d-4260-a941-78269d3e347c",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 51456805,
+            "smiles": "CC(C)C[C@H](C(=O)OCC(=O)NC(=O)NCC1=CC=CO1)NC(=O)C2=CC=C(C=C2)Cl",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:01:04.060959+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "d2296ff9-1680-42a3-904c-8ba979734897",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 51517173,
+            "smiles": "C1CC1[C@@H]2C[C@H]([N+]3=C(N2)C=C(N3)C(=O)NC4=CC=CC=C4)C(F)(F)F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:32:24.306177+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "a6b40ffd-7ccd-4662-8799-3d579aa29741",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 51585552,
+            "smiles": "CCCCN1[C@@H]([C@@H](CCC1=O)C(=O)OCC(=O)N2CCC3=CC=CC=C32)C4=CC=CC=C4OC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:31:45.453947+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "87028199-079a-48c9-bcf4-12d9a3a326f3",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 51650749,
+            "smiles": "C1CC1C2=NN3CC[NH2+]CC3=N2",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:19:11.686127+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "be218f52-07a1-4435-8413-6aeed4644183",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 51695814,
+            "smiles": "CC1=C(N=C2N(C[NH+](CN2C1=O)CC3=CC=CC=C3)C4=CC=C(C=C4)F)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:32:56.003344+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "a4c7e4a8-ea18-482f-bb6d-270a98b058b3",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 52190314,
+            "smiles": "CC1=C(C=C(C=C1)C(=O)OC)NC(=O)N2CCC[C@H]2C3=CC=CC=C3",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:02:24.957440+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "6e261af7-e9b4-4813-a640-98508d0ba5db",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 52295593,
+            "smiles": "C=C1C2=CC=CC=C2C(=O)N1CCC(=O)NC[C@@H](C3=CC=CC=C3)[NH+]4CCCC4",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:32:59.707633+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "27d88f18-e66d-4495-be1e-12f8e7cb504e",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 52891724,
+            "smiles": "CCCN([C@H]1CCS(=O)(=O)C1)C(=O)COC2=CC=C(C=C2)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:23:33.930314+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "6d292fa6-2fa2-4ce6-bdc1-c12514107573",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 53444072,
+            "smiles": "CC(C1=C(C=NN1)C2=CC=CC=C2)N",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:22:58.721524+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "22142c87-794f-4041-9bb9-ddef3bb880e1",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 53882606,
+            "smiles": "CC1=CC=C(C=C1)CCC(C=C[C@H]2[C@@H](C[C@@H]([C@@H]2CC=CCCCC(=O)O)O)O)O",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:02:38.101236+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "a64ca389-c1d0-4525-9a2d-f80ae7386d9a",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 60583225,
+            "smiles": "CCCCN1C(=NN=C1SCCC2=NC(=O)C3=CC=CC=C3N2)C4=CC=C(C=C4)OC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:23:30.079209+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "b242844b-973a-4001-b7ec-053f33096296",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 61419640,
+            "smiles": "CC1=C(C=CC(=C1)C(=S)N)N2CCCSCC2",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:05:27.373951+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "f34684bf-425f-492f-aa2a-9d0e858a3f9f",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 64427557,
+            "smiles": "C1CC1C(/C(=N/O)/N)NC(=O)C2=CC=NN2",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:19:52.786857+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "385496de-4783-49e3-8de5-6dae95432d1a",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 70079025,
+            "smiles": "CCOC(=O)CC1CC2=C(C=CC(=C2)C(=O)NC3=CC=C(C=C3)/C=N\\N4CCOCC4)OC1",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:31:15.967324+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "3bbd6ea5-6945-4cb2-badb-4182e77159ca",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 72252004,
+            "smiles": "CCC1=CC(=O)OC2C1C(=O)NC(N2)OCC3=CC(=C(C=C3)C)C(F)(F)F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:20:27.453257+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "edb0a435-5af5-40ba-ba07-cc14d1b3f03d",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 73233479,
+            "smiles": "CCCCC(C(=O)NC(CC1=CC=CC=C1)C(CN(CC(C)C)S(=O)(=O)C2=CC=C(C=C2)OC)O)N3CC(=O)N(C3=O)CC4=CSC(=N4)COC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:10:06.911079+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "f3ffb43b-4f38-477a-b254-5e74e10c136f",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 73410780,
+            "smiles": "C1CSSC2=C1C(=O)C3=CC=CC=C3C2=O",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:38:12.711201+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "33a9a9cc-ad62-4af2-9627-593e62d8337a",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 73580250,
+            "smiles": "C1=CC(=CC=C1COC2=CC=C(C=C2)Cl)C(=O)ON=C(C3=CC=C(C=C3)F)N",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:01:00.540209+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "ec963f1e-6d6a-413d-945d-8197740c2694",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 73832161,
+            "smiles": "CC(=O)NC(=C)C(=O)OC1C2CCC(C1OCC(C)(C)C)(C2(C)C)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:20:14.604912+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "7b85fb8b-6d51-4f77-9a9d-06da98342bda",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 74154061,
+            "smiles": "COC1=CC=CC(=C1)CN(CC2=CC=C(C=C2)C#N)C3CCN(C(C3)C(=O)NCCN)C(=O)C4=CC(=CC=C4)OC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:34:11.179943+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "882a5eb0-2b2d-4334-b589-d3bccf3ca91b",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 74391476,
+            "smiles": "C1CCC(CC1)C(=O)N2CCN(CC2)C(=O)C3=C(C=CC(=C3)CC4C5=CC=CC=C5C(=O)N=N4)F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:34:59.243710+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "b918ab23-b701-4705-a11c-fa06c05d6379",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 74439951,
+            "smiles": "CCC12CCCNC1C(CC2)CO",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:39:12.000556+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "894b6f55-e4d3-4b6f-9b6c-10a6d8adbf18",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 74632809,
+            "smiles": "COC1=CC=CC=C1NC(=O)C2CCN(CC2)C(=O)C=CC3=CC=C(C=C3)Cl",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:21:48.612363+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "7afc4166-f009-4c3a-b4e2-6fa6f9b0e8f2",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 75033048,
+            "smiles": "CC(CCC1=CC(=C(C(=C1)OC)OC)OC)NN2CCCC2COC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:17:51.817164+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "384914ac-4722-4fd9-98d0-1060a77a0f2b",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 75080027,
+            "smiles": "CC=C(C(C(C)C)NCC1=CC=C(C=C1)N)C(=O)N(CC(=O)OC(C)(C)C)C(=O)OC(C)(C)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:05:52.184943+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "933c1635-4bdd-4956-92df-d2a830842d72",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 75635562,
+            "smiles": "C[NH+]1C(CNC1NCC2=C(C=CC(=C2)OC)OC)C3=CC=C(C=C3)F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:19:19.327264+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "e4f03db6-8845-460e-abbd-d6c947ac37df",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 75645759,
+            "smiles": "CC1=NC(=C(C(C1=C(C)[O-])C2=CC=CS2)C#N)S",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:24:52.959379+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "0b5eb295-5d0e-4847-a45d-ccaf3f4b6916",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 75889440,
+            "smiles": "CC(C)(C)N1C(=CC(=N1)C(=O)NCCN2C(=O)C(=CC3=CC=CC=C3F)SC2=O)C4CC4",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:34:03.281979+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "53fe5082-443e-407c-8a1f-560802c22d89",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 76137631,
+            "smiles": "CC(=O)CC(C(=O)N(C)OC)N",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:23:42.855273+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "3244aff1-95a8-4352-bf07-1d4aebc50dbe",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 76164541,
+            "smiles": "CCNC(=O)C1C(C2CN3C(=CC=C(C3=O)C4=CC=CC=C4OC)C2N1S(=O)(=O)C)CO",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:26:13.509757+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "73aab11d-3788-4802-8425-606c7d7e1d9d",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 76659192,
+            "smiles": "C1C=CC2=C(C(=CN=C21)C3=NC(=NO3)C(=O)N)NC4C5CC6CC4CC(C6)(C5)CO",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:33:21.982228+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "5ae4c2cb-60d3-44f5-9809-092801e33afd",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 77053739,
+            "smiles": "CC1=CC(=C(C=C1)F)OCC=CC(=O)O",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:27:12.435367+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "9922c1b3-e033-4d25-b1ec-5fa5bfd9d79f",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 77483575,
+            "smiles": "CCC(CC(COC)N(C)C(=O)OC(C)(C)C)OC(C)C1=NC(=NO1)C2=CC(=C(C=C2)S(=O)(=O)C)F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:14:57.187724+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "3085fd68-16f6-4d8c-b622-977be0e361a5",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 77987898,
+            "smiles": "CC(C)(C)OC(=O)NCC(=O)OC(C1CC2CCN1CC2C=C)C3=C4C=C(C=CC4=NC=C3)OC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:15:34.401896+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "e4a13abf-b5b7-4cdb-a578-8588b3a1e8ff",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 77998028,
+            "smiles": "CC(C)(C)C(C(=O)N1CCCC1C(=O)NCC(=O)C(=O)NC2CC2)NC(=O)NC3(CCCCC3)CS(=O)(=O)N(C)C(C)(C)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:33:14.289220+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "bf064317-6571-46d3-bb4b-042822f70d56",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 78101055,
+            "smiles": "CCCC(=O)N(C)CC(=O)NC1C=C(OC(C1NC(=O)C)C(C(COC(=O)C)OC(=O)C)OC(=O)C)C(=O)OC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:34:55.309518+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "a62785c2-5584-4331-aacc-b42fb03cb885",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 78436394,
+            "smiles": "CC(C)CC(C(=O)[O-])N=CC1C(=O)OC(OC1=O)(C)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:18:13.756093+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "5229c3e9-ada7-4d4d-9566-e9fa77014a94",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 78483919,
+            "smiles": "COCCN1C(=NN=N1)C(C2=CC=CC=C2F)[NH+](CC3CCCO3)CC4=CC=CO4",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:02:21.222555+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "591a8d1a-5c34-4ac9-9bf7-ed5812b0d923",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 83364385,
+            "smiles": "C/C=C/C1C2=C(CCN1)C(=CC=C2)OC(C)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:30:48.244963+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "47bd66e2-1fef-4c42-b3d2-349eee8a93b6",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 83412115,
+            "smiles": "CN1CCC(CC1)(C2=C(C=CC(=C2)N)F)C(=O)O",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:35:39.291786+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "9b2b627e-b6a4-4d1c-b2f6-7da0303a0071",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 83464903,
+            "smiles": "CCCOC1=C(C=CC(=C1)CCCNCC2=CC=CC=C2)OC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 02:59:40.742474+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "c2d511ae-9fa4-43b6-9160-e7bff23a4a04",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 83523345,
+            "smiles": "CC1=C2C(=CC=C1)C(=CN2CC3=CC=C(C=C3)C#N)CO",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:29:09.219221+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "4146aab9-91ac-4776-a31d-39ef4551e10f",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 83605271,
+            "smiles": "CC(C)C1=CC(=C(C=C1)OC)C2=CC(=C(O2)C3CC3)C(C)N",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:25:18.549807+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "e45b913a-57e2-4277-9935-ec1c45f418b4",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 83653999,
+            "smiles": "CC1=CC2=C(C=C1CCNCC(=O)O)OCCO2",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:31:12.168594+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "adb95f16-1b4e-4402-9fa5-c00138c07109",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 83748798,
+            "smiles": "CNCCC1CN(C(=O)O1)C2=CC=C(S2)Br",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:18:18.274687+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "5af66419-b11b-40e9-8ce1-475b1bf433a9",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 84077073,
+            "smiles": "CC1=CC=CC=C1C(C)CN(C)C2CCNC2",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:05:23.214214+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "e2a57156-7539-4b7b-8602-807ad098650e",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 84844277,
+            "smiles": "COC1=C(C=C(C=C1)C2=NN(C=C2C=CC(=O)OCC#N)C3=CC=CC=C3)OC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:08:39.234271+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "94b9948f-2501-4fbf-b1fb-cd0d9b3c2e89",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 85096924,
+            "smiles": "COC1=CC=C(C=C1)C2N(C(=O)C(=CC3=CC(=C(C=C3)OC)OC)S2)NC(=O)CC4=CC=CC=C4",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:11:34.300340+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "470e015a-e314-4a78-aeb8-33a656cfd950",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 85446813,
+            "smiles": "CC(=O)OCC1=C(N2C(C(C2=O)OC(=O)NC)S(=O)(=O)C1)C(=O)OC(C)(C)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:21:55.867427+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "42f799a0-6130-492f-afa1-d0a2da4d5665",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 85482177,
+            "smiles": "CC1=[NH+]C2=CC=CC=C2C(=C1)N3CCC(CC3)N4C=C(N=N4)C[NH+]5CCC(C5)O",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:24:56.421912+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "ac09fddc-ccf9-4fef-bff8-614834d8387d",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 85777080,
+            "smiles": "COCCN(C=O)C1CCC(CC1)CN",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:19:33.876731+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "580afdf0-dd3e-4662-8a31-1052f966a71a",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 85983800,
+            "smiles": "CC1CC2C(O1)COC2C3=CC=CC=C3",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:28:36.884099+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "b5778a45-290c-45e6-aca6-9c5ba6e8b0ac",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 86152374,
+            "smiles": "CC[N+]1(C2CCC1C(C2)O)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:25:57.034834+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "95be50ad-f751-4fa5-97c3-28fc4bd2abd8",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 86401616,
+            "smiles": "[CH2]CC1=C([N]C(=O)C(=C1O[C]2CCCCCCC2)C(=O)OC[CH2])[CH2]",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:03:35.579573+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "bb002a86-0b52-4d0d-915d-0bf7038667a7",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 87236141,
+            "smiles": "C1=CC=C(C=C1)CN2C3=CC=CC=C3C(=O)/C(=C/4\\NC5=C(C(=CS5)CNC(=O)C6=CN=CC=C6)S(N4)(O)O)/C2=O",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:33:17.983623+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "689977a9-b557-4bb6-b4db-22affecdac2e",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 88636680,
+            "smiles": "CCC/C(=C/1\\C=CC(=O)C(=C1)C)/NNC2=CC(=C(C=C2)OC)OC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:04:25.370062+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "05aac6da-f0df-47f9-b0a4-33154b9dc43c",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 92274241,
+            "smiles": "CC1=CC=C(C=C1)CN2C3=CC=CC=C3/C(=N\\NC(=S)N)/C2=O",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:25:53.559144+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "d39cf83f-de7c-4152-947b-fb4f2241afd9",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 92308801,
+            "smiles": "C1[C@H]([C@@H](CO[C@@H]1C(=O)O)OS(=O)(=O)O)O",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:23:52.018216+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "9a46aeca-4d4a-4310-a2a5-bb3532239ddc",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 92435054,
+            "smiles": "COC1=CC=CC=C1CN2CCC(CC2)[C@@H]3C[C@@H](N4C(=N3)N=CN4)C(F)(F)F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:25:07.853222+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "d0f54402-7395-414b-94d5-0682c53bd722",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 92829056,
+            "smiles": "COC(=O)C[C@@H](C1=CC=CC=C1)NC(=O)C2=CC(=CC=C2)S(=O)(=O)NC[C@H]3CCCO3",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:22:03.792050+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "6b228cdc-69d8-4603-8324-7349ce8c0512",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 93032321,
+            "smiles": "CC[C@H](CO)NC(=O)[C@H](C)OC1=CC=C(C=C1)Cl",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:33:39.791555+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "3c0d8632-d6be-41e4-a99d-ba7572e98665",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 93755334,
+            "smiles": "CC1=C(C=C(C=C1)N2C(=CC(=N2)C(F)(F)F)C(C)C)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:22:07.712525+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "e75d06ca-4c03-414d-9534-ec4a95c49a4d",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 93865009,
+            "smiles": "CCCN[C@H](C)C1=CC=C(C=C1)N(CCO)C(C)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:10:26.036633+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "2fa5adb3-21ef-4cde-a876-9359cb7d3615",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 93922539,
+            "smiles": "CC(C)OC1=CC=CC=C1NC(=O)/C=C\\C2=CC3=C(C=C2)OCCO3",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:08:47.346936+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "da51793d-8dac-4133-83e3-e65273bca833",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 94106096,
+            "smiles": "C1CN(CCC1NC(=O)C2=CC(=CN=C2)Br)C3=CC=CC=N3",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:24:14.943246+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "a2bb9916-f493-44df-b506-9b540d5b633a",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 94475292,
+            "smiles": "CC1=NC(=NO1)[C@](C)(COC)N",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:15:53.034043+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "f3f593e8-0b38-498b-b00b-0fd192575a17",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 95395886,
+            "smiles": "CN([C@H]1CCSC1)C(=O)N[C@@H](CC(=O)OC)C(=O)O",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:01:08.606532+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "3b575a33-ea58-4678-8e80-fbab4304ade2",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 95581760,
+            "smiles": "CCN(C[C@H]1COC2=CC=CC=C2O1)C(=O)C3=NN(C(=N3)C4=CC=CS4)C5=CC=CC=C5",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:39:19.586675+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "ae1343d3-8c9b-4cac-ac7d-1cbdedee56b9",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 95735821,
+            "smiles": "CC1=C(C(=NN1C)C)[C@H]2CCCN2C(=O)[C@H]3C[C@@H]3C4=CC(=CC=C4)F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:01:59.101513+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "a5dd3f43-ee39-4b3a-a311-4d9327f89cff",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 95950419,
+            "smiles": "CC1=CC=C(C=C1)[C@@H]([C@@H](CCC(=O)OC)NC(C)(C)C)O",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:10:20.542960+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "b19bc6a2-822c-48cf-9b97-e6ad01f2870e",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 96467290,
+            "smiles": "CC(C)N1CCC[C@@H](C1)CNC(=O)NCC2=CSC=N2",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 02:58:12.409489+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "b0cf04af-67a5-4ad2-85a6-1f80bb39c0d6",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 96649743,
+            "smiles": "CCCCN[C@H]1CCOC2=C1C=C(C(=C2)C)Cl",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:35:02.841904+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "a78dbd56-8089-4f56-b1e1-50509ffc2e0a",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 96695133,
+            "smiles": "CCC1=C(C(=CC=C1)CC)NC(=O)[C@H](C)SCCCC#N",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:35:18.833718+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "d6e5e720-a2f9-494a-aa52-838e1faa96e5",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 96933755,
+            "smiles": "CCC[C@H](C)CNC(=O)[C@@H](C1=CC(=C(C=C1)C)C)N",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:14:44.591127+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "19228129-7a40-461f-acbf-2098497bd92e",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 96984673,
+            "smiles": "C1CN[C@H](C2=C1C(=CC=C2)O)CCCCCCC(=O)O",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:24:44.914084+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "a2a507ff-6893-4097-a6d9-760cd117d390",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 97525169,
+            "smiles": "CC1=CC=C(C=C1)S(=O)(=O)CC2=NN=C(N2CC=C)S[C@@H](C)C(=O)NC3=CC=CC(=C3C)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:20:37.982208+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "4db246e8-f035-4f82-9ec9-6a2221bf9e8a",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 97546515,
+            "smiles": "C[C@@H](COC(=O)NN=C(C)C)[C@H](C(C)C)OC(=O)NN=C(C)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:09:58.233110+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "7426d490-ccf1-42c0-affb-551ef1cfd5ae",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 97926092,
+            "smiles": "C1CN(CCC1CNC(=O)NCCOC2=CC=CC=C2)C(=O)/C=C\\C3=CC=CO3",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:24:25.055744+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "a4da50db-f5c1-48a5-9f0b-c94b7516fcce",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 98008164,
+            "smiles": "CC[C@H](C)P(C1=CC=CC=C1N(C)C)[C@@H](C)CC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:12:23.855754+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "2b223887-bf94-48f4-b801-467f0301aa51",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 98929129,
+            "smiles": "C[C@H](C(=O)NC1=CC=C(C=C1)S(=O)(=O)NC2=CC(=CC=C2)F)OC3=CC=CC=C3Cl",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 02:59:44.696051+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "b3895d34-045b-449a-b117-d34f15454892",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 98937178,
+            "smiles": "CC(C)OC1=C(C=CC(=C1)Br)C(=O)N2CCO[C@@H](C2)C3=CC=C(C=C3)F",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:08:35.199549+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "950b6c60-5221-45a9-8623-42b77a3fbe73",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 99084430,
+            "smiles": "CCCCS(=O)(=O)N[C@H](C)C1=C(C=CC(=C1)F)N2CCN(CC2)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:22:11.520424+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "814bafb4-b189-4e7b-a5da-90a52d94bac0",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 99178781,
+            "smiles": "CC1=C(SC2=NC(=NC(=C12)C)C(C)(C)C)C(=O)NC[C@@H](C3=CC=CO3)N4CCCC4",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:21:12.442779+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "f62d630c-b405-4bbf-a30b-026185971ee0",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 99253329,
+            "smiles": "C[C@H](C1=CC2=C(C=C1)OCCO2)NC(=O)C3=CC(=CC=C3)N4C=C(C=N4)Br",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:31:33.192361+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "098edfba-181f-4d0c-af2b-5771361c4fec",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 99305038,
+            "smiles": "CC1=C(SC(=N1)C2=CC=CC=C2Cl)C(=O)NCC3=CC=CC=C3CN4CCN(CC4)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:17:29.126254+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "0925db4f-2fb4-476b-978f-8fa5069a2ba7",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 99446846,
+            "smiles": "CC1=C(OC(=C1)COC(=O)C23C[C@@H]4C[C@@H](C2)CC(C4)(C3)Br)C(=O)OC",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:18:53.044037+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "fc384024-2e47-4c6b-ae7c-1b0d41c2bc42",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 99597140,
+            "smiles": "CCCCN(CC)C(=O)C1=CC2=C(C=C(C=C2)OC)OC1",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:36:25.603663+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "e7c4f8ce-1654-4fc2-b15b-a04f5c4c8a3a",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 99631038,
+            "smiles": "CC1=CC=C(C=C1)OC2=NC=C(C=C2)NC(=O)[C@@H](C)NC(=O)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:30:29.536321+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "be2a9fa4-7d6e-4a00-9a7b-163d6fdc20ef",
+            "name": "None",
+            "molecular_formula": null,
+            "pubchem_cid": 99973142,
+            "smiles": "CCN(C1CCN(CC1)C(=O)C[C@H]2C[C@H](CC(C2)(C)C)C)S(=O)(=O)C",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:06:06.895263+00:00",
+            "is_public": false,
+            "properties": {}
+          }
+        ],
+        "duplicate_type": "name"
+      },
+      {
+        "group_id": "f76671d9-d8ad-4831-a9a3-fb4c6a0cd164",
+        "name": "formamide",
+        "count": 2,
+        "molecules": [
+          {
+            "id": "af8a92f7-64a5-4f9d-a7a7-2f14b7f4fc0d",
+            "name": "Formamide",
+            "molecular_formula": null,
+            "pubchem_cid": 713,
+            "smiles": "C(=O)N",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 02:18:47.084569+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "0054e9e8-6640-489d-8b20-89792dcebaca",
+            "name": "Formamide",
+            "molecular_formula": "CH3NO",
+            "pubchem_cid": null,
+            "smiles": "C(=O)N",
+            "data_source": "CryoProtect Database",
+            "created_at": "2025-04-22 21:45:39.072594+00:00",
+            "is_public": true,
+            "properties": {}
+          }
+        ],
+        "duplicate_type": "name"
+      },
+      {
+        "group_id": "4ed8d244-f487-40f6-a139-5e21692aa717",
+        "name": "methanol",
+        "count": 2,
+        "molecules": [
+          {
+            "id": "23a34e2f-811b-4dd6-b7da-1d554d87bf32",
+            "name": "methanol",
+            "molecular_formula": "CH4O",
+            "pubchem_cid": 887,
+            "smiles": "CO",
+            "data_source": "PubChem_Property_Based",
+            "created_at": "2025-04-28 02:18:43.833646+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "dd82fc24-0cd1-412d-9f5a-e142b15aafe4",
+            "name": "Methanol",
+            "molecular_formula": "CH4O",
+            "pubchem_cid": null,
+            "smiles": "CO",
+            "data_source": "CryoProtect Database",
+            "created_at": "2025-04-22 21:45:30.266988+00:00",
+            "is_public": true,
+            "properties": {}
+          }
+        ],
+        "duplicate_type": "name"
+      },
+      {
+        "group_id": "8beca7e6-e035-48d0-82ae-b576e27b85ec",
+        "name": "glycerol",
+        "count": 2,
+        "molecules": [
+          {
+            "id": "b38fc7e5-1f2a-4b3d-8e3f-c9b0d5e8f9a7",
+            "name": "Glycerol",
+            "molecular_formula": "C3H8O3",
+            "pubchem_cid": null,
+            "smiles": "C(C(CO)O)O",
+            "data_source": "CryoProtect Database",
+            "created_at": "2025-04-22 07:51:40.260482+00:00",
+            "is_public": true,
+            "properties": {}
+          },
+          {
+            "id": "d55ea26c-b945-45dc-87c7-261c7ccc5ce3",
+            "name": "Glycerol",
+            "molecular_formula": "C3H8O3",
+            "pubchem_cid": null,
+            "smiles": "C(C(CO)O)O",
+            "data_source": "reference",
+            "created_at": "2025-05-02 02:15:51.537075+00:00",
+            "is_public": false,
+            "properties": {}
+          }
+        ],
+        "duplicate_type": "name"
+      },
+      {
+        "group_id": "e3a1ea85-d723-4875-bb2c-21d6165cbe59",
+        "name": "acetamide",
+        "count": 2,
+        "molecules": [
+          {
+            "id": "cccb105e-d639-4f3c-8016-4137d2604b49",
+            "name": "Acetamide",
+            "molecular_formula": null,
+            "pubchem_cid": 178,
+            "smiles": "CC(=O)N",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 02:18:51.526674+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "b119e065-91cc-4e9b-996c-50096c92da65",
+            "name": "Acetamide",
+            "molecular_formula": "C2H5NO",
+            "pubchem_cid": null,
+            "smiles": "CC(=O)N",
+            "data_source": "CryoProtect Database",
+            "created_at": "2025-04-22 21:45:47.382828+00:00",
+            "is_public": true,
+            "properties": {}
+          }
+        ],
+        "duplicate_type": "name"
+      },
+      {
+        "group_id": "22a8440c-eb2f-40bf-901e-0380ace83b28",
+        "name": "trehalose",
+        "count": 2,
+        "molecules": [
+          {
+            "id": "e61af0a8-4a5d-7e6f-1a6a-f2c3a8a9a0d1",
+            "name": "Trehalose",
+            "molecular_formula": "C12H22O11",
+            "pubchem_cid": null,
+            "smiles": "C([C@@H]1[C@H]([C@@H]([C@H]([C@H](O1)O[C@H]2[C@@H]([C@H]([C@@H]([C@H](O2)CO)O)O)O)O)O)CO)O",
+            "data_source": "CryoProtect Database",
+            "created_at": "2025-04-22 07:51:40.260482+00:00",
+            "is_public": true,
+            "properties": {}
+          },
+          {
+            "id": "0a0fe74e-c001-454d-97d6-b1f859b25fb2",
+            "name": "Trehalose",
+            "molecular_formula": "C12H22O11",
+            "pubchem_cid": null,
+            "smiles": "C(C1C(C(C(C(O1)OC2C(OC(C2O)O)C(O)C(O)C(O)CO)O)O)O)O",
+            "data_source": "reference",
+            "created_at": "2025-05-02 02:35:15.505409+00:00",
+            "is_public": false,
+            "properties": {}
+          }
+        ],
+        "duplicate_type": "name"
+      },
+      {
+        "group_id": "f4e3ce78-19ed-42af-9ffc-36aa3103ae0e",
+        "name": "ethylene glycol",
+        "count": 2,
+        "molecules": [
+          {
+            "id": "c49fd8f6-2e3b-5c4d-9f4a-d0a1e6f7a8b9",
+            "name": "Ethylene glycol",
+            "molecular_formula": "C2H6O2",
+            "pubchem_cid": null,
+            "smiles": "C(CO)O",
+            "data_source": "CryoProtect Database",
+            "created_at": "2025-04-22 07:51:40.260482+00:00",
+            "is_public": true,
+            "properties": {}
+          },
+          {
+            "id": "6b41111a-9a92-4a02-b8ab-31975af62be1",
+            "name": "Ethylene glycol",
+            "molecular_formula": "C2H6O2",
+            "pubchem_cid": null,
+            "smiles": "C(CO)O",
+            "data_source": "reference",
+            "created_at": "2025-05-02 02:34:16.030846+00:00",
+            "is_public": false,
+            "properties": {}
+          }
+        ],
+        "duplicate_type": "name"
+      },
+      {
+        "group_id": "eb8c5744-1c34-4099-bc71-5fa5a5211e51",
+        "name": "propylene glycol",
+        "count": 2,
+        "molecules": [
+          {
+            "id": "d50ae9a7-3f4c-6d5e-0a5a-e1b2f7a8a9c0",
+            "name": "Propylene glycol",
+            "molecular_formula": "C3H8O2",
+            "pubchem_cid": null,
+            "smiles": "CC(CO)O",
+            "data_source": "CryoProtect Database",
+            "created_at": "2025-04-22 07:51:40.260482+00:00",
+            "is_public": true,
+            "properties": {}
+          },
+          {
+            "id": "9a1c401b-d524-4c51-a3b5-8cf84e3e52ad",
+            "name": "Propylene glycol",
+            "molecular_formula": "C3H8O2",
+            "pubchem_cid": null,
+            "smiles": "CC(CO)O",
+            "data_source": "reference",
+            "created_at": "2025-05-02 02:34:41.575290+00:00",
+            "is_public": false,
+            "properties": {}
+          }
+        ],
+        "duplicate_type": "name"
+      },
+      {
+        "group_id": "fc716556-f94a-497b-a0fe-85b30aaaa3d7",
+        "name": "glycine",
+        "count": 2,
+        "molecules": [
+          {
+            "id": "6abe3da4-9c5d-4357-95bf-629db4b64b00",
+            "name": "Glycine",
+            "molecular_formula": null,
+            "pubchem_cid": 750,
+            "smiles": "C(C(=O)O)N",
+            "data_source": "PubChem",
+            "created_at": "2025-04-28 03:51:10.874529+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "83ed505d-566d-46b8-b021-498f8bb89df3",
+            "name": "Glycine",
+            "molecular_formula": null,
+            "pubchem_cid": null,
+            "smiles": "C(C(=O)O)N",
+            "data_source": "reference",
+            "created_at": "2025-05-02 02:35:38.233940+00:00",
+            "is_public": false,
+            "properties": {}
+          }
+        ],
+        "duplicate_type": "name"
+      }
+    ]
+  },
+  "formula_duplicates": {
+    "groups": 13,
+    "total_molecules": 34,
+    "updated_molecules": 34,
+    "groups_data": [
+      {
+        "group_id": "1d968532-913b-4744-b67a-65ee497767a8",
+        "formula": "C12H22O11",
+        "count": 5,
+        "molecules": [
+          {
+            "id": "c97ff8ca-8b15-4ceb-8125-22379697a0e8",
+            "name": "(2R,3R,4S,5S,6R)-2-[(2S,3S,4S,5R)-3,4-dihydroxy-2,5-bis(hydroxymethyl)oxolan-2-yl]oxy-6-(hydroxymethyl)oxane-3,4,5-triol",
+            "molecular_formula": "C12H22O11",
+            "pubchem_cid": 5988,
+            "smiles": "C(C1C(C(C(C(O1)OC2(C(C(C(O2)CO)O)O)CO)O)O)O)O",
+            "data_source": "PubChem_Property_Based",
+            "created_at": "2025-04-28 03:51:10.866906+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "f9e64f2e-00cb-4277-b282-e382aa80dbb8",
+            "name": "(2R,3S,4S,5R,6R)-2-(hydroxymethyl)-6-[(2R,3R,4S,5S,6R)-3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]oxyoxane-3,4,5-triol",
+            "molecular_formula": "C12H22O11",
+            "pubchem_cid": 7427,
+            "smiles": "C(C1C(C(C(C(O1)OC2C(C(C(C(O2)CO)O)O)O)O)O)O)O",
+            "data_source": "PubChem_Property_Based",
+            "created_at": "2025-04-28 02:18:36.985254+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "e61af0a8-4a5d-7e6f-1a6a-f2c3a8a9a0d1",
+            "name": "Trehalose",
+            "molecular_formula": "C12H22O11",
+            "pubchem_cid": null,
+            "smiles": "C([C@@H]1[C@H]([C@@H]([C@H]([C@H](O1)O[C@H]2[C@@H]([C@H]([C@@H]([C@H](O2)CO)O)O)O)O)O)CO)O",
+            "data_source": "CryoProtect Database",
+            "created_at": "2025-04-22 07:51:40.260482+00:00",
+            "is_public": true,
+            "properties": {}
+          },
+          {
+            "id": "5384528c-8005-47a2-a618-a99137d46a3d",
+            "name": "Sucrose",
+            "molecular_formula": "C12H22O11",
+            "pubchem_cid": null,
+            "smiles": "C([C@@H]1[C@H]([C@@H]([C@H]([C@H](O1)O[C@]2([C@H]([C@@H]([C@H](O2)CO)O)O)CO)O)O)O)O",
+            "data_source": "CryoProtect Database",
+            "created_at": "2025-04-22 21:45:21.160193+00:00",
+            "is_public": true,
+            "properties": {}
+          },
+          {
+            "id": "0a0fe74e-c001-454d-97d6-b1f859b25fb2",
+            "name": "Trehalose",
+            "molecular_formula": "C12H22O11",
+            "pubchem_cid": null,
+            "smiles": "C(C1C(C(C(C(O1)OC2C(OC(C2O)O)C(O)C(O)C(O)CO)O)O)O)O",
+            "data_source": "reference",
+            "created_at": "2025-05-02 02:35:15.505409+00:00",
+            "is_public": false,
+            "properties": {}
+          }
+        ],
+        "duplicate_type": "formula"
+      },
+      {
+        "group_id": "ac07b868-1e18-4087-b8c1-0c9dd3db2655",
+        "formula": "C3H8O2",
+        "count": 3,
+        "molecules": [
+          {
+            "id": "c7b24e15-7d9c-4887-aba7-ece5b96234f4",
+            "name": "propane-1,2-diol",
+            "molecular_formula": "C3H8O2",
+            "pubchem_cid": 1030,
+            "smiles": "CC(CO)O",
+            "data_source": "PubChem_Property_Based",
+            "created_at": "2025-04-28 02:18:33.464505+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "d50ae9a7-3f4c-6d5e-0a5a-e1b2f7a8a9c0",
+            "name": "Propylene glycol",
+            "molecular_formula": "C3H8O2",
+            "pubchem_cid": null,
+            "smiles": "CC(CO)O",
+            "data_source": "CryoProtect Database",
+            "created_at": "2025-04-22 07:51:40.260482+00:00",
+            "is_public": true,
+            "properties": {}
+          },
+          {
+            "id": "9a1c401b-d524-4c51-a3b5-8cf84e3e52ad",
+            "name": "Propylene glycol",
+            "molecular_formula": "C3H8O2",
+            "pubchem_cid": null,
+            "smiles": "CC(CO)O",
+            "data_source": "reference",
+            "created_at": "2025-05-02 02:34:41.575290+00:00",
+            "is_public": false,
+            "properties": {}
+          }
+        ],
+        "duplicate_type": "formula"
+      },
+      {
+        "group_id": "76397481-971c-41b5-a695-82072235de5b",
+        "formula": "C5H8NO4-",
+        "count": 3,
+        "molecules": [
+          {
+            "id": "76f32e25-9856-4172-9c7a-7b93b563d3c4",
+            "name": "(2R)-2-amino-5-hydroxy-5-oxopentanoate",
+            "molecular_formula": "C5H8NO4-",
+            "pubchem_cid": 104813,
+            "smiles": "C(CC(=O)O)C(C(=O)[O-])N",
+            "data_source": "PubChem_Property_Based",
+            "created_at": "2025-05-12 17:58:47.289096+00:00",
+            "is_public": true,
+            "properties": {}
+          },
+          {
+            "id": "e9c16d8f-a691-4c42-bb36-8afe9f69775a",
+            "name": "2-azaniumylpentanedioate",
+            "molecular_formula": "C5H8NO4-",
+            "pubchem_cid": 4525487,
+            "smiles": "C(CC(=O)[O-])C(C(=O)[O-])[NH3+]",
+            "data_source": "PubChem_Property_Based",
+            "created_at": "2025-05-12 17:58:47.289096+00:00",
+            "is_public": true,
+            "properties": {}
+          },
+          {
+            "id": "ce2ea651-5474-4fa1-8b92-fb22e41729b4",
+            "name": "(2S)-2-amino-5-hydroxy-5-oxopentanoate",
+            "molecular_formula": "C5H8NO4-",
+            "pubchem_cid": 14598502,
+            "smiles": "C(CC(=O)O)C(C(=O)[O-])N",
+            "data_source": "PubChem_Property_Based",
+            "created_at": "2025-05-12 17:59:11.077478+00:00",
+            "is_public": true,
+            "properties": {}
+          }
+        ],
+        "duplicate_type": "formula"
+      },
+      {
+        "group_id": "76ea816a-f468-40dc-a856-a29fdb973ffe",
+        "formula": "C3H8O3",
+        "count": 3,
+        "molecules": [
+          {
+            "id": "0482a736-da67-44db-8c05-e16e00778078",
+            "name": "propane-1,2,3-triol",
+            "molecular_formula": "C3H8O3",
+            "pubchem_cid": 753,
+            "smiles": "C(C(CO)O)O",
+            "data_source": "PubChem_Property_Based",
+            "created_at": "2025-04-28 02:18:25.788474+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "b38fc7e5-1f2a-4b3d-8e3f-c9b0d5e8f9a7",
+            "name": "Glycerol",
+            "molecular_formula": "C3H8O3",
+            "pubchem_cid": null,
+            "smiles": "C(C(CO)O)O",
+            "data_source": "CryoProtect Database",
+            "created_at": "2025-04-22 07:51:40.260482+00:00",
+            "is_public": true,
+            "properties": {}
+          },
+          {
+            "id": "d55ea26c-b945-45dc-87c7-261c7ccc5ce3",
+            "name": "Glycerol",
+            "molecular_formula": "C3H8O3",
+            "pubchem_cid": null,
+            "smiles": "C(C(CO)O)O",
+            "data_source": "reference",
+            "created_at": "2025-05-02 02:15:51.537075+00:00",
+            "is_public": false,
+            "properties": {}
+          }
+        ],
+        "duplicate_type": "formula"
+      },
+      {
+        "group_id": "6e7589ac-ce2e-4e13-b982-bec6afa7eb9f",
+        "formula": "C5H9NO4",
+        "count": 3,
+        "molecules": [
+          {
+            "id": "19144686-3c1f-49d0-82a9-2e081581d40c",
+            "name": "2-aminopentanedioic acid",
+            "molecular_formula": "C5H9NO4",
+            "pubchem_cid": 611,
+            "smiles": "C(CC(=O)O)C(C(=O)O)N",
+            "data_source": "PubChem_Property_Based",
+            "created_at": "2025-05-12 17:59:11.077478+00:00",
+            "is_public": true,
+            "properties": {}
+          },
+          {
+            "id": "aabad6ee-1e92-4775-9a45-f25fc33c9038",
+            "name": "(2R)-2-aminopentanedioic acid",
+            "molecular_formula": "C5H9NO4",
+            "pubchem_cid": 23327,
+            "smiles": "C(CC(=O)O)C(C(=O)O)N",
+            "data_source": "PubChem_Property_Based",
+            "created_at": "2025-05-12 17:59:11.077478+00:00",
+            "is_public": true,
+            "properties": {}
+          },
+          {
+            "id": "496e4251-521e-436a-be53-7a341f61a987",
+            "name": "(2S)-2-aminopentanedioic acid",
+            "molecular_formula": "C5H9NO4",
+            "pubchem_cid": 33032,
+            "smiles": "C(CC(=O)O)C(C(=O)O)N",
+            "data_source": "PubChem_Property_Based",
+            "created_at": "2025-04-28 02:50:23.643706+00:00",
+            "is_public": false,
+            "properties": {}
+          }
+        ],
+        "duplicate_type": "formula"
+      },
+      {
+        "group_id": "19bf35ce-3db8-4606-93a6-0ecf9800209a",
+        "formula": "C2H6O2",
+        "count": 3,
+        "molecules": [
+          {
+            "id": "9b5b9bbd-ad2c-46ec-a1d9-279fe46a0549",
+            "name": "ethane-1,2-diol",
+            "molecular_formula": "C2H6O2",
+            "pubchem_cid": 174,
+            "smiles": "C(CO)O",
+            "data_source": "PubChem_Property_Based",
+            "created_at": "2025-04-28 02:18:29.784175+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "c49fd8f6-2e3b-5c4d-9f4a-d0a1e6f7a8b9",
+            "name": "Ethylene glycol",
+            "molecular_formula": "C2H6O2",
+            "pubchem_cid": null,
+            "smiles": "C(CO)O",
+            "data_source": "CryoProtect Database",
+            "created_at": "2025-04-22 07:51:40.260482+00:00",
+            "is_public": true,
+            "properties": {}
+          },
+          {
+            "id": "6b41111a-9a92-4a02-b8ab-31975af62be1",
+            "name": "Ethylene glycol",
+            "molecular_formula": "C2H6O2",
+            "pubchem_cid": null,
+            "smiles": "C(CO)O",
+            "data_source": "reference",
+            "created_at": "2025-05-02 02:34:16.030846+00:00",
+            "is_public": false,
+            "properties": {}
+          }
+        ],
+        "duplicate_type": "formula"
+      },
+      {
+        "group_id": "fa972452-6feb-41a9-950d-e62404d27448",
+        "formula": "C6H14O6",
+        "count": 2,
+        "molecules": [
+          {
+            "id": "02dedcbc-8dae-4108-8347-76e4bec13aaa",
+            "name": "(2R,3R,4R,5S)-hexane-1,2,3,4,5,6-hexol",
+            "molecular_formula": "C6H14O6",
+            "pubchem_cid": 5780,
+            "smiles": "C(C(C(C(C(CO)O)O)O)O)O",
+            "data_source": "PubChem_Property_Based",
+            "created_at": "2025-04-28 03:51:10.878516+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "cb98aa08-5582-47a1-95e1-f80e42219a1d",
+            "name": "(2R,3R,4R,5R)-hexane-1,2,3,4,5,6-hexol",
+            "molecular_formula": "C6H14O6",
+            "pubchem_cid": 6251,
+            "smiles": "C(C(C(C(C(CO)O)O)O)O)O",
+            "data_source": "PubChem_Property_Based",
+            "created_at": "2025-04-28 03:51:10.870529+00:00",
+            "is_public": false,
+            "properties": {}
+          }
+        ],
+        "duplicate_type": "formula"
+      },
+      {
+        "group_id": "21581eb6-8ed5-43f7-a01c-9ed9c36e30d2",
+        "formula": "CH4O",
+        "count": 2,
+        "molecules": [
+          {
+            "id": "23a34e2f-811b-4dd6-b7da-1d554d87bf32",
+            "name": "methanol",
+            "molecular_formula": "CH4O",
+            "pubchem_cid": 887,
+            "smiles": "CO",
+            "data_source": "PubChem_Property_Based",
+            "created_at": "2025-04-28 02:18:43.833646+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "dd82fc24-0cd1-412d-9f5a-e142b15aafe4",
+            "name": "Methanol",
+            "molecular_formula": "CH4O",
+            "pubchem_cid": null,
+            "smiles": "CO",
+            "data_source": "CryoProtect Database",
+            "created_at": "2025-04-22 21:45:30.266988+00:00",
+            "is_public": true,
+            "properties": {}
+          }
+        ],
+        "duplicate_type": "formula"
+      },
+      {
+        "group_id": "476326ba-5597-442b-b21b-b5a92b82ec65",
+        "formula": "C18H32O16",
+        "count": 2,
+        "molecules": [
+          {
+            "id": "71ca5042-9d26-4254-9ed5-0e718a6c077f",
+            "name": "(2S,3R,4S,5R,6R)-2-[[(2R,3S,4S,5R,6R)-6-[(2S,3S,4S,5R)-3,4-dihydroxy-2,5-bis(hydroxymethyl)oxolan-2-yl]oxy-3,4,5-trihydroxyoxan-2-yl]methoxy]-6-(hydroxymethyl)oxane-3,4,5-triol",
+            "molecular_formula": "C18H32O16",
+            "pubchem_cid": 439242,
+            "smiles": "C(C1C(C(C(C(O1)OCC2C(C(C(C(O2)OC3(C(C(C(O3)CO)O)O)CO)O)O)O)O)O)O)O",
+            "data_source": "PubChem_Property_Based",
+            "created_at": "2025-05-12 17:59:32.457993+00:00",
+            "is_public": true,
+            "properties": {}
+          },
+          {
+            "id": "f953cdd4-d260-42f4-b531-50144a93e7fc",
+            "name": "2,3,4,5-tetrahydroxy-6-[3,4,5-trihydroxy-6-[[3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]oxymethyl]oxan-2-yl]oxyhexanal",
+            "molecular_formula": "C18H32O16",
+            "pubchem_cid": 4125253,
+            "smiles": "C(C1C(C(C(C(O1)OCC2C(C(C(C(O2)OCC(C(C(C(C=O)O)O)O)O)O)O)O)O)O)O)O",
+            "data_source": "PubChem_Property_Based",
+            "created_at": "2025-05-12 17:58:47.289096+00:00",
+            "is_public": true,
+            "properties": {}
+          }
+        ],
+        "duplicate_type": "formula"
+      },
+      {
+        "group_id": "8fb281bd-3949-4135-ab0f-5eda9964c3c0",
+        "formula": "C2H6OS",
+        "count": 2,
+        "molecules": [
+          {
+            "id": "26502df5-955a-4ada-8ebe-27a0417b12de",
+            "name": "methylsulfinylmethane",
+            "molecular_formula": "C2H6OS",
+            "pubchem_cid": 679,
+            "smiles": "CS(=O)C",
+            "data_source": "PubChem_Property_Based",
+            "created_at": "2025-04-28 02:18:22.720189+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+            "name": "Dimethyl sulfoxide",
+            "molecular_formula": "C2H6OS",
+            "pubchem_cid": null,
+            "smiles": "CS(=O)C",
+            "data_source": "CryoProtect Database",
+            "created_at": "2025-04-22 07:51:40.260482+00:00",
+            "is_public": true,
+            "properties": {}
+          }
+        ],
+        "duplicate_type": "formula"
+      },
+      {
+        "group_id": "81f5d752-d929-449d-85e8-ba77645919b7",
+        "formula": "C5H11NO2",
+        "count": 2,
+        "molecules": [
+          {
+            "id": "0e4f6a81-cdd5-468f-b675-3241d7241299",
+            "name": "2-(trimethylazaniumyl)acetate",
+            "molecular_formula": "C5H11NO2",
+            "pubchem_cid": 247,
+            "smiles": "C[N+](C)(C)CC(=O)[O-]",
+            "data_source": "PubChem_Property_Based",
+            "created_at": "2025-04-28 02:55:53.187601+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "83837dee-13be-448c-aac5-2e309bd0a38f",
+            "name": "Betaine",
+            "molecular_formula": "C5H11NO2",
+            "pubchem_cid": null,
+            "smiles": "C[N+](C)(C)CC(=O)[O-]",
+            "data_source": "CryoProtect Database",
+            "created_at": "2025-04-22 21:46:20.103215+00:00",
+            "is_public": true,
+            "properties": {}
+          }
+        ],
+        "duplicate_type": "formula"
+      },
+      {
+        "group_id": "28a772ca-a829-4767-ba84-a15df4906417",
+        "formula": "C5H7NO4-2",
+        "count": 2,
+        "molecules": [
+          {
+            "id": "7a8b62b7-3bcd-4601-860a-66d338021f19",
+            "name": "2-aminopentanedioate",
+            "molecular_formula": "C5H7NO4-2",
+            "pubchem_cid": 5128032,
+            "smiles": "C(CC(=O)[O-])C(C(=O)[O-])N",
+            "data_source": "PubChem_Property_Based",
+            "created_at": "2025-05-12 17:59:32.457993+00:00",
+            "is_public": true,
+            "properties": {}
+          },
+          {
+            "id": "a00bc3a5-267e-4f63-a5c8-dd03515f2907",
+            "name": "(2S)-2-aminopentanedioate",
+            "molecular_formula": "C5H7NO4-2",
+            "pubchem_cid": 5460544,
+            "smiles": "C(CC(=O)[O-])C(C(=O)[O-])N",
+            "data_source": "PubChem_Property_Based",
+            "created_at": "2025-05-12 17:59:11.077478+00:00",
+            "is_public": true,
+            "properties": {}
+          }
+        ],
+        "duplicate_type": "formula"
+      },
+      {
+        "group_id": "df57e93d-b6d3-4cb4-a8db-2f536bfa2b4d",
+        "formula": "C5H9NO2",
+        "count": 2,
+        "molecules": [
+          {
+            "id": "6dd3a4fd-9afe-45e7-8143-9db74114a29f",
+            "name": "(2S)-pyrrolidine-2-carboxylic acid",
+            "molecular_formula": "C5H9NO2",
+            "pubchem_cid": 145742,
+            "smiles": "C1CC(NC1)C(=O)O",
+            "data_source": "PubChem_Property_Based",
+            "created_at": "2025-04-28 02:53:19.082985+00:00",
+            "is_public": false,
+            "properties": {}
+          },
+          {
+            "id": "a43cfef6-975b-4e29-8b13-c21864c368a4",
+            "name": "Proline",
+            "molecular_formula": "C5H9NO2",
+            "pubchem_cid": null,
+            "smiles": "C1CC(NC1)C(=O)O",
+            "data_source": "CryoProtect Database",
+            "created_at": "2025-04-22 21:45:58.384068+00:00",
+            "is_public": true,
+            "properties": {}
+          }
+        ],
+        "duplicate_type": "formula"
+      }
+    ]
+  },
+  "dry_run": false
+}
