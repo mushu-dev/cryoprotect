@@ -15,15 +15,34 @@ CryoProtect Analyzer is a Flask-based web application that allows users to analy
 - Database storage using Supabase
 - Web interface for easy access
 
-## Installation
+## Development Environment
 
-### Prerequisites
+### Cursor IDE (Recommended)
+
+CryoProtect now supports development using [Cursor IDE](https://cursor.sh/), which provides AI-assisted development features.
+
+1. **Installation**:
+   - Download and install Cursor from [cursor.sh](https://cursor.sh/)
+   - Open the CryoProtect project folder in Cursor
+
+2. **Features**:
+   - AI-assisted code exploration and generation
+   - Integrated issue tracking
+   - Streamlined development workflow
+   
+3. **Migration**:
+   - Run `./migrate_to_cursor.sh` to prepare the project for Cursor
+   - See [CURSOR_MIGRATION_GUIDE.md](CURSOR_MIGRATION_GUIDE.md) for detailed instructions
+
+### Traditional Setup
+
+#### Prerequisites
 
 - Python 3.9+
 - Conda
 - Docker (optional)
 
-### Setup
+#### Setup
 
 1. Clone the repository:
    ```
@@ -69,6 +88,7 @@ docker-compose up
 - [RDKit Troubleshooting](README_RDKit_Troubleshooting.md)
 - [Database Remediation Final Report](reports/DATABASE_REMEDIATION_FINAL_REPORT.md)
 - [Database Maintenance Guide](reports/DATABASE_MAINTENANCE_GUIDE.md)
+- [Cursor Migration Guide](CURSOR_MIGRATION_GUIDE.md)
 
 ## Database Remediation Project
 
@@ -168,11 +188,12 @@ Wrap your scheduled job with `run_with_notification.py`:
 
 For more details, see comments in each script.
 
-## License
-
-MIT
 ## Database Utilities
 
 - `create_database_backup.py` - Script to create backups of the database
 - `create_production_backup.py` - Script to create production database backups
 - `run_database_backup.bat` - Windows batch file to run database backup
+
+## License
+
+MIT

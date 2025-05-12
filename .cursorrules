@@ -1,0 +1,130 @@
+# Cursor Development Rules & AI Collaboration Guide
+
+## 📜 Core Philosophy
+
+1.  **Simplicity:** Prioritize simple, clear, and maintainable solutions. Avoid unnecessary complexity or over-engineering.
+2.  **Iterate:** Prefer iterating on existing, working code rather than building entirely new solutions from scratch, unless fundamentally necessary or explicitly requested.
+3.  **Focus:** Concentrate efforts on the specific task assigned. Avoid unrelated changes or scope creep.
+4.  **Quality:** Strive for a clean, organized, well-tested, and secure codebase.
+5.  **Collaboration:** This document guides both human developers and the AI assistant for effective teamwork.
+
+## 📚 Project Context & Understanding
+
+1.  **Documentation First:**
+    *   **Always** check for and thoroughly review relevant project documentation *before* starting any task. This includes:
+        *   `README.md` (Project overview, setup, patterns, technology stack)
+        *   `CLAUDE.md` (Guidelines for AI assistant)
+        *   `docs/architecture.md` (System architecture, component relationships)
+        *   `docs/technical-documentation.md` (Technical specifications, established patterns)
+    *   If documentation is missing, unclear, or conflicts with the request, **ask for clarification**.
+2.  **Architecture Adherence:**
+    *   Understand and respect module boundaries, data flow, system interfaces, and component dependencies outlined in the documentation.
+    *   Validate that changes comply with the established architecture. Warn and propose compliant solutions if a violation is detected.
+3.  **Pattern & Tech Stack Awareness:**
+    *   Reference `README.md` to understand and utilize existing patterns and technologies.
+    *   Primary technologies: Python, Flask, RDKit, Supabase, SQLAlchemy
+    *   Exhaust options using existing implementations before proposing new patterns or libraries.
+
+## ⚙️ CryoProtect Project Structure
+
+1. **Core Modules:**
+   * `api/` - API endpoints and resources
+   * `database/` - Database connection and utilities
+   * `tests/` - Test suite
+   * `migrations/` - Database migration scripts
+   * `chembl/` - ChEMBL integration components
+   * `pubchem/` - PubChem API integration
+
+2. **Key Files:**
+   * `app.py` - Main application entry point
+   * `api/resources.py` - Core API resources
+   * `api/schemas.py` - Data schemas
+   * `database/connection.py` - Database connection helpers
+   * `config.py` - Application configuration
+
+3. **Testing Framework:**
+   * Using pytest
+   * Run tests with `python tests/run_tests.py`
+   * API tests: `python tests/run_supabase_api_tests.py`
+
+## 🤖 AI Collaboration & Prompting
+
+1.  **Clarity is Key:** Provide clear, specific, and unambiguous instructions to the AI. Define the desired outcome, constraints, and context.
+2.  **Context Referencing:** If a task spans multiple interactions, explicitly remind the AI of relevant previous context, decisions, or code snippets.
+3.  **Suggest vs. Apply:** Clearly state whether the AI should *suggest* a change for human review or *apply* a change directly (use only when high confidence and task is well-defined). Use prefixes like "Suggestion:" or "Applying fix:".
+4.  **Question AI Output:** Human developers should critically review AI-generated code. Question assumptions, verify logic, and don't blindly trust confident-sounding but potentially incorrect suggestions (hallucinations).
+5.  **Focus the AI:** Guide the AI to work on specific, focused parts of the task. Avoid overly broad requests that might lead to architectural or logical errors.
+6.  **Leverage Strengths:** Use the AI for tasks it excels at (boilerplate generation, refactoring specific patterns, finding syntax errors, generating test cases) but maintain human oversight for complex logic, architecture, and security.
+7.  **Incremental Interaction:** Break down complex tasks into smaller steps for the AI. Review and confirm each step before proceeding.
+
+## ✨ Code Quality & Style
+
+1.  **Python Guidelines:** 
+    * Use 4-space indentation, 79-character line length
+    * Follow PEP 8 style guidelines
+    * Use type hints for function arguments and return values
+    * Use triple-quoted docstrings for all modules, classes, and functions
+2.  **Readability & Maintainability:** Write clean, well-organized code.
+3.  **Small Files & Components:**
+    *   Keep files under **300 lines**. Refactor proactively.
+4.  **Avoid Duplication (DRY):** Actively look for and reuse existing functionality. Refactor to eliminate duplication.
+5.  **Linting/Formatting:** Ensure all code conforms to project's linting rules.
+6.  **Pattern Consistency:** Adhere to established project patterns.
+7.  **File Naming:** Use clear, descriptive names in snake_case for Python files.
+8.  **Imports Organization:** Group imports (stdlib, third-party, local) with empty line between groups.
+
+## ✅ Testing & Validation
+
+1.  **Test-Driven Development (TDD):**
+    *   **New Features:** Outline tests, write failing tests, implement code, refactor.
+    *   **Bug Fixes:** Write a test reproducing the bug *before* fixing it.
+2.  **Comprehensive Tests:** Write thorough unit, integration, and/or end-to-end tests covering critical paths, edge cases, and major functionality.
+3.  **Tests Must Pass:** All tests **must** pass before committing or considering a task complete.
+4.  **Error Handling:** Use try/except with specific exception types and proper logging.
+
+## 🔒 Security
+
+1.  **Server-Side Authority:** Keep sensitive logic, validation, and data manipulation strictly on the server-side. Use secure API endpoints.
+2.  **Input Sanitization/Validation:** Always sanitize and validate user input on the server-side.
+3.  **RLS Policies:** Ensure Row Level Security policies are correctly implemented for Supabase.
+4.  **Credentials:** Never hardcode secrets or credentials in the codebase. Use environment variables or a secure secrets management solution.
+
+## 🌳 Version Control & Environment
+
+1.  **Git Hygiene:**
+    *   Commit frequently with clear, atomic messages.
+    *   Keep the working directory clean; ensure no unrelated or temporary files are staged or committed.
+    *   Use `.gitignore` effectively.
+2.  **Environment Variables:**
+    *   Use `.env` files for local development (never commit)
+    *   Use `.env.example` as a template for required variables
+3.  **Environment Awareness:** Code should function correctly across different environments (dev, test, prod). Use environment variables for configuration.
+
+## 📄 Project Phases & Milestones
+
+1. **Phase 1: Technical Foundation**
+   * Database Architecture
+   * Authentication System
+
+2. **Phase 2: Feature Completion**
+   * API Layer Completion
+   * Core Functionality
+   * User Interface
+
+3. **Phase 3: Production Readiness**
+   * Deployment Infrastructure
+   * Monitoring and Maintenance
+   * Security
+
+4. **Phase 4: Documentation**
+   * User Documentation
+   * Technical Documentation
+   * Knowledge Transfer
+
+## 🏷️ Issue Tracking
+
+* **Phase Labels:** phase1, phase2, phase3, phase4
+* **Component Labels:** component:database, component:api, component:ui, component:authentication, component:testing, component:chembl
+* **Priority Labels:** priority:high, priority:medium, priority:low
+* **Status Labels:** status:Pending, status:Running, status:Implemented, status:Done, status:Validated
+* **Type Labels:** type:feature, type:bugfix, type:refactor, type:chore, type:tech-design, type:validation

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: CryoProtect Documentation
+    url: https://github.com/yourusername/cryoprotect/blob/master/README.md
+    about: Check the documentation before opening an issue
+  - name: Cursor IDE Migration Guide
+    url: https://github.com/yourusername/cryoprotect/blob/master/CURSOR_MIGRATION_GUIDE.md
+    about: Learn about migrating to Cursor IDE

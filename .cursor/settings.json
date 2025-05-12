@@ -1,0 +1,28 @@
+{
+  "editor.formatOnSave": true,
+  "editor.tabSize": 4,
+  "editor.rulers": [79],
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  "python.testing.nosetestsEnabled": false,
+  "python.testing.pytestArgs": [
+    "tests"
+  ],
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.pytest_cache": true,
+    "**/*.pyc": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/checkpoints": true,
+    "**/__pycache__": true
+  },
+  "cursor.aiEnabled": true,
+  "cursor.useGlobalAiConfig": false,
+  "cursor.aiModel": "claude-3-sonnet-20240229"
+}
