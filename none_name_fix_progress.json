@@ -1,0 +1,191 @@
+{
+  "processed_ids": [
+    "8b894fdf-7cfb-4024-86bf-f0fe54f7103e",
+    "15c75c1a-ff45-4a2f-8900-e727621f250d",
+    "716a2f71-9845-4037-9a28-6d5f1320b42b",
+    "f24242de-9616-4e81-9b3c-e5fc18a51f28",
+    "d97e6251-703a-4bbe-b711-42ab887b0740",
+    "565d1d92-8062-4382-9a1d-5da8e781d0b5",
+    "844e3cc8-90d4-4016-b801-789b449fb70b",
+    "4fb1effa-0d6a-418f-8b41-80c94bd66105",
+    "44d64958-4f93-4122-b6f5-04b50e3e9ef4",
+    "0cf005ec-98f6-43e6-87fd-024a7c3d22d9",
+    "04c024ec-2a82-4868-aeac-ec3a73db9c9c",
+    "ab49d6ab-e4ae-43eb-b14b-ffe07a209eb8",
+    "6daf6d77-cb96-4a62-b38d-1286dc69c324",
+    "1a353afb-4d3e-4347-ae6f-b1fd711e8f7d",
+    "385b150f-ca9a-4ec0-9a60-fc114b178ca4",
+    "7637d51f-10f1-49be-bdc1-197d0ba4a364",
+    "0a676ece-5633-452d-8cc2-666640209fb5",
+    "449a9f61-93b7-4670-aecc-8761db1294ca",
+    "69e62b55-dbe3-4322-843d-7d400797ddff",
+    "bb81d998-d954-4552-8917-d5ea17ea9d3a"
+  ],
+  "updated_ids": [
+    "8b894fdf-7cfb-4024-86bf-f0fe54f7103e",
+    "15c75c1a-ff45-4a2f-8900-e727621f250d",
+    "716a2f71-9845-4037-9a28-6d5f1320b42b",
+    "f24242de-9616-4e81-9b3c-e5fc18a51f28",
+    "d97e6251-703a-4bbe-b711-42ab887b0740",
+    "565d1d92-8062-4382-9a1d-5da8e781d0b5",
+    "844e3cc8-90d4-4016-b801-789b449fb70b",
+    "4fb1effa-0d6a-418f-8b41-80c94bd66105",
+    "44d64958-4f93-4122-b6f5-04b50e3e9ef4",
+    "0cf005ec-98f6-43e6-87fd-024a7c3d22d9",
+    "04c024ec-2a82-4868-aeac-ec3a73db9c9c",
+    "ab49d6ab-e4ae-43eb-b14b-ffe07a209eb8",
+    "6daf6d77-cb96-4a62-b38d-1286dc69c324",
+    "1a353afb-4d3e-4347-ae6f-b1fd711e8f7d",
+    "385b150f-ca9a-4ec0-9a60-fc114b178ca4",
+    "7637d51f-10f1-49be-bdc1-197d0ba4a364",
+    "0a676ece-5633-452d-8cc2-666640209fb5",
+    "449a9f61-93b7-4670-aecc-8761db1294ca",
+    "69e62b55-dbe3-4322-843d-7d400797ddff",
+    "bb81d998-d954-4552-8917-d5ea17ea9d3a"
+  ],
+  "updates": [
+    {
+      "id": "8b894fdf-7cfb-4024-86bf-f0fe54f7103e",
+      "old_name": "None",
+      "new_name": "6-hydroxy-5-[(3-methoxy-4-oxocyclohexa-2,5-dien-1-ylidene)methyl]-1-(4-methylpentyl)pyrimidine-2,4-dione",
+      "pubchem_cid": 621593,
+      "name_source": "PubChem API"
+    },
+    {
+      "id": "15c75c1a-ff45-4a2f-8900-e727621f250d",
+      "old_name": "None",
+      "new_name": "(2S)-2-amino-N-[5-(4-fluorophenyl)-1,3,4-thiadiazol-2-yl]-3-phenylpropanamide",
+      "pubchem_cid": 812747,
+      "name_source": "PubChem API"
+    },
+    {
+      "id": "716a2f71-9845-4037-9a28-6d5f1320b42b",
+      "old_name": "None",
+      "new_name": "3-(3,4-dimethoxyphenyl)-4-hydroxy-8-[[(3R)-3-methylpiperidin-1-yl]methyl]-2-(trifluoromethyl)chromen-7-one",
+      "pubchem_cid": 1192209,
+      "name_source": "PubChem API"
+    },
+    {
+      "id": "f24242de-9616-4e81-9b3c-e5fc18a51f28",
+      "old_name": "None",
+      "new_name": "3-chloro-1-cyclohexyl-4-[[(1R)-1-phenylethyl]amino]pyrrole-2,5-dione",
+      "pubchem_cid": 1655669,
+      "name_source": "PubChem API"
+    },
+    {
+      "id": "d97e6251-703a-4bbe-b711-42ab887b0740",
+      "old_name": "None",
+      "new_name": "(2R)-N-(5-chloropyridin-2-yl)-2-(3,4-dimethylphenyl)sulfanylpropanamide",
+      "pubchem_cid": 2591497,
+      "name_source": "PubChem API"
+    },
+    {
+      "id": "565d1d92-8062-4382-9a1d-5da8e781d0b5",
+      "old_name": "None",
+      "new_name": "prop-2-enyl (3S,4R)-5-cyano-6-[2-(2-ethylanilino)-2-oxoethyl]sulfanyl-4-(furan-2-yl)-2-methylidene-3,4-dihydro-1H-pyridine-3-carboxylate",
+      "pubchem_cid": 6582406,
+      "name_source": "PubChem API"
+    },
+    {
+      "id": "844e3cc8-90d4-4016-b801-789b449fb70b",
+      "old_name": "None",
+      "new_name": "N-[(E)-[1-[(2,6-dichlorophenyl)methyl]-3,5-dimethylpyrazol-4-yl]methylideneamino]benzamide",
+      "pubchem_cid": 9781157,
+      "name_source": "PubChem API"
+    },
+    {
+      "id": "4fb1effa-0d6a-418f-8b41-80c94bd66105",
+      "old_name": "None",
+      "new_name": "(1S,2S,5R,6R)-9-nitroso-2,3,4,5-tetrakis(trifluoromethyl)-9-azatricyclo[4.2.1.02,5]nona-3,7-diene",
+      "pubchem_cid": 12896013,
+      "name_source": "PubChem API"
+    },
+    {
+      "id": "44d64958-4f93-4122-b6f5-04b50e3e9ef4",
+      "old_name": "None",
+      "new_name": "2-chloro-3-[(1R)-1-phenylethyl]-1,3,2lambda5-oxazaphosphinane 2-oxide",
+      "pubchem_cid": 13049234,
+      "name_source": "PubChem API"
+    },
+    {
+      "id": "0cf005ec-98f6-43e6-87fd-024a7c3d22d9",
+      "old_name": "None",
+      "new_name": "(4-nitrophenyl)methyl N-[4-[2-(diaminomethylidene)hydrazinyl]phenyl]iminocarbamimidothioate",
+      "pubchem_cid": 13452147,
+      "name_source": "PubChem API"
+    },
+    {
+      "id": "04c024ec-2a82-4868-aeac-ec3a73db9c9c",
+      "old_name": "None",
+      "new_name": "(Z)-N-methoxy-1-naphthalen-1-ylethanimine",
+      "pubchem_cid": 13494764,
+      "name_source": "PubChem API"
+    },
+    {
+      "id": "ab49d6ab-e4ae-43eb-b14b-ffe07a209eb8",
+      "old_name": "None",
+      "new_name": "N-[4-[5-(4-aminophenyl)-1,3,4-oxadiazol-2-yl]phenyl]benzenesulfonamide",
+      "pubchem_cid": 14385857,
+      "name_source": "PubChem API"
+    },
+    {
+      "id": "6daf6d77-cb96-4a62-b38d-1286dc69c324",
+      "old_name": "None",
+      "new_name": "N-[(4aR,6S,8S,8aS)-6-methoxy-7,7-dimethyl-2-phenyl-4a,6,8,8a-tetrahydro-4H-pyrano[3,2-d][1,3]dioxin-8-yl]-2,2,2-trifluoroacetamide",
+      "pubchem_cid": 14411574,
+      "name_source": "PubChem API"
+    },
+    {
+      "id": "1a353afb-4d3e-4347-ae6f-b1fd711e8f7d",
+      "old_name": "None",
+      "new_name": "1-O-tert-butyl 2-O-methyl 4-acetyloxy-3,4-dihydro-2H-pyridine-1,2-dicarboxylate",
+      "pubchem_cid": 14526412,
+      "name_source": "PubChem API"
+    },
+    {
+      "id": "385b150f-ca9a-4ec0-9a60-fc114b178ca4",
+      "old_name": "None",
+      "new_name": "1,6-dimethoxy-3-methyl-3H-indol-2-one",
+      "pubchem_cid": 14569161,
+      "name_source": "PubChem API"
+    },
+    {
+      "id": "7637d51f-10f1-49be-bdc1-197d0ba4a364",
+      "old_name": "None",
+      "new_name": "(2S)-2-[(2R,3R,4S,4aS,5S,6S,8aS)-3-(methoxymethoxymethyl)-6-methyl-4,5,6-tris(phenylmethoxy)-3,4,4a,5,7,8a-hexahydro-2H-pyrano[2,3-b]pyran-2-yl]propan-1-ol",
+      "pubchem_cid": 14587888,
+      "name_source": "PubChem API"
+    },
+    {
+      "id": "0a676ece-5633-452d-8cc2-666640209fb5",
+      "old_name": "None",
+      "new_name": "(2Z)-2-(cyclopenta-1,3-dien-1-ylmethylidene)-1-azabicyclo[2.2.2]octan-3-one",
+      "pubchem_cid": 14687283,
+      "name_source": "PubChem API"
+    },
+    {
+      "id": "449a9f61-93b7-4670-aecc-8761db1294ca",
+      "old_name": "None",
+      "new_name": "3-phenyl-5-[2-(2-piperidin-1-ylethyl)piperidin-1-yl]-1,2-oxazole",
+      "pubchem_cid": 14748527,
+      "name_source": "PubChem API"
+    },
+    {
+      "id": "69e62b55-dbe3-4322-843d-7d400797ddff",
+      "old_name": "None",
+      "new_name": "(6S)-6-[2-(3,4-dimethoxyphenyl)-2-oxoethyl]-1-[(2S)-2-propan-2-ylpyrrolidin-1-yl]piperidin-2-one",
+      "pubchem_cid": 14934486,
+      "name_source": "PubChem API"
+    },
+    {
+      "id": "bb81d998-d954-4552-8917-d5ea17ea9d3a",
+      "old_name": "None",
+      "new_name": "ethyl 2-[4-[(7-methyl-1,2,4-benzotriazin-3-yl)amino]phenoxy]propanoate",
+      "pubchem_cid": 15587076,
+      "name_source": "PubChem API"
+    }
+  ],
+  "total_processed": 20,
+  "total_updated": 20,
+  "total_fallback": 0
+}
