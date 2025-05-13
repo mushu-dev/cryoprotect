@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { getMixtureService, markApiConnectionFailed } from '@/features/common/api/service-factory';
 import { 
-  mixtureService,
   type Mixture,
   type MixtureParams,
   type CreateMixtureData,
@@ -12,17 +12,35 @@ import {
 export const MIXTURES_QUERY_KEY = 'mixtures';
 
 export function useMixtures(params: MixtureParams = {}) {
+  const mixtureService = getMixtureService();
+  
   return useQuery({
     queryKey: [MIXTURES_QUERY_KEY, params],
-    queryFn: () => mixtureService.getMixtures(params),
+    queryFn: async () => {
+      try {
+        return await mixtureService.getMixtures(params);
+      } catch (error) {
+        markApiConnectionFailed();
+        throw error;
+      }
+    },
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
 }
 
 export function useMixture(id: string) {
+  const mixtureService = getMixtureService();
+  
   return useQuery({
     queryKey: [MIXTURES_QUERY_KEY, id],
-    queryFn: () => mixtureService.getMixture(id),
+    queryFn: async () => {
+      try {
+        return await mixtureService.getMixture(id);
+      } catch (error) {
+        markApiConnectionFailed();
+        throw error;
+      }
+    },
     staleTime: 5 * 60 * 1000, // 5 minutes
     enabled: !!id,
   });
@@ -30,9 +48,17 @@ export function useMixture(id: string) {
 
 export function useCreateMixture() {
   const queryClient = useQueryClient();
+  const mixtureService = getMixtureService();
   
   return useMutation({
-    mutationFn: (data: CreateMixtureData) => mixtureService.createMixture(data),
+    mutationFn: async (data: CreateMixtureData) => {
+      try {
+        return await mixtureService.createMixture(data);
+      } catch (error) {
+        markApiConnectionFailed();
+        throw error;
+      }
+    },
     onSuccess: (data) => {
       // Invalidate mixtures query to refetch list after creation
       queryClient.invalidateQueries({ queryKey: [MIXTURES_QUERY_KEY] });
@@ -118,18 +144,36 @@ export function useRemoveComponent() {
 }
 
 export function useCryoprotectionScore(mixtureId: string) {
+  const mixtureService = getMixtureService();
+  
   return useQuery({
     queryKey: [MIXTURES_QUERY_KEY, mixtureId, 'cryoprotection-score'],
-    queryFn: () => mixtureService.getCryoprotectionScore(mixtureId),
+    queryFn: async () => {
+      try {
+        return await mixtureService.getCryoprotectionScore(mixtureId);
+      } catch (error) {
+        markApiConnectionFailed();
+        throw error;
+      }
+    },
     staleTime: 5 * 60 * 1000, // 5 minutes
     enabled: !!mixtureId,
   });
 }
 
 export function useSearchMixtures(query: string, limit: number = 10) {
+  const mixtureService = getMixtureService();
+  
   return useQuery({
     queryKey: [MIXTURES_QUERY_KEY, 'search', query, limit],
-    queryFn: () => mixtureService.searchMixtures(query, limit),
+    queryFn: async () => {
+      try {
+        return await mixtureService.searchMixtures(query, limit);
+      } catch (error) {
+        markApiConnectionFailed();
+        throw error;
+      }
+    },
     staleTime: 5 * 60 * 1000, // 5 minutes
     enabled: query.length > 2, // Only search when query has 3+ characters
   });
