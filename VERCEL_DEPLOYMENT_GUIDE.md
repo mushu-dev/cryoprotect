@@ -1,6 +1,11 @@
-# Vercel Deployment Guide for CryoProtect v2
+# Vercel Deployment Guide for CryoProtect
 
-This guide explains how to deploy CryoProtect v2 on Vercel's Hobby plan while staying within the limit of 12 Serverless Functions.
+This guide explains how to deploy CryoProtect on Vercel's platform, including the challenges faced and solutions implemented during the deployment process. 
+
+## May 2025 Deployment Status
+
+The most recent deployment was completed on May 13, 2025. The application is available at:
+https://cryoprotect-uis-pop2.vercel.app
 
 ## Optimization Strategy
 
@@ -18,8 +23,11 @@ To stay within Vercel's Hobby plan limits, we've implemented the following optim
 
 - `vercel.json`: Configuration file for Vercel deployment
 - `api/index.py`: Consolidated API router that handles all API requests
+- `api/app.py`: Main application landing page handler
+- `api/requirements.txt`: Python dependencies for serverless functions
 - `build_vercel.py`: Build script for Vercel deployment
-- `package.json`: Updated build scripts
+- `package.json`: Updated build scripts with Vercel-specific commands
+- `supabase/config.toml`: Supabase configuration for Vercel deployment
 
 ## Deploying to Vercel
 
@@ -35,15 +43,19 @@ Follow these steps to deploy the application to Vercel:
    vercel login
    ```
 
-3. **Deploy to Vercel**:
+3. **Prepare the deployment**:
+   - Run the build script to prepare static assets:
+     ```bash
+     python build_vercel.py
+     ```
+   - Ensure the `.env.production` file contains the correct environment variables
+
+4. **Deploy to Vercel**:
    ```bash
-   vercel
+   vercel deploy --prod --yes --archive=tgz
    ```
 
-4. **Production Deployment**:
-   ```bash
-   vercel --prod
-   ```
+   Note: The `--archive=tgz` flag is necessary because the repository has more than 15,000 files, which exceeds Vercel's default limit.
 
 ## Environment Variables
 
@@ -62,19 +74,34 @@ You can monitor your serverless function usage in the Vercel dashboard under the
 
 ## Troubleshooting
 
-### Function Count Still Exceeds Limit
+### Deployment Challenges
 
-If you're still exceeding the function limit:
+During the deployment process, we encountered several challenges:
 
-1. Check `vercel.json` to ensure all routes are properly configured
-2. Review the deployment logs for any missed routes
-3. Consider further consolidating API endpoints
+1. **File Count Limit**: Vercel has a 15,000 file limit for direct deployment. We resolved this by using the `--archive=tgz` flag to upload a compressed archive instead.
 
-### Other Common Issues
+2. **Function Format**: Vercel expects a specific format for Python serverless functions. We updated our handler functions to return objects with the following structure:
+   ```python
+   {
+       'statusCode': 200,
+       'headers': {'Content-Type': 'application/json'},
+       'body': json.dumps(data)
+   }
+   ```
 
-- **Build Failures**: Check the build logs for specific errors
-- **API 500 Errors**: Check your environment variables
-- **Missing Static Assets**: Ensure build scripts are correctly copying assets
+3. **Configuration Conflicts**: Vercel doesn't allow mixing certain configuration options in `vercel.json`. We had to consolidate headers into the routes configuration.
+
+4. **Cron Job Limitations**: The Hobby plan only allows daily cron jobs, so we had to adjust the schedule for our health check.
+
+### Common Issues and Solutions
+
+- **404 Errors**: Make sure your routes in `vercel.json` are correctly configured and point to the right handler functions.
+  
+- **Build Failures**: Check that your Python dependencies are correctly specified in `api/requirements.txt`.
+  
+- **Environment Variables**: Ensure all required environment variables are set in the Vercel dashboard.
+  
+- **API Errors**: If API calls fail, check the Supabase connection details and ensure the service role key has the necessary permissions.
 
 ## Further Optimizations
 
