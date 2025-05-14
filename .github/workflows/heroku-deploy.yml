@@ -1,0 +1,84 @@
+name: Heroku Deployment
+
+on:
+  push:
+    branches:
+      - master  # Deploy production on master branch push
+    paths:
+      - 'api/**'      # Only deploy when API code changes
+      - 'app.py'
+      - 'Procfile'
+      - 'requirements.txt'
+      - '.github/workflows/heroku-deploy.yml'
+  pull_request:
+    types: [opened, synchronize, reopened]  # Create review apps for PRs
+    paths:
+      - 'api/**'      # Only deploy when API code changes
+      - 'app.py'
+      - 'Procfile'
+      - 'requirements.txt'
+      - '.github/workflows/heroku-deploy.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest gunicorn
+          
+      - name: Run tests
+        run: |
+          pytest -xvs
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    # Only deploy from master branch
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.14
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          
+      - name: Health check
+        run: |
+          sleep 30  # Wait for the deployment to complete
+          curl -sSf "https://${{ secrets.HEROKU_APP_NAME }}.herokuapp.com/health" || exit 1
+          
+  create_review_app:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Create Heroku Review App
+        uses: rishabhgupta/heroku-review-app@v1
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          pipeline_id: ${{ secrets.HEROKU_PIPELINE_ID }}
+          pipeline_stage: development  # Usually "development" for review apps

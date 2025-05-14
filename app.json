@@ -1,0 +1,53 @@
+{
+  "name": "CryoProtect",
+  "description": "A tool for analyzing cryoprotectant molecules",
+  "keywords": [
+    "python",
+    "flask",
+    "cryoprotectant",
+    "science",
+    "molecules"
+  ],
+  "website": "https://github.com/blueprint-house/CryoProtect",
+  "repository": "https://github.com/blueprint-house/CryoProtect",
+  "env": {
+    "FLASK_APP": {
+      "description": "Flask application entry point",
+      "value": "app.py"
+    },
+    "FLASK_ENV": {
+      "description": "Flask environment",
+      "value": "production"
+    },
+    "SUPABASE_URL": {
+      "description": "Supabase project URL",
+      "required": true
+    },
+    "SUPABASE_KEY": {
+      "description": "Supabase API key",
+      "required": true
+    },
+    "SECRET_KEY": {
+      "description": "Secret key for session encryption",
+      "generator": "secret"
+    },
+    "WEB_CONCURRENCY": {
+      "description": "Number of Gunicorn workers",
+      "value": "2"
+    }
+  },
+  "addons": [
+    "heroku-redis:hobby-dev"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  }
+}
