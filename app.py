@@ -1,3 +1,6 @@
+# Import Heroku config
+import config_heroku
+
 #!/usr/bin/env python3
 """
 CryoProtect Analyzer API

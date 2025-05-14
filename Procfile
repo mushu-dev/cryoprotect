@@ -1,1 +1,2 @@
-web: gunicorn simple_app:app --log-file -
+release: python setup_database.py
+web: gunicorn app:app --log-file -
