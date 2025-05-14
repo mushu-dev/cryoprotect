@@ -161,15 +161,22 @@ def setup_database():
     if not wait_for_database(connection_params):
         return False
     
-    # Run database migrations
-    run_migrations()
-    
     # Check if required tables exist
     if check_database_structure(connection_params):
         logger.info("Database structure is already set up.")
     else:
-        # If migrations didn't create tables, try running population scripts
-        if os.path.exists('populate_database.py'):
+        # Create tables using the Heroku-specific script if it exists
+        if os.path.exists('create_heroku_tables.py'):
+            logger.info("Creating database tables using Heroku-specific script...")
+            try:
+                subprocess.run([sys.executable, 'create_heroku_tables.py'], check=True)
+                logger.info("Database tables created successfully.")
+                return True
+            except subprocess.CalledProcessError as e:
+                logger.error(f"Error creating database tables: {e}")
+                return False
+        # Otherwise try existing database population scripts
+        elif os.path.exists('populate_database.py'):
             logger.info("Running database population script...")
             try:
                 subprocess.run([sys.executable, 'populate_database.py'], check=True)
@@ -177,16 +184,10 @@ def setup_database():
             except subprocess.CalledProcessError as e:
                 logger.error(f"Error populating database: {e}")
                 return False
-    
-    # Run Supabase RLS scripts if they exist
-    if os.path.exists('apply_rls_simple.py'):
-        logger.info("Applying RLS policies...")
-        try:
-            subprocess.run([sys.executable, 'apply_rls_simple.py'], check=True)
-            logger.info("RLS policies applied successfully")
-        except subprocess.CalledProcessError as e:
-            logger.error(f"Error applying RLS policies: {e}")
-            # Don't exit on error, try to continue
+        else:
+            # No table creation scripts available
+            logger.error("No database creation scripts found. Create create_heroku_tables.py or populate_database.py")
+            return False
     
     logger.info("Database setup completed successfully.")
     return True

@@ -39,4 +39,11 @@ chembl_webresource_client==0.10.9  # Official ChEMBL API client
 # Deployment
 gunicorn==22.0.0  # For Heroku deployment
 
-# NOTE: All scientific packages (numpy, scipy, scikit-learn, pandas, matplotlib, seaborn, pillow, openpyxl, XlsxWriter, reportlab, pdfkit, rdkit) are managed via conda in environment.yml only.
+# Scientific packages needed for Heroku
+numpy==1.26.3
+scipy==1.13.0
+pandas==2.2.0
+matplotlib==3.8.0
+
+# Database connections
+psycopg2-binary==2.9.9  # For direct PostgreSQL connections
