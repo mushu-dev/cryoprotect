@@ -28,6 +28,10 @@ def create_tables(connection_params):
         # Set autocommit to True to execute each statement immediately
         conn.autocommit = True
         
+        # Enable the pgcrypto extension for UUID generation
+        logger.info("Enabling pgcrypto extension...")
+        cursor.execute("CREATE EXTENSION IF NOT EXISTS pgcrypto;")
+        
         # Create molecules table
         logger.info("Creating molecules table...")
         cursor.execute("""
@@ -47,7 +51,7 @@ def create_tables(connection_params):
         logger.info("Creating property_types table...")
         cursor.execute("""
         CREATE TABLE IF NOT EXISTS property_types (
-            id SERIAL PRIMARY KEY,
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
             name VARCHAR(255) NOT NULL,
             description TEXT,
             unit VARCHAR(50),
@@ -62,7 +66,7 @@ def create_tables(connection_params):
         CREATE TABLE IF NOT EXISTS molecular_properties (
             id SERIAL PRIMARY KEY,
             molecule_id INTEGER REFERENCES molecules(id),
-            property_type_id INTEGER REFERENCES property_types(id),
+            property_type_id UUID REFERENCES property_types(id),
             value_text TEXT,
             value_numeric FLOAT,
             value_boolean BOOLEAN,
@@ -118,7 +122,7 @@ def create_tables(connection_params):
         CREATE TABLE IF NOT EXISTS experiment_properties (
             id SERIAL PRIMARY KEY,
             experiment_id INTEGER REFERENCES experiments(id),
-            property_type_id INTEGER REFERENCES property_types(id),
+            property_type_id UUID REFERENCES property_types(id),
             value_text TEXT,
             value_numeric FLOAT,
             value_boolean BOOLEAN,
