@@ -1,2 +1,2 @@
 release: python setup_database.py
-web: gunicorn app:app --log-file -
+web: python -c "import heroku_app_startup" && gunicorn app:app --log-file -

@@ -1,6 +1,3 @@
-# Import Heroku config
-import config_heroku
-
 #!/usr/bin/env python3
 """
 CryoProtect Analyzer API
@@ -8,6 +5,15 @@ CryoProtect Analyzer API
 This is the main Flask application for the CryoProtect Analyzer API.
 It provides endpoints for accessing and manipulating data in the Supabase database.
 """
+
+# Try to import RDKit, if not available, use mock implementation
+try:
+    import rdkit
+except ImportError:
+    import mock_rdkit
+
+# Import Heroku config
+import config_heroku
 
 import os
 import hashlib
