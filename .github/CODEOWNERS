@@ -1,0 +1,46 @@
+# CryoProtect CODEOWNERS File
+
+# This file defines the code owners for various parts of the codebase.
+# When someone opens a pull request that modifies code owned by someone else,
+# they will be automatically requested for review.
+
+# Default owners for everything in the repo
+*                   @blueprint-house/admin
+
+# Backend API
+/api/**             @blueprint-house/backend-team
+/app.py             @blueprint-house/backend-team
+/config.py          @blueprint-house/backend-team
+
+# Database
+/database/**        @blueprint-house/database-team
+/migrations/**      @blueprint-house/database-team
+
+# Frontend
+/frontend/**        @blueprint-house/frontend-team
+
+# Deployment and CI/CD
+/.github/workflows/ @blueprint-house/devops-team
+/docker-compose*    @blueprint-house/devops-team
+/Dockerfile*        @blueprint-house/devops-team
+/vercel.json        @blueprint-house/devops-team
+/Procfile           @blueprint-house/devops-team
+/app.json           @blueprint-house/devops-team
+
+# RDKit integration
+**/rdkit_*.py       @blueprint-house/science-team
+/api/rdkit*         @blueprint-house/science-team
+
+# Security
+/api/jwt_auth.py    @blueprint-house/security-team
+/api/csrf.py        @blueprint-house/security-team
+/api/session_*.py   @blueprint-house/security-team
+/api/rate_limiter.py @blueprint-house/security-team
+/security_headers.py @blueprint-house/security-team
+
+# Documentation
+/*.md               @blueprint-house/docs-team
+/docs/**            @blueprint-house/docs-team
+
+# Note: Replace the team names with actual GitHub teams once they are created.
+# For now, these are placeholder team names.

@@ -1,0 +1,57 @@
+name: Vercel Deployment
+
+on:
+  push:
+    branches:
+      - master  # Deploy production on master branch push
+  pull_request:
+    types: [opened, synchronize, reopened]  # Deploy preview for PRs
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+          
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+        
+      - name: Install frontend dependencies
+        working-directory: ./frontend
+        run: npm ci
+        
+      - name: Pull Vercel Environment Variables
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        
+      - name: Build Frontend
+        working-directory: ./frontend
+        run: npm run build
+        
+      - name: Deploy Preview to Vercel
+        if: github.event_name == 'pull_request'
+        run: |
+          vercel deploy --token=${{ secrets.VERCEL_TOKEN }} \
+            --build-env NODE_ENV=preview \
+            --prod=false \
+            --scope=${{ secrets.VERCEL_ORG_ID }}
+          
+      - name: Deploy Production to Vercel
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: |
+          vercel deploy --token=${{ secrets.VERCEL_TOKEN }} \
+            --prod \
+            --build-env NODE_ENV=production \
+            --scope=${{ secrets.VERCEL_ORG_ID }}

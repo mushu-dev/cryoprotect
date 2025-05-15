@@ -36,4 +36,7 @@ redis==5.0.1  # Optional: for distributed rate limiting storage
 # ChEMBL Integration
 chembl_webresource_client==0.10.9  # Official ChEMBL API client
 
+# Deployment
+gunicorn==22.0.0  # For Heroku deployment
+
 # NOTE: All scientific packages (numpy, scipy, scikit-learn, pandas, matplotlib, seaborn, pillow, openpyxl, XlsxWriter, reportlab, pdfkit, rdkit) are managed via conda in environment.yml only.
