@@ -18,7 +18,17 @@ logging.basicConfig(
 logger = logging.getLogger('simple_app')
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+
+# Enable CORS with more specific configuration
+CORS(app, resources={
+    r"/*": {"origins": [
+        "http://localhost:3000",                        # Local development
+        "https://frontend-cryoprotect.vercel.app",      # Vercel production
+        "https://www.cryoprotect.app",                  # Custom domain
+        os.environ.get("VERCEL_FRONTEND_URL", "*")      # Dynamic frontend URL from env
+    ], "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"], 
+       "allow_headers": ["Content-Type", "Authorization"]}
+})
 
 # Get database URL from environment
 DATABASE_URL = os.environ.get('DATABASE_URL')
@@ -51,6 +61,21 @@ def index():
         'status': 'ok',
         'message': 'CryoProtect API is running in simplified mode',
         'version': '1.0.0'
+    })
+
+@app.route('/api/connect')
+def api_connect():
+    """API connectivity endpoint for testing frontend-backend communication."""
+    origin = request.headers.get('Origin', 'Unknown')
+    logger.info(f"Connectivity test from origin: {origin}")
+    
+    return jsonify({
+        'status': 'success',
+        'message': 'Connected successfully to CryoProtect API',
+        'origin': origin,
+        'cors': 'enabled',
+        'environment': os.environ.get('FLASK_ENV', 'production'),
+        'server': 'Heroku'
     })
 
 @app.route('/health')
