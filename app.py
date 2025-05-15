@@ -112,10 +112,17 @@ def create_app(config_object=None, testing=False):
         app.config['TESTING'] = True
         # Add other test-specific config overrides here if needed
 
-    # Enable CORS with additional options for documentation access
+    # Enable CORS for both documentation and API access
     CORS(app, resources={
         r"/swagger-ui/*": {"origins": "*"},
-        r"/api/docs/*": {"origins": "*"}
+        r"/api/docs/*": {"origins": "*"},
+        r"/api/v1/*": {"origins": [
+            "http://localhost:3000",                             # Local development
+            "https://frontend-cryoprotect.vercel.app",           # Vercel production
+            "https://www.cryoprotect.app",                       # Custom domain 
+            os.environ.get("VERCEL_FRONTEND_URL", "*")           # Dynamic frontend URL from env
+        ], "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"], 
+           "allow_headers": ["Content-Type", "Authorization"]}
     })
 
     # Initialize API
@@ -429,6 +436,32 @@ def create_app(config_object=None, testing=False):
         # Add rate limit headers to response
         response = add_rate_limit_headers(response)
         
+        # Add CORS headers for API routes
+        if request.path.startswith('/api/v1/'):
+            # Get allowed origins from environment or use default
+            frontend_url = os.environ.get('VERCEL_FRONTEND_URL', 'https://frontend-cryoprotect.vercel.app')
+            allowed_origins = [
+                'http://localhost:3000',
+                frontend_url,
+                'https://www.cryoprotect.app'
+            ]
+            
+            # Check if the request origin is in our allowed list
+            request_origin = request.headers.get('Origin')
+            if request_origin and (request_origin in allowed_origins or '*' in allowed_origins):
+                response.headers.add('Access-Control-Allow-Origin', request_origin)
+            else:
+                # Default to the production frontend URL if origin not specified or not allowed
+                response.headers.add('Access-Control-Allow-Origin', frontend_url)
+                
+            response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+            response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+            response.headers.add('Access-Control-Allow-Credentials', 'true')
+            
+            # Handle preflight OPTIONS requests
+            if request.method == 'OPTIONS':
+                response.headers.add('Access-Control-Max-Age', '3600')
+        
         # Log response details if not a static file or health check
         if not request.path.startswith('/static/') and request.path != '/health':
             status_code = response.status_code
@@ -479,7 +512,41 @@ def create_app(config_object=None, testing=False):
         
         return response
     
-    # Add health check endpoint
+    # Add health check endpoints
+    
+    # API connectivity test endpoint
+    @app.route('/api/v1/health/connectivity')
+    def api_connectivity_check():
+        """
+        Simple API connectivity test endpoint for verifying frontend-backend connection.
+        Returns basic information about the API and connection status.
+        """
+        try:
+            # Get Heroku app name
+            heroku_app_name = os.environ.get('HEROKU_APP_NAME', 'unknown')
+            # Get Vercel-specific environment variables
+            vercel_frontend_url = os.environ.get('VERCEL_FRONTEND_URL', 'unknown')
+            
+            # Return connectivity information
+            return jsonify({
+                'status': 'connected',
+                'api_version': os.environ.get('API_VERSION', '1.0.0'),
+                'environment': os.environ.get('FLASK_ENV', 'production'),
+                'deployment': {
+                    'backend': f"https://{heroku_app_name}.herokuapp.com",
+                    'frontend': vercel_frontend_url
+                },
+                'timestamp': datetime.now().isoformat(),
+                'cors_enabled': True
+            }), 200
+        except Exception as e:
+            logger.error(f"API connectivity check failed: {str(e)}", exc_info=True)
+            return jsonify({
+                'status': 'error',
+                'message': str(e),
+                'timestamp': datetime.now().isoformat()
+            }), 500
+    
     # Main health check endpoint for overall system health
     @app.route('/health')
     def health_check():
