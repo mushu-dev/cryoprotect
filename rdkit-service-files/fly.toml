@@ -1,0 +1,30 @@
+app = "cryoprotect-rdkit"
+primary_region = "iad"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "8080"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[[http_service.checks]]
+  grace_period = "120s"  # Longer grace period for RDKit initialization
+  interval = "30s"
+  method = "GET"
+  timeout = "10s"
+  path = "/health"
+
+# Increase VM resources to handle RDKit
+[services.app]
+  memory = "1024"  # 1GB memory
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
