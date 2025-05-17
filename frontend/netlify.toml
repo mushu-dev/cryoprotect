@@ -1,5 +1,12 @@
 [build]
-  command = "npm run build"
+  command = "chmod +x ./minimal-build.sh && ./minimal-build.sh"
+  publish = ".next"
+
+[dev]
+  command = "npm run dev"
+  port = 3000
+  targetPort = 3000
+  framework = "#custom"
   publish = ".next"
   
 [build.environment]
