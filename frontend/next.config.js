@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Enable Next.js Analytics for Vercel deployments only
+  analyticsId: process.env.NEXT_PUBLIC_VERCEL === 'true' ? true : undefined,
   reactStrictMode: true,
   swcMinify: true,
   images: {

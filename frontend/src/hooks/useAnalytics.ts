@@ -1,0 +1,89 @@
+import { useCallback, useEffect, useState } from 'react';
+import { trackEvent } from '../app/netlify-analytics';
+
+/**
+ * Hook for tracking analytics events throughout the application
+ * Provides a consistent interface regardless of analytics provider
+ */
+export function useAnalytics() {
+  const [isAnalyticsEnabled, setIsAnalyticsEnabled] = useState<boolean>(false);
+  
+  // Initialize analytics state
+  useEffect(() => {
+    const netlifyEnabled = process.env.NEXT_PUBLIC_NETLIFY === 'true';
+    const vercelEnabled = process.env.NEXT_PUBLIC_VERCEL === 'true';
+    setIsAnalyticsEnabled(netlifyEnabled || vercelEnabled);
+  }, []);
+  
+  /**
+   * Track page view
+   * @param path - Optional path to track (defaults to current path)
+   */
+  const trackPageView = useCallback((path?: string) => {
+    if (!isAnalyticsEnabled) return;
+    
+    const pagePath = path || (typeof window !== 'undefined' ? window.location.pathname : '');
+    
+    // Log in development
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`[Analytics] Page view: ${pagePath}`);
+    }
+    
+    // Track event
+    trackEvent('pageview', { path: pagePath });
+  }, [isAnalyticsEnabled]);
+  
+  /**
+   * Track feature usage
+   * @param feature - Name of the feature being used
+   * @param properties - Additional properties
+   */
+  const trackFeatureUsage = useCallback((feature: string, properties = {}) => {
+    if (!isAnalyticsEnabled) return;
+    trackEvent('feature_used', { feature, ...properties });
+  }, [isAnalyticsEnabled]);
+  
+  /**
+   * Track errors
+   * @param error - Error message or object
+   * @param source - Where the error occurred
+   */
+  const trackError = useCallback((error: any, source: string) => {
+    if (!isAnalyticsEnabled) return;
+    
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    trackEvent('error', { message: errorMessage, source });
+  }, [isAnalyticsEnabled]);
+  
+  /**
+   * Track search queries
+   * @param query - Search term
+   * @param results - Number of results
+   */
+  const trackSearch = useCallback((query: string, results: number) => {
+    if (!isAnalyticsEnabled) return;
+    trackEvent('search', { query, results });
+  }, [isAnalyticsEnabled]);
+  
+  /**
+   * Track user actions
+   * @param action - Action performed
+   * @param category - Category of the action
+   * @param properties - Additional properties
+   */
+  const trackAction = useCallback((action: string, category: string, properties = {}) => {
+    if (!isAnalyticsEnabled) return;
+    trackEvent('user_action', { action, category, ...properties });
+  }, [isAnalyticsEnabled]);
+  
+  return {
+    isAnalyticsEnabled,
+    trackPageView,
+    trackFeatureUsage,
+    trackError,
+    trackSearch,
+    trackAction,
+  };
+}
+
+export default useAnalytics;

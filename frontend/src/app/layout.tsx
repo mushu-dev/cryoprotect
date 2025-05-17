@@ -4,6 +4,9 @@ import '@/styles/globals.css'
 import { Providers } from './providers'
 import { NavigationHeader } from '@/components/navigation-header'
 import { Footer } from '@/components/footer'
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import { NetlifyAnalytics } from './netlify-analytics'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -32,6 +35,15 @@ export default function RootLayout({
           </main>
           <Footer />
         </Providers>
+        {/* Use Vercel Analytics only on Vercel deployments */}
+        {process.env.NEXT_PUBLIC_VERCEL === 'true' && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        )}
+        {/* Use Netlify Analytics on Netlify deployments */}
+        {process.env.NEXT_PUBLIC_NETLIFY === 'true' && <NetlifyAnalytics />}
       </body>
     </html>
   )
