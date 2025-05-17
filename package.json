@@ -1,0 +1,13 @@
+{
+  "name": "cryoprotect",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "cd frontend && chmod +x ./netlify-build.sh && ./netlify-build.sh",
+    "dev": "cd frontend && npm run dev",
+    "start": "cd frontend && npm run start"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

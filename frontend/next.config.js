@@ -6,6 +6,7 @@ const nextConfig = {
     domains: ['localhost', 'api.cryoprotect.app'],
     unoptimized: process.env.NODE_ENV !== 'production',
   },
+  // API routes are handled by netlify.toml redirects
   async rewrites() {
     return [
       {
@@ -19,10 +20,11 @@ const nextConfig = {
     ignoreDuringBuilds: true
   },
   typescript: {
-    // For Vercel deployment, we'll ignore TypeScript errors in the build
+    // For deployment, we'll ignore TypeScript errors in the build
     ignoreBuildErrors: true
   },
-  // Server Actions are available by default in Next.js 14+
+  // Enable static export if you want to deploy as pure static site
+  // output: 'export', // Uncomment for static export (removes API routes)
 }
 
 module.exports = nextConfig

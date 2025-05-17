@@ -1,6 +1,6 @@
 [build]
   base = "frontend"
-  command = "npm run build"
+  command = "chmod +x ./minimal-build.sh && ./minimal-build.sh"
   publish = ".next"
 
 [build.environment]
@@ -8,6 +8,14 @@
   NEXT_PUBLIC_USE_MOCK_DATA = "false"
   NEXT_PUBLIC_ENABLE_API_LOGGING = "true"
   NEXT_PUBLIC_ENVIRONMENT = "production"
+  NEXT_TELEMETRY_DISABLED = "1"
+  # Specify Node version - use 18 which is more compatible with Next.js
+  NODE_VERSION = "18"
+
+# Use Next.js Runtime v4
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["@netlify/next-runtime"]
 
 # Handle API redirects to Heroku backend
 [[redirects]]
