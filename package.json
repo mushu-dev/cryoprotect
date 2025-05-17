@@ -1,45 +1,9 @@
 {
-  "name": "cryoprotect-analyzer",
+  "name": "cryoprotect",
   "version": "1.0.0",
-  "description": "A database and analysis system for cryoprotectant molecules and mixtures",
-  "main": "index.js",
+  "description": "CryoProtect root package for Netlify deployment",
   "scripts": {
-    "test": "node tests/test_database_schema.js",
-    "apply-migration": "node migrations/apply_migration.js",
-    "example:js": "node examples/cryoprotect_db_example.js",
-    "example:py": "python examples/cryoprotect_db_example.py",
-    "analyze": "python PubChem_CryoProtectants.py",
-    "taskmaster": "npx -y --package=task-master-ai task-master-ai"
+    "build": "cd frontend && npm install --legacy-peer-deps && npm run build"
   },
-  "keywords": [
-    "cryoprotectant",
-    "database",
-    "supabase",
-    "postgresql",
-    "pubchem",
-    "molecular-analysis"
-  ],
-  "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "@supabase/supabase-js": "^2.39.0",
-    "3dmol": "^2.0.3",
-    "d3": "^7.8.5",
-    "plotly.js-dist": "^2.27.1",
-    "chart.js": "^4.4.1"
-  },
-  "devDependencies": {
-    "dotenv": "^16.3.1"
-  },
-  "engines": {
-    "node": ">=14.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yourusername/cryoprotect-analyzer.git"
-  },
-  "bugs": {
-    "url": "https://github.com/yourusername/cryoprotect-analyzer/issues"
-  },
-  "homepage": "https://github.com/yourusername/cryoprotect-analyzer#readme"
+  "private": true
 }
