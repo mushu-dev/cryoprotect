@@ -1,6 +1,7 @@
 [build]
+  base = "frontend"
   command = "npm run build"
-  publish = "frontend/.next"
+  publish = ".next"
 
 [build.environment]
   NEXT_PUBLIC_API_URL = "https://cryoprotect-8030e4025428.herokuapp.com/v1"
