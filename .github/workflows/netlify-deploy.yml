@@ -1,0 +1,94 @@
+name: Deploy to Netlify
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - heroku-full-app  # Add your current branch for testing
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - main
+      - master
+
+jobs:
+  deploy:
+    name: Deploy to Netlify
+    runs-on: ubuntu-latest
+    
+    env:
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      NEXT_PUBLIC_API_URL: https://cryoprotect-8030e4025428.herokuapp.com/v1
+      NEXT_PUBLIC_USE_MOCK_DATA: false
+      NEXT_PUBLIC_ENABLE_API_LOGGING: true
+      NEXT_PUBLIC_ENVIRONMENT: production
+      NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+      PROTECTION_BYPASS: ${{ secrets.PROTECTION_BYPASS }}
+      
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+      
+      - name: Install dependencies
+        working-directory: ./frontend
+        run: npm run install-deps
+      
+      - name: Update API endpoints
+        working-directory: ./frontend
+        run: npm run update-api-endpoints
+      
+      - name: Build frontend
+        working-directory: ./frontend
+        run: npm run build
+      
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
+      
+      - name: Deploy to Netlify (Pull Request)
+        if: github.event_name == 'pull_request'
+        working-directory: ./frontend
+        run: |
+          export FRONTEND_URL="https://$(netlify deploy --json --dir=.next | jq -r '.deploy_url' | sed 's/https:\/\///')"
+          netlify deploy --dir=.next --json > deploy_output.json
+          echo "NETLIFY_PREVIEW_URL=$(jq -r '.deploy_url' deploy_output.json)" >> $GITHUB_ENV
+        
+      - name: Add PR Comment
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const url = process.env.NETLIFY_PREVIEW_URL;
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `✅ Netlify preview deployed to: [${url}](${url})`
+            });
+      
+      - name: Deploy to Netlify (Production)
+        if: github.event_name == 'push'
+        working-directory: ./frontend
+        run: |
+          export FRONTEND_URL="https://$(netlify deploy --json --prod --dir=.next | jq -r '.url' | sed 's/https:\/\///')"
+          netlify deploy --prod --dir=.next
+      
+      - name: Update Heroku with Netlify URL
+        if: github.event_name == 'push' && secrets.HEROKU_API_KEY != ''
+        run: |
+          NETLIFY_URL=$(netlify sites:current --json | jq -r '.ssl_url')
+          curl -X PATCH \
+            -H "Content-Type: application/json" \
+            -H "Accept: application/vnd.heroku+json; version=3" \
+            -H "Authorization: Bearer ${{ secrets.HEROKU_API_KEY }}" \
+            -d "{\"config\": {\"NETLIFY_FRONTEND_URL\": \"$NETLIFY_URL\"}}" \
+            "https://api.heroku.com/apps/cryoprotect/config-vars"
