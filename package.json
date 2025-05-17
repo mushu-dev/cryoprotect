@@ -1,9 +1,0 @@
-{
-  "name": "cryoprotect",
-  "version": "1.0.0",
-  "description": "CryoProtect root package for Netlify deployment",
-  "scripts": {
-    "build": "cd frontend && npm install --legacy-peer-deps && npm run build"
-  },
-  "private": true
-}
