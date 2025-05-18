@@ -85,6 +85,7 @@ docker-compose up
 - [API Documentation](README_API.md)
 - [RDKit Integration](README_RDKit.md)
 - [Convex Integration Guide](CONVEX_INTEGRATION_GUIDE.md)
+- [Convex Integration Complete Report](CONVEX_INTEGRATION_COMPLETE.md)
 - [Web Interface](README_Web.md)
 - [RDKit Troubleshooting](README_RDKit_Troubleshooting.md)
 - [Database Remediation Final Report](reports/DATABASE_REMEDIATION_FINAL_REPORT.md)
