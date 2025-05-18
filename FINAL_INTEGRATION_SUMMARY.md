@@ -69,12 +69,17 @@ This document provides a comprehensive summary of the completed integration work
 
 ## Next Steps
 
-1. **Optimize Convex API Functions**
+1. **Deploy Convex API Functions**:
+   - Set up proper Convex development environment
+   - Resolve TypeScript and dependency issues in the Convex codebase
+   - Deploy the API functions we've created
+
+2. **Optimize Convex API Functions**:
    - Improve performance of query operations
    - Add indexing for frequently accessed fields
    - Implement caching for common queries
 
-2. **Deploy RDKit Service**
+3. **Deploy RDKit Service**:
    ```bash
    # Install fly.io CLI
    curl -L https://fly.io/install.sh | sh
