@@ -1,0 +1,16 @@
+{
+  "name": "convex-minimal",
+  "version": "1.0.0",
+  "description": "Minimal Convex API functions for CryoProtect",
+  "main": "index.js",
+  "scripts": {
+    "dev": "convex dev",
+    "deploy": "convex deploy --yes --typecheck=disable"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "convex": "^1.10.0"
+  }
+}

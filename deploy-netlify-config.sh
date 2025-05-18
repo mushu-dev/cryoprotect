@@ -42,6 +42,9 @@ echo "Updating netlify.toml with Convex configuration..."
 # and ensure Convex is properly configured
 sed -i 's/cryoprotect-8030e4025428\.herokuapp\.com/cryoprotect.herokuapp.com/g' netlify.toml
 
+# Ensure the correct Convex URL is set
+sed -i 's|NEXT_PUBLIC_CONVEX_URL = ".*"|NEXT_PUBLIC_CONVEX_URL = "https://upbeat-parrot-866.convex.cloud"|g' netlify.toml
+
 # Ensure Convex environment variables are set
 grep -q "NEXT_PUBLIC_CONVEX_URL" netlify.toml || 
   sed -i '/NEXT_PUBLIC_ENVIRONMENT/a \  NEXT_PUBLIC_CONVEX_URL = "https://dynamic-mink-63.convex.cloud"' netlify.toml

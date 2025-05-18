@@ -5,20 +5,19 @@ set -e  # Exit on any error
 
 echo "Starting CryoProtect Convex Integration..."
 
-# Step 1: Deploy Convex API functions
-echo "Step 1: Deploying Convex API functions..."
-chmod +x ./deploy-convex-api.sh
-./deploy-convex-api.sh
+# Step 1: Deploy minimal Convex API functions and update Heroku
+echo "Step 1: Deploying Convex API functions and updating Heroku..."
+chmod +x ./deploy-minimal-api.sh
+./deploy-minimal-api.sh
 
-# Step 2: Update Heroku backend to use Convex
-echo "Step 2: Deploying Convex adapter to Heroku..."
-chmod +x ./deploy-convex-heroku.sh
-./deploy-convex-heroku.sh
-
-# Step 3: Update Netlify frontend configuration
-echo "Step 3: Deploying updated Netlify configuration..."
+# Step 2: Update Netlify frontend configuration
+echo "Step 2: Deploying updated Netlify configuration..."
 chmod +x ./deploy-netlify-config.sh
 ./deploy-netlify-config.sh
+
+# Step 3: Test the Convex adapter
+echo "Step 3: Testing the Convex adapter..."
+python test-convex-adapter.py
 
 # Step 4: Test the full integration
 echo "Step 4: Testing the full integration..."
