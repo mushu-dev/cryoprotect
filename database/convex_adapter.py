@@ -74,7 +74,15 @@ class ConvexAdapter:
         Returns:
             dict: The response from Convex.
         """
-        url = urljoin(self.url, path)
+        # Convex HTTP actions URL format: https://[deployment-id].convex.cloud/http-api/[path]
+        # This assumes our path already includes the leading slash
+        if path.startswith('/'):
+            path = path[1:]  # Remove leading slash if present
+        
+        url = urljoin(self.url, "http-api/" + path)
+        
+        logger.debug("Executing Convex query: %s %s", action, url)
+        logger.debug("Params: %s", params)
         
         try:
             if action == 'GET':
@@ -92,6 +100,8 @@ class ConvexAdapter:
             return response.json()
         except Exception as e:
             logger.error("Error executing Convex query: %s", str(e))
+            logger.error("URL: %s", url)
+            logger.error("Params: %s", params)
             raise
 
 class TableAdapter:
