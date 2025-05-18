@@ -1,10 +1,10 @@
 # CryoProtect Analyzer
 
-A tool for analyzing cryoprotectant molecules using RDKit and Supabase.
+A tool for analyzing cryoprotectant molecules using RDKit and Convex.
 
 ## Overview
 
-CryoProtect Analyzer is a Flask-based web application that allows users to analyze cryoprotectant molecules, calculate their properties, and store the results in a Supabase database. The application uses RDKit for molecular property calculations and visualization.
+CryoProtect Analyzer is a Flask-based web application that allows users to analyze cryoprotectant molecules, calculate their properties, and store the results in a Convex database. The application uses RDKit for molecular property calculations and visualization.
 
 ## Features
 
@@ -12,8 +12,9 @@ CryoProtect Analyzer is a Flask-based web application that allows users to analy
 - Visualization of molecules
 - Substructure search
 - Similarity calculation
-- Database storage using Supabase
-- Web interface for easy access
+- Database storage using Convex
+- Web interface using Next.js and Netlify
+- Real-time data updates
 
 ## Development Environment
 
@@ -56,9 +57,9 @@ CryoProtect now supports development using [Cursor IDE](https://cursor.sh/), whi
    setup_environment.bat   # Windows
    ```
 
-3. Configure Supabase:
-   - Create a `.env` file with your Supabase credentials
-   - Apply the database migration using `node migrations/apply_migration.js`
+3. Configure Convex:
+   - Create a `.env` file with your Convex credentials
+   - Apply the database configuration using `npx convex deploy`
 
 4. Run the application:
    ```
@@ -83,12 +84,16 @@ docker-compose up
 
 - [API Documentation](README_API.md)
 - [RDKit Integration](README_RDKit.md)
-- [Supabase Integration](README_Supabase.md)
+- [Convex Integration Guide](CONVEX_INTEGRATION_GUIDE.md)
 - [Web Interface](README_Web.md)
 - [RDKit Troubleshooting](README_RDKit_Troubleshooting.md)
 - [Database Remediation Final Report](reports/DATABASE_REMEDIATION_FINAL_REPORT.md)
 - [Database Maintenance Guide](reports/DATABASE_MAINTENANCE_GUIDE.md)
 - [Cursor Migration Guide](CURSOR_MIGRATION_GUIDE.md)
+- [Netlify Analytics Setup](NETLIFY_ANALYTICS_SETUP.md)
+- [Netlify Dynamic Routes](NETLIFY_DYNAMIC_ROUTES.md)
+- [Backend Frontend Integration](BACKEND_FRONTEND_INTEGRATION.md)
+- [Convex Implementation Plan](CONVEX_IMPLEMENTATION_PLAN.md)
 
 ## Database Remediation Project
 
