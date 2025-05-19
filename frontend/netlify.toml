@@ -1,4 +1,5 @@
 [build]
+  base = "frontend"
   command = "npm run build"
   publish = ".next"
   
@@ -55,6 +56,18 @@
   status = 200
   force = true
   headers = {Access-Control-Allow-Origin = "*"}
+
+# Handle dynamic routes for experiments
+[[redirects]]
+  from = "/experiments/*"
+  to = "/.netlify/functions/next/experiments/:splat"
+  status = 200
+
+# Handle dynamic routes for protocols
+[[redirects]]
+  from = "/protocols/*"
+  to = "/.netlify/functions/next/protocols/:splat"
+  status = 200
 
 # These headers help secure your site
 [[headers]]
