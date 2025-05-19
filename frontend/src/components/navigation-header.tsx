@@ -1,75 +1,47 @@
-'use client'
-
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
-import { ThemeToggle } from '@/components/theme-toggle'
-import { AuthStatus } from '@/features/auth/components/auth-status'
-import { Beaker, Database, LineChart, LayoutDashboard, Menu, X, CloudCog, Flask, ScrollText } from 'lucide-react'
-import { FlaskConical } from '@/components/ui/icons'
+
+// Simple utility function for class concatenation
+const cn = (...classes: string[]) => classes.filter(Boolean).join(' ');
 
 interface NavItem {
   title: string
   href: string
-  icon: React.ReactNode
-  description?: string
   exact?: boolean
 }
 
 export default function NavigationHeader() {
-  const pathname = usePathname()
-  const [mobileNavOpen, setMobileNavOpen] = useState(false)
-  
-  const isConvexEnabled = process.env.NEXT_PUBLIC_USE_CONVEX === 'true'
+  const router = useRouter();
+  const pathname = router.pathname;
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   
   const navItems: NavItem[] = [
     {
       title: 'Dashboard',
       href: '/',
-      icon: <LayoutDashboard className="h-4 w-4 mr-2" />,
-      description: 'Overview and key stats',
       exact: true
     },
     {
       title: 'Molecules',
-      href: '/molecules',
-      icon: <Database className="h-4 w-4 mr-2" />,
-      description: 'Browse and search molecules'
+      href: '/molecules'
     },
     {
       title: 'Mixtures',
-      href: '/mixtures',
-      icon: <Flask className="h-4 w-4 mr-2" />,
-      description: 'Analyze cryoprotectant mixtures'
+      href: '/mixtures'
     },
     {
       title: 'Experiments',
-      href: '/experiments',
-      icon: <FlaskConical className="h-4 w-4 mr-2" />,
-      description: 'Design and manage experiments'
+      href: '/experiments'
     },
     {
       title: 'Protocols',
-      href: '/protocols',
-      icon: <ScrollText className="h-4 w-4 mr-2" />,
-      description: 'Standardized cryopreservation protocols'
+      href: '/protocols'
     },
     {
       title: 'Properties',
-      href: '/properties',
-      icon: <LineChart className="h-4 w-4 mr-2" />,
-      description: 'Explore molecular properties'
-    },
-    ...(isConvexEnabled ? [
-      {
-        title: 'Convex',
-        href: '/convex-test',
-        icon: <CloudCog className="h-4 w-4 mr-2" />,
-        description: 'Test Convex integration'
-      }
-    ] : [])
+      href: '/properties'
+    }
   ]
   
   const toggleMobileNav = () => {
@@ -77,97 +49,87 @@ export default function NavigationHeader() {
   }
   
   return (
-    <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 items-center justify-between">
+    <header className="sticky top-0 z-50 border-b bg-white dark:bg-gray-800">
+      <div className="container mx-auto flex h-14 items-center justify-between px-4">
         <div className="flex items-center">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
-            <Beaker className="h-6 w-6" />
-            <span className="font-bold">CryoProtect</span>
+          <Link href="/">
+            <a className="mr-6 flex items-center space-x-2 font-bold">
+              <span>CryoProtect</span>
+            </a>
           </Link>
           
           <nav className="hidden md:flex items-center gap-6">
             {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "text-sm font-medium flex items-center transition-colors hover:text-foreground/80",
+              <Link key={item.href} href={item.href}>
+                <a className={cn(
+                  "text-sm font-medium transition-colors hover:text-gray-600 dark:hover:text-gray-300",
                   item.exact
                     ? pathname === item.href
-                      ? "text-foreground"
-                      : "text-foreground/60"
+                      ? "text-black dark:text-white"
+                      : "text-gray-500 dark:text-gray-400"
                     : pathname?.startsWith(item.href)
-                      ? "text-foreground"
-                      : "text-foreground/60"
-                )}
-              >
-                {item.icon}
-                {item.title}
+                      ? "text-black dark:text-white"
+                      : "text-gray-500 dark:text-gray-400"
+                )}>
+                  {item.title}
+                </a>
               </Link>
             ))}
           </nav>
         </div>
         
         <div className="flex items-center gap-2">
-          <ThemeToggle />
-          <AuthStatus />
-          
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
+          <button
+            className="md:hidden p-2"
             onClick={toggleMobileNav}
+            aria-label="Toggle menu"
           >
-            <Menu className="h-5 w-5" />
-            <span className="sr-only">Toggle menu</span>
-          </Button>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
         </div>
       </div>
       
       {/* Mobile navigation */}
       {mobileNavOpen && (
-        <div className="fixed inset-0 z-50 bg-background md:hidden">
-          <div className="container flex h-14 items-center justify-between">
-            <Link href="/" className="flex items-center space-x-2">
-              <Beaker className="h-6 w-6" />
-              <span className="font-bold">CryoProtect</span>
+        <div className="fixed inset-0 z-50 bg-white dark:bg-gray-800 md:hidden">
+          <div className="container mx-auto flex h-14 items-center justify-between px-4">
+            <Link href="/">
+              <a className="flex items-center space-x-2 font-bold">
+                <span>CryoProtect</span>
+              </a>
             </Link>
             
-            <Button
-              variant="ghost"
-              size="icon"
+            <button
+              className="p-2"
               onClick={toggleMobileNav}
+              aria-label="Close menu"
             >
-              <X className="h-5 w-5" />
-              <span className="sr-only">Close menu</span>
-            </Button>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
           </div>
           
-          <nav className="container grid gap-6 p-6">
+          <nav className="container mx-auto grid gap-6 p-6">
             {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={toggleMobileNav}
-                className={cn(
+              <Link key={item.href} href={item.href}>
+                <a onClick={toggleMobileNav} className={cn(
                   "flex items-center py-3 text-lg font-medium",
                   item.exact
                     ? pathname === item.href
-                      ? "text-foreground"
-                      : "text-foreground/60"
+                      ? "text-black dark:text-white"
+                      : "text-gray-500 dark:text-gray-400"
                     : pathname?.startsWith(item.href)
-                      ? "text-foreground"
-                      : "text-foreground/60"
-                )}
-              >
-                {item.icon}
-                {item.title}
-                
-                {item.description && (
-                  <span className="ml-2 text-sm text-muted-foreground">
-                    {item.description}
-                  </span>
-                )}
+                      ? "text-black dark:text-white"
+                      : "text-gray-500 dark:text-gray-400"
+                )}>
+                  {item.title}
+                </a>
               </Link>
             ))}
           </nav>
