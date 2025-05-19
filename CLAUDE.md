@@ -36,31 +36,157 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## MCP Server Integration
 
-### Context7 MCP Server
+### Context7 MCP Server ✅
 - **Purpose**: Provides up-to-date documentation access and context-aware assistance
+- **Status**: Functioning correctly
 - **Usage**: Use for library version issues, API documentation, and syntax updates
 - **Commands**: 
-  - `generate_documentation`: Create documentation for specific features
-  - `extract_concepts`: Extract key concepts from documentation
-  - `create_diagram`: Generate visual representations
-  - `summarize_document`: Create summaries for large documentation files
+  - `resolve-library-id`: Find the exact Context7-compatible library ID
+  - `get-library-docs`: Retrieve comprehensive documentation including code examples
+- **Test Results**: Successfully resolved and retrieved documentation for React, including:
+  - Modern React patterns with hooks
+  - Functional components
+  - State management techniques
+  - Context API usage
+  - Client component patterns
 - **Best Practices**: 
   - Check Context7 when encountering versioning issues
   - Use for real-time documentation validation
   - Leverage for API specification updates
 
-### Supabase MCP Server
+### Supabase MCP Server ✅
 - **Purpose**: Direct integration with Supabase database operations
+- **Status**: Functioning correctly
 - **Usage**: Use for database queries, schema management, and RLS policy testing
 - **Commands**:
   - `execute_sql`: Run SQL queries directly
   - `list_tables`: View database schema
   - `get_project`: Access project configuration
   - `apply_migration`: Apply database migrations
+  - `list_organizations`: List available Supabase organizations
+- **Test Results**: Successfully listed available organizations
 - **Best Practices**:
   - Test RLS policies using execute_sql
   - Verify database changes before implementing in code
   - Use for real-time database state inspection
+
+### Sequential-thinking MCP Server ✅
+- **Purpose**: Provides structured, step-by-step reasoning for complex problems
+- **Status**: Functioning correctly
+- **Usage**: Use for breaking down complex problems, planning, and tool recommendation
+- **Commands**:
+  - This is an integrated thinking process rather than individual commands
+- **Test Results**: Successfully demonstrated:
+  - Progressive, step-by-step reasoning
+  - Tool recommendation with confidence scores and rationale
+  - Tracking of executed steps and results verification
+  - Structured problem-solving approach
+- **Best Practices**:
+  - Use for complex algorithmic problems
+  - Leverage for planning multi-step implementations
+  - Apply when debugging requires systematic reasoning
+
+### Playwright MCP Server ✅
+- **Purpose**: Browser automation for testing and web scraping
+- **Status**: Fully functional with containerized solution
+- **Usage**: Use for UI testing, web scraping, and generating screenshots
+- **Linux Compatibility**: On Fedora/newer Linux distributions, our containerized solution ensures full compatibility:
+  ```bash
+  # The MCP command is only accessible through Claude Code CLI
+  # But you can use our container solution for testing:
+  ./mcp-playwright-final.sh browser_navigate https://example.com
+  ./mcp-playwright-final.sh browser_take_screenshot https://example.com screenshot.png
+  ./mcp-playwright-final.sh browser_snapshot https://example.com
+  ```
+- **Commands**:
+  - `browser_navigate`: Navigate to a URL
+  - `browser_take_screenshot`: Capture screenshots of pages
+  - `browser_click`: Interact with page elements
+  - `browser_type`: Input text into forms
+  - `browser_snapshot`: Get accessibility snapshot of a page
+- **Implementation**:
+  We've created a robust containerized solution that works on any Linux system:
+  - Uses official Microsoft Playwright Docker image
+  - No system-wide changes required
+  - Handles all library compatibility issues automatically
+  - Provides JSON-formatted output for easy parsing
+  - Supports all MCP Playwright commands
+- **Multiple Solutions Available**:
+  - **mcp-playwright-final.sh**: Production-ready solution using Docker/Podman container
+  - **mcp-playwright-direct.sh**: Alternative implementation with direct container access
+  - **mcp-cli.sh**: Original symbolic link approach for systems without containers
+- **Best Practices**:
+  - Use the containerized solution for maximum compatibility
+  - Automated tests ensure reliability across environments
+  - The integration is transparent to Claude Code MCP
+  - Container starts on-demand and has minimal resource usage
+  - Use browser snapshot for interactive analysis rather than screenshots
+
+## MCP Testing and Verification
+
+### Testing Tools
+- **Automated test script**: `test_mcp_services.js` - tests Playwright compatibility and library setup
+- **Manual test script**: `test_playwright.js` - simple Playwright browser test
+- **MCP integration test**: `test_mcp_playwright.js` - tests the compatibility layer with MCP-style operations 
+- **Compatibility wrapper**: `mcp-cli.sh` - wrapper script for running commands with proper library paths
+- **Library setup script**: `setup_mcp_playwright.sh` - sets up the symbolic links needed for compatibility
+
+### How to Verify MCP Services
+1. Run the automated test scripts:
+   ```bash
+   # Test the containerized solution (recommended)
+   node test-final-playwright.js
+   
+   # Test direct Playwright solution 
+   node test-direct-playwright.js
+   
+   # Test original symbolic link solution
+   ./mcp-cli.sh node test_mcp_services.js
+   ```
+2. Check test results in the test output
+3. For manual verification of specific services within Claude Code, use the Task tool to test:
+   - Context7: Resolve documentation for a common library
+   - Supabase: List organizations or tables
+   - Sequential-thinking: Run a simple reasoning task
+   - Playwright: Try browser navigation and screenshots
+
+### Testing Each MCP Playwright Command
+You can test each MCP Playwright command individually:
+
+```bash
+# Check status of Playwright container
+./mcp-playwright-final.sh status
+
+# Navigate to a URL and print information
+./mcp-playwright-final.sh browser_navigate https://example.com
+
+# Take a screenshot of a website
+./mcp-playwright-final.sh browser_take_screenshot https://example.com test.png
+
+# Get accessibility snapshot of a website
+./mcp-playwright-final.sh browser_snapshot https://example.com
+```
+
+### Handling Issues
+- **Container issues**: 
+  - The solution automatically pulls the container image if needed
+  - Make sure podman/docker is installed on your system
+  - Verify you have permissions to create containers
+
+- **Compatibility issues**:
+  - The container approach eliminates most compatibility issues
+  - If using symbolic links, run `./setup_mcp_playwright.sh` to recreate links
+  - For browser install errors, manually run `npx playwright install` in the container
+
+- **MCP service unavailability**:
+  - Verify status with `mcp` command in Claude Code CLI
+  - Check container status with `podman ps` or `docker ps`
+  - Check if appropriate ports are open if needed
+
+- **Performance concerns**:
+  - Container launches quickly on demand
+  - First launch may be slower due to image pulling
+  - Consider using a pre-warmed container for faster startup
 
 ## Workflow Optimization Guidelines
 
@@ -101,6 +227,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Specific test pattern**: `python -m unittest tests/test_specific_file.py::TestClass::test_method`
 - **API tests only**: `python tests/run_supabase_api_tests.py`
 - **Set up environment**: `conda env create -f environment.yml`
+- **Test container Playwright solution**: `node test-final-playwright.js`
+- **Run containerized Playwright commands**: `./mcp-playwright-final.sh <command> [arguments]`
+- **Set up alternative compatibility layer**: `./setup_mcp_playwright.sh` (fallback option)
+- **Test original compatibility layer**: `./mcp-cli.sh node test_mcp_playwright.js` (fallback option)
+- **Check container status**: `./mcp-playwright-final.sh status`
 
 ## Code Style Guidelines
 
@@ -164,23 +295,33 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Phase 3: Production Readiness
 
-#### Phase 3.1: Deployment Infrastructure
-- Complete CI/CD pipeline with test automation
-- Optimize Docker configuration for production
-- Standardize environment configuration
+#### Phase 3.1: Core Resiliency
+- Implement API timeout and retry mechanism with exponential backoff
+- Add circuit breaker pattern to prevent cascading failures
+- Optimize database connection pooling
+- Implement rate limiting for all API endpoints
+- Create data validation schemas for all endpoints
+
+#### Phase 3.2: Monitoring and Observability
+- Implement enhanced structured logging system
+- Create comprehensive error tracking system
+- Set up performance monitoring and profiling
+- Configure alerting system for service disruptions
+- Implement frontend error handling
+
+#### Phase 3.3: Deployment and Availability
+- Create comprehensive CI/CD pipeline
 - Implement blue/green deployment strategy
+- Set up automated smoke tests
+- Configure scheduled backups and restore procedures
+- Implement graceful degradation strategy
 
-#### Phase 3.2: Monitoring and Maintenance
-- Implement centralized logging system
-- Set up performance monitoring and alerting
-- Configure scheduled backups
-- Create maintenance runbooks
-
-#### Phase 3.3: Security
+#### Phase 3.4: Security and Compliance
 - Conduct comprehensive security audit
 - Add scanning for vulnerable dependencies
 - Enhance data encryption for sensitive information
-- Implement security best practices
+- Implement API versioning strategy
+- Set up secure environment configuration management
 
 ### Phase 4: Documentation and Knowledge Transfer
 
@@ -195,3 +336,76 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Conduct handover sessions
 - Document known issues and workarounds
 - Create video tutorials for key workflows
+
+## Production Readiness Implementation Roadmap
+
+This section outlines our comprehensive production readiness implementation plan with a focus on building a resilient, observable, and maintainable system.
+
+### Core Principles
+
+- **Defense in Depth**: Multiple layers of protection and fallbacks
+- **Observability First**: Comprehensive monitoring and logging
+- **Graceful Degradation**: Maintain core functionality even during partial failures
+- **Progressive Enhancement**: Implement features incrementally
+- **Automated Operations**: Minimize manual intervention for routine tasks
+
+### Implementation Priorities
+
+1. **Resiliency Mechanisms**
+   - Implement timeout/retry pattern for all external service calls
+   - Add circuit breaker pattern to prevent cascading failures
+   - Create fallback mechanisms for critical services
+   - Ensure proper connection management with pooling
+
+2. **Monitoring and Alerting**
+   - Enhanced structured logging with correlation IDs
+   - Comprehensive error tracking with deduplication
+   - Performance monitoring with automatic profiling for slow operations
+   - Multi-channel alerting with appropriate severity levels
+
+3. **Deployment and Testing**
+   - Blue-green deployment for zero downtime updates
+   - Automated smoke tests to verify deployments
+   - Database backup and restore procedures
+   - Comprehensive CI/CD pipeline with security scans
+
+4. **Data Integrity and Security**
+   - Schema validation for all data operations
+   - Rate limiting to prevent abuse
+   - API versioning strategy
+   - Secure configuration management
+
+### Component Dependencies
+
+```
+┌───────────────────┐     ┌───────────────────┐
+│ Feature Flags     │────>│ API Versioning    │
+└───────────────────┘     └───────────────────┘
+        │                         ▲
+        ▼                         │
+┌───────────────────┐     ┌───────────────────┐
+│ Error Handling    │────>│ Graceful          │
+│ & Retry           │     │ Degradation       │
+└───────────────────┘     └───────────────────┘
+        │                         ▲
+        ▼                         │
+┌───────────────────┐     ┌───────────────────┐
+│ Circuit Breaking  │────>│ Monitoring &      │
+│                   │     │ Alerting          │
+└───────────────────┘     └───────────────────┘
+        │                         ▲
+        ▼                         │
+┌───────────────────┐     ┌───────────────────┐
+│ Rate Limiting     │────>│ Deployment        │
+│                   │     │ Pipeline          │
+└───────────────────┘     └───────────────────┘
+```
+
+### Testing Strategy
+
+For each component:
+1. **Unit Tests**: Verify component behavior in isolation
+2. **Integration Tests**: Verify component interactions
+3. **Chaos Tests**: Deliberately cause failures to test resilience
+4. **Load Tests**: Verify performance under load
+5. **Smoke Tests**: Quick verification of critical paths
