@@ -1,50 +1,31 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import '@/styles/globals.css'
-import { Providers } from './providers'
-import { NavigationHeader } from '@/components/navigation-header'
-import { Footer } from '@/components/footer'
-import { Analytics } from '@vercel/analytics/react'
-import { SpeedInsights } from '@vercel/speed-insights/next'
-import { NetlifyAnalytics } from './netlify-analytics'
-
-const inter = Inter({ 
-  subsets: ['latin'],
-  variable: '--font-sans',
-})
-
-export const metadata: Metadata = {
-  title: 'CryoProtect - Cryoprotectant Analysis Platform',
-  description: 'Analyze and optimize cryoprotectant molecules and mixtures',
-  keywords: 'cryoprotectant, molecular analysis, scientific research, mixtures, visualization',
-  authors: [{ name: 'CryoProtect Team' }],
-}
+import React from 'react';
+import '../styles/globals.css';
+import { ThemeProvider } from '../components/theme-provider';
+import NavigationHeader from '../components/navigation-header';
+import Footer from '../components/footer';
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans min-h-screen flex flex-col`}>
-        <Providers>
-          <NavigationHeader />
-          <main className="flex-grow container mx-auto py-6 px-4">
-            {children}
-          </main>
-          <Footer />
-        </Providers>
-        {/* Use Vercel Analytics only on Vercel deployments */}
-        {process.env.NEXT_PUBLIC_VERCEL === 'true' && (
-          <>
-            <Analytics />
-            <SpeedInsights />
-          </>
-        )}
-        {/* Use Netlify Analytics on Netlify deployments */}
-        {process.env.NEXT_PUBLIC_NETLIFY === 'true' && <NetlifyAnalytics />}
+    <html lang="en">
+      <head>
+        <title>CryoProtect</title>
+        <meta name="description" content="A platform for cryoprotectant analysis" />
+      </head>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <div className="flex min-h-screen flex-col">
+            <NavigationHeader />
+            <main className="flex-grow">
+              {children}
+            </main>
+            <Footer />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }

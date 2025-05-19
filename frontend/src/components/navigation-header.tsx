@@ -7,8 +7,8 @@ import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { AuthStatus } from '@/features/auth/components/auth-status'
-import { Beaker, Database, LineChart, LayoutDashboard, Menu, X } from 'lucide-react'
-import { Flask } from '@/components/ui/icons'
+import { Beaker, Database, LineChart, LayoutDashboard, Menu, X, CloudCog, Flask, ScrollText } from 'lucide-react'
+import { FlaskConical } from '@/components/ui/icons'
 
 interface NavItem {
   title: string
@@ -18,9 +18,11 @@ interface NavItem {
   exact?: boolean
 }
 
-export function NavigationHeader() {
+export default function NavigationHeader() {
   const pathname = usePathname()
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
+  
+  const isConvexEnabled = process.env.NEXT_PUBLIC_USE_CONVEX === 'true'
   
   const navItems: NavItem[] = [
     {
@@ -43,11 +45,31 @@ export function NavigationHeader() {
       description: 'Analyze cryoprotectant mixtures'
     },
     {
+      title: 'Experiments',
+      href: '/experiments',
+      icon: <FlaskConical className="h-4 w-4 mr-2" />,
+      description: 'Design and manage experiments'
+    },
+    {
+      title: 'Protocols',
+      href: '/protocols',
+      icon: <ScrollText className="h-4 w-4 mr-2" />,
+      description: 'Standardized cryopreservation protocols'
+    },
+    {
       title: 'Properties',
       href: '/properties',
       icon: <LineChart className="h-4 w-4 mr-2" />,
       description: 'Explore molecular properties'
-    }
+    },
+    ...(isConvexEnabled ? [
+      {
+        title: 'Convex',
+        href: '/convex-test',
+        icon: <CloudCog className="h-4 w-4 mr-2" />,
+        description: 'Test Convex integration'
+      }
+    ] : [])
   ]
   
   const toggleMobileNav = () => {
