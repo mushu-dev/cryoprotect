@@ -1,6 +1,10 @@
 [build]
   publish = "out"
-  command = "echo 'Using pre-built files, no build needed'"
+  command = "bash ./netlify-build.sh"
+
+# Disable git submodule functionality
+[git]
+  submodules = false
 
 [[redirects]]
   from = "/api/*"
