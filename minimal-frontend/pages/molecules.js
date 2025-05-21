@@ -4,6 +4,8 @@ import Layout from '../components/Layout';
 import Loading from '../components/Loading';
 import ErrorMessage from '../components/ErrorMessage';
 
+// Updated: Fixed import paths and component migration complete
+
 // Check if Convex is enabled
 const isConvexEnabled = process.env.NEXT_PUBLIC_USE_CONVEX === 'true';
 
