@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Layout from '../components/Layout';
 import SearchBar from '../components/SearchBar';
-import { getMolecules, getMixtures, checkConvexConnection } from '../utils/api';
+import { getMolecules, getMixtures } from '../utils/api';
 
 export default function Dashboard() {
   const router = useRouter();
@@ -19,9 +19,8 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        // Check Convex connection status
-        const isConvexConnected = await checkConvexConnection();
-        setStats(prev => ({ ...prev, convexStatus: isConvexConnected ? 'online' : 'offline' }));
+        // Convex is disabled in minimal version
+        setStats(prev => ({ ...prev, convexStatus: 'not-configured' }));
         
         // Get molecule count
         try {
@@ -193,9 +192,8 @@ export default function Dashboard() {
           
           <div className="status-item">
             <span className="status-label">Convex:</span>
-            <span className={`status-value status-${stats.convexStatus}`}>
-              {stats.convexStatus === 'checking' ? 'Checking...' : 
-               stats.convexStatus === 'online' ? 'Online' : 'Offline'}
+            <span className="status-value status-not-configured">
+              Not Configured
             </span>
           </div>
           

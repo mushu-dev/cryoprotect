@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
+// Simplified ConnectionStatus component that doesn't try to import Convex
 export default function ConnectionStatus() {
   const [herokuStatus, setHerokuStatus] = useState('checking');
   const [flyioStatus, setFlyioStatus] = useState('checking');
-  const [convexStatus, setConvexStatus] = useState('checking');
 
   // Check Heroku API status
   useEffect(() => {
@@ -61,12 +61,6 @@ export default function ConnectionStatus() {
     checkFlyIoService();
   }, []);
 
-  // Check Convex status - disabled for minimal deployment
-  useEffect(() => {
-    // For the minimal deployment, we'll just mark Convex as not configured
-    setConvexStatus('not configured');
-  }, []);
-
   return (
     <div className="connection-status">
       <h2>Backend Connection Status</h2>
@@ -87,10 +81,8 @@ export default function ConnectionStatus() {
         
         <div className="status-item">
           <span className="status-label">Convex:</span>
-          <span className={`status-value status-${convexStatus}`}>
-            {convexStatus === 'checking' ? 'Checking...' : 
-              convexStatus === 'online' ? 'Online' : 
-              convexStatus === 'not configured' ? 'Not Configured' : 'Offline'}
+          <span className="status-value status-not-configured">
+            Not Configured
           </span>
         </div>
       </div>
