@@ -61,32 +61,10 @@ export default function ConnectionStatus() {
     checkFlyIoService();
   }, []);
 
-  // Check Convex status
+  // Check Convex status - disabled for minimal deployment
   useEffect(() => {
-    const checkConvexStatus = async () => {
-      try {
-        // Import the convex client
-        const { convex } = await import('../../convex/client');
-        
-        if (convex) {
-          // Use the health check method to verify connection
-          const isConnected = await convex.health();
-          if (isConnected) {
-            setConvexStatus('online');
-          } else {
-            setConvexStatus('offline');
-          }
-        } else {
-          // If Convex client is not available, consider it not configured
-          setConvexStatus('not configured');
-        }
-      } catch (error) {
-        console.error('Failed to connect to Convex:', error);
-        setConvexStatus('offline');
-      }
-    };
-    
-    checkConvexStatus();
+    // For the minimal deployment, we'll just mark Convex as not configured
+    setConvexStatus('not configured');
   }, []);
 
   return (

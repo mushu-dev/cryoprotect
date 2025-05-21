@@ -1,5 +1,5 @@
 [build]
-  base = "frontend"
+  base = "minimal-frontend"
   publish = "out"
   command = "npm ci && npm run build"
 
@@ -14,7 +14,7 @@
   NEXT_PUBLIC_API_URL = "https://cryoprotect-8030e4025428.herokuapp.com/v1"
   NEXT_PUBLIC_RDKIT_API_URL = "https://cryoprotect-rdkit.fly.dev"
   NEXT_PUBLIC_CONVEX_URL = "https://upbeat-parrot-866.convex.cloud"
-  NEXT_PUBLIC_USE_CONVEX = "true"
+  NEXT_PUBLIC_USE_CONVEX = "false"
   # Other environment variables will be set through the Netlify UI or CLI
 
 # API health check endpoint
