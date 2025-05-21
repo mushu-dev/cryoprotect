@@ -22,6 +22,7 @@ from database.utils.health_check import (
     DatabaseHealthCheck
 )
 from database.utils.connection import supabase_connection
+from api.api_decorators import authenticate_service_role
 
 # Set up logging
 logger = logging.getLogger(__name__)
@@ -96,6 +97,13 @@ database_fix_fields = {
     'fixes_applied': fields.Integer,
     'details': fields.Raw,
     'timestamp': fields.DateTime
+}
+
+service_role_check_fields = {
+    'status': fields.String,
+    'message': fields.String,
+    'timestamp': fields.DateTime,
+    'role': fields.String
 }
 
 # Define request schemas
@@ -903,6 +911,124 @@ class HealthPerformanceResource(Resource):
             return 'minute'
 
 
+class ServiceRoleCheckResource(Resource):
+    """Resource for checking service role authentication."""
+    
+    @authenticate_service_role
+    @marshal_with(service_role_check_fields)
+    def get(self):
+        """
+        Check service role authentication.
+        
+        This endpoint requires a valid service role token to access,
+        making it a suitable test for service role authentication.
+        
+        Returns:
+            JSON response with service role authentication status
+        """
+        return {
+            'status': 'ok',
+            'message': 'Service role authentication successful',
+            'timestamp': datetime.now(),
+            'role': 'service_role'
+        }
+
+
+# Define Convex connection check fields
+convex_connection_fields = {
+    'status': fields.String,
+    'message': fields.String,
+    'timestamp': fields.DateTime,
+    'connection_details': fields.Raw,
+    'tables_available': fields.List(fields.String)
+}
+
+class ConvexConnectionCheckResource(Resource):
+    """Resource for checking Convex database connection."""
+    
+    @marshal_with(convex_connection_fields)
+    def get(self):
+        """
+        Check Convex database connection.
+        
+        This endpoint tests the connection to the Convex database and returns
+        connection status details.
+        
+        Returns:
+            JSON response with Convex connection status
+        """
+        try:
+            from database.convex_adapter import create_client
+            import os
+            
+            # Create Convex client with forced use_convex=True to ensure we test Convex specifically
+            convex_client = create_client(use_convex=True)
+            
+            # Get URL and availability info
+            connection_details = {
+                'url': os.environ.get('CONVEX_URL', 'https://dynamic-mink-63.convex.cloud'),
+                'use_convex_env': os.environ.get('USE_CONVEX', 'false'),
+                'key_configured': bool(os.environ.get('CONVEX_DEPLOYMENT_KEY', '')),
+            }
+            
+            # Test query to check connectivity - get available tables
+            try:
+                # Test a simple query on a common table
+                molecules_result = convex_client.table('molecules').select('id').limit(1).execute()
+                
+                # Get list of available tables by querying system information
+                # This is implementation-dependent and may need adjustment based on Convex schema
+                tables = []
+                try:
+                    # Try to get tables list - this might need adjustment based on Convex API
+                    # We'll make a best effort to extract table info
+                    tables_query = convex_client.execute_query('GET', 'api/system/tables', {})
+                    if tables_query and hasattr(tables_query, 'data'):
+                        tables = [table['name'] for table in tables_query.data]
+                    else:
+                        # Fallback: Try a few common tables to see if they exist
+                        common_tables = ['molecules', 'mixtures', 'protocols', 'experiments', 'users']
+                        for table in common_tables:
+                            try:
+                                result = convex_client.table(table).select('count').limit(1).execute()
+                                if not result.error:
+                                    tables.append(table)
+                            except:
+                                pass
+                except Exception as table_e:
+                    logger.warning(f"Could not retrieve full table list from Convex: {str(table_e)}")
+                
+                return {
+                    'status': 'ok',
+                    'message': 'Successfully connected to Convex database',
+                    'timestamp': datetime.now(),
+                    'connection_details': connection_details,
+                    'tables_available': tables
+                }
+            except Exception as query_e:
+                logger.error(f"Convex connection test query failed: {str(query_e)}")
+                return {
+                    'status': 'error',
+                    'message': f'Connected to Convex but query failed: {str(query_e)}',
+                    'timestamp': datetime.now(),
+                    'connection_details': connection_details,
+                    'tables_available': []
+                }
+        except Exception as e:
+            logger.error(f"Convex connection check failed: {str(e)}")
+            return {
+                'status': 'error',
+                'message': f'Failed to connect to Convex: {str(e)}',
+                'timestamp': datetime.now(),
+                'connection_details': {
+                    'url': os.environ.get('CONVEX_URL', 'Not configured'),
+                    'use_convex_env': os.environ.get('USE_CONVEX', 'false'),
+                    'key_configured': bool(os.environ.get('CONVEX_DEPLOYMENT_KEY', ''))
+                },
+                'tables_available': []
+            }, 500
+
+
 def register_resources(api):
     """
     Register system resources with the API.
@@ -921,6 +1047,12 @@ def register_resources(api):
     api.add_resource(HealthResource, '/health')
     api.add_resource(HealthDatabaseResource, '/health/database')
     api.add_resource(HealthPerformanceResource, '/health/performance')
+    
+    # Service role check endpoint
+    api.add_resource(ServiceRoleCheckResource, '/api/v1/system/service-role-check')
+    
+    # Convex connection check endpoint
+    api.add_resource(ConvexConnectionCheckResource, '/api/v1/system/convex-connection-check')
     
     # Start scheduled health check (once per day)
     run_scheduled_health_check(interval_hours=24)
