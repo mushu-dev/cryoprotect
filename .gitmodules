@@ -1,0 +1,2 @@
+# Empty .gitmodules file to prevent Netlify from trying to clone non-existent submodules
+# This file intentionally left empty to address deployment issues

@@ -1,7 +1,10 @@
 [build]
-  base = "frontend"
-  command = "npm run build && npm run export"
+  command = "npm ci && npm run build"
   publish = "out"
+  
+# Disable git submodule functionality
+[git]
+  submodules = false
   
 [build.environment]
   NEXT_PUBLIC_ENVIRONMENT = "production"
