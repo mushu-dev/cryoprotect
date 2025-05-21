@@ -10,26 +10,9 @@ import { ConvexReactClient } from 'convex/react';
  * - Real-time subscriptions to data changes
  * - Authentication
  */
-export const convex = new ConvexReactClient({
-  address: process.env.NEXT_PUBLIC_CONVEX_URL || "https://primary-meerkat-478.convex.cloud",
-  // Customize Convex client options
-  options: {
-    // Initialize with anonymous authentication for now
-    initialPresence: {},
-    // Customize log levels if needed
-    logLevel: process.env.NODE_ENV === 'development' ? 'debug' : 'info',
-    // Add custom metadata to requests
-    requestHandlers: [
-      {
-        onRequest: (req) => {
-          // Add client info to request
-          req.headers.set('x-cryoprotect-client', 'minimal-frontend');
-          return req;
-        }
-      }
-    ]
-  }
-});
+export const convex = new ConvexReactClient(
+  process.env.NEXT_PUBLIC_CONVEX_URL || "https://primary-meerkat-478.convex.cloud"
+);
 
 /**
  * Health check method to verify if the client is properly configured and connected.
@@ -55,7 +38,7 @@ convex.health = async function() {
 convex.getEnvironment = function() {
   return {
     url: process.env.NEXT_PUBLIC_CONVEX_URL || "https://primary-meerkat-478.convex.cloud",
-    useConvex: process.env.NEXT_PUBLIC_USE_CONVEX === 'true',
+    useConvex: process.env.NEXT_PUBLIC_USE_CONVEX === 'true' || false,
     environment: process.env.NODE_ENV || 'development'
   };
 };
