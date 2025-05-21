@@ -121,7 +121,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Run resiliency tests**: `python examples/resiliency_demo.py`
 
 ### Deployment
-- **Deploy to Netlify**: `cd frontend && npm run deploy:netlify`
+- **Deploy to Netlify**: 
+  - Automated: `git push origin netlify-autodeploy` (pushes to the netlify-autodeploy branch)
+  - Manual: `cd minimal-frontend && netlify deploy --prod` (using Netlify CLI)
 - **Deploy to Heroku**: `git push heroku main`
 - **Deploy RDKit service**: `flyctl deploy`
 
@@ -323,7 +325,24 @@ The experimental data enhancement system is a core feature being developed in th
 - Use Context7 for documentation-related tasks instead of regenerating documentation
 
 ### Production Deployment Strategy
-- Use Netlify for frontend hosting with proper configuration for dynamic routes
+
+#### Netlify Deployment Configuration
+- **Automated Deployments**: 
+  - Push to `netlify-autodeploy` branch to trigger automatic deployments
+  - Netlify is configured to deploy the `minimal-frontend` directory
+  - Deployment settings are defined in the repo's `netlify.toml` and `minimal-frontend/netlify.toml`
+  - Git submodules are disabled with `submodules = false` in the config
+  - Content Security Policy is configured to allow connections to API endpoints
+  - Environment variables set `NEXT_PUBLIC_USE_CONVEX = "false"` for the minimal frontend
+
+- **Troubleshooting Netlify Deployments**:
+  - Check Netlify build logs for errors
+  - Ensure no references to Convex client in minimal-frontend
+  - Verify all Next.js pages can be built statically
+  - Use redirects for API endpoints (configured in netlify.toml)
+  - For manual deployment, use `netlify deploy --prod` command
+
+#### Other Deployment Strategies
 - Deploy backend API to Heroku with proper scaling configuration
 - Use Fly.io for specialized services requiring custom containerization
 - Implement proper monitoring and alerting for all deployed services
