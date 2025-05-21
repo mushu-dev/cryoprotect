@@ -1,0 +1,42 @@
+{
+    "database": {
+        "url": "test_url",
+        "key": "test_key",
+        "use_connection_pool": true,
+        "pool_size": 2,
+        "max_retries": 1,
+        "retry_delay": 1.0
+    },
+    "checkpoints": {
+        "directory": "checkpoints",
+        "backup_interval": 2,
+        "enabled": true
+    },
+    "logging": {
+        "level": "DEBUG",
+        "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        "file": null
+    },
+    "sources": {
+        "chembl": {
+            "test": true,
+            "api_url": "mock://chembl",
+            "batch_size": 5,
+            "use_client": false
+        }
+    },
+    "transforms": {
+        "molecule_transform": {
+            "resolve_cross_references": false,
+            "handle_mixtures": true,
+            "separate_mixtures": false,
+            "add_standardized_structure": true
+        }
+    },
+    "import": {
+        "batch_size": 5,
+        "worker_count": 2, 
+        "max_retries": 1,
+        "retry_delay": 1.0
+    }
+}

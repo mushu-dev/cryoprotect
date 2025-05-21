@@ -1,0 +1,200 @@
+{
+  "timestamp": "2025-05-13T00:23:01.148347",
+  "duplicate_groups": 13,
+  "results": {
+    "groups_processed": 13,
+    "total_duplicates": 18,
+    "successful_consolidations": 13,
+    "consolidated_molecules": [
+      {
+        "inchikey": "LYCAIKOWRPUZTN-UHFFFAOYSA-N",
+        "primary": {
+          "id": "9b5b9bbd-ad2c-46ec-a1d9-279fe46a0549",
+          "name": "ethane-1,2-diol"
+        },
+        "duplicates": [
+          {
+            "id": "c49fd8f6-2e3b-5c4d-9f4a-d0a1e6f7a8b9",
+            "name": "Ethylene glycol"
+          },
+          {
+            "id": "6b41111a-9a92-4a02-b8ab-31975af62be1",
+            "name": "Ethylene glycol"
+          },
+          {
+            "id": "090e54e9-5354-477f-a3dd-2989a40a6c20",
+            "name": "Polyvinyl alcohol"
+          }
+        ]
+      },
+      {
+        "inchikey": "DNIAPMSPPWPWGF-UHFFFAOYSA-N",
+        "primary": {
+          "id": "c7b24e15-7d9c-4887-aba7-ece5b96234f4",
+          "name": "propane-1,2-diol"
+        },
+        "duplicates": [
+          {
+            "id": "d50ae9a7-3f4c-6d5e-0a5a-e1b2f7a8a9c0",
+            "name": "Propylene glycol"
+          },
+          {
+            "id": "9a1c401b-d524-4c51-a3b5-8cf84e3e52ad",
+            "name": "Propylene glycol"
+          }
+        ]
+      },
+      {
+        "inchikey": "IAZDPXIOMUYVGZ-UHFFFAOYSA-N",
+        "primary": {
+          "id": "26502df5-955a-4ada-8ebe-27a0417b12de",
+          "name": "methylsulfinylmethane"
+        },
+        "duplicates": [
+          {
+            "id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+            "name": "Dimethyl sulfoxide"
+          },
+          {
+            "id": "c6ed38e9-eab8-480e-a5d9-5626e797bd7a",
+            "name": "DMSO"
+          }
+        ]
+      },
+      {
+        "inchikey": "PEDCQBHIVMGVHV-UHFFFAOYSA-N",
+        "primary": {
+          "id": "0482a736-da67-44db-8c05-e16e00778078",
+          "name": "propane-1,2,3-triol"
+        },
+        "duplicates": [
+          {
+            "id": "b38fc7e5-1f2a-4b3d-8e3f-c9b0d5e8f9a7",
+            "name": "Glycerol"
+          },
+          {
+            "id": "d55ea26c-b945-45dc-87c7-261c7ccc5ce3",
+            "name": "Glycerol"
+          }
+        ]
+      },
+      {
+        "inchikey": "OKKJLVBELUTLKV-UHFFFAOYSA-N",
+        "primary": {
+          "id": "23a34e2f-811b-4dd6-b7da-1d554d87bf32",
+          "name": "methanol"
+        },
+        "duplicates": [
+          {
+            "id": "dd82fc24-0cd1-412d-9f5a-e142b15aafe4",
+            "name": "Methanol"
+          }
+        ]
+      },
+      {
+        "inchikey": "QTBSBXVTEAMEQO-UHFFFAOYSA-N",
+        "primary": {
+          "id": "85cbc7b5-21ff-405e-b4c8-f1d39eee737f",
+          "name": "TEST_Test Molecule (Fix Verification)"
+        },
+        "duplicates": [
+          {
+            "id": "e89feb81-4e24-493a-a939-994482441179",
+            "name": "TEST_Test Molecule (Python Script)"
+          }
+        ]
+      },
+      {
+        "inchikey": "UHOVQNZJYSORNB-UHFFFAOYSA-N",
+        "primary": {
+          "id": "7c4a3cfb-a22e-4905-ba56-f73cf2108da0",
+          "name": "TEST_TestMol1"
+        },
+        "duplicates": [
+          {
+            "id": "3dcbab1e-89de-4199-8d8e-172a16a51f1c",
+            "name": "TEST_TestMol1"
+          }
+        ]
+      },
+      {
+        "inchikey": "YXFVVABEGXRONW-UHFFFAOYSA-N",
+        "primary": {
+          "id": "e6b732c7-60e5-40a3-9117-fe383e3ca317",
+          "name": "TEST_TestMol2"
+        },
+        "duplicates": [
+          {
+            "id": "0c749340-38a1-44e3-80b3-49065a6df118",
+            "name": "TEST_TestMol3"
+          }
+        ]
+      },
+      {
+        "inchikey": "CZMRCDWAGMRECN-UGDNZRGBSA-N",
+        "primary": {
+          "id": "c97ff8ca-8b15-4ceb-8125-22379697a0e8",
+          "name": "(2R,3R,4S,5S,6R)-2-[(2S,3S,4S,5R)-3,4-dihydroxy-2,5-bis(hydroxymethyl)oxolan-2-yl]oxy-6-(hydroxymethyl)oxane-3,4,5-triol"
+        },
+        "duplicates": [
+          {
+            "id": "5384528c-8005-47a2-a618-a99137d46a3d",
+            "name": "Sucrose"
+          }
+        ]
+      },
+      {
+        "inchikey": "ZHNUHDYFZUAESO-UHFFFAOYSA-N",
+        "primary": {
+          "id": "af8a92f7-64a5-4f9d-a7a7-2f14b7f4fc0d",
+          "name": "Formamide"
+        },
+        "duplicates": [
+          {
+            "id": "0054e9e8-6640-489d-8b20-89792dcebaca",
+            "name": "Formamide"
+          }
+        ]
+      },
+      {
+        "inchikey": "DHMQDGOQFOQNFH-UHFFFAOYSA-N",
+        "primary": {
+          "id": "6abe3da4-9c5d-4357-95bf-629db4b64b00",
+          "name": "Glycine"
+        },
+        "duplicates": [
+          {
+            "id": "83ed505d-566d-46b8-b021-498f8bb89df3",
+            "name": "Glycine"
+          }
+        ]
+      },
+      {
+        "inchikey": "DLFVBJFMPXGRIB-UHFFFAOYSA-N",
+        "primary": {
+          "id": "cccb105e-d639-4f3c-8016-4137d2604b49",
+          "name": "Acetamide"
+        },
+        "duplicates": [
+          {
+            "id": "b119e065-91cc-4e9b-996c-50096c92da65",
+            "name": "Acetamide"
+          }
+        ]
+      },
+      {
+        "inchikey": "KWIUHFFTVRNATP-UHFFFAOYSA-N",
+        "primary": {
+          "id": "0e4f6a81-cdd5-468f-b675-3241d7241299",
+          "name": "2-(trimethylazaniumyl)acetate"
+        },
+        "duplicates": [
+          {
+            "id": "83837dee-13be-448c-aac5-2e309bd0a38f",
+            "name": "Betaine"
+          }
+        ]
+      }
+    ]
+  }
+}

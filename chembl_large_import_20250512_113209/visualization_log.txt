@@ -1,0 +1,5 @@
+2025-05-12 11:32:12,053 - INFO - Import rate chart saved to chembl_large_import_20250512_113209/visualizations/chembl_import_rate.png
+2025-05-12 11:32:12,099 - INFO - Success rate chart saved to chembl_large_import_20250512_113209/visualizations/chembl_import_success_rate.png
+2025-05-12 11:32:12,148 - INFO - Progress chart saved to chembl_large_import_20250512_113209/visualizations/chembl_import_progress.png
+2025-05-12 11:32:12,330 - INFO - Summary chart saved to chembl_large_import_20250512_113209/visualizations/chembl_import_summary.png
+2025-05-12 11:32:12,331 - INFO - All visualizations saved to chembl_large_import_20250512_113209/visualizations

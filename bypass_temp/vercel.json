@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "public": true,
+  "github": {
+    "enabled": false
+  },
+  "build": {
+    "env": {
+      "VERCEL_PROTECTION_BYPASS": "1"
+    }
+  },
+  "env": {
+    "VERCEL_PROTECTION_BYPASS": "1"
+  }
+}

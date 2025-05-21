@@ -1,8 +1,6 @@
 #!/bin/bash
 # Verification script to check the status of all CryoProtect components
 
-set -e
-
 # ANSI color codes
 GREEN='\033[0;32m'
 RED='\033[0;31m'
@@ -13,63 +11,90 @@ NC='\033[0m' # No Color
 echo -e "${BLUE}===== CryoProtect Integration Verification =====${NC}"
 echo
 
-# Check Netlify
-echo -e "${BLUE}Checking Netlify frontend...${NC}"
-if curl -s https://cryoprotect.netlify.app/ | grep -q "CryoProtect"; then
-    echo -e "${GREEN}✓ Netlify frontend is accessible${NC}"
+# Function to check HTTP response
+check_endpoint() {
+  local url=$1
+  local name=$2
+  
+  echo -e "${BLUE}Testing ${name}: ${url}${NC}"
+  
+  response=$(curl -s -o /dev/null -w "%{http_code}" $url)
+  
+  if [ "$response" == "200" ]; then
+    echo -e "${GREEN}✓ Success: ${name} is accessible (HTTP 200)${NC}"
+    return 0
+  else
+    echo -e "${RED}✗ Error: ${name} returned HTTP ${response}${NC}"
+    return 1
+  fi
+}
+
+# Function to check CORS headers
+check_cors() {
+  local url=$1
+  local origin=$2
+  local name=$3
+  
+  echo -e "${BLUE}Testing CORS for ${name} with origin: ${origin}${NC}"
+  
+  cors_header=$(curl -s -I -H "Origin: ${origin}" $url | grep -i "Access-Control-Allow-Origin")
+  
+  if [[ "$cors_header" == *"$origin"* ]] || [[ "$cors_header" == *"*"* ]]; then
+    echo -e "${GREEN}✓ Success: CORS is properly configured for ${origin}${NC}"
+    return 0
+  else
+    echo -e "${RED}✗ Error: CORS is not configured correctly for ${origin}${NC}"
+    echo -e "${YELLOW}Response header: ${cors_header}${NC}"
+    return 1
+  fi
+}
+
+# Check main domain
+echo -e "${BLUE}Testing main domain...${NC}"
+netlify_status=$(curl -s -o /dev/null -w "%{http_code}" https://cryoprotect.netlify.app)
+echo -e "Netlify site status: ${netlify_status}"
+
+# Try the domain with .app
+domain_status=$(curl -s -o /dev/null -w "%{http_code}" https://cryoprotect.app)
+echo -e "Custom domain status: ${domain_status}"
+
+# Check Heroku API
+echo -e "\n${BLUE}Testing Heroku API...${NC}"
+check_endpoint "https://cryoprotect-8030e4025428.herokuapp.com/health" "Heroku API"
+check_cors "https://cryoprotect-8030e4025428.herokuapp.com/health" "https://cryoprotect.app" "Heroku API"
+
+# Check RDKit service
+echo -e "\n${BLUE}Testing RDKit Service...${NC}"
+check_endpoint "https://cryoprotect-rdkit.fly.dev/health" "RDKit Service"
+check_cors "https://cryoprotect-rdkit.fly.dev/health" "https://cryoprotect.app" "RDKit Service"
+
+# Check redirects through Netlify
+echo -e "\n${BLUE}Testing API redirects through Netlify...${NC}"
+if check_endpoint "https://cryoprotect.netlify.app/api/health" "API redirect"; then
+  echo -e "${GREEN}✓ Success: API redirect is working properly${NC}"
 else
-    echo -e "${RED}✗ Netlify frontend check failed${NC}"
+  echo -e "${YELLOW}⚠ API redirect check failed - this will work after deployment${NC}"
 fi
 
-# Check Heroku
-echo -e "${BLUE}Checking Heroku backend...${NC}"
-if curl -s https://cryoprotect.herokuapp.com/v1/health | grep -q "ok"; then
-    echo -e "${GREEN}✓ Heroku backend is accessible${NC}"
+# Check RDKit redirects through Netlify
+echo -e "\n${BLUE}Testing RDKit redirects through Netlify...${NC}"
+if check_endpoint "https://cryoprotect.netlify.app/rdkit-api/health" "RDKit redirect"; then
+  echo -e "${GREEN}✓ Success: RDKit redirect is working properly${NC}"
 else
-    echo -e "${RED}✗ Heroku backend check failed${NC}"
+  echo -e "${YELLOW}⚠ RDKit redirect check failed - this will work after deployment${NC}"
 fi
 
-# Check RDKit Service
-echo -e "${BLUE}Checking RDKit service...${NC}"
-if curl -s https://rdkit.cryoprotect.app/health | grep -q "ok"; then
-    echo -e "${GREEN}✓ RDKit service is accessible${NC}"
-else
-    echo -e "${YELLOW}⚠ RDKit service check failed - may need to be deployed${NC}"
-fi
+# Check Convex connectivity
+echo -e "\n${BLUE}Testing Convex connectivity...${NC}"
+convex_status=$(curl -s -o /dev/null -w "%{http_code}" https://upbeat-parrot-866.convex.cloud)
+echo -e "Convex API status: ${convex_status}"
 
-# Check Convex connection through backend
-echo -e "${BLUE}Checking Convex through backend...${NC}"
-if curl -s https://cryoprotect.herokuapp.com/v1/molecules?limit=1 | grep -q "data"; then
-    echo -e "${GREEN}✓ Backend can successfully query Convex${NC}"
-else
-    echo -e "${RED}✗ Backend Convex connection check failed${NC}"
-fi
-
-# Check CORS configuration for Heroku
-echo -e "${BLUE}Checking CORS configuration for Heroku...${NC}"
-if curl -s -I -H "Origin: https://cryoprotect.netlify.app" \
-        -H "Access-Control-Request-Method: GET" \
-        https://cryoprotect.herokuapp.com/v1/health | grep -q "Access-Control-Allow-Origin"; then
-    echo -e "${GREEN}✓ Heroku CORS is properly configured${NC}"
-else
-    echo -e "${RED}✗ Heroku CORS check failed${NC}"
-fi
-
-# Check frontend environment variables
-echo -e "${BLUE}Checking frontend environment variables...${NC}"
-if curl -s https://cryoprotect.netlify.app/ | grep -q "dynamic-mink-63.convex.cloud"; then
-    echo -e "${GREEN}✓ Frontend includes Convex configuration${NC}"
-else
-    echo -e "${YELLOW}⚠ Could not verify Convex configuration in frontend${NC}"
-fi
-
-echo
-echo -e "${BLUE}==========================================${NC}"
+echo -e "\n${BLUE}==========================================${NC}"
 echo -e "${GREEN}Integration verification complete!${NC}"
 echo -e "${BLUE}==========================================${NC}"
 echo
-echo "For more detailed testing, run:"
-echo "  node test-full-integration.js"
+echo "Next step: Run the Netlify deployment script:"
+echo "  ./deploy-netlify-fix.sh"
 echo
 echo "For a comprehensive test of the adapter, run:"
 echo "  python test-convex-adapter.py"

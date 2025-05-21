@@ -1,0 +1,93 @@
+{
+  "created_indexes": [
+    {
+      "name": "idx_molecules_name_trgm",
+      "table": "molecules",
+      "columns": "name",
+      "method": "gin",
+      "options": "gin_trgm_ops",
+      "description": "Text search index for molecule names using trigram matching"
+    },
+    {
+      "name": "idx_molecules_formula",
+      "table": "molecules",
+      "columns": "formula",
+      "method": null,
+      "options": null,
+      "description": "Index for searching by chemical formula"
+    },
+    {
+      "name": "idx_molecules_smiles_md5",
+      "table": "molecules",
+      "columns": "md5(smiles::text)",
+      "method": null,
+      "options": null,
+      "description": "Index for efficient SMILES-based lookups (using MD5 hash)"
+    },
+    {
+      "name": "idx_molecular_properties_numeric",
+      "table": "molecular_properties",
+      "columns": "property_type_id, numeric_value",
+      "method": null,
+      "options": null,
+      "description": "Index for numerical property range queries"
+    },
+    {
+      "name": "idx_molecular_properties_text",
+      "table": "molecular_properties",
+      "columns": "property_type_id, text_value",
+      "method": null,
+      "options": null,
+      "description": "Index for categorical property filtering"
+    },
+    {
+      "name": "idx_mixture_components_mixture",
+      "table": "mixture_components",
+      "columns": "mixture_id",
+      "method": null,
+      "options": null,
+      "description": "Index for looking up components of a mixture"
+    },
+    {
+      "name": "idx_mixture_components_molecule",
+      "table": "mixture_components",
+      "columns": "molecule_id",
+      "method": null,
+      "options": null,
+      "description": "Index for finding mixtures containing a specific molecule"
+    },
+    {
+      "name": "idx_mixtures_name_trgm",
+      "table": "mixtures",
+      "columns": "name",
+      "method": "gin",
+      "options": "gin_trgm_ops",
+      "description": "Text search index for mixture names using trigram matching"
+    }
+  ],
+  "skipped_indexes": [
+    {
+      "name": "idx_molecules_pubchem_cid",
+      "table": "molecules",
+      "columns": "pubchem_cid",
+      "method": null,
+      "options": null,
+      "description": "Index for looking up molecules by PubChem CID"
+    },
+    {
+      "name": "idx_molecular_properties_molecule_property",
+      "table": "molecular_properties",
+      "columns": "molecule_id, property_type_id",
+      "method": null,
+      "options": null,
+      "description": "Index for filtering molecules by property types"
+    }
+  ],
+  "failed_indexes": [],
+  "analyzed_tables": [
+    "mixture_components",
+    "mixtures",
+    "molecules",
+    "molecular_properties"
+  ]
+}

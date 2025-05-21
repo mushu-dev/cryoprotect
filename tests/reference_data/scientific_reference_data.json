@@ -1,0 +1,169 @@
+{
+  "concentration_models": {
+    "linear": [
+      {
+        "molecule_id": "mock-molecule-1",
+        "parameters": {
+          "slope": 0.5,
+          "intercept": 1.0
+        },
+        "test_points": [
+          {"concentration": 0.0, "expected_value": 1.0},
+          {"concentration": 1.0, "expected_value": 1.5},
+          {"concentration": 2.0, "expected_value": 2.0}
+        ]
+      }
+    ],
+    "exponential": [
+      {
+        "molecule_id": "mock-molecule-2",
+        "parameters": {
+          "scale": 1.0,
+          "rate": 0.5,
+          "offset": 0.0
+        },
+        "test_points": [
+          {"concentration": 0.0, "expected_value": 1.0},
+          {"concentration": 1.0, "expected_value": 1.649},
+          {"concentration": 2.0, "expected_value": 2.718}
+        ]
+      }
+    ],
+    "sigmoid": [
+      {
+        "molecule_id": "mock-molecule-3",
+        "parameters": {
+          "bottom": 0.0,
+          "top": 1.0,
+          "ec50": 5.0,
+          "hillslope": 1.0
+        },
+        "test_points": [
+          {"concentration": 0.0, "expected_value": 0.0067},
+          {"concentration": 5.0, "expected_value": 0.5},
+          {"concentration": 10.0, "expected_value": 0.993}
+        ]
+      }
+    ]
+  },
+  "temperature_models": {
+    "linear": [
+      {
+        "molecule_id": "mock-molecule-1",
+        "parameters": {
+          "slope": 0.1,
+          "intercept": 10.0
+        },
+        "test_points": [
+          {"temperature": 273.15, "expected_value": 37.315},
+          {"temperature": 293.15, "expected_value": 39.315},
+          {"temperature": 303.15, "expected_value": 40.315}
+        ]
+      }
+    ],
+    "arrhenius": [
+      {
+        "molecule_id": "mock-molecule-2",
+        "parameters": {
+          "A": 1.0e10,
+          "Ea": 50000.0
+        },
+        "test_points": [
+          {"temperature": 273.15, "expected_value": 6.644e-10},
+          {"temperature": 293.15, "expected_value": 2.052e-9},
+          {"temperature": 303.15, "expected_value": 3.405e-9}
+        ]
+      }
+    ]
+  },
+  "glass_transition": {
+    "pure_compounds": [
+      {
+        "molecule_id": "glycerol",
+        "smiles": "C(C(CO)O)O",
+        "expected_tg": 190.0
+      },
+      {
+        "molecule_id": "ethylene-glycol",
+        "smiles": "C(CO)O",
+        "expected_tg": 160.0
+      }
+    ],
+    "mixtures": [
+      {
+        "components": [
+          {
+            "molecule_id": "glycerol",
+            "weight_fraction": 0.7,
+            "tg": 190.0
+          },
+          {
+            "molecule_id": "ethylene-glycol",
+            "weight_fraction": 0.3,
+            "tg": 160.0
+          }
+        ],
+        "parameters": {
+          "model_subtype": "gordon_taylor",
+          "k": 1.0
+        },
+        "expected_tg": 181.0
+      },
+      {
+        "components": [
+          {
+            "molecule_id": "glycerol",
+            "weight_fraction": 0.5,
+            "tg": 190.0
+          },
+          {
+            "molecule_id": "ethylene-glycol",
+            "weight_fraction": 0.5,
+            "tg": 160.0
+          }
+        ],
+        "parameters": {
+          "model_subtype": "fox",
+          "k": 1.0
+        },
+        "expected_tg": 173.7
+      }
+    ]
+  },
+  "synergy_prediction": {
+    "property_based": [
+      {
+        "components": [
+          {
+            "molecule_id": "glycerol",
+            "molecular_weight": 92.09,
+            "logP": -1.76,
+            "hydrogen_bond_donors": 3
+          },
+          {
+            "molecule_id": "dmso",
+            "molecular_weight": 78.13,
+            "logP": -1.35,
+            "hydrogen_bond_donors": 0
+          }
+        ],
+        "expected_synergy_range": [1.1, 1.5]
+      }
+    ],
+    "mechanism_based": [
+      {
+        "components": [
+          {
+            "molecule_id": "glycerol",
+            "mechanisms": ["vitrification", "cell_permeation"]
+          },
+          {
+            "molecule_id": "dmso",
+            "mechanisms": ["cell_permeation", "membrane_stabilization"]
+          }
+        ],
+        "expected_synergy_range": [1.2, 1.6]
+      }
+    ]
+  }
+}

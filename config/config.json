@@ -1,0 +1,24 @@
+{
+  "database": {
+    "connection": {
+      "mode": "supabase",
+      "supabase": {
+        "host": "aws-0-us-east-1.pooler.supabase.com",
+        "port": 5432,
+        "database": "postgres",
+        "user": "postgres.tsdlmynydfuypiugmkev",
+        "password": "LDHt$rkaM&Gmf3X@LQ37",
+        "project_id": "tsdlmynydfuypiugmkev",
+        "application_name": "CryoProtect"
+      },
+      "ssl": {
+        "mode": "require"
+      }
+    },
+    "pooling": {
+      "enabled": true,
+      "min_connections": 1,
+      "max_connections": 10
+    }
+  }
+}

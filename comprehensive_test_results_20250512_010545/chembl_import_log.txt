@@ -1,0 +1,15 @@
+2025-05-12 01:05:45,228 - ERROR - Failed to import required modules: cannot import name 'get_database_stats' from 'database.utils' (/home/mushu/Projects/CryoProtect/database/utils/__init__.py)
+2025-05-12 01:05:45,228 - INFO - Creating mock implementations for testing purposes
+2025-05-12 01:05:45,229 - INFO - Starting comprehensive ChEMBL import test for 100 molecules
+2025-05-12 01:05:45,229 - INFO - Generating 100 ChEMBL IDs for testing
+2025-05-12 01:05:45,229 - INFO - Starting import of 100 molecules
+2025-05-12 01:05:45,229 - INFO - Captured database stats before import
+2025-05-12 01:05:46,738 - INFO - Processed 100/100 molecules (100.0%) - 100 successes, 0 errors - Rate: 66.29 molecules/sec
+2025-05-12 01:05:46,739 - INFO - Captured database stats after import
+2025-05-12 01:05:46,739 - INFO - Import completed: 100 successes, 0 errors in 1.51 seconds
+2025-05-12 01:05:46,739 - INFO - Average time per molecule: 0.0151 seconds
+2025-05-12 01:05:46,740 - INFO - Import rate: 66.24 molecules/second
+2025-05-12 01:05:46,740 - INFO - Verifying data integrity of imported molecules
+2025-05-12 01:05:46,740 - INFO - Data integrity verification successful
+2025-05-12 01:05:46,741 - INFO - Report saved to chembl_import_report_20250512_010546.json
+2025-05-12 01:05:46,741 - INFO - Report saved to comprehensive_test_results_20250512_010545/chembl_import_report.json

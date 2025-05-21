@@ -1,0 +1,60 @@
+2025-05-12 01:01:36,211 - INFO - Starting toxicity performance tests
+2025-05-12 01:01:36,211 - INFO - Testing original endpoints
+2025-05-12 01:01:36,231 - INFO - Testing optimized endpoints
+2025-05-12 01:01:36,274 - INFO - Testing bulk endpoints
+2025-05-12 01:01:36,277 - INFO - Tests completed
+2025-05-12 01:01:36,278 - INFO - Results saved to toxicity_performance_results.json
+
+================================================================================
+TOXICITY OPTIMIZATION TEST RESULTS
+================================================================================
+
+Original Endpoints:
+--------------------------------------------------------------------------------
+Endpoint: toxicity
+  Average Time: 0.0021s
+  Average Size: 0.20 KB
+  Success Rate: 0%
+Endpoint: scores
+  Average Time: 0.0019s
+  Average Size: 0.20 KB
+  Success Rate: 0%
+
+Optimized Endpoints:
+--------------------------------------------------------------------------------
+Endpoint: summary
+  Average Time: 0.0018s
+  Average Size: 0.20 KB
+  Success Rate: 0%
+Endpoint: ld50
+  Average Time: 0.0022s
+  Average Size: 0.20 KB
+  Success Rate: 0%
+Endpoint: tox21
+  Average Time: 0.0025s
+  Average Size: 0.20 KB
+  Success Rate: 0%
+Endpoint: classifications
+  Average Time: 0.0021s
+  Average Size: 0.20 KB
+  Success Rate: 0%
+
+Bulk Endpoint:
+--------------------------------------------------------------------------------
+Molecules: 3
+Time: 0.0030s
+Size: 0.20 KB
+Status: Failed
+
+================================================================================
+PERFORMANCE COMPARISON
+================================================================================
+Basic toxicity data:
+  Original average time: 0.0021s
+  Optimized average time: 0.0018s
+  Performance improvement: 14.0%
+
+Toxicity scores:
+  Original average time: 0.0019s
+  Optimized average time: 0.0018s
+  Performance improvement: 2.7%

@@ -1,0 +1,143 @@
+/**
+ * Mock API Route for Timeout Testing
+ * 
+ * This route simulates API responses with configurable delays
+ * for testing the timeout handling functionality.
+ */
+
+import { NextApiRequest, NextApiResponse } from 'next';
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  // Parse parameters
+  const { endpoint } = req.query;
+  const delay = parseInt(req.query.delay as string) || 0;
+  
+  // Log the request
+  console.log(`[Mock API] ${req.method} /${endpoint} with ${delay}ms delay`);
+  
+  // For critical endpoints, add some randomness to the delay
+  const isCritical = typeof endpoint === 'string' && endpoint.startsWith('critical/');
+  const actualDelay = isCritical 
+    ? delay + Math.floor(Math.random() * 5000) // Add 0-5s random delay
+    : delay;
+  
+  // Simulate a delay
+  if (actualDelay > 0) {
+    await new Promise(resolve => setTimeout(resolve, actualDelay));
+  }
+  
+  // Return a response based on the endpoint
+  switch (endpoint) {
+    case 'quick':
+      return res.status(200).json({
+        success: true,
+        message: 'Quick request completed',
+        timing: {
+          requested: delay,
+          actual: actualDelay,
+        },
+        data: {
+          id: '123',
+          name: 'Quick Response',
+          timestamp: new Date().toISOString(),
+        },
+      });
+      
+    case 'medium':
+      return res.status(200).json({
+        success: true,
+        message: 'Medium request completed',
+        timing: {
+          requested: delay,
+          actual: actualDelay,
+        },
+        data: {
+          id: '456',
+          name: 'Medium Response',
+          timestamp: new Date().toISOString(),
+          details: {
+            type: 'medium',
+            items: [1, 2, 3, 4, 5],
+          },
+        },
+      });
+      
+    case 'slow':
+      return res.status(200).json({
+        success: true,
+        message: 'Slow request completed',
+        timing: {
+          requested: delay,
+          actual: actualDelay,
+        },
+        data: {
+          id: '789',
+          name: 'Slow Response',
+          timestamp: new Date().toISOString(),
+          details: {
+            type: 'slow',
+            items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            metadata: {
+              processing: 'heavy',
+              server: 'mock-server-001',
+              region: 'us-west-1',
+            },
+          },
+        },
+      });
+      
+    case 'test':
+      // Generic test endpoint
+      return res.status(200).json({
+        success: true,
+        message: `Test request with ${actualDelay}ms delay completed`,
+        timing: {
+          requested: delay,
+          actual: actualDelay,
+        },
+        data: {
+          id: Math.floor(Math.random() * 1000).toString(),
+          name: 'Test Response',
+          timestamp: new Date().toISOString(),
+        },
+      });
+      
+    default:
+      // If it's a critical endpoint
+      if (isCritical) {
+        return res.status(200).json({
+          success: true,
+          message: `Critical request to /${endpoint} completed`,
+          timing: {
+            requested: delay,
+            actual: actualDelay,
+          },
+          data: {
+            id: Math.floor(Math.random() * 1000).toString(),
+            name: 'Critical Response',
+            timestamp: new Date().toISOString(),
+            priority: 'high',
+            details: {
+              path: endpoint,
+              processingTime: actualDelay,
+            },
+          },
+          warning: actualDelay > 15000 ? 'This request took longer than expected' : undefined,
+        });
+      }
+      
+      // Unknown endpoint
+      return res.status(200).json({
+        success: true,
+        message: `Request to /${endpoint} completed`,
+        timing: {
+          requested: delay,
+          actual: actualDelay,
+        },
+        data: {
+          endpoint,
+          timestamp: new Date().toISOString(),
+        },
+      });
+  }
+}

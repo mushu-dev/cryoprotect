@@ -1,0 +1,65 @@
+{
+  "fix_properties": {
+    "fixed": 0,
+    "failed": 20,
+    "errors": [
+      "Error for GUAIACYL GLYCEROL: column \"method\" of relation \"molecular_properties\" does not exist\nLINE 4: ...                      text_value, property_value, method, cr...\n                                                             ^\n",
+      "Error for GUAICYLGLYCEROL: column \"method\" of relation \"molecular_properties\" does not exist\nLINE 4: ...                      text_value, property_value, method, cr...\n                                                             ^\n",
+      "Error for PHOSPHATIDYL GLYCEROL: column \"method\" of relation \"molecular_properties\" does not exist\nLINE 4: ...                      text_value, property_value, method, cr...\n                                                             ^\n",
+      "Error for 2-ARACHIDONOYLGLYCEROL: column \"method\" of relation \"molecular_properties\" does not exist\nLINE 4: ...                      text_value, property_value, method, cr...\n                                                             ^\n",
+      "Error for DIACYLGLYCEROL KINASE INHIBITOR II: column \"method\" of relation \"molecular_properties\" does not exist\nLINE 4: ...                      text_value, property_value, method, cr...\n                                                             ^\n",
+      "Error for CIBOTIGLYCEROL: column \"method\" of relation \"molecular_properties\" does not exist\nLINE 4: ...                      text_value, property_value, method, cr...\n                                                             ^\n",
+      "Error for GLYCEROL MONOLAURATE: column \"method\" of relation \"molecular_properties\" does not exist\nLINE 4: ...                      text_value, property_value, method, cr...\n                                                             ^\n",
+      "Error for GLYCEROL MONOPALMITATE: column \"method\" of relation \"molecular_properties\" does not exist\nLINE 4: ...                      text_value, property_value, method, cr...\n                                                             ^\n",
+      "Error for MONOTHIOGLYCEROL: column \"method\" of relation \"molecular_properties\" does not exist\nLINE 4: ...                      text_value, property_value, method, cr...\n                                                             ^\n",
+      "Error for TRITETRADECYLTHIOACETYL GLYCEROL: column \"method\" of relation \"molecular_properties\" does not exist\nLINE 4: ...                      text_value, property_value, method, cr...\n                                                             ^\n",
+      "Error for Glycerol: column \"method\" of relation \"molecular_properties\" does not exist\nLINE 4: ...                      text_value, property_value, method, cr...\n                                                             ^\n",
+      "Error for Trehalose: column \"method\" of relation \"molecular_properties\" does not exist\nLINE 4: ...                      text_value, property_value, method, cr...\n                                                             ^\n",
+      "Error for TEST_MCP Test Molecule: column \"method\" of relation \"molecular_properties\" does not exist\nLINE 4: ...                      text_value, property_value, method, cr...\n                                                             ^\n",
+      "Error for DESVENLAFAXINE: column \"method\" of relation \"molecular_properties\" does not exist\nLINE 4: ...                      text_value, property_value, method, cr...\n                                                             ^\n",
+      "Error for DEFEROXAMINE MESYLATE: column \"method\" of relation \"molecular_properties\" does not exist\nLINE 4: ...                      text_value, property_value, method, cr...\n                                                             ^\n",
+      "Error for GLYCEROL PHENYLBUTYRATE: column \"method\" of relation \"molecular_properties\" does not exist\nLINE 4: ...                      text_value, property_value, method, cr...\n                                                             ^\n",
+      "Error for CHEMBL9335: column \"method\" of relation \"molecular_properties\" does not exist\nLINE 4: ...                      text_value, property_value, method, cr...\n                                                             ^\n",
+      "Error for PLATENCINIC ACID GLYCEROL ESTER: column \"method\" of relation \"molecular_properties\" does not exist\nLINE 4: ...                      text_value, property_value, method, cr...\n                                                             ^\n",
+      "Error for Ethylene glycol: column \"method\" of relation \"molecular_properties\" does not exist\nLINE 4: ...                      text_value, property_value, method, cr...\n                                                             ^\n",
+      "Error for Propylene glycol: column \"method\" of relation \"molecular_properties\" does not exist\nLINE 4: ...                      text_value, property_value, method, cr...\n                                                             ^\n"
+    ]
+  },
+  "fix_jsonb": {
+    "fixed": 0,
+    "failed": 13,
+    "errors": [
+      "Error for 2-ARACHIDONOYLGLYCEROL: Object of type Decimal is not JSON serializable",
+      "Error for beta-Alanine: Object of type Decimal is not JSON serializable",
+      "Error for CIBOTIGLYCEROL: Object of type Decimal is not JSON serializable",
+      "Error for DIACYLGLYCEROL KINASE INHIBITOR II: Object of type Decimal is not JSON serializable",
+      "Error for GLYCEROL MONOLAURATE: Object of type Decimal is not JSON serializable",
+      "Error for GLYCEROL MONOPALMITATE: Object of type Decimal is not JSON serializable",
+      "Error for GUAIACYL GLYCEROL: Object of type Decimal is not JSON serializable",
+      "Error for GUAICYLGLYCEROL: Object of type Decimal is not JSON serializable",
+      "Error for MONOTHIOGLYCEROL: Object of type Decimal is not JSON serializable",
+      "Error for PHOSPHATIDYL GLYCEROL: Object of type Decimal is not JSON serializable",
+      "Error for tert-Butanol: Object of type Decimal is not JSON serializable",
+      "Error for TRITETRADECYLTHIOACETYL GLYCEROL: Object of type Decimal is not JSON serializable",
+      "Error for Urea: Object of type Decimal is not JSON serializable"
+    ]
+  },
+  "fix_pubchem": {
+    "fixed": 0,
+    "failed": 7,
+    "errors": [
+      "Error for DMSO: duplicate key value violates unique constraint \"molecules_pubchem_cid_key\"\nDETAIL:  Key (pubchem_cid)=(679) already exists.\n",
+      "Error for Ethylene glycol: duplicate key value violates unique constraint \"molecules_pubchem_cid_key\"\nDETAIL:  Key (pubchem_cid)=(174) already exists.\n",
+      "Error for Glycerol: duplicate key value violates unique constraint \"molecules_pubchem_cid_key\"\nDETAIL:  Key (pubchem_cid)=(753) already exists.\n",
+      "Error for Glycine: duplicate key value violates unique constraint \"molecules_pubchem_cid_key\"\nDETAIL:  Key (pubchem_cid)=(750) already exists.\n",
+      "Error for Propylene glycol: duplicate key value violates unique constraint \"molecules_pubchem_cid_key\"\nDETAIL:  Key (pubchem_cid)=(1030) already exists.\n",
+      "Missing InChIKey for TEST_MCP Test Molecule (ID: c170e735-e6e9-4591-9e81-c653869083ef)",
+      "Could not resolve PubChem CID for Trehalose (ID: 0a0fe74e-c001-454d-97d6-b1f859b25fb2)"
+    ]
+  },
+  "fix_inchikey": {
+    "fixed": 1,
+    "failed": 0,
+    "errors": []
+  }
+}

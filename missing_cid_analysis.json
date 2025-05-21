@@ -1,0 +1,270 @@
+{
+  "total_count": 25,
+  "categories": {
+    "test_molecules": [
+      {
+        "id": "c170e735-e6e9-4591-9e81-c653869083ef",
+        "name": "TEST_MCP Test Molecule"
+      },
+      {
+        "id": "3dcbab1e-89de-4199-8d8e-172a16a51f1c",
+        "name": "TEST_TestMol1"
+      },
+      {
+        "id": "0c749340-38a1-44e3-80b3-49065a6df118",
+        "name": "TEST_TestMol3"
+      },
+      {
+        "id": "3d1f22dc-d7be-4d04-928b-2024349410d9",
+        "name": "TEST_TestMol4"
+      },
+      {
+        "id": "ec8054d3-7813-4f22-9879-976e1e6b12ab",
+        "name": "TEST_Test Molecule 1"
+      },
+      {
+        "id": "f68cf7d8-16de-42e1-a07c-1e68f850157d",
+        "name": "TEST_Test Molecule 2"
+      },
+      {
+        "id": "e89feb81-4e24-493a-a939-994482441179",
+        "name": "TEST_Test Molecule (Python Script)"
+      }
+    ],
+    "duplicates": [
+      {
+        "id": "b119e065-91cc-4e9b-996c-50096c92da65",
+        "name": "Acetamide",
+        "duplicates": [
+          {
+            "match_type": "name",
+            "molecule_id": "cccb105e-d639-4f3c-8016-4137d2604b49",
+            "name": "Acetamide",
+            "pubchem_cid": 178
+          }
+        ]
+      },
+      {
+        "id": "83837dee-13be-448c-aac5-2e309bd0a38f",
+        "name": "Betaine",
+        "duplicates": [
+          {
+            "match_type": "formula",
+            "molecule_id": "0e4f6a81-cdd5-468f-b675-3241d7241299",
+            "name": "2-(trimethylazaniumyl)acetate",
+            "pubchem_cid": 247
+          }
+        ]
+      },
+      {
+        "id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+        "name": "Dimethyl sulfoxide",
+        "duplicates": [
+          {
+            "match_type": "formula",
+            "molecule_id": "26502df5-955a-4ada-8ebe-27a0417b12de",
+            "name": "methylsulfinylmethane",
+            "pubchem_cid": 679
+          }
+        ]
+      },
+      {
+        "id": "c49fd8f6-2e3b-5c4d-9f4a-d0a1e6f7a8b9",
+        "name": "Ethylene glycol",
+        "duplicates": [
+          {
+            "match_type": "formula",
+            "molecule_id": "9b5b9bbd-ad2c-46ec-a1d9-279fe46a0549",
+            "name": "ethane-1,2-diol",
+            "pubchem_cid": 174
+          }
+        ]
+      },
+      {
+        "id": "6b41111a-9a92-4a02-b8ab-31975af62be1",
+        "name": "Ethylene glycol",
+        "duplicates": [
+          {
+            "match_type": "formula",
+            "molecule_id": "9b5b9bbd-ad2c-46ec-a1d9-279fe46a0549",
+            "name": "ethane-1,2-diol",
+            "pubchem_cid": 174
+          }
+        ]
+      },
+      {
+        "id": "0054e9e8-6640-489d-8b20-89792dcebaca",
+        "name": "Formamide",
+        "duplicates": [
+          {
+            "match_type": "name",
+            "molecule_id": "af8a92f7-64a5-4f9d-a7a7-2f14b7f4fc0d",
+            "name": "Formamide",
+            "pubchem_cid": 713
+          }
+        ]
+      },
+      {
+        "id": "d55ea26c-b945-45dc-87c7-261c7ccc5ce3",
+        "name": "Glycerol",
+        "duplicates": [
+          {
+            "match_type": "formula",
+            "molecule_id": "0482a736-da67-44db-8c05-e16e00778078",
+            "name": "propane-1,2,3-triol",
+            "pubchem_cid": 753
+          }
+        ]
+      },
+      {
+        "id": "b38fc7e5-1f2a-4b3d-8e3f-c9b0d5e8f9a7",
+        "name": "Glycerol",
+        "duplicates": [
+          {
+            "match_type": "formula",
+            "molecule_id": "0482a736-da67-44db-8c05-e16e00778078",
+            "name": "propane-1,2,3-triol",
+            "pubchem_cid": 753
+          }
+        ]
+      },
+      {
+        "id": "83ed505d-566d-46b8-b021-498f8bb89df3",
+        "name": "Glycine",
+        "duplicates": [
+          {
+            "match_type": "name",
+            "molecule_id": "6abe3da4-9c5d-4357-95bf-629db4b64b00",
+            "name": "Glycine",
+            "pubchem_cid": 750
+          }
+        ]
+      },
+      {
+        "id": "dd82fc24-0cd1-412d-9f5a-e142b15aafe4",
+        "name": "Methanol",
+        "duplicates": [
+          {
+            "match_type": "name",
+            "molecule_id": "23a34e2f-811b-4dd6-b7da-1d554d87bf32",
+            "name": "methanol",
+            "pubchem_cid": 887
+          },
+          {
+            "match_type": "formula",
+            "molecule_id": "23a34e2f-811b-4dd6-b7da-1d554d87bf32",
+            "name": "methanol",
+            "pubchem_cid": 887
+          }
+        ]
+      },
+      {
+        "id": "a43cfef6-975b-4e29-8b13-c21864c368a4",
+        "name": "Proline",
+        "duplicates": [
+          {
+            "match_type": "formula",
+            "molecule_id": "6dd3a4fd-9afe-45e7-8143-9db74114a29f",
+            "name": "(2S)-pyrrolidine-2-carboxylic acid",
+            "pubchem_cid": 145742
+          }
+        ]
+      },
+      {
+        "id": "d50ae9a7-3f4c-6d5e-0a5a-e1b2f7a8a9c0",
+        "name": "Propylene glycol",
+        "duplicates": [
+          {
+            "match_type": "formula",
+            "molecule_id": "c7b24e15-7d9c-4887-aba7-ece5b96234f4",
+            "name": "propane-1,2-diol",
+            "pubchem_cid": 1030
+          }
+        ]
+      },
+      {
+        "id": "9a1c401b-d524-4c51-a3b5-8cf84e3e52ad",
+        "name": "Propylene glycol",
+        "duplicates": [
+          {
+            "match_type": "formula",
+            "molecule_id": "c7b24e15-7d9c-4887-aba7-ece5b96234f4",
+            "name": "propane-1,2-diol",
+            "pubchem_cid": 1030
+          }
+        ]
+      },
+      {
+        "id": "5384528c-8005-47a2-a618-a99137d46a3d",
+        "name": "Sucrose",
+        "duplicates": [
+          {
+            "match_type": "formula",
+            "molecule_id": "c97ff8ca-8b15-4ceb-8125-22379697a0e8",
+            "name": "(2R,3R,4S,5S,6R)-2-[(2S,3S,4S,5R)-3,4-dihydroxy-2,5-bis(hydroxymethyl)oxolan-2-yl]oxy-6-(hydroxymethyl)oxane-3,4,5-triol",
+            "pubchem_cid": 5988
+          },
+          {
+            "match_type": "formula",
+            "molecule_id": "f9e64f2e-00cb-4277-b282-e382aa80dbb8",
+            "name": "(2R,3S,4S,5R,6R)-2-(hydroxymethyl)-6-[(2R,3R,4S,5S,6R)-3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]oxyoxane-3,4,5-triol",
+            "pubchem_cid": 7427
+          }
+        ]
+      },
+      {
+        "id": "0a0fe74e-c001-454d-97d6-b1f859b25fb2",
+        "name": "Trehalose",
+        "duplicates": [
+          {
+            "match_type": "formula",
+            "molecule_id": "c97ff8ca-8b15-4ceb-8125-22379697a0e8",
+            "name": "(2R,3R,4S,5S,6R)-2-[(2S,3S,4S,5R)-3,4-dihydroxy-2,5-bis(hydroxymethyl)oxolan-2-yl]oxy-6-(hydroxymethyl)oxane-3,4,5-triol",
+            "pubchem_cid": 5988
+          },
+          {
+            "match_type": "formula",
+            "molecule_id": "f9e64f2e-00cb-4277-b282-e382aa80dbb8",
+            "name": "(2R,3S,4S,5R,6R)-2-(hydroxymethyl)-6-[(2R,3R,4S,5S,6R)-3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]oxyoxane-3,4,5-triol",
+            "pubchem_cid": 7427
+          }
+        ]
+      },
+      {
+        "id": "e61af0a8-4a5d-7e6f-1a6a-f2c3a8a9a0d1",
+        "name": "Trehalose",
+        "duplicates": [
+          {
+            "match_type": "formula",
+            "molecule_id": "c97ff8ca-8b15-4ceb-8125-22379697a0e8",
+            "name": "(2R,3R,4S,5S,6R)-2-[(2S,3S,4S,5R)-3,4-dihydroxy-2,5-bis(hydroxymethyl)oxolan-2-yl]oxy-6-(hydroxymethyl)oxane-3,4,5-triol",
+            "pubchem_cid": 5988
+          },
+          {
+            "match_type": "formula",
+            "molecule_id": "f9e64f2e-00cb-4277-b282-e382aa80dbb8",
+            "name": "(2R,3S,4S,5R,6R)-2-(hydroxymethyl)-6-[(2R,3R,4S,5S,6R)-3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]oxyoxane-3,4,5-triol",
+            "pubchem_cid": 7427
+          }
+        ]
+      }
+    ],
+    "incomplete_data": [],
+    "unknown": [
+      {
+        "id": "c6ed38e9-eab8-480e-a5d9-5626e797bd7a",
+        "name": "DMSO"
+      },
+      {
+        "id": "090e54e9-5354-477f-a3dd-2989a40a6c20",
+        "name": "Polyvinyl alcohol"
+      }
+    ]
+  },
+  "recommendations": {
+    "test_molecules": "Keep as is or add 'TEST_' prefix to name for clarity",
+    "duplicates": "Consider updating with CID from matched molecules",
+    "incomplete_data": "Complete molecular information to enable CID lookup",
+    "unknown": "Perform manual lookup in PubChem or leave as is"
+  }
+}

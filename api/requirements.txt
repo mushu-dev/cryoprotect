@@ -1,0 +1,7 @@
+# Minimal serverless function requirements for Vercel
+flask==3.0.2
+supabase==2.1.0
+python-dotenv==1.0.1
+requests==2.32.3
+PyJWT==2.8.0
+# Removed werkzeug to reduce bundle size - Flask will install its own compatible version

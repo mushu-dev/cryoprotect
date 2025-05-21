@@ -1,0 +1,53 @@
+{
+  "timestamp": "2025-05-13T17:27:20-06:00",
+  "reference_tables": {
+    "property_types_exists": true,
+    "units_exists": true,
+    "has_unit_id": true,
+    "has_property_type_id": true,
+    "view_exists": true
+  },
+  "initial_data": {
+    "property_types_count": 20,
+    "units_count": 33
+  },
+  "property_analysis": {
+    "total_properties": 58,
+    "matched": [
+      {"property_name": "molecular_weight", "property_type_id": 1, "standard_name": "molecular_weight", "value_type": "numeric"},
+      {"property_name": "melting_point", "property_type_id": 2, "standard_name": "melting_point", "value_type": "numeric"},
+      {"property_name": "boiling_point", "property_type_id": 3, "standard_name": "boiling_point", "value_type": "numeric"}
+    ],
+    "unmatched": [
+      {"property_name": "toxicity_score"},
+      {"property_name": "vitrification_temp"},
+      {"property_name": "cell_penetration_rate"}
+    ]
+  },
+  "migration_plan": {
+    "property_mappings": [
+      {"property_name": "molecular_weight", "property_type_id": 1, "standard_name": "molecular_weight", "value_type": "numeric"},
+      {"property_name": "toxicity_score", "standardized_name": "toxicity_score", "suggested_type": "numeric", "actual_type": "numeric", "auto_create": true}
+    ],
+    "unit_mappings": [],
+    "text_to_numeric_conversions": [
+      {"property_name": "melting_point", "primary_unit": "celsius", "unit_category": "temperature", "unit_match": {"id": 1, "name": "celsius", "symbol": "°C", "category": "temperature"}}
+    ]
+  },
+  "migration_results": {
+    "property_types_created": 15,
+    "property_types_linked": 58,
+    "units_linked": 25,
+    "text_to_numeric_conversions": 12,
+    "errors": []
+  },
+  "summary": {
+    "reference_success": true,
+    "initial_data_success": true,
+    "property_analysis_success": true,
+    "unit_analysis_success": true,
+    "plan_success": true,
+    "migration_success": true,
+    "overall_success": true
+  }
+}

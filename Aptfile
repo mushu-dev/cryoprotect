@@ -1,0 +1,13 @@
+libpq-dev
+python3-dev
+build-essential
+libffi-dev
+libblas-dev
+liblapack-dev
+gfortran
+libpng-dev
+libfreetype6-dev
+libxml2-dev
+libxslt1-dev
+zlib1g-dev
+libjpeg-dev

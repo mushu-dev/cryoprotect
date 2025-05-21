@@ -1,0 +1,176 @@
+{
+  "timestamp": "2025-05-14T00:30:44.090736",
+  "recommendations": [
+    {
+      "table": "molecular_properties",
+      "column": "unit",
+      "occurrences": 29.0,
+      "index_name": "idx_molecular_properties_unit",
+      "sql": "CREATE INDEX idx_molecular_properties_unit ON molecular_properties (unit)"
+    },
+    {
+      "table": "molecular_properties",
+      "column": "data_source",
+      "occurrences": 29.0,
+      "index_name": "idx_molecular_properties_data_source",
+      "sql": "CREATE INDEX idx_molecular_properties_data_source ON molecular_properties (data_source)"
+    },
+    {
+      "table": "molecular_properties",
+      "column": "property_name",
+      "occurrences": 29.0,
+      "index_name": "idx_molecular_properties_property_name",
+      "sql": "CREATE INDEX idx_molecular_properties_property_name ON molecular_properties (property_name)"
+    },
+    {
+      "table": "molecular_properties",
+      "column": "property_value",
+      "occurrences": 29.0,
+      "index_name": "idx_molecular_properties_property_value",
+      "sql": "CREATE INDEX idx_molecular_properties_property_value ON molecular_properties (property_value)"
+    },
+    {
+      "table": "molecular_properties",
+      "column": "property_type",
+      "occurrences": 29.0,
+      "index_name": "idx_molecular_properties_property_type",
+      "sql": "CREATE INDEX idx_molecular_properties_property_type ON molecular_properties (property_type)"
+    },
+    {
+      "table": "molecular_properties",
+      "column": "source",
+      "occurrences": 29.0,
+      "index_name": "idx_molecular_properties_source",
+      "sql": "CREATE INDEX idx_molecular_properties_source ON molecular_properties (source)"
+    },
+    {
+      "table": "molecular_properties",
+      "column": "version",
+      "occurrences": 18.0,
+      "index_name": "idx_molecular_properties_version",
+      "sql": "CREATE INDEX idx_molecular_properties_version ON molecular_properties (version)"
+    },
+    {
+      "table": "molecules",
+      "column": "molecule_id",
+      "occurrences": 45.0,
+      "index_name": "idx_molecules_molecule_id",
+      "sql": "CREATE INDEX idx_molecules_molecule_id ON molecules (molecule_id)"
+    },
+    {
+      "table": "molecules",
+      "column": "smiles",
+      "occurrences": 29.0,
+      "index_name": "idx_molecules_smiles",
+      "sql": "CREATE INDEX idx_molecules_smiles ON molecules (smiles)"
+    },
+    {
+      "table": "molecules",
+      "column": "inchi",
+      "occurrences": 29.0,
+      "index_name": "idx_molecules_inchi",
+      "sql": "CREATE INDEX idx_molecules_inchi ON molecules (inchi)"
+    },
+    {
+      "table": "molecules",
+      "column": "data_source",
+      "occurrences": 29.0,
+      "index_name": "idx_molecules_data_source",
+      "sql": "CREATE INDEX idx_molecules_data_source ON molecules (data_source)"
+    },
+    {
+      "table": "molecules",
+      "column": "pubchem_link",
+      "occurrences": 29.0,
+      "index_name": "idx_molecules_pubchem_link",
+      "sql": "CREATE INDEX idx_molecules_pubchem_link ON molecules (pubchem_link)"
+    },
+    {
+      "table": "molecules",
+      "column": "molecular_formula",
+      "occurrences": 29.0,
+      "index_name": "idx_molecules_molecular_formula",
+      "sql": "CREATE INDEX idx_molecules_molecular_formula ON molecules (molecular_formula)"
+    },
+    {
+      "table": "molecules",
+      "column": "molecular_weight",
+      "occurrences": 18.0,
+      "index_name": "idx_molecules_molecular_weight",
+      "sql": "CREATE INDEX idx_molecules_molecular_weight ON molecules (molecular_weight)"
+    },
+    {
+      "table": "molecules",
+      "column": "version",
+      "occurrences": 18.0,
+      "index_name": "idx_molecules_version",
+      "sql": "CREATE INDEX idx_molecules_version ON molecules (version)"
+    },
+    {
+      "table": "property_calculation_queue",
+      "column": "molecule_id",
+      "occurrences": 82.5,
+      "index_name": "idx_property_calculation_queue_molecule_id",
+      "sql": "CREATE INDEX idx_property_calculation_queue_molecule_id ON property_calculation_queue (molecule_id)"
+    },
+    {
+      "table": "property_calculation_queue",
+      "column": "smiles",
+      "occurrences": 29.0,
+      "index_name": "idx_property_calculation_queue_smiles",
+      "sql": "CREATE INDEX idx_property_calculation_queue_smiles ON property_calculation_queue (smiles)"
+    },
+    {
+      "table": "property_calculation_queue",
+      "column": "status",
+      "occurrences": 29.0,
+      "index_name": "idx_property_calculation_queue_status",
+      "sql": "CREATE INDEX idx_property_calculation_queue_status ON property_calculation_queue (status)"
+    },
+    {
+      "table": "property_calculation_queue",
+      "column": "error",
+      "occurrences": 29.0,
+      "index_name": "idx_property_calculation_queue_error",
+      "sql": "CREATE INDEX idx_property_calculation_queue_error ON property_calculation_queue (error)"
+    },
+    {
+      "table": "property_calculation_queue",
+      "column": "properties_added",
+      "occurrences": 18.0,
+      "index_name": "idx_property_calculation_queue_properties_added",
+      "sql": "CREATE INDEX idx_property_calculation_queue_properties_added ON property_calculation_queue (properties_added)"
+    },
+    {
+      "table": "scientific_data_audit",
+      "column": "operation",
+      "occurrences": 29.0,
+      "index_name": "idx_scientific_data_audit_operation",
+      "sql": "CREATE INDEX idx_scientific_data_audit_operation ON scientific_data_audit (operation)"
+    },
+    {
+      "table": "scientific_data_audit",
+      "column": "ip_address",
+      "occurrences": 29.0,
+      "index_name": "idx_scientific_data_audit_ip_address",
+      "sql": "CREATE INDEX idx_scientific_data_audit_ip_address ON scientific_data_audit (ip_address)"
+    },
+    {
+      "table": "scientific_data_audit",
+      "column": "application_context",
+      "occurrences": 29.0,
+      "index_name": "idx_scientific_data_audit_application_context",
+      "sql": "CREATE INDEX idx_scientific_data_audit_application_context ON scientific_data_audit (application_context)"
+    },
+    {
+      "table": "property_types",
+      "column": "property_type_id",
+      "occurrences": 22.5,
+      "index_name": "idx_property_types_property_type_id",
+      "sql": "CREATE INDEX idx_property_types_property_type_id ON property_types (property_type_id)"
+    }
+  ],
+  "tables_analyzed": 32,
+  "foreign_keys_analyzed": 34,
+  "query_patterns_analyzed": 70
+}

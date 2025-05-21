@@ -1,0 +1,17 @@
+[Unit]
+Description=CryoProtect Application Container Service
+After=network.target
+Documentation=https://github.com/yourusername/cryoprotect
+
+[Service]
+Type=simple
+User=mushu
+WorkingDirectory=/home/mushu/Projects/CryoProtect
+ExecStartPre=/home/mushu/Projects/CryoProtect/run_in_cryoprotect.sh "echo 'Starting CryoProtect service...'"
+ExecStart=/home/mushu/Projects/CryoProtect/run_app_in_container.sh
+ExecStop=podman stop CryoProtect
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target

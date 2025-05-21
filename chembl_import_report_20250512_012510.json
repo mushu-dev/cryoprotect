@@ -1,0 +1,221 @@
+{
+  "test_info": {
+    "molecule_count": 200,
+    "timestamp": "2025-05-12T01:25:10.694650",
+    "cache_dir": "chembl_cache_large",
+    "batch_size": 100,
+    "max_workers": 6,
+    "checkpoint_dir": "chembl_large_import_20250512_012510/checkpoints"
+  },
+  "import_stats": {
+    "total_time": 0.06832361221313477,
+    "success_count": 200,
+    "error_count": 0,
+    "average_time_per_molecule": 0.0003416180610656738,
+    "molecules_per_second": 2927.2456991311024,
+    "total_properties_count": 1800,
+    "completed_molecules": 200,
+    "total_molecules": 200,
+    "progress_percentage": 100.0,
+    "elapsed_time": 0.06731367111206055,
+    "batch_number": 2,
+    "total_batches": 2,
+    "timestamp": "2025-05-12T01:25:10.778036"
+  },
+  "data_verification": {
+    "molecules_verified": 200,
+    "properties_verified": 1800,
+    "verification_success": true,
+    "errors": []
+  },
+  "database_stats": {
+    "before": {
+      "table_counts": {
+        "molecules": 0,
+        "molecular_properties": 0,
+        "toxicity_data": 0
+      },
+      "database_size": {
+        "total": "0 KB",
+        "molecules": "0 KB",
+        "properties": "0 KB"
+      },
+      "timestamp": "2025-05-12 01:25:10"
+    },
+    "after": {
+      "table_counts": {
+        "molecules": 0,
+        "molecular_properties": 0,
+        "toxicity_data": 0
+      },
+      "database_size": {
+        "total": "0 KB",
+        "molecules": "0 KB",
+        "properties": "0 KB"
+      },
+      "timestamp": "2025-05-12 01:25:10"
+    },
+    "difference": {
+      "table_counts": {
+        "molecules": 0,
+        "molecular_properties": 0,
+        "toxicity_data": 0
+      }
+    }
+  },
+  "performance_metrics": [
+    {
+      "processed": 10,
+      "timestamp": 0.0058519840240478516,
+      "overall_rate": 1708.8221633733958,
+      "current_rate": 1708.8221633733958,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 20,
+      "timestamp": 0.00865626335144043,
+      "overall_rate": 2310.465750406258,
+      "current_rate": 3565.9785750722667,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 30,
+      "timestamp": 0.011234283447265625,
+      "overall_rate": 2670.3972835314094,
+      "current_rate": 3878.9457134930176,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 40,
+      "timestamp": 0.014272212982177734,
+      "overall_rate": 2802.648758811934,
+      "current_rate": 3291.7155862501963,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 50,
+      "timestamp": 0.016887426376342773,
+      "overall_rate": 2960.782708136268,
+      "current_rate": 3823.7797429118423,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 60,
+      "timestamp": 0.0194091796875,
+      "overall_rate": 3091.3207547169814,
+      "current_rate": 3965.494941854968,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 70,
+      "timestamp": 0.023499488830566406,
+      "overall_rate": 2978.7881985309036,
+      "current_rate": 2444.802984378643,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 80,
+      "timestamp": 0.028079748153686523,
+      "overall_rate": 2849.0284016132455,
+      "current_rate": 2183.2824944042477,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 90,
+      "timestamp": 0.031594276428222656,
+      "overall_rate": 2848.617223580549,
+      "current_rate": 2845.332067023947,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 100,
+      "timestamp": 0.033184051513671875,
+      "overall_rate": 3013.4958041154155,
+      "current_rate": 6290.197960407919,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 110,
+      "timestamp": 0.04355025291442871,
+      "overall_rate": 2525.8177080196865,
+      "current_rate": 964.6735205501507,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 120,
+      "timestamp": 0.0462186336517334,
+      "overall_rate": 2596.3554202883597,
+      "current_rate": 3747.59113652609,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 130,
+      "timestamp": 0.04835820198059082,
+      "overall_rate": 2688.271992663771,
+      "current_rate": 4673.839982170715,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 140,
+      "timestamp": 0.0506594181060791,
+      "overall_rate": 2763.5532588796173,
+      "current_rate": 4345.528387898881,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 150,
+      "timestamp": 0.05361175537109375,
+      "overall_rate": 2797.893838053223,
+      "current_rate": 3387.1468949366067,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 160,
+      "timestamp": 0.05593252182006836,
+      "overall_rate": 2860.5897748488906,
+      "current_rate": 4308.921306759811,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 170,
+      "timestamp": 0.05883026123046875,
+      "overall_rate": 2889.669303592271,
+      "current_rate": 3450.965937140036,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 180,
+      "timestamp": 0.061580657958984375,
+      "overall_rate": 2922.9957257015426,
+      "current_rate": 3635.839112343967,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 190,
+      "timestamp": 0.06487917900085449,
+      "overall_rate": 2928.52041172558,
+      "current_rate": 3031.6617275027106,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 200,
+      "timestamp": 0.06721234321594238,
+      "overall_rate": 2975.643913461436,
+      "current_rate": 4286.024933578582,
+      "success_rate": 1.0
+    }
+  ],
+  "analysis": {
+    "completion_percentage": 100.0,
+    "time_per_1000_molecules": 0.34161806106567383,
+    "estimated_full_import_time": 1.7080903053283691,
+    "resource_efficiency_score": 292.72456991311026
+  },
+  "performance_summary": {
+    "average_rate": 3491.5272584289,
+    "min_rate": 964.6735205501507,
+    "max_rate": 6290.197960407919,
+    "rate_stability": 0,
+    "peak_performance_at": 9
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "generatedSourcesDir": "src/convex/generated",
+  "origin": "https://upbeat-parrot-866.convex.cloud",
+  "functions": "../convex",
+  "project": "cryoprotect-production",
+  "options": {
+    "schemaMigration": {
+      "strategy": "automatic"
+    },
+    "caching": {
+      "enabled": true
+    },
+    "codegen": {
+      "format": "es6",
+      "jsHooks": true
+    }
+  },
+  "authInfo": [
+    {
+      "domain": "https://clerk.cryoprotect.dev",
+      "applicationID": "clerk:application"
+    },
+    {
+      "domain": "https://cryoprotect.app",
+      "applicationID": "nextauth:application"
+    }
+  ]
+}

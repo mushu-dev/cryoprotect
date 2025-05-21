@@ -1,0 +1,51 @@
+# SELinux Configuration for Podman
+
+## Overview
+Implement SELinux configuration for Podman containers to ensure proper security contexts and permissions for the CryoProtect application in the Fedora environment. This will address current permission issues with database access and network connectivity while maintaining security compliance.
+
+## Requirements
+- Configure SELinux contexts for Podman container volumes
+- Set up SELinux policy modules for network access from containers
+- Implement proper context labels for database directories
+- Create container-specific security profiles
+- Add SELinux configuration to Podman compose files
+- Implement volume mount context options in compose files
+- Add SELinux verification in podman readiness checks
+- Create SELinux policy for PostgreSQL socket connections
+- Document SELinux troubleshooting procedures
+- Implement SELinux context preservation during backups
+
+## Technical Context
+The migration to Fedora with SELinux in enforcing mode has caused permission issues with database access from Podman containers. The migrate_to_podman.sh script provides basic Podman configuration but lacks proper SELinux context handling.
+
+Key integration points:
+- test_podman_readiness.sh (verifies container environment)
+- podman-compose.yml (container configuration)
+- migrate_to_podman.sh (migration script)
+
+Key files to modify:
+- podman-compose.yml (main configuration file)
+- test_podman_readiness.sh (testing script)
+- fedora_setup.sh (environment setup)
+
+## Constraints
+- Must maintain SELinux in enforcing mode
+- Cannot use setenforce 0 or similar disabling methods
+- Should use standard SELinux policies where possible
+- Custom policies must be well-documented
+- Must work with rootless Podman
+- Solution must be compatible with systemd services
+- Must not require complex manual setup steps
+- Should automate context setting where possible
+
+## Acceptance Criteria
+- All containers can access their required resources without SELinux denials
+- Database connections work correctly with SELinux enforcing
+- SELinux audit log shows no denials for normal operation
+- Container isolation is maintained for security
+- SELinux contexts are correctly applied to mounted volumes
+- Solution works with both development and production environments
+- SELinux policies are documented and maintainable
+
+## GitHub Issue Reference
+This PRD is based on GitHub issue #124 - "SELinux Configuration for Podman Containers"

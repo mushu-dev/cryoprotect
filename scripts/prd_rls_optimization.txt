@@ -1,0 +1,51 @@
+# RLS Policy Optimization
+
+## Overview
+Optimize Row Level Security (RLS) policies for improved database performance in the CryoProtect application. Current RLS policies are causing significant performance degradation, especially for complex queries on large tables. This optimization will maintain security while dramatically improving query response times.
+
+## Requirements
+- Implement security definer functions for critical RLS policies
+- Optimize RLS policy for molecules table
+- Rewrite RLS policy predicates to use indexes effectively
+- Create specialized RLS policies for high-volume queries
+- Implement caching for frequently accessed RLS predicates
+- Add performance monitoring for RLS policy execution
+- Optimize complex JOINs with RLS policies
+- Implement efficient RLS for foreign key relationships
+- Create database function for RLS context management
+- Document RLS optimization strategies for developers
+
+## Technical Context
+The current Row Level Security (RLS) policies are implemented directly in the database using standard PostgreSQL RLS syntax. Performance profiling has shown that these policies are causing significant query overhead, especially for the molecules and molecular_properties tables.
+
+Key integration points:
+- migrations/019_rls_security_definer_functions.sql (new migration file)
+- test_rls_policies.py (policy testing)
+- apply_rls_optimizations.py (deployment script)
+
+Key files to modify:
+- migrations/019_rls_security_definer_functions.sql (main implementation)
+- RLS_OPTIMIZATION_GUIDE.md (documentation)
+- test_rls_policies.py (testing)
+
+## Constraints
+- Must maintain current security model and access controls
+- Cannot disable RLS even temporarily during migration
+- Must work with both direct PostgreSQL and Supabase environments
+- Performance improvement must be at least 5x for complex queries
+- Solution must be backward compatible with existing code
+- Must not require application code changes
+- Should minimize database schema changes
+- Must be deployable via standard migration process
+
+## Acceptance Criteria
+- Query performance improves by at least 5x for RLS-protected tables
+- All existing security policies remain in effect
+- No security vulnerabilities introduced
+- Automated tests verify RLS policy correctness
+- Documentation clearly explains optimization approach
+- Performance benchmarks confirm improvements across all query patterns
+- Solution works in both development and production environments
+
+## GitHub Issue Reference
+This PRD is based on GitHub issue #125 - "RLS Policy Optimization for Performance"

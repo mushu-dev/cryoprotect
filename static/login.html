@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% set active_page = 'login' %}
+{% set breadcrumbs = [
+  {'title': 'Home', 'url': '/'},
+  {'title': 'Login', 'url': '/login'}
+] %}
+
+{% block title %}Login - CryoProtect Analyzer{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+        <div class="login-container px-3 px-sm-4 py-4 mx-auto">
+          <div class="login-logo">
+            <h1><i class="bi bi-snow2"></i> CryoProtect <span>Analyzer</span></h1>
+          </div>
+          
+          <div class="card">
+            <div class="card-header">
+              Login
+            </div>
+            <div class="card-body">
+              <!-- Social Login Buttons -->
+              <div class="mb-3 text-center">
+                <button id="google-login-btn" class="btn btn-outline-danger w-100 mb-2" type="button">
+                  <i class="bi bi-google" aria-hidden="true"></i> Sign in with Google
+                </button>
+                <button id="github-login-btn" class="btn btn-outline-dark w-100" type="button">
+                  <i class="bi bi-github" aria-hidden="true"></i> Sign in with GitHub
+                </button>
+                <div class="my-2 text-muted">or</div>
+              </div>
+              <form id="login-form">
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="email" name="email" required aria-describedby="email-help">
+                  <div id="email-help" class="form-text visually-hidden">Enter the email address associated with your account</div>
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="password" name="password" required aria-describedby="password-help">
+                  <div id="password-help" class="form-text visually-hidden">Enter your password</div>
+                </div>
+                <div class="d-grid gap-2">
+                  <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+              </form>
+              <div id="login-error" class="alert alert-danger mt-3" style="display: none;" role="alert" aria-live="assertive"></div>
+            </div>
+            <div class="card-footer text-center">
+              <p class="mb-0">Don't have an account? <a href="/register">Register</a> | <a href="/reset-password">Forgot Password?</a></p>
+            </div>
+          </div>
+          
+          <div class="alert alert-info mt-4" role="region" aria-labelledby="demo-credentials-heading">
+            <h5 id="demo-credentials-heading">Demo Credentials</h5>
+            <p>For demonstration purposes, you can use the following credentials:</p>
+            <ul>
+              <li><strong>Email:</strong> demo@example.com</li>
+              <li><strong>Password:</strong> demo123</li>
+            </ul>
+            <p class="mb-0"><small>Note: These credentials are for demonstration only and provide limited access.</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
+
+{% block extra_css %}
+<!-- No extra CSS for login page -->
+{% endblock %}
+
+{% block extra_js %}
+<!-- Additional JS for login page -->
+<script src="{{ url_for('static', filename='js/auth-ui.js') }}"></script>
+{% endblock %}

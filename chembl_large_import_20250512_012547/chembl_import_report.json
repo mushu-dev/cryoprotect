@@ -1,0 +1,1481 @@
+{
+  "test_info": {
+    "molecule_count": 10000,
+    "timestamp": "2025-05-12T01:25:47.706841",
+    "cache_dir": "chembl_cache_large",
+    "batch_size": 500,
+    "max_workers": 6,
+    "checkpoint_dir": "chembl_large_import_20250512_012547/checkpoints"
+  },
+  "import_stats": {
+    "total_time": 2.9081737995147705,
+    "success_count": 10000,
+    "error_count": 0,
+    "average_time_per_molecule": 0.00029081737995147704,
+    "molecules_per_second": 3438.5840356819467,
+    "total_properties_count": 90000,
+    "completed_molecules": 10000,
+    "total_molecules": 10000,
+    "progress_percentage": 100.0,
+    "elapsed_time": 2.9071719646453857,
+    "batch_number": 20,
+    "total_batches": 20,
+    "timestamp": "2025-05-12T01:25:50.633697"
+  },
+  "data_verification": {
+    "molecules_verified": 10000,
+    "properties_verified": 90000,
+    "verification_success": true,
+    "errors": []
+  },
+  "database_stats": {
+    "before": {
+      "table_counts": {
+        "molecules": 0,
+        "molecular_properties": 0,
+        "toxicity_data": 0
+      },
+      "database_size": {
+        "total": "0 KB",
+        "molecules": "0 KB",
+        "properties": "0 KB"
+      },
+      "timestamp": "2025-05-12 01:25:47"
+    },
+    "after": {
+      "table_counts": {
+        "molecules": 0,
+        "molecular_properties": 0,
+        "toxicity_data": 0
+      },
+      "database_size": {
+        "total": "0 KB",
+        "molecules": "0 KB",
+        "properties": "0 KB"
+      },
+      "timestamp": "2025-05-12 01:25:50"
+    },
+    "difference": {
+      "table_counts": {
+        "molecules": 0,
+        "molecular_properties": 0,
+        "toxicity_data": 0
+      }
+    }
+  },
+  "performance_metrics": [
+    {
+      "processed": 50,
+      "timestamp": 0.023604154586791992,
+      "overall_rate": 2118.271163500096,
+      "current_rate": 2118.271163500096,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 100,
+      "timestamp": 0.03926825523376465,
+      "overall_rate": 2546.5862795456064,
+      "current_rate": 3192.0121765601216,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 150,
+      "timestamp": 0.05565977096557617,
+      "overall_rate": 2694.9446143565756,
+      "current_rate": 3050.3585402394147,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 200,
+      "timestamp": 0.06906700134277344,
+      "overall_rate": 2895.7388638811412,
+      "current_rate": 3729.3310097094286,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 250,
+      "timestamp": 0.0833137035369873,
+      "overall_rate": 3000.7068391697644,
+      "current_rate": 3509.58413521881,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 300,
+      "timestamp": 0.09852266311645508,
+      "overall_rate": 3044.984681802562,
+      "current_rate": 3287.5358592904954,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 350,
+      "timestamp": 0.11166071891784668,
+      "overall_rate": 3134.4953121563653,
+      "current_rate": 3805.7381362852734,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 400,
+      "timestamp": 0.12432217597961426,
+      "overall_rate": 3217.446902357871,
+      "current_rate": 3948.992580875984,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 450,
+      "timestamp": 0.14091134071350098,
+      "overall_rate": 3193.4973985872,
+      "current_rate": 3014.0155217016386,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 500,
+      "timestamp": 0.15400147438049316,
+      "overall_rate": 3246.722162962183,
+      "current_rate": 3819.670697945505,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 550,
+      "timestamp": 0.17378807067871094,
+      "overall_rate": 3164.774186467651,
+      "current_rate": 2526.9631646805074,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 600,
+      "timestamp": 0.18977117538452148,
+      "overall_rate": 3161.7025018908034,
+      "current_rate": 3128.303350338614,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 650,
+      "timestamp": 0.20315909385681152,
+      "overall_rate": 3199.4629807618962,
+      "current_rate": 3734.7105230352786,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 700,
+      "timestamp": 0.21585845947265625,
+      "overall_rate": 3242.865726504789,
+      "current_rate": 3937.20454332113,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 750,
+      "timestamp": 0.2290489673614502,
+      "overall_rate": 3274.4089992619975,
+      "current_rate": 3790.604609127881,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 800,
+      "timestamp": 0.2424149513244629,
+      "overall_rate": 3300.1264799431924,
+      "current_rate": 3740.839442749862,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 850,
+      "timestamp": 0.2566561698913574,
+      "overall_rate": 3311.82375377847,
+      "current_rate": 3510.9355119533916,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 900,
+      "timestamp": 0.2713592052459717,
+      "overall_rate": 3316.6370721944045,
+      "current_rate": 3400.6583534677065,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 950,
+      "timestamp": 0.2899627685546875,
+      "overall_rate": 3276.2826922064937,
+      "current_rate": 2687.657153109741,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 1000,
+      "timestamp": 0.30522942543029785,
+      "overall_rate": 3276.224101232205,
+      "current_rate": 3275.111270751019,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 1050,
+      "timestamp": 0.32655858993530273,
+      "overall_rate": 3215.3495034628377,
+      "current_rate": 2344.208090676384,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 1100,
+      "timestamp": 0.3404684066772461,
+      "overall_rate": 3230.8430927124678,
+      "current_rate": 3594.583661855953,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 1150,
+      "timestamp": 0.35465312004089355,
+      "overall_rate": 3242.6050555184693,
+      "current_rate": 3524.9214219682326,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 1200,
+      "timestamp": 0.36916565895080566,
+      "overall_rate": 3250.5732071896477,
+      "current_rate": 3445.2965335961885,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 1250,
+      "timestamp": 0.3816347122192383,
+      "overall_rate": 3275.3833966809357,
+      "current_rate": 4009.927532075183,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 1300,
+      "timestamp": 0.39587855339050293,
+      "overall_rate": 3283.8353804876433,
+      "current_rate": 3510.2890715230237,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 1350,
+      "timestamp": 0.4088764190673828,
+      "overall_rate": 3301.731127168574,
+      "current_rate": 3846.7854063869986,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 1400,
+      "timestamp": 0.4223039150238037,
+      "overall_rate": 3315.148049056299,
+      "current_rate": 3723.702480512793,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 1450,
+      "timestamp": 0.4349396228790283,
+      "overall_rate": 3333.7960574893286,
+      "current_rate": 3957.0398882976715,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 1500,
+      "timestamp": 0.44740915298461914,
+      "overall_rate": 3352.635926184475,
+      "current_rate": 4009.7741916980553,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 1550,
+      "timestamp": 0.46733593940734863,
+      "overall_rate": 3316.6719468775077,
+      "current_rate": 2509.185321671712,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 1600,
+      "timestamp": 0.47991299629211426,
+      "overall_rate": 3333.937635283603,
+      "current_rate": 3975.492872308159,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 1650,
+      "timestamp": 0.49297428131103516,
+      "overall_rate": 3347.030590747909,
+      "current_rate": 3828.1072595513206,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 1700,
+      "timestamp": 0.5069303512573242,
+      "overall_rate": 3353.5178862018042,
+      "current_rate": 3582.6704933716005,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 1750,
+      "timestamp": 0.5213170051574707,
+      "overall_rate": 3356.8826312722895,
+      "current_rate": 3475.443306486361,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 1800,
+      "timestamp": 0.5342681407928467,
+      "overall_rate": 3369.09477201621,
+      "current_rate": 3860.665304394249,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 1850,
+      "timestamp": 0.5461068153381348,
+      "overall_rate": 3387.6156606002605,
+      "current_rate": 4223.445775853388,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 1900,
+      "timestamp": 0.559213399887085,
+      "overall_rate": 3397.6295996906433,
+      "current_rate": 3814.8763938660795,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 1950,
+      "timestamp": 0.5725963115692139,
+      "overall_rate": 3405.540623648061,
+      "current_rate": 3736.1077460272218,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 2000,
+      "timestamp": 0.5846297740936279,
+      "overall_rate": 3420.968429294711,
+      "current_rate": 4155.080044381043,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 2050,
+      "timestamp": 0.6026008129119873,
+      "overall_rate": 3401.920402486102,
+      "current_rate": 2782.2542984504353,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 2100,
+      "timestamp": 0.6141915321350098,
+      "overall_rate": 3419.128871249863,
+      "current_rate": 4313.796153450581,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 2150,
+      "timestamp": 0.6273844242095947,
+      "overall_rate": 3426.926007461311,
+      "current_rate": 3789.91958073552,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 2200,
+      "timestamp": 0.63932204246521,
+      "overall_rate": 3441.145234906737,
+      "current_rate": 4188.44018374276,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 2250,
+      "timestamp": 0.6527900695800781,
+      "overall_rate": 3446.743608473338,
+      "current_rate": 3712.4962382056683,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 2300,
+      "timestamp": 0.6671502590179443,
+      "overall_rate": 3447.499223616635,
+      "current_rate": 3481.8482176952066,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 2350,
+      "timestamp": 0.681992769241333,
+      "overall_rate": 3445.784333775566,
+      "current_rate": 3368.702412696373,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 2400,
+      "timestamp": 0.6961321830749512,
+      "overall_rate": 3447.621096037729,
+      "current_rate": 3536.214484444819,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 2450,
+      "timestamp": 0.7101728916168213,
+      "overall_rate": 3449.864151280382,
+      "current_rate": 3561.0738482960046,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 2500,
+      "timestamp": 0.7223894596099854,
+      "overall_rate": 3460.7370951255825,
+      "current_rate": 4092.8024980483997,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 2550,
+      "timestamp": 0.7397096157073975,
+      "overall_rate": 3447.298704588813,
+      "current_rate": 2886.8100101863834,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 2600,
+      "timestamp": 0.752150297164917,
+      "overall_rate": 3456.7559300317903,
+      "current_rate": 4019.072441548486,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 2650,
+      "timestamp": 0.7640581130981445,
+      "overall_rate": 3468.322572028763,
+      "current_rate": 4198.922815096606,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 2700,
+      "timestamp": 0.7752640247344971,
+      "overall_rate": 3482.6844969681947,
+      "current_rate": 4461.930597221336,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 2750,
+      "timestamp": 0.7880239486694336,
+      "overall_rate": 3489.7416565109893,
+      "current_rate": 3918.518656925578,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 2800,
+      "timestamp": 0.801241397857666,
+      "overall_rate": 3494.577299034413,
+      "current_rate": 3782.8781702081606,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 2850,
+      "timestamp": 0.8136975765228271,
+      "overall_rate": 3502.5297877608305,
+      "current_rate": 4014.0721600153124,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 2900,
+      "timestamp": 0.826244592666626,
+      "overall_rate": 3509.8565554789598,
+      "current_rate": 3985.011211188386,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 2950,
+      "timestamp": 0.839331865310669,
+      "overall_rate": 3514.700349078361,
+      "current_rate": 3820.505720323544,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 3000,
+      "timestamp": 0.8525104522705078,
+      "overall_rate": 3519.018437850282,
+      "current_rate": 3794.0334690185437,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 3050,
+      "timestamp": 0.8694472312927246,
+      "overall_rate": 3507.975976259253,
+      "current_rate": 2952.1551845491144,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 3100,
+      "timestamp": 0.8817036151885986,
+      "overall_rate": 3515.9207091794697,
+      "current_rate": 4079.5066819693816,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 3150,
+      "timestamp": 0.894221305847168,
+      "overall_rate": 3522.6179240000897,
+      "current_rate": 3994.346989695827,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 3200,
+      "timestamp": 0.9072444438934326,
+      "overall_rate": 3527.1640642594894,
+      "current_rate": 3839.3204327847243,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 3250,
+      "timestamp": 0.9191186428070068,
+      "overall_rate": 3535.9961691936032,
+      "current_rate": 4210.810376676573,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 3300,
+      "timestamp": 0.9309144020080566,
+      "overall_rate": 3544.9016503360963,
+      "current_rate": 4238.811520970187,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 3350,
+      "timestamp": 0.9435021877288818,
+      "overall_rate": 3550.6012000500336,
+      "current_rate": 3972.1044756330853,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 3400,
+      "timestamp": 0.9548132419586182,
+      "overall_rate": 3560.905788262368,
+      "current_rate": 4420.454449643776,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 3450,
+      "timestamp": 0.9669511318206787,
+      "overall_rate": 3567.9155713939463,
+      "current_rate": 4119.33215478295,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 3500,
+      "timestamp": 0.9792981147766113,
+      "overall_rate": 3573.98829548282,
+      "current_rate": 4049.5722864811632,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 3550,
+      "timestamp": 0.9981377124786377,
+      "overall_rate": 3556.6234554793236,
+      "current_rate": 2653.9844847441755,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 3600,
+      "timestamp": 1.015986680984497,
+      "overall_rate": 3543.3535373825757,
+      "current_rate": 2801.28232528318,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 3650,
+      "timestamp": 1.0300369262695312,
+      "overall_rate": 3543.5622810331165,
+      "current_rate": 3558.656734146714,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 3700,
+      "timestamp": 1.0410568714141846,
+      "overall_rate": 3554.08057100077,
+      "current_rate": 4537.2276670777355,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 3750,
+      "timestamp": 1.0529155731201172,
+      "overall_rate": 3561.5391164626626,
+      "current_rate": 4216.313154667364,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 3800,
+      "timestamp": 1.0643398761749268,
+      "overall_rate": 3570.2881053903698,
+      "current_rate": 4376.634597324541,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 3850,
+      "timestamp": 1.0771715641021729,
+      "overall_rate": 3574.1753016001603,
+      "current_rate": 3896.603493125232,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 3900,
+      "timestamp": 1.0893900394439697,
+      "overall_rate": 3579.984999670623,
+      "current_rate": 4092.163596628161,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 3950,
+      "timestamp": 1.1025478839874268,
+      "overall_rate": 3582.6108392812853,
+      "current_rate": 3800.0144959049067,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 4000,
+      "timestamp": 1.113816261291504,
+      "overall_rate": 3591.256600403623,
+      "current_rate": 4437.196115354505,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 4050,
+      "timestamp": 1.1307687759399414,
+      "overall_rate": 3581.634093701848,
+      "current_rate": 2949.4149414941494,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 4100,
+      "timestamp": 1.1424109935760498,
+      "overall_rate": 3588.9010374155373,
+      "current_rate": 4294.714423214761,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 4150,
+      "timestamp": 1.153965711593628,
+      "overall_rate": 3596.2940304949316,
+      "current_rate": 4327.236711786068,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 4200,
+      "timestamp": 1.1656768321990967,
+      "overall_rate": 3603.056939955244,
+      "current_rate": 4269.446254071661,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 4250,
+      "timestamp": 1.176480770111084,
+      "overall_rate": 3612.468735548234,
+      "current_rate": 4627.9421825002755,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 4300,
+      "timestamp": 1.1879198551177979,
+      "overall_rate": 3619.7728167222176,
+      "current_rate": 4370.978969966027,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 4350,
+      "timestamp": 1.199293613433838,
+      "overall_rate": 3627.1351329429713,
+      "current_rate": 4396.084267896447,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 4400,
+      "timestamp": 1.2122149467468262,
+      "overall_rate": 3629.7193099360043,
+      "current_rate": 3869.569709941693,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 4450,
+      "timestamp": 1.2237575054168701,
+      "overall_rate": 3636.341334212384,
+      "current_rate": 4331.795178980852,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 4500,
+      "timestamp": 1.2347142696380615,
+      "overall_rate": 3644.567905835501,
+      "current_rate": 4563.391069718861,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 4550,
+      "timestamp": 1.2519409656524658,
+      "overall_rate": 3634.3566708264925,
+      "current_rate": 2902.4718354693164,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 4600,
+      "timestamp": 1.2647430896759033,
+      "overall_rate": 3637.1022997079767,
+      "current_rate": 3905.6019070321813,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 4650,
+      "timestamp": 1.277268886566162,
+      "overall_rate": 3640.5803420931693,
+      "current_rate": 3991.7619963073644,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 4700,
+      "timestamp": 1.289752721786499,
+      "overall_rate": 3644.109386712363,
+      "current_rate": 4005.1794274364506,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 4750,
+      "timestamp": 1.3022549152374268,
+      "overall_rate": 3647.519348494055,
+      "current_rate": 3999.2982188489264,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 4800,
+      "timestamp": 1.314915418624878,
+      "overall_rate": 3650.4249109952484,
+      "current_rate": 3949.2900455726713,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 4850,
+      "timestamp": 1.3275036811828613,
+      "overall_rate": 3653.4738613142276,
+      "current_rate": 3971.9540142805736,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 4900,
+      "timestamp": 1.3392753601074219,
+      "overall_rate": 3658.6949524756255,
+      "current_rate": 4247.482480657836,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 4950,
+      "timestamp": 1.3508727550506592,
+      "overall_rate": 3664.2977523181817,
+      "current_rate": 4311.313035791378,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 5000,
+      "timestamp": 1.362215518951416,
+      "overall_rate": 3670.4911450787304,
+      "current_rate": 4408.09668943773,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 5050,
+      "timestamp": 1.3826673030853271,
+      "overall_rate": 3652.360903256533,
+      "current_rate": 2444.7744838600624,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 5100,
+      "timestamp": 1.3965036869049072,
+      "overall_rate": 3651.977469034263,
+      "current_rate": 3613.660957369818,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 5150,
+      "timestamp": 1.4097249507904053,
+      "overall_rate": 3653.19489955292,
+      "current_rate": 3781.7867060987487,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 5200,
+      "timestamp": 1.4215750694274902,
+      "overall_rate": 3657.9144582875892,
+      "current_rate": 4219.3670402189,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 5250,
+      "timestamp": 1.4328346252441406,
+      "overall_rate": 3664.065557534564,
+      "current_rate": 4440.67251090501,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 5300,
+      "timestamp": 1.4545888900756836,
+      "overall_rate": 3643.6411938525366,
+      "current_rate": 2298.3998947876025,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 5350,
+      "timestamp": 1.4822423458099365,
+      "overall_rate": 3609.3962739113476,
+      "current_rate": 1808.0922862044883,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 5400,
+      "timestamp": 1.5149590969085693,
+      "overall_rate": 3564.452671375259,
+      "current_rate": 1528.2691074447619,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 5450,
+      "timestamp": 1.5420186519622803,
+      "overall_rate": 3534.3281957482536,
+      "current_rate": 1847.77613307958,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 5500,
+      "timestamp": 1.5697252750396729,
+      "overall_rate": 3503.7978221131684,
+      "current_rate": 1804.622665863523,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 5550,
+      "timestamp": 1.6030845642089844,
+      "overall_rate": 3462.0756283924147,
+      "current_rate": 1498.8328961756445,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 5600,
+      "timestamp": 1.631035566329956,
+      "overall_rate": 3433.401524530047,
+      "current_rate": 1788.844628310658,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 5650,
+      "timestamp": 1.6642301082611084,
+      "overall_rate": 3394.9632156958587,
+      "current_rate": 1506.2717269514753,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 5700,
+      "timestamp": 1.6938066482543945,
+      "overall_rate": 3365.201102424715,
+      "current_rate": 1690.5290480681645,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 5750,
+      "timestamp": 1.7187414169311523,
+      "overall_rate": 3345.4712520204125,
+      "current_rate": 2005.2321578826588,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 5800,
+      "timestamp": 1.7508299350738525,
+      "overall_rate": 3312.7146639489847,
+      "current_rate": 1558.1897480477603,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 5850,
+      "timestamp": 1.7821540832519531,
+      "overall_rate": 3282.544452792387,
+      "current_rate": 1596.2125998036277,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 5900,
+      "timestamp": 1.813326120376587,
+      "overall_rate": 3253.689412897611,
+      "current_rate": 1604.001682664729,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 5950,
+      "timestamp": 1.8408277034759521,
+      "overall_rate": 3232.2416643148526,
+      "current_rate": 1818.0771564802774,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 6000,
+      "timestamp": 1.857649564743042,
+      "overall_rate": 3229.8879798838407,
+      "current_rate": 2972.322694030274,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 6050,
+      "timestamp": 1.8973495960235596,
+      "overall_rate": 3188.65854383373,
+      "current_rate": 1259.4448514839594,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 6100,
+      "timestamp": 1.92582106590271,
+      "overall_rate": 3167.4801506757244,
+      "current_rate": 1756.1439648964142,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 6150,
+      "timestamp": 1.9494168758392334,
+      "overall_rate": 3154.789555903683,
+      "current_rate": 2119.0202893864684,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 6200,
+      "timestamp": 1.963493824005127,
+      "overall_rate": 3157.6366190718463,
+      "current_rate": 3551.9062378266685,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 6250,
+      "timestamp": 1.9748921394348145,
+      "overall_rate": 3164.729797237767,
+      "current_rate": 4386.61311914324,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 6300,
+      "timestamp": 1.9879429340362549,
+      "overall_rate": 3169.1050543431265,
+      "current_rate": 3831.184347540145,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 6350,
+      "timestamp": 1.9991841316223145,
+      "overall_rate": 3176.2957196179073,
+      "current_rate": 4447.924664361916,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 6400,
+      "timestamp": 2.011249303817749,
+      "overall_rate": 3182.1017851200913,
+      "current_rate": 4144.159668016994,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 6450,
+      "timestamp": 2.0242977142333984,
+      "overall_rate": 3186.290215440279,
+      "current_rate": 3831.8843757422937,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 6500,
+      "timestamp": 2.0361721515655518,
+      "overall_rate": 3192.264463003457,
+      "current_rate": 4210.725830739885,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 6550,
+      "timestamp": 2.0540666580200195,
+      "overall_rate": 3188.796222569405,
+      "current_rate": 2794.1536206781693,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 6600,
+      "timestamp": 2.0670547485351562,
+      "overall_rate": 3192.9488102224536,
+      "current_rate": 3849.680593288788,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 6650,
+      "timestamp": 2.079805374145508,
+      "overall_rate": 3197.414567087637,
+      "current_rate": 3921.376215407629,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 6700,
+      "timestamp": 2.0920052528381348,
+      "overall_rate": 3202.6688226095007,
+      "current_rate": 4098.401407074458,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 6750,
+      "timestamp": 2.104586601257324,
+      "overall_rate": 3207.280705848554,
+      "current_rate": 3974.136820162971,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 6800,
+      "timestamp": 2.1164729595184326,
+      "overall_rate": 3212.8924536542268,
+      "current_rate": 4206.502858289038,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 6850,
+      "timestamp": 2.1277785301208496,
+      "overall_rate": 3219.320010532744,
+      "current_rate": 4422.598536451634,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 6900,
+      "timestamp": 2.141089677810669,
+      "overall_rate": 3222.6581032586478,
+      "current_rate": 3756.2501119449767,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 6950,
+      "timestamp": 2.1533241271972656,
+      "overall_rate": 3227.5679783730543,
+      "current_rate": 4086.8206177530938,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 7000,
+      "timestamp": 2.1648428440093994,
+      "overall_rate": 3233.4910681255933,
+      "current_rate": 4340.761285782294,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 7050,
+      "timestamp": 2.1822922229766846,
+      "overall_rate": 3230.5481024826627,
+      "current_rate": 2865.431491501339,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 7100,
+      "timestamp": 2.1933770179748535,
+      "overall_rate": 3237.0175951580977,
+      "current_rate": 4510.6833286731335,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 7150,
+      "timestamp": 2.2046988010406494,
+      "overall_rate": 3243.0733833687837,
+      "current_rate": 4416.265504243266,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 7200,
+      "timestamp": 2.2170636653900146,
+      "overall_rate": 3247.5386757706897,
+      "current_rate": 4043.716015579808,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 7250,
+      "timestamp": 2.2293388843536377,
+      "overall_rate": 3252.0852037719806,
+      "current_rate": 4073.247096298023,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 7300,
+      "timestamp": 2.240924119949341,
+      "overall_rate": 3257.58464332341,
+      "current_rate": 4315.837998024366,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 7350,
+      "timestamp": 2.253376007080078,
+      "overall_rate": 3261.772547904298,
+      "current_rate": 4015.4556072529535,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 7400,
+      "timestamp": 2.2647705078125,
+      "overall_rate": 3267.4392281571713,
+      "current_rate": 4388.081687311684,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 7450,
+      "timestamp": 2.2772350311279297,
+      "overall_rate": 3271.511239799418,
+      "current_rate": 4011.3848508033666,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 7500,
+      "timestamp": 2.2878308296203613,
+      "overall_rate": 3278.214412926911,
+      "current_rate": 4718.851536834526,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 7550,
+      "timestamp": 2.305579900741577,
+      "overall_rate": 3274.664216829607,
+      "current_rate": 2817.048827993821,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 7600,
+      "timestamp": 2.317892551422119,
+      "overall_rate": 3278.8405119715744,
+      "current_rate": 4060.8640086749415,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 7650,
+      "timestamp": 2.329350233078003,
+      "overall_rate": 3284.1776609485178,
+      "current_rate": 4363.884553759078,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 7700,
+      "timestamp": 2.34104061126709,
+      "overall_rate": 3289.1355933515265,
+      "current_rate": 4277.021597699509,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 7750,
+      "timestamp": 2.354335069656372,
+      "overall_rate": 3291.7999225705603,
+      "current_rate": 3760.965549398325,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 7800,
+      "timestamp": 2.365600109100342,
+      "overall_rate": 3297.2605851656,
+      "current_rate": 4438.5108679548775,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 7850,
+      "timestamp": 2.3787312507629395,
+      "overall_rate": 3300.0785597289478,
+      "current_rate": 3807.74202919602,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 7900,
+      "timestamp": 2.3914871215820312,
+      "overall_rate": 3303.3838772144186,
+      "current_rate": 3919.763747149639,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 7950,
+      "timestamp": 2.4034783840179443,
+      "overall_rate": 3307.706053386601,
+      "current_rate": 4169.702753752858,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 8000,
+      "timestamp": 2.414487838745117,
+      "overall_rate": 3313.3320746638524,
+      "current_rate": 4541.550988587392,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 8050,
+      "timestamp": 2.4302945137023926,
+      "overall_rate": 3312.3557472614125,
+      "current_rate": 3163.2206099731516,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 8100,
+      "timestamp": 2.441624164581299,
+      "overall_rate": 3317.4638904300923,
+      "current_rate": 4413.198653198653,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 8150,
+      "timestamp": 2.4554271697998047,
+      "overall_rate": 3319.1780641021755,
+      "current_rate": 3622.399557812554,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 8200,
+      "timestamp": 2.4673564434051514,
+      "overall_rate": 3323.3949727520267,
+      "current_rate": 4191.37004097132,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 8250,
+      "timestamp": 2.4791386127471924,
+      "overall_rate": 3327.768749024476,
+      "current_rate": 4243.700675867093,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 8300,
+      "timestamp": 2.4905452728271484,
+      "overall_rate": 3332.603542909395,
+      "current_rate": 4383.4040507493255,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 8350,
+      "timestamp": 2.5027101039886475,
+      "overall_rate": 3336.3832218091675,
+      "current_rate": 4110.209121376634,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 8400,
+      "timestamp": 2.5136146545410156,
+      "overall_rate": 3341.8010134627557,
+      "current_rate": 4585.241708026324,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 8450,
+      "timestamp": 2.5245912075042725,
+      "overall_rate": 3347.076538523396,
+      "current_rate": 4555.164100002172,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 8500,
+      "timestamp": 2.535334587097168,
+      "overall_rate": 3352.6146975859615,
+      "current_rate": 4654.028982934245,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 8550,
+      "timestamp": 2.5510685443878174,
+      "overall_rate": 3351.536758512207,
+      "current_rate": 3177.8400739472368,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 8600,
+      "timestamp": 2.562748670578003,
+      "overall_rate": 3355.771909564723,
+      "current_rate": 4280.775668503777,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 8650,
+      "timestamp": 2.5741727352142334,
+      "overall_rate": 3360.302858339501,
+      "current_rate": 4376.725937056515,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 8700,
+      "timestamp": 2.586749792098999,
+      "overall_rate": 3363.293978634265,
+      "current_rate": 3975.492872308159,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 8750,
+      "timestamp": 2.598726272583008,
+      "overall_rate": 3367.034109099503,
+      "current_rate": 4174.849202715346,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 8800,
+      "timestamp": 2.609236240386963,
+      "overall_rate": 3372.6344375375206,
+      "current_rate": 4757.388503243955,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 8850,
+      "timestamp": 2.6211302280426025,
+      "overall_rate": 3376.406065336543,
+      "current_rate": 4203.804598392367,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 8900,
+      "timestamp": 2.63287615776062,
+      "overall_rate": 3380.3336984789485,
+      "current_rate": 4256.793731985548,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 8950,
+      "timestamp": 2.6451356410980225,
+      "overall_rate": 3383.569394681312,
+      "current_rate": 4078.4753014391285,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 9000,
+      "timestamp": 2.6572556495666504,
+      "overall_rate": 3386.9530022328618,
+      "current_rate": 4125.409658699715,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 9050,
+      "timestamp": 2.674241542816162,
+      "overall_rate": 3384.137092743583,
+      "current_rate": 2943.619111784852,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 9100,
+      "timestamp": 2.686039686203003,
+      "overall_rate": 3387.887396728601,
+      "current_rate": 4237.954935839143,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 9150,
+      "timestamp": 2.6971209049224854,
+      "overall_rate": 3392.506425388805,
+      "current_rate": 4512.139076552347,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 9200,
+      "timestamp": 2.708070755004883,
+      "overall_rate": 3397.2524473362264,
+      "current_rate": 4566.272562980382,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 9250,
+      "timestamp": 2.719343900680542,
+      "overall_rate": 3401.5557935445745,
+      "current_rate": 4435.319247932661,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 9300,
+      "timestamp": 2.730386972427368,
+      "overall_rate": 3406.1105967452354,
+      "current_rate": 4527.725722181442,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 9350,
+      "timestamp": 2.7430007457733154,
+      "overall_rate": 3408.675704666649,
+      "current_rate": 3963.920916342192,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 9400,
+      "timestamp": 2.756739377975464,
+      "overall_rate": 3409.825417338985,
+      "current_rate": 3639.3724836873525,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 9450,
+      "timestamp": 2.7689154148101807,
+      "overall_rate": 3412.888652883545,
+      "current_rate": 4106.426473467789,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 9500,
+      "timestamp": 2.780611038208008,
+      "overall_rate": 3416.515244117843,
+      "current_rate": 4275.10345530527,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 9550,
+      "timestamp": 2.7992117404937744,
+      "overall_rate": 3411.6747446605814,
+      "current_rate": 2688.0705487265595,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 9600,
+      "timestamp": 2.811089038848877,
+      "overall_rate": 3415.0465770842816,
+      "current_rate": 4209.711544251963,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 9650,
+      "timestamp": 2.822906255722046,
+      "overall_rate": 3418.4627918264728,
+      "current_rate": 4231.114697871481,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 9700,
+      "timestamp": 2.835143566131592,
+      "overall_rate": 3421.3434959257297,
+      "current_rate": 4085.8651392054862,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 9750,
+      "timestamp": 2.846575975418091,
+      "overall_rate": 3425.167669578174,
+      "current_rate": 4373.531313215574,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 9800,
+      "timestamp": 2.8589112758636475,
+      "overall_rate": 3427.878326528172,
+      "current_rate": 4053.407553442344,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 9850,
+      "timestamp": 2.8709840774536133,
+      "overall_rate": 3430.8793550455166,
+      "current_rate": 4141.540770582776,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 9900,
+      "timestamp": 2.883476495742798,
+      "overall_rate": 3433.355539612162,
+      "current_rate": 4002.4276199019027,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 9950,
+      "timestamp": 2.89609432220459,
+      "overall_rate": 3435.6615817767206,
+      "current_rate": 3962.647620127355,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 10000,
+      "timestamp": 2.9070818424224854,
+      "overall_rate": 3439.875635447178,
+      "current_rate": 4550.61733752848,
+      "success_rate": 1.0
+    }
+  ],
+  "analysis": {
+    "completion_percentage": 100.0,
+    "time_per_1000_molecules": 0.29081737995147705,
+    "estimated_full_import_time": 1.4540868997573853,
+    "resource_efficiency_score": 343.85840356819466
+  },
+  "performance_summary": {
+    "average_rate": 3705.764175233742,
+    "min_rate": 1259.4448514839594,
+    "max_rate": 4757.388503243955,
+    "rate_stability": 0,
+    "peak_performance_at": 175
+  }
+}

@@ -1,0 +1,41 @@
+# Minimal Netlify Configuration
+[build]
+  command = "npm run build"
+  publish = ".next"
+  functions = "netlify/functions"
+  
+[build.environment]
+  NEXT_PUBLIC_ENVIRONMENT = "production"
+  NEXT_PUBLIC_MINIMAL_TEST = "true"
+  NODE_VERSION = "16"
+  NPM_FLAGS = "--legacy-peer-deps"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# This redirects API requests to the Netlify Function
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+  force = true
+
+# Basic health check endpoint
+[[redirects]]
+  from = "/health"
+  to = "/.netlify/functions/hello"
+  status = 200
+  force = true
+
+# This redirects all requests to the Next.js app
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/next"
+  status = 200
+
+# Minimal security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"

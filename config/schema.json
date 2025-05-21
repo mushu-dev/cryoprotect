@@ -1,0 +1,530 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CryoProtect Configuration Schema",
+  "description": "Unified configuration schema for CryoProtect application",
+  "type": "object",
+  "properties": {
+    "app": {
+      "type": "object",
+      "description": "Core application settings",
+      "properties": {
+        "name": {
+          "type": "string",
+          "default": "CryoProtect",
+          "description": "Application name"
+        },
+        "environment": {
+          "type": "string",
+          "enum": ["development", "testing", "staging", "production"],
+          "default": "development",
+          "description": "Application environment"
+        },
+        "debug": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable debug mode"
+        },
+        "testing": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable testing mode"
+        },
+        "secret_key": {
+          "type": "string",
+          "description": "Secret key for cryptographic signing",
+          "format": "password"
+        },
+        "feature_flags": {
+          "type": "object",
+          "description": "Feature flag settings",
+          "properties": {
+            "enable_experimental_features": {
+              "type": "boolean",
+              "default": false,
+              "description": "Enable experimental features"
+            },
+            "use_mock_data": {
+              "type": "boolean",
+              "default": false,
+              "description": "Use mock data for development/testing"
+            }
+          }
+        }
+      },
+      "required": ["name", "environment", "secret_key"]
+    },
+    "api": {
+      "type": "object",
+      "description": "API configuration",
+      "properties": {
+        "title": {
+          "type": "string",
+          "default": "CryoProtect Analyzer API",
+          "description": "API title for documentation"
+        },
+        "version": {
+          "type": "string",
+          "default": "v1",
+          "description": "API version"
+        },
+        "base_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Base URL for the API",
+          "examples": ["http://localhost:5000/v1", "https://api.cryoprotect.app/v1"]
+        },
+        "openapi_version": {
+          "type": "string",
+          "default": "3.0.2",
+          "description": "OpenAPI specification version"
+        },
+        "openapi_url_prefix": {
+          "type": "string",
+          "default": "/",
+          "description": "URL prefix for OpenAPI documentation"
+        },
+        "swagger_ui_path": {
+          "type": "string",
+          "default": "/swagger",
+          "description": "URL path for Swagger UI"
+        },
+        "swagger_ui_url": {
+          "type": "string",
+          "default": "https://cdn.jsdelivr.net/npm/swagger-ui-dist/",
+          "description": "URL for Swagger UI assets"
+        },
+        "cors": {
+          "type": "object",
+          "description": "CORS configuration",
+          "properties": {
+            "origins": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": ["http://localhost:5000"],
+              "description": "Allowed origins for CORS"
+            }
+          }
+        }
+      },
+      "required": ["base_url"]
+    },
+    "database": {
+      "type": "object",
+      "description": "Database configuration",
+      "properties": {
+        "connection_mode": {
+          "type": "string",
+          "enum": ["local", "supabase", "mcp", "auto"],
+          "default": "auto",
+          "description": "Database connection mode"
+        },
+        "local": {
+          "type": "object",
+          "description": "Local database configuration",
+          "properties": {
+            "host": {
+              "type": "string",
+              "default": "localhost",
+              "description": "Database host"
+            },
+            "port": {
+              "type": "string",
+              "default": "5432",
+              "description": "Database port"
+            },
+            "database": {
+              "type": "string",
+              "default": "cryoprotect",
+              "description": "Database name"
+            },
+            "user": {
+              "type": "string",
+              "default": "postgres",
+              "description": "Database user"
+            },
+            "password": {
+              "type": "string",
+              "default": "",
+              "description": "Database password",
+              "format": "password"
+            },
+            "min_connections": {
+              "type": "integer",
+              "default": 1,
+              "description": "Minimum number of connections"
+            },
+            "max_connections": {
+              "type": "integer",
+              "default": 5,
+              "description": "Maximum number of connections"
+            },
+            "use_ssl": {
+              "type": "boolean",
+              "default": false,
+              "description": "Use SSL for database connections"
+            }
+          }
+        },
+        "supabase": {
+          "type": "object",
+          "description": "Supabase configuration",
+          "properties": {
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "description": "Supabase URL"
+            },
+            "key": {
+              "type": "string",
+              "description": "Supabase API key",
+              "format": "password"
+            },
+            "service_key": {
+              "type": "string",
+              "description": "Supabase service key",
+              "format": "password"
+            },
+            "project_id": {
+              "type": "string",
+              "description": "Supabase project ID"
+            },
+            "host": {
+              "type": "string",
+              "description": "Supabase database host"
+            },
+            "port": {
+              "type": "string",
+              "default": "5432",
+              "description": "Supabase database port"
+            },
+            "database": {
+              "type": "string",
+              "default": "postgres",
+              "description": "Supabase database name"
+            },
+            "user": {
+              "type": "string",
+              "description": "Supabase database user"
+            },
+            "password": {
+              "type": "string",
+              "description": "Supabase database password",
+              "format": "password"
+            },
+            "ip_address": {
+              "type": "string",
+              "description": "Supabase database IP address"
+            },
+            "min_connections": {
+              "type": "integer",
+              "default": 1,
+              "description": "Minimum number of connections"
+            },
+            "max_connections": {
+              "type": "integer",
+              "default": 10,
+              "description": "Maximum number of connections"
+            }
+          },
+          "required": ["url", "key"]
+        },
+        "mcp": {
+          "type": "object",
+          "description": "MCP configuration",
+          "properties": {
+            "project_id": {
+              "type": "string",
+              "description": "Supabase project ID for MCP"
+            }
+          },
+          "required": ["project_id"]
+        },
+        "connection_timeout": {
+          "type": "integer",
+          "default": 30,
+          "description": "Connection timeout in seconds"
+        },
+        "connection_lifetime": {
+          "type": "integer",
+          "default": 3600,
+          "description": "Connection lifetime in seconds"
+        },
+        "idle_timeout": {
+          "type": "integer",
+          "default": 300,
+          "description": "Idle timeout in seconds"
+        },
+        "application_name": {
+          "type": "string",
+          "default": "CryoProtect",
+          "description": "Application name for database connections"
+        }
+      }
+    },
+    "auth": {
+      "type": "object",
+      "description": "Authentication configuration",
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Authentication URL",
+          "examples": ["http://localhost:3000", "https://frontend-qliqh2ja9-uis-pop2.vercel.app"]
+        },
+        "debug": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable NextAuth.js debug mode"
+        }
+      },
+      "required": ["url"]
+    },
+    "logging": {
+      "type": "object",
+      "description": "Logging configuration",
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
+          "default": "INFO",
+          "description": "Logging level"
+        },
+        "file": {
+          "type": "string",
+          "default": "cryoprotectant_analysis.log",
+          "description": "Log file name"
+        },
+        "log_to_file": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable logging to file"
+        }
+      }
+    },
+    "caching": {
+      "type": "object",
+      "description": "Caching configuration",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["memory", "redis", "filesystem"],
+          "default": "memory",
+          "description": "Cache type"
+        },
+        "redis_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Redis URL for caching"
+        },
+        "default_timeout": {
+          "type": "integer",
+          "default": 300,
+          "description": "Default cache timeout in seconds"
+        }
+      }
+    },
+    "rate_limiting": {
+      "type": "object",
+      "description": "Rate limiting configuration",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable rate limiting"
+        },
+        "storage_url": {
+          "type": "string",
+          "default": "memory://",
+          "description": "Rate limit storage URL"
+        },
+        "strategy": {
+          "type": "string",
+          "enum": ["fixed-window", "moving-window"],
+          "default": "fixed-window",
+          "description": "Rate limiting strategy"
+        },
+        "by": {
+          "type": "string",
+          "enum": ["ip", "user", "hybrid"],
+          "default": "hybrid",
+          "description": "Rate limiting identifier"
+        },
+        "headers_enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable rate limit headers"
+        },
+        "retry_after": {
+          "type": "integer",
+          "default": 60,
+          "description": "Retry after seconds"
+        },
+        "roles": {
+          "type": "object",
+          "description": "Rate limit rates by role",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "default": {
+            "admin": ["5000 per day", "500 per hour", "100 per minute"],
+            "premium": ["2000 per day", "200 per hour", "40 per minute"],
+            "basic": ["1000 per day", "100 per hour", "20 per minute"]
+          }
+        }
+      }
+    },
+    "chembl": {
+      "type": "object",
+      "description": "ChEMBL API configuration",
+      "properties": {
+        "api_url": {
+          "type": "string",
+          "format": "uri",
+          "default": "https://www.ebi.ac.uk/chembl/api/data",
+          "description": "ChEMBL API URL"
+        },
+        "api_key": {
+          "type": "string",
+          "description": "ChEMBL API key",
+          "format": "password"
+        },
+        "api_key_required": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether ChEMBL API key is required"
+        },
+        "api_delay": {
+          "type": "number",
+          "default": 0.3,
+          "description": "Delay between API requests in seconds"
+        },
+        "id_file": {
+          "type": "string",
+          "description": "Path to file containing ChEMBL IDs"
+        },
+        "cache_dir": {
+          "type": "string",
+          "default": "cache/chembl",
+          "description": "ChEMBL cache directory"
+        },
+        "requests_per_second": {
+          "type": "number",
+          "default": 5.0,
+          "description": "Maximum requests per second"
+        },
+        "max_retries": {
+          "type": "integer",
+          "default": 5,
+          "description": "Maximum number of retries"
+        },
+        "failure_threshold": {
+          "type": "integer",
+          "default": 3,
+          "description": "Failure threshold"
+        },
+        "recovery_timeout": {
+          "type": "integer",
+          "default": 60,
+          "description": "Recovery timeout in seconds"
+        },
+        "cache_ttl": {
+          "type": "integer",
+          "default": 2592000,
+          "description": "Cache time-to-live in seconds (default: 30 days)"
+        },
+        "memory_cache_size": {
+          "type": "integer",
+          "default": 1000,
+          "description": "Memory cache size"
+        },
+        "memory_threshold": {
+          "type": "number",
+          "default": 80.0,
+          "description": "Memory usage threshold (percentage)"
+        },
+        "batch_size": {
+          "type": "integer",
+          "default": 100,
+          "description": "Batch size for ChEMBL API requests"
+        },
+        "memory_check_frequency": {
+          "type": "integer",
+          "default": 10,
+          "description": "Memory check frequency"
+        },
+        "checkpoint_dir": {
+          "type": "string",
+          "default": "checkpoints",
+          "description": "Checkpoint directory"
+        }
+      }
+    },
+    "frontend": {
+      "type": "object",
+      "description": "Frontend-specific configuration",
+      "properties": {
+        "vercel": {
+          "type": "object",
+          "description": "Vercel deployment configuration",
+          "properties": {
+            "project_id": {
+              "type": "string",
+              "description": "Vercel project ID"
+            },
+            "org_id": {
+              "type": "string",
+              "description": "Vercel organization ID"
+            },
+            "deploy_hook": {
+              "type": "string",
+              "description": "Vercel deploy hook URL",
+              "format": "uri"
+            }
+          }
+        },
+        "google_analytics_id": {
+          "type": "string",
+          "description": "Google Analytics ID"
+        },
+        "sentry_dsn": {
+          "type": "string",
+          "description": "Sentry DSN for error tracking",
+          "format": "uri"
+        }
+      }
+    }
+  },
+  "environmentMapping": {
+    "development": {
+      "app.debug": true,
+      "app.feature_flags.enable_experimental_features": true,
+      "app.feature_flags.use_mock_data": true,
+      "auth.debug": true,
+      "logging.level": "DEBUG"
+    },
+    "testing": {
+      "app.debug": true,
+      "app.testing": true,
+      "app.feature_flags.use_mock_data": true,
+      "logging.level": "DEBUG"
+    },
+    "staging": {
+      "app.debug": false,
+      "app.feature_flags.enable_experimental_features": true,
+      "api.cors.origins": ["https://staging.cryoprotect-analyzer.com"],
+      "logging.level": "INFO"
+    },
+    "production": {
+      "app.debug": false,
+      "app.feature_flags.enable_experimental_features": false,
+      "api.cors.origins": ["https://cryoprotect-analyzer.com"],
+      "logging.level": "WARNING",
+      "caching.type": "redis"
+    }
+  }
+}

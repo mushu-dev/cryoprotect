@@ -1,0 +1,26 @@
+[
+  {
+    "group_id": "28a772ca-a829-4767-ba84-a15df4906417",
+    "consolidation_type": "SELECTIVE_MERGE",
+    "primary_id": "7a8b62b7-3bcd-4601-860a-66d338021f19",
+    "primary_name": "2-aminopentanedioate",
+    "secondary_count": 1,
+    "verified": true
+  },
+  {
+    "group_id": "6e7589ac-ce2e-4e13-b982-bec6afa7eb9f",
+    "consolidation_type": "SELECTIVE_MERGE",
+    "primary_id": "19144686-3c1f-49d0-82a9-2e081581d40c",
+    "primary_name": "2-aminopentanedioic acid",
+    "secondary_count": 2,
+    "verified": true
+  },
+  {
+    "group_id": "fa972452-6feb-41a9-950d-e62404d27448",
+    "consolidation_type": "SELECTIVE_MERGE",
+    "primary_id": "02dedcbc-8dae-4108-8347-76e4bec13aaa",
+    "primary_name": "(2R,3R,4R,5S)-hexane-1,2,3,4,5,6-hexol",
+    "secondary_count": 1,
+    "verified": true
+  }
+]

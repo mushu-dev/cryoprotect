@@ -1,0 +1,64 @@
+{
+  "timestamp": "2025-05-12T23:51:36.951114",
+  "dry_run": false,
+  "property_counts": {
+    "total": 66,
+    "duplicates": 2,
+    "standardized": 47,
+    "deprecated": 3
+  },
+  "updates": {
+    "properties_updated": 0,
+    "names_standardized": 1,
+    "records_remapped": 596,
+    "deprecated_properties": 3
+  },
+  "duplicate_groups": {
+    "logp": [
+      "logP",
+      "LogP"
+    ]
+  },
+  "id_mapping": {
+    "1bf5b1b0-595b-4961-9e6f-94f88d434dcc": "5470d18f-fdb7-42e3-86cd-4fddaf802f12",
+    "fe53e51e-b4ec-4f68-ab0a-8f617af2ca6e": "627e0938-6e5c-4248-ab78-79e78502142f",
+    "5b34cb82-a915-45c7-95f6-9e06a8f4ca18": "92557dcc-3268-4351-9f0b-d13da120bd85",
+    "3cac8f00-07a2-49a6-97d5-fd0d69ba4595": "92557dcc-3268-4351-9f0b-d13da120bd85",
+    "230df228-5770-4839-9fb9-9ef53e42ce7f": "4c2b6f49-a766-4420-b677-3d73a4ca0616",
+    "ac735e5f-8c70-40c3-ab5b-bceb3a82c655": "4c2b6f49-a766-4420-b677-3d73a4ca0616",
+    "cfcc622e-c6f5-407f-a437-22196c5069f7": "92557dcc-3268-4351-9f0b-d13da120bd85",
+    "31d28438-e92c-411b-8160-b34cd15c7b06": "4c2b6f49-a766-4420-b677-3d73a4ca0616",
+    "27ee6bf6-94de-4133-ae01-0318079966e2": "6be230da-0160-4700-9b16-007cbb31a6c3",
+    "39679ac8-707d-4fdd-909d-f6b63d23388f": "6ff67057-fc79-4b96-a604-de5d08b49f51",
+    "69136277-f4ee-4aef-95a9-190dd36e3373": "627e0938-6e5c-4248-ab78-79e78502142f",
+    "33a6c6c8-86c7-458a-bd56-183f00dc30cc": "627e0938-6e5c-4248-ab78-79e78502142f",
+    "6c408063-ab82-4ee2-ab4f-ddf898ae755c": "931f4e62-73a4-4181-a5a5-3199cd97d9fc",
+    "c38f9d11-e185-4d14-838d-e39d5c2c782e": "3a7d7293-89b1-447c-8c7e-19697c68d988",
+    "6caba713-002d-4da9-a268-8a9c5922f41a": "3a7d7293-89b1-447c-8c7e-19697c68d988",
+    "a321b99b-72a1-4ae4-9fd8-8069026bf32c": "931f4e62-73a4-4181-a5a5-3199cd97d9fc"
+  },
+  "name_mapping": {
+    "logp": "LogP",
+    "logP": "LogP",
+    "xlogp3": "XLogP3",
+    "XLogP3": "XLogP3",
+    "molecular_weight": "Molecular Weight",
+    "mw_freebase": "Molecular Weight",
+    "mw_monoisotopic": "Monoisotopic Mass",
+    "full_mwt": "Molecular Weight",
+    "h_bond_donors": "Hydrogen Bond Donor Count",
+    "hbd": "Hydrogen Bond Donor Count",
+    "hbd_lipinski": "Hydrogen Bond Donor Count",
+    "h_bond_acceptors": "Hydrogen Bond Acceptor Count",
+    "hba": "Hydrogen Bond Acceptor Count",
+    "hba_lipinski": "Hydrogen Bond Acceptor Count",
+    "heavy_atoms": "Heavy Atom Count",
+    "rotatable_bonds": "Rotatable Bond Count",
+    "rtb": "Rotatable Bond Count",
+    "psa": "TPSA",
+    "tpsa": "TPSA",
+    "topological polar surface area": "TPSA",
+    "Topological Polar Surface Area": "TPSA",
+    "aromatic_rings": "Aromatic Ring Count"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "fix_pubchem": {
+    "fixed": 5,
+    "failed": 2,
+    "errors": [
+      "Missing InChIKey for TEST_MCP Test Molecule (ID: c170e735-e6e9-4591-9e81-c653869083ef)",
+      "Could not resolve PubChem CID for Trehalose (ID: 0a0fe74e-c001-454d-97d6-b1f859b25fb2)"
+    ]
+  }
+}

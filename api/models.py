@@ -547,6 +547,30 @@ class PredictionSchema(Schema):
     )
 
 class ExperimentSchema(Schema):
+    """Schema for experiment serialization/deserialization."""
+    
+    id = fields.UUID(dump_only=True)
+    name = fields.Str(required=True)
+    description = fields.Str()
+    protocol_id = fields.UUID(required=True)
+    tissue_type_id = fields.UUID(required=True)
+    experiment_type = fields.Str(required=True)
+    start_date = fields.Date(required=True)
+    end_date = fields.Date()
+    status = fields.Str(
+        required=True, 
+        validate=validate.OneOf(['planned', 'in_progress', 'completed', 'aborted', 'failed'])
+    )
+    researcher = fields.Str(required=True)
+    lab_id = fields.Str()
+    equipment = fields.List(fields.Str())
+    environmental_conditions = fields.Dict()
+    notes = fields.Str()
+    tags = fields.List(fields.Str())
+    results = fields.List(fields.Nested('ExperimentResultSchema'), dump_only=True)
+    time_series = fields.List(fields.Nested('TimeSeriesSchema'), dump_only=True)
+    protocol = fields.Nested('ProtocolSchema', dump_only=True)
+    provenance = fields.Dict(dump_only=True)
     """
     Schema for recording an experiment.
     
@@ -1484,6 +1508,10 @@ class Experiment(BaseModel):
     
     table_name = 'experiments'
     
+    # Mock database for testing
+    _mock_db = []
+    _mock_id_counter = 1
+    
     @classmethod
     def record_experiment(cls, mixture_id: str, property_name: str, value: Any, conditions: str, experiment_date: Union[str, date]) -> Dict[str, Any]:
         """
@@ -2170,6 +2198,70 @@ class UserProfile(BaseModel):
         if response.error:
             raise Exception(f"Error updating user profile: {response.error}")
         return response.data[0] if response.data else {}
+
+# Enhanced Experiment-related fields
+enhanced_experiment_fields = {
+    'id': fields.String,
+    'name': fields.String,
+    'description': fields.String,
+    'protocol_id': fields.String,
+    'tissue_type_id': fields.String,
+    'experiment_type': fields.String,
+    'start_date': FlexibleDateTime(dt_format='iso8601'),
+    'end_date': FlexibleDateTime(dt_format='iso8601'),
+    'status': fields.String,
+    'researcher': fields.String,
+    'lab_id': fields.String,
+    'equipment': fields.Raw,
+    'environmental_conditions': fields.Raw,
+    'notes': fields.String,
+    'tags': fields.Raw,
+    'results': fields.Raw,
+    'time_series': fields.Raw,
+    'protocol': fields.Raw,
+    'provenance': fields.Raw,
+    'created_at': FlexibleDateTime(dt_format='iso8601'),
+    'updated_at': FlexibleDateTime(dt_format='iso8601')
+}
+
+experiment_result_fields = {
+    'id': fields.String,
+    'experiment_id': fields.String,
+    'tissue_type_id': fields.String,
+    'molecule_id': fields.String,
+    'mixture_id': fields.String,
+    'concentration': fields.Float,
+    'concentration_unit': fields.String,
+    'viability_percentage': fields.Float,
+    'recovery_rate': fields.Float,
+    'functionality_score': fields.Float,
+    'uncertainty': fields.Raw,
+    'result_details': fields.Raw,
+    'notes': fields.String,
+    'protocol_step_id': fields.String,
+    'timestamp': FlexibleDateTime(dt_format='iso8601'),
+    'provenance': fields.Raw
+}
+
+time_series_fields = {
+    'id': fields.String,
+    'experiment_id': fields.String,
+    'result_id': fields.String,
+    'parameter': fields.String,
+    'unit': fields.String,
+    'data_points': fields.Raw,
+    'start_time': FlexibleDateTime(dt_format='iso8601'),
+    'end_time': FlexibleDateTime(dt_format='iso8601'),
+    'notes': fields.String,
+    'provenance': fields.Raw
+}
+
+experiment_analysis_fields = {
+    'summary': fields.Raw,
+    'statistics': fields.Raw,
+    'trends': fields.Raw,
+    'comparisons': fields.Raw
+}
 
 # Protocol-related fields
 protocol_fields = {

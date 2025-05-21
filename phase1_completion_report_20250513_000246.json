@@ -1,0 +1,9 @@
+{
+  "timestamp": "2025-05-12T23:55:21.613926",
+  "dry_run": false,
+  "steps": {
+    "recalculate_properties": false
+  },
+  "success_rate": "0/1",
+  "all_successful": false
+}

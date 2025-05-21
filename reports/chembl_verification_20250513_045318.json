@@ -1,0 +1,24 @@
+{
+  "timestamp": "2025-05-13 04:53:18",
+  "total_chembl_molecules": 829,
+  "properties_completion": {
+    "molecules_with_incomplete_properties": 0,
+    "completion_percentage": 100.0,
+    "change_since_last_verification": null
+  },
+  "jsonb_properties_completion": {
+    "molecules_missing_jsonb_properties": 0,
+    "completion_percentage": 100.0,
+    "change_since_last_verification": null
+  },
+  "inchikey_completion": {
+    "molecules_missing_inchikey": 0,
+    "completion_percentage": 100.0,
+    "change_since_last_verification": null
+  },
+  "pubchem_completion": {
+    "molecules_missing_pubchem_cid": 7,
+    "completion_percentage": 99.1556091676719,
+    "change_since_last_verification": null
+  }
+}

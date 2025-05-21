@@ -1,0 +1,15 @@
+{
+  "fix_pubchem": {
+    "fixed": 0,
+    "failed": 7,
+    "errors": [
+      "Error for DMSO: column \"description\" does not exist\nLINE 3: ...                       SET description = COALESCE(descriptio...\n                                                             ^\n",
+      "Error for Ethylene glycol: column \"description\" does not exist\nLINE 3: ...                       SET description = COALESCE(descriptio...\n                                                             ^\n",
+      "Error for Glycerol: column \"description\" does not exist\nLINE 3: ...                       SET description = COALESCE(descriptio...\n                                                             ^\n",
+      "Error for Glycine: column \"description\" does not exist\nLINE 3: ...                       SET description = COALESCE(descriptio...\n                                                             ^\n",
+      "Error for Propylene glycol: column \"description\" does not exist\nLINE 3: ...                       SET description = COALESCE(descriptio...\n                                                             ^\n",
+      "Missing InChIKey for TEST_MCP Test Molecule (ID: c170e735-e6e9-4591-9e81-c653869083ef)",
+      "Could not resolve PubChem CID for Trehalose (ID: 0a0fe74e-c001-454d-97d6-b1f859b25fb2)"
+    ]
+  }
+}

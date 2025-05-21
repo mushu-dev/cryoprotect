@@ -1,0 +1,10 @@
+# Ignore test files and test utilities
+tests/
+**/*.test.ts
+**/*.spec.ts
+**/__tests__/
+
+# Ignore temporary files
+**/node_modules/
+**/.DS_Store
+**/*.log

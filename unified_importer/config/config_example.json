@@ -1,0 +1,89 @@
+{
+    "database": {
+        "url": "YOUR_SUPABASE_URL",
+        "key": "YOUR_SUPABASE_KEY",
+        "use_connection_pool": true,
+        "pool_size": 10,
+        "max_retries": 3,
+        "retry_delay": 2.0
+    },
+    "checkpoints": {
+        "directory": "checkpoints",
+        "backup_interval": 5,
+        "enabled": true
+    },
+    "logging": {
+        "level": "INFO",
+        "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        "file": null,
+        "structured_output": true
+    },
+    "sources": {
+        "pubchem": {
+            "api_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug",
+            "api_delay": 0.5,
+            "max_compounds_per_request": 50,
+            "timeout": 30,
+            "batch_size": 20,
+            "property_filters": [
+                {
+                    "name": "cryoprotectants", 
+                    "description": "Known cryoprotectants and related compounds",
+                    "terms": ["glycerol", "dmso", "ethylene glycol", "trehalose", "sucrose", "cryoprotect"]
+                },
+                {
+                    "name": "small_molecules",
+                    "description": "Small molecules suitable for cryoprotection",
+                    "molecular_weight_max": 200,
+                    "logp_max": 1.0,
+                    "rotatable_bonds_max": 5
+                }
+            ]
+        },
+        "chembl": {
+            "api_url": "https://www.ebi.ac.uk/chembl/api/data",
+            "api_delay": 0.5,
+            "timeout": 30,
+            "batch_size": 20,
+            "use_client": true,
+            "property_filters": [
+                {
+                    "full_mwt__lte": 200.0,
+                    "hba__gte": 2,
+                    "hbd__gte": 1
+                },
+                {
+                    "full_mwt__lte": 350.0,
+                    "full_mwt__gte": 150.0,
+                    "hba__gte": 3,
+                    "hbd__gte": 2
+                }
+            ],
+            "reference_compounds": [
+                "CHEMBL1234",  
+                "CHEMBL230130", 
+                "CHEMBL9335",  
+                "CHEMBL15151"
+            ]
+        }
+    },
+    "transforms": {
+        "molecule_transform": {
+            "resolve_cross_references": true,
+            "handle_mixtures": true,
+            "separate_mixtures": false,
+            "add_standardized_structure": true
+        },
+        "property_transform": {
+            "standardize_units": true,
+            "add_missing_properties": true
+        }
+    },
+    "import": {
+        "batch_size": 50,
+        "worker_count": 4, 
+        "max_retries": 3,
+        "retry_delay": 2.0,
+        "checkpoint_frequency": 10
+    }
+}

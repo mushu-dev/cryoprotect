@@ -47,7 +47,7 @@ sed -i 's|NEXT_PUBLIC_CONVEX_URL = ".*"|NEXT_PUBLIC_CONVEX_URL = "https://upbeat
 
 # Ensure Convex environment variables are set
 grep -q "NEXT_PUBLIC_CONVEX_URL" netlify.toml || 
-  sed -i '/NEXT_PUBLIC_ENVIRONMENT/a \  NEXT_PUBLIC_CONVEX_URL = "https://dynamic-mink-63.convex.cloud"' netlify.toml
+  sed -i '/NEXT_PUBLIC_ENVIRONMENT/a \  NEXT_PUBLIC_CONVEX_URL = "https://upbeat-parrot-866.convex.cloud"' netlify.toml
 
 grep -q "NEXT_PUBLIC_USE_CONVEX" netlify.toml || 
   sed -i '/NEXT_PUBLIC_ENVIRONMENT/a \  NEXT_PUBLIC_USE_CONVEX = "true"' netlify.toml
@@ -60,7 +60,7 @@ grep -q "from = \"/convex/" netlify.toml ||
   sed -i '/from = "\/api\/\*"/a \
 [[redirects]]\
   from = "/convex/*"\
-  to = "https://dynamic-mink-63.convex.cloud/:splat"\
+  to = "https://upbeat-parrot-866.convex.cloud/:splat"\
   status = 200\
   force = true\
   headers = {Access-Control-Allow-Origin = "*"}' netlify.toml

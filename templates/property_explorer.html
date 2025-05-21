@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryoProtect - Property Explorer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        .property-card {
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .property-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .property-value {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .filter-panel {
+            border-right: 1px solid #dee2e6;
+        }
+        
+        .visualization-container {
+            min-height: 400px;
+        }
+        
+        .property-distribution {
+            height: 200px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+        
+        .molecule-grid {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        
+        .comparison-target {
+            padding: 10px;
+            border: 1px dashed #dee2e6;
+            border-radius: 4px;
+            text-align: center;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        
+        .drag-drop-area {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            border-radius: 4px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .drag-drop-area:hover {
+            border-color: #0d6efd;
+            background-color: rgba(13, 110, 253, 0.05);
+        }
+        
+        .property-toggle {
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .correlation-matrix {
+            height: 400px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('index') }}">CryoProtect Analyzer</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('molecules') }}">Molecules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('property_explorer') }}">Property Explorer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('mixtures') }}">Mixtures</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('predictions') }}">Predictions</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="logoutLink">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid py-4">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h1 class="mb-3">Molecular Property Explorer</h1>
+                <p class="lead">Analyze, visualize, and compare molecular properties across the CryoProtect database.</p>
+            </div>
+        </div>
+        
+        <!-- Dashboard Row -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card property-card bg-primary text-white">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Total Molecules</h5>
+                        <p class="property-value" id="totalMolecules">-</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card property-card bg-success text-white">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Properties Available</h5>
+                        <p class="property-value" id="totalProperties">-</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card property-card bg-info text-white">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Cryoprotectants</h5>
+                        <p class="property-value" id="totalCryoprotectants">-</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card property-card bg-warning text-dark">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Data Coverage</h5>
+                        <p class="property-value" id="dataCoverage">-</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tabs for different explorers -->
+        <ul class="nav nav-tabs" id="explorerTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="property-tab" data-bs-toggle="tab" data-bs-target="#property-explorer" type="button" role="tab" aria-controls="property-explorer" aria-selected="true">
+                    <i class="bi bi-bar-chart-line"></i> Property Explorer
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison-tool" type="button" role="tab" aria-controls="comparison-tool" aria-selected="false">
+                    <i class="bi bi-arrows-angle-expand"></i> Comparison Tool
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="correlation-tab" data-bs-toggle="tab" data-bs-target="#correlation-analysis" type="button" role="tab" aria-controls="correlation-analysis" aria-selected="false">
+                    <i class="bi bi-diagram-3"></i> Correlation Analysis
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="export-tab" data-bs-toggle="tab" data-bs-target="#export-data" type="button" role="tab" aria-controls="export-data" aria-selected="false">
+                    <i class="bi bi-download"></i> Export Data
+                </button>
+            </li>
+        </ul>
+        
+        <div class="tab-content" id="explorerTabsContent">
+            <!-- Property Explorer Tab -->
+            <div class="tab-pane fade show active" id="property-explorer" role="tabpanel" aria-labelledby="property-tab">
+                <div class="row">
+                    <!-- Filter Panel -->
+                    <div class="col-md-3 filter-panel py-3">
+                        <h4>Filters</h4>
+                        
+                        <div class="accordion" id="filterAccordion">
+                            <!-- Property Type Filter -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="propertyTypeHeader">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#propertyTypeCollapse" aria-expanded="true" aria-controls="propertyTypeCollapse">
+                                        Property Types
+                                    </button>
+                                </h2>
+                                <div id="propertyTypeCollapse" class="accordion-collapse collapse show" aria-labelledby="propertyTypeHeader" data-bs-parent="#filterAccordion">
+                                    <div class="accordion-body" id="propertyTypeFilters">
+                                        <!-- Property type checkboxes will be loaded here -->
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="physicalProperties" checked>
+                                            <label class="form-check-label" for="physicalProperties">
+                                                Physical Properties
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="topologicalProperties" checked>
+                                            <label class="form-check-label" for="topologicalProperties">
+                                                Topological Properties
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="cryoprotectantProperties" checked>
+                                            <label class="form-check-label" for="cryoprotectantProperties">
+                                                Cryoprotectant Properties
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Value Range Filters -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="valueRangeHeader">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#valueRangeCollapse" aria-expanded="false" aria-controls="valueRangeCollapse">
+                                        Value Ranges
+                                    </button>
+                                </h2>
+                                <div id="valueRangeCollapse" class="accordion-collapse collapse" aria-labelledby="valueRangeHeader" data-bs-parent="#filterAccordion">
+                                    <div class="accordion-body" id="valueRangeFilters">
+                                        <!-- Value range sliders will be loaded here -->
+                                        <div class="mb-3">
+                                            <label for="mwRange" class="form-label">Molecular Weight (g/mol)</label>
+                                            <div class="d-flex">
+                                                <input type="number" class="form-control form-control-sm me-2" id="mwMin" placeholder="Min">
+                                                <input type="number" class="form-control form-control-sm" id="mwMax" placeholder="Max">
+                                            </div>
+                                            <input type="range" class="form-range mt-2" id="mwRange" min="0" max="1000" value="500">
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="logpRange" class="form-label">LogP</label>
+                                            <div class="d-flex">
+                                                <input type="number" class="form-control form-control-sm me-2" id="logpMin" placeholder="Min">
+                                                <input type="number" class="form-control form-control-sm" id="logpMax" placeholder="Max">
+                                            </div>
+                                            <input type="range" class="form-range mt-2" id="logpRange" min="-10" max="10" value="0">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Molecule Classification Filter -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="classificationHeader">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#classificationCollapse" aria-expanded="false" aria-controls="classificationCollapse">
+                                        Classification
+                                    </button>
+                                </h2>
+                                <div id="classificationCollapse" class="accordion-collapse collapse" aria-labelledby="classificationHeader" data-bs-parent="#filterAccordion">
+                                    <div class="accordion-body" id="classificationFilters">
+                                        <!-- Classification checkboxes will be loaded here -->
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="cryoprotectantsOnly">
+                                            <label class="form-check-label" for="cryoprotectantsOnly">
+                                                Cryoprotectants Only
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="highPerformanceOnly">
+                                            <label class="form-check-label" for="highPerformanceOnly">
+                                                High Performance Only
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Structure Filter -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="structureHeader">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#structureCollapse" aria-expanded="false" aria-controls="structureCollapse">
+                                        Structure
+                                    </button>
+                                </h2>
+                                <div id="structureCollapse" class="accordion-collapse collapse" aria-labelledby="structureHeader" data-bs-parent="#filterAccordion">
+                                    <div class="accordion-body">
+                                        <div class="mb-3">
+                                            <label for="substructureSearch" class="form-label">Substructure (SMARTS)</label>
+                                            <input type="text" class="form-control" id="substructureSearch" placeholder="e.g., [OH]">
+                                        </div>
+                                        <button class="btn btn-primary btn-sm w-100" id="applyStructureFilter">
+                                            Apply Structure Filter
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid gap-2 mt-3">
+                            <button class="btn btn-primary" id="applyFilters">Apply Filters</button>
+                            <button class="btn btn-outline-secondary" id="resetFilters">Reset Filters</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Main Content Area -->
+                    <div class="col-md-9 py-3">
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Property Selection</h5>
+                                        <div>
+                                            <select class="form-select form-select-sm" id="visualizationType">
+                                                <option value="histogram">Histogram</option>
+                                                <option value="scatter">Scatter Plot</option>
+                                                <option value="boxplot">Box Plot</option>
+                                                <option value="radar">Radar Chart</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row" id="propertyToggleContainer">
+                                            <!-- Property toggles will be loaded here -->
+                                            <div class="col-md-3 mb-2">
+                                                <div class="form-check property-toggle">
+                                                    <input class="form-check-input" type="checkbox" id="mw" checked>
+                                                    <label class="form-check-label" for="mw">
+                                                        Molecular Weight
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 mb-2">
+                                                <div class="form-check property-toggle">
+                                                    <input class="form-check-input" type="checkbox" id="logp" checked>
+                                                    <label class="form-check-label" for="logp">
+                                                        LogP
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 mb-2">
+                                                <div class="form-check property-toggle">
+                                                    <input class="form-check-input" type="checkbox" id="tpsa">
+                                                    <label class="form-check-label" for="tpsa">
+                                                        TPSA
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Property Visualization</h5>
+                                        <div>
+                                            <button class="btn btn-sm btn-outline-primary" id="exportVisualization">
+                                                <i class="bi bi-download"></i> Export
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body visualization-container" id="propertyVisualization">
+                                        <!-- Visualization will be rendered here -->
+                                        <div class="text-center py-5">
+                                            <p class="text-muted">Select properties and apply filters to visualize data</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Molecule Results</h5>
+                                        <div class="input-group input-group-sm" style="width: 200px;">
+                                            <input type="text" class="form-control" placeholder="Search..." id="moleculeSearch">
+                                            <button class="btn btn-outline-secondary" type="button" id="searchBtn">
+                                                <i class="bi bi-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <div class="molecule-grid" id="moleculeGrid">
+                                            <!-- Grid will be rendered here -->
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <span id="resultCount">0</span> molecules found
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-sm btn-outline-primary" id="exportResults">
+                                                    <i class="bi bi-download"></i> Export Results
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Comparison Tool Tab -->
+            <div class="tab-pane fade" id="comparison-tool" role="tabpanel" aria-labelledby="comparison-tab">
+                <div class="row py-3">
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5 class="card-title">Select Molecules for Comparison</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="comparisonMoleculeSelect" class="form-label">Molecule Selector</label>
+                                    <select class="form-select" id="comparisonMoleculeSelect">
+                                        <option value="" selected>-- Select a molecule --</option>
+                                        <!-- Molecules will be loaded here -->
+                                    </select>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary" id="addToComparisonBtn">
+                                        <i class="bi bi-plus-circle"></i> Add to Comparison
+                                    </button>
+                                </div>
+                                
+                                <div class="mt-4">
+                                    <h6>Drag & Drop</h6>
+                                    <div class="drag-drop-area" id="dragDropArea">
+                                        <i class="bi bi-cloud-arrow-up"></i>
+                                        <div>Drop molecules here</div>
+                                        <div class="text-muted small">or click to upload</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Comparison Settings</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="comparisonTypeSelect" class="form-label">Comparison Type</label>
+                                    <select class="form-select" id="comparisonTypeSelect">
+                                        <option value="side-by-side" selected>Side-by-Side</option>
+                                        <option value="radar">Radar Chart</option>
+                                        <option value="difference">Difference Analysis</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="comparisonPropertiesSelect" class="form-label">Properties to Compare</label>
+                                    <select class="form-select" id="comparisonPropertiesSelect" multiple size="5">
+                                        <option value="mw" selected>Molecular Weight</option>
+                                        <option value="logp" selected>LogP</option>
+                                        <option value="tpsa" selected>TPSA</option>
+                                        <option value="hba">H-Bond Acceptors</option>
+                                        <option value="hbd">H-Bond Donors</option>
+                                        <option value="rotb">Rotatable Bonds</option>
+                                        <option value="cypc">Cryoprotection Score</option>
+                                    </select>
+                                    <div class="form-text">Hold Ctrl/Cmd to select multiple properties</div>
+                                </div>
+                                <div class="d-grid">
+                                    <button class="btn btn-primary" id="generateComparisonBtn">
+                                        Generate Comparison
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-8">
+                        <div class="card mb-4">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Molecules to Compare</h5>
+                                <button class="btn btn-sm btn-outline-danger" id="clearComparisonBtn">
+                                    <i class="bi bi-trash"></i> Clear All
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div class="row" id="comparisonTargets">
+                                    <!-- Empty comparison slots will be shown here -->
+                                    <div class="col-md-3">
+                                        <div class="comparison-target empty">
+                                            <div class="text-muted">
+                                                <i class="bi bi-plus-circle"></i>
+                                                <div>Drop molecule here</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="comparison-target empty">
+                                            <div class="text-muted">
+                                                <i class="bi bi-plus-circle"></i>
+                                                <div>Drop molecule here</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="comparison-target empty">
+                                            <div class="text-muted">
+                                                <i class="bi bi-plus-circle"></i>
+                                                <div>Drop molecule here</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="comparison-target empty">
+                                            <div class="text-muted">
+                                                <i class="bi bi-plus-circle"></i>
+                                                <div>Drop molecule here</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Comparison Results</h5>
+                                <div>
+                                    <button class="btn btn-sm btn-outline-primary" id="exportComparisonBtn">
+                                        <i class="bi bi-download"></i> Export
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body p-0" id="comparisonResults">
+                                <!-- Comparison results will be shown here -->
+                                <div class="text-center py-5">
+                                    <p class="text-muted">Add molecules and generate a comparison to see results</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Correlation Analysis Tab -->
+            <div class="tab-pane fade" id="correlation-analysis" role="tabpanel" aria-labelledby="correlation-tab">
+                <div class="row py-3">
+                    <div class="col-md-3">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5 class="card-title">Correlation Settings</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="correlationPropertiesSelect" class="form-label">Properties to Correlate</label>
+                                    <select class="form-select" id="correlationPropertiesSelect" multiple size="10">
+                                        <option value="mw" selected>Molecular Weight</option>
+                                        <option value="logp" selected>LogP</option>
+                                        <option value="tpsa" selected>TPSA</option>
+                                        <option value="hba" selected>H-Bond Acceptors</option>
+                                        <option value="hbd" selected>H-Bond Donors</option>
+                                        <option value="rotb">Rotatable Bonds</option>
+                                        <option value="cypc" selected>Cryoprotection Score</option>
+                                        <option value="fsp3">Fraction sp3</option>
+                                        <option value="qed">QED Score</option>
+                                    </select>
+                                    <div class="form-text">Hold Ctrl/Cmd to select multiple properties</div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="correlationMethodSelect" class="form-label">Correlation Method</label>
+                                    <select class="form-select" id="correlationMethodSelect">
+                                        <option value="pearson" selected>Pearson</option>
+                                        <option value="spearman">Spearman</option>
+                                        <option value="kendall">Kendall</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="showPValueCheck" checked>
+                                    <label class="form-check-label" for="showPValueCheck">
+                                        Show p-values
+                                    </label>
+                                </div>
+                                
+                                <div class="d-grid">
+                                    <button class="btn btn-primary" id="calculateCorrelationBtn">
+                                        Calculate Correlation
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Data Selection</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="datasetSelect" class="form-label">Dataset</label>
+                                    <select class="form-select" id="datasetSelect">
+                                        <option value="all" selected>All Molecules</option>
+                                        <option value="cryoprotectants">Cryoprotectants Only</option>
+                                        <option value="custom">Custom Selection</option>
+                                    </select>
+                                </div>
+                                
+                                <div id="customSelectionContainer" class="d-none">
+                                    <div class="drag-drop-area mb-3" id="customSelectionArea">
+                                        <i class="bi bi-cloud-arrow-up"></i>
+                                        <div>Drop molecules here for custom selection</div>
+                                        <div class="text-muted small">or click to upload a list</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-9">
+                        <div class="card mb-4">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Correlation Matrix</h5>
+                                <div>
+                                    <button class="btn btn-sm btn-outline-primary" id="exportCorrelationBtn">
+                                        <i class="bi bi-download"></i> Export
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="correlation-matrix" id="correlationMatrix">
+                                    <!-- Correlation matrix will be rendered here -->
+                                    <div class="text-center py-5">
+                                        <p class="text-muted">Select properties and calculate correlation to see results</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Correlation Analysis</h5>
+                            </div>
+                            <div class="card-body" id="correlationAnalysis">
+                                <!-- Correlation analysis will be shown here -->
+                                <div class="text-center py-5">
+                                    <p class="text-muted">Calculate correlation to see analysis</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Export Data Tab -->
+            <div class="tab-pane fade" id="export-data" role="tabpanel" aria-labelledby="export-tab">
+                <div class="row py-3">
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5 class="card-title">Export Settings</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="exportDatasetSelect" class="form-label">Dataset</label>
+                                    <select class="form-select" id="exportDatasetSelect">
+                                        <option value="all" selected>All Molecules</option>
+                                        <option value="cryoprotectants">Cryoprotectants Only</option>
+                                        <option value="filtered">Current Filtered Set</option>
+                                        <option value="custom">Custom Selection</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="exportFormatSelect" class="form-label">Export Format</label>
+                                    <select class="form-select" id="exportFormatSelect">
+                                        <option value="csv" selected>CSV</option>
+                                        <option value="excel">Excel</option>
+                                        <option value="json">JSON</option>
+                                        <option value="sdf">SDF</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="exportPropertiesSelect" class="form-label">Properties to Include</label>
+                                    <select class="form-select" id="exportPropertiesSelect" multiple size="10">
+                                        <option value="id" selected>ID</option>
+                                        <option value="name" selected>Name</option>
+                                        <option value="smiles" selected>SMILES</option>
+                                        <option value="mw" selected>Molecular Weight</option>
+                                        <option value="logp">LogP</option>
+                                        <option value="tpsa">TPSA</option>
+                                        <option value="hba">H-Bond Acceptors</option>
+                                        <option value="hbd">H-Bond Donors</option>
+                                        <option value="rotb">Rotatable Bonds</option>
+                                        <option value="cypc">Cryoprotection Score</option>
+                                    </select>
+                                    <div class="form-text">Hold Ctrl/Cmd to select multiple properties</div>
+                                </div>
+                                
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="includeStructureCheck" checked>
+                                    <label class="form-check-label" for="includeStructureCheck">
+                                        Include chemical structures
+                                    </label>
+                                </div>
+                                
+                                <div class="d-grid">
+                                    <button class="btn btn-primary" id="generateExportBtn">
+                                        <i class="bi bi-download"></i> Generate Export
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-8">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5 class="card-title">Export Preview</h5>
+                            </div>
+                            <div class="card-body p-0">
+                                <div id="exportPreviewGrid">
+                                    <!-- Export preview grid will be rendered here -->
+                                    <div class="text-center py-5">
+                                        <p class="text-muted">Configure export settings and generate a preview</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span id="exportRecordCount">0</span> records ready for export
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-primary" id="downloadExportBtn" disabled>
+                                            <i class="bi bi-download"></i> Download
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Saved Exports</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Date</th>
+                                                <th>Format</th>
+                                                <th>Size</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="savedExportsTable">
+                                            <!-- Saved exports will be listed here -->
+                                            <tr>
+                                                <td colspan="5" class="text-center">No saved exports</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container text-center">
+            <span class="text-muted">CryoProtect Analyzer &copy; 2025</span>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/property-explorer.js') }}"></script>
+</body>
+</html>

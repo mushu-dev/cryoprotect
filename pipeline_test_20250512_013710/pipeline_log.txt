@@ -1,0 +1,19 @@
+2025-05-12 01:37:10,294 - WARNING - Attempting to get connection before pool initialization
+2025-05-12 01:37:10,296 - ERROR - Missing required database configuration: host, user, password
+2025-05-12 01:37:10,296 - ERROR - Database connection not available: Connection test failed
+2025-05-12 01:37:10,382 - INFO - ChEMBL cache initialized at cache/chembl
+2025-05-12 01:37:10,383 - INFO - AdaptiveRateLimiter initialized (weekday: 0.33s, weekend: 0.22s, memory threshold: 80.0%)
+2025-05-12 01:37:10,383 - INFO - CircuitBreaker 'chembl_api' initialized (threshold: 3, timeout: 60s)
+2025-05-12 01:37:10,383 - INFO - ResilientChEMBLClient initialized
+2025-05-12 01:37:10,383 - INFO - Using real ChEMBL client
+2025-05-12 01:37:10,383 - INFO - Starting ChEMBL to Supabase pipeline test with 25 molecules
+Traceback (most recent call last):
+  File "/home/mushu/Projects/CryoProtect/./test_chembl_to_supabase_pipeline.py", line 622, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/home/mushu/Projects/CryoProtect/./test_chembl_to_supabase_pipeline.py", line 613, in main
+    success = pipeline.run_pipeline_test()
+  File "/home/mushu/Projects/CryoProtect/./test_chembl_to_supabase_pipeline.py", line 510, in run_pipeline_test
+    logger.info(f"Database connection: {'Available' if self.db else 'Not available'}")
+                                                       ^^^^^^^
+AttributeError: 'ChEMBLToSupabasePipeline' object has no attribute 'db'

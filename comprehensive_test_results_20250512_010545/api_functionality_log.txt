@@ -1,0 +1,19 @@
+2025-05-12 01:05:47,061 - ERROR - Failed to get test molecule IDs: Expecting value: line 1 column 1 (char 0)
+test_01_endpoints_accessible (__main__.ToxicityOptimizationTest.test_01_endpoints_accessible)
+Test that all optimized endpoints are accessible. ... ok
+test_02_data_integrity (__main__.ToxicityOptimizationTest.test_02_data_integrity)
+Test data integrity between original and optimized endpoints. ... skipped 'No toxicity data for molecule 00000000-0000-0000-0000-000000000000'
+test_03_caching_mechanism (__main__.ToxicityOptimizationTest.test_03_caching_mechanism)
+Test ETag caching mechanism. ... 2025-05-12 01:05:47,077 - INFO - No data found for http://localhost:5000/api/toxicity/summary/molecule/00000000-0000-0000-0000-000000000000, skipping cache test
+2025-05-12 01:05:47,078 - INFO - No data found for http://localhost:5000/api/toxicity/ld50/molecule/00000000-0000-0000-0000-000000000000, skipping cache test
+2025-05-12 01:05:47,080 - INFO - No data found for http://localhost:5000/api/toxicity/scores/molecule/00000000-0000-0000-0000-000000000000, skipping cache test
+ok
+test_04_bulk_endpoint (__main__.ToxicityOptimizationTest.test_04_bulk_endpoint)
+Test bulk toxicity endpoint. ... skipped 'Not enough test molecule IDs for bulk test'
+test_05_performance_comparison (__main__.ToxicityOptimizationTest.test_05_performance_comparison)
+Compare performance between original and optimized endpoints. ... skipped 'No successful requests for performance comparison'
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.024s
+
+OK (skipped=3)

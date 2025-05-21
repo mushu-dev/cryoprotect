@@ -1,5 +1,5 @@
 #!/bin/bash
-# Script to deploy the frontend to Netlify with environment variables
+# Script to deploy the frontend to Netlify with environment variables and analytics
 
 # Generate a random NEXTAUTH_SECRET if not provided
 NEXTAUTH_SECRET=${NEXTAUTH_SECRET:-$(openssl rand -base64 32)}
@@ -26,12 +26,21 @@ echo "Protection Bypass: Configured"
 echo "Updating API endpoints in code..."
 npm run update-api-endpoints
 
+# Validate the Netlify build configuration
+echo "Validating Netlify build configuration..."
+npm run validate-netlify
+if [ $? -ne 0 ]; then
+  echo "Netlify build validation failed. Aborting deployment."
+  exit 1
+fi
+
 # Set environment variables in Netlify
 echo "Setting environment variables in Netlify..."
 netlify env:set NEXT_PUBLIC_API_URL "$API_URL"
 netlify env:set NEXT_PUBLIC_USE_MOCK_DATA false
 netlify env:set NEXT_PUBLIC_ENABLE_API_LOGGING true
 netlify env:set NEXT_PUBLIC_ENVIRONMENT production
+netlify env:set NEXT_PUBLIC_NETLIFY true
 netlify env:set NEXT_PUBLIC_FRONTEND_PROTECTION_BYPASS "$PROTECTION_BYPASS"
 netlify env:set NEXTAUTH_URL "$FRONTEND_URL"
 netlify env:set NEXTAUTH_SECRET "$NEXTAUTH_SECRET"
@@ -51,7 +60,7 @@ if [ $? -eq 0 ]; then
   
   # Verify the deployment
   echo "Verifying the deployment..."
-  NETLIFY_URL="$FRONTEND_URL" NEXT_PUBLIC_API_URL="$API_URL" npm run verify-netlify
+  NETLIFY_URL="$FRONTEND_URL" NEXT_PUBLIC_API_URL="$API_URL" npm run verify-deployment
   
   echo "Notifying Heroku backend about frontend URL..."
   
@@ -71,6 +80,10 @@ if [ $? -eq 0 ]; then
   fi
   
   echo "Deployment complete! Your app is now live at: $FRONTEND_URL"
+    echo "
+IMPORTANT: Don't forget to enable Netlify Analytics!"
+    echo "Go to: https://app.netlify.com/sites/${NETLIFY_SITE_NAME}/analytics"
+    echo "Analytics data will take up to 24 hours to appear."
 else
   echo "Netlify deployment failed."
 fi

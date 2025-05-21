@@ -1,0 +1,111 @@
+# Enhanced RDKit Environment for CryoProtect
+FROM fedora:latest
+
+LABEL maintainer="CryoProtect Team"
+LABEL description="Enhanced RDKit environment with 3D modeling capabilities"
+LABEL version="1.0.0"
+
+# Install system dependencies
+RUN dnf update -y && \
+    dnf install -y \
+        python3-devel \
+        python3-pip \
+        cmake \
+        gcc \
+        gcc-c++ \
+        boost-devel \
+        boost-python3-devel \
+        eigen3-devel \
+        cairo-devel \
+        libX11-devel \
+        libXt-devel \
+        libSM-devel \
+        libICE-devel \
+        freetype-devel \
+        numpy \
+        boost \
+        cairo \
+        wget \
+        git \
+        make \
+        swig \
+        zlib-devel \
+        bzip2-devel \
+        sqlite-devel \
+        openssl-devel \
+        tk-devel \
+        libffi-devel \
+        curl \
+        postgresql-devel \
+        postgresql-server-devel \
+        postgresql-contrib && \
+    dnf clean all
+
+# Set working directory
+WORKDIR /app
+
+# Copy requirements file
+COPY requirements_rdkit_enhanced.txt .
+
+# Install Python dependencies (basic)
+RUN pip3 install --no-cache-dir -U pip && \
+    pip3 install --no-cache-dir -r requirements_rdkit_enhanced.txt
+
+# Build and install RDKit from source (for advanced capabilities)
+RUN mkdir -p /rdkit_build && \
+    cd /rdkit_build && \
+    wget https://github.com/rdkit/rdkit/archive/Release_2023_09_1.tar.gz && \
+    tar -xzf Release_2023_09_1.tar.gz && \
+    mkdir -p /rdkit_build/rdkit-Release_2023_09_1/build && \
+    cd /rdkit_build/rdkit-Release_2023_09_1/build && \
+    cmake -DRDK_BUILD_PYTHON_WRAPPERS=ON \
+          -DRDK_BUILD_CAIRO_SUPPORT=ON \
+          -DRDK_BUILD_INCHI_SUPPORT=ON \
+          -DRDK_BUILD_AVALON_SUPPORT=ON \
+          -DRDK_BUILD_PGSQL=ON \
+          -DRDK_BUILD_FREESASA_SUPPORT=ON \
+          -DRDK_BUILD_YAEHMOP_SUPPORT=ON \
+          -DRDK_BUILD_COORDGEN_SUPPORT=ON \
+          -DRDK_BUILD_MOLINTERCHANGE_SUPPORT=ON \
+          -DRDK_USE_URF=ON \
+          -DPython_EXECUTABLE=/usr/bin/python3 \
+          -DCMAKE_INSTALL_PREFIX=/usr \
+          .. && \
+    make -j $(nproc) && \
+    make install && \
+    cd / && \
+    rm -rf /rdkit_build
+
+# Environment variables
+ENV PYTHONPATH=$PYTHONPATH:/usr/lib/python3.11/site-packages/
+ENV RDBASE=/usr/lib/python3.11/site-packages/rdkit
+
+# Install additional scientific and ML packages
+RUN pip3 install --no-cache-dir \
+    scikit-learn \
+    tensorflow \
+    mordred \
+    pybel \
+    descriptastorus \
+    deepchem \
+    molsets \
+    pmapper \
+    dgl \
+    torch \
+    torch-geometric \
+    morfeus-ml
+
+# Copy application code
+COPY . /app
+
+# Create necessary directories
+RUN mkdir -p /app/data/conformers /app/cache /app/logs
+
+# Set up database connection (if needed)
+ENV CRYOPROTECT_DATABASE_URL=postgresql://localhost:5432/cryoprotect
+
+# Expose port
+EXPOSE 5000
+
+# Run gunicorn in production
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "4", "--timeout", "120", "rdkit_enhanced_service:app"]

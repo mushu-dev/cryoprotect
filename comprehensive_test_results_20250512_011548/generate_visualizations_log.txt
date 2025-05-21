@@ -1,0 +1,5 @@
+2025-05-12 01:15:53,598 - INFO - Import rate chart saved to comprehensive_test_results_20250512_011548/visualizations/chembl_import_rate.png
+2025-05-12 01:15:53,661 - INFO - Success rate chart saved to comprehensive_test_results_20250512_011548/visualizations/chembl_import_success_rate.png
+2025-05-12 01:15:53,742 - INFO - Progress chart saved to comprehensive_test_results_20250512_011548/visualizations/chembl_import_progress.png
+2025-05-12 01:15:54,116 - INFO - Summary chart saved to comprehensive_test_results_20250512_011548/visualizations/chembl_import_summary.png
+2025-05-12 01:15:54,117 - INFO - All visualizations saved to comprehensive_test_results_20250512_011548/visualizations

@@ -1,0 +1,30 @@
+{
+  "fix_properties": {
+    "fixed": 20,
+    "failed": 0,
+    "errors": []
+  },
+  "fix_jsonb": {
+    "fixed": 13,
+    "failed": 0,
+    "errors": []
+  },
+  "fix_pubchem": {
+    "fixed": 0,
+    "failed": 7,
+    "errors": [
+      "Error for DMSO: relation \"molecule_cross_references\" does not exist\nLINE 2:                         INSERT INTO molecule_cross_reference...\n                                            ^\n",
+      "Error for Ethylene glycol: relation \"molecule_cross_references\" does not exist\nLINE 2:                         INSERT INTO molecule_cross_reference...\n                                            ^\n",
+      "Error for Glycerol: relation \"molecule_cross_references\" does not exist\nLINE 2:                         INSERT INTO molecule_cross_reference...\n                                            ^\n",
+      "Error for Glycine: relation \"molecule_cross_references\" does not exist\nLINE 2:                         INSERT INTO molecule_cross_reference...\n                                            ^\n",
+      "Error for Propylene glycol: relation \"molecule_cross_references\" does not exist\nLINE 2:                         INSERT INTO molecule_cross_reference...\n                                            ^\n",
+      "Missing InChIKey for TEST_MCP Test Molecule (ID: c170e735-e6e9-4591-9e81-c653869083ef)",
+      "Could not resolve PubChem CID for Trehalose (ID: 0a0fe74e-c001-454d-97d6-b1f859b25fb2)"
+    ]
+  },
+  "fix_inchikey": {
+    "fixed": 1,
+    "failed": 0,
+    "errors": []
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "version": 2,
+  "public": true,
+  "github": {
+    "enabled": false
+  },
+  "installCommand": "echo 'Skipping install'",
+  "buildCommand": "echo 'Skipping build'",
+  "outputDirectory": ".",
+  "framework": null,
+  "functions": {
+    "api/index.py": {
+      "memory": 256,
+      "maxDuration": 10
+    },
+    "api/app.py": {
+      "memory": 128,
+      "maxDuration": 5
+    }
+  },
+  "routes": [
+    { 
+      "src": "/api/v1/(.*)", 
+      "dest": "/api/index.py",
+      "headers": {
+        "Access-Control-Allow-Origin": "*"
+      }
+    },
+    { 
+      "src": "/static/(.*)", 
+      "dest": "/static/",
+      "headers": {
+        "cache-control": "public, max-age=86400"
+      }
+    },
+    { 
+      "src": "/(.*)", 
+      "dest": "/api/app.py"
+    }
+  ],
+  "regions": ["iad1"],
+  "env": {
+    "VERCEL_PROTECTION_BYPASS": "1"
+  }
+}

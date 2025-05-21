@@ -1,0 +1,74 @@
+{
+  "total": 11,
+  "needed_updates": 11,
+  "updated": 11,
+  "results": [
+    {
+      "molecule_id": "c170e735-e6e9-4591-9e81-c653869083ef",
+      "name": "MCP Test Molecule",
+      "new_name": "TEST_MCP Test Molecule",
+      "status": "updated"
+    },
+    {
+      "molecule_id": "951bae65-a400-4dec-b80c-efcf0f3bd707",
+      "name": "MCP Test Molecule",
+      "new_name": "TEST_MCP Test Molecule",
+      "status": "updated"
+    },
+    {
+      "molecule_id": "7c4a3cfb-a22e-4905-ba56-f73cf2108da0",
+      "name": "TestMol1",
+      "new_name": "TEST_TestMol1",
+      "status": "updated"
+    },
+    {
+      "molecule_id": "3dcbab1e-89de-4199-8d8e-172a16a51f1c",
+      "name": "TestMol1",
+      "new_name": "TEST_TestMol1",
+      "status": "updated"
+    },
+    {
+      "molecule_id": "e6b732c7-60e5-40a3-9117-fe383e3ca317",
+      "name": "TestMol2",
+      "new_name": "TEST_TestMol2",
+      "status": "updated"
+    },
+    {
+      "molecule_id": "0c749340-38a1-44e3-80b3-49065a6df118",
+      "name": "TestMol3",
+      "new_name": "TEST_TestMol3",
+      "status": "updated"
+    },
+    {
+      "molecule_id": "3d1f22dc-d7be-4d04-928b-2024349410d9",
+      "name": "TestMol4",
+      "new_name": "TEST_TestMol4",
+      "status": "updated"
+    },
+    {
+      "molecule_id": "ec8054d3-7813-4f22-9879-976e1e6b12ab",
+      "name": "Test Molecule 1",
+      "new_name": "TEST_Test Molecule 1",
+      "status": "updated"
+    },
+    {
+      "molecule_id": "f68cf7d8-16de-42e1-a07c-1e68f850157d",
+      "name": "Test Molecule 2",
+      "new_name": "TEST_Test Molecule 2",
+      "status": "updated"
+    },
+    {
+      "molecule_id": "85cbc7b5-21ff-405e-b4c8-f1d39eee737f",
+      "name": "Test Molecule (Fix Verification)",
+      "new_name": "TEST_Test Molecule (Fix Verification)",
+      "status": "updated"
+    },
+    {
+      "molecule_id": "e89feb81-4e24-493a-a939-994482441179",
+      "name": "Test Molecule (Python Script)",
+      "new_name": "TEST_Test Molecule (Python Script)",
+      "status": "updated"
+    }
+  ],
+  "dry_run": false
+}

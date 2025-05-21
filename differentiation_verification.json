@@ -1,0 +1,2282 @@
+{
+  "timestamp": "2025-05-12T16:02:57.143160",
+  "groups_verified": 4,
+  "groups_total": 4,
+  "molecules_differentiated": 248,
+  "issues": [],
+  "groups": {
+    "1d968532-913b-4744-b67a-65ee497767a8": {
+      "molecule_count": 5,
+      "molecules": [
+        {
+          "id": "c97ff8ca-8b15-4ceb-8125-22379697a0e8",
+          "name": "(2R,3R,4S,5S,6R)-2-[(2S,3S,4S,5R)-3,4-dihydroxy-2,5-bis(hydroxymethyl)oxolan-2-yl]oxy-6-(hydroxymethyl)oxane-3,4,5-triol",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "formula": "C12H22O11",
+            "differentiation_group": "1d968532-913b-4744-b67a-65ee497767a8",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "f9e64f2e-00cb-4277-b282-e382aa80dbb8",
+          "name": "(2R,3S,4S,5R,6R)-2-(hydroxymethyl)-6-[(2R,3R,4S,5S,6R)-3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]oxyoxane-3,4,5-triol",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "formula": "C12H22O11",
+            "differentiation_group": "1d968532-913b-4744-b67a-65ee497767a8",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "5384528c-8005-47a2-a618-a99137d46a3d",
+          "name": "Sucrose",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "formula": "C12H22O11",
+            "differentiation_group": "1d968532-913b-4744-b67a-65ee497767a8",
+            "differentiating_properties": {
+              "text": "OSMOTIC_BUFFER",
+              "float": "-3.7"
+            },
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "e61af0a8-4a5d-7e6f-1a6a-f2c3a8a9a0d1",
+          "name": "Trehalose",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "formula": "C12H22O11",
+            "differentiation_group": "1d968532-913b-4744-b67a-65ee497767a8",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "0a0fe74e-c001-454d-97d6-b1f859b25fb2",
+          "name": "Trehalose",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "formula": "C12H22O11",
+            "differentiation_group": "1d968532-913b-4744-b67a-65ee497767a8",
+            "has_structural_differences": true
+          }
+        }
+      ],
+      "successfully_differentiated": true
+    },
+    "476326ba-5597-442b-b21b-b5a92b82ec65": {
+      "molecule_count": 2,
+      "molecules": [
+        {
+          "id": "f953cdd4-d260-42f4-b531-50144a93e7fc",
+          "name": "2,3,4,5-tetrahydroxy-6-[3,4,5-trihydroxy-6-[[3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]oxymethyl]oxan-2-yl]oxyhexanal",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "formula": "C18H32O16",
+            "differentiation_group": "476326ba-5597-442b-b21b-b5a92b82ec65",
+            "differentiating_properties": {
+              "text": "UNKNOWN"
+            },
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "71ca5042-9d26-4254-9ed5-0e718a6c077f",
+          "name": "(2S,3R,4S,5R,6R)-2-[[(2R,3S,4S,5R,6R)-6-[(2S,3S,4S,5R)-3,4-dihydroxy-2,5-bis(hydroxymethyl)oxolan-2-yl]oxy-3,4,5-trihydroxyoxan-2-yl]methoxy]-6-(hydroxymethyl)oxane-3,4,5-triol",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "formula": "C18H32O16",
+            "differentiation_group": "476326ba-5597-442b-b21b-b5a92b82ec65",
+            "has_structural_differences": true
+          }
+        }
+      ],
+      "successfully_differentiated": true
+    },
+    "76397481-971c-41b5-a695-82072235de5b": {
+      "molecule_count": 3,
+      "molecules": [
+        {
+          "id": "e9c16d8f-a691-4c42-bb36-8afe9f69775a",
+          "name": "2-azaniumylpentanedioate",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "formula": "C5H8NO4-",
+            "differentiation_group": "76397481-971c-41b5-a695-82072235de5b",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "76f32e25-9856-4172-9c7a-7b93b563d3c4",
+          "name": "(2R)-2-amino-5-hydroxy-5-oxopentanoate",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "formula": "C5H8NO4-",
+            "differentiation_group": "76397481-971c-41b5-a695-82072235de5b",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "ce2ea651-5474-4fa1-8b92-fb22e41729b4",
+          "name": "(2S)-2-amino-5-hydroxy-5-oxopentanoate",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "formula": "C5H8NO4-",
+            "differentiation_group": "76397481-971c-41b5-a695-82072235de5b",
+            "has_structural_differences": true
+          }
+        }
+      ],
+      "successfully_differentiated": true
+    },
+    "b278ce51-6575-46f2-ae4e-79369475cc8d": {
+      "molecule_count": 238,
+      "molecules": [
+        {
+          "id": "385b150f-ca9a-4ec0-9a60-fc114b178ca4",
+          "name": "1,6-dimethoxy-3-methyl-3H-indol-2-one",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "1a353afb-4d3e-4347-ae6f-b1fd711e8f7d",
+          "name": "1-O-tert-butyl 2-O-methyl 4-acetyloxy-3,4-dihydro-2H-pyridine-1,2-dicarboxylate",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "4fb1effa-0d6a-418f-8b41-80c94bd66105",
+          "name": "(1S,2S,5R,6R)-9-nitroso-2,3,4,5-tetrakis(trifluoromethyl)-9-azatricyclo[4.2.1.02,5]nona-3,7-diene",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "44d64958-4f93-4122-b6f5-04b50e3e9ef4",
+          "name": "2-chloro-3-[(1R)-1-phenylethyl]-1,3,2lambda5-oxazaphosphinane 2-oxide",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "d97e6251-703a-4bbe-b711-42ab887b0740",
+          "name": "(2R)-N-(5-chloropyridin-2-yl)-2-(3,4-dimethylphenyl)sulfanylpropanamide",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "7637d51f-10f1-49be-bdc1-197d0ba4a364",
+          "name": "(2S)-2-[(2R,3R,4S,4aS,5S,6S,8aS)-3-(methoxymethoxymethyl)-6-methyl-4,5,6-tris(phenylmethoxy)-3,4,4a,5,7,8a-hexahydro-2H-pyrano[2,3-b]pyran-2-yl]propan-1-ol",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "15c75c1a-ff45-4a2f-8900-e727621f250d",
+          "name": "(2S)-2-amino-N-[5-(4-fluorophenyl)-1,3,4-thiadiazol-2-yl]-3-phenylpropanamide",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "0a676ece-5633-452d-8cc2-666640209fb5",
+          "name": "(2Z)-2-(cyclopenta-1,3-dien-1-ylmethylidene)-1-azabicyclo[2.2.2]octan-3-one",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "716a2f71-9845-4037-9a28-6d5f1320b42b",
+          "name": "3-(3,4-dimethoxyphenyl)-4-hydroxy-8-[[(3R)-3-methylpiperidin-1-yl]methyl]-2-(trifluoromethyl)chromen-7-one",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "f24242de-9616-4e81-9b3c-e5fc18a51f28",
+          "name": "3-chloro-1-cyclohexyl-4-[[(1R)-1-phenylethyl]amino]pyrrole-2,5-dione",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "449a9f61-93b7-4670-aecc-8761db1294ca",
+          "name": "3-phenyl-5-[2-(2-piperidin-1-ylethyl)piperidin-1-yl]-1,2-oxazole",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "0cf005ec-98f6-43e6-87fd-024a7c3d22d9",
+          "name": "(4-nitrophenyl)methyl N-[4-[2-(diaminomethylidene)hydrazinyl]phenyl]iminocarbamimidothioate",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "8b894fdf-7cfb-4024-86bf-f0fe54f7103e",
+          "name": "6-hydroxy-5-[(3-methoxy-4-oxocyclohexa-2,5-dien-1-ylidene)methyl]-1-(4-methylpentyl)pyrimidine-2,4-dione",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "69e62b55-dbe3-4322-843d-7d400797ddff",
+          "name": "(6S)-6-[2-(3,4-dimethoxyphenyl)-2-oxoethyl]-1-[(2S)-2-propan-2-ylpyrrolidin-1-yl]piperidin-2-one",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "bb81d998-d954-4552-8917-d5ea17ea9d3a",
+          "name": "ethyl 2-[4-[(7-methyl-1,2,4-benzotriazin-3-yl)amino]phenoxy]propanoate",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "ab49d6ab-e4ae-43eb-b14b-ffe07a209eb8",
+          "name": "N-[4-[5-(4-aminophenyl)-1,3,4-oxadiazol-2-yl]phenyl]benzenesulfonamide",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "6daf6d77-cb96-4a62-b38d-1286dc69c324",
+          "name": "N-[(4aR,6S,8S,8aS)-6-methoxy-7,7-dimethyl-2-phenyl-4a,6,8,8a-tetrahydro-4H-pyrano[3,2-d][1,3]dioxin-8-yl]-2,2,2-trifluoroacetamide",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "844e3cc8-90d4-4016-b801-789b449fb70b",
+          "name": "N-[(E)-[1-[(2,6-dichlorophenyl)methyl]-3,5-dimethylpyrazol-4-yl]methylideneamino]benzamide",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "cf51c5dd-ace7-433f-b757-5091f7bcb450",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "9bd1c31d-ee4c-4874-8dea-e71d7a87de0b",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "55d3335e-5146-43f5-b6b9-ad61c63bf7ce",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "f70e9d68-f150-4ee0-94f2-6b68b0e6f86c",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "eadf1ab0-239d-4270-8e44-b9fde6fcab91",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "1f0e0cec-9fdb-427a-a19d-815bc8a8b7f7",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "437eb0c9-2d82-4e04-9925-bbca301e8793",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "794868a9-8d84-4a67-a762-51880c7e3acc",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "8f3399ae-0ed9-4e36-8dfe-1e80b2d4da2c",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "2adaa469-f7e3-4d68-972d-98827e6e22c7",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "75e3c00e-e178-4e8f-816d-03fbcf40813d",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "0912d73f-ab41-49b5-a0a8-73cd708692db",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "031e0bd0-53fd-4bab-b871-28b8e8fa54c6",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "cebe18ec-4dcd-429d-b77a-2ca7aaee9360",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "e68358d4-0603-4b71-9996-f3182a316fb2",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "64d72a17-f537-421b-99b0-6d61cd85b46d",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "c0baae4a-c3a7-4757-b23e-e934ec4e7022",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "a3afaff2-c04b-4938-98b3-cc03f5e65952",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "861abf8e-f1bf-48b3-8d03-bfd7bfe2ddd7",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "e080251c-6a02-4b65-bf08-ffd1779177cd",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "60bea53c-633f-4b0a-81a6-480a6b185c57",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "e9a42186-e057-43bf-bca3-a692d196dd8e",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "136fb222-c2de-48c6-987c-f18f88c89731",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "39f6214c-034e-4185-8ef7-02aa8a41ce17",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "06b462f2-2f42-4204-9deb-4290fbfb2a15",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "c98990bb-2c0b-4491-8823-af919fa90a9a",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "e0da7822-efcf-4abe-8516-8f487620a907",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "bbb056ca-eb64-41de-88ff-4c87d9b1136d",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "141e9224-a9e6-42d4-ba28-554ab575ad79",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "083c98ec-bced-487f-a42d-e18a59295e37",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "ed4e855a-78c3-4a21-ba5d-7d508bd9eea1",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "036107b3-77cf-42a7-9922-fc1202c957e5",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "f1f00140-8abd-4bd8-9f8b-7c3a350db40a",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "5f26338b-db4e-40df-90fc-66548b170d3f",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "2c06ebfb-a377-4f8e-9271-620ccb82a752",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "11cc3a7e-2840-489e-ad84-03e693fadb03",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "35d97d2d-8c7a-477f-8b16-813f1773fd2e",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "7963d26f-3fa2-4aeb-b2dd-5cf9506f59a2",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "0dc507b9-3662-4032-a626-4d60c6379219",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "b682bcfa-76aa-46f3-bcc0-db2bfa85e687",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "8d5c1086-b511-439f-8604-6814d257d2f4",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "77336da9-36c4-4c94-9528-bb2feb4aa846",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "3af5b96b-b037-4336-a025-b2e37134c58a",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "f1760713-9448-4938-aa21-9c76021d7529",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "731477d6-e8dd-4f8c-a2c5-ac85a2962418",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "5bd8feaa-4db0-4e89-8c82-600f4cfcef84",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "d825cefb-2c7a-4030-ae30-6ff06cc454a5",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "59f2691d-19f8-4464-8d94-a9bf3ee2056b",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "27e0f2e1-f0d7-48ce-9f43-26efada9300d",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "a558c1b4-c6aa-4b81-a9d5-c7afd05b103e",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "b3ab0da0-fc23-4215-9ab3-54d58426fa0a",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "5fced389-c37a-4411-86d5-a920e850f69d",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "dbd744ce-5b30-4e72-84b5-80afdd55e2a9",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "755deaba-ad2e-45c0-af90-f6b88f96066f",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "10745e75-fd5d-47bb-8d27-85a423fe0c85",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "8fa28b2e-7a66-49e6-895e-f381cb4c3796",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "f6213486-2503-4c60-bdfc-fb0d7bb4598c",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "f84e3c1c-3c6a-4418-a6c4-85fed66d183f",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "49295286-ee0b-4ea5-85e8-7178786a62ae",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "b69de622-36df-4446-881a-b2afe6fb2c8f",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "6dac62cf-d562-4d55-b65a-207e2a252f5c",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "d2296ff9-1680-42a3-904c-8ba979734897",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "a6b40ffd-7ccd-4662-8799-3d579aa29741",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "87028199-079a-48c9-bcf4-12d9a3a326f3",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "be218f52-07a1-4435-8413-6aeed4644183",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "a4c7e4a8-ea18-482f-bb6d-270a98b058b3",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "6e261af7-e9b4-4813-a640-98508d0ba5db",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "27d88f18-e66d-4495-be1e-12f8e7cb504e",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "6d292fa6-2fa2-4ce6-bdc1-c12514107573",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "22142c87-794f-4041-9bb9-ddef3bb880e1",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "a64ca389-c1d0-4525-9a2d-f80ae7386d9a",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "b242844b-973a-4001-b7ec-053f33096296",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "f34684bf-425f-492f-aa2a-9d0e858a3f9f",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "385496de-4783-49e3-8de5-6dae95432d1a",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "3bbd6ea5-6945-4cb2-badb-4182e77159ca",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "edb0a435-5af5-40ba-ba07-cc14d1b3f03d",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "f3ffb43b-4f38-477a-b254-5e74e10c136f",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "33a9a9cc-ad62-4af2-9627-593e62d8337a",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "ec963f1e-6d6a-413d-945d-8197740c2694",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "7b85fb8b-6d51-4f77-9a9d-06da98342bda",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "882a5eb0-2b2d-4334-b589-d3bccf3ca91b",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "b918ab23-b701-4705-a11c-fa06c05d6379",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "894b6f55-e4d3-4b6f-9b6c-10a6d8adbf18",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "7afc4166-f009-4c3a-b4e2-6fa6f9b0e8f2",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "384914ac-4722-4fd9-98d0-1060a77a0f2b",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "933c1635-4bdd-4956-92df-d2a830842d72",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "e4f03db6-8845-460e-abbd-d6c947ac37df",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "0b5eb295-5d0e-4847-a45d-ccaf3f4b6916",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "53fe5082-443e-407c-8a1f-560802c22d89",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "3244aff1-95a8-4352-bf07-1d4aebc50dbe",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "73aab11d-3788-4802-8425-606c7d7e1d9d",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "5ae4c2cb-60d3-44f5-9809-092801e33afd",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "9922c1b3-e033-4d25-b1ec-5fa5bfd9d79f",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "3085fd68-16f6-4d8c-b622-977be0e361a5",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "e4a13abf-b5b7-4cdb-a578-8588b3a1e8ff",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "bf064317-6571-46d3-bb4b-042822f70d56",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "a62785c2-5584-4331-aacc-b42fb03cb885",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "5229c3e9-ada7-4d4d-9566-e9fa77014a94",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "591a8d1a-5c34-4ac9-9bf7-ed5812b0d923",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "47bd66e2-1fef-4c42-b3d2-349eee8a93b6",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "9b2b627e-b6a4-4d1c-b2f6-7da0303a0071",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "c2d511ae-9fa4-43b6-9160-e7bff23a4a04",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "4146aab9-91ac-4776-a31d-39ef4551e10f",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "e45b913a-57e2-4277-9935-ec1c45f418b4",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "adb95f16-1b4e-4402-9fa5-c00138c07109",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "5af66419-b11b-40e9-8ce1-475b1bf433a9",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "e2a57156-7539-4b7b-8602-807ad098650e",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "94b9948f-2501-4fbf-b1fb-cd0d9b3c2e89",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "470e015a-e314-4a78-aeb8-33a656cfd950",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "42f799a0-6130-492f-afa1-d0a2da4d5665",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "ac09fddc-ccf9-4fef-bff8-614834d8387d",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "580afdf0-dd3e-4662-8a31-1052f966a71a",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "b5778a45-290c-45e6-aca6-9c5ba6e8b0ac",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "95be50ad-f751-4fa5-97c3-28fc4bd2abd8",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "bb002a86-0b52-4d0d-915d-0bf7038667a7",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "689977a9-b557-4bb6-b4db-22affecdac2e",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "05aac6da-f0df-47f9-b0a4-33154b9dc43c",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "d39cf83f-de7c-4152-947b-fb4f2241afd9",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "9a46aeca-4d4a-4310-a2a5-bb3532239ddc",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "d0f54402-7395-414b-94d5-0682c53bd722",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "6b228cdc-69d8-4603-8324-7349ce8c0512",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "3c0d8632-d6be-41e4-a99d-ba7572e98665",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "e75d06ca-4c03-414d-9534-ec4a95c49a4d",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "2fa5adb3-21ef-4cde-a876-9359cb7d3615",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "da51793d-8dac-4133-83e3-e65273bca833",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "a2bb9916-f493-44df-b506-9b540d5b633a",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "f3f593e8-0b38-498b-b00b-0fd192575a17",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "3b575a33-ea58-4678-8e80-fbab4304ade2",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "ae1343d3-8c9b-4cac-ac7d-1cbdedee56b9",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "a5dd3f43-ee39-4b3a-a311-4d9327f89cff",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "b19bc6a2-822c-48cf-9b97-e6ad01f2870e",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "b0cf04af-67a5-4ad2-85a6-1f80bb39c0d6",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "a78dbd56-8089-4f56-b1e1-50509ffc2e0a",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "d6e5e720-a2f9-494a-aa52-838e1faa96e5",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "19228129-7a40-461f-acbf-2098497bd92e",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "a2a507ff-6893-4097-a6d9-760cd117d390",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "4db246e8-f035-4f82-9ec9-6a2221bf9e8a",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "7426d490-ccf1-42c0-affb-551ef1cfd5ae",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "11e57ab2-548c-432b-a150-e559c9a5a732",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "1bd6297d-4a2d-4260-a941-78269d3e347c",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "3e100362-7c4c-4675-932b-6ef1f5de1949",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "25a2a480-3310-49ac-8ba0-1a6e5bc65a27",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "f3a3ab58-ed6b-4dd9-b818-1dceb9393364",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "dfb6456e-bdcf-4f8a-b703-424f0dc00864",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "f6fc4ac7-d7eb-4815-9606-700c53aeb48b",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "c70c6d49-c571-4a16-bba7-17f6aa0af8e7",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "061373cd-f153-4c8a-9003-d5ddf3b1169c",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "ee8af511-9cb2-4528-bd15-5d6bfc3f1a84",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "5e6282b7-7110-431c-bf24-4662b1bd3862",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "318acaa9-d8d1-4797-957b-70867d6adbc8",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "a8c84994-24c5-40b8-984a-08cc751048bd",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "554aa785-016a-4c0b-967b-974894a709b8",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "cd41d383-90b7-45ce-b5bb-f533b0c45808",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "9c02ff54-c311-47e2-8cc8-564d7d00ea07",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "fea0c73c-b047-4b3b-88bc-3e5f3443f955",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "95a32927-1997-40cc-8bab-c64d96af7665",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "295c94b6-355e-4cd4-aaac-8a4b2cbd9957",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "5eeaf42b-4aa7-4c71-a8ec-e26d8c798fa1",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "dd4c1f0d-9ebc-4480-8e64-2999feeb34ae",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "e1a220f9-9eba-4980-b90e-061ca88a5128",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "2b223887-bf94-48f4-b801-467f0301aa51",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "b3895d34-045b-449a-b117-d34f15454892",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "950b6c60-5221-45a9-8623-42b77a3fbe73",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "814bafb4-b189-4e7b-a5da-90a52d94bac0",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "f62d630c-b405-4bbf-a30b-026185971ee0",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "098edfba-181f-4d0c-af2b-5771361c4fec",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "0925db4f-2fb4-476b-978f-8fa5069a2ba7",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "fc384024-2e47-4c6b-ae7c-1b0d41c2bc42",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "e7c4f8ce-1654-4fc2-b15b-a04f5c4c8a3a",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "be2a9fa4-7d6e-4a00-9a7b-163d6fdc20ef",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "a4da50db-f5c1-48a5-9f0b-c94b7516fcce",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "01c6af65-ce56-44f6-9a00-8b2c1f23821f",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "22e14e74-03c0-41c5-a703-29a43014989c",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "9f0b4c4b-423e-4e3c-87b1-4153a5d51fe2",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "f0840a2d-5b6b-4ac2-aeb6-1d1dd0e5032f",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "dde4149d-134c-4f44-8202-a0d55aa38516",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "e316efe8-3eac-4edd-95df-e84a7b8b1933",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "c72815e6-38e4-4a96-94b7-e37dad241e71",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "5f87fbf4-4c42-4028-b42a-43bc40f5a5ab",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "6706841c-3860-4a58-87b2-33131cd5825d",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "df64951b-113f-4874-8009-473b92066b5d",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "2506bb54-51aa-45df-9e4f-dfbfcfeeb8cb",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "74d6f5b4-2136-4300-849d-89cb7406713d",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "541d2378-ec02-48e5-a9ce-b2be30074406",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "978bfaa1-2ec6-4e5f-a5b7-a41b5f88d21d",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "de609ee7-c547-4a10-aaa5-1b01458700da",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "a3f0e4c0-4b70-40c7-be37-08ef49a62fce",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "dfe5d5c4-c3ce-462d-8a22-69beede1e026",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "3c3e3209-02d6-4a3b-8e72-43bb22a637d2",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "2d9af314-2adf-4ba3-913a-72afc0069035",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "eeb79925-d1d2-4d18-8ce5-7df6cc86f1e8",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "2f5e5220-4822-41e2-8890-555595944834",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "bff2bbf6-b4e1-4695-a239-4b492717aadd",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "c4f1b029-0cee-4602-97c9-bf0f3ed960b5",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "7919ca7e-fd1c-43a7-81e3-2b1c217226d5",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "314eb421-dbf6-4333-b5c1-a490df727b06",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "3989e337-41af-46a8-a72d-5da345e8fe4a",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "424cee51-b1c0-47e9-897e-402796b8af9c",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "5e4efebe-e529-4254-86da-768bfe2777f5",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "a3d06460-6977-4eaf-a92f-26113eb63c34",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "a001ab2e-84d0-4c95-866b-a952667c45c7",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "dc802521-d471-4490-8838-9e9aa1ea2c0c",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "0f995be2-119f-43a5-84f8-aba55a5ac8d6",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "21f4857b-ca42-429f-82fe-a6db0c1efbf4",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "03dd580d-38d0-47f3-978e-ae5ad0cb0f6c",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "c83df001-b38e-4f9c-8f59-474375aad564",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "6b31f2e6-6499-442c-8964-b5d9ca04d71d",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "2fafb684-0b76-4997-81a4-2d5577e98126",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "b78f9a91-34c4-4820-8159-792759e73a79",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "98e85124-d999-4891-844e-07fda8f84b22",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "dd25a714-f5de-463b-a61d-573b08c1ce66",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "83308dee-5b13-4d4a-b45f-c67a2ffec995",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "36a11df7-4c53-4666-abc6-57cfabacbea9",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "429609e4-e269-44bd-9faf-c1c202df9ea5",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "6ae93610-47ab-4e1d-ac6c-55173595af7b",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "4598284d-cf8d-4ea8-bc0d-d7edf78a5940",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "b182f3e1-d495-4cb7-83c3-993770970dac",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "f0b4476a-a673-4b6c-bf4b-c94e7e2addc6",
+          "name": "None",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "565d1d92-8062-4382-9a1d-5da8e781d0b5",
+          "name": "prop-2-enyl (3S,4R)-5-cyano-6-[2-(2-ethylanilino)-2-oxoethyl]sulfanyl-4-(furan-2-yl)-2-methylidene-3,4-dihydro-1H-pyridine-3-carboxylate",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        },
+        {
+          "id": "04c024ec-2a82-4868-aeac-ec3a73db9c9c",
+          "name": "(Z)-N-methoxy-1-naphthalen-1-ylethanimine",
+          "has_differentiation_property": true,
+          "differentiation_info": {
+            "differentiation_group": "b278ce51-6575-46f2-ae4e-79369475cc8d",
+            "has_structural_differences": true
+          }
+        }
+      ],
+      "successfully_differentiated": true
+    }
+  }
+}

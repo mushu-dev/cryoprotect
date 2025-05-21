@@ -1,0 +1,36 @@
+{
+  "test_info": {
+    "molecule_count": 500,
+    "timestamp": "2025-05-12T11:32:09.559873",
+    "cache_dir": "chembl_cache_large",
+    "batch_size": 100,
+    "max_workers": 6,
+    "checkpoint_dir": "chembl_large_import_20250512_113209/checkpoints"
+  },
+  "import_stats": {
+    "total_time": 0,
+    "success_count": 100,
+    "error_count": 0,
+    "average_time_per_molecule": 0,
+    "molecules_per_second": 4273.0128975733005,
+    "total_properties_count": 0,
+    "completed_molecules": 100,
+    "total_molecules": 500,
+    "progress_percentage": 20.0,
+    "elapsed_time": 0.023402690887451172,
+    "batch_number": 1,
+    "total_batches": 5,
+    "timestamp": "2025-05-12T11:32:09.596190"
+  },
+  "data_verification": {
+    "molecules_verified": 0,
+    "properties_verified": 0,
+    "verification_success": false,
+    "errors": []
+  },
+  "database_stats": {
+    "before": {},
+    "after": {},
+    "difference": {}
+  }
+}

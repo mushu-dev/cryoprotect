@@ -1,0 +1,205 @@
+{
+  "original": {
+    "toxicity": [
+      {
+        "url": "http://localhost:5000/api/toxicity/molecule/eed79690-b132-4669-b93b-45629cd5c022",
+        "status_code": 404,
+        "time": 0.0034332275390625,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/molecule/931f57bf-1de5-456c-abba-e322a7b2845b",
+        "status_code": 404,
+        "time": 0.0016355514526367188,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/molecule/7a5cdd5a-0f00-4a8b-b7e1-d5c7fac1d9ca",
+        "status_code": 404,
+        "time": 0.0013957023620605469,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/molecule/66772fec-fefa-4f53-877b-57b640e7f082",
+        "status_code": 404,
+        "time": 0.0016007423400878906,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/molecule/6018d638-5ba7-4c78-b9fc-e93e121db1d1",
+        "status_code": 404,
+        "time": 0.001695394515991211,
+        "response_size": 207
+      }
+    ],
+    "scores": [
+      {
+        "url": "http://localhost:5000/api/toxicity/scores/molecule/eed79690-b132-4669-b93b-45629cd5c022",
+        "status_code": 404,
+        "time": 0.002820730209350586,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/scores/molecule/931f57bf-1de5-456c-abba-e322a7b2845b",
+        "status_code": 404,
+        "time": 0.0015285015106201172,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/scores/molecule/7a5cdd5a-0f00-4a8b-b7e1-d5c7fac1d9ca",
+        "status_code": 404,
+        "time": 0.001604318618774414,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/scores/molecule/66772fec-fefa-4f53-877b-57b640e7f082",
+        "status_code": 404,
+        "time": 0.0016522407531738281,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/scores/molecule/6018d638-5ba7-4c78-b9fc-e93e121db1d1",
+        "status_code": 404,
+        "time": 0.001604318618774414,
+        "response_size": 207
+      }
+    ]
+  },
+  "optimized": {
+    "summary": [
+      {
+        "url": "http://localhost:5000/api/toxicity/summary/molecule/eed79690-b132-4669-b93b-45629cd5c022",
+        "status_code": 404,
+        "time": 0.001573324203491211,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/summary/molecule/931f57bf-1de5-456c-abba-e322a7b2845b",
+        "status_code": 404,
+        "time": 0.0013206005096435547,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/summary/molecule/7a5cdd5a-0f00-4a8b-b7e1-d5c7fac1d9ca",
+        "status_code": 404,
+        "time": 0.0016334056854248047,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/summary/molecule/66772fec-fefa-4f53-877b-57b640e7f082",
+        "status_code": 404,
+        "time": 0.0023827552795410156,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/summary/molecule/6018d638-5ba7-4c78-b9fc-e93e121db1d1",
+        "status_code": 404,
+        "time": 0.0024547576904296875,
+        "response_size": 207
+      }
+    ],
+    "ld50": [
+      {
+        "url": "http://localhost:5000/api/toxicity/ld50/molecule/eed79690-b132-4669-b93b-45629cd5c022",
+        "status_code": 404,
+        "time": 0.0015838146209716797,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/ld50/molecule/931f57bf-1de5-456c-abba-e322a7b2845b",
+        "status_code": 404,
+        "time": 0.0014371871948242188,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/ld50/molecule/7a5cdd5a-0f00-4a8b-b7e1-d5c7fac1d9ca",
+        "status_code": 404,
+        "time": 0.0014662742614746094,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/ld50/molecule/66772fec-fefa-4f53-877b-57b640e7f082",
+        "status_code": 404,
+        "time": 0.0020203590393066406,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/ld50/molecule/6018d638-5ba7-4c78-b9fc-e93e121db1d1",
+        "status_code": 404,
+        "time": 0.003153562545776367,
+        "response_size": 207
+      }
+    ],
+    "tox21": [
+      {
+        "url": "http://localhost:5000/api/toxicity/tox21/molecule/eed79690-b132-4669-b93b-45629cd5c022",
+        "status_code": 404,
+        "time": 0.001535654067993164,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/tox21/molecule/931f57bf-1de5-456c-abba-e322a7b2845b",
+        "status_code": 404,
+        "time": 0.001420736312866211,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/tox21/molecule/7a5cdd5a-0f00-4a8b-b7e1-d5c7fac1d9ca",
+        "status_code": 404,
+        "time": 0.0016298294067382812,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/tox21/molecule/66772fec-fefa-4f53-877b-57b640e7f082",
+        "status_code": 404,
+        "time": 0.0021255016326904297,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/tox21/molecule/6018d638-5ba7-4c78-b9fc-e93e121db1d1",
+        "status_code": 404,
+        "time": 0.0032210350036621094,
+        "response_size": 207
+      }
+    ],
+    "classifications": [
+      {
+        "url": "http://localhost:5000/api/toxicity/classifications/molecule/eed79690-b132-4669-b93b-45629cd5c022",
+        "status_code": 404,
+        "time": 0.0015375614166259766,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/classifications/molecule/931f57bf-1de5-456c-abba-e322a7b2845b",
+        "status_code": 404,
+        "time": 0.002111196517944336,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/classifications/molecule/7a5cdd5a-0f00-4a8b-b7e1-d5c7fac1d9ca",
+        "status_code": 404,
+        "time": 0.002431631088256836,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/classifications/molecule/66772fec-fefa-4f53-877b-57b640e7f082",
+        "status_code": 404,
+        "time": 0.002298593521118164,
+        "response_size": 207
+      },
+      {
+        "url": "http://localhost:5000/api/toxicity/classifications/molecule/6018d638-5ba7-4c78-b9fc-e93e121db1d1",
+        "status_code": 404,
+        "time": 0.0033178329467773438,
+        "response_size": 207
+      }
+    ],
+    "bulk": {
+      "url": "http://localhost:5000/api/toxicity/bulk/molecules",
+      "status_code": 404,
+      "time": 0.0030517578125,
+      "response_size": 207,
+      "molecules_count": 3
+    }
+  }
+}

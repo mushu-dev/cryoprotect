@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryoProtect Monitoring Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            padding-top: 20px;
+        }
+        .header {
+            background-color: #343a40;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-header {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+            font-weight: 600;
+        }
+        .status-badge {
+            font-size: 0.8rem;
+            padding: 0.35em 0.65em;
+        }
+        .status-healthy {
+            background-color: #28a745;
+        }
+        .status-warning {
+            background-color: #ffc107;
+            color: #212529;
+        }
+        .status-unhealthy {
+            background-color: #dc3545;
+        }
+        .status-unknown {
+            background-color: #6c757d;
+        }
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+        .metric-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        .alert-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .alert-item {
+            padding: 8px 12px;
+            border-left: 4px solid #dee2e6;
+            margin-bottom: 8px;
+        }
+        .alert-error {
+            border-left-color: #dc3545;
+        }
+        .alert-warning {
+            border-left-color: #ffc107;
+        }
+        .alert-info {
+            border-left-color: #17a2b8;
+        }
+        .chart-container {
+            position: relative;
+            height: 250px;
+            width: 100%;
+        }
+        .progress-container {
+            margin-bottom: 15px;
+        }
+        .endpoint-table {
+            font-size: 0.9rem;
+        }
+        .refresh-btn {
+            background-color: #343a40;
+            color: white;
+            border: none;
+        }
+        .refresh-btn:hover {
+            background-color: #23272b;
+            color: white;
+        }
+        .dashboard-update-time {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header d-flex justify-content-between align-items-center">
+            <div>
+                <h2>CryoProtect Monitoring Dashboard</h2>
+                <p class="dashboard-update-time mb-0">Last updated: <span id="last-updated">{{ data.last_updated }}</span></p>
+            </div>
+            <button class="btn refresh-btn" onclick="refreshDashboard()">
+                <i class="bi bi-arrow-clockwise"></i> Refresh
+            </button>
+        </div>
+
+        <!-- System Health Overview -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">System Status</h5>
+                        <span id="system-status" class="badge rounded-pill status-badge status-{{ data.health.system.status | lower }}">
+                            {{ data.health.system.status }}
+                        </span>
+                        <div class="mt-3">
+                            <div class="metric-value" id="system-cpu">{{ data.health.system.cpu_usage | round(1) }}%</div>
+                            <div class="metric-label">CPU Usage</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Database</h5>
+                        <span id="database-status" class="badge rounded-pill status-badge status-{{ data.health.database.status | lower }}">
+                            {{ data.health.database.status }}
+                        </span>
+                        <div class="mt-3">
+                            <div class="metric-value" id="db-connections">{{ data.performance.database.database.connection_attempts }}</div>
+                            <div class="metric-label">Total Connections</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">API Health</h5>
+                        <span id="api-status" class="badge rounded-pill status-badge status-{{ data.health.api.status | lower }}">
+                            {{ data.health.api.status }}
+                        </span>
+                        <div class="mt-3">
+                            <div class="metric-value" id="api-response-time">{{ data.health.api.avg_response_time | round(1) }}</div>
+                            <div class="metric-label">Avg Response Time (ms)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Memory</h5>
+                        <span id="memory-status" class="badge rounded-pill status-badge status-{{ 'healthy' if data.health.system.memory_usage < 80 else 'warning' if data.health.system.memory_usage < 90 else 'unhealthy' }}">
+                            {{ 'OK' if data.health.system.memory_usage < 80 else 'Warning' if data.health.system.memory_usage < 90 else 'Critical' }}
+                        </span>
+                        <div class="mt-3">
+                            <div class="metric-value" id="memory-usage">{{ data.health.system.memory_usage | round(1) }}%</div>
+                            <div class="metric-label">Memory Usage</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Resource Usage Charts -->
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        System Resource Usage
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="resourceUsageChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- API Endpoints -->
+                <div class="card mt-4">
+                    <div class="card-header">
+                        API Endpoints
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover endpoint-table">
+                                <thead>
+                                    <tr>
+                                        <th>Endpoint</th>
+                                        <th>Method</th>
+                                        <th>Status</th>
+                                        <th>Response Time</th>
+                                        <th>Last Checked</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="endpoints-table-body">
+                                    {% for endpoint, info in data.health.api.endpoints.items() %}
+                                    <tr>
+                                        <td>{{ endpoint }}</td>
+                                        <td>{{ info.method }}</td>
+                                        <td>
+                                            <span class="badge rounded-pill status-badge status-{{ info.status | lower }}">
+                                                {{ info.status }}
+                                            </span>
+                                        </td>
+                                        <td>{{ info.response_time | round(1) }} ms</td>
+                                        <td>{{ info.last_checked }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="col-md-4">
+                <!-- Performance Metrics -->
+                <div class="card">
+                    <div class="card-header">
+                        Performance Metrics
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <div class="metric-label">DB Queries</div>
+                                <div class="metric-value" id="db-queries">{{ data.performance.database.database.query_count }}</div>
+                            </div>
+                            <div class="col-6">
+                                <div class="metric-label">DB Avg Time</div>
+                                <div class="metric-value" id="db-avg-time">{{ (data.performance.database.timing.avg_execution_time * 1000) | round(1) }} ms</div>
+                            </div>
+                            <div class="col-6">
+                                <div class="metric-label">API Ops</div>
+                                <div class="metric-value" id="api-ops">{{ data.performance.api.operations.total }}</div>
+                            </div>
+                            <div class="col-6">
+                                <div class="metric-label">API Avg Time</div>
+                                <div class="metric-value" id="api-avg-time">{{ (data.performance.api.timing.avg_execution_time * 1000) | round(1) }} ms</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Alerts -->
+                <div class="card mt-4">
+                    <div class="card-header">
+                        Recent Alerts
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="alert-list" id="alerts-container">
+                            {% if data.alerts %}
+                                {% for alert in data.alerts %}
+                                <div class="alert-item alert-{{ alert.severity }}">
+                                    <strong>{{ alert.formatted_time }}</strong>
+                                    <div>{{ alert.message }}</div>
+                                    <small class="text-muted">Source: {{ alert.source }}</small>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="p-3 text-center text-muted">
+                                    No recent alerts
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Errors -->
+                <div class="card mt-4">
+                    <div class="card-header">
+                        Recent Errors
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="alert-list" id="errors-container">
+                            {% if data.errors %}
+                                {% for error in data.errors %}
+                                <div class="alert-item alert-error">
+                                    <strong>{{ error.formatted_time }}</strong>
+                                    <div>{{ error.message }}</div>
+                                    <small class="text-muted">Type: {{ error.error_type }}</small>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="p-3 text-center text-muted">
+                                    No recent errors
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Trackers -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        Active Progress Trackers
+                    </div>
+                    <div class="card-body">
+                        <div id="progress-trackers-container">
+                            {% for name, tracker in data.progress_trackers.items() %}
+                            <div class="progress-container">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <strong>{{ name }}</strong>
+                                        <small class="text-muted ms-2">{{ tracker.processed_items }}/{{ tracker.total_items }} items ({{ tracker.progress_percentage | round(1) }}%)</small>
+                                    </div>
+                                    <div>
+                                        <small class="text-muted">ETA: {{ tracker.estimated_completion }}</small>
+                                    </div>
+                                </div>
+                                <div class="progress mt-1">
+                                    <div class="progress-bar" role="progressbar" style="width: {{ tracker.progress_percentage }}%" 
+                                        aria-valuenow="{{ tracker.progress_percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <div class="d-flex justify-content-between mt-1">
+                                    <small class="text-muted">{{ tracker.items_per_second | round(1) }} items/sec</small>
+                                    <small class="text-success">{{ tracker.successful_items }} successful</small>
+                                    {% if tracker.failed_items > 0 %}
+                                    <small class="text-danger">{{ tracker.failed_items }} failed</small>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% else %}
+                            <div class="text-center text-muted">
+                                No active progress trackers
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize charts when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeResourceChart();
+            // Auto-refresh every 30 seconds
+            setInterval(refreshDashboard, 30000);
+        });
+
+        // Resource Usage Chart
+        function initializeResourceChart() {
+            const ctx = document.getElementById('resourceUsageChart').getContext('2d');
+            
+            // Extract data for chart
+            const timestamps = {{ data.resources.timestamps | tojson }};
+            const formattedTimestamps = timestamps.map(ts => {
+                const date = new Date(ts * 1000);
+                return date.toLocaleTimeString();
+            });
+            
+            const cpuData = {{ data.resources.cpu_history | tojson }};
+            const memoryData = {{ data.resources.memory_history | tojson }};
+            const diskData = {{ data.resources.disk_history | tojson }};
+            
+            window.resourceChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: formattedTimestamps,
+                    datasets: [
+                        {
+                            label: 'CPU Usage (%)',
+                            data: cpuData,
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            backgroundColor: 'rgba(255, 99, 132, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Memory Usage (%)',
+                            data: memoryData,
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            backgroundColor: 'rgba(54, 162, 235, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Disk Usage (%)',
+                            data: diskData,
+                            borderColor: 'rgba(255, 206, 86, 1)',
+                            backgroundColor: 'rgba(255, 206, 86, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Usage (%)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Time'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false
+                        }
+                    }
+                }
+            });
+        }
+
+        // Function to refresh dashboard data
+        function refreshDashboard() {
+            fetch('/monitoring/api/status')
+                .then(response => response.json())
+                .then(data => {
+                    // Update last updated time
+                    document.getElementById('last-updated').textContent = data.last_updated;
+                    
+                    // Update system status
+                    updateStatusBadge('system-status', data.health.system.status);
+                    document.getElementById('system-cpu').textContent = data.health.system.cpu_usage.toFixed(1) + '%';
+                    
+                    // Update database status
+                    updateStatusBadge('database-status', data.health.database.status);
+                    document.getElementById('db-connections').textContent = 
+                        data.performance.database.database.connection_attempts;
+                    
+                    // Update API status
+                    updateStatusBadge('api-status', data.health.api.status);
+                    document.getElementById('api-response-time').textContent = 
+                        data.health.api.avg_response_time ? data.health.api.avg_response_time.toFixed(1) : 'N/A';
+                    
+                    // Update memory status
+                    const memoryStatus = data.health.system.memory_usage < 80 ? 'OK' : 
+                                         data.health.system.memory_usage < 90 ? 'Warning' : 'Critical';
+                    const memoryStatusClass = data.health.system.memory_usage < 80 ? 'healthy' : 
+                                              data.health.system.memory_usage < 90 ? 'warning' : 'unhealthy';
+                    updateStatusBadge('memory-status', memoryStatus, memoryStatusClass);
+                    document.getElementById('memory-usage').textContent = data.health.system.memory_usage.toFixed(1) + '%';
+                    
+                    // Update performance metrics
+                    document.getElementById('db-queries').textContent = 
+                        data.performance.database.database.query_count;
+                    document.getElementById('db-avg-time').textContent = 
+                        (data.performance.database.timing.avg_execution_time * 1000).toFixed(1) + ' ms';
+                    document.getElementById('api-ops').textContent = 
+                        data.performance.api.operations.total;
+                    document.getElementById('api-avg-time').textContent = 
+                        (data.performance.api.timing.avg_execution_time * 1000).toFixed(1) + ' ms';
+                    
+                    // Update API endpoints table
+                    updateEndpointsTable(data.health.api.endpoints);
+                    
+                    // Update alerts
+                    updateAlertsList('alerts-container', data.alerts);
+                    
+                    // Update errors
+                    updateAlertsList('errors-container', data.errors);
+                    
+                    // Update progress trackers
+                    updateProgressTrackers(data.progress_trackers);
+                    
+                    // Update resource usage chart
+                    updateResourceChart(data.resources);
+                    
+                    console.log('Dashboard refreshed at ' + new Date().toLocaleTimeString());
+                })
+                .catch(error => {
+                    console.error('Error refreshing dashboard:', error);
+                });
+        }
+        
+        // Helper function to update status badges
+        function updateStatusBadge(elementId, status, statusClass) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.textContent = status;
+                element.className = 'badge rounded-pill status-badge';
+                
+                // If statusClass is provided, use it directly
+                if (statusClass) {
+                    element.classList.add('status-' + statusClass);
+                } else {
+                    // Otherwise derive it from status
+                    const lowerStatus = status.toLowerCase();
+                    if (lowerStatus === 'ok' || lowerStatus === 'healthy') {
+                        element.classList.add('status-healthy');
+                    } else if (lowerStatus === 'warning') {
+                        element.classList.add('status-warning');
+                    } else if (lowerStatus === 'error' || lowerStatus === 'unhealthy' || lowerStatus === 'critical') {
+                        element.classList.add('status-unhealthy');
+                    } else {
+                        element.classList.add('status-unknown');
+                    }
+                }
+            }
+        }
+        
+        // Update endpoints table
+        function updateEndpointsTable(endpoints) {
+            const tableBody = document.getElementById('endpoints-table-body');
+            if (!tableBody) return;
+            
+            tableBody.innerHTML = '';
+            
+            for (const [endpoint, info] of Object.entries(endpoints)) {
+                const row = document.createElement('tr');
+                
+                const endpointCell = document.createElement('td');
+                endpointCell.textContent = endpoint;
+                row.appendChild(endpointCell);
+                
+                const methodCell = document.createElement('td');
+                methodCell.textContent = info.method;
+                row.appendChild(methodCell);
+                
+                const statusCell = document.createElement('td');
+                const statusBadge = document.createElement('span');
+                statusBadge.textContent = info.status;
+                statusBadge.className = 'badge rounded-pill status-badge';
+                
+                if (info.status.toLowerCase() === 'ok') {
+                    statusBadge.classList.add('status-healthy');
+                } else if (info.status.toLowerCase() === 'warning') {
+                    statusBadge.classList.add('status-warning');
+                } else if (info.status.toLowerCase() === 'error') {
+                    statusBadge.classList.add('status-unhealthy');
+                } else {
+                    statusBadge.classList.add('status-unknown');
+                }
+                
+                statusCell.appendChild(statusBadge);
+                row.appendChild(statusCell);
+                
+                const timeCell = document.createElement('td');
+                timeCell.textContent = info.response_time.toFixed(1) + ' ms';
+                row.appendChild(timeCell);
+                
+                const lastCheckedCell = document.createElement('td');
+                lastCheckedCell.textContent = info.last_checked;
+                row.appendChild(lastCheckedCell);
+                
+                tableBody.appendChild(row);
+            }
+        }
+        
+        // Update alerts list
+        function updateAlertsList(containerId, items) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            if (!items || items.length === 0) {
+                container.innerHTML = '<div class="p-3 text-center text-muted">No recent items</div>';
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            items.forEach(item => {
+                const alertDiv = document.createElement('div');
+                
+                if (containerId === 'alerts-container') {
+                    alertDiv.className = 'alert-item alert-' + item.severity;
+                } else {
+                    alertDiv.className = 'alert-item alert-error';
+                }
+                
+                const timeSpan = document.createElement('strong');
+                timeSpan.textContent = item.formatted_time;
+                alertDiv.appendChild(timeSpan);
+                
+                const messageDiv = document.createElement('div');
+                messageDiv.textContent = item.message;
+                alertDiv.appendChild(messageDiv);
+                
+                const sourceSpan = document.createElement('small');
+                sourceSpan.className = 'text-muted';
+                sourceSpan.textContent = containerId === 'alerts-container' 
+                    ? 'Source: ' + item.source 
+                    : 'Type: ' + item.error_type;
+                alertDiv.appendChild(sourceSpan);
+                
+                container.appendChild(alertDiv);
+            });
+        }
+        
+        // Update progress trackers
+        function updateProgressTrackers(trackers) {
+            const container = document.getElementById('progress-trackers-container');
+            if (!container) return;
+            
+            if (!trackers || Object.keys(trackers).length === 0) {
+                container.innerHTML = '<div class="text-center text-muted">No active progress trackers</div>';
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            for (const [name, tracker] of Object.entries(trackers)) {
+                const progressContainer = document.createElement('div');
+                progressContainer.className = 'progress-container';
+                
+                // Header with name and progress
+                const header = document.createElement('div');
+                header.className = 'd-flex justify-content-between';
+                
+                const nameDiv = document.createElement('div');
+                const nameStrong = document.createElement('strong');
+                nameStrong.textContent = name;
+                nameDiv.appendChild(nameStrong);
+                
+                const progressSmall = document.createElement('small');
+                progressSmall.className = 'text-muted ms-2';
+                progressSmall.textContent = `${tracker.processed_items}/${tracker.total_items} items (${tracker.progress_percentage.toFixed(1)}%)`;
+                nameDiv.appendChild(progressSmall);
+                header.appendChild(nameDiv);
+                
+                const etaDiv = document.createElement('div');
+                const etaSmall = document.createElement('small');
+                etaSmall.className = 'text-muted';
+                etaSmall.textContent = 'ETA: ' + new Date(tracker.estimated_completion).toLocaleString();
+                etaDiv.appendChild(etaSmall);
+                header.appendChild(etaDiv);
+                
+                progressContainer.appendChild(header);
+                
+                // Progress bar
+                const progressBar = document.createElement('div');
+                progressBar.className = 'progress mt-1';
+                progressBar.innerHTML = `
+                    <div class="progress-bar" role="progressbar" 
+                         style="width: ${tracker.progress_percentage}%" 
+                         aria-valuenow="${tracker.progress_percentage}" 
+                         aria-valuemin="0" aria-valuemax="100"></div>
+                `;
+                progressContainer.appendChild(progressBar);
+                
+                // Footer with stats
+                const footer = document.createElement('div');
+                footer.className = 'd-flex justify-content-between mt-1';
+                
+                const speedSmall = document.createElement('small');
+                speedSmall.className = 'text-muted';
+                speedSmall.textContent = `${tracker.items_per_second.toFixed(1)} items/sec`;
+                footer.appendChild(speedSmall);
+                
+                const successSmall = document.createElement('small');
+                successSmall.className = 'text-success';
+                successSmall.textContent = `${tracker.successful_items} successful`;
+                footer.appendChild(successSmall);
+                
+                if (tracker.failed_items > 0) {
+                    const failedSmall = document.createElement('small');
+                    failedSmall.className = 'text-danger';
+                    failedSmall.textContent = `${tracker.failed_items} failed`;
+                    footer.appendChild(failedSmall);
+                }
+                
+                progressContainer.appendChild(footer);
+                container.appendChild(progressContainer);
+            }
+        }
+        
+        // Update resource usage chart
+        function updateResourceChart(resources) {
+            if (!window.resourceChart) return;
+            
+            // Format timestamps
+            const formattedTimestamps = resources.timestamps.map(ts => {
+                const date = new Date(ts * 1000);
+                return date.toLocaleTimeString();
+            });
+            
+            // Update chart data
+            window.resourceChart.data.labels = formattedTimestamps;
+            window.resourceChart.data.datasets[0].data = resources.cpu_history;
+            window.resourceChart.data.datasets[1].data = resources.memory_history;
+            window.resourceChart.data.datasets[2].data = resources.disk_history;
+            
+            // Update chart
+            window.resourceChart.update();
+        }
+    </script>
+</body>
+</html>

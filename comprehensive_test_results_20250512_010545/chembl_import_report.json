@@ -1,0 +1,53 @@
+{
+  "test_info": {
+    "molecule_count": 100,
+    "timestamp": "2025-05-12T01:05:45.229382",
+    "cache_dir": "/home/mushu/Projects/CryoProtect/chembl_cache"
+  },
+  "import_stats": {
+    "total_time": 1.5097296237945557,
+    "success_count": 100,
+    "error_count": 0,
+    "average_time_per_molecule": 0.015097296237945557,
+    "molecules_per_second": 66.2370257719789,
+    "total_properties_count": 900
+  },
+  "data_verification": {
+    "molecules_verified": 100,
+    "properties_verified": 900,
+    "verification_success": true,
+    "errors": []
+  },
+  "database_stats": {
+    "before": {
+      "table_counts": {
+        "molecules": 1760,
+        "molecular_properties": 5974
+      },
+      "database_size": {
+        "total": "496 MB",
+        "molecules": "59 MB",
+        "properties": "113 MB"
+      },
+      "timestamp": "2025-05-12T01:05:45.229784"
+    },
+    "after": {
+      "table_counts": {
+        "molecules": 3012,
+        "molecular_properties": 7763
+      },
+      "database_size": {
+        "total": "475 MB",
+        "molecules": "94 MB",
+        "properties": "78 MB"
+      },
+      "timestamp": "2025-05-12T01:05:46.739596"
+    },
+    "difference": {
+      "table_counts": {
+        "molecules": 1252,
+        "molecular_properties": 1789
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+# Essential requirements for CryoProtect
+Flask==3.0.2
+flask-restful==0.3.10
+flask-cors==4.0.0
+flask-apispec==0.11.4
+flask-mail==0.9.1
+python-dotenv==1.0.1
+requests==2.31.0
+apispec==6.3.0
+marshmallow==3.21.0
+supabase==2.1.0
+postgrest==0.13.2
+PyJWT==2.8.0
+cryptography==42.0.5
+prometheus-client==0.19.0
+psycopg2-binary==2.9.9
+alembic==1.13.1
+sqlalchemy==2.0.27

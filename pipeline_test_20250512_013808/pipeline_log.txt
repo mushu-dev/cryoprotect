@@ -1,0 +1,394 @@
+2025-05-12 01:38:08,780 - WARNING - Attempting to get connection before pool initialization
+2025-05-12 01:38:08,782 - ERROR - Missing required database configuration: host, user, password
+2025-05-12 01:38:08,782 - ERROR - Database connection not available: Connection test failed
+2025-05-12 01:38:08,851 - INFO - ChEMBL cache initialized at cache/chembl
+2025-05-12 01:38:08,851 - INFO - AdaptiveRateLimiter initialized (weekday: 0.33s, weekend: 0.22s, memory threshold: 80.0%)
+2025-05-12 01:38:08,851 - INFO - CircuitBreaker 'chembl_api' initialized (threshold: 3, timeout: 60s)
+2025-05-12 01:38:08,851 - INFO - ResilientChEMBLClient initialized
+2025-05-12 01:38:08,851 - INFO - Using real ChEMBL client
+2025-05-12 01:38:08,851 - INFO - Starting ChEMBL to Supabase pipeline test with 100 molecules
+2025-05-12 01:38:08,851 - INFO - Database connection: Not available
+2025-05-12 01:38:08,852 - INFO - Test mode: Enabled
+2025-05-12 01:38:08,852 - INFO - Generating 100 ChEMBL IDs for testing
+2025-05-12 01:38:08,852 - INFO - Generated 100 ChEMBL IDs
+2025-05-12 01:38:08,852 - INFO - Starting processing of 100 molecules
+2025-05-12 01:38:08,852 - WARNING - No database connection available
+2025-05-12 01:38:08,852 - INFO - Captured database stats before import
+2025-05-12 01:38:08,852 - INFO - Processing molecules in batches of 10 using 1 workers
+2025-05-12 01:38:08,853 - INFO - Processing batch 1 of 10 (10 molecules)
+2025-05-12 01:38:08,853 - WARNING - Real client failed for CHEMBL1: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:08,853 - WARNING - Real client failed for records CHEMBL1: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:08,853 - WARNING - Real client failed for properties CHEMBL1: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:08,864 - WARNING - Real client failed for CHEMBL2: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:08,864 - WARNING - Real client failed for records CHEMBL2: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:08,864 - WARNING - Real client failed for properties CHEMBL2: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:08,874 - WARNING - Real client failed for CHEMBL3: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:08,874 - INFO - Processed 2/100 molecules (2.0%) - 2 successes, 0 errors - Rate: 90.54 molecules/sec
+2025-05-12 01:38:08,875 - WARNING - Real client failed for records CHEMBL3: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:08,875 - WARNING - Real client failed for properties CHEMBL3: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:08,885 - WARNING - Real client failed for CHEMBL4: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:08,885 - WARNING - Real client failed for records CHEMBL4: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:08,885 - WARNING - Real client failed for properties CHEMBL4: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:08,896 - WARNING - Real client failed for CHEMBL5: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:08,896 - INFO - Processed 4/100 molecules (4.0%) - 4 successes, 0 errors - Rate: 92.04 molecules/sec
+2025-05-12 01:38:08,896 - WARNING - Real client failed for records CHEMBL5: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:08,896 - WARNING - Real client failed for properties CHEMBL5: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:08,906 - WARNING - Real client failed for CHEMBL6: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:08,906 - WARNING - Real client failed for records CHEMBL6: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:08,907 - WARNING - Real client failed for properties CHEMBL6: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:08,917 - WARNING - Real client failed for CHEMBL7: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:08,917 - INFO - Processed 6/100 molecules (6.0%) - 6 successes, 0 errors - Rate: 92.68 molecules/sec
+2025-05-12 01:38:08,917 - WARNING - Real client failed for records CHEMBL7: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:08,917 - WARNING - Real client failed for properties CHEMBL7: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:08,928 - WARNING - Real client failed for CHEMBL8: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:08,928 - WARNING - Real client failed for records CHEMBL8: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:08,928 - WARNING - Real client failed for properties CHEMBL8: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:08,938 - WARNING - Real client failed for CHEMBL9: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:08,938 - INFO - Processed 8/100 molecules (8.0%) - 8 successes, 0 errors - Rate: 93.03 molecules/sec
+2025-05-12 01:38:08,939 - WARNING - Real client failed for records CHEMBL9: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:08,939 - WARNING - Real client failed for properties CHEMBL9: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:08,949 - WARNING - Real client failed for CHEMBL10: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:08,950 - WARNING - Real client failed for records CHEMBL10: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:08,950 - WARNING - Real client failed for properties CHEMBL10: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:08,960 - INFO - Processed 10/100 molecules (10.0%) - 10 successes, 0 errors - Rate: 92.66 molecules/sec
+2025-05-12 01:38:08,960 - INFO - Batch complete. Overall progress: 10.0%
+2025-05-12 01:38:08,961 - INFO - Processing batch 2 of 10 (10 molecules)
+2025-05-12 01:38:08,961 - WARNING - Real client failed for CHEMBL11: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:08,961 - WARNING - Real client failed for records CHEMBL11: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:08,962 - WARNING - Real client failed for properties CHEMBL11: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:08,972 - WARNING - Real client failed for CHEMBL12: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:08,972 - WARNING - Real client failed for records CHEMBL12: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:08,973 - WARNING - Real client failed for properties CHEMBL12: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:08,983 - WARNING - Real client failed for CHEMBL13: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:08,983 - INFO - Processed 12/100 molecules (12.0%) - 12 successes, 0 errors - Rate: 91.58 molecules/sec
+2025-05-12 01:38:08,984 - WARNING - Real client failed for records CHEMBL13: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:08,984 - WARNING - Real client failed for properties CHEMBL13: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:08,994 - WARNING - Real client failed for CHEMBL14: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:08,995 - WARNING - Real client failed for records CHEMBL14: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:08,995 - WARNING - Real client failed for properties CHEMBL14: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,005 - WARNING - Real client failed for CHEMBL15: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,006 - INFO - Processed 14/100 molecules (14.0%) - 14 successes, 0 errors - Rate: 91.29 molecules/sec
+2025-05-12 01:38:09,006 - WARNING - Real client failed for records CHEMBL15: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,006 - WARNING - Real client failed for properties CHEMBL15: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,017 - WARNING - Real client failed for CHEMBL16: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,017 - WARNING - Real client failed for records CHEMBL16: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,017 - WARNING - Real client failed for properties CHEMBL16: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,028 - WARNING - Real client failed for CHEMBL17: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,028 - INFO - Processed 16/100 molecules (16.0%) - 16 successes, 0 errors - Rate: 91.05 molecules/sec
+2025-05-12 01:38:09,028 - WARNING - Real client failed for records CHEMBL17: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,029 - WARNING - Real client failed for properties CHEMBL17: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,039 - WARNING - Real client failed for CHEMBL18: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,040 - WARNING - Real client failed for records CHEMBL18: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,040 - WARNING - Real client failed for properties CHEMBL18: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,050 - WARNING - Real client failed for CHEMBL19: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,051 - INFO - Processed 18/100 molecules (18.0%) - 18 successes, 0 errors - Rate: 90.73 molecules/sec
+2025-05-12 01:38:09,051 - WARNING - Real client failed for records CHEMBL19: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,051 - WARNING - Real client failed for properties CHEMBL19: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,062 - WARNING - Real client failed for CHEMBL20: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,062 - WARNING - Real client failed for records CHEMBL20: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,062 - WARNING - Real client failed for properties CHEMBL20: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,073 - INFO - Processed 20/100 molecules (20.0%) - 20 successes, 0 errors - Rate: 90.71 molecules/sec
+2025-05-12 01:38:09,073 - INFO - Batch complete. Overall progress: 20.0%
+2025-05-12 01:38:09,073 - INFO - Processing batch 3 of 10 (10 molecules)
+2025-05-12 01:38:09,074 - WARNING - Real client failed for CHEMBL21: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,074 - WARNING - Real client failed for records CHEMBL21: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,074 - WARNING - Real client failed for properties CHEMBL21: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,084 - WARNING - Real client failed for CHEMBL22: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,085 - WARNING - Real client failed for records CHEMBL22: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,085 - WARNING - Real client failed for properties CHEMBL22: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,096 - WARNING - Real client failed for CHEMBL23: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,096 - INFO - Processed 22/100 molecules (22.0%) - 22 successes, 0 errors - Rate: 90.24 molecules/sec
+2025-05-12 01:38:09,096 - WARNING - Real client failed for records CHEMBL23: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,097 - WARNING - Real client failed for properties CHEMBL23: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,107 - WARNING - Real client failed for CHEMBL24: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,107 - WARNING - Real client failed for records CHEMBL24: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,107 - WARNING - Real client failed for properties CHEMBL24: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,118 - WARNING - Real client failed for CHEMBL25: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,118 - INFO - Processed 24/100 molecules (24.0%) - 24 successes, 0 errors - Rate: 90.40 molecules/sec
+2025-05-12 01:38:09,118 - WARNING - Real client failed for records CHEMBL25: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,118 - WARNING - Real client failed for properties CHEMBL25: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,128 - WARNING - Real client failed for CHEMBL26: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,129 - WARNING - Real client failed for records CHEMBL26: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,129 - WARNING - Real client failed for properties CHEMBL26: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,139 - WARNING - Real client failed for CHEMBL27: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,139 - INFO - Processed 26/100 molecules (26.0%) - 26 successes, 0 errors - Rate: 90.60 molecules/sec
+2025-05-12 01:38:09,139 - WARNING - Real client failed for records CHEMBL27: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,140 - WARNING - Real client failed for properties CHEMBL27: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,150 - WARNING - Real client failed for CHEMBL28: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,151 - WARNING - Real client failed for records CHEMBL28: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,151 - WARNING - Real client failed for properties CHEMBL28: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,161 - WARNING - Real client failed for CHEMBL29: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,161 - INFO - Processed 28/100 molecules (28.0%) - 28 successes, 0 errors - Rate: 90.56 molecules/sec
+2025-05-12 01:38:09,162 - WARNING - Real client failed for records CHEMBL29: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,162 - WARNING - Real client failed for properties CHEMBL29: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,173 - WARNING - Real client failed for CHEMBL30: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,173 - WARNING - Real client failed for records CHEMBL30: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,173 - WARNING - Real client failed for properties CHEMBL30: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,184 - INFO - Processed 30/100 molecules (30.0%) - 30 successes, 0 errors - Rate: 90.53 molecules/sec
+2025-05-12 01:38:09,184 - INFO - Batch complete. Overall progress: 30.0%
+2025-05-12 01:38:09,184 - INFO - Processing batch 4 of 10 (10 molecules)
+2025-05-12 01:38:09,185 - WARNING - Real client failed for CHEMBL31: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,185 - WARNING - Real client failed for records CHEMBL31: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,185 - WARNING - Real client failed for properties CHEMBL31: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,195 - WARNING - Real client failed for CHEMBL32: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,196 - WARNING - Real client failed for records CHEMBL32: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,196 - WARNING - Real client failed for properties CHEMBL32: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,206 - WARNING - Real client failed for CHEMBL33: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,207 - INFO - Processed 32/100 molecules (32.0%) - 32 successes, 0 errors - Rate: 90.28 molecules/sec
+2025-05-12 01:38:09,207 - WARNING - Real client failed for records CHEMBL33: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,207 - WARNING - Real client failed for properties CHEMBL33: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,218 - WARNING - Real client failed for CHEMBL34: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,218 - WARNING - Real client failed for records CHEMBL34: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,218 - WARNING - Real client failed for properties CHEMBL34: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,229 - WARNING - Real client failed for CHEMBL35: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,229 - INFO - Processed 34/100 molecules (34.0%) - 34 successes, 0 errors - Rate: 90.24 molecules/sec
+2025-05-12 01:38:09,229 - WARNING - Real client failed for records CHEMBL35: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,229 - WARNING - Real client failed for properties CHEMBL35: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,240 - WARNING - Real client failed for CHEMBL36: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,240 - WARNING - Real client failed for records CHEMBL36: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,240 - WARNING - Real client failed for properties CHEMBL36: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,251 - WARNING - Real client failed for CHEMBL37: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,251 - INFO - Processed 36/100 molecules (36.0%) - 36 successes, 0 errors - Rate: 90.27 molecules/sec
+2025-05-12 01:38:09,251 - WARNING - Real client failed for records CHEMBL37: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,252 - WARNING - Real client failed for properties CHEMBL37: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,262 - WARNING - Real client failed for CHEMBL38: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,263 - WARNING - Real client failed for records CHEMBL38: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,263 - WARNING - Real client failed for properties CHEMBL38: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,273 - WARNING - Real client failed for CHEMBL39: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,273 - WARNING - Real client failed for records CHEMBL39: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,274 - WARNING - Real client failed for properties CHEMBL39: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,274 - INFO - Processed 38/100 molecules (38.0%) - 38 successes, 0 errors - Rate: 90.13 molecules/sec
+2025-05-12 01:38:09,284 - WARNING - Real client failed for CHEMBL40: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,284 - WARNING - Real client failed for records CHEMBL40: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,285 - WARNING - Real client failed for properties CHEMBL40: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,295 - INFO - Processed 40/100 molecules (40.0%) - 40 successes, 0 errors - Rate: 90.34 molecules/sec
+2025-05-12 01:38:09,295 - INFO - Batch complete. Overall progress: 40.0%
+2025-05-12 01:38:09,295 - INFO - Processing batch 5 of 10 (10 molecules)
+2025-05-12 01:38:09,296 - WARNING - Real client failed for CHEMBL41: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,296 - WARNING - Real client failed for records CHEMBL41: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,296 - WARNING - Real client failed for properties CHEMBL41: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,307 - WARNING - Real client failed for CHEMBL42: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,307 - WARNING - Real client failed for records CHEMBL42: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,307 - WARNING - Real client failed for properties CHEMBL42: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,318 - WARNING - Real client failed for CHEMBL43: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,318 - INFO - Processed 42/100 molecules (42.0%) - 42 successes, 0 errors - Rate: 90.16 molecules/sec
+2025-05-12 01:38:09,318 - WARNING - Real client failed for records CHEMBL43: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,319 - WARNING - Real client failed for properties CHEMBL43: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,329 - WARNING - Real client failed for CHEMBL44: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,330 - WARNING - Real client failed for records CHEMBL44: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,330 - WARNING - Real client failed for properties CHEMBL44: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,340 - WARNING - Real client failed for CHEMBL45: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,340 - INFO - Processed 44/100 molecules (44.0%) - 44 successes, 0 errors - Rate: 90.17 molecules/sec
+2025-05-12 01:38:09,340 - WARNING - Real client failed for records CHEMBL45: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,341 - WARNING - Real client failed for properties CHEMBL45: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,351 - WARNING - Real client failed for CHEMBL46: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,352 - WARNING - Real client failed for records CHEMBL46: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,352 - WARNING - Real client failed for properties CHEMBL46: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,362 - WARNING - Real client failed for CHEMBL47: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,362 - INFO - Processed 46/100 molecules (46.0%) - 46 successes, 0 errors - Rate: 90.22 molecules/sec
+2025-05-12 01:38:09,362 - WARNING - Real client failed for records CHEMBL47: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,362 - WARNING - Real client failed for properties CHEMBL47: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,373 - WARNING - Real client failed for CHEMBL48: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,373 - WARNING - Real client failed for records CHEMBL48: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,373 - WARNING - Real client failed for properties CHEMBL48: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,383 - WARNING - Real client failed for CHEMBL49: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,383 - INFO - Processed 48/100 molecules (48.0%) - 48 successes, 0 errors - Rate: 90.37 molecules/sec
+2025-05-12 01:38:09,384 - WARNING - Real client failed for records CHEMBL49: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,384 - WARNING - Real client failed for properties CHEMBL49: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,394 - WARNING - Real client failed for CHEMBL50: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,394 - WARNING - Real client failed for records CHEMBL50: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,394 - WARNING - Real client failed for properties CHEMBL50: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,405 - INFO - Processed 50/100 molecules (50.0%) - 50 successes, 0 errors - Rate: 90.50 molecules/sec
+2025-05-12 01:38:09,405 - INFO - Batch complete. Overall progress: 50.0%
+2025-05-12 01:38:09,405 - INFO - Processing batch 6 of 10 (10 molecules)
+2025-05-12 01:38:09,405 - WARNING - Real client failed for CHEMBL51: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,405 - WARNING - Real client failed for records CHEMBL51: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,405 - WARNING - Real client failed for properties CHEMBL51: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,415 - WARNING - Real client failed for CHEMBL52: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,416 - WARNING - Real client failed for records CHEMBL52: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,416 - WARNING - Real client failed for properties CHEMBL52: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,426 - WARNING - Real client failed for CHEMBL53: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,427 - INFO - Processed 52/100 molecules (52.0%) - 52 successes, 0 errors - Rate: 90.54 molecules/sec
+2025-05-12 01:38:09,427 - WARNING - Real client failed for records CHEMBL53: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,427 - WARNING - Real client failed for properties CHEMBL53: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,438 - WARNING - Real client failed for CHEMBL54: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,438 - WARNING - Real client failed for records CHEMBL54: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,438 - WARNING - Real client failed for properties CHEMBL54: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,448 - WARNING - Real client failed for CHEMBL55: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,449 - INFO - Processed 54/100 molecules (54.0%) - 54 successes, 0 errors - Rate: 90.57 molecules/sec
+2025-05-12 01:38:09,449 - WARNING - Real client failed for records CHEMBL55: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,449 - WARNING - Real client failed for properties CHEMBL55: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,459 - WARNING - Real client failed for CHEMBL56: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,460 - WARNING - Real client failed for records CHEMBL56: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,460 - WARNING - Real client failed for properties CHEMBL56: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,470 - WARNING - Real client failed for CHEMBL57: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,471 - INFO - Processed 56/100 molecules (56.0%) - 56 successes, 0 errors - Rate: 90.56 molecules/sec
+2025-05-12 01:38:09,471 - WARNING - Real client failed for records CHEMBL57: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,471 - WARNING - Real client failed for properties CHEMBL57: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,481 - WARNING - Real client failed for CHEMBL58: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,482 - WARNING - Real client failed for records CHEMBL58: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,482 - WARNING - Real client failed for properties CHEMBL58: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,492 - WARNING - Real client failed for CHEMBL59: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,493 - INFO - Processed 58/100 molecules (58.0%) - 58 successes, 0 errors - Rate: 90.56 molecules/sec
+2025-05-12 01:38:09,493 - WARNING - Real client failed for records CHEMBL59: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,493 - WARNING - Real client failed for properties CHEMBL59: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,504 - WARNING - Real client failed for CHEMBL60: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,504 - WARNING - Real client failed for records CHEMBL60: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,504 - WARNING - Real client failed for properties CHEMBL60: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,515 - INFO - Processed 60/100 molecules (60.0%) - 60 successes, 0 errors - Rate: 90.58 molecules/sec
+2025-05-12 01:38:09,515 - INFO - Batch complete. Overall progress: 60.0%
+2025-05-12 01:38:09,515 - INFO - Processing batch 7 of 10 (10 molecules)
+2025-05-12 01:38:09,515 - WARNING - Real client failed for CHEMBL61: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,515 - WARNING - Real client failed for records CHEMBL61: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,516 - WARNING - Real client failed for properties CHEMBL61: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,526 - WARNING - Real client failed for CHEMBL62: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,526 - WARNING - Real client failed for records CHEMBL62: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,526 - WARNING - Real client failed for properties CHEMBL62: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,537 - WARNING - Real client failed for CHEMBL63: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,537 - INFO - Processed 62/100 molecules (62.0%) - 62 successes, 0 errors - Rate: 90.53 molecules/sec
+2025-05-12 01:38:09,537 - WARNING - Real client failed for records CHEMBL63: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,538 - WARNING - Real client failed for properties CHEMBL63: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,548 - WARNING - Real client failed for CHEMBL64: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,548 - WARNING - Real client failed for records CHEMBL64: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,548 - WARNING - Real client failed for properties CHEMBL64: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,559 - WARNING - Real client failed for CHEMBL65: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,559 - INFO - Processed 64/100 molecules (64.0%) - 64 successes, 0 errors - Rate: 90.52 molecules/sec
+2025-05-12 01:38:09,560 - WARNING - Real client failed for records CHEMBL65: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,560 - WARNING - Real client failed for properties CHEMBL65: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,570 - WARNING - Real client failed for CHEMBL66: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,571 - WARNING - Real client failed for records CHEMBL66: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,571 - WARNING - Real client failed for properties CHEMBL66: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,581 - WARNING - Real client failed for CHEMBL67: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,581 - INFO - Processed 66/100 molecules (66.0%) - 66 successes, 0 errors - Rate: 90.51 molecules/sec
+2025-05-12 01:38:09,582 - WARNING - Real client failed for records CHEMBL67: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,582 - WARNING - Real client failed for properties CHEMBL67: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,593 - WARNING - Real client failed for CHEMBL68: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,593 - WARNING - Real client failed for records CHEMBL68: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,593 - WARNING - Real client failed for properties CHEMBL68: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,604 - WARNING - Real client failed for CHEMBL69: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,604 - INFO - Processed 68/100 molecules (68.0%) - 68 successes, 0 errors - Rate: 90.41 molecules/sec
+2025-05-12 01:38:09,605 - WARNING - Real client failed for records CHEMBL69: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,605 - WARNING - Real client failed for properties CHEMBL69: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,616 - WARNING - Real client failed for CHEMBL70: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,616 - WARNING - Real client failed for records CHEMBL70: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,617 - WARNING - Real client failed for properties CHEMBL70: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,627 - INFO - Processed 70/100 molecules (70.0%) - 70 successes, 0 errors - Rate: 90.35 molecules/sec
+2025-05-12 01:38:09,627 - INFO - Batch complete. Overall progress: 70.0%
+2025-05-12 01:38:09,628 - INFO - Processing batch 8 of 10 (10 molecules)
+2025-05-12 01:38:09,628 - WARNING - Real client failed for CHEMBL71: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,628 - WARNING - Real client failed for records CHEMBL71: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,628 - WARNING - Real client failed for properties CHEMBL71: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,639 - WARNING - Real client failed for CHEMBL72: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,639 - WARNING - Real client failed for records CHEMBL72: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,640 - WARNING - Real client failed for properties CHEMBL72: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,650 - WARNING - Real client failed for CHEMBL73: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,651 - INFO - Processed 72/100 molecules (72.0%) - 72 successes, 0 errors - Rate: 90.20 molecules/sec
+2025-05-12 01:38:09,651 - WARNING - Real client failed for records CHEMBL73: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,652 - WARNING - Real client failed for properties CHEMBL73: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,662 - WARNING - Real client failed for CHEMBL74: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,663 - WARNING - Real client failed for records CHEMBL74: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,663 - WARNING - Real client failed for properties CHEMBL74: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,673 - WARNING - Real client failed for CHEMBL75: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,674 - INFO - Processed 74/100 molecules (74.0%) - 74 successes, 0 errors - Rate: 90.08 molecules/sec
+2025-05-12 01:38:09,674 - WARNING - Real client failed for records CHEMBL75: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,675 - WARNING - Real client failed for properties CHEMBL75: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,685 - WARNING - Real client failed for CHEMBL76: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,686 - WARNING - Real client failed for records CHEMBL76: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,686 - WARNING - Real client failed for properties CHEMBL76: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,696 - WARNING - Real client failed for CHEMBL77: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,696 - INFO - Processed 76/100 molecules (76.0%) - 76 successes, 0 errors - Rate: 90.04 molecules/sec
+2025-05-12 01:38:09,697 - WARNING - Real client failed for records CHEMBL77: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,697 - WARNING - Real client failed for properties CHEMBL77: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,707 - WARNING - Real client failed for CHEMBL78: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,708 - WARNING - Real client failed for records CHEMBL78: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,708 - WARNING - Real client failed for properties CHEMBL78: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,718 - WARNING - Real client failed for CHEMBL79: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,719 - INFO - Processed 78/100 molecules (78.0%) - 78 successes, 0 errors - Rate: 90.04 molecules/sec
+2025-05-12 01:38:09,719 - WARNING - Real client failed for records CHEMBL79: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,719 - WARNING - Real client failed for properties CHEMBL79: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,729 - WARNING - Real client failed for CHEMBL80: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,730 - WARNING - Real client failed for records CHEMBL80: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,730 - WARNING - Real client failed for properties CHEMBL80: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,740 - INFO - Processed 80/100 molecules (80.0%) - 80 successes, 0 errors - Rate: 90.10 molecules/sec
+2025-05-12 01:38:09,740 - INFO - Batch complete. Overall progress: 80.0%
+2025-05-12 01:38:09,740 - INFO - Processing batch 9 of 10 (10 molecules)
+2025-05-12 01:38:09,741 - WARNING - Real client failed for CHEMBL81: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,741 - WARNING - Real client failed for records CHEMBL81: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,741 - WARNING - Real client failed for properties CHEMBL81: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,751 - WARNING - Real client failed for CHEMBL82: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,752 - WARNING - Real client failed for records CHEMBL82: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,752 - WARNING - Real client failed for properties CHEMBL82: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,762 - WARNING - Real client failed for CHEMBL83: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,763 - INFO - Processed 82/100 molecules (82.0%) - 82 successes, 0 errors - Rate: 90.07 molecules/sec
+2025-05-12 01:38:09,763 - WARNING - Real client failed for records CHEMBL83: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,763 - WARNING - Real client failed for properties CHEMBL83: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,774 - WARNING - Real client failed for CHEMBL84: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,774 - WARNING - Real client failed for records CHEMBL84: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,774 - WARNING - Real client failed for properties CHEMBL84: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,785 - WARNING - Real client failed for CHEMBL85: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,785 - INFO - Processed 84/100 molecules (84.0%) - 84 successes, 0 errors - Rate: 90.07 molecules/sec
+2025-05-12 01:38:09,785 - WARNING - Real client failed for records CHEMBL85: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,785 - WARNING - Real client failed for properties CHEMBL85: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,796 - WARNING - Real client failed for CHEMBL86: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,796 - WARNING - Real client failed for records CHEMBL86: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,796 - WARNING - Real client failed for properties CHEMBL86: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,807 - WARNING - Real client failed for CHEMBL87: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,807 - INFO - Processed 86/100 molecules (86.0%) - 86 successes, 0 errors - Rate: 90.09 molecules/sec
+2025-05-12 01:38:09,807 - WARNING - Real client failed for records CHEMBL87: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,807 - WARNING - Real client failed for properties CHEMBL87: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,818 - WARNING - Real client failed for CHEMBL88: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,818 - WARNING - Real client failed for records CHEMBL88: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,818 - WARNING - Real client failed for properties CHEMBL88: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,829 - WARNING - Real client failed for CHEMBL89: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,829 - INFO - Processed 88/100 molecules (88.0%) - 88 successes, 0 errors - Rate: 90.09 molecules/sec
+2025-05-12 01:38:09,829 - WARNING - Real client failed for records CHEMBL89: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,830 - WARNING - Real client failed for properties CHEMBL89: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,840 - WARNING - Real client failed for CHEMBL90: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,840 - WARNING - Real client failed for records CHEMBL90: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,841 - WARNING - Real client failed for properties CHEMBL90: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,851 - INFO - Processed 90/100 molecules (90.0%) - 90 successes, 0 errors - Rate: 90.10 molecules/sec
+2025-05-12 01:38:09,852 - INFO - Batch complete. Overall progress: 90.0%
+2025-05-12 01:38:09,852 - INFO - Processing batch 10 of 10 (10 molecules)
+2025-05-12 01:38:09,852 - WARNING - Real client failed for CHEMBL91: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,853 - WARNING - Real client failed for records CHEMBL91: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,853 - WARNING - Real client failed for properties CHEMBL91: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,863 - WARNING - Real client failed for CHEMBL92: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,864 - WARNING - Real client failed for records CHEMBL92: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,864 - WARNING - Real client failed for properties CHEMBL92: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,875 - WARNING - Real client failed for CHEMBL93: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,875 - INFO - Processed 92/100 molecules (92.0%) - 92 successes, 0 errors - Rate: 89.97 molecules/sec
+2025-05-12 01:38:09,875 - WARNING - Real client failed for records CHEMBL93: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,876 - WARNING - Real client failed for properties CHEMBL93: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,886 - WARNING - Real client failed for CHEMBL94: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,886 - WARNING - Real client failed for records CHEMBL94: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,887 - WARNING - Real client failed for properties CHEMBL94: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,897 - WARNING - Real client failed for CHEMBL95: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,897 - INFO - Processed 94/100 molecules (94.0%) - 94 successes, 0 errors - Rate: 89.96 molecules/sec
+2025-05-12 01:38:09,898 - WARNING - Real client failed for records CHEMBL95: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,898 - WARNING - Real client failed for properties CHEMBL95: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,908 - WARNING - Real client failed for CHEMBL96: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,909 - WARNING - Real client failed for records CHEMBL96: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,909 - WARNING - Real client failed for properties CHEMBL96: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,919 - WARNING - Real client failed for CHEMBL97: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,919 - INFO - Processed 96/100 molecules (96.0%) - 96 successes, 0 errors - Rate: 89.96 molecules/sec
+2025-05-12 01:38:09,920 - WARNING - Real client failed for records CHEMBL97: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,920 - WARNING - Real client failed for properties CHEMBL97: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,931 - WARNING - Real client failed for CHEMBL98: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,931 - WARNING - Real client failed for records CHEMBL98: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,931 - WARNING - Real client failed for properties CHEMBL98: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,944 - WARNING - Real client failed for CHEMBL99: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,944 - WARNING - Real client failed for records CHEMBL99: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,944 - WARNING - Real client failed for properties CHEMBL99: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,947 - INFO - Processed 98/100 molecules (98.0%) - 98 successes, 0 errors - Rate: 89.53 molecules/sec
+2025-05-12 01:38:09,957 - WARNING - Real client failed for CHEMBL100: 'ChEMBLClient' object has no attribute 'get_compound_by_chembl_id'
+2025-05-12 01:38:09,958 - WARNING - Real client failed for records CHEMBL100: 'ChEMBLClient' object has no attribute 'get_compound_records'
+2025-05-12 01:38:09,958 - WARNING - Real client failed for properties CHEMBL100: 'ChEMBLClient' object has no attribute 'get_compound_properties'
+2025-05-12 01:38:09,969 - INFO - Processed 100/100 molecules (100.0%) - 100 successes, 0 errors - Rate: 89.56 molecules/sec
+2025-05-12 01:38:09,970 - INFO - Batch complete. Overall progress: 100.0%
+2025-05-12 01:38:09,971 - WARNING - No database connection available
+2025-05-12 01:38:09,972 - INFO - Captured database stats after import
+2025-05-12 01:38:09,972 - INFO - Processing completed: 100 successes, 0 errors in 1.12 seconds
+2025-05-12 01:38:09,973 - INFO - Average rate: 89.39 molecules/second
+2025-05-12 01:38:09,984 - WARNING - Cannot verify data: no database connection or test mode enabled
+2025-05-12 01:38:09,993 - INFO - Reports saved to chembl_pipeline_report_20250512_013809.json and chembl_pipeline_report_20250512_013809.md
+2025-05-12 01:38:09,999 - INFO - Reports saved to pipeline_test_20250512_013808/pipeline_report.json and pipeline_test_20250512_013808/pipeline_report.md

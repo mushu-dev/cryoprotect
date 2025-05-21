@@ -1,0 +1,329 @@
+import React from 'react';
+
+interface ProtocolVersionComparisonProps {
+  protocolA: any; // Older version
+  protocolB: any; // Newer version (current)
+  onViewVersion?: (protocol: any) => void;
+}
+
+export function ProtocolVersionComparison({
+  protocolA,
+  protocolB,
+  onViewVersion
+}: ProtocolVersionComparisonProps) {
+  // Function to compare versions
+  const compareValues = (keyA: string, keyB: string) => {
+    return keyA === keyB ? 
+      <span className="text-gray-600">No change</span> : 
+      <div className="flex flex-col">
+        <span className="line-through text-red-600 text-sm">{keyA}</span>
+        <span className="text-green-600 text-sm">{keyB}</span>
+      </div>;
+  };
+
+  // Function to compare arrays
+  const compareArrays = (arrA: string[], arrB: string[]) => {
+    if (arrA.length === arrB.length && arrA.every((val, idx) => val === arrB[idx])) {
+      return <span className="text-gray-600">No change</span>;
+    }
+
+    const removed = arrA.filter(item => !arrB.includes(item));
+    const added = arrB.filter(item => !arrA.includes(item));
+    const unchanged = arrA.filter(item => arrB.includes(item));
+
+    return (
+      <div>
+        {removed.length > 0 && (
+          <div className="mb-2">
+            <div className="text-xs text-red-600 font-medium mb-1">Removed:</div>
+            <ul className="list-disc list-inside text-red-600 text-sm">
+              {removed.map((item, index) => (
+                <li key={`removed-${index}`} className="line-through">{item}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {added.length > 0 && (
+          <div className="mb-2">
+            <div className="text-xs text-green-600 font-medium mb-1">Added:</div>
+            <ul className="list-disc list-inside text-green-600 text-sm">
+              {added.map((item, index) => (
+                <li key={`added-${index}`}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {unchanged.length > 0 && (
+          <div>
+            <div className="text-xs text-gray-600 font-medium mb-1">Unchanged:</div>
+            <ul className="list-disc list-inside text-gray-600 text-sm">
+              {unchanged.map((item, index) => (
+                <li key={`unchanged-${index}`}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  // Function to compare steps
+  const compareSteps = (stepsA: any[], stepsB: any[]) => {
+    const removedSteps = stepsA.filter(stepA => 
+      !stepsB.some(stepB => stepB.title === stepA.title && stepB.description === stepA.description)
+    );
+    
+    const addedSteps = stepsB.filter(stepB => 
+      !stepsA.some(stepA => stepA.title === stepB.title && stepA.description === stepB.description)
+    );
+    
+    const modifiedSteps = stepsB.filter(stepB => 
+      stepsA.some(stepA => 
+        stepA.title === stepB.title && stepA.description !== stepB.description
+      )
+    );
+
+    if (removedSteps.length === 0 && addedSteps.length === 0 && modifiedSteps.length === 0) {
+      return <span className="text-gray-600">No change</span>;
+    }
+
+    return (
+      <div className="space-y-4">
+        {removedSteps.length > 0 && (
+          <div>
+            <div className="text-xs text-red-600 font-medium mb-1">Removed Steps:</div>
+            <ul className="space-y-2">
+              {removedSteps.map((step, index) => (
+                <li key={`removed-step-${index}`} className="text-sm pl-2 border-l-2 border-red-300">
+                  <div className="line-through text-red-600 font-medium">{step.order}. {step.title}</div>
+                  <div className="line-through text-red-600">{step.description}</div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        
+        {addedSteps.length > 0 && (
+          <div>
+            <div className="text-xs text-green-600 font-medium mb-1">Added Steps:</div>
+            <ul className="space-y-2">
+              {addedSteps.map((step, index) => (
+                <li key={`added-step-${index}`} className="text-sm pl-2 border-l-2 border-green-300">
+                  <div className="text-green-600 font-medium">{step.order}. {step.title}</div>
+                  <div className="text-green-600">{step.description}</div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        
+        {modifiedSteps.length > 0 && (
+          <div>
+            <div className="text-xs text-blue-600 font-medium mb-1">Modified Steps:</div>
+            <ul className="space-y-4">
+              {modifiedSteps.map((stepB, index) => {
+                const stepA = stepsA.find(s => s.title === stepB.title);
+                return (
+                  <li key={`modified-step-${index}`} className="text-sm pl-2 border-l-2 border-blue-300">
+                    <div className="text-blue-600 font-medium">{stepB.order}. {stepB.title}</div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-1">
+                      <div>
+                        <div className="text-xs text-red-600 mb-1">Before:</div>
+                        <div className="line-through text-red-600">{stepA?.description}</div>
+                      </div>
+                      <div>
+                        <div className="text-xs text-green-600 mb-1">After:</div>
+                        <div className="text-green-600">{stepB.description}</div>
+                      </div>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  // Function to compare cryoprotectants
+  const compareCryoprotectants = (cpsA: any[], cpsB: any[]) => {
+    const removedCps = cpsA.filter(cpA => 
+      !cpsB.some(cpB => cpB.name === cpA.name && cpB.concentration === cpA.concentration)
+    );
+    
+    const addedCps = cpsB.filter(cpB => 
+      !cpsA.some(cpA => cpA.name === cpB.name && cpA.concentration === cpB.concentration)
+    );
+    
+    const modifiedCps = cpsB.filter(cpB => 
+      cpsA.some(cpA => 
+        cpA.name === cpB.name && cpA.concentration !== cpB.concentration
+      )
+    );
+
+    if (removedCps.length === 0 && addedCps.length === 0 && modifiedCps.length === 0) {
+      return <span className="text-gray-600">No change</span>;
+    }
+
+    return (
+      <div className="space-y-2">
+        {removedCps.length > 0 && (
+          <div>
+            <div className="text-xs text-red-600 font-medium mb-1">Removed:</div>
+            <ul className="list-disc list-inside">
+              {removedCps.map((cp, index) => (
+                <li key={`removed-cp-${index}`} className="line-through text-red-600 text-sm">
+                  {cp.name} ({cp.concentration})
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        
+        {addedCps.length > 0 && (
+          <div>
+            <div className="text-xs text-green-600 font-medium mb-1">Added:</div>
+            <ul className="list-disc list-inside">
+              {addedCps.map((cp, index) => (
+                <li key={`added-cp-${index}`} className="text-green-600 text-sm">
+                  {cp.name} ({cp.concentration})
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        
+        {modifiedCps.length > 0 && (
+          <div>
+            <div className="text-xs text-blue-600 font-medium mb-1">Modified:</div>
+            <ul className="list-disc list-inside">
+              {modifiedCps.map((cpB, index) => {
+                const cpA = cpsA.find(cp => cp.name === cpB.name);
+                return (
+                  <li key={`modified-cp-${index}`} className="text-sm">
+                    {cpB.name}
+                    <div className="pl-5">
+                      <span className="line-through text-red-600 text-sm">{cpA?.concentration}</span>
+                      {' → '}
+                      <span className="text-green-600 text-sm">{cpB.concentration}</span>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <div className="bg-card border rounded-lg overflow-hidden shadow-sm">
+      <div className="p-4 bg-muted">
+        <div className="flex justify-between items-center">
+          <h2 className="text-lg font-semibold">Version Comparison</h2>
+          <div className="flex space-x-2">
+            <button 
+              onClick={() => onViewVersion?.(protocolA)}
+              className="inline-flex items-center px-3 py-1 rounded-md bg-secondary text-sm font-medium text-secondary-foreground hover:bg-secondary/80"
+            >
+              View v{protocolA.version}
+            </button>
+            <button
+              onClick={() => onViewVersion?.(protocolB)}
+              className="inline-flex items-center px-3 py-1 rounded-md bg-primary text-sm font-medium text-primary-foreground hover:bg-primary/90"
+            >
+              View Current (v{protocolB.version})
+            </button>
+          </div>
+        </div>
+        <div className="flex mt-2 text-sm">
+          <div className="flex items-center">
+            <span className="text-muted-foreground">Comparing v{protocolA.version}</span>
+            <svg className="w-4 h-4 mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+            <span className="text-muted-foreground">v{protocolB.version}</span>
+          </div>
+        </div>
+      </div>
+    
+      <div className="p-6">
+        <div className="space-y-8">
+          {/* Basic Information */}
+          <div>
+            <h3 className="text-base font-semibold mb-4 border-b pb-2">Basic Information</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+              <div>
+                <div className="text-sm font-medium text-muted-foreground mb-1">Name</div>
+                {compareValues(protocolA.name, protocolB.name)}
+              </div>
+              <div>
+                <div className="text-sm font-medium text-muted-foreground mb-1">Duration</div>
+                {compareValues(protocolA.duration, protocolB.duration)}
+              </div>
+              <div className="md:col-span-2">
+                <div className="text-sm font-medium text-muted-foreground mb-1">Description</div>
+                {compareValues(protocolA.description, protocolB.description)}
+              </div>
+            </div>
+          </div>
+          
+          {/* Cell Types and Equipment */}
+          <div>
+            <h3 className="text-base font-semibold mb-4 border-b pb-2">Cell Types and Equipment</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+              <div>
+                <div className="text-sm font-medium text-muted-foreground mb-1">Cell Types</div>
+                {compareArrays(protocolA.cell_types, protocolB.cell_types)}
+              </div>
+              <div>
+                <div className="text-sm font-medium text-muted-foreground mb-1">Equipment</div>
+                {compareArrays(protocolA.equipment, protocolB.equipment)}
+              </div>
+            </div>
+          </div>
+          
+          {/* Cryopreservation Parameters */}
+          <div>
+            <h3 className="text-base font-semibold mb-4 border-b pb-2">Cryopreservation Parameters</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+              <div>
+                <div className="text-sm font-medium text-muted-foreground mb-1">Cryoprotectants</div>
+                {compareCryoprotectants(protocolA.cryoprotectants, protocolB.cryoprotectants)}
+              </div>
+              <div>
+                <div className="text-sm font-medium text-muted-foreground mb-1">Freezing Rate</div>
+                {compareValues(protocolA.freezing_rate, protocolB.freezing_rate)}
+              </div>
+              <div>
+                <div className="text-sm font-medium text-muted-foreground mb-1">Storage Temperature</div>
+                {compareValues(protocolA.storage_temperature, protocolB.storage_temperature)}
+              </div>
+              <div>
+                <div className="text-sm font-medium text-muted-foreground mb-1">Thawing Method</div>
+                {compareValues(protocolA.thawing_method, protocolB.thawing_method)}
+              </div>
+            </div>
+          </div>
+          
+          {/* Protocol Steps */}
+          <div>
+            <h3 className="text-base font-semibold mb-4 border-b pb-2">Protocol Steps</h3>
+            <div>
+              {compareSteps(protocolA.steps, protocolB.steps)}
+            </div>
+          </div>
+          
+          {/* Notes */}
+          <div>
+            <h3 className="text-base font-semibold mb-4 border-b pb-2">Notes</h3>
+            <div className="text-sm font-medium text-muted-foreground mb-1">Additional Notes</div>
+            {compareValues(protocolA.notes, protocolB.notes)}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -1,0 +1,1627 @@
+{
+  "summary": {
+    "sample_size": 10,
+    "overall_accuracy": 64.20510992607407,
+    "property_accuracy": {
+      "molecular_formula": {
+        "mean": 40.0,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 100.0,
+        "std_dev": 51.63977794943222,
+        "sample_size": 10
+      },
+      "molecular_weight": {
+        "mean": 81.57789391727306,
+        "median": 95.3240084834431,
+        "min": 2.586096530533851,
+        "max": 100.0,
+        "std_dev": 30.86020533645076,
+        "sample_size": 10
+      },
+      "logp": {
+        "mean": 20.255940443355254,
+        "median": 3.225806451612904,
+        "min": 0,
+        "max": 74.07407407407408,
+        "std_dev": 27.706620178137896,
+        "sample_size": 10
+      },
+      "tpsa": {
+        "mean": 39.6893942200678,
+        "median": 34.59082994776553,
+        "min": 0,
+        "max": 100.0,
+        "std_dev": 30.56291895267243,
+        "sample_size": 10
+      },
+      "h_donors": {
+        "mean": 32.5,
+        "median": 14.583333333333329,
+        "min": 0.0,
+        "max": 100.0,
+        "std_dev": 38.928551203010784,
+        "sample_size": 10
+      },
+      "h_acceptors": {
+        "mean": 90.0,
+        "median": 100.0,
+        "min": 0.0,
+        "max": 100.0,
+        "std_dev": 31.622776601683793,
+        "sample_size": 10
+      },
+      "rotatable_bonds": {
+        "mean": 49.66666666666667,
+        "median": 41.66666666666667,
+        "min": 0.0,
+        "max": 100.0,
+        "std_dev": 39.51714739542323,
+        "sample_size": 10
+      },
+      "ring_count": {
+        "mean": 100.0,
+        "median": 100.0,
+        "min": 100.0,
+        "max": 100.0,
+        "std_dev": 0.0,
+        "sample_size": 10
+      },
+      "aromatic_ring_count": {
+        "mean": 90.0,
+        "median": 100.0,
+        "min": 0,
+        "max": 100.0,
+        "std_dev": 31.622776601683793,
+        "sample_size": 10
+      },
+      "heavy_atom_count": {
+        "mean": 98.36120401337793,
+        "median": 100.0,
+        "min": 92.3076923076923,
+        "max": 100.0,
+        "std_dev": 2.7913011330896724,
+        "sample_size": 10
+      }
+    }
+  },
+  "recommendations": [
+    {
+      "property": "logp",
+      "accuracy": 20.255940443355254,
+      "recommendation": "Improve LogP calculation by implementing fragment-based contribution method and better handling of ring systems. Consider implementing Wildman-Crippen or similar algorithm."
+    },
+    {
+      "property": "h_donors",
+      "accuracy": 32.5,
+      "recommendation": "Consider revising the calculation algorithm for h_donors."
+    },
+    {
+      "property": "tpsa",
+      "accuracy": 39.6893942200678,
+      "recommendation": "Enhance TPSA calculation by using more accurate contribution values for functional groups. Consider implementing the PSA contribution method by Ertl et al."
+    },
+    {
+      "property": "molecular_formula",
+      "accuracy": 40.0,
+      "recommendation": "Improve molecular formula calculation by implementing better handling of implicit hydrogens and explicit valence states. Consider using lookup tables for common fragments."
+    },
+    {
+      "property": "rotatable_bonds",
+      "accuracy": 49.66666666666667,
+      "recommendation": "Improve rotatable bond counting by better identifying single bonds that are not in rings and are not terminal."
+    },
+    {
+      "property": "general",
+      "accuracy": null,
+      "recommendation": "When RDKit is available, use it for the most accurate calculations. The mock implementation should be used only as a fallback."
+    },
+    {
+      "property": "high_accuracy",
+      "accuracy": null,
+      "recommendation": "The current implementation performs well for these properties: h_acceptors, ring_count, aromatic_ring_count, heavy_atom_count. No immediate improvements needed."
+    }
+  ],
+  "detailed_results": [
+    {
+      "name": "Glycerol",
+      "smiles": "C(C(CO)O)O",
+      "reference": {
+        "molecular_formula": "C3H8O3",
+        "molecular_weight": 92.09,
+        "logp": -1.76,
+        "tpsa": 60.69,
+        "h_donors": 3,
+        "h_acceptors": 3,
+        "rotatable_bonds": 2,
+        "ring_count": 0,
+        "aromatic_ring_count": 0,
+        "heavy_atom_count": 6
+      },
+      "mock": {
+        "molecular_formula": "C3H8O3",
+        "molecular_weight": 92.09,
+        "logp": -3.0,
+        "tpsa": 85.5,
+        "h_donors": 1,
+        "h_acceptors": 3,
+        "rotatable_bonds": 1,
+        "ring_count": 0,
+        "aromatic_ring_count": 0,
+        "heavy_atom_count": 6
+      },
+      "accuracy": {
+        "properties": {
+          "molecular_formula": {
+            "reference": "C3H8O3",
+            "calculated": "C3H8O3",
+            "accuracy": 100.0
+          },
+          "molecular_weight": {
+            "reference": 92.09,
+            "calculated": 92.09,
+            "accuracy": 100.0
+          },
+          "logp": {
+            "reference": -1.76,
+            "calculated": -3.0,
+            "accuracy": 29.545454545454547
+          },
+          "tpsa": {
+            "reference": 60.69,
+            "calculated": 85.5,
+            "accuracy": 59.120118635689565
+          },
+          "h_donors": {
+            "reference": 3,
+            "calculated": 1,
+            "accuracy": 33.33333333333334
+          },
+          "h_acceptors": {
+            "reference": 3,
+            "calculated": 3,
+            "accuracy": 100.0
+          },
+          "rotatable_bonds": {
+            "reference": 2,
+            "calculated": 1,
+            "accuracy": 50.0
+          },
+          "ring_count": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "aromatic_ring_count": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "heavy_atom_count": {
+            "reference": 6,
+            "calculated": 6,
+            "accuracy": 100.0
+          }
+        },
+        "overall_accuracy": 77.19989065144775
+      },
+      "rdkit": {
+        "molecular_formula": "C3H8O3",
+        "molecular_weight": 92.09,
+        "logp": -1.67,
+        "tpsa": 60.69,
+        "h_donors": 3,
+        "h_acceptors": 3,
+        "rotatable_bonds": 2,
+        "ring_count": 0,
+        "aromatic_ring_count": 0,
+        "heavy_atom_count": 6
+      },
+      "rdkit_accuracy": {
+        "properties": {
+          "molecular_formula": {
+            "reference": "C3H8O3",
+            "calculated": "C3H8O3",
+            "accuracy": 100.0
+          },
+          "molecular_weight": {
+            "reference": 92.09,
+            "calculated": 92.09,
+            "accuracy": 100.0
+          },
+          "logp": {
+            "reference": -1.76,
+            "calculated": -1.67,
+            "accuracy": 94.88636363636363
+          },
+          "tpsa": {
+            "reference": 60.69,
+            "calculated": 60.69,
+            "accuracy": 100.0
+          },
+          "h_donors": {
+            "reference": 3,
+            "calculated": 3,
+            "accuracy": 100.0
+          },
+          "h_acceptors": {
+            "reference": 3,
+            "calculated": 3,
+            "accuracy": 100.0
+          },
+          "rotatable_bonds": {
+            "reference": 2,
+            "calculated": 2,
+            "accuracy": 100.0
+          },
+          "ring_count": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "aromatic_ring_count": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "heavy_atom_count": {
+            "reference": 6,
+            "calculated": 6,
+            "accuracy": 100.0
+          }
+        },
+        "overall_accuracy": 99.48863636363636
+      }
+    },
+    {
+      "name": "DMSO",
+      "smiles": "CS(=O)C",
+      "reference": {
+        "molecular_formula": "C2H6OS",
+        "molecular_weight": 78.13,
+        "logp": -1.35,
+        "tpsa": 36.28,
+        "h_donors": 0,
+        "h_acceptors": 1,
+        "rotatable_bonds": 1,
+        "ring_count": 0,
+        "aromatic_ring_count": 0,
+        "heavy_atom_count": 4
+      },
+      "mock": {
+        "molecular_formula": "C2H6OS",
+        "molecular_weight": 78.13,
+        "logp": -1.0,
+        "tpsa": 62.5,
+        "h_donors": 1,
+        "h_acceptors": 1,
+        "rotatable_bonds": 1,
+        "ring_count": 0,
+        "aromatic_ring_count": 0,
+        "heavy_atom_count": 4
+      },
+      "accuracy": {
+        "properties": {
+          "molecular_formula": {
+            "reference": "C2H6OS",
+            "calculated": "C2H6OS",
+            "accuracy": 100.0
+          },
+          "molecular_weight": {
+            "reference": 78.13,
+            "calculated": 78.13,
+            "accuracy": 100.0
+          },
+          "logp": {
+            "reference": -1.35,
+            "calculated": -1.0,
+            "accuracy": 74.07407407407408
+          },
+          "tpsa": {
+            "reference": 36.28,
+            "calculated": 62.5,
+            "accuracy": 27.728776185226025
+          },
+          "h_donors": {
+            "reference": 0,
+            "calculated": 1,
+            "accuracy": 0.0
+          },
+          "h_acceptors": {
+            "reference": 1,
+            "calculated": 1,
+            "accuracy": 100.0
+          },
+          "rotatable_bonds": {
+            "reference": 1,
+            "calculated": 1,
+            "accuracy": 100.0
+          },
+          "ring_count": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "aromatic_ring_count": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "heavy_atom_count": {
+            "reference": 4,
+            "calculated": 4,
+            "accuracy": 100.0
+          }
+        },
+        "overall_accuracy": 80.18028502593002
+      },
+      "rdkit": {
+        "molecular_formula": "C2H6OS",
+        "molecular_weight": 78.14,
+        "logp": -0.01,
+        "tpsa": 17.07,
+        "h_donors": 0,
+        "h_acceptors": 1,
+        "rotatable_bonds": 0,
+        "ring_count": 0,
+        "aromatic_ring_count": 0,
+        "heavy_atom_count": 4
+      },
+      "rdkit_accuracy": {
+        "properties": {
+          "molecular_formula": {
+            "reference": "C2H6OS",
+            "calculated": "C2H6OS",
+            "accuracy": 100.0
+          },
+          "molecular_weight": {
+            "reference": 78.13,
+            "calculated": 78.14,
+            "accuracy": 99.98720081914757
+          },
+          "logp": {
+            "reference": -1.35,
+            "calculated": -0.01,
+            "accuracy": 0.7407407407407476
+          },
+          "tpsa": {
+            "reference": 36.28,
+            "calculated": 17.07,
+            "accuracy": 47.05071664829107
+          },
+          "h_donors": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "h_acceptors": {
+            "reference": 1,
+            "calculated": 1,
+            "accuracy": 100.0
+          },
+          "rotatable_bonds": {
+            "reference": 1,
+            "calculated": 0,
+            "accuracy": 0
+          },
+          "ring_count": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "aromatic_ring_count": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "heavy_atom_count": {
+            "reference": 4,
+            "calculated": 4,
+            "accuracy": 100.0
+          }
+        },
+        "overall_accuracy": 74.77786582081794
+      }
+    },
+    {
+      "name": "Ethylene Glycol",
+      "smiles": "OCCO",
+      "reference": {
+        "molecular_formula": "C2H6O2",
+        "molecular_weight": 62.07,
+        "logp": -1.2,
+        "tpsa": 40.46,
+        "h_donors": 2,
+        "h_acceptors": 2,
+        "rotatable_bonds": 1,
+        "ring_count": 0,
+        "aromatic_ring_count": 0,
+        "heavy_atom_count": 4
+      },
+      "mock": {
+        "molecular_formula": "C2H6O2",
+        "molecular_weight": 62.07,
+        "logp": -2.0,
+        "tpsa": 57.0,
+        "h_donors": 1,
+        "h_acceptors": 2,
+        "rotatable_bonds": 1,
+        "ring_count": 0,
+        "aromatic_ring_count": 0,
+        "heavy_atom_count": 4
+      },
+      "accuracy": {
+        "properties": {
+          "molecular_formula": {
+            "reference": "C2H6O2",
+            "calculated": "C2H6O2",
+            "accuracy": 100.0
+          },
+          "molecular_weight": {
+            "reference": 62.07,
+            "calculated": 62.07,
+            "accuracy": 100.0
+          },
+          "logp": {
+            "reference": -1.2,
+            "calculated": -2.0,
+            "accuracy": 33.33333333333333
+          },
+          "tpsa": {
+            "reference": 40.46,
+            "calculated": 57.0,
+            "accuracy": 59.12011863568957
+          },
+          "h_donors": {
+            "reference": 2,
+            "calculated": 1,
+            "accuracy": 50.0
+          },
+          "h_acceptors": {
+            "reference": 2,
+            "calculated": 2,
+            "accuracy": 100.0
+          },
+          "rotatable_bonds": {
+            "reference": 1,
+            "calculated": 1,
+            "accuracy": 100.0
+          },
+          "ring_count": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "aromatic_ring_count": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "heavy_atom_count": {
+            "reference": 4,
+            "calculated": 4,
+            "accuracy": 100.0
+          }
+        },
+        "overall_accuracy": 84.24534519690229
+      },
+      "rdkit": {
+        "molecular_formula": "C2H6O2",
+        "molecular_weight": 62.07,
+        "logp": -1.03,
+        "tpsa": 40.46,
+        "h_donors": 2,
+        "h_acceptors": 2,
+        "rotatable_bonds": 1,
+        "ring_count": 0,
+        "aromatic_ring_count": 0,
+        "heavy_atom_count": 4
+      },
+      "rdkit_accuracy": {
+        "properties": {
+          "molecular_formula": {
+            "reference": "C2H6O2",
+            "calculated": "C2H6O2",
+            "accuracy": 100.0
+          },
+          "molecular_weight": {
+            "reference": 62.07,
+            "calculated": 62.07,
+            "accuracy": 100.0
+          },
+          "logp": {
+            "reference": -1.2,
+            "calculated": -1.03,
+            "accuracy": 85.83333333333334
+          },
+          "tpsa": {
+            "reference": 40.46,
+            "calculated": 40.46,
+            "accuracy": 100.0
+          },
+          "h_donors": {
+            "reference": 2,
+            "calculated": 2,
+            "accuracy": 100.0
+          },
+          "h_acceptors": {
+            "reference": 2,
+            "calculated": 2,
+            "accuracy": 100.0
+          },
+          "rotatable_bonds": {
+            "reference": 1,
+            "calculated": 1,
+            "accuracy": 100.0
+          },
+          "ring_count": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "aromatic_ring_count": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "heavy_atom_count": {
+            "reference": 4,
+            "calculated": 4,
+            "accuracy": 100.0
+          }
+        },
+        "overall_accuracy": 98.58333333333334
+      }
+    },
+    {
+      "name": "Sucrose",
+      "smiles": "C(C1C(C(C(C(O1)OC2C(C(C(C(O2)CO)O)O)O)O)CO)O)O",
+      "reference": {
+        "molecular_formula": "C12H22O11",
+        "molecular_weight": 342.3,
+        "logp": -3.76,
+        "tpsa": 189.53,
+        "h_donors": 8,
+        "h_acceptors": 11,
+        "rotatable_bonds": 5,
+        "ring_count": 2,
+        "aromatic_ring_count": 0,
+        "heavy_atom_count": 23
+      },
+      "mock": {
+        "molecular_formula": "C14H30O12",
+        "molecular_weight": 390.38,
+        "logp": -10.0,
+        "tpsa": 313.5,
+        "h_donors": 1,
+        "h_acceptors": 11,
+        "rotatable_bonds": 1,
+        "ring_count": 2,
+        "aromatic_ring_count": 0,
+        "heavy_atom_count": 24
+      },
+      "accuracy": {
+        "properties": {
+          "molecular_formula": {
+            "reference": "C12H22O11",
+            "calculated": "C14H30O12",
+            "accuracy": 0.0
+          },
+          "molecular_weight": {
+            "reference": 342.3,
+            "calculated": 390.38,
+            "accuracy": 85.95384165936314
+          },
+          "logp": {
+            "reference": -3.76,
+            "calculated": -10.0,
+            "accuracy": 0
+          },
+          "tpsa": {
+            "reference": 189.53,
+            "calculated": 313.5,
+            "accuracy": 34.59082994776553
+          },
+          "h_donors": {
+            "reference": 8,
+            "calculated": 1,
+            "accuracy": 12.5
+          },
+          "h_acceptors": {
+            "reference": 11,
+            "calculated": 11,
+            "accuracy": 100.0
+          },
+          "rotatable_bonds": {
+            "reference": 5,
+            "calculated": 1,
+            "accuracy": 20.0
+          },
+          "ring_count": {
+            "reference": 2,
+            "calculated": 2,
+            "accuracy": 100.0
+          },
+          "aromatic_ring_count": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "heavy_atom_count": {
+            "reference": 23,
+            "calculated": 24,
+            "accuracy": 95.65217391304348
+          }
+        },
+        "overall_accuracy": 54.86968455201721
+      },
+      "rdkit": {
+        "molecular_formula": "C13H24O11",
+        "molecular_weight": 356.32,
+        "logp": -5.15,
+        "tpsa": 189.53,
+        "h_donors": 8,
+        "h_acceptors": 11,
+        "rotatable_bonds": 5,
+        "ring_count": 2,
+        "aromatic_ring_count": 0,
+        "heavy_atom_count": 24
+      },
+      "rdkit_accuracy": {
+        "properties": {
+          "molecular_formula": {
+            "reference": "C12H22O11",
+            "calculated": "C13H24O11",
+            "accuracy": 0.0
+          },
+          "molecular_weight": {
+            "reference": 342.3,
+            "calculated": 356.32,
+            "accuracy": 95.90417762196904
+          },
+          "logp": {
+            "reference": -3.76,
+            "calculated": -5.15,
+            "accuracy": 63.031914893617
+          },
+          "tpsa": {
+            "reference": 189.53,
+            "calculated": 189.53,
+            "accuracy": 100.0
+          },
+          "h_donors": {
+            "reference": 8,
+            "calculated": 8,
+            "accuracy": 100.0
+          },
+          "h_acceptors": {
+            "reference": 11,
+            "calculated": 11,
+            "accuracy": 100.0
+          },
+          "rotatable_bonds": {
+            "reference": 5,
+            "calculated": 5,
+            "accuracy": 100.0
+          },
+          "ring_count": {
+            "reference": 2,
+            "calculated": 2,
+            "accuracy": 100.0
+          },
+          "aromatic_ring_count": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "heavy_atom_count": {
+            "reference": 23,
+            "calculated": 24,
+            "accuracy": 95.65217391304348
+          }
+        },
+        "overall_accuracy": 85.45882664286295
+      }
+    },
+    {
+      "name": "Trehalose",
+      "smiles": "C(C1C(C(C(C(O1)OC2C(C(C(C(O2)O)O)O)O)O)O)O)O",
+      "reference": {
+        "molecular_formula": "C12H22O11",
+        "molecular_weight": 342.3,
+        "logp": -4.2,
+        "tpsa": 189.53,
+        "h_donors": 8,
+        "h_acceptors": 11,
+        "rotatable_bonds": 3,
+        "ring_count": 2,
+        "aromatic_ring_count": 0,
+        "heavy_atom_count": 23
+      },
+      "mock": {
+        "molecular_formula": "C12H26O12",
+        "molecular_weight": 362.33,
+        "logp": -11.0,
+        "tpsa": 313.5,
+        "h_donors": 1,
+        "h_acceptors": 11,
+        "rotatable_bonds": 1,
+        "ring_count": 2,
+        "aromatic_ring_count": 0,
+        "heavy_atom_count": 22
+      },
+      "accuracy": {
+        "properties": {
+          "molecular_formula": {
+            "reference": "C12H22O11",
+            "calculated": "C12H26O12",
+            "accuracy": 0.0
+          },
+          "molecular_weight": {
+            "reference": 342.3,
+            "calculated": 362.33,
+            "accuracy": 94.14840782938943
+          },
+          "logp": {
+            "reference": -4.2,
+            "calculated": -11.0,
+            "accuracy": 0
+          },
+          "tpsa": {
+            "reference": 189.53,
+            "calculated": 313.5,
+            "accuracy": 34.59082994776553
+          },
+          "h_donors": {
+            "reference": 8,
+            "calculated": 1,
+            "accuracy": 12.5
+          },
+          "h_acceptors": {
+            "reference": 11,
+            "calculated": 11,
+            "accuracy": 100.0
+          },
+          "rotatable_bonds": {
+            "reference": 3,
+            "calculated": 1,
+            "accuracy": 33.33333333333334
+          },
+          "ring_count": {
+            "reference": 2,
+            "calculated": 2,
+            "accuracy": 100.0
+          },
+          "aromatic_ring_count": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "heavy_atom_count": {
+            "reference": 23,
+            "calculated": 22,
+            "accuracy": 95.65217391304348
+          }
+        },
+        "overall_accuracy": 57.02247450235318
+      },
+      "rdkit": {
+        "molecular_formula": "C11H20O11",
+        "molecular_weight": 328.27,
+        "logp": -5.44,
+        "tpsa": 189.53,
+        "h_donors": 8,
+        "h_acceptors": 11,
+        "rotatable_bonds": 3,
+        "ring_count": 2,
+        "aromatic_ring_count": 0,
+        "heavy_atom_count": 22
+      },
+      "rdkit_accuracy": {
+        "properties": {
+          "molecular_formula": {
+            "reference": "C12H22O11",
+            "calculated": "C11H20O11",
+            "accuracy": 0.0
+          },
+          "molecular_weight": {
+            "reference": 342.3,
+            "calculated": 328.27,
+            "accuracy": 95.90125620800467
+          },
+          "logp": {
+            "reference": -4.2,
+            "calculated": -5.44,
+            "accuracy": 70.47619047619047
+          },
+          "tpsa": {
+            "reference": 189.53,
+            "calculated": 189.53,
+            "accuracy": 100.0
+          },
+          "h_donors": {
+            "reference": 8,
+            "calculated": 8,
+            "accuracy": 100.0
+          },
+          "h_acceptors": {
+            "reference": 11,
+            "calculated": 11,
+            "accuracy": 100.0
+          },
+          "rotatable_bonds": {
+            "reference": 3,
+            "calculated": 3,
+            "accuracy": 100.0
+          },
+          "ring_count": {
+            "reference": 2,
+            "calculated": 2,
+            "accuracy": 100.0
+          },
+          "aromatic_ring_count": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "heavy_atom_count": {
+            "reference": 23,
+            "calculated": 22,
+            "accuracy": 95.65217391304348
+          }
+        },
+        "overall_accuracy": 86.20296205972386
+      }
+    },
+    {
+      "name": "Mannitol",
+      "smiles": "OCC(O)C(O)C(O)C(O)CO",
+      "reference": {
+        "molecular_formula": "C6H14O6",
+        "molecular_weight": 182.17,
+        "logp": -3.1,
+        "tpsa": 121.38,
+        "h_donors": 6,
+        "h_acceptors": 6,
+        "rotatable_bonds": 5,
+        "ring_count": 0,
+        "aromatic_ring_count": 0,
+        "heavy_atom_count": 12
+      },
+      "mock": {
+        "molecular_formula": "C6H14O6",
+        "molecular_weight": 182.17,
+        "logp": -6.0,
+        "tpsa": 171.0,
+        "h_donors": 1,
+        "h_acceptors": 6,
+        "rotatable_bonds": 3,
+        "ring_count": 0,
+        "aromatic_ring_count": 0,
+        "heavy_atom_count": 12
+      },
+      "accuracy": {
+        "properties": {
+          "molecular_formula": {
+            "reference": "C6H14O6",
+            "calculated": "C6H14O6",
+            "accuracy": 100.0
+          },
+          "molecular_weight": {
+            "reference": 182.17,
+            "calculated": 182.17,
+            "accuracy": 100.0
+          },
+          "logp": {
+            "reference": -3.1,
+            "calculated": -6.0,
+            "accuracy": 6.451612903225808
+          },
+          "tpsa": {
+            "reference": 121.38,
+            "calculated": 171.0,
+            "accuracy": 59.120118635689565
+          },
+          "h_donors": {
+            "reference": 6,
+            "calculated": 1,
+            "accuracy": 16.666666666666657
+          },
+          "h_acceptors": {
+            "reference": 6,
+            "calculated": 6,
+            "accuracy": 100.0
+          },
+          "rotatable_bonds": {
+            "reference": 5,
+            "calculated": 3,
+            "accuracy": 60.0
+          },
+          "ring_count": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "aromatic_ring_count": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "heavy_atom_count": {
+            "reference": 12,
+            "calculated": 12,
+            "accuracy": 100.0
+          }
+        },
+        "overall_accuracy": 74.2238398205582
+      },
+      "rdkit": {
+        "molecular_formula": "C6H14O6",
+        "molecular_weight": 182.17,
+        "logp": -3.59,
+        "tpsa": 121.38,
+        "h_donors": 6,
+        "h_acceptors": 6,
+        "rotatable_bonds": 5,
+        "ring_count": 0,
+        "aromatic_ring_count": 0,
+        "heavy_atom_count": 12
+      },
+      "rdkit_accuracy": {
+        "properties": {
+          "molecular_formula": {
+            "reference": "C6H14O6",
+            "calculated": "C6H14O6",
+            "accuracy": 100.0
+          },
+          "molecular_weight": {
+            "reference": 182.17,
+            "calculated": 182.17,
+            "accuracy": 100.0
+          },
+          "logp": {
+            "reference": -3.1,
+            "calculated": -3.59,
+            "accuracy": 84.19354838709678
+          },
+          "tpsa": {
+            "reference": 121.38,
+            "calculated": 121.38,
+            "accuracy": 100.0
+          },
+          "h_donors": {
+            "reference": 6,
+            "calculated": 6,
+            "accuracy": 100.0
+          },
+          "h_acceptors": {
+            "reference": 6,
+            "calculated": 6,
+            "accuracy": 100.0
+          },
+          "rotatable_bonds": {
+            "reference": 5,
+            "calculated": 5,
+            "accuracy": 100.0
+          },
+          "ring_count": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "aromatic_ring_count": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "heavy_atom_count": {
+            "reference": 12,
+            "calculated": 12,
+            "accuracy": 100.0
+          }
+        },
+        "overall_accuracy": 98.41935483870968
+      }
+    },
+    {
+      "name": "Proline",
+      "smiles": "OC(=O)C1CCCN1",
+      "reference": {
+        "molecular_formula": "C5H9NO2",
+        "molecular_weight": 115.13,
+        "logp": -0.06,
+        "tpsa": 49.33,
+        "h_donors": 1,
+        "h_acceptors": 3,
+        "rotatable_bonds": 1,
+        "ring_count": 1,
+        "aromatic_ring_count": 0,
+        "heavy_atom_count": 8
+      },
+      "mock": {
+        "molecular_formula": "C5H13NO2",
+        "molecular_weight": 119.16,
+        "logp": -1.5,
+        "tpsa": 87.5,
+        "h_donors": 1,
+        "h_acceptors": 3,
+        "rotatable_bonds": 1,
+        "ring_count": 1,
+        "aromatic_ring_count": 0,
+        "heavy_atom_count": 8
+      },
+      "accuracy": {
+        "properties": {
+          "molecular_formula": {
+            "reference": "C5H9NO2",
+            "calculated": "C5H13NO2",
+            "accuracy": 0.0
+          },
+          "molecular_weight": {
+            "reference": 115.13,
+            "calculated": 119.16,
+            "accuracy": 96.49960913749675
+          },
+          "logp": {
+            "reference": -0.06,
+            "calculated": -1.5,
+            "accuracy": 0
+          },
+          "tpsa": {
+            "reference": 49.33,
+            "calculated": 87.5,
+            "accuracy": 22.62315021285221
+          },
+          "h_donors": {
+            "reference": 1,
+            "calculated": 1,
+            "accuracy": 100.0
+          },
+          "h_acceptors": {
+            "reference": 3,
+            "calculated": 3,
+            "accuracy": 100.0
+          },
+          "rotatable_bonds": {
+            "reference": 1,
+            "calculated": 1,
+            "accuracy": 100.0
+          },
+          "ring_count": {
+            "reference": 1,
+            "calculated": 1,
+            "accuracy": 100.0
+          },
+          "aromatic_ring_count": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "heavy_atom_count": {
+            "reference": 8,
+            "calculated": 8,
+            "accuracy": 100.0
+          }
+        },
+        "overall_accuracy": 71.9122759350349
+      },
+      "rdkit": {
+        "molecular_formula": "C5H9NO2",
+        "molecular_weight": 115.13,
+        "logp": -0.18,
+        "tpsa": 49.33,
+        "h_donors": 2,
+        "h_acceptors": 2,
+        "rotatable_bonds": 1,
+        "ring_count": 1,
+        "aromatic_ring_count": 0,
+        "heavy_atom_count": 8
+      },
+      "rdkit_accuracy": {
+        "properties": {
+          "molecular_formula": {
+            "reference": "C5H9NO2",
+            "calculated": "C5H9NO2",
+            "accuracy": 100.0
+          },
+          "molecular_weight": {
+            "reference": 115.13,
+            "calculated": 115.13,
+            "accuracy": 100.0
+          },
+          "logp": {
+            "reference": -0.06,
+            "calculated": -0.18,
+            "accuracy": 0
+          },
+          "tpsa": {
+            "reference": 49.33,
+            "calculated": 49.33,
+            "accuracy": 100.0
+          },
+          "h_donors": {
+            "reference": 1,
+            "calculated": 2,
+            "accuracy": 0
+          },
+          "h_acceptors": {
+            "reference": 3,
+            "calculated": 2,
+            "accuracy": 66.66666666666667
+          },
+          "rotatable_bonds": {
+            "reference": 1,
+            "calculated": 1,
+            "accuracy": 100.0
+          },
+          "ring_count": {
+            "reference": 1,
+            "calculated": 1,
+            "accuracy": 100.0
+          },
+          "aromatic_ring_count": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "heavy_atom_count": {
+            "reference": 8,
+            "calculated": 8,
+            "accuracy": 100.0
+          }
+        },
+        "overall_accuracy": 76.66666666666666
+      }
+    },
+    {
+      "name": "Benzene",
+      "smiles": "c1ccccc1",
+      "reference": {
+        "molecular_formula": "C6H6",
+        "molecular_weight": 78.11,
+        "logp": 2.13,
+        "tpsa": 0.0,
+        "h_donors": 0,
+        "h_acceptors": 0,
+        "rotatable_bonds": 0,
+        "ring_count": 1,
+        "aromatic_ring_count": 1,
+        "heavy_atom_count": 6
+      },
+      "mock": {
+        "molecular_formula": "H2",
+        "molecular_weight": 2.02,
+        "logp": 3.0,
+        "tpsa": 0.0,
+        "h_donors": 1,
+        "h_acceptors": 1,
+        "rotatable_bonds": 1,
+        "ring_count": 1,
+        "aromatic_ring_count": 1,
+        "heavy_atom_count": 6
+      },
+      "accuracy": {
+        "properties": {
+          "molecular_formula": {
+            "reference": "C6H6",
+            "calculated": "H2",
+            "accuracy": 0.0
+          },
+          "molecular_weight": {
+            "reference": 78.11,
+            "calculated": 2.02,
+            "accuracy": 2.586096530533851
+          },
+          "logp": {
+            "reference": 2.13,
+            "calculated": 3.0,
+            "accuracy": 59.154929577464785
+          },
+          "tpsa": {
+            "reference": 0.0,
+            "calculated": 0.0,
+            "accuracy": 100.0
+          },
+          "h_donors": {
+            "reference": 0,
+            "calculated": 1,
+            "accuracy": 0.0
+          },
+          "h_acceptors": {
+            "reference": 0,
+            "calculated": 1,
+            "accuracy": 0.0
+          },
+          "rotatable_bonds": {
+            "reference": 0,
+            "calculated": 1,
+            "accuracy": 0.0
+          },
+          "ring_count": {
+            "reference": 1,
+            "calculated": 1,
+            "accuracy": 100.0
+          },
+          "aromatic_ring_count": {
+            "reference": 1,
+            "calculated": 1,
+            "accuracy": 100.0
+          },
+          "heavy_atom_count": {
+            "reference": 6,
+            "calculated": 6,
+            "accuracy": 100.0
+          }
+        },
+        "overall_accuracy": 46.174102610799864
+      },
+      "rdkit": {
+        "molecular_formula": "C6H6",
+        "molecular_weight": 78.11,
+        "logp": 1.69,
+        "tpsa": 0.0,
+        "h_donors": 0,
+        "h_acceptors": 0,
+        "rotatable_bonds": 0,
+        "ring_count": 1,
+        "aromatic_ring_count": 1,
+        "heavy_atom_count": 6
+      },
+      "rdkit_accuracy": {
+        "properties": {
+          "molecular_formula": {
+            "reference": "C6H6",
+            "calculated": "C6H6",
+            "accuracy": 100.0
+          },
+          "molecular_weight": {
+            "reference": 78.11,
+            "calculated": 78.11,
+            "accuracy": 100.0
+          },
+          "logp": {
+            "reference": 2.13,
+            "calculated": 1.69,
+            "accuracy": 79.34272300469483
+          },
+          "tpsa": {
+            "reference": 0.0,
+            "calculated": 0.0,
+            "accuracy": 100.0
+          },
+          "h_donors": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "h_acceptors": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "rotatable_bonds": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "ring_count": {
+            "reference": 1,
+            "calculated": 1,
+            "accuracy": 100.0
+          },
+          "aromatic_ring_count": {
+            "reference": 1,
+            "calculated": 1,
+            "accuracy": 100.0
+          },
+          "heavy_atom_count": {
+            "reference": 6,
+            "calculated": 6,
+            "accuracy": 100.0
+          }
+        },
+        "overall_accuracy": 97.93427230046947
+      }
+    },
+    {
+      "name": "Aspirin",
+      "smiles": "CC(=O)Oc1ccccc1C(=O)O",
+      "reference": {
+        "molecular_formula": "C9H8O4",
+        "molecular_weight": 180.16,
+        "logp": 1.43,
+        "tpsa": 63.6,
+        "h_donors": 1,
+        "h_acceptors": 4,
+        "rotatable_bonds": 3,
+        "ring_count": 1,
+        "aromatic_ring_count": 1,
+        "heavy_atom_count": 13
+      },
+      "mock": {
+        "molecular_formula": "C3H8O3Oc",
+        "molecular_weight": 104.09,
+        "logp": -2.3,
+        "tpsa": 129.0,
+        "h_donors": 1,
+        "h_acceptors": 4,
+        "rotatable_bonds": 1,
+        "ring_count": 1,
+        "aromatic_ring_count": 1,
+        "heavy_atom_count": 12
+      },
+      "accuracy": {
+        "properties": {
+          "molecular_formula": {
+            "reference": "C9H8O4",
+            "calculated": "C3H8O3Oc",
+            "accuracy": 0.0
+          },
+          "molecular_weight": {
+            "reference": 180.16,
+            "calculated": 104.09,
+            "accuracy": 57.77642095914743
+          },
+          "logp": {
+            "reference": 1.43,
+            "calculated": -2.3,
+            "accuracy": 0
+          },
+          "tpsa": {
+            "reference": 63.6,
+            "calculated": 129.0,
+            "accuracy": 0
+          },
+          "h_donors": {
+            "reference": 1,
+            "calculated": 1,
+            "accuracy": 100.0
+          },
+          "h_acceptors": {
+            "reference": 4,
+            "calculated": 4,
+            "accuracy": 100.0
+          },
+          "rotatable_bonds": {
+            "reference": 3,
+            "calculated": 1,
+            "accuracy": 33.33333333333334
+          },
+          "ring_count": {
+            "reference": 1,
+            "calculated": 1,
+            "accuracy": 100.0
+          },
+          "aromatic_ring_count": {
+            "reference": 1,
+            "calculated": 1,
+            "accuracy": 100.0
+          },
+          "heavy_atom_count": {
+            "reference": 13,
+            "calculated": 12,
+            "accuracy": 92.3076923076923
+          }
+        },
+        "overall_accuracy": 58.34174466001731
+      },
+      "rdkit": {
+        "molecular_formula": "C9H8O4",
+        "molecular_weight": 180.16,
+        "logp": 1.31,
+        "tpsa": 63.6,
+        "h_donors": 1,
+        "h_acceptors": 3,
+        "rotatable_bonds": 2,
+        "ring_count": 1,
+        "aromatic_ring_count": 1,
+        "heavy_atom_count": 13
+      },
+      "rdkit_accuracy": {
+        "properties": {
+          "molecular_formula": {
+            "reference": "C9H8O4",
+            "calculated": "C9H8O4",
+            "accuracy": 100.0
+          },
+          "molecular_weight": {
+            "reference": 180.16,
+            "calculated": 180.16,
+            "accuracy": 100.0
+          },
+          "logp": {
+            "reference": 1.43,
+            "calculated": 1.31,
+            "accuracy": 91.60839160839161
+          },
+          "tpsa": {
+            "reference": 63.6,
+            "calculated": 63.6,
+            "accuracy": 100.0
+          },
+          "h_donors": {
+            "reference": 1,
+            "calculated": 1,
+            "accuracy": 100.0
+          },
+          "h_acceptors": {
+            "reference": 4,
+            "calculated": 3,
+            "accuracy": 75.0
+          },
+          "rotatable_bonds": {
+            "reference": 3,
+            "calculated": 2,
+            "accuracy": 66.66666666666667
+          },
+          "ring_count": {
+            "reference": 1,
+            "calculated": 1,
+            "accuracy": 100.0
+          },
+          "aromatic_ring_count": {
+            "reference": 1,
+            "calculated": 1,
+            "accuracy": 100.0
+          },
+          "heavy_atom_count": {
+            "reference": 13,
+            "calculated": 13,
+            "accuracy": 100.0
+          }
+        },
+        "overall_accuracy": 93.32750582750583
+      }
+    },
+    {
+      "name": "Caffeine",
+      "smiles": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C",
+      "reference": {
+        "molecular_formula": "C8H10N4O2",
+        "molecular_weight": 194.19,
+        "logp": -0.07,
+        "tpsa": 58.44,
+        "h_donors": 0,
+        "h_acceptors": 6,
+        "rotatable_bonds": 0,
+        "ring_count": 2,
+        "aromatic_ring_count": 1,
+        "heavy_atom_count": 14
+      },
+      "mock": {
+        "molecular_formula": "C9H25N5O2",
+        "molecular_weight": 235.33,
+        "logp": -3.0,
+        "tpsa": 179.0,
+        "h_donors": 1,
+        "h_acceptors": 6,
+        "rotatable_bonds": 1,
+        "ring_count": 2,
+        "aromatic_ring_count": 0,
+        "heavy_atom_count": 14
+      },
+      "accuracy": {
+        "properties": {
+          "molecular_formula": {
+            "reference": "C8H10N4O2",
+            "calculated": "C9H25N5O2",
+            "accuracy": 0.0
+          },
+          "molecular_weight": {
+            "reference": 194.19,
+            "calculated": 235.33,
+            "accuracy": 78.81456305680004
+          },
+          "logp": {
+            "reference": -0.07,
+            "calculated": -3.0,
+            "accuracy": 0
+          },
+          "tpsa": {
+            "reference": 58.44,
+            "calculated": 179.0,
+            "accuracy": 0
+          },
+          "h_donors": {
+            "reference": 0,
+            "calculated": 1,
+            "accuracy": 0.0
+          },
+          "h_acceptors": {
+            "reference": 6,
+            "calculated": 6,
+            "accuracy": 100.0
+          },
+          "rotatable_bonds": {
+            "reference": 0,
+            "calculated": 1,
+            "accuracy": 0.0
+          },
+          "ring_count": {
+            "reference": 2,
+            "calculated": 2,
+            "accuracy": 100.0
+          },
+          "aromatic_ring_count": {
+            "reference": 1,
+            "calculated": 0,
+            "accuracy": 0
+          },
+          "heavy_atom_count": {
+            "reference": 14,
+            "calculated": 14,
+            "accuracy": 100.0
+          }
+        },
+        "overall_accuracy": 37.881456305680004
+      },
+      "rdkit": {
+        "molecular_formula": "C8H10N4O2",
+        "molecular_weight": 194.19,
+        "logp": -1.03,
+        "tpsa": 61.82,
+        "h_donors": 0,
+        "h_acceptors": 6,
+        "rotatable_bonds": 0,
+        "ring_count": 2,
+        "aromatic_ring_count": 2,
+        "heavy_atom_count": 14
+      },
+      "rdkit_accuracy": {
+        "properties": {
+          "molecular_formula": {
+            "reference": "C8H10N4O2",
+            "calculated": "C8H10N4O2",
+            "accuracy": 100.0
+          },
+          "molecular_weight": {
+            "reference": 194.19,
+            "calculated": 194.19,
+            "accuracy": 100.0
+          },
+          "logp": {
+            "reference": -0.07,
+            "calculated": -1.03,
+            "accuracy": 0
+          },
+          "tpsa": {
+            "reference": 58.44,
+            "calculated": 61.82,
+            "accuracy": 94.21629021218344
+          },
+          "h_donors": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "h_acceptors": {
+            "reference": 6,
+            "calculated": 6,
+            "accuracy": 100.0
+          },
+          "rotatable_bonds": {
+            "reference": 0,
+            "calculated": 0,
+            "accuracy": 100.0
+          },
+          "ring_count": {
+            "reference": 2,
+            "calculated": 2,
+            "accuracy": 100.0
+          },
+          "aromatic_ring_count": {
+            "reference": 1,
+            "calculated": 2,
+            "accuracy": 0
+          },
+          "heavy_atom_count": {
+            "reference": 14,
+            "calculated": 14,
+            "accuracy": 100.0
+          }
+        },
+        "overall_accuracy": 79.42162902121835
+      }
+    }
+  ]
+}

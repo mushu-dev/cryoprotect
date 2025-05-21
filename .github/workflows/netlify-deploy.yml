@@ -6,6 +6,7 @@ on:
       - main
       - master
       - heroku-full-app  # Add your current branch for testing
+      - netlify-autodeploy  # New branch for automatic Netlify deployments
   pull_request:
     types: [opened, synchronize]
     branches:
@@ -46,6 +47,56 @@ jobs:
         working-directory: ./frontend
         run: npm run update-api-endpoints
       
+      - name: Fix vulnerabilities
+        working-directory: ./frontend
+        run: |
+          if [ -f ./fix-vulnerabilities.sh ]; then
+            chmod +x ./fix-vulnerabilities.sh
+            ./fix-vulnerabilities.sh
+          else
+            npm audit fix --force
+          fi
+
+      - name: Configure for Pages Router
+        working-directory: ./frontend
+        run: |
+          if [ -f ./use-pages-router.sh ]; then
+            chmod +x ./use-pages-router.sh
+            ./use-pages-router.sh
+          fi
+
+      - name: Configure next.config.js for static export
+        working-directory: ./frontend
+        run: |
+          cat > next.config.js << EOL
+          /** @type {import('next').NextConfig} */
+          const nextConfig = {
+            reactStrictMode: true,
+            swcMinify: true,
+            images: {
+              unoptimized: true,
+            },
+            eslint: {
+              ignoreDuringBuilds: true
+            },
+            typescript: {
+              ignoreBuildErrors: true
+            },
+            
+            // React 18 specific settings
+            compiler: {
+              styledComponents: true
+            },
+            
+            // Static export configuration for Pages Router
+            output: 'export',
+            trailingSlash: true,
+            distDir: 'out'
+          };
+          
+          module.exports = nextConfig;
+          EOL
+
       - name: Build frontend
         working-directory: ./frontend
         run: npm run build
@@ -53,12 +104,29 @@ jobs:
       - name: Install Netlify CLI
         run: npm install -g netlify-cli
       
+      - name: Create Netlify redirects
+        working-directory: ./frontend
+        run: |
+          cat > out/_redirects << EOL
+          # API routes should redirect to the backend
+          /api/*  ${NEXT_PUBLIC_API_URL}/:splat  200
+          
+          # Handle dynamic routes 
+          /molecules/*  /molecules/index.html  200
+          /mixtures/*  /mixtures/index.html  200
+          /experiments/*  /experiments/index.html  200
+          /protocols/*  /protocols/index.html  200
+          
+          # SPA fallback for all other routes
+          /*  /index.html  200
+          EOL
+
       - name: Deploy to Netlify (Pull Request)
         if: github.event_name == 'pull_request'
         working-directory: ./frontend
         run: |
-          export FRONTEND_URL="https://$(netlify deploy --json --dir=.next | jq -r '.deploy_url' | sed 's/https:\/\///')"
-          netlify deploy --dir=.next --json > deploy_output.json
+          export FRONTEND_URL="https://$(netlify deploy --json --dir=out | jq -r '.deploy_url' | sed 's/https:\/\///')"
+          netlify deploy --dir=out --json > deploy_output.json
           echo "NETLIFY_PREVIEW_URL=$(jq -r '.deploy_url' deploy_output.json)" >> $GITHUB_ENV
         
       - name: Add PR Comment
@@ -79,9 +147,17 @@ jobs:
         if: github.event_name == 'push'
         working-directory: ./frontend
         run: |
-          export FRONTEND_URL="https://$(netlify deploy --json --prod --dir=.next | jq -r '.url' | sed 's/https:\/\///')"
-          netlify deploy --prod --dir=.next
+          export FRONTEND_URL="https://$(netlify deploy --json --prod --dir=out | jq -r '.url' | sed 's/https:\/\///')"
+          netlify deploy --prod --dir=out
       
+      - name: Restore App Router
+        working-directory: ./frontend
+        run: |
+          if [ -f ./restore-app-router.sh ]; then
+            chmod +x ./restore-app-router.sh
+            ./restore-app-router.sh
+          fi
+
       - name: Update Heroku with Netlify URL
         if: github.event_name == 'push' && secrets.HEROKU_API_KEY != ''
         run: |

@@ -109,4 +109,52 @@
   .property-grid {
     @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4;
   }
+  
+  /* Responsive optimization utilities */
+  .hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  
+  @media (max-width: 640px) {
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    h1 {
+      font-size: 1.75rem;
+      line-height: 1.2;
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+      line-height: 1.25;
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  
+  /* Improved touch targets for mobile */
+  @media (max-width: 768px) {
+    button, 
+    a[role="button"],
+    input, 
+    select, 
+    textarea {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
 }

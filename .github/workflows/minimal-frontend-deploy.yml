@@ -1,0 +1,59 @@
+name: Deploy Minimal Frontend to Netlify
+
+on:
+  push:
+    branches:
+      - netlify-autodeploy
+    paths:
+      - 'minimal-frontend/**'
+      - '.github/workflows/minimal-frontend-deploy.yml'
+
+jobs:
+  deploy:
+    name: Deploy Minimal Frontend
+    runs-on: ubuntu-latest
+    
+    env:
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID_MINIMAL }}
+      
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: minimal-frontend/package-lock.json
+      
+      - name: Install dependencies
+        working-directory: ./minimal-frontend
+        run: npm ci
+      
+      - name: Build Next.js site
+        working-directory: ./minimal-frontend
+        run: npm run build
+      
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
+      
+      - name: Create Netlify redirects
+        working-directory: ./minimal-frontend
+        run: |
+          cat > out/_redirects << EOL
+          # Handle dynamic routes 
+          /molecules/*  /molecules/[id].html  200
+          /mixtures/*  /mixtures/[id].html  200
+          /experiments/*  /experiments/[id].html  200
+          /protocols/*  /protocols/[id].html  200
+          
+          # SPA fallback for all other routes
+          /*  /index.html  200
+          EOL
+
+      - name: Deploy to Netlify (Production)
+        working-directory: ./minimal-frontend
+        run: |
+          netlify deploy --prod --dir=out --message "Deploy from GitHub Actions"

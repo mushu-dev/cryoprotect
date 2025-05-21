@@ -1,0 +1,169 @@
+name: Playwright Tests
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: 'Playwright Tests'
+    runs-on: ubuntu-latest
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        test-group: [ui, api, visual, accessibility, performance, security, visualization, filtering, comparison]
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: 'frontend/package-lock.json'
+      
+      - name: Install dependencies
+        working-directory: ./frontend
+        run: npm ci
+      
+      - name: Install Playwright browsers
+        working-directory: ./frontend
+        run: npx playwright install --with-deps
+      
+      - name: Run Playwright Tests
+        working-directory: ./frontend
+        run: |
+          mkdir -p test-results
+          
+          case "${{ matrix.test-group }}" in
+            ui)
+              npx playwright test experimental-data-ui.spec.js netlify-connectivity.spec.js
+              ;;
+            api)
+              npx playwright test experiment-data-api.spec.js
+              ;;
+            visual)
+              npx playwright test visual-regression.spec.js
+              ;;
+            accessibility)
+              npm install @axe-core/playwright
+              npx playwright test accessibility.spec.js
+              ;;
+            performance)
+              npx playwright test performance-metrics.spec.js
+              ;;
+            security)
+              npx playwright test security-testing.spec.js
+              ;;
+            visualization)
+              npx playwright test data-visualization.spec.js
+              ;;
+            filtering)
+              npx playwright test data-filtering.spec.js
+              ;;
+            comparison)
+              npx playwright test data-comparison.spec.js
+              ;;
+          esac
+      
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-report-${{ matrix.test-group }}
+          path: frontend/playwright-report/
+          retention-days: 30
+      
+      - name: Upload test screenshots
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results-${{ matrix.test-group }}
+          path: frontend/test-results/
+          retention-days: 30
+
+  cross-browser:
+    name: 'Cross-Browser Tests'
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: 'frontend/package-lock.json'
+      
+      - name: Install dependencies
+        working-directory: ./frontend
+        run: npm ci
+      
+      - name: Install Playwright browsers
+        working-directory: ./frontend
+        run: npx playwright install --with-deps
+      
+      - name: Run Cross-Browser Tests
+        working-directory: ./frontend
+        run: |
+          mkdir -p test-results/cross-browser
+          npx playwright test cross-browser-compatibility.spec.js --project=chromium,firefox,webkit
+      
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-report-cross-browser
+          path: frontend/playwright-report/
+          retention-days: 30
+      
+      - name: Upload cross-browser screenshots
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cross-browser-results
+          path: frontend/test-results/cross-browser/
+          retention-days: 30
+  
+  load:
+    name: 'Load Tests'
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: 'frontend/package-lock.json'
+      
+      - name: Install dependencies
+        working-directory: ./frontend
+        run: npm ci
+      
+      - name: Install Playwright browsers
+        working-directory: ./frontend
+        run: npx playwright install --with-deps chromium
+      
+      - name: Run Load Tests
+        working-directory: ./frontend
+        run: |
+          mkdir -p test-results/load
+          # Run load tests with reduced settings for CI
+          REDUCED_LOAD=true CI=true npx playwright test load-testing.spec.js --project=chromium
+      
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-report-load
+          path: frontend/playwright-report/
+          retention-days: 30

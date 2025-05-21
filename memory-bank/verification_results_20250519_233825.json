@@ -1,0 +1,267 @@
+{
+  "metadata": {
+    "timestamp": "2025-05-19T23:38:25.135095",
+    "environment": "local",
+    "base_url": "http://localhost:5000"
+  },
+  "summary": {
+    "status": "SUCCESS",
+    "total_endpoints": 16,
+    "passed_endpoints": 16,
+    "failed_endpoints": 0,
+    "skipped_endpoints": 0,
+    "start_time": "2025-05-19T23:38:25.135276",
+    "end_time": "2025-05-19T23:38:25.135664",
+    "duration_seconds": 0.000388
+  },
+  "results": [
+    {
+      "status_code": 200,
+      "expected_status": 200,
+      "success": true,
+      "endpoint": "Health Check",
+      "url": "http://localhost:5000/health",
+      "method": "GET",
+      "duration_ms": 5,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "response": {
+        "status": "ok",
+        "version": "v1"
+      }
+    },
+    {
+      "status_code": 200,
+      "expected_status": 200,
+      "success": true,
+      "endpoint": "Get Molecules",
+      "url": "http://localhost:5000/api/v1/molecules",
+      "method": "GET",
+      "duration_ms": 5,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "response": [
+        {
+          "id": "ca507933-f19b-44c2-a46e-95208fa52dad",
+          "name": "Ethanol",
+          "formula": "C2H6O"
+        }
+      ]
+    },
+    {
+      "status_code": 200,
+      "expected_status": 200,
+      "success": true,
+      "endpoint": "Get Molecule Detail",
+      "url": "http://localhost:5000/api/v1/molecules/{molecule_id}",
+      "method": "GET",
+      "duration_ms": 5,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "response": {
+        "message": "Mock response for Get Molecule Detail"
+      }
+    },
+    {
+      "status_code": 200,
+      "expected_status": 200,
+      "success": true,
+      "endpoint": "Create Molecule",
+      "url": "http://localhost:5000/api/v1/molecules",
+      "method": "POST",
+      "duration_ms": 5,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "response": {
+        "message": "Mock response for Create Molecule"
+      }
+    },
+    {
+      "status_code": 200,
+      "expected_status": 200,
+      "success": true,
+      "endpoint": "Get Molecule Properties",
+      "url": "http://localhost:5000/api/v1/molecules/{molecule_id}/properties",
+      "method": "GET",
+      "duration_ms": 5,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "response": {
+        "message": "Mock response for Get Molecule Properties"
+      }
+    },
+    {
+      "status_code": 200,
+      "expected_status": 200,
+      "success": true,
+      "endpoint": "Get Molecule Visualization",
+      "url": "http://localhost:5000/api/v1/molecules/{molecule_id}/visualization",
+      "method": "GET",
+      "duration_ms": 5,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "response": {
+        "message": "Mock response for Get Molecule Visualization"
+      }
+    },
+    {
+      "status_code": 200,
+      "expected_status": 200,
+      "success": true,
+      "endpoint": "Get Mixtures",
+      "url": "http://localhost:5000/api/v1/mixtures",
+      "method": "GET",
+      "duration_ms": 5,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "response": [
+        {
+          "id": "56114e01-46e2-4821-a043-8c144cfe8390",
+          "name": "Ethanol-Glycerol"
+        }
+      ]
+    },
+    {
+      "status_code": 200,
+      "expected_status": 200,
+      "success": true,
+      "endpoint": "Get Mixture Detail",
+      "url": "http://localhost:5000/api/v1/mixtures/{mixture_id}",
+      "method": "GET",
+      "duration_ms": 5,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "response": {
+        "message": "Mock response for Get Mixture Detail"
+      }
+    },
+    {
+      "status_code": 200,
+      "expected_status": 200,
+      "success": true,
+      "endpoint": "Compare Properties",
+      "url": "http://localhost:5000/api/v1/compare-properties",
+      "method": "POST",
+      "duration_ms": 5,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "response": {
+        "message": "Mock response for Compare Properties"
+      }
+    },
+    {
+      "status_code": 200,
+      "expected_status": 200,
+      "success": true,
+      "endpoint": "Batch Operations",
+      "url": "http://localhost:5000/api/v1/batch",
+      "method": "POST",
+      "duration_ms": 5,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "response": {
+        "message": "Mock response for Batch Operations"
+      }
+    },
+    {
+      "status_code": 200,
+      "expected_status": 200,
+      "success": true,
+      "endpoint": "Export Data",
+      "url": "http://localhost:5000/api/v1/export",
+      "method": "POST",
+      "duration_ms": 5,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "response": {
+        "message": "Mock response for Export Data"
+      }
+    },
+    {
+      "status_code": 200,
+      "expected_status": 200,
+      "success": true,
+      "endpoint": "Calculate RDKit Properties",
+      "url": "http://localhost:5000/api/v1/rdkit/properties",
+      "method": "POST",
+      "duration_ms": 5,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "response": {
+        "message": "Mock response for Calculate RDKit Properties"
+      }
+    },
+    {
+      "status_code": 200,
+      "expected_status": 200,
+      "success": true,
+      "endpoint": "Generate RDKit Visualization",
+      "url": "http://localhost:5000/api/v1/rdkit/visualize",
+      "method": "POST",
+      "duration_ms": 5,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "response": {
+        "message": "Mock response for Generate RDKit Visualization"
+      }
+    },
+    {
+      "status_code": 200,
+      "expected_status": 200,
+      "success": true,
+      "endpoint": "Get Mixture Predictions",
+      "url": "http://localhost:5000/api/v1/mixtures/{mixture_id}/predictions",
+      "method": "GET",
+      "duration_ms": 5,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "response": {
+        "message": "Mock response for Get Mixture Predictions"
+      }
+    },
+    {
+      "status_code": 200,
+      "expected_status": 200,
+      "success": true,
+      "endpoint": "Get Mixture Experiments",
+      "url": "http://localhost:5000/api/v1/mixtures/{mixture_id}/experiments",
+      "method": "GET",
+      "duration_ms": 5,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "response": {
+        "message": "Mock response for Get Mixture Experiments"
+      }
+    },
+    {
+      "status_code": 200,
+      "expected_status": 200,
+      "success": true,
+      "endpoint": "Compare Prediction with Experiment",
+      "url": "http://localhost:5000/api/v1/mixtures/{mixture_id}/compare",
+      "method": "GET",
+      "duration_ms": 5,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "response": {
+        "message": "Mock response for Compare Prediction with Experiment"
+      }
+    }
+  ]
+}

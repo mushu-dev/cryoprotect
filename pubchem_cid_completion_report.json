@@ -1,0 +1,258 @@
+{
+  "updated": 17,
+  "not_found": 4,
+  "details": [
+    {
+      "molecule_id": "b1bf3b52-acf6-441c-89e7-b8f4b7b923cd",
+      "name": "2-ARACHIDONOYLGLYCEROL",
+      "found_cid": 5282280,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "b119e065-91cc-4e9b-996c-50096c92da65",
+      "name": "Acetamide",
+      "found_cid": 178,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "e17dff32-d245-4ae0-a921-c37dc8b994ab",
+      "name": "beta-Alanine",
+      "found_cid": 239,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "83837dee-13be-448c-aac5-2e309bd0a38f",
+      "name": "Betaine",
+      "found_cid": 247,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "5dafe671-e36d-4ff5-8836-19cd26870184",
+      "name": "CIBOTIGLYCEROL",
+      "found_cid": 46882927,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "c06622cf-c402-450c-a685-dfef370d3969",
+      "name": "DIACYLGLYCEROL KINASE INHIBITOR II",
+      "found_cid": 657356,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+      "name": "Dimethyl sulfoxide",
+      "found_cid": 679,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "c6ed38e9-eab8-480e-a5d9-5626e797bd7a",
+      "name": "DMSO",
+      "found_cid": 679,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "6b41111a-9a92-4a02-b8ab-31975af62be1",
+      "name": "Ethylene glycol",
+      "found_cid": 174,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "c49fd8f6-2e3b-5c4d-9f4a-d0a1e6f7a8b9",
+      "name": "Ethylene glycol",
+      "found_cid": 174,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "0054e9e8-6640-489d-8b20-89792dcebaca",
+      "name": "Formamide",
+      "found_cid": 713,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "d55ea26c-b945-45dc-87c7-261c7ccc5ce3",
+      "name": "Glycerol",
+      "found_cid": 753,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "b38fc7e5-1f2a-4b3d-8e3f-c9b0d5e8f9a7",
+      "name": "Glycerol",
+      "found_cid": 753,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "1dab82aa-b6df-4a07-a0f7-76409233480e",
+      "name": "GLYCEROL MONOLAURATE",
+      "found_cid": 14871,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "3b862ce6-c6cb-4a85-a0c8-0f81eb17854f",
+      "name": "GLYCEROL MONOPALMITATE",
+      "found_cid": 14900,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "83ed505d-566d-46b8-b021-498f8bb89df3",
+      "name": "Glycine",
+      "found_cid": 750,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "35ee7477-ca40-4c86-962f-7813ce2b6a4b",
+      "name": "GUAIACYL GLYCEROL",
+      "found_cid": 14579,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "8a2fc198-26dd-46f9-ae9f-dff4da6730b8",
+      "name": "GUAICYLGLYCEROL",
+      "found_cid": 45482328,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "cc9148f2-e614-4546-b76f-29705c5d72da",
+      "name": "Hydroxyectoine",
+      "found_cid": 12011795,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "c170e735-e6e9-4591-9e81-c653869083ef",
+      "name": "MCP Test Molecule",
+      "found_cid": null,
+      "search_method": null
+    },
+    {
+      "molecule_id": "dd82fc24-0cd1-412d-9f5a-e142b15aafe4",
+      "name": "Methanol",
+      "found_cid": 887,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "e42e3ee8-7afc-40dd-b864-7dadfa9edb86",
+      "name": "MONOTHIOGLYCEROL",
+      "found_cid": 7291,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "63d6e584-020b-408b-b2e0-c8a306fd969d",
+      "name": "PHOSPHATIDYL GLYCEROL",
+      "found_cid": 44566653,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "090e54e9-5354-477f-a3dd-2989a40a6c20",
+      "name": "Polyvinyl alcohol",
+      "found_cid": 174,
+      "search_method": "inchikey"
+    },
+    {
+      "molecule_id": "a43cfef6-975b-4e29-8b13-c21864c368a4",
+      "name": "Proline",
+      "found_cid": 145742,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "9a1c401b-d524-4c51-a3b5-8cf84e3e52ad",
+      "name": "Propylene glycol",
+      "found_cid": 1030,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "d50ae9a7-3f4c-6d5e-0a5a-e1b2f7a8a9c0",
+      "name": "Propylene glycol",
+      "found_cid": 1030,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "5384528c-8005-47a2-a618-a99137d46a3d",
+      "name": "Sucrose",
+      "found_cid": 5988,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "97d2b5ca-c7c2-4b01-af16-5d2fc8224f4f",
+      "name": "tert-Butanol",
+      "found_cid": 6386,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "7c4a3cfb-a22e-4905-ba56-f73cf2108da0",
+      "name": "TestMol1",
+      "found_cid": 241,
+      "search_method": "inchikey"
+    },
+    {
+      "molecule_id": "3dcbab1e-89de-4199-8d8e-172a16a51f1c",
+      "name": "TestMol1",
+      "found_cid": 241,
+      "search_method": "inchikey"
+    },
+    {
+      "molecule_id": "e6b732c7-60e5-40a3-9117-fe383e3ca317",
+      "name": "TestMol2",
+      "found_cid": 1140,
+      "search_method": "inchikey"
+    },
+    {
+      "molecule_id": "0c749340-38a1-44e3-80b3-49065a6df118",
+      "name": "TestMol3",
+      "found_cid": 1140,
+      "search_method": "inchikey"
+    },
+    {
+      "molecule_id": "3d1f22dc-d7be-4d04-928b-2024349410d9",
+      "name": "TestMol4",
+      "found_cid": null,
+      "search_method": null
+    },
+    {
+      "molecule_id": "ec8054d3-7813-4f22-9879-976e1e6b12ab",
+      "name": "Test Molecule 1",
+      "found_cid": null,
+      "search_method": null
+    },
+    {
+      "molecule_id": "f68cf7d8-16de-42e1-a07c-1e68f850157d",
+      "name": "Test Molecule 2",
+      "found_cid": null,
+      "search_method": null
+    },
+    {
+      "molecule_id": "85cbc7b5-21ff-405e-b4c8-f1d39eee737f",
+      "name": "Test Molecule (Fix Verification)",
+      "found_cid": 176,
+      "search_method": "inchikey"
+    },
+    {
+      "molecule_id": "e89feb81-4e24-493a-a939-994482441179",
+      "name": "Test Molecule (Python Script)",
+      "found_cid": 176,
+      "search_method": "inchikey"
+    },
+    {
+      "molecule_id": "e61af0a8-4a5d-7e6f-1a6a-f2c3a8a9a0d1",
+      "name": "Trehalose",
+      "found_cid": 7427,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "0a0fe74e-c001-454d-97d6-b1f859b25fb2",
+      "name": "Trehalose",
+      "found_cid": 7427,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "4dbdf559-1663-4063-b2be-75446c5d1f10",
+      "name": "TRITETRADECYLTHIOACETYL GLYCEROL",
+      "found_cid": 12149022,
+      "search_method": "name"
+    },
+    {
+      "molecule_id": "f2a6d927-65c6-4a2a-900b-9522cc0c712e",
+      "name": "Urea",
+      "found_cid": 1176,
+      "search_method": "name"
+    }
+  ]
+}

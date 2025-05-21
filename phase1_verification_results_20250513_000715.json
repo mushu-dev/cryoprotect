@@ -1,0 +1,149 @@
+{
+  "timestamp": "2025-05-13T00:07:09.865978",
+  "molecule_counts": {
+    "total_molecules": 1551,
+    "consolidated_molecules": 1551,
+    "duplicate_inchikeys": 13,
+    "duplicate_molecules": 18.0,
+    "consolidation_ratio": 1.0
+  },
+  "property_standardization": {
+    "total_property_types": 67,
+    "duplicate_properties": {
+      "logp": 2
+    },
+    "standardization_issues": {
+      "LogP": [
+        "logp"
+      ],
+      "Molecular Weight": [
+        "molecular_weight",
+        "mw"
+      ],
+      "TPSA": [
+        "tpsa",
+        "topological_polar_surface_area"
+      ],
+      "Hydrogen Bond Donor Count": [
+        "hbd",
+        "donor_count"
+      ],
+      "Hydrogen Bond Acceptor Count": [
+        "hba",
+        "acceptor_count"
+      ]
+    },
+    "property_list": [
+      "alogp",
+      "Aromatic Ring Count",
+      "aromatic_rings",
+      "Cell Permeability",
+      "Cell Viability",
+      "chemical_class",
+      "Complexity",
+      "cryoprotectant_type",
+      "Cryoprotection Score",
+      "cx_logd",
+      "cx_logp",
+      "cx_most_apka",
+      "cx_most_bpka",
+      "Environmental Safety",
+      "Environmental Score",
+      "full_molformula",
+      "full_mwt",
+      "Glass Transition Temperature",
+      "hba",
+      "hba_lipinski",
+      "hbd",
+      "hbd_lipinski",
+      "h_bond_acceptors",
+      "h_bond_donors",
+      "Heavy Atom Count",
+      "heavy_atoms",
+      "Hydrogen Bond Acceptor Count",
+      "Hydrogen Bond Donor Count",
+      "Hydrogen Bonding Score",
+      "Ice Crystal Growth Inhibition"
+    ]
+  },
+  "rdkit_properties": {
+    "rdkit_methods": [
+      {
+        "id": "f106125e-079b-488c-b76c-943310aa18ed",
+        "name": "RDKit",
+        "version": "2023.09"
+      },
+      {
+        "id": "63581bfe-7c82-4b9e-97f4-33d673c5a88a",
+        "name": "RDKit Property Calculation",
+        "version": "2025.03.1"
+      }
+    ],
+    "property_coverage": {
+      "molecular_weight": {
+        "molecules_with_property": 1550,
+        "total_molecules": 1551,
+        "coverage_percentage": 99.93552546744036
+      },
+      "logp": {
+        "molecules_with_property": 1550,
+        "total_molecules": 1551,
+        "coverage_percentage": 99.93552546744036
+      },
+      "tpsa": {
+        "molecules_with_property": 1540,
+        "total_molecules": 1551,
+        "coverage_percentage": 99.29078014184397
+      }
+    }
+  },
+  "cryoprotection_scores": {
+    "score_property_found": true,
+    "score_property_id": "07286542-6c5c-498a-ae65-f03340448620",
+    "molecules_with_scores": 263,
+    "total_molecules": 1551,
+    "coverage_percentage": 16.95680206318504,
+    "top_molecules": [
+      [
+        "methylsulfinylmethane",
+        0.0
+      ],
+      [
+        "propane-1,2,3-triol",
+        0.0
+      ],
+      [
+        "Trehalose",
+        0.0
+      ],
+      [
+        "Trehalose",
+        0.0
+      ],
+      [
+        "Sucrose",
+        0.0
+      ],
+      [
+        "3-[2-(5-Aminopentyl)benzimidazol-1-yl]propane-1,2-diol",
+        0.0
+      ],
+      [
+        "propane-1,2-diol",
+        0.0
+      ],
+      [
+        "Propylene glycol",
+        0.0
+      ],
+      [
+        "Tetrapropylene glycol",
+        0.0
+      ],
+      [
+        "Propylene glycol",
+        0.0
+      ]
+    ]
+  }
+}

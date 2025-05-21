@@ -1,0 +1,11 @@
+[Unit]
+Description=Run CryoProtect Database Integrity Check Daily
+Documentation=https://github.com/yourusername/cryoprotect
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+RandomizedDelaySec=1800
+
+[Install]
+WantedBy=timers.target

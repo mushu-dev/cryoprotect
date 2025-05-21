@@ -1,0 +1,30 @@
+FROM continuumio/miniconda3:4.12.0
+
+WORKDIR /app
+
+# Install mamba for faster conda installs and essential tools
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    build-essential \
+    curl \
+    git \
+    ca-certificates && \
+    conda install -y -c conda-forge mamba && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copy environment file
+COPY environment.yml .
+
+# Create the conda environment with RDKit
+RUN mamba env create -f environment.yml && \
+    conda clean -afy && \
+    rm -rf /root/.cache
+
+# Set up environment activation in the entrypoint
+COPY docker-entrypoint-rdkit.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Set the default command
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+CMD ["python", "-c", "import rdkit; print(f'RDKit {rdkit.__version__} is available')"]

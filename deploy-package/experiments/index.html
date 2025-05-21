@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiments | CryoProtect</title>
+  <meta name="description" content="Design, track, and analyze cryopreservation experiments with detailed protocols">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+  <header class="sticky top-0 z-50 border-b bg-white dark:bg-gray-800">
+    <div class="container mx-auto flex h-14 items-center justify-between px-4">
+      <div class="flex items-center">
+        <a href="/" class="mr-6 flex items-center space-x-2 font-bold">
+          <span>CryoProtect</span>
+        </a>
+        
+        <nav class="hidden md:flex items-center gap-6">
+          <a href="/" class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">Dashboard</a>
+          <a href="/molecules" class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">Molecules</a>
+          <a href="/mixtures" class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">Mixtures</a>
+          <a href="/experiments" class="text-sm font-medium text-black dark:text-white">Experiments</a>
+          <a href="/protocols" class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">Protocols</a>
+          <a href="/properties" class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">Properties</a>
+        </nav>
+      </div>
+      
+      <div class="flex items-center gap-2">
+        <a href="/login" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+          Sign In
+        </a>
+        <a href="/register" class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
+          Sign Up
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container mx-auto px-4 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+        <div>
+          <h1 class="text-3xl font-bold mb-2">Experiments</h1>
+          <p class="text-gray-500 dark:text-gray-400">
+            Design, track, and analyze cryopreservation experiments
+          </p>
+        </div>
+        
+        <div class="mt-4 md:mt-0">
+          <a href="/experiments/create" class="inline-flex items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700">
+            Create New Experiment
+          </a>
+        </div>
+      </div>
+
+      <!-- Sample experiments list for demonstration -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="rounded-lg border bg-white dark:bg-gray-800 p-6 shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold">Experiment #1</h3>
+            <span class="inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-900 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:text-blue-200">
+              In Progress
+            </span>
+          </div>
+          <p class="text-gray-500 dark:text-gray-400 mb-4">
+            Sample experiment with cryoprotectant testing and viability analysis.
+          </p>
+          <div class="flex justify-between items-center mt-4">
+            <span class="text-sm text-gray-500 dark:text-gray-400">May 11, 2025</span>
+            <a href="/experiments/1" class="text-blue-600 hover:underline">View Details</a>
+          </div>
+        </div>
+        
+        <div class="rounded-lg border bg-white dark:bg-gray-800 p-6 shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold">Experiment #2</h3>
+            <span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-200">
+              Completed
+            </span>
+          </div>
+          <p class="text-gray-500 dark:text-gray-400 mb-4">
+            Sample experiment with cryoprotectant testing and viability analysis.
+          </p>
+          <div class="flex justify-between items-center mt-4">
+            <span class="text-sm text-gray-500 dark:text-gray-400">May 12, 2025</span>
+            <a href="/experiments/2" class="text-blue-600 hover:underline">View Details</a>
+          </div>
+        </div>
+        
+        <div class="rounded-lg border bg-white dark:bg-gray-800 p-6 shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold">Experiment #3</h3>
+            <span class="inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-900 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:text-blue-200">
+              In Progress
+            </span>
+          </div>
+          <p class="text-gray-500 dark:text-gray-400 mb-4">
+            Sample experiment with cryoprotectant testing and viability analysis.
+          </p>
+          <div class="flex justify-between items-center mt-4">
+            <span class="text-sm text-gray-500 dark:text-gray-400">May 13, 2025</span>
+            <a href="/experiments/3" class="text-blue-600 hover:underline">View Details</a>
+          </div>
+        </div>
+        
+        <div class="rounded-lg border bg-white dark:bg-gray-800 p-6 shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold">Experiment #4</h3>
+            <span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-200">
+              Completed
+            </span>
+          </div>
+          <p class="text-gray-500 dark:text-gray-400 mb-4">
+            Sample experiment with cryoprotectant testing and viability analysis.
+          </p>
+          <div class="flex justify-between items-center mt-4">
+            <span class="text-sm text-gray-500 dark:text-gray-400">May 14, 2025</span>
+            <a href="/experiments/4" class="text-blue-600 hover:underline">View Details</a>
+          </div>
+        </div>
+        
+        <div class="rounded-lg border bg-white dark:bg-gray-800 p-6 shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold">Experiment #5</h3>
+            <span class="inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-900 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:text-blue-200">
+              In Progress
+            </span>
+          </div>
+          <p class="text-gray-500 dark:text-gray-400 mb-4">
+            Sample experiment with cryoprotectant testing and viability analysis.
+          </p>
+          <div class="flex justify-between items-center mt-4">
+            <span class="text-sm text-gray-500 dark:text-gray-400">May 15, 2025</span>
+            <a href="/experiments/5" class="text-blue-600 hover:underline">View Details</a>
+          </div>
+        </div>
+        
+        <div class="rounded-lg border bg-white dark:bg-gray-800 p-6 shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold">Experiment #6</h3>
+            <span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-200">
+              Completed
+            </span>
+          </div>
+          <p class="text-gray-500 dark:text-gray-400 mb-4">
+            Sample experiment with cryoprotectant testing and viability analysis.
+          </p>
+          <div class="flex justify-between items-center mt-4">
+            <span class="text-sm text-gray-500 dark:text-gray-400">May 16, 2025</span>
+            <a href="/experiments/6" class="text-blue-600 hover:underline">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-6 border-t">
+    <div class="container mx-auto text-center text-gray-500">
+      <p>© 2025 CryoProtect. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

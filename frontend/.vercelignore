@@ -1,0 +1,45 @@
+# Ignore files not needed for deployment
+node_modules
+.git
+.github
+.gitignore
+.vscode
+.DS_Store
+.env.local
+*.log
+
+# Ignore conflicting API files
+../api/index.py
+../api/app.py
+
+# Ignore development and documentation files
+README.md
+LICENSE
+CONTRIBUTING.md
+CHANGELOG.md
+*.todo
+
+# Testing files
+**/__tests__
+**/tests
+**/*.test.*
+**/*.spec.*
+vitest.config.*
+playwright.config.*
+
+# Build artifacts and cache
+.next
+out
+build
+dist
+.cache
+.vercel
+
+# Development tooling
+.eslintrc*
+.prettierrc*
+.eslintignore
+.prettierignore
+postcss.config.js
+tailwind.config.js
+next.config.js.bak

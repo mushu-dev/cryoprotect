@@ -1,0 +1,23 @@
+[build]
+  publish = "out"
+  command = "npm run build"
+  
+[build.environment]
+  NEXT_PUBLIC_ENVIRONMENT = "production"
+  NEXT_PUBLIC_NETLIFY = "true"
+
+# This redirect rule handles client-side routing for Next.js
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# These headers help secure your site
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"

@@ -1,0 +1,8 @@
+{
+  "name": "cryoprotect-simple",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "convex": "^1.24.1"
+  }
+}

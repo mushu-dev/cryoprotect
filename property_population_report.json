@@ -1,0 +1,1408 @@
+{
+  "timestamp": "2025-05-12 21:37:16",
+  "molecules_processed": 200,
+  "molecules_updated": 200,
+  "total_properties_added": 200,
+  "added_properties": [
+    {
+      "id": "5f641beb-f7b4-4963-bf9b-25ba41666eea",
+      "molecule_id": "1330af08-83d6-443d-8c0b-c891f70feb67",
+      "property_type": "Complexity",
+      "value": 762.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "33d3a48d-dce4-490a-9dc6-70c4c84a0830",
+      "molecule_id": "13ed7e25-09bf-4e91-9079-55929eff67f4",
+      "property_type": "Complexity",
+      "value": 465.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "920aa098-1611-41ae-aea1-e67c66a80f73",
+      "molecule_id": "13f6ed9c-4a14-4f10-b4ca-cca61f555b25",
+      "property_type": "Complexity",
+      "value": 300.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "1001f4fb-fbb6-4387-8101-7287312bee8f",
+      "molecule_id": "145ef86a-56e7-4e72-809b-d74642215646",
+      "property_type": "Complexity",
+      "value": 221.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "f76b1756-2984-47fc-a54d-db3d4575885e",
+      "molecule_id": "14b454bd-8101-4731-942f-eeb0c8017b1b",
+      "property_type": "Complexity",
+      "value": 316.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "6a284f8d-d227-46c6-8b2f-0906f412d814",
+      "molecule_id": "155c4b87-f71b-40a0-9fc4-52aa42303de4",
+      "property_type": "Complexity",
+      "value": 270.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "e8e8dca8-7bc9-488e-8761-97b95d789ffe",
+      "molecule_id": "157dfd2b-2eda-435c-92d6-5117aed10f0b",
+      "property_type": "Complexity",
+      "value": 897.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "7d6f98bf-d3da-4129-8f68-dacaabd576c7",
+      "molecule_id": "15898186-95b0-4b6e-85ad-9760b6b78679",
+      "property_type": "Complexity",
+      "value": 364.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "382e63f0-1b35-4fe1-aab6-fabbd2632acd",
+      "molecule_id": "15f821d7-fc2c-486b-a6f4-49a3457282a3",
+      "property_type": "Complexity",
+      "value": 712.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "2a23e2fc-965e-470b-8165-ff08363848ce",
+      "molecule_id": "162f14c9-aee2-41ae-bccd-a3f453d0e83b",
+      "property_type": "Complexity",
+      "value": 307.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "a1230b89-6522-4c7d-84be-5baae28c7285",
+      "molecule_id": "163045a4-442e-4534-af16-be1578b1a8c5",
+      "property_type": "Complexity",
+      "value": 703.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "a90941dd-2ef8-45f4-b50e-1588b38e2b75",
+      "molecule_id": "16a9dc4e-a682-47d5-82cb-ef46e6ec3efe",
+      "property_type": "Complexity",
+      "value": 750.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "d4aad9c5-0da9-48b0-a417-c57321a7c635",
+      "molecule_id": "174c4452-e6b2-4710-b0fe-a6819c40f303",
+      "property_type": "Complexity",
+      "value": 436.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "42f0947c-ba2a-418e-ac82-18d5661e09df",
+      "molecule_id": "17861b66-3907-420a-a9c7-4a71abc82ba0",
+      "property_type": "Complexity",
+      "value": 1740.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "1e0bf3ae-15dd-4391-ba9e-9eb15881d6a1",
+      "molecule_id": "17c5f605-d6b8-424a-9ec9-7ad825e448e9",
+      "property_type": "Complexity",
+      "value": 613.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "88e3cb00-bdce-4f52-bde3-bb080d1852fc",
+      "molecule_id": "17ec2b6f-0028-49d7-9809-fefcf6501abe",
+      "property_type": "Complexity",
+      "value": 428.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "3a0ca73e-9294-4c9e-a526-896506d8222b",
+      "molecule_id": "1809c6dd-bb9d-42b6-bce9-f40d2b6ea1ae",
+      "property_type": "Complexity",
+      "value": 544.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "f6a62db7-3759-48d0-a7f6-e435d6f8e66b",
+      "molecule_id": "1899b03b-0438-4935-a310-3e8d4074f884",
+      "property_type": "Complexity",
+      "value": 1990.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "0150996a-3370-42e9-9900-f45d89399ff4",
+      "molecule_id": "196d4c32-9614-49ff-8a2e-ca1b5221185f",
+      "property_type": "Complexity",
+      "value": 372.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "e8aa0fd2-c6f9-4aa6-a56a-a05406d54799",
+      "molecule_id": "19c01682-3482-4f53-9f23-516e22f209d2",
+      "property_type": "Complexity",
+      "value": 348.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "93838c57-c1dd-46e4-94dd-7f29e886a47e",
+      "molecule_id": "19e2bd55-168a-4a2a-bcbe-96b7fd3c7926",
+      "property_type": "Complexity",
+      "value": 296.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "3578fa97-3926-4da6-aa78-b7b2a61b9561",
+      "molecule_id": "19f2ff74-f2e1-4bf3-ad49-39e9d0e067c5",
+      "property_type": "Complexity",
+      "value": 1780.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "cf88875b-73f8-41b4-a9dd-24ea56c943f6",
+      "molecule_id": "1a1e6397-2114-49c9-8d70-4e0595dc76c5",
+      "property_type": "Complexity",
+      "value": 580.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "0beb4cb0-b754-452e-bf77-e1709f0a1a1b",
+      "molecule_id": "1a2e6f74-3b39-4182-8491-a2db8431016d",
+      "property_type": "Complexity",
+      "value": 770.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "a50cd9e0-da56-4bbb-bb5d-d5c8faee0230",
+      "molecule_id": "1a603429-47d9-4608-9ac4-86a7e741512d",
+      "property_type": "Complexity",
+      "value": 401.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "cc8ec1d3-954f-44e0-a4a7-7eb04336be1e",
+      "molecule_id": "1a60bf5d-0536-472b-8285-b4a67c61ab1b",
+      "property_type": "Complexity",
+      "value": 525.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "7a38f6cb-5eeb-4084-8a77-912c56291294",
+      "molecule_id": "1a895857-58e3-4fda-9c02-b28fa568fa21",
+      "property_type": "Complexity",
+      "value": 973.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "9412dec6-5531-4603-b9aa-961b37623103",
+      "molecule_id": "1ab3c07d-8432-4340-9ac1-6bd633116079",
+      "property_type": "Complexity",
+      "value": 898.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "ad924744-8239-449d-843f-730c87e99591",
+      "molecule_id": "1b5c1e89-514b-44ea-9aa1-b98a3d278f46",
+      "property_type": "Complexity",
+      "value": 605.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "9f8a0cb8-ba80-49f3-b738-0786dffc5ec5",
+      "molecule_id": "1b909123-dc62-47bb-9be6-e051296cab35",
+      "property_type": "Complexity",
+      "value": 658.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "e88a9683-2593-4d5b-89d9-1940fe87e399",
+      "molecule_id": "1b90d33a-de7e-4605-8d9c-2075a1ec1079",
+      "property_type": "Complexity",
+      "value": 265.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "2c740eee-cb59-4142-bd40-85315240025f",
+      "molecule_id": "1b9c51b2-1bab-42ac-bb8a-bfde3204ff9d",
+      "property_type": "Complexity",
+      "value": 625.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "b5a25893-a06a-4c60-931d-2131f562d31e",
+      "molecule_id": "1ce8d220-bb08-4f9c-862b-35cfb9b8d8c5",
+      "property_type": "Complexity",
+      "value": 595.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "16b77531-5c4c-47ff-9202-e48d02a474f4",
+      "molecule_id": "1d19b5bd-1b80-4486-ab80-aaa1e74d5961",
+      "property_type": "Complexity",
+      "value": 339.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "59ae14e0-cb71-455c-aeb5-a9cfc79d2a28",
+      "molecule_id": "1def196b-4ce0-47b2-80f0-85920365c250",
+      "property_type": "Complexity",
+      "value": 486.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "d053d2d3-03d7-49c6-ae09-381985e978a4",
+      "molecule_id": "1e02d27a-9430-4f7c-94b2-764ffb4c39c5",
+      "property_type": "Complexity",
+      "value": 461.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "9aa5947b-7e4f-403f-bab3-7e634d3aa9c1",
+      "molecule_id": "1e20c0a3-96e6-44de-8817-85458a774fda",
+      "property_type": "Complexity",
+      "value": 173.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "da19667e-3f9f-4cf5-bfa5-b89ed1f1f19e",
+      "molecule_id": "1e504635-85b4-4076-b615-a8477cf6ee8c",
+      "property_type": "Complexity",
+      "value": 479.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "125985db-4b29-4817-80d8-29400ad549a7",
+      "molecule_id": "1e9c3c17-c3f4-46b4-8b12-ddfb18a9e26a",
+      "property_type": "Complexity",
+      "value": 380.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "0f0c5b1e-40d6-4549-a4df-9dda2545e9e0",
+      "molecule_id": "1f7d6feb-56f1-428a-a4dd-e7e05deaf9b7",
+      "property_type": "Complexity",
+      "value": 553.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "65f231a1-88a1-447e-9884-8de7185a8a96",
+      "molecule_id": "1fb4d7b7-4875-4e99-9db0-0138bf537e39",
+      "property_type": "Complexity",
+      "value": 651.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "af75ea57-6283-4aa0-b355-3c663ae1856f",
+      "molecule_id": "1fc42dce-7a65-46ab-a9c4-412398f00305",
+      "property_type": "Complexity",
+      "value": 268.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "7ce10931-af2f-41b8-a0ca-da738e3f45cd",
+      "molecule_id": "1ff333f9-9b2c-4f2a-ac81-23239a405f4d",
+      "property_type": "Complexity",
+      "value": 1120.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "48109ad3-147a-49e6-b6c5-743ea2178506",
+      "molecule_id": "20437c59-909a-4527-9f65-67081dcf6946",
+      "property_type": "Complexity",
+      "value": 924.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "5f3c9744-0680-4da3-935e-0697a9b485f1",
+      "molecule_id": "21016784-bc3b-4d3b-bcd2-bd59f17d3bf2",
+      "property_type": "Complexity",
+      "value": 382.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "2fd1fdd9-83d1-48ac-b7aa-6df191771207",
+      "molecule_id": "21944f99-791c-4816-ace4-679f8745a1d2",
+      "property_type": "Complexity",
+      "value": 1280.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "131d83b4-16ef-42a5-a382-a7d32936d587",
+      "molecule_id": "21d78fcf-7aee-432b-be66-f82e1997ab7e",
+      "property_type": "Complexity",
+      "value": 342.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "89c8ef96-b90b-47b7-bb9b-9fed4d12fe45",
+      "molecule_id": "222c71a3-a033-460a-b92d-66f5bc30c54d",
+      "property_type": "Complexity",
+      "value": 1030.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "f2f5463e-7c11-467f-b1e5-2d81c9efd0c8",
+      "molecule_id": "225bf6c7-8dac-4414-8ef9-a90b04cb5f7d",
+      "property_type": "Complexity",
+      "value": 428.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "321d0eda-a214-46fe-8ef1-ac4515f8054f",
+      "molecule_id": "22a9097f-a30f-4e09-aaa9-50be810faf6c",
+      "property_type": "Complexity",
+      "value": 475.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "a55517fc-1003-416d-96cb-dc9d971e21d4",
+      "molecule_id": "22b27665-512f-41fa-9b18-247f0e5ddc87",
+      "property_type": "Complexity",
+      "value": 551.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "87da9638-203b-4b1b-8e26-a57d937195cd",
+      "molecule_id": "2301d2b7-4a86-4d7c-a76d-fff45b881477",
+      "property_type": "Complexity",
+      "value": 600.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "269ca1fe-23d9-4c65-83f1-edc15796a4c8",
+      "molecule_id": "23db091c-fb00-486c-a702-e17fefbab75c",
+      "property_type": "Complexity",
+      "value": 738.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "d8f8123e-2ba4-40c7-ad76-0c8e818c3428",
+      "molecule_id": "24396776-0bfe-4f72-8359-cb87a47bce2a",
+      "property_type": "Complexity",
+      "value": 541.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "16baf0fb-b198-4443-b544-fb85717f0d0e",
+      "molecule_id": "248d0ff1-e8bc-4b58-800f-de98a7b721bc",
+      "property_type": "Complexity",
+      "value": 760.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "920a6188-788b-4e53-aa7b-fbb573dbb533",
+      "molecule_id": "2495ea9a-bf07-4d40-bbc0-750bae28dc0e",
+      "property_type": "Complexity",
+      "value": 361.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "076e8ef5-1051-4970-a765-b3b6c373d3ed",
+      "molecule_id": "24c4b484-d15c-429d-af46-c8c7cc620e30",
+      "property_type": "Complexity",
+      "value": 163.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "d7c3ed1a-f676-4b6c-be96-f3f1ef56fcb3",
+      "molecule_id": "25687361-2202-4469-a8d8-24f52039bff7",
+      "property_type": "Complexity",
+      "value": 527.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "a26ac774-845d-4639-8da2-3b3eeabde94a",
+      "molecule_id": "263afbc9-937d-4296-9e99-56564b5da421",
+      "property_type": "Complexity",
+      "value": 290.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "dd390180-5710-4c3d-a21d-ff7366f3ab79",
+      "molecule_id": "265b7f7c-2824-4f20-96b9-4afcbdcaac36",
+      "property_type": "Complexity",
+      "value": 803.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "b2daeb6c-8e55-4d1d-a19e-873d60655227",
+      "molecule_id": "267a9f29-eb0c-4122-8372-fa4829d61787",
+      "property_type": "Complexity",
+      "value": 617.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "d948b627-fd59-4716-85e9-d9efd8fe8120",
+      "molecule_id": "2708d060-9d1c-43c5-8ded-442683093773",
+      "property_type": "Complexity",
+      "value": 987.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "9bbb8f53-502d-4b71-bd4c-3cc5345caf42",
+      "molecule_id": "2832efc3-743c-49fb-afa5-c911a4e63229",
+      "property_type": "Complexity",
+      "value": 257.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "c02f61f1-379c-4964-b295-60025d42cf47",
+      "molecule_id": "28377187-1657-4acf-8151-0a5e93712e3f",
+      "property_type": "Complexity",
+      "value": 547.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "244a0299-25dd-4f78-be6d-a49e6b2ddf3d",
+      "molecule_id": "28e7cb81-1b28-4e55-8c54-8e6cbe6c6c12",
+      "property_type": "Complexity",
+      "value": 755.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "7ed1caac-052d-4d72-8a23-4fe0e3213261",
+      "molecule_id": "2998b763-ee94-492f-a1cc-51ae87deb03d",
+      "property_type": "Complexity",
+      "value": 257.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "1f86e98b-c7eb-4d90-9869-af911dd2f2df",
+      "molecule_id": "2a1999a2-91e2-441c-8bdc-aee691e3c911",
+      "property_type": "Complexity",
+      "value": 562.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "403a0919-223d-4fab-a812-7cee351b6897",
+      "molecule_id": "2a422278-da31-4b1c-be04-c77b2339405f",
+      "property_type": "Complexity",
+      "value": 387.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "d4dec65f-0422-4ac1-b685-a381645e50a6",
+      "molecule_id": "2b0e930c-2df1-46e2-9a93-6b02816701be",
+      "property_type": "Complexity",
+      "value": 270.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "6320f222-d6a5-4e1e-9f2f-aeb697295bf5",
+      "molecule_id": "2b4b13e2-cf65-44e1-bed9-15825aff950f",
+      "property_type": "Complexity",
+      "value": 419.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "5746b353-c48b-486e-b22f-d9f957b3ad62",
+      "molecule_id": "2ba2b902-124c-49af-a051-0bb08bc5e1b2",
+      "property_type": "Complexity",
+      "value": 356.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "6be92883-b2e7-41da-adf1-076e2ad8e486",
+      "molecule_id": "2d43413b-1550-43e6-ac1c-977ea63dbcfc",
+      "property_type": "Complexity",
+      "value": 430.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "1a7c2e7f-595e-4375-89fe-d6ba8d15dad3",
+      "molecule_id": "2de09347-aa5e-483b-8e15-0c2d4d7e838d",
+      "property_type": "Complexity",
+      "value": 341.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "51141090-45d0-4720-9766-87df921a167b",
+      "molecule_id": "2e275068-094b-4735-9ed8-4cdcb0818c28",
+      "property_type": "Complexity",
+      "value": 594.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "62b4ad37-2a66-4d80-aebc-fbbaf8e92f6e",
+      "molecule_id": "2e2b1da3-f186-46ca-84fb-6d967de81325",
+      "property_type": "Complexity",
+      "value": 898.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "71280dc8-6de4-43f4-af42-4fe20454f700",
+      "molecule_id": "2e52e837-9bdc-4e53-972f-450894e2df7e",
+      "property_type": "Complexity",
+      "value": 918.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "00fe380f-302e-4cbc-a1e5-a3e65def7479",
+      "molecule_id": "2e557b09-a609-4013-846f-161c8d6768e5",
+      "property_type": "Complexity",
+      "value": 902.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "a84c37a2-7753-4ddf-a496-ddf91b32bcda",
+      "molecule_id": "2e58dbde-dbb8-4757-9142-074fc6eaff31",
+      "property_type": "Complexity",
+      "value": 443.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "354e8cbc-b0af-4913-aec0-65bda1e57da9",
+      "molecule_id": "2e6e57d6-f47d-45fb-99f0-6040ead45de6",
+      "property_type": "Complexity",
+      "value": 642.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "bd016a75-1033-4a2d-8d90-f9c0394bac8b",
+      "molecule_id": "2ec4eecd-9ae4-479c-b8f9-31d0d96dcd9b",
+      "property_type": "Complexity",
+      "value": 1090.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "c3ffce8b-589d-48bd-ab88-a64ea1674f47",
+      "molecule_id": "2f464d7d-8885-4b0d-9295-ca8b1d72d9d0",
+      "property_type": "Complexity",
+      "value": 602.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "3ba2d36e-da67-4098-917b-7af5eb6e1a26",
+      "molecule_id": "2f6e1ba6-4f82-486e-bdb4-eca95165078d",
+      "property_type": "Complexity",
+      "value": 522.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "00b5c05c-fd54-43ec-9e3b-bc6e5cb6b6c9",
+      "molecule_id": "301fd179-abf1-48b2-b932-6eb83ef1a41b",
+      "property_type": "Complexity",
+      "value": 1430.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "3db2e468-2f71-4a81-8d31-27e4084a011f",
+      "molecule_id": "30a11e97-3f81-4fdf-8f55-2e989a27094c",
+      "property_type": "Complexity",
+      "value": 460.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "3f499dd3-20df-4721-9287-cff97662bcac",
+      "molecule_id": "30a66853-6447-4ef4-9821-2967e87f6f28",
+      "property_type": "Complexity",
+      "value": 743.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "bc1627a4-77a6-4412-97d1-f7a17bd085ec",
+      "molecule_id": "30b519c4-23ab-4cf9-b3de-173109ece26d",
+      "property_type": "Complexity",
+      "value": 726.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "ce124f9f-a99e-47a8-ad7c-a762f6451e57",
+      "molecule_id": "3111b7c4-fb69-4fc9-9a9f-accc97462c4e",
+      "property_type": "Complexity",
+      "value": 177.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "15a1b292-d814-49c2-80aa-86f78a91f5d0",
+      "molecule_id": "31319a9c-4ece-4be1-9f5d-c0576665ce29",
+      "property_type": "Complexity",
+      "value": 530.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "0e70b190-f99f-4fdb-ab40-ced4868f92ac",
+      "molecule_id": "31681ec0-268d-41ef-9d9b-89f403bbf394",
+      "property_type": "Complexity",
+      "value": 354.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "10058d64-ef46-49b8-942b-0828faba51e1",
+      "molecule_id": "31f7fd2a-8422-4a96-9f0d-9884dcd218aa",
+      "property_type": "Complexity",
+      "value": 457.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "2d831018-1526-4697-bc43-a0d46065972b",
+      "molecule_id": "3200581d-8538-4e9f-b9d9-81c2cac06322",
+      "property_type": "Complexity",
+      "value": 281.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "67a3e957-e425-4e61-accc-a0bb87a70ca1",
+      "molecule_id": "32220de7-90cb-4de9-9aba-e69bc220dfe3",
+      "property_type": "Complexity",
+      "value": 519.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "dcdf7203-8a0b-428a-a54f-a115224b4bd8",
+      "molecule_id": "32417b86-0b64-4689-b0bf-cb46f95d1292",
+      "property_type": "Complexity",
+      "value": 1940.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "715883f3-15ad-446f-b38d-1afd7bd31cc5",
+      "molecule_id": "3285f443-a916-492d-8e90-f9dc3f865a6f",
+      "property_type": "Complexity",
+      "value": 354.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "020954f7-ae9b-4b1b-bf58-4d29ab858714",
+      "molecule_id": "3307682c-1f58-4fa8-80ea-7acc9dc59935",
+      "property_type": "Complexity",
+      "value": 197.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "ee3aec73-241a-4f88-ba9c-6da043938d8d",
+      "molecule_id": "334202ce-6243-42e0-8a17-d75721a4a3c9",
+      "property_type": "Complexity",
+      "value": 355.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "9fe67db0-3e74-4584-b13a-9cfc4987c6fe",
+      "molecule_id": "340b9473-fb10-4a83-95cf-409407699e68",
+      "property_type": "Complexity",
+      "value": 503.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "bb211533-34b8-4041-b2c5-fb32579f575e",
+      "molecule_id": "34461faa-9919-4da6-a8d3-afcb63b14980",
+      "property_type": "Complexity",
+      "value": 518.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "2ccdb5e0-cfee-493a-ad87-c7ade39a6e99",
+      "molecule_id": "3447d299-620f-4768-9945-6e22cf552b73",
+      "property_type": "Complexity",
+      "value": 583.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "4b4b14db-ec1e-4c35-b1bd-e845546d8f03",
+      "molecule_id": "34948cff-3db0-45a3-9201-fe174550c804",
+      "property_type": "Complexity",
+      "value": 773.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "b6d17f91-0ded-4ebb-a1bd-f4e142d3e320",
+      "molecule_id": "359e4f32-076d-459a-b687-90a650955a74",
+      "property_type": "Complexity",
+      "value": 944.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "02fcfbc5-9f06-45f0-898f-33e2e76875b3",
+      "molecule_id": "35ba8276-9af9-4d76-96b9-e97b12d0078d",
+      "property_type": "Complexity",
+      "value": 517.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "f1dcd8c5-cb68-4e1a-a0b7-3b95158240b8",
+      "molecule_id": "364ce25e-658f-4e36-84b9-e89c88777137",
+      "property_type": "Complexity",
+      "value": 347.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "0058cc7f-9146-4631-b025-109d9e705d61",
+      "molecule_id": "366a1e27-69b2-42ae-a1e9-b1c3b06c1be0",
+      "property_type": "Complexity",
+      "value": 612.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "9cb24db3-d9ce-42aa-a2ac-9ba664db5b80",
+      "molecule_id": "366bb607-145e-4a71-9dac-f74af2284dd4",
+      "property_type": "Complexity",
+      "value": 249.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "dbd8f403-e675-4a84-8843-bd073a5365e0",
+      "molecule_id": "36707b3b-fb16-4fb7-962e-117efba6aa4b",
+      "property_type": "Complexity",
+      "value": 523.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "91e1d46d-bd31-4314-81b9-c26da1339067",
+      "molecule_id": "3685d30f-8403-4d21-9997-9c6bf364ca0d",
+      "property_type": "Complexity",
+      "value": 328.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "5488f199-32c1-4381-9171-6857af0706e4",
+      "molecule_id": "377c9613-3c4f-4027-98b1-56459ad7441f",
+      "property_type": "Complexity",
+      "value": 286.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "db599fa1-28d1-4b8d-b925-eae9af482507",
+      "molecule_id": "37fea3b2-1ff2-4350-b3b2-a25206bbb57f",
+      "property_type": "Complexity",
+      "value": 1300.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "4e919c20-1680-4b93-8521-893986ca0739",
+      "molecule_id": "386eb430-2a66-448d-95a3-9f53202659f6",
+      "property_type": "Complexity",
+      "value": 355.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "d956dde5-8cd2-4b0e-8c97-39e47bd9c53a",
+      "molecule_id": "387e8068-7d4e-4679-a3f4-46afb9d38ac6",
+      "property_type": "Complexity",
+      "value": 608.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "c0e19480-f2ea-4676-9ed4-ccf7c650b4b8",
+      "molecule_id": "389e6989-fa49-43cb-91b3-c5b3f861bc5a",
+      "property_type": "Complexity",
+      "value": 234.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "adb6e256-0711-44f9-9134-809cb76e6d65",
+      "molecule_id": "38ca615a-8ab6-4ed9-af10-1b7b24b6abee",
+      "property_type": "Complexity",
+      "value": 1350.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "45993ba4-a82c-4ecc-9760-c477d8c02c57",
+      "molecule_id": "39265cf1-1a61-4e4d-a985-ae4d2fa85b81",
+      "property_type": "Complexity",
+      "value": 464.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "f76b255b-b36d-484a-9f6d-03ca662b523b",
+      "molecule_id": "394e532b-c0a8-41ec-a29e-6890332b3f2f",
+      "property_type": "Complexity",
+      "value": 550.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "5088a122-94ff-4268-ad6c-391050715bc6",
+      "molecule_id": "39555e30-a78d-4f68-ba92-cd2d2fdb07ce",
+      "property_type": "Complexity",
+      "value": 716.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "944d8868-c1b2-4811-a120-ca82d35f1c04",
+      "molecule_id": "39e2fbab-2de6-4cc7-93c6-2c4b6a8fd6d6",
+      "property_type": "Complexity",
+      "value": 808.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "0855db5f-349a-4243-9d05-ab3cc250f232",
+      "molecule_id": "39ebd959-2311-42f0-9ca4-47978b5d350e",
+      "property_type": "Complexity",
+      "value": 300.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "a4693566-cbe1-44f6-b27d-b7e05c5f0315",
+      "molecule_id": "3a192ba8-9bef-45b2-89e2-9fed6df8cc66",
+      "property_type": "Complexity",
+      "value": 500.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "1d267297-20bf-405d-9030-53392ea302e8",
+      "molecule_id": "3ac00426-a5a6-42c8-81ed-d0deec1d70b9",
+      "property_type": "Complexity",
+      "value": 382.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "3208f756-cb6a-4191-a126-0fbc5adf962b",
+      "molecule_id": "3b899df5-99c1-4da7-b57c-cb99c53bba79",
+      "property_type": "Complexity",
+      "value": 536.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "e6bb31cb-7fde-4d9d-8c00-20711a1ca147",
+      "molecule_id": "3b97d68a-ce77-4739-8add-f51cccea2044",
+      "property_type": "Complexity",
+      "value": 271.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "02ca9a9c-2872-466b-8ce3-73435e3b0615",
+      "molecule_id": "3bbe0c55-3b59-4165-9f8c-224c7de0e30c",
+      "property_type": "Complexity",
+      "value": 962.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "057c1776-4cd9-4571-85e2-0ffd0ff81734",
+      "molecule_id": "3c318b10-c241-4e48-924d-47112670bc05",
+      "property_type": "Complexity",
+      "value": 2180.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "9c4088f4-ce76-4119-9d5b-c2a5ce61adee",
+      "molecule_id": "3d15dc02-6811-438e-8386-0f75f59add04",
+      "property_type": "Complexity",
+      "value": 800.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "eb604b46-e6cc-47cf-bb03-998d437c2967",
+      "molecule_id": "3d31f911-9da2-45a9-b012-a5c5b65b98af",
+      "property_type": "Complexity",
+      "value": 545.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "b82ce66c-38ef-42f5-b2e5-8748ea290c42",
+      "molecule_id": "3d7eb14d-2e31-4caf-92bb-f12aedb9a6ee",
+      "property_type": "Complexity",
+      "value": 664.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "e4842617-b66b-4f86-8a7a-1d235c93ce7b",
+      "molecule_id": "3e272d90-4a3c-4df5-a623-f9189337f1e6",
+      "property_type": "Complexity",
+      "value": 587.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "4c9ca544-276e-46d9-ab71-27f13104b46f",
+      "molecule_id": "3e71fad5-362a-4133-b0d6-7f68ebc57d46",
+      "property_type": "Complexity",
+      "value": 84.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "f9e5bbfe-4b49-4cad-9cff-798fb4e8091a",
+      "molecule_id": "3e8a0bf3-e174-4194-b1e8-fdc898362dd4",
+      "property_type": "Complexity",
+      "value": 1870.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "d5c8404e-a3a0-4615-bc40-cae177290338",
+      "molecule_id": "3ec5c142-3fa3-4b7f-9a6f-377add48ab75",
+      "property_type": "Complexity",
+      "value": 282.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "70574109-9256-459a-be6c-903b6d0eb1bc",
+      "molecule_id": "3ef075fe-7581-411e-bef8-fe07b0e19118",
+      "property_type": "Complexity",
+      "value": 378.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "2523e745-1c7c-44d3-8268-e0bcaa0a87a8",
+      "molecule_id": "3f474fc5-71ce-4319-8de0-93e0ae6acc6b",
+      "property_type": "Complexity",
+      "value": 198.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "435247a6-1f2c-4a6a-9761-b3e8eabc1497",
+      "molecule_id": "3f7836da-c982-4e59-b4d5-8b912dca1c2e",
+      "property_type": "Complexity",
+      "value": 258.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "3ad88d6f-e1c4-48b7-998d-3e5ece8e900f",
+      "molecule_id": "3f80c373-0de4-4461-b721-e51c9e9ae3cc",
+      "property_type": "Complexity",
+      "value": 580.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "0058666b-08b2-4833-9527-c80c4062c3ff",
+      "molecule_id": "3fceebde-ab50-46c2-a789-e805677e4293",
+      "property_type": "Complexity",
+      "value": 1910.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "3f977305-2519-4b90-b2eb-5d6ef5a95adb",
+      "molecule_id": "401d37a9-fb09-493e-bae6-048c09c8a63f",
+      "property_type": "Complexity",
+      "value": 590.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "4482caa0-ca0f-400b-b173-41065be232f4",
+      "molecule_id": "407f193c-cd8d-4c6a-b16d-39609c1fa1fa",
+      "property_type": "Complexity",
+      "value": 960.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "4cf348af-bb19-46e9-8618-59369346db4e",
+      "molecule_id": "40c1a4aa-04ed-43d6-be49-dab8ce69fad9",
+      "property_type": "Complexity",
+      "value": 369.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "5f695c96-b745-4484-9a94-00914e31c3c4",
+      "molecule_id": "41056066-dd18-4f12-921b-8cbf5203e7a3",
+      "property_type": "Complexity",
+      "value": 322.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "407e2464-72f0-412c-8cd3-616d110c888f",
+      "molecule_id": "410969f5-5627-48f4-95ca-c1734f7d34e7",
+      "property_type": "Complexity",
+      "value": 257.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "599d81ea-d579-41aa-844b-7245793ab8b1",
+      "molecule_id": "4161ee84-d69f-4a9e-b300-c9a57ffe3488",
+      "property_type": "Complexity",
+      "value": 492.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "bd10fb14-70dc-4f12-a808-837b1a1e3f16",
+      "molecule_id": "41d6a84d-1995-44d2-a809-1300269a4a54",
+      "property_type": "Complexity",
+      "value": 600.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "c21dddf2-1494-4d62-b00b-097c1ebab7f1",
+      "molecule_id": "41db087b-1bc2-4e9a-b50f-2c82c73f5ec3",
+      "property_type": "Complexity",
+      "value": 234.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "c28791ce-3307-4363-ab36-cc3f9a69a953",
+      "molecule_id": "4260cb75-3ff7-46d2-892e-0c83ca6c7332",
+      "property_type": "Complexity",
+      "value": 977.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "00a7707b-80ef-408a-8d9f-0231a0ec358e",
+      "molecule_id": "426d0c34-6774-4720-b5de-670a1ea4ad0b",
+      "property_type": "Complexity",
+      "value": 224.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "3df10723-54cc-493e-9849-5b5e649abca2",
+      "molecule_id": "43728697-1449-4637-8902-ecf9d9d20235",
+      "property_type": "Complexity",
+      "value": 178.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "814e32b5-1299-49f2-a06e-6e4f5c2fe57a",
+      "molecule_id": "43cd9f56-9e7d-42be-9797-935209a501d2",
+      "property_type": "Complexity",
+      "value": 257.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "ca7793a9-3104-41d5-97c9-4ce39cd98ff9",
+      "molecule_id": "4461ac5e-d896-4f30-8837-fde0515df0a7",
+      "property_type": "Complexity",
+      "value": 455.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "fa4cd992-d3e5-4897-8aeb-73179555dde0",
+      "molecule_id": "44ba29cd-3f28-455a-8c4b-e5cf260ad6a8",
+      "property_type": "Complexity",
+      "value": 863.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "a13d8cda-3655-43da-af78-1e7154b38812",
+      "molecule_id": "44cb06ea-f538-4e67-aab2-e6fcec9515f6",
+      "property_type": "Complexity",
+      "value": 461.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "1accabdf-ec74-4ccf-99c6-4931d5911a92",
+      "molecule_id": "44febbc5-7bb3-4dc3-b240-4473e0d5cce3",
+      "property_type": "Complexity",
+      "value": 507.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "5c236891-600f-4714-ba81-6eb237370b5b",
+      "molecule_id": "4552a1e6-4762-4114-b8ad-455c94ba6232",
+      "property_type": "Complexity",
+      "value": 808.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "d1b94e75-28c1-401b-8edd-bf7127632dda",
+      "molecule_id": "4555559d-a779-4269-90a8-3946eb29a2da",
+      "property_type": "Complexity",
+      "value": 221.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "03df3e03-dd06-41a6-9b0a-bcd83ca7d684",
+      "molecule_id": "4559dfc4-f793-4f3f-a89a-3283ff10891a",
+      "property_type": "Complexity",
+      "value": 129.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "7280a219-0f84-4896-b46e-fbd913bf9910",
+      "molecule_id": "4597b852-cf08-4604-8e51-24f14e673be8",
+      "property_type": "Complexity",
+      "value": 1530.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "ffbf669f-023d-4492-8db1-5f8d5d5db125",
+      "molecule_id": "45dc03e8-2441-488f-91b1-d87996912235",
+      "property_type": "Complexity",
+      "value": 133.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "bc1074b1-a9fc-42c1-a0cf-18b3ec1cc93c",
+      "molecule_id": "46197f96-9221-46d4-9c7f-d14b103ec8ad",
+      "property_type": "Complexity",
+      "value": 553.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "558e4d08-badd-4216-bb79-7fd3237dbeab",
+      "molecule_id": "4676e57c-6f48-4a3f-add1-af58c09cef95",
+      "property_type": "Complexity",
+      "value": 119.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "ade64b76-6fc7-4053-9b37-796ea9c14e85",
+      "molecule_id": "46acda96-897d-472e-acfc-3809a713ea23",
+      "property_type": "Complexity",
+      "value": 571.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "e4661fa2-93d4-4b98-9b13-4d7fb6d703c8",
+      "molecule_id": "46fd357a-78a1-4386-8b6b-2351f34bbd69",
+      "property_type": "Complexity",
+      "value": 2040.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "2f780e6d-9cb6-4a3a-b090-832f1d5ce682",
+      "molecule_id": "47dbd0fb-9b7c-42bc-9f7d-c8d47082c2ba",
+      "property_type": "Complexity",
+      "value": 815.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "20b4c507-32e0-4646-bba5-d9105939fc4e",
+      "molecule_id": "48153bea-efbd-4715-bb50-b8d66aba4515",
+      "property_type": "Complexity",
+      "value": 382.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "03ae55af-9185-4af9-9332-2391877d3934",
+      "molecule_id": "487158a1-98da-4835-a8f8-f2724a5e9ac2",
+      "property_type": "Complexity",
+      "value": 649.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "eae0d26f-f85e-436a-b579-51015b63f6cd",
+      "molecule_id": "495d60e4-1b7b-4a7d-a9b2-8c095cc32978",
+      "property_type": "Complexity",
+      "value": 186.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "61e0cf2c-5bc8-4330-a88f-8f7ff06542fe",
+      "molecule_id": "49b8e131-caa3-4fbd-bb60-0133a9a3f7ea",
+      "property_type": "Complexity",
+      "value": 619.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "595ab749-3503-4378-bc5c-ad49951da016",
+      "molecule_id": "4a67f5fd-0a4b-4769-a968-b37e527a41f9",
+      "property_type": "Complexity",
+      "value": 239.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "dc65e912-b493-4b4c-8d1f-d572d2da437e",
+      "molecule_id": "4a683f45-16cb-4210-9090-92bb3e0f386a",
+      "property_type": "Complexity",
+      "value": 773.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "9f9f8c79-2478-4d8e-831d-cfddacbb4cef",
+      "molecule_id": "4ac9d4a5-1041-415e-a8f7-7b19224d4c1f",
+      "property_type": "Complexity",
+      "value": 358.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "2cd1ad95-c68c-4514-81be-ae3a5d918f37",
+      "molecule_id": "4ace97da-94bc-4636-ad9d-748f505ed9ee",
+      "property_type": "Complexity",
+      "value": 615.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "c9938ef0-466a-4a8f-85ae-9302680c2825",
+      "molecule_id": "4ade94b3-9982-459b-9573-9f195fb5b357",
+      "property_type": "Complexity",
+      "value": 890.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "c71a0c50-eb5b-465b-b694-f51aad0a64c9",
+      "molecule_id": "4b33c7b3-3616-4e09-8264-5b7fd5a5ef1f",
+      "property_type": "Complexity",
+      "value": 235.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "cc8f5e8d-4998-4b29-9d73-7409cee569f1",
+      "molecule_id": "4b342357-f968-4e89-900a-82f254ddba27",
+      "property_type": "Complexity",
+      "value": 777.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "15b2302e-9443-4156-ac56-cce29541f2b6",
+      "molecule_id": "4b52846e-7fdd-4da2-bafe-cd0ce2990c9a",
+      "property_type": "Complexity",
+      "value": 1220.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "0c9740ca-df68-4c0f-87fb-58ce24ea403f",
+      "molecule_id": "4c186791-04f6-40af-aca4-5662a4adbbaf",
+      "property_type": "Complexity",
+      "value": 587.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "90670136-99ff-4d92-9e19-31159eb476c1",
+      "molecule_id": "4c307a4e-20a9-45a3-89f7-5388d086602d",
+      "property_type": "Complexity",
+      "value": 183.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "c514e2ca-4fbd-46b7-8187-40b6fab39e2b",
+      "molecule_id": "4c3cfd60-3730-4a0b-9853-15799e726bc5",
+      "property_type": "Complexity",
+      "value": 381.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "f2e08c71-2486-4720-9de1-cb9259592a43",
+      "molecule_id": "4c98a1e2-59da-446e-8b67-4f2d7fdc9d29",
+      "property_type": "Complexity",
+      "value": 735.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "a4b3fbdf-68e0-46fb-8a6d-107caecea18e",
+      "molecule_id": "4cc4994a-b8b4-47bf-9ad6-b56abb5838d8",
+      "property_type": "Complexity",
+      "value": 534.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "454968d8-e8ba-4cbd-a601-445f3b28a056",
+      "molecule_id": "4d05c29b-b59b-49cb-a0b8-908838c90d63",
+      "property_type": "Complexity",
+      "value": 263.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "5e5aaab6-643a-4b0a-aeb0-0457d3bb2394",
+      "molecule_id": "4d142f0e-5289-4667-9bce-65a45b0a27a9",
+      "property_type": "Complexity",
+      "value": 435.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "e9001b10-4f6b-41cc-a85c-89684b98fb98",
+      "molecule_id": "4d472320-d50d-4672-8681-8454ce728ced",
+      "property_type": "Complexity",
+      "value": 430.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "65f40c0d-157c-4058-9581-43962b9dc685",
+      "molecule_id": "4dd3522c-b55e-4fc7-814d-80a86764813c",
+      "property_type": "Complexity",
+      "value": 198.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "edadacbf-beb6-4db2-a7d4-0e4ab3920d06",
+      "molecule_id": "4dd974a1-aaea-4da9-afeb-fd90330d491c",
+      "property_type": "Complexity",
+      "value": 901.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "1f40ea22-a2eb-49fb-8f1c-e08fbeab2c28",
+      "molecule_id": "4df68eb2-ca0d-45f9-b96e-c58d70031594",
+      "property_type": "Complexity",
+      "value": 1230.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "3a483081-f821-4eba-8972-c33083989022",
+      "molecule_id": "4e36314d-e46b-41bd-8a40-6944d2c95c27",
+      "property_type": "Complexity",
+      "value": 461.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "53968de1-c475-4fe2-9445-9f14b5c229ce",
+      "molecule_id": "4e773ca2-6bd4-49a4-84d8-2a52147dd43e",
+      "property_type": "Complexity",
+      "value": 897.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "ebc705c2-8250-4d33-b46d-90d347edfe09",
+      "molecule_id": "4e88c393-3c60-4316-be30-d666eb319fc8",
+      "property_type": "Complexity",
+      "value": 1920.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "85df02e6-9270-46c1-a725-7b65daaa4ff0",
+      "molecule_id": "4ec23b0f-7e52-4db1-b133-c7181c8df2ca",
+      "property_type": "Complexity",
+      "value": 930.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "fe12ddad-e6d2-493e-bf62-6d0337d40bbb",
+      "molecule_id": "4ef592b2-2164-491e-ba59-aa451f52386e",
+      "property_type": "Complexity",
+      "value": 609.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "ed939ba5-222a-4faa-9b03-b4efef397d64",
+      "molecule_id": "4fb37cec-c33b-4edb-a961-99de23757abd",
+      "property_type": "Complexity",
+      "value": 256.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "6a2b2c52-f4ff-4e5b-8093-d4db34c8b33e",
+      "molecule_id": "4fb5bff2-c018-4644-bd1d-f17a2edba2cb",
+      "property_type": "Complexity",
+      "value": 838.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "79635e11-7c93-4533-8fd0-a418382ebd72",
+      "molecule_id": "4fd9639f-f130-488e-9e29-cd4e8d05dcda",
+      "property_type": "Complexity",
+      "value": 521.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "3dd5d434-459c-4f50-998c-3fe25aad58f3",
+      "molecule_id": "5092aa46-3e68-4cbd-86a2-ec9c67e4d906",
+      "property_type": "Complexity",
+      "value": 778.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "88246d89-e038-4c3f-b617-dc2b2c0859de",
+      "molecule_id": "50aea943-4274-4f9d-9598-796202f042b5",
+      "property_type": "Complexity",
+      "value": 755.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "d722a944-cff4-4bfd-aca1-fa4bc3f5136d",
+      "molecule_id": "50b02ee3-d250-4659-b953-998d24431986",
+      "property_type": "Complexity",
+      "value": 764.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "1f02c94f-f617-4090-a1fa-759665eb7e2f",
+      "molecule_id": "50b76008-419a-4c7d-acff-f6e8a4048bc3",
+      "property_type": "Complexity",
+      "value": 2170.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "40069273-5a83-4c2d-b3c4-2d7e62172c42",
+      "molecule_id": "50d8b617-b7af-45f0-b535-2d757a7aabc5",
+      "property_type": "Complexity",
+      "value": 824.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "1f54cf56-a779-4870-a872-9482d07ffef2",
+      "molecule_id": "50dde0d7-ab2d-4c0b-8a85-9f942a86793d",
+      "property_type": "Complexity",
+      "value": 359.0,
+      "source": "PubChem API"
+    },
+    {
+      "id": "37e8348a-020e-4c8d-bf5c-1634461c41d6",
+      "molecule_id": "50fef355-d0b6-4adc-a699-9e437a0c1cdc",
+      "property_type": "Complexity",
+      "value": 759.0,
+      "source": "PubChem API"
+    }
+  ]
+}

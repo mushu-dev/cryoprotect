@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netlify Analytics Test</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #3b82f6;
+        }
+        button {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            margin: 0.5rem 0;
+        }
+        button:hover {
+            background-color: #2563eb;
+        }
+        .card {
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            background-color: #f9fafb;
+        }
+        .log {
+            background-color: #f3f4f6;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            font-family: monospace;
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Netlify Analytics Test Page</h1>
+    <p>This page is used to test Netlify Analytics functionality. Open your browser console to see analytics events.</p>
+
+    <div class="card">
+        <h2>Page Views</h2>
+        <p>Page views are tracked automatically by both Netlify Analytics and our custom implementation.</p>
+        <button id="navigate">Navigate to another page</button>
+        <button id="back">Go back</button>
+    </div>
+
+    <div class="card">
+        <h2>Custom Events</h2>
+        <p>Test custom event tracking with these buttons:</p>
+        <button id="event1">Track Simple Event</button>
+        <button id="event2">Track Event with Properties</button>
+    </div>
+
+    <div class="card">
+        <h2>Feature Usage</h2>
+        <p>Test feature usage tracking:</p>
+        <button id="feature1">Use Feature A</button>
+        <button id="feature2">Use Feature B</button>
+    </div>
+
+    <div class="card">
+        <h2>Event Log</h2>
+        <div id="log" class="log"></div>
+    </div>
+
+    <script>
+        // Simple logging
+        const logElement = document.getElementById('log');
+        function log(message) {
+            console.log(`[Analytics] ${message}`);
+            const entry = document.createElement('div');
+            entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            logElement.appendChild(entry);
+            logElement.scrollTop = logElement.scrollHeight;
+        }
+
+        // Mock analytics tracking
+        function trackPageView(path) {
+            log(`Page view: ${path || window.location.pathname}`);
+        }
+
+        function trackEvent(eventName, properties = {}) {
+            log(`Event: ${eventName}, Properties: ${JSON.stringify(properties)}`);
+        }
+
+        function trackFeatureUsage(feature, properties = {}) {
+            log(`Feature used: ${feature}, Properties: ${JSON.stringify(properties)}`);
+        }
+
+        // Track initial page view
+        trackPageView();
+
+        // Add event listeners
+        document.getElementById('navigate').addEventListener('click', () => {
+            window.history.pushState({}, '', '/test-page');
+            trackPageView('/test-page');
+        });
+
+        document.getElementById('back').addEventListener('click', () => {
+            window.history.back();
+            setTimeout(() => trackPageView(), 100);
+        });
+
+        document.getElementById('event1').addEventListener('click', () => {
+            trackEvent('button_clicked');
+        });
+
+        document.getElementById('event2').addEventListener('click', () => {
+            trackEvent('action_performed', { 
+                actionType: 'test', 
+                timestamp: new Date().toISOString() 
+            });
+        });
+
+        document.getElementById('feature1').addEventListener('click', () => {
+            trackFeatureUsage('feature_a');
+        });
+
+        document.getElementById('feature2').addEventListener('click', () => {
+            trackFeatureUsage('feature_b', { 
+                mode: 'advanced',
+                duration: 30
+            });
+        });
+
+        // Track on popstate
+        window.addEventListener('popstate', () => {
+            trackPageView();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "start_time": "2025-05-12T09:41:10.482000",
+  "end_time": "2025-05-12T09:41:11.330586",
+  "duration_seconds": 0.85,
+  "compounds": {
+    "total_fetched": 10,
+    "total_processed": 10,
+    "inserted": 10,
+    "skipped": 0
+  },
+  "properties": {
+    "total_inserted": 0
+  },
+  "pubchem_cross_references": {
+    "resolved_count": 0,
+    "resolved_by_method": {
+      "chembl_id": 0,
+      "inchikey": 0,
+      "smiles": 0
+    }
+  },
+  "errors": 0,
+  "args": {
+    "limit": 10,
+    "batch_size": 50,
+    "dry_run": true,
+    "verify_only": false,
+    "verify_limit": null,
+    "use_keywords": true,
+    "use_builtin_implementation": false
+  }
+}

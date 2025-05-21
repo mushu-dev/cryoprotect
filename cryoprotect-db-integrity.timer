@@ -1,0 +1,12 @@
+[Unit]
+Description=Run CryoProtect Database Integrity Verification Daily
+Requires=cryoprotect-db-integrity.service
+
+[Timer]
+Unit=cryoprotect-db-integrity.service
+OnCalendar=*-*-* 02:00:00
+RandomizedDelaySec=300
+Persistent=true
+
+[Install]
+WantedBy=timers.target

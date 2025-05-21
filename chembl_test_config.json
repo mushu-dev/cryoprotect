@@ -1,0 +1,62 @@
+{
+    "database": {
+        "url": "https://tsdlmynydfuypiugmkev.supabase.co",
+        "key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRzZGxteW55ZGZ1eXBpdWdta2V2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ3ODAxODMsImV4cCI6MjA2MDM1NjE4M30.T6udmD-3lhlTy4bY2p0y2lX5-11yvyn425PWrlnIPLU",
+        "service_key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRzZGxteW55ZGZ1eXBpdWdta2V2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0NDc4MDE4MywiZXhwIjoyMDYwMzU2MTgzfQ.Py5QVOwf-QmGavQ1Kj8JFjVBUVs7h9DG_vJRSh-xUY8",
+        "host": "aws-0-us-east-1.pooler.supabase.com",
+        "port": 5432,
+        "database": "postgres",
+        "user": "postgres.tsdlmynydfuypiugmkev",
+        "password": "LDHt$rkaM&Gmf3X@LQ37",
+        "use_connection_pool": true,
+        "pool_size": 5,
+        "pool_min_size": 2,
+        "pool_max_size": 10,
+        "max_retries": 3,
+        "retry_delay": 2.0
+    },
+    "checkpoints": {
+        "directory": "checkpoints",
+        "backup_interval": 5,
+        "enabled": true
+    },
+    "logging": {
+        "level": "INFO",
+        "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        "file": "chembl_test_import.log",
+        "structured_output": true
+    },
+    "sources": {
+        "chembl": {
+            "api_url": "https://www.ebi.ac.uk/chembl/api/data",
+            "api_delay": 0.5,
+            "timeout": 30,
+            "batch_size": 5,
+            "use_client": true,
+            "reference_compounds": [
+                "CHEMBL1234",
+                "CHEMBL230130",
+                "CHEMBL9335",
+                "CHEMBL15151"
+            ]
+        }
+    },
+    "transforms": {
+        "molecule_transform": {
+            "resolve_cross_references": true,
+            "handle_mixtures": true,
+            "separate_mixtures": false,
+            "add_standardized_structure": true
+        },
+        "property_transform": {
+            "standardize_units": true,
+            "add_missing_properties": true
+        }
+    },
+    "batch_processing": {
+        "adaptive_batch_sizing": true,
+        "parallel_processing": true,
+        "max_workers": 2
+    },
+    "use_enhanced_connection_pool": true
+}

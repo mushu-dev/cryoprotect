@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/mushu/Projects/CryoProtect/test_toxicity_with_samples.py", line 66, in <module>
+    SAMPLE_MOLECULES = get_sample_molecules(10)
+  File "/home/mushu/Projects/CryoProtect/test_toxicity_with_samples.py", line 33, in get_sample_molecules
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    ^^^
+NameError: name 'sys' is not defined. Did you forget to import 'sys'?

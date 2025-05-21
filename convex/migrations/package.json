@@ -1,0 +1,22 @@
+{
+  "name": "cryoprotect-convex-migrations",
+  "version": "1.0.0",
+  "description": "Migration tools for CryoProtect Convex integration",
+  "type": "module",
+  "scripts": {
+    "status": "node --loader ts-node/esm cli.ts status",
+    "apply": "node --loader ts-node/esm cli.ts apply",
+    "rollback": "node --loader ts-node/esm cli.ts rollback",
+    "create": "node --loader ts-node/esm cli.ts create"
+  },
+  "dependencies": {
+    "commander": "^11.1.0",
+    "convex": "^1.6.3",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.4",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.3"
+  }
+}

@@ -1,0 +1,412 @@
+{% extends 'base.html' %}
+
+{% set active_page = 'dashboard' %}
+{% set show_breadcrumbs = false %}
+
+{% block title %}CryoProtect Analyzer{% endblock %}
+
+{% block content %}
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="mb-4">Welcome to CryoProtect Analyzer</h1>
+        <p class="lead">
+          A comprehensive tool for analyzing and predicting the properties of cryoprotectant molecules and mixtures.
+        </p>
+      </div>
+    </div>
+
+    <!-- Dashboard Stats -->
+    <div class="row dashboard-stats mt-4">
+      <div class="col-12 col-sm-6 col-md-4 mb-3 mb-md-0">
+        <div class="stat-card">
+          <i class="bi bi-flask"></i>
+          <h3 id="molecule-count">0</h3>
+          <p>Molecules</p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 mb-3 mb-md-0">
+        <div class="stat-card">
+          <i class="bi bi-droplet"></i>
+          <h3 id="mixture-count">0</h3>
+          <p>Mixtures</p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 mx-auto mx-sm-0">
+        <div class="stat-card">
+          <i class="bi bi-graph-up"></i>
+          <h3 id="prediction-count">0</h3>
+          <p>Predictions</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Dashboard -->
+    <div class="row mt-5">
+      <div class="col-12">
+        <h2 class="mb-4">Interactive Dashboard</h2>
+      </div>
+    </div>
+    
+    <!-- Dashboard Container -->
+    <div id="dashboard-container" class="mb-5">
+      <!-- Dashboard will be rendered here -->
+      <div class="text-center py-5" aria-live="polite">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="mt-2">Loading dashboard...</p>
+      </div>
+    </div>
+    
+    <!-- Molecular Visualization -->
+    <div class="row mt-5">
+      <div class="col-12 col-md-6 mb-4 mb-md-0">
+        <div class="card h-100">
+          <div class="card-header d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center">
+            <h3 class="h5 mb-2 mb-sm-0">3D Molecular Viewer</h3>
+            <label for="molecule-select" class="visually-hidden">Select molecule</label>
+            <select id="molecule-select" class="form-select form-select-sm w-100 w-sm-auto" aria-label="Select molecule to view">
+              <option value="glycerol">Glycerol</option>
+              <option value="dmso">DMSO</option>
+              <option value="ethylene_glycol">Ethylene Glycol</option>
+              <option value="propylene_glycol">Propylene Glycol</option>
+              <option value="trehalose">Trehalose</option>
+            </select>
+          </div>
+          <div class="card-body">
+            <div id="molecule-viewer" class="chart-container" role="img" aria-label="3D molecular structure viewer"></div>
+            <div id="molecule-viewer-toolbar" class="btn-toolbar mt-3" role="toolbar" aria-label="Molecule viewer controls"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="card h-100">
+          <div class="card-header d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center">
+            <h3 class="h5 mb-2 mb-sm-0">Mixture Composition</h3>
+            <label for="mixture-select" class="visually-hidden">Select mixture</label>
+            <select id="mixture-select" class="form-select form-select-sm w-100 w-sm-auto" aria-label="Select mixture to view">
+              <option value="mixture1">Standard Mixture</option>
+              <option value="mixture2">Optimized Mixture</option>
+              <option value="mixture3">Experimental Mixture</option>
+            </select>
+          </div>
+          <div class="card-body">
+            <div id="mixture-composition-viewer" class="chart-container" role="img" aria-label="Pie chart showing mixture composition"></div>
+            <div id="mixture-composition-description" class="visually-hidden">
+              Pie chart showing the percentage breakdown of components in the selected mixture.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Protocol Visualization -->
+    <div class="row mt-4">
+      <div class="col-12 col-md-6 mb-4 mb-md-0">
+        <div class="card h-100">
+          <div class="card-header d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center">
+            <h3 class="h5 mb-2 mb-sm-0">Protocol Timeline</h3>
+            <label for="protocol-select" class="visually-hidden">Select protocol</label>
+            <select id="protocol-select" class="form-select form-select-sm w-100 w-sm-auto" aria-label="Select protocol to view">
+              <option value="protocol1">Standard Protocol</option>
+              <option value="protocol2">Slow Cooling Protocol</option>
+              <option value="protocol3">Vitrification Protocol</option>
+            </select>
+          </div>
+          <div class="card-body">
+            <div id="protocol-timeline" class="chart-container" role="img" aria-label="Timeline chart of protocol steps"></div>
+            <div id="protocol-timeline-description" class="visually-hidden">
+              Timeline chart showing temperature, concentration, and duration for each step of the selected protocol.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="card h-100">
+          <div class="card-header">
+            <h3 class="h5 mb-0">Property Comparison</h3>
+          </div>
+          <div class="card-body">
+            <div id="property-comparison" class="chart-container" role="img" aria-label="Radar chart comparing properties across protocols"></div>
+            <div id="property-comparison-description" class="visually-hidden">
+              Radar chart comparing different protocols across multiple properties including viability, recovery, functionality, morphology, genetic stability, and long-term storage.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="row mt-5">
+      <div class="col-12">
+        <h2 class="mb-4">Quick Actions</h2>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+        <div class="card h-100">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Import Molecule</h5>
+            <p class="card-text">Import a molecule from PubChem by its Compound ID (CID).</p>
+            <a href="/molecules/import" class="btn btn-primary requires-auth disabled mt-auto">Import Molecule</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+        <div class="card h-100">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Create Mixture</h5>
+            <p class="card-text">Create a new mixture by combining multiple molecules.</p>
+            <a href="/mixtures/new" class="btn btn-primary requires-auth disabled mt-auto">Create Mixture</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 mx-auto mx-sm-0">
+        <div class="card h-100">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Compare Results</h5>
+            <p class="card-text">Compare predictions with experimental results.</p>
+            <a href="/comparisons" class="btn btn-primary requires-auth disabled mt-auto">Compare Results</a>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
+
+{% block extra_css %}
+<!-- No extra CSS for dashboard -->
+{% endblock %}
+
+{% block extra_js %}
+<!-- Plotly.js -->
+<script src="https://cdn.jsdelivr.net/npm/plotly.js-dist@2.27.1/plotly.min.js"></script>
+
+<!-- 3Dmol.js -->
+<script src="https://cdn.jsdelivr.net/npm/3dmol@2.0.3/build/3Dmol-min.js"></script>
+
+<!-- D3.js -->
+<script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script>
+
+<!-- Additional JS for dashboard -->
+<script src="{{ url_for('static', filename='js/auth-ui.js') }}"></script>
+<script src="{{ url_for('static', filename='js/molecular-viewer.js') }}"></script>
+<script src="{{ url_for('static', filename='js/interactive-charts.js') }}"></script>
+<script src="{{ url_for('static', filename='js/mixture-visualizer.js') }}"></script>
+<script src="{{ url_for('static', filename='js/protocol-visualizer.js') }}"></script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+  
+<script>
+  // Initialize the dashboard when the page loads
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize the dashboard
+    Dashboard.initDashboard('dashboard-container', {
+      title: 'CryoProtect Analyzer Dashboard',
+      showFilters: true
+    });
+    
+    // Initialize molecular viewer with default molecule (Glycerol)
+    const glycerolSmiles = 'C(C(CO)O)O'; // Glycerol SMILES
+    MolecularViewer.initViewer('molecule-viewer');
+    MolecularViewer.loadMoleculeFromSmiles('molecule-viewer', glycerolSmiles);
+    MolecularViewer.createViewerToolbar('molecule-viewer', 'molecule-viewer-toolbar');
+    
+    // Add event listener to molecule selector
+    document.getElementById('molecule-select').addEventListener('change', function(event) {
+      const moleculeId = event.target.value;
+      let smiles = '';
+      
+      // Get SMILES for selected molecule
+      switch(moleculeId) {
+        case 'glycerol':
+          smiles = 'C(C(CO)O)O'; // Glycerol
+          break;
+        case 'dmso':
+          smiles = 'CS(=O)C'; // DMSO
+          break;
+        case 'ethylene_glycol':
+          smiles = 'OCCO'; // Ethylene Glycol
+          break;
+        case 'propylene_glycol':
+          smiles = 'CC(O)CO'; // Propylene Glycol
+          break;
+        case 'trehalose':
+          smiles = 'C([C@@H]1[C@H]([C@@H]([C@H]([C@H](O1)O[C@]2([C@H]([C@@H]([C@H](O2)CO)O)O)CO)O)O)O)O'; // Trehalose
+          break;
+      }
+      
+      if (smiles) {
+        MolecularViewer.loadMoleculeFromSmiles('molecule-viewer', smiles);
+      }
+    });
+    
+    // Initialize mixture composition visualization
+    const mixtureData = {
+      name: 'Standard Mixture',
+      components: [
+        { name: 'Glycerol', concentration: 40, concentration_unit: '%' },
+        { name: 'DMSO', concentration: 30, concentration_unit: '%' },
+        { name: 'Ethylene Glycol', concentration: 20, concentration_unit: '%' },
+        { name: 'Trehalose', concentration: 10, concentration_unit: '%' }
+      ]
+    };
+    
+    MixtureVisualizer.createCompositionPieChart('mixture-composition-viewer', mixtureData);
+    
+    // Add event listener to mixture selector
+    document.getElementById('mixture-select').addEventListener('change', function(event) {
+      const mixtureId = event.target.value;
+      let mixtureData = {};
+      
+      // Get data for selected mixture
+      switch(mixtureId) {
+        case 'mixture1':
+          mixtureData = {
+            name: 'Standard Mixture',
+            components: [
+              { name: 'Glycerol', concentration: 40, concentration_unit: '%' },
+              { name: 'DMSO', concentration: 30, concentration_unit: '%' },
+              { name: 'Ethylene Glycol', concentration: 20, concentration_unit: '%' },
+              { name: 'Trehalose', concentration: 10, concentration_unit: '%' }
+            ]
+          };
+          break;
+        case 'mixture2':
+          mixtureData = {
+            name: 'Optimized Mixture',
+            components: [
+              { name: 'Glycerol', concentration: 25, concentration_unit: '%' },
+              { name: 'DMSO', concentration: 25, concentration_unit: '%' },
+              { name: 'Propylene Glycol', concentration: 25, concentration_unit: '%' },
+              { name: 'Trehalose', concentration: 25, concentration_unit: '%' }
+            ]
+          };
+          break;
+        case 'mixture3':
+          mixtureData = {
+            name: 'Experimental Mixture',
+            components: [
+              { name: 'Glycerol', concentration: 50, concentration_unit: '%' },
+              { name: 'DMSO', concentration: 10, concentration_unit: '%' },
+              { name: 'Trehalose', concentration: 40, concentration_unit: '%' }
+            ]
+          };
+          break;
+      }
+      
+      MixtureVisualizer.createCompositionPieChart('mixture-composition-viewer', mixtureData);
+    });
+    
+    // Initialize protocol timeline visualization
+    const protocolData = {
+      name: 'Standard Protocol',
+      steps: [
+        { step_number: 1, temperature: 20, concentration: 10, duration: 10, description: 'Initial exposure' },
+        { step_number: 2, temperature: 10, concentration: 20, duration: 15, description: 'Gradual cooling' },
+        { step_number: 3, temperature: 0, concentration: 30, duration: 20, description: 'Pre-freezing' },
+        { step_number: 4, temperature: -10, concentration: 40, duration: 25, description: 'Freezing' },
+        { step_number: 5, temperature: -20, concentration: 40, duration: 30, description: 'Storage' }
+      ]
+    };
+    
+    ProtocolVisualizer.createProtocolTimeline('protocol-timeline', protocolData);
+    
+    // Add event listener to protocol selector
+    document.getElementById('protocol-select').addEventListener('change', function(event) {
+      const protocolId = event.target.value;
+      let protocolData = {};
+      
+      // Get data for selected protocol
+      switch(protocolId) {
+        case 'protocol1':
+          protocolData = {
+            name: 'Standard Protocol',
+            steps: [
+              { step_number: 1, temperature: 20, concentration: 10, duration: 10, description: 'Initial exposure' },
+              { step_number: 2, temperature: 10, concentration: 20, duration: 15, description: 'Gradual cooling' },
+              { step_number: 3, temperature: 0, concentration: 30, duration: 20, description: 'Pre-freezing' },
+              { step_number: 4, temperature: -10, concentration: 40, duration: 25, description: 'Freezing' },
+              { step_number: 5, temperature: -20, concentration: 40, duration: 30, description: 'Storage' }
+            ]
+          };
+          break;
+        case 'protocol2':
+          protocolData = {
+            name: 'Slow Cooling Protocol',
+            steps: [
+              { step_number: 1, temperature: 20, concentration: 10, duration: 20, description: 'Initial exposure' },
+              { step_number: 2, temperature: 15, concentration: 15, duration: 20, description: 'Slow cooling 1' },
+              { step_number: 3, temperature: 10, concentration: 20, duration: 20, description: 'Slow cooling 2' },
+              { step_number: 4, temperature: 5, concentration: 25, duration: 20, description: 'Slow cooling 3' },
+              { step_number: 5, temperature: 0, concentration: 30, duration: 20, description: 'Pre-freezing' },
+              { step_number: 6, temperature: -5, concentration: 35, duration: 20, description: 'Freezing 1' },
+              { step_number: 7, temperature: -10, concentration: 40, duration: 20, description: 'Freezing 2' },
+              { step_number: 8, temperature: -20, concentration: 40, duration: 30, description: 'Storage' }
+            ]
+          };
+          break;
+        case 'protocol3':
+          protocolData = {
+            name: 'Vitrification Protocol',
+            steps: [
+              { step_number: 1, temperature: 20, concentration: 20, duration: 5, description: 'Initial exposure' },
+              { step_number: 2, temperature: 10, concentration: 40, duration: 5, description: 'Equilibration' },
+              { step_number: 3, temperature: 4, concentration: 60, duration: 5, description: 'Loading' },
+              { step_number: 4, temperature: -196, concentration: 60, duration: 1, description: 'Plunge freezing' },
+              { step_number: 5, temperature: -196, concentration: 60, duration: 60, description: 'Storage' }
+            ]
+          };
+          break;
+      }
+      
+      ProtocolVisualizer.createProtocolTimeline('protocol-timeline', protocolData);
+    });
+    
+    // Initialize property comparison visualization
+    const comparisonData = {
+      categories: ['Viability', 'Recovery', 'Functionality', 'Morphology', 'Genetic Stability', 'Long-term Storage'],
+      series: [
+        {
+          name: 'Standard Protocol',
+          values: [75, 70, 65, 80, 90, 85]
+        },
+        {
+          name: 'Slow Cooling Protocol',
+          values: [85, 80, 75, 85, 85, 90]
+        },
+        {
+          name: 'Vitrification Protocol',
+          values: [90, 85, 80, 75, 80, 95]
+        }
+      ]
+    };
+    
+    // Create radar chart for property comparison
+    const traces = comparisonData.series.map((series, index) => ({
+      type: 'scatterpolar',
+      r: series.values,
+      theta: comparisonData.categories,
+      fill: 'toself',
+      name: series.name,
+      line: {
+        color: COLORS[index % COLORS.length],
+        width: 2
+      },
+      fillcolor: `${COLORS[index % COLORS.length]}40`
+    }));
+    
+    const layout = {
+      polar: {
+        radialaxis: {
+          visible: true,
+          range: [0, 100]
+        }
+      },
+      showlegend: true,
+      legend: {
+        orientation: 'h',
+        y: -0.2
+      }
+      };
+      
+      Plotly.newPlot('property-comparison', traces, layout, {responsive: true});
+    });
+  </script>
+{% endblock %}

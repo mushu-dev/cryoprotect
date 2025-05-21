@@ -1,0 +1,15 @@
+[Unit]
+Description=CryoProtect Database Integrity Check
+After=cryoprotect-postgres.service
+Requires=cryoprotect-postgres.service
+Documentation=https://github.com/yourusername/cryoprotect
+
+[Service]
+Type=oneshot
+User=mushu
+WorkingDirectory=/home/mushu/Projects/CryoProtect
+ExecStart=/home/mushu/Projects/CryoProtect/run_verify_all_data_integrity.sh
+Environment=PATH=/home/mushu/.local/bin:/home/mushu/.npm-global/bin:/home/mushu/.local/bin:/usr/local/bin:/usr/bin:/var/lib/snapd/snap/bin:/usr/local/sbin:/usr/sbin
+
+[Install]
+WantedBy=multi-user.target

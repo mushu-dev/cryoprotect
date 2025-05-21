@@ -1,0 +1,11 @@
+{
+  "last_completed_batch": 0,
+  "total_processed": 0,
+  "total_imported": 0,
+  "total_skipped": 0,
+  "total_errors": 0,
+  "batch_times": [],
+  "elapsed_seconds": 0.013218402862548828,
+  "timestamp": "2025-05-12T02:35:38.773876",
+  "status": "Completed"
+}

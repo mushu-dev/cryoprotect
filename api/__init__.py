@@ -58,6 +58,13 @@ from api.resources import (
     PropertyComparisonResource
 )
 from api.lab_verification_resources import LabVerificationResource, VerificationStatsResource
+# Import Experiment resources
+from api.experiment_resources import (
+    ExperimentList, ExperimentDetail, ExperimentResultList,
+    ExperimentResultDetail, ExperimentTimeSeriesList,
+    ExperimentAnalysis, ExperimentExport, ExperimentImport,
+    ExperimentSearch, experiment_bp
+)
 # Import Batch Operations resource
 from api.batch_resources import BatchOperationResource
 
@@ -253,6 +260,7 @@ def init_app(app):
     # Register blueprints
     app.register_blueprint(api_bp)
     app.register_blueprint(rbac_bp, url_prefix='/api/v1/rbac')
+    app.register_blueprint(experiment_bp, url_prefix='/api/v1/experiments')
     
     # Initialize API documentation
     docs = init_docs(app)
@@ -279,6 +287,18 @@ def init_app(app):
     register_resource(docs, LabVerificationResource, 'experiment_verification')
     register_resource(docs, LabVerificationResource, 'verification_update')
     register_resource(docs, VerificationStatsResource, 'verification_stats')
+    
+    # Register experiment resources
+    register_resource(docs, ExperimentList, 'experimentlist')
+    register_resource(docs, ExperimentDetail, 'experimentdetail')
+    register_resource(docs, ExperimentResultList, 'experimentresultlist')
+    register_resource(docs, ExperimentResultDetail, 'experimentresultdetail')
+    register_resource(docs, ExperimentTimeSeriesList, 'experimenttimeserieslist')
+    register_resource(docs, ExperimentAnalysis, 'experimentanalysis')
+    register_resource(docs, ExperimentExport, 'experimentexport')
+    register_resource(docs, ExperimentImport, 'experimentimport')
+    register_resource(docs, ExperimentSearch, 'experimentsearch')
+    
     # Register additional resources from modules with their own register_resources functions if needed
 
     # Register global error handlers

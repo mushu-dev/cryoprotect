@@ -1,0 +1,12 @@
+{
+  "timestamp": "2025-05-12T23:50:41.282152",
+  "dry_run": false,
+  "steps": {
+    "recalculate_properties": false,
+    "consolidate_duplicates": true,
+    "populate_scores": true,
+    "standardize_properties": true
+  },
+  "success_rate": "3/4",
+  "all_successful": false
+}

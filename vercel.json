@@ -1,49 +1,15 @@
 {
   "version": 2,
-  "installCommand": "echo 'Skipping install'",
-  "buildCommand": "echo 'Skipping build'",
-  "outputDirectory": ".",
-  "framework": null,
-  "functions": {
-    "api/index.py": {
-      "memory": 256,
-      "maxDuration": 10
-    },
-    "api/app.py": {
-      "memory": 128,
-      "maxDuration": 5
+  "buildCommand": "npm install --legacy-peer-deps && npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "git": {
+    "deploymentEnabled": {
+      "main": true
     }
   },
-  "routes": [
-    { 
-      "src": "/api/v1/(.*)", 
-      "dest": "/api/index.py"
-    },
-    { 
-      "src": "/static/(.*)", 
-      "dest": "/static/$1"
-    },
-    {
-      "src": "^/app.py$",
-      "status": 404,
-      "dest": "/404.html"
-    },
-    {
-      "src": "/_next/(.*)",
-      "dest": "/frontend/_next/$1"
-    },
-    {
-      "src": "/assets/(.*)",
-      "dest": "/frontend/assets/$1"
-    },
-    {
-      "src": "/(favicon\\.ico|robots\\.txt|sitemap\\.xml)",
-      "dest": "/frontend/$1"
-    },
-    { 
-      "src": "/(.*)", 
-      "dest": "/api/app.py"
-    }
-  ],
+  "github": {
+    "silent": true
+  },
   "regions": ["iad1"]
 }

@@ -1,0 +1,102 @@
+{
+  "status": {
+    "rdkit_available": true,
+    "rdkit_version": "2025.03.1",
+    "visualization_available": true,
+    "using_mock_implementation": false,
+    "mock_capabilities": [
+      "molecular_formula",
+      "molecular_weight",
+      "logp",
+      "tpsa",
+      "h_donors",
+      "h_acceptors",
+      "rotatable_bonds",
+      "ring_count",
+      "aromatic_ring_count",
+      "heavy_atom_count"
+    ],
+    "python_version": "3.13.3 (main, Apr 22 2025, 00:00:00) [GCC 15.0.1 20250418 (Red Hat 15.0.1-0)]",
+    "python_executable": "/usr/bin/python3"
+  },
+  "tests": {
+    "Ethanol": {
+      "smiles": "CCO",
+      "molecule_created": true,
+      "properties": {
+        "molecular_formula": "C2H6O",
+        "molecular_weight": 46.07,
+        "exact_mass": 46.0419,
+        "logp": -0.0,
+        "tpsa": 20.23,
+        "h_donors": 1,
+        "h_acceptors": 1,
+        "rotatable_bonds": 0,
+        "ring_count": 0,
+        "aromatic_ring_count": 0,
+        "heavy_atom_count": 3,
+        "fraction_csp3": 1.0,
+        "num_stereocenters": 0,
+        "qed": 0.4068079656553945,
+        "morgan_fingerprint_available": true,
+        "rdkit_available": true,
+        "rdkit_version": "2025.03.1",
+        "calculation_method": "rdkit"
+      },
+      "svg_generated": true,
+      "3d_coords_generated": true
+    },
+    "Aspirin": {
+      "smiles": "CC(=O)Oc1ccccc1C(=O)O",
+      "molecule_created": true,
+      "properties": {
+        "molecular_formula": "C9H8O4",
+        "molecular_weight": 180.16,
+        "exact_mass": 180.0423,
+        "logp": 1.31,
+        "tpsa": 63.6,
+        "h_donors": 1,
+        "h_acceptors": 3,
+        "rotatable_bonds": 2,
+        "ring_count": 1,
+        "aromatic_ring_count": 1,
+        "heavy_atom_count": 13,
+        "fraction_csp3": 0.1111111111111111,
+        "num_stereocenters": 0,
+        "qed": 0.5501217966938848,
+        "morgan_fingerprint_available": true,
+        "rdkit_available": true,
+        "rdkit_version": "2025.03.1",
+        "calculation_method": "rdkit"
+      },
+      "svg_generated": true,
+      "3d_coords_generated": true
+    },
+    "Caffeine": {
+      "smiles": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C",
+      "molecule_created": true,
+      "properties": {
+        "molecular_formula": "C8H10N4O2",
+        "molecular_weight": 194.19,
+        "exact_mass": 194.0804,
+        "logp": -1.03,
+        "tpsa": 61.82,
+        "h_donors": 0,
+        "h_acceptors": 6,
+        "rotatable_bonds": 0,
+        "ring_count": 2,
+        "aromatic_ring_count": 2,
+        "heavy_atom_count": 14,
+        "fraction_csp3": 0.375,
+        "num_stereocenters": 0,
+        "qed": 0.5384628262372215,
+        "morgan_fingerprint_available": true,
+        "rdkit_available": true,
+        "rdkit_version": "2025.03.1",
+        "calculation_method": "rdkit"
+      },
+      "svg_generated": true,
+      "3d_coords_generated": true
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "timestamp": "2025-05-13T17:30:12-06:00",
+  "reference_tables": {
+    "property_types_exists": true,
+    "units_exists": true,
+    "has_unit_id": true,
+    "has_property_type_id": true,
+    "view_exists": true
+  },
+  "initial_data": {
+    "property_types_count": 20,
+    "units_count": 33
+  },
+  "property_analysis": {
+    "total_properties": 58,
+    "matched": 25,
+    "unmatched": 33
+  },
+  "unit_analysis": {
+    "properties_with_units": 28,
+    "total_extractions": 950,
+    "properties_count": 28
+  },
+  "migration_results": {
+    "property_types_created": 33,
+    "property_types_linked": 58,
+    "units_linked": 28,
+    "text_to_numeric_conversions": 28,
+    "errors": []
+  },
+  "summary": {
+    "reference_success": true,
+    "initial_data_success": true,
+    "property_analysis_success": true,
+    "unit_analysis_success": true,
+    "plan_success": true,
+    "migration_success": true,
+    "overall_success": true
+  }
+}

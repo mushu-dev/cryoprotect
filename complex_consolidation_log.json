@@ -1,0 +1,1108 @@
+[
+  {
+    "group_id": "19bf35ce-3db8-4606-93a6-0ecf9800209a",
+    "consolidation_type": "COMPLEX_MERGE",
+    "primary_molecule": {
+      "id": "9b5b9bbd-ad2c-46ec-a1d9-279fe46a0549",
+      "name": "ethane-1,2-diol",
+      "pubchem_cid": 174
+    },
+    "secondary_molecules": [
+      {
+        "id": "c49fd8f6-2e3b-5c4d-9f4a-d0a1e6f7a8b9",
+        "name": "Ethylene glycol",
+        "pubchem_cid": null
+      },
+      {
+        "id": "6b41111a-9a92-4a02-b8ab-31975af62be1",
+        "name": "Ethylene glycol",
+        "pubchem_cid": null
+      }
+    ],
+    "timestamp": "2025-05-12T15:51:18.354158",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "c49fd8f6-2e3b-5c4d-9f4a-d0a1e6f7a8b9",
+        "field": "properties.consolidated_to",
+        "value": "9b5b9bbd-ad2c-46ec-a1d9-279fe46a0549"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "c49fd8f6-2e3b-5c4d-9f4a-d0a1e6f7a8b9",
+        "to_molecule_id": "9b5b9bbd-ad2c-46ec-a1d9-279fe46a0549",
+        "property_type": "LogP",
+        "new_property_id": "06cd0138-66fa-4a2f-9721-b44c9f1410e1"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "c49fd8f6-2e3b-5c4d-9f4a-d0a1e6f7a8b9",
+        "to_molecule_id": "9b5b9bbd-ad2c-46ec-a1d9-279fe46a0549",
+        "property_type": "TPSA",
+        "new_property_id": "c5a04201-a55b-49c4-b184-6171dfb538ef"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "c49fd8f6-2e3b-5c4d-9f4a-d0a1e6f7a8b9",
+        "to_molecule_id": "9b5b9bbd-ad2c-46ec-a1d9-279fe46a0549",
+        "property_type": "Total Score",
+        "new_property_id": "c9fb4b1d-b47c-4791-8cd9-5901739e3006"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "c49fd8f6-2e3b-5c4d-9f4a-d0a1e6f7a8b9",
+        "to_molecule_id": "9b5b9bbd-ad2c-46ec-a1d9-279fe46a0549",
+        "property_type": "float",
+        "new_property_id": "01101f5d-60b7-4d8b-aee4-a673dc5b97be"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "c49fd8f6-2e3b-5c4d-9f4a-d0a1e6f7a8b9",
+        "to_molecule_id": "9b5b9bbd-ad2c-46ec-a1d9-279fe46a0549",
+        "property_type": "integer",
+        "new_property_id": "e5802234-f427-48bd-b070-421c7066b58d"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "c49fd8f6-2e3b-5c4d-9f4a-d0a1e6f7a8b9",
+        "to_molecule_id": "9b5b9bbd-ad2c-46ec-a1d9-279fe46a0549",
+        "property_type": "integer",
+        "new_property_id": "ea822e26-0af1-4339-9fcc-4a66bbc6c065"
+      },
+      {
+        "type": "mixture_component_migration",
+        "from_molecule_id": "c49fd8f6-2e3b-5c4d-9f4a-d0a1e6f7a8b9",
+        "to_molecule_id": "9b5b9bbd-ad2c-46ec-a1d9-279fe46a0549",
+        "mixture_id": "395c1b26-c020-48b9-8774-453a67204ff9",
+        "new_component_id": "ff05bd6f-069f-4f17-9da1-93110e45e8f6"
+      },
+      {
+        "type": "mixture_component_migration",
+        "from_molecule_id": "c49fd8f6-2e3b-5c4d-9f4a-d0a1e6f7a8b9",
+        "to_molecule_id": "9b5b9bbd-ad2c-46ec-a1d9-279fe46a0549",
+        "mixture_id": "a8f831db-fb3f-4a0c-be99-10a20c0a403d",
+        "new_component_id": "95cad61f-cc50-4dc8-a7a2-9b7a8348437d"
+      },
+      {
+        "type": "property_update",
+        "molecule_id": "6b41111a-9a92-4a02-b8ab-31975af62be1",
+        "field": "properties.consolidated_to",
+        "value": "9b5b9bbd-ad2c-46ec-a1d9-279fe46a0549"
+      }
+    ]
+  },
+  {
+    "group_id": "19bf35ce-3db8-4606-93a6-0ecf9800209a",
+    "consolidation_type": "COMPLEX_MERGE",
+    "primary_molecule": {
+      "id": "9b5b9bbd-ad2c-46ec-a1d9-279fe46a0549",
+      "name": "ethane-1,2-diol",
+      "pubchem_cid": 174
+    },
+    "secondary_molecules": [
+      {
+        "id": "c49fd8f6-2e3b-5c4d-9f4a-d0a1e6f7a8b9",
+        "name": "Ethylene glycol",
+        "pubchem_cid": null
+      },
+      {
+        "id": "6b41111a-9a92-4a02-b8ab-31975af62be1",
+        "name": "Ethylene glycol",
+        "pubchem_cid": null
+      }
+    ],
+    "timestamp": "2025-05-12T15:52:43.189660",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "c49fd8f6-2e3b-5c4d-9f4a-d0a1e6f7a8b9",
+        "field": "properties.consolidated_to",
+        "value": "9b5b9bbd-ad2c-46ec-a1d9-279fe46a0549"
+      },
+      {
+        "type": "property_update",
+        "molecule_id": "6b41111a-9a92-4a02-b8ab-31975af62be1",
+        "field": "properties.consolidated_to",
+        "value": "9b5b9bbd-ad2c-46ec-a1d9-279fe46a0549"
+      }
+    ]
+  },
+  {
+    "group_id": "21581eb6-8ed5-43f7-a01c-9ed9c36e30d2",
+    "consolidation_type": "COMPLEX_MERGE",
+    "primary_molecule": {
+      "id": "23a34e2f-811b-4dd6-b7da-1d554d87bf32",
+      "name": "methanol",
+      "pubchem_cid": 887
+    },
+    "secondary_molecules": [
+      {
+        "id": "dd82fc24-0cd1-412d-9f5a-e142b15aafe4",
+        "name": "Methanol",
+        "pubchem_cid": null
+      }
+    ],
+    "timestamp": "2025-05-12T15:52:46.291097",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "dd82fc24-0cd1-412d-9f5a-e142b15aafe4",
+        "field": "properties.consolidated_to",
+        "value": "23a34e2f-811b-4dd6-b7da-1d554d87bf32"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "dd82fc24-0cd1-412d-9f5a-e142b15aafe4",
+        "to_molecule_id": "23a34e2f-811b-4dd6-b7da-1d554d87bf32",
+        "property_type": "LogP",
+        "new_property_id": "4446b97e-0f22-4717-87f4-4d02d8d54957"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "dd82fc24-0cd1-412d-9f5a-e142b15aafe4",
+        "to_molecule_id": "23a34e2f-811b-4dd6-b7da-1d554d87bf32",
+        "property_type": "TPSA",
+        "new_property_id": "7ac5aa6e-50c2-4492-8c89-d9da06594c30"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "dd82fc24-0cd1-412d-9f5a-e142b15aafe4",
+        "to_molecule_id": "23a34e2f-811b-4dd6-b7da-1d554d87bf32",
+        "property_type": "Total Score",
+        "new_property_id": "b49cadb3-8110-46ce-883f-0e8394625373"
+      }
+    ]
+  },
+  {
+    "group_id": "76ea816a-f468-40dc-a856-a29fdb973ffe",
+    "consolidation_type": "COMPLEX_MERGE",
+    "primary_molecule": {
+      "id": "0482a736-da67-44db-8c05-e16e00778078",
+      "name": "propane-1,2,3-triol",
+      "pubchem_cid": 753
+    },
+    "secondary_molecules": [
+      {
+        "id": "d55ea26c-b945-45dc-87c7-261c7ccc5ce3",
+        "name": "Glycerol",
+        "pubchem_cid": null
+      },
+      {
+        "id": "b38fc7e5-1f2a-4b3d-8e3f-c9b0d5e8f9a7",
+        "name": "Glycerol",
+        "pubchem_cid": null
+      }
+    ],
+    "timestamp": "2025-05-12T15:52:47.819168",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "d55ea26c-b945-45dc-87c7-261c7ccc5ce3",
+        "field": "properties.consolidated_to",
+        "value": "0482a736-da67-44db-8c05-e16e00778078"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "d55ea26c-b945-45dc-87c7-261c7ccc5ce3",
+        "to_molecule_id": "0482a736-da67-44db-8c05-e16e00778078",
+        "property_type": "LogP",
+        "new_property_id": "c50992c1-f22a-4c7d-9289-6f7f0a2c7fe5"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "d55ea26c-b945-45dc-87c7-261c7ccc5ce3",
+        "to_molecule_id": "0482a736-da67-44db-8c05-e16e00778078",
+        "property_type": "float",
+        "new_property_id": "c2111333-1f38-4fbc-8971-cc776475f7c6"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "d55ea26c-b945-45dc-87c7-261c7ccc5ce3",
+        "to_molecule_id": "0482a736-da67-44db-8c05-e16e00778078",
+        "property_type": "integer",
+        "new_property_id": "db108f39-6b4e-4b6f-9ab9-ef1873a650ff"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "d55ea26c-b945-45dc-87c7-261c7ccc5ce3",
+        "to_molecule_id": "0482a736-da67-44db-8c05-e16e00778078",
+        "property_type": "integer",
+        "new_property_id": "44e28e28-fb8b-40e7-98f3-1db0163eb033"
+      },
+      {
+        "type": "property_update",
+        "molecule_id": "b38fc7e5-1f2a-4b3d-8e3f-c9b0d5e8f9a7",
+        "field": "properties.consolidated_to",
+        "value": "0482a736-da67-44db-8c05-e16e00778078"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "b38fc7e5-1f2a-4b3d-8e3f-c9b0d5e8f9a7",
+        "to_molecule_id": "0482a736-da67-44db-8c05-e16e00778078",
+        "property_type": "TPSA",
+        "new_property_id": "ae9ba6f1-1e96-4b50-a7c4-7faba4fbf672"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "b38fc7e5-1f2a-4b3d-8e3f-c9b0d5e8f9a7",
+        "to_molecule_id": "0482a736-da67-44db-8c05-e16e00778078",
+        "property_type": "Total Score",
+        "new_property_id": "36f5cabf-4c60-4c6b-9f1a-2fa84feb4ded"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "b38fc7e5-1f2a-4b3d-8e3f-c9b0d5e8f9a7",
+        "to_molecule_id": "0482a736-da67-44db-8c05-e16e00778078",
+        "property_type": "text",
+        "new_property_id": "2d59ad13-decf-4a5d-a62d-d824a69919e1"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "b38fc7e5-1f2a-4b3d-8e3f-c9b0d5e8f9a7",
+        "to_molecule_id": "0482a736-da67-44db-8c05-e16e00778078",
+        "property_type": "text",
+        "new_property_id": "df046aed-1f19-44bb-9d28-fbccf8ca36aa"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "b38fc7e5-1f2a-4b3d-8e3f-c9b0d5e8f9a7",
+        "to_molecule_id": "0482a736-da67-44db-8c05-e16e00778078",
+        "property_type": "text",
+        "new_property_id": "9bd54ed5-36eb-47ce-88dc-06ceb412aa80"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "b38fc7e5-1f2a-4b3d-8e3f-c9b0d5e8f9a7",
+        "to_molecule_id": "0482a736-da67-44db-8c05-e16e00778078",
+        "property_type": "text",
+        "new_property_id": "8810af56-8466-400d-972b-fecd49520703"
+      },
+      {
+        "type": "mixture_component_migration",
+        "from_molecule_id": "b38fc7e5-1f2a-4b3d-8e3f-c9b0d5e8f9a7",
+        "to_molecule_id": "0482a736-da67-44db-8c05-e16e00778078",
+        "mixture_id": "84ec7f0e-f90c-43e0-bfe1-080a53ff9a78",
+        "new_component_id": "7a5cea38-f097-465b-ae43-d71e6a53b844"
+      },
+      {
+        "type": "mixture_component_migration",
+        "from_molecule_id": "b38fc7e5-1f2a-4b3d-8e3f-c9b0d5e8f9a7",
+        "to_molecule_id": "0482a736-da67-44db-8c05-e16e00778078",
+        "mixture_id": "5d90cf63-0f32-4a77-a119-a0ab2c63b3bf",
+        "new_component_id": "a78a2372-7251-4211-a4a8-f05963406eeb"
+      }
+    ]
+  },
+  {
+    "group_id": "81f5d752-d929-449d-85e8-ba77645919b7",
+    "consolidation_type": "COMPLEX_MERGE",
+    "primary_molecule": {
+      "id": "0e4f6a81-cdd5-468f-b675-3241d7241299",
+      "name": "2-(trimethylazaniumyl)acetate",
+      "pubchem_cid": 247
+    },
+    "secondary_molecules": [
+      {
+        "id": "83837dee-13be-448c-aac5-2e309bd0a38f",
+        "name": "Betaine",
+        "pubchem_cid": null
+      }
+    ],
+    "timestamp": "2025-05-12T15:52:51.508226",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "83837dee-13be-448c-aac5-2e309bd0a38f",
+        "field": "properties.consolidated_to",
+        "value": "0e4f6a81-cdd5-468f-b675-3241d7241299"
+      },
+      {
+        "type": "mixture_component_migration",
+        "from_molecule_id": "83837dee-13be-448c-aac5-2e309bd0a38f",
+        "to_molecule_id": "0e4f6a81-cdd5-468f-b675-3241d7241299",
+        "mixture_id": "84ec7f0e-f90c-43e0-bfe1-080a53ff9a78",
+        "new_component_id": "abc34e2d-6330-413e-8954-fd5dca68f1fa"
+      }
+    ]
+  },
+  {
+    "group_id": "8fb281bd-3949-4135-ab0f-5eda9964c3c0",
+    "consolidation_type": "COMPLEX_MERGE",
+    "primary_molecule": {
+      "id": "26502df5-955a-4ada-8ebe-27a0417b12de",
+      "name": "methylsulfinylmethane",
+      "pubchem_cid": 679
+    },
+    "secondary_molecules": [
+      {
+        "id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+        "name": "Dimethyl sulfoxide",
+        "pubchem_cid": null
+      }
+    ],
+    "timestamp": "2025-05-12T15:52:52.057010",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+        "field": "properties.consolidated_to",
+        "value": "26502df5-955a-4ada-8ebe-27a0417b12de"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+        "to_molecule_id": "26502df5-955a-4ada-8ebe-27a0417b12de",
+        "property_type": "LogP",
+        "new_property_id": "983ad28e-e178-4660-99c7-70e388d79643"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+        "to_molecule_id": "26502df5-955a-4ada-8ebe-27a0417b12de",
+        "property_type": "Glass Transition Temperature",
+        "new_property_id": "ace32b5a-abc4-419e-9ea9-3d21b476c797"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+        "to_molecule_id": "26502df5-955a-4ada-8ebe-27a0417b12de",
+        "property_type": "TPSA",
+        "new_property_id": "a3370e2a-6ee9-4611-9b56-3a7d018c8de2"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+        "to_molecule_id": "26502df5-955a-4ada-8ebe-27a0417b12de",
+        "property_type": "Cell Permeability",
+        "new_property_id": "f25bc498-a4bc-4eea-bb0c-72e589988f2e"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+        "to_molecule_id": "26502df5-955a-4ada-8ebe-27a0417b12de",
+        "property_type": "text",
+        "new_property_id": "3a050bc6-4b32-49b5-a6f6-f6a0da035e24"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+        "to_molecule_id": "26502df5-955a-4ada-8ebe-27a0417b12de",
+        "property_type": "text",
+        "new_property_id": "d5d290ab-89da-45c2-a7d5-a513e0a0ae70"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+        "to_molecule_id": "26502df5-955a-4ada-8ebe-27a0417b12de",
+        "property_type": "text",
+        "new_property_id": "6f38ea1e-1773-4fc9-8d08-757980aef836"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+        "to_molecule_id": "26502df5-955a-4ada-8ebe-27a0417b12de",
+        "property_type": "text",
+        "new_property_id": "49b8608a-b242-4546-af1a-c9b69470bcfa"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+        "to_molecule_id": "26502df5-955a-4ada-8ebe-27a0417b12de",
+        "property_type": "float",
+        "new_property_id": "3ba2986a-f95e-4949-a264-3a0082ed8d9d"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+        "to_molecule_id": "26502df5-955a-4ada-8ebe-27a0417b12de",
+        "property_type": "integer",
+        "new_property_id": "71ac5d8e-ce48-4532-bb4b-62cc89488e23"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+        "to_molecule_id": "26502df5-955a-4ada-8ebe-27a0417b12de",
+        "property_type": "integer",
+        "new_property_id": "cc196efa-3b76-4d9a-9bae-62ded79cccad"
+      },
+      {
+        "type": "mixture_component_migration",
+        "from_molecule_id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+        "to_molecule_id": "26502df5-955a-4ada-8ebe-27a0417b12de",
+        "mixture_id": "97fa77d0-a4ac-4051-ab10-01930d046db5",
+        "new_component_id": "da381286-ecac-4b9a-99bd-c7de09e16e71"
+      },
+      {
+        "type": "mixture_component_migration",
+        "from_molecule_id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+        "to_molecule_id": "26502df5-955a-4ada-8ebe-27a0417b12de",
+        "mixture_id": "80a04c3e-7470-4f12-a4a0-73e0698e7615",
+        "new_component_id": "b5ce2129-91d0-4afd-a20c-a76a059c6548"
+      },
+      {
+        "type": "mixture_component_migration",
+        "from_molecule_id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+        "to_molecule_id": "26502df5-955a-4ada-8ebe-27a0417b12de",
+        "mixture_id": "395c1b26-c020-48b9-8774-453a67204ff9",
+        "new_component_id": "9f683aeb-3f9c-4226-a562-086d136214e4"
+      },
+      {
+        "type": "mixture_component_migration",
+        "from_molecule_id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+        "to_molecule_id": "26502df5-955a-4ada-8ebe-27a0417b12de",
+        "mixture_id": "44c278ac-7021-4b77-99dc-f2629e7ddfe6",
+        "new_component_id": "fa1b67d0-b92e-4f8e-abca-5234dd0251a1"
+      },
+      {
+        "type": "mixture_component_migration",
+        "from_molecule_id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+        "to_molecule_id": "26502df5-955a-4ada-8ebe-27a0417b12de",
+        "mixture_id": "a8f831db-fb3f-4a0c-be99-10a20c0a403d",
+        "new_component_id": "a4a587cc-b00a-47a2-9ca3-a621361e6308"
+      },
+      {
+        "type": "mixture_component_migration",
+        "from_molecule_id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+        "to_molecule_id": "26502df5-955a-4ada-8ebe-27a0417b12de",
+        "mixture_id": "6658fd21-06df-4d4a-b057-e8ec82f4906c",
+        "new_component_id": "6538a779-6dda-495e-a969-2772fc214777"
+      }
+    ]
+  },
+  {
+    "group_id": "ac07b868-1e18-4087-b8c1-0c9dd3db2655",
+    "consolidation_type": "COMPLEX_MERGE",
+    "primary_molecule": {
+      "id": "c7b24e15-7d9c-4887-aba7-ece5b96234f4",
+      "name": "propane-1,2-diol",
+      "pubchem_cid": 1030
+    },
+    "secondary_molecules": [
+      {
+        "id": "9a1c401b-d524-4c51-a3b5-8cf84e3e52ad",
+        "name": "Propylene glycol",
+        "pubchem_cid": null
+      },
+      {
+        "id": "d50ae9a7-3f4c-6d5e-0a5a-e1b2f7a8a9c0",
+        "name": "Propylene glycol",
+        "pubchem_cid": null
+      }
+    ],
+    "timestamp": "2025-05-12T15:52:55.101949",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "9a1c401b-d524-4c51-a3b5-8cf84e3e52ad",
+        "field": "properties.consolidated_to",
+        "value": "c7b24e15-7d9c-4887-aba7-ece5b96234f4"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "9a1c401b-d524-4c51-a3b5-8cf84e3e52ad",
+        "to_molecule_id": "c7b24e15-7d9c-4887-aba7-ece5b96234f4",
+        "property_type": "LogP",
+        "new_property_id": "203b202d-4284-4a45-b839-07d21447c641"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "9a1c401b-d524-4c51-a3b5-8cf84e3e52ad",
+        "to_molecule_id": "c7b24e15-7d9c-4887-aba7-ece5b96234f4",
+        "property_type": "float",
+        "new_property_id": "f431bdbb-a813-46dd-8c08-500978b0e18f"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "9a1c401b-d524-4c51-a3b5-8cf84e3e52ad",
+        "to_molecule_id": "c7b24e15-7d9c-4887-aba7-ece5b96234f4",
+        "property_type": "integer",
+        "new_property_id": "35d47402-21ab-413a-88a1-e5d645c9ff23"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "9a1c401b-d524-4c51-a3b5-8cf84e3e52ad",
+        "to_molecule_id": "c7b24e15-7d9c-4887-aba7-ece5b96234f4",
+        "property_type": "integer",
+        "new_property_id": "c5890ca8-d3f0-499f-b0cd-fe74325473d9"
+      },
+      {
+        "type": "property_update",
+        "molecule_id": "d50ae9a7-3f4c-6d5e-0a5a-e1b2f7a8a9c0",
+        "field": "properties.consolidated_to",
+        "value": "c7b24e15-7d9c-4887-aba7-ece5b96234f4"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "d50ae9a7-3f4c-6d5e-0a5a-e1b2f7a8a9c0",
+        "to_molecule_id": "c7b24e15-7d9c-4887-aba7-ece5b96234f4",
+        "property_type": "TPSA",
+        "new_property_id": "21669c2a-31a7-47d1-9a31-86486c273f5a"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "d50ae9a7-3f4c-6d5e-0a5a-e1b2f7a8a9c0",
+        "to_molecule_id": "c7b24e15-7d9c-4887-aba7-ece5b96234f4",
+        "property_type": "Total Score",
+        "new_property_id": "9d9a84d4-5842-4925-acbd-5f6e0e843e32"
+      },
+      {
+        "type": "mixture_component_migration",
+        "from_molecule_id": "d50ae9a7-3f4c-6d5e-0a5a-e1b2f7a8a9c0",
+        "to_molecule_id": "c7b24e15-7d9c-4887-aba7-ece5b96234f4",
+        "mixture_id": "80a04c3e-7470-4f12-a4a0-73e0698e7615",
+        "new_component_id": "7ff9cc94-7f93-4868-a9dd-1b811ecf3288"
+      },
+      {
+        "type": "mixture_component_migration",
+        "from_molecule_id": "d50ae9a7-3f4c-6d5e-0a5a-e1b2f7a8a9c0",
+        "to_molecule_id": "c7b24e15-7d9c-4887-aba7-ece5b96234f4",
+        "mixture_id": "6658fd21-06df-4d4a-b057-e8ec82f4906c",
+        "new_component_id": "deb4c844-7937-480e-80fc-c3fc00b243ce"
+      }
+    ]
+  },
+  {
+    "group_id": "df57e93d-b6d3-4cb4-a8db-2f536bfa2b4d",
+    "consolidation_type": "COMPLEX_MERGE",
+    "primary_molecule": {
+      "id": "6dd3a4fd-9afe-45e7-8143-9db74114a29f",
+      "name": "(2S)-pyrrolidine-2-carboxylic acid",
+      "pubchem_cid": 145742
+    },
+    "secondary_molecules": [
+      {
+        "id": "a43cfef6-975b-4e29-8b13-c21864c368a4",
+        "name": "Proline",
+        "pubchem_cid": null
+      }
+    ],
+    "timestamp": "2025-05-12T15:52:58.942825",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "a43cfef6-975b-4e29-8b13-c21864c368a4",
+        "field": "properties.consolidated_to",
+        "value": "6dd3a4fd-9afe-45e7-8143-9db74114a29f"
+      },
+      {
+        "type": "mixture_component_migration",
+        "from_molecule_id": "a43cfef6-975b-4e29-8b13-c21864c368a4",
+        "to_molecule_id": "6dd3a4fd-9afe-45e7-8143-9db74114a29f",
+        "mixture_id": "97fa77d0-a4ac-4051-ab10-01930d046db5",
+        "new_component_id": "6cca269b-850d-4373-b534-0cde2a25d9d2"
+      }
+    ]
+  },
+  {
+    "group_id": "e3a1ea85-d723-4875-bb2c-21d6165cbe59",
+    "consolidation_type": "COMPLEX_MERGE",
+    "primary_molecule": {
+      "id": "cccb105e-d639-4f3c-8016-4137d2604b49",
+      "name": "Acetamide",
+      "pubchem_cid": 178
+    },
+    "secondary_molecules": [
+      {
+        "id": "b119e065-91cc-4e9b-996c-50096c92da65",
+        "name": "Acetamide",
+        "pubchem_cid": null
+      }
+    ],
+    "timestamp": "2025-05-12T15:52:59.493191",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "b119e065-91cc-4e9b-996c-50096c92da65",
+        "field": "properties.consolidated_to",
+        "value": "cccb105e-d639-4f3c-8016-4137d2604b49"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "b119e065-91cc-4e9b-996c-50096c92da65",
+        "to_molecule_id": "cccb105e-d639-4f3c-8016-4137d2604b49",
+        "property_type": "LogP",
+        "new_property_id": "9b6b35c2-420f-494b-8554-4520c4eb7a2c"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "b119e065-91cc-4e9b-996c-50096c92da65",
+        "to_molecule_id": "cccb105e-d639-4f3c-8016-4137d2604b49",
+        "property_type": "TPSA",
+        "new_property_id": "af014c87-c33f-4d0c-999b-562da4c068d1"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "b119e065-91cc-4e9b-996c-50096c92da65",
+        "to_molecule_id": "cccb105e-d639-4f3c-8016-4137d2604b49",
+        "property_type": "Hydrogen Bonding",
+        "new_property_id": "dbff1571-6846-4c66-a931-44f365af23f3"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "b119e065-91cc-4e9b-996c-50096c92da65",
+        "to_molecule_id": "cccb105e-d639-4f3c-8016-4137d2604b49",
+        "property_type": "Hydrogen Bonding",
+        "new_property_id": "3a30825a-5a9d-4edc-a0e9-ca711feb43a6"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "b119e065-91cc-4e9b-996c-50096c92da65",
+        "to_molecule_id": "cccb105e-d639-4f3c-8016-4137d2604b49",
+        "property_type": "Molecular Weight",
+        "new_property_id": "2914c502-7c29-4f05-8672-eba3eb6da26d"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "b119e065-91cc-4e9b-996c-50096c92da65",
+        "to_molecule_id": "cccb105e-d639-4f3c-8016-4137d2604b49",
+        "property_type": "Molecular Structure",
+        "new_property_id": "b43d6777-7c4d-4bc9-9fbf-1340fdf12e75"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "b119e065-91cc-4e9b-996c-50096c92da65",
+        "to_molecule_id": "cccb105e-d639-4f3c-8016-4137d2604b49",
+        "property_type": "Total Score",
+        "new_property_id": "2155df62-dede-471c-b31d-0a2968223b37"
+      },
+      {
+        "type": "mixture_component_migration",
+        "from_molecule_id": "b119e065-91cc-4e9b-996c-50096c92da65",
+        "to_molecule_id": "cccb105e-d639-4f3c-8016-4137d2604b49",
+        "mixture_id": "395c1b26-c020-48b9-8774-453a67204ff9",
+        "new_component_id": "c820b3af-fe0a-4927-907e-393f9823f780"
+      }
+    ]
+  },
+  {
+    "group_id": "f76671d9-d8ad-4831-a9a3-fb4c6a0cd164",
+    "consolidation_type": "COMPLEX_MERGE",
+    "primary_molecule": {
+      "id": "af8a92f7-64a5-4f9d-a7a7-2f14b7f4fc0d",
+      "name": "Formamide",
+      "pubchem_cid": 713
+    },
+    "secondary_molecules": [
+      {
+        "id": "0054e9e8-6640-489d-8b20-89792dcebaca",
+        "name": "Formamide",
+        "pubchem_cid": null
+      }
+    ],
+    "timestamp": "2025-05-12T15:53:01.605054",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "0054e9e8-6640-489d-8b20-89792dcebaca",
+        "field": "properties.consolidated_to",
+        "value": "af8a92f7-64a5-4f9d-a7a7-2f14b7f4fc0d"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "0054e9e8-6640-489d-8b20-89792dcebaca",
+        "to_molecule_id": "af8a92f7-64a5-4f9d-a7a7-2f14b7f4fc0d",
+        "property_type": "LogP",
+        "new_property_id": "e94a6ab1-ddcd-42d1-886f-0663288b3261"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "0054e9e8-6640-489d-8b20-89792dcebaca",
+        "to_molecule_id": "af8a92f7-64a5-4f9d-a7a7-2f14b7f4fc0d",
+        "property_type": "TPSA",
+        "new_property_id": "233ceb51-bedd-4194-a0ba-0baa830a3536"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "0054e9e8-6640-489d-8b20-89792dcebaca",
+        "to_molecule_id": "af8a92f7-64a5-4f9d-a7a7-2f14b7f4fc0d",
+        "property_type": "Hydrogen Bonding",
+        "new_property_id": "411bc434-563f-4345-8248-ee108c2189f0"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "0054e9e8-6640-489d-8b20-89792dcebaca",
+        "to_molecule_id": "af8a92f7-64a5-4f9d-a7a7-2f14b7f4fc0d",
+        "property_type": "Hydrogen Bonding",
+        "new_property_id": "2f189491-6d76-4e91-980c-202a514a7f7c"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "0054e9e8-6640-489d-8b20-89792dcebaca",
+        "to_molecule_id": "af8a92f7-64a5-4f9d-a7a7-2f14b7f4fc0d",
+        "property_type": "Molecular Weight",
+        "new_property_id": "76571bb6-e91f-45bb-925c-d989df9cae43"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "0054e9e8-6640-489d-8b20-89792dcebaca",
+        "to_molecule_id": "af8a92f7-64a5-4f9d-a7a7-2f14b7f4fc0d",
+        "property_type": "Molecular Structure",
+        "new_property_id": "62921d3c-5263-41b6-ab1e-4f63498b1488"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "0054e9e8-6640-489d-8b20-89792dcebaca",
+        "to_molecule_id": "af8a92f7-64a5-4f9d-a7a7-2f14b7f4fc0d",
+        "property_type": "Total Score",
+        "new_property_id": "8cc35b89-f18c-4edb-aec9-aa81cb62308e"
+      },
+      {
+        "type": "mixture_component_migration",
+        "from_molecule_id": "0054e9e8-6640-489d-8b20-89792dcebaca",
+        "to_molecule_id": "af8a92f7-64a5-4f9d-a7a7-2f14b7f4fc0d",
+        "mixture_id": "395c1b26-c020-48b9-8774-453a67204ff9",
+        "new_component_id": "d7bac655-a736-4d61-9bac-089fc9f74413"
+      },
+      {
+        "type": "mixture_component_migration",
+        "from_molecule_id": "0054e9e8-6640-489d-8b20-89792dcebaca",
+        "to_molecule_id": "af8a92f7-64a5-4f9d-a7a7-2f14b7f4fc0d",
+        "mixture_id": "a8f831db-fb3f-4a0c-be99-10a20c0a403d",
+        "new_component_id": "9a6b60db-df28-4777-938b-4a0a36bece25"
+      },
+      {
+        "type": "mixture_component_migration",
+        "from_molecule_id": "0054e9e8-6640-489d-8b20-89792dcebaca",
+        "to_molecule_id": "af8a92f7-64a5-4f9d-a7a7-2f14b7f4fc0d",
+        "mixture_id": "6658fd21-06df-4d4a-b057-e8ec82f4906c",
+        "new_component_id": "29c472a7-53ba-4550-9cb8-ca161776be52"
+      }
+    ]
+  },
+  {
+    "group_id": "fc716556-f94a-497b-a0fe-85b30aaaa3d7",
+    "consolidation_type": "COMPLEX_MERGE",
+    "primary_molecule": {
+      "id": "6abe3da4-9c5d-4357-95bf-629db4b64b00",
+      "name": "Glycine",
+      "pubchem_cid": 750
+    },
+    "secondary_molecules": [
+      {
+        "id": "83ed505d-566d-46b8-b021-498f8bb89df3",
+        "name": "Glycine",
+        "pubchem_cid": null
+      }
+    ],
+    "timestamp": "2025-05-12T15:53:03.979526",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "83ed505d-566d-46b8-b021-498f8bb89df3",
+        "field": "properties.consolidated_to",
+        "value": "6abe3da4-9c5d-4357-95bf-629db4b64b00"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "83ed505d-566d-46b8-b021-498f8bb89df3",
+        "to_molecule_id": "6abe3da4-9c5d-4357-95bf-629db4b64b00",
+        "property_type": "LogP",
+        "new_property_id": "eb93c517-2863-4b87-96bd-12925bcff390"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "83ed505d-566d-46b8-b021-498f8bb89df3",
+        "to_molecule_id": "6abe3da4-9c5d-4357-95bf-629db4b64b00",
+        "property_type": "Hydrogen Bond Donor Count",
+        "new_property_id": "3aae9902-f398-493c-9839-0bb1fefa6efd"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "83ed505d-566d-46b8-b021-498f8bb89df3",
+        "to_molecule_id": "6abe3da4-9c5d-4357-95bf-629db4b64b00",
+        "property_type": "Hydrogen Bond Acceptor Count",
+        "new_property_id": "97af3f61-b473-4223-a615-76da18ee0b49"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "83ed505d-566d-46b8-b021-498f8bb89df3",
+        "to_molecule_id": "6abe3da4-9c5d-4357-95bf-629db4b64b00",
+        "property_type": "Rotatable Bond Count",
+        "new_property_id": "08565b3d-76bc-4890-b098-9bcff2399623"
+      }
+    ]
+  },
+  {
+    "group_id": "19bf35ce-3db8-4606-93a6-0ecf9800209a",
+    "consolidation_type": "COMPLEX_MERGE",
+    "primary_molecule": {
+      "id": "9b5b9bbd-ad2c-46ec-a1d9-279fe46a0549",
+      "name": "ethane-1,2-diol",
+      "pubchem_cid": 174
+    },
+    "secondary_molecules": [
+      {
+        "id": "c49fd8f6-2e3b-5c4d-9f4a-d0a1e6f7a8b9",
+        "name": "Ethylene glycol",
+        "pubchem_cid": null
+      },
+      {
+        "id": "6b41111a-9a92-4a02-b8ab-31975af62be1",
+        "name": "Ethylene glycol",
+        "pubchem_cid": null
+      }
+    ],
+    "timestamp": "2025-05-12T21:05:56.129159",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "c49fd8f6-2e3b-5c4d-9f4a-d0a1e6f7a8b9",
+        "field": "properties.consolidated_to",
+        "value": "9b5b9bbd-ad2c-46ec-a1d9-279fe46a0549"
+      },
+      {
+        "type": "property_update",
+        "molecule_id": "6b41111a-9a92-4a02-b8ab-31975af62be1",
+        "field": "properties.consolidated_to",
+        "value": "9b5b9bbd-ad2c-46ec-a1d9-279fe46a0549"
+      }
+    ]
+  },
+  {
+    "group_id": "21581eb6-8ed5-43f7-a01c-9ed9c36e30d2",
+    "consolidation_type": "COMPLEX_MERGE",
+    "primary_molecule": {
+      "id": "23a34e2f-811b-4dd6-b7da-1d554d87bf32",
+      "name": "methanol",
+      "pubchem_cid": 887
+    },
+    "secondary_molecules": [
+      {
+        "id": "dd82fc24-0cd1-412d-9f5a-e142b15aafe4",
+        "name": "Methanol",
+        "pubchem_cid": null
+      }
+    ],
+    "timestamp": "2025-05-12T21:05:59.118781",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "dd82fc24-0cd1-412d-9f5a-e142b15aafe4",
+        "field": "properties.consolidated_to",
+        "value": "23a34e2f-811b-4dd6-b7da-1d554d87bf32"
+      }
+    ]
+  },
+  {
+    "group_id": "76ea816a-f468-40dc-a856-a29fdb973ffe",
+    "consolidation_type": "COMPLEX_MERGE",
+    "primary_molecule": {
+      "id": "0482a736-da67-44db-8c05-e16e00778078",
+      "name": "propane-1,2,3-triol",
+      "pubchem_cid": 753
+    },
+    "secondary_molecules": [
+      {
+        "id": "d55ea26c-b945-45dc-87c7-261c7ccc5ce3",
+        "name": "Glycerol",
+        "pubchem_cid": null
+      },
+      {
+        "id": "b38fc7e5-1f2a-4b3d-8e3f-c9b0d5e8f9a7",
+        "name": "Glycerol",
+        "pubchem_cid": null
+      }
+    ],
+    "timestamp": "2025-05-12T21:06:00.654770",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "d55ea26c-b945-45dc-87c7-261c7ccc5ce3",
+        "field": "properties.consolidated_to",
+        "value": "0482a736-da67-44db-8c05-e16e00778078"
+      },
+      {
+        "type": "property_update",
+        "molecule_id": "b38fc7e5-1f2a-4b3d-8e3f-c9b0d5e8f9a7",
+        "field": "properties.consolidated_to",
+        "value": "0482a736-da67-44db-8c05-e16e00778078"
+      }
+    ]
+  },
+  {
+    "group_id": "81f5d752-d929-449d-85e8-ba77645919b7",
+    "consolidation_type": "COMPLEX_MERGE",
+    "primary_molecule": {
+      "id": "0e4f6a81-cdd5-468f-b675-3241d7241299",
+      "name": "2-(trimethylazaniumyl)acetate",
+      "pubchem_cid": 247
+    },
+    "secondary_molecules": [
+      {
+        "id": "83837dee-13be-448c-aac5-2e309bd0a38f",
+        "name": "Betaine",
+        "pubchem_cid": null
+      }
+    ],
+    "timestamp": "2025-05-12T21:06:03.655312",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "83837dee-13be-448c-aac5-2e309bd0a38f",
+        "field": "properties.consolidated_to",
+        "value": "0e4f6a81-cdd5-468f-b675-3241d7241299"
+      }
+    ]
+  },
+  {
+    "group_id": "8fb281bd-3949-4135-ab0f-5eda9964c3c0",
+    "consolidation_type": "COMPLEX_MERGE",
+    "primary_molecule": {
+      "id": "26502df5-955a-4ada-8ebe-27a0417b12de",
+      "name": "methylsulfinylmethane",
+      "pubchem_cid": 679
+    },
+    "secondary_molecules": [
+      {
+        "id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+        "name": "Dimethyl sulfoxide",
+        "pubchem_cid": null
+      }
+    ],
+    "timestamp": "2025-05-12T21:06:04.112186",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "a27eb9ed-cf7b-463e-9e07-13a049664572",
+        "field": "properties.consolidated_to",
+        "value": "26502df5-955a-4ada-8ebe-27a0417b12de"
+      }
+    ]
+  },
+  {
+    "group_id": "ac07b868-1e18-4087-b8c1-0c9dd3db2655",
+    "consolidation_type": "COMPLEX_MERGE",
+    "primary_molecule": {
+      "id": "c7b24e15-7d9c-4887-aba7-ece5b96234f4",
+      "name": "propane-1,2-diol",
+      "pubchem_cid": 1030
+    },
+    "secondary_molecules": [
+      {
+        "id": "9a1c401b-d524-4c51-a3b5-8cf84e3e52ad",
+        "name": "Propylene glycol",
+        "pubchem_cid": null
+      },
+      {
+        "id": "d50ae9a7-3f4c-6d5e-0a5a-e1b2f7a8a9c0",
+        "name": "Propylene glycol",
+        "pubchem_cid": null
+      }
+    ],
+    "timestamp": "2025-05-12T21:06:05.790914",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "9a1c401b-d524-4c51-a3b5-8cf84e3e52ad",
+        "field": "properties.consolidated_to",
+        "value": "c7b24e15-7d9c-4887-aba7-ece5b96234f4"
+      },
+      {
+        "type": "property_update",
+        "molecule_id": "d50ae9a7-3f4c-6d5e-0a5a-e1b2f7a8a9c0",
+        "field": "properties.consolidated_to",
+        "value": "c7b24e15-7d9c-4887-aba7-ece5b96234f4"
+      }
+    ]
+  },
+  {
+    "group_id": "df57e93d-b6d3-4cb4-a8db-2f536bfa2b4d",
+    "consolidation_type": "COMPLEX_MERGE",
+    "primary_molecule": {
+      "id": "6dd3a4fd-9afe-45e7-8143-9db74114a29f",
+      "name": "(2S)-pyrrolidine-2-carboxylic acid",
+      "pubchem_cid": 145742
+    },
+    "secondary_molecules": [
+      {
+        "id": "a43cfef6-975b-4e29-8b13-c21864c368a4",
+        "name": "Proline",
+        "pubchem_cid": null
+      }
+    ],
+    "timestamp": "2025-05-12T21:06:08.808382",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "a43cfef6-975b-4e29-8b13-c21864c368a4",
+        "field": "properties.consolidated_to",
+        "value": "6dd3a4fd-9afe-45e7-8143-9db74114a29f"
+      }
+    ]
+  },
+  {
+    "group_id": "e3a1ea85-d723-4875-bb2c-21d6165cbe59",
+    "consolidation_type": "COMPLEX_MERGE",
+    "primary_molecule": {
+      "id": "cccb105e-d639-4f3c-8016-4137d2604b49",
+      "name": "Acetamide",
+      "pubchem_cid": 178
+    },
+    "secondary_molecules": [
+      {
+        "id": "b119e065-91cc-4e9b-996c-50096c92da65",
+        "name": "Acetamide",
+        "pubchem_cid": null
+      }
+    ],
+    "timestamp": "2025-05-12T21:06:09.265307",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "b119e065-91cc-4e9b-996c-50096c92da65",
+        "field": "properties.consolidated_to",
+        "value": "cccb105e-d639-4f3c-8016-4137d2604b49"
+      }
+    ]
+  },
+  {
+    "group_id": "f76671d9-d8ad-4831-a9a3-fb4c6a0cd164",
+    "consolidation_type": "COMPLEX_MERGE",
+    "primary_molecule": {
+      "id": "af8a92f7-64a5-4f9d-a7a7-2f14b7f4fc0d",
+      "name": "Formamide",
+      "pubchem_cid": 713
+    },
+    "secondary_molecules": [
+      {
+        "id": "0054e9e8-6640-489d-8b20-89792dcebaca",
+        "name": "Formamide",
+        "pubchem_cid": null
+      }
+    ],
+    "timestamp": "2025-05-12T21:06:10.579801",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "0054e9e8-6640-489d-8b20-89792dcebaca",
+        "field": "properties.consolidated_to",
+        "value": "af8a92f7-64a5-4f9d-a7a7-2f14b7f4fc0d"
+      }
+    ]
+  },
+  {
+    "group_id": "fc716556-f94a-497b-a0fe-85b30aaaa3d7",
+    "consolidation_type": "COMPLEX_MERGE",
+    "primary_molecule": {
+      "id": "6abe3da4-9c5d-4357-95bf-629db4b64b00",
+      "name": "Glycine",
+      "pubchem_cid": 750
+    },
+    "secondary_molecules": [
+      {
+        "id": "83ed505d-566d-46b8-b021-498f8bb89df3",
+        "name": "Glycine",
+        "pubchem_cid": null
+      }
+    ],
+    "timestamp": "2025-05-12T21:06:12.212489",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "83ed505d-566d-46b8-b021-498f8bb89df3",
+        "field": "properties.consolidated_to",
+        "value": "6abe3da4-9c5d-4357-95bf-629db4b64b00"
+      }
+    ]
+  }
+]

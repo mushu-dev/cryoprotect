@@ -1,0 +1,16 @@
+# API routes redirect to Heroku backend
+/api/*  https://cryoprotect-8030e4025428.herokuapp.com/api/:splat  200
+
+# API connectivity endpoint - CORS enabled
+/api/v1/health/connectivity  https://cryoprotect-8030e4025428.herokuapp.com/api/v1/health/connectivity  200!
+/api/*  https://cryoprotect-8030e4025428.herokuapp.com/api/:splat  200!
+
+# Handle dynamic routes for molecules
+/molecules/*  /molecules/[id].html  200
+
+# Handle dynamic routes for mixtures
+/mixtures/*  /mixtures/[id].html  200
+
+# SPA fallback for all other routes
+/*  /index.html  200
+/*  /404.html  404

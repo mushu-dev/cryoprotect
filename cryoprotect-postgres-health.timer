@@ -1,0 +1,11 @@
+[Unit]
+Description=Run CryoProtect PostgreSQL Health Check Hourly
+Documentation=https://github.com/yourusername/cryoprotect
+
+[Timer]
+OnCalendar=*-*-* *:00:00
+Persistent=true
+RandomizedDelaySec=300
+
+[Install]
+WantedBy=timers.target

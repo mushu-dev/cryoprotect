@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CryoProtect</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+  <header class="sticky top-0 z-50 border-b bg-white dark:bg-gray-800">
+    <div class="container mx-auto flex h-14 items-center justify-between px-4">
+      <div class="flex items-center">
+        <a href="/" class="mr-6 flex items-center space-x-2 font-bold">
+          <span>CryoProtect</span>
+        </a>
+        
+        <nav class="hidden md:flex items-center gap-6">
+          <a href="/" class="text-sm font-medium text-black dark:text-white">Dashboard</a>
+          <a href="/molecules" class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">Molecules</a>
+          <a href="/mixtures" class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">Mixtures</a>
+          <a href="/experiments" class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">Experiments</a>
+          <a href="/protocols" class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">Protocols</a>
+          <a href="/properties" class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">Properties</a>
+        </nav>
+      </div>
+      
+      <div class="flex items-center gap-2">
+        <a href="/login" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+          Sign In
+        </a>
+        <a href="/register" class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
+          Sign Up
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container mx-auto px-4 py-12">
+      <section class="flex flex-col items-center justify-center text-center py-12">
+        <h1 class="text-4xl font-bold mb-4">CryoProtect</h1>
+        <p class="text-xl mb-8">A platform for cryoprotectant analysis and experiment management</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 max-w-4xl w-full">
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+            <h2 class="text-2xl font-semibold mb-4">Molecule Database</h2>
+            <p class="mb-4">Explore our comprehensive database of cryoprotectant molecules and their properties.</p>
+            <a href="/molecules" class="w-full inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors bg-blue-600 text-white hover:bg-blue-700 h-10 py-2 px-4">
+              View Molecules
+            </a>
+          </div>
+          
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+            <h2 class="text-2xl font-semibold mb-4">Mixture Analysis</h2>
+            <p class="mb-4">Analyze combinations of cryoprotectants for optimal preservation conditions.</p>
+            <a href="/mixtures" class="w-full inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors bg-blue-600 text-white hover:bg-blue-700 h-10 py-2 px-4">
+              View Mixtures
+            </a>
+          </div>
+          
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+            <h2 class="text-2xl font-semibold mb-4">Experiment Tracking</h2>
+            <p class="mb-4">Design, track, and analyze cryopreservation experiments with detailed protocols.</p>
+            <a href="/experiments" class="w-full inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors bg-blue-600 text-white hover:bg-blue-700 h-10 py-2 px-4">
+              View Experiments
+            </a>
+          </div>
+          
+          <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md">
+            <h2 class="text-2xl font-semibold mb-4">Standardized Protocols</h2>
+            <p class="mb-4">Access and create standardized protocols for reproducible cryopreservation procedures.</p>
+            <a href="/protocols" class="w-full inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors bg-blue-600 text-white hover:bg-blue-700 h-10 py-2 px-4">
+              View Protocols
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="py-6 border-t">
+    <div class="container mx-auto text-center text-gray-500">
+      <p>© 2025 CryoProtect. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

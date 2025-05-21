@@ -1,0 +1,16 @@
+{
+  "start_time": "2025-05-12T18:42:39.895533",
+  "end_time": "2025-05-12T18:44:58.257020",
+  "duration_seconds": 138.3614866733551,
+  "total_cids_found": 28,
+  "cids_processed": 28,
+  "cids_failed": 0,
+  "molecules_before": 1170,
+  "molecules_after": 1242,
+  "molecules_added": 72,
+  "properties_before": 4459,
+  "properties_after": 5340,
+  "properties_added": 881,
+  "total_new_molecules": 28,
+  "total_new_properties": 224
+}

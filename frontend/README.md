@@ -1,208 +1,87 @@
 # CryoProtect Frontend
 
-A modern web interface for the CryoProtect application, providing tools for analyzing and optimizing cryoprotectant molecules and mixtures.
+This is the frontend application for CryoProtect, a platform for cryoprotectant analysis and experiment management.
 
-## Features
+## Quick Start
 
-- 3D Molecule Visualization with 3DMol.js
-- Mixture Composition Analysis with Plotly.js
-- Interactive Property Explorer
-- User Authentication and Profile Management
-- Responsive Design with Dark/Light Mode
-
-## Technology Stack
-
-- **Framework**: Next.js 14 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS with Shadcn UI
-- **State Management**:
-  - React Query for server state
-  - Zustand for client state
-- **Authentication**: NextAuth.js
-- **Visualization**:
-  - 3DMol.js for molecular visualization
-  - Plotly.js for data visualization
-- **Form Handling**: React Hook Form with Zod validation
-- **Deployment**: Vercel
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18.x or higher
-- npm or yarn
-
-### Installation
-
-1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/cryoprotect-app.git
-cd cryoprotect-app/frontend
-```
-
-2. Install dependencies
-```bash
+# Install dependencies
 npm install
-# or
-yarn install
-```
 
-3. Create a `.env.local` file in the project root with the following variables:
-```
-# API URL for development
-NEXT_PUBLIC_API_URL=http://localhost:5000
-
-# Default API version
-NEXT_PUBLIC_API_VERSION=v1
-
-# Enable/disable mock data in development
-NEXT_PUBLIC_USE_MOCK_DATA=true
-
-# Authentication settings
-NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=your-secret-key-goes-here
-```
-
-4. Start the development server
-```bash
+# Run development server
 npm run dev
-# or
-yarn dev
+
+# Build for production
+npm run build
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+## UI System
 
-## Project Structure
+CryoProtect uses a modern UI component system based on Tailwind CSS with a simplified implementation of shadcn/ui components.
 
+### Component Library
+
+To see all available UI components and their usage, start the development server and visit `/components`.
+
+### Dashboard Layout
+
+The application uses a dashboard layout for authenticated pages, which includes:
+
+- Sidebar navigation
+- Responsive design for mobile and desktop
+- Consistent styling throughout the application
+
+## Testing
+
+```bash
+# Run UI tests with Playwright
+./run-ui-test.sh
 ```
-/frontend
-├── public/              # Static assets
-├── src/                 # Source code
-│   ├── app/             # App router pages
-│   │   ├── api/         # API routes
-│   │   ├── auth/        # Authentication pages
-│   │   ├── mixtures/    # Mixture related pages
-│   │   ├── molecules/   # Molecule related pages
-│   │   ├── profile/     # User profile page
-│   │   ├── settings/    # User settings page
-│   │   ├── page.tsx     # Home page
-│   │   └── ...          # Other pages
-│   ├── components/      # Shared components
-│   │   ├── ui/          # UI components (Shadcn UI)
-│   │   └── ...          # Other components
-│   ├── features/        # Feature-based organization
-│   │   ├── auth/        # Authentication features
-│   │   ├── dashboard/   # Dashboard features
-│   │   ├── mixtures/    # Mixture features
-│   │   ├── molecules/   # Molecule features
-│   │   └── properties/  # Property explorer features
-│   ├── lib/             # Utility functions and libraries
-│   └── styles/          # Global styles
-├── .env.local           # Environment variables
-├── next.config.js       # Next.js configuration
-├── package.json         # Dependencies and scripts
-├── tailwind.config.js   # Tailwind CSS configuration
-└── tsconfig.json        # TypeScript configuration
-```
-
-## Key Features and Usage
-
-### Molecule Viewer
-
-The molecule viewer uses 3DMol.js to render interactive 3D visualizations of molecular structures. Features include:
-
-- Multiple visualization styles (stick, sphere, cartoon, surface)
-- Rotation and zooming controls
-- Optional animation (spinning)
-- Molecular information display
-
-### Mixture Composition
-
-The mixture composition component uses Plotly.js to visualize the components of cryoprotectant mixtures:
-
-- Pie charts for composition visualization
-- Concentration and ratio analysis
-- Interactive tooltips with detailed information
-- Component selection for detailed view
-
-### Property Explorer
-
-The property explorer allows users to analyze and visualize molecular properties:
-
-- Interactive charts for property visualization
-- Property comparison across multiple molecules
-- Correlation analysis between different properties
-- Data export functionality
-
-## Authentication and User Management
-
-The application includes a complete authentication system with:
-
-- User registration and login
-- Profile management
-- Password reset
-- Role-based access control
-- Protected routes
 
 ## Development
 
-### Adding New Components
+For detailed information on the UI system and how to extend it, see the [UI Setup Guide](./UI_SETUP_GUIDE.md).
 
-1. Create a new component in the appropriate directory
-2. Import and use Shadcn UI components for consistent styling
-3. Use the following pattern for client components:
+## Protein Visualizer Component
 
-```tsx
-'use client'
+The CryoProtect application includes a powerful molecular visualization component based on Mol* (MolStar).
 
-import { useState } from 'react'
-import { ComponentName } from '@/components/ui/component-name'
+### Features
 
-export function YourComponent() {
-  // Component logic here
-  
-  return (
-    // JSX here
-  )
-}
+- Visualize proteins from PDB IDs, SMILES strings, or direct data
+- Multiple visualization styles (cartoon, ball-and-stick, surface, etc.)
+- Interactive controls for rotation, zoom, and style changes
+- Ability to highlight specific residues
+- Customizable appearance with background color options
+- Screen capture functionality
+
+### Usage
+
+```jsx
+import { MolstarViewer } from '@/components/protein-visualizer/MolstarViewer';
+
+// Visualize by PDB ID
+<MolstarViewer 
+  pdbId="1cbs" 
+  name="Cellular Retinoic Acid-Binding Protein Type II" 
+  style="cartoon" 
+/>
+
+// Visualize by SMILES string
+<MolstarViewer 
+  smiles="CC(=O)OC1=CC=CC=C1C(=O)O" 
+  name="Aspirin" 
+  style="ball-and-stick" 
+/>
 ```
 
-### API Integration
+### Demo Page
 
-The application integrates with the CryoProtect API using React Query:
+A comprehensive demo page is available at `/protein-visualizer-demo` which showcases all the features and provides usage examples.
 
-```tsx
-import { useQuery } from '@tanstack/react-query'
-import { moleculeService } from '@/features/molecules/services/molecule-service'
+### Testing
 
-export function useMolecules(params) {
-  return useQuery({
-    queryKey: ['molecules', params],
-    queryFn: () => moleculeService.getMolecules(params),
-    staleTime: 5 * 60 * 1000, // 5 minutes
-  })
-}
+```bash
+# Run protein visualizer tests
+npm run test:protein-visualizer
 ```
-
-### Deployment
-
-The application is configured for deployment on Vercel. To deploy:
-
-1. Push your changes to your repository
-2. Connect your repository to Vercel
-3. Configure the environment variables
-4. Deploy!
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgements
-
-- [Next.js](https://nextjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Shadcn UI](https://ui.shadcn.com/)
-- [3DMol.js](https://3dmol.csb.pitt.edu/)
-- [Plotly.js](https://plotly.com/javascript/)
-- [React Query](https://tanstack.com/query/latest)
-- [NextAuth.js](https://next-auth.js.org/)

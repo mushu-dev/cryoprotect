@@ -1,0 +1,132 @@
+{
+  "tables_created": [
+    "experiment_types",
+    "tissue_types",
+    "experiment_results"
+  ],
+  "tables_skipped": [
+    "experiments"
+  ],
+  "schema_definition": [
+    {
+      "name": "experiment_types",
+      "sql": "\n            CREATE TABLE IF NOT EXISTS experiment_types (\n                id UUID PRIMARY KEY,\n                name VARCHAR(255) NOT NULL,\n                description TEXT,\n                protocol_details JSONB,\n                created_by UUID,\n                created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),\n                updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()\n            )\n        ",
+      "indexes": [
+        "CREATE INDEX IF NOT EXISTS idx_experiment_types_name ON experiment_types (name)"
+      ],
+      "sample_data": [
+        {
+          "id": "e8c1a982-9e4d-4b8a-a71d-192a0c29d4a2",
+          "name": "Slow Freezing",
+          "description": "Controlled rate freezing protocol with cryoprotectants"
+        },
+        {
+          "id": "f3b25c7d-6e8a-4c9b-b013-8a3d7c4e6df5",
+          "name": "Vitrification",
+          "description": "Ultra-rapid cooling to achieve glass transition"
+        },
+        {
+          "id": "a1c34e5f-7b8d-4c9e-a012-3f4e5d6c7b8a",
+          "name": "Cryoprotectant Toxicity",
+          "description": "Assessment of cell survival after cryoprotectant exposure"
+        }
+      ]
+    },
+    {
+      "name": "tissue_types",
+      "sql": "\n            CREATE TABLE IF NOT EXISTS tissue_types (\n                id UUID PRIMARY KEY,\n                name VARCHAR(255) NOT NULL,\n                description TEXT,\n                species VARCHAR(255),\n                taxonomy_id INTEGER,\n                created_by UUID,\n                created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),\n                updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()\n            )\n        ",
+      "indexes": [
+        "CREATE INDEX IF NOT EXISTS idx_tissue_types_name ON tissue_types (name)",
+        "CREATE INDEX IF NOT EXISTS idx_tissue_types_species ON tissue_types (species)"
+      ],
+      "sample_data": [
+        {
+          "id": "b2c3d4e5-f6g7-4h8i-9j0k-0123456789ab",
+          "name": "Human Oocyte",
+          "description": "Human female reproductive cells",
+          "species": "Homo sapiens",
+          "taxonomy_id": 9606
+        },
+        {
+          "id": "c3d4e5f6-g7h8-4i9j-0k1l-0123456789ab",
+          "name": "Mouse Embryo",
+          "description": "Preimplantation mouse embryo",
+          "species": "Mus musculus",
+          "taxonomy_id": 10090
+        },
+        {
+          "id": "d4e5f6g7-h8i9-4j0k-1l2m-0123456789ab",
+          "name": "Bovine Sperm",
+          "description": "Bull sperm cells",
+          "species": "Bos taurus",
+          "taxonomy_id": 9913
+        }
+      ]
+    },
+    {
+      "name": "experiments",
+      "sql": "\n            CREATE TABLE IF NOT EXISTS experiments (\n                id UUID PRIMARY KEY,\n                experiment_type_id UUID NOT NULL REFERENCES experiment_types(id),\n                title VARCHAR(255) NOT NULL,\n                description TEXT,\n                date_performed DATE,\n                temperature NUMERIC,\n                cooling_rate NUMERIC,\n                thawing_rate NUMERIC,\n                additional_parameters JSONB,\n                created_by UUID,\n                created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),\n                updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()\n            )\n        ",
+      "indexes": [
+        "CREATE INDEX IF NOT EXISTS idx_experiments_experiment_type ON experiments (experiment_type_id)",
+        "CREATE INDEX IF NOT EXISTS idx_experiments_date ON experiments (date_performed)"
+      ],
+      "sample_data": [
+        {
+          "id": "e5f6g7h8-i9j0-4k1l-2m3n-0123456789ab",
+          "experiment_type_id": "e8c1a982-9e4d-4b8a-a71d-192a0c29d4a2",
+          "title": "Standard Slow Freezing Protocol",
+          "description": "Controlled rate freezing with DMSO",
+          "date_performed": "2025-01-15",
+          "temperature": -80.0,
+          "cooling_rate": -1.0,
+          "thawing_rate": 5.0,
+          "additional_parameters": {}
+        },
+        {
+          "id": "f6g7h8i9-j0k1-4l2m-3n4o-0123456789ab",
+          "experiment_type_id": "f3b25c7d-6e8a-4c9b-b013-8a3d7c4e6df5",
+          "title": "Oocyte Vitrification Protocol",
+          "description": "Ultra-rapid cooling using ethylene glycol and DMSO mixture",
+          "date_performed": "2025-02-20",
+          "temperature": -196.0,
+          "cooling_rate": -20000.0,
+          "thawing_rate": 2000.0,
+          "additional_parameters": {
+            "straws_used": true,
+            "liquid_nitrogen_submersion": true
+          }
+        },
+        {
+          "id": "g7h8i9j0-k1l2-4m3n-4o5p-0123456789ab",
+          "experiment_type_id": "a1c34e5f-7b8d-4c9e-a012-3f4e5d6c7b8a",
+          "title": "Toxicity Assessment of Novel Cryoprotectants",
+          "description": "Evaluation of cell viability after exposure to new cryoprotectant compounds",
+          "date_performed": "2025-03-10",
+          "temperature": 22.0,
+          "cooling_rate": null,
+          "thawing_rate": null,
+          "additional_parameters": {
+            "exposure_time_minutes": 30,
+            "concentrations_tested": [
+              5,
+              10,
+              15,
+              20
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "experiment_results",
+      "sql": "\n            CREATE TABLE IF NOT EXISTS experiment_results (\n                id UUID PRIMARY KEY,\n                experiment_id UUID NOT NULL REFERENCES experiments(id),\n                molecule_id UUID REFERENCES molecules(id),\n                mixture_id UUID REFERENCES mixtures(id),\n                tissue_type_id UUID NOT NULL REFERENCES tissue_types(id),\n                concentration NUMERIC,\n                concentration_unit VARCHAR(50),\n                viability_percentage NUMERIC,\n                recovery_rate NUMERIC,\n                functionality_score NUMERIC,\n                result_details JSONB,\n                notes TEXT,\n                created_by UUID,\n                created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),\n                updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),\n                CONSTRAINT check_molecule_or_mixture CHECK (\n                    (molecule_id IS NOT NULL AND mixture_id IS NULL) OR\n                    (molecule_id IS NULL AND mixture_id IS NOT NULL)\n                )\n            )\n        ",
+      "indexes": [
+        "CREATE INDEX IF NOT EXISTS idx_experiment_results_experiment ON experiment_results (experiment_id)",
+        "CREATE INDEX IF NOT EXISTS idx_experiment_results_molecule ON experiment_results (molecule_id)",
+        "CREATE INDEX IF NOT EXISTS idx_experiment_results_mixture ON experiment_results (mixture_id)",
+        "CREATE INDEX IF NOT EXISTS idx_experiment_results_tissue ON experiment_results (tissue_type_id)",
+        "CREATE INDEX IF NOT EXISTS idx_experiment_results_viability ON experiment_results (viability_percentage)"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+# API routes should redirect to the backend
+/api/*  https://cryoprotect-8030e4025428.herokuapp.com/api/:splat  200
+
+# Handle dynamic routes 
+/molecules/*  /molecules/[id].html  200
+/mixtures/*  /mixtures/[id].html  200
+
+# SPA fallback
+/*  /index.html  200

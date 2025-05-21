@@ -1,0 +1,359 @@
+name: "Automated Issue Management"
+on:
+  issues:
+    types:
+      - opened
+      - reopened
+      - closed
+      - assigned
+      - labeled
+      - unlabeled
+  pull_request:
+    types:
+      - opened
+      - closed
+      - assigned
+      - review_requested
+      - review_request_removed
+      - ready_for_review
+      - converted_to_draft
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason for manual trigger'
+        required: true
+        default: 'Manual sync of issues'
+
+jobs:
+  # Add all new issues to the project board
+  add_to_project:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'issues' && github.event.action == 'opened'
+    steps:
+      - name: Add issue to project
+        uses: actions/add-to-project@v0.5.0
+        with:
+          project-url: https://github.com/orgs/${{ github.repository_owner }}/projects/1
+          github-token: ${{ secrets.PROJECT_TOKEN }}
+
+  # Add all new PRs to the project board
+  add_pr_to_project:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.action == 'opened'
+    steps:
+      - name: Add PR to project
+        uses: actions/add-to-project@v0.5.0
+        with:
+          project-url: https://github.com/orgs/${{ github.repository_owner }}/projects/1
+          github-token: ${{ secrets.PROJECT_TOKEN }}
+
+  # Add Epic label to epic issues
+  add_epic_label:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'issues' && github.event.action == 'opened' && contains(github.event.issue.title, 'Epic:')
+    steps:
+      - name: Add epic label
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['type:epic']
+            });
+
+  # Update project card when issue status changes
+  update_project_column:
+    runs-on: ubuntu-latest
+    if: (github.event_name == 'issues' || github.event_name == 'pull_request') && (github.event.action == 'labeled' || github.event.action == 'unlabeled')
+    steps:
+      - name: Update issue status based on label
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.PROJECT_TOKEN }}
+          script: |
+            // Get the latest event data
+            const eventName = context.eventName;
+            const action = context.payload.action;
+            const isIssue = eventName === 'issues';
+            const isPR = eventName === 'pull_request';
+            
+            if (!isIssue && !isPR) return;
+            
+            // Get the object and its number
+            const item = isIssue ? context.payload.issue : context.payload.pull_request;
+            const itemNumber = item.number;
+            const itemType = isIssue ? 'Issue' : 'PR';
+            
+            // Process labels to determine status
+            const labels = item.labels.map(l => l.name);
+            console.log(`${itemType} #${itemNumber} has labels: ${labels.join(', ')}`);
+            
+            // Define status mappings
+            const statusMappings = {
+              'status:planning': 'Todo',
+              'status:ready': 'Ready',
+              'status:in-progress': 'In Progress',
+              'status:needs-review': 'Review',
+              'status:completed': 'Done',
+              'status:blocked': 'Blocked'
+            };
+            
+            // Find the highest priority status label
+            let newStatus = null;
+            const priorities = [
+              'status:blocked',
+              'status:in-progress',
+              'status:needs-review', 
+              'status:ready',
+              'status:planning',
+              'status:completed'
+            ];
+            
+            for (const priority of priorities) {
+              if (labels.includes(priority)) {
+                newStatus = statusMappings[priority];
+                break;
+              }
+            }
+            
+            if (newStatus) {
+              console.log(`Setting ${itemType} #${itemNumber} to status: ${newStatus}`);
+              // Here you would add code to actually update the project card
+              // using the GitHub GraphQL API
+            }
+
+  # Auto-assign issues based on area labels
+  auto_assign:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'issues' && github.event.action == 'labeled' && startsWith(github.event.label.name, 'area:')
+    steps:
+      - name: Auto-assign based on area label
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issue = context.payload.issue;
+            const label = context.payload.label.name;
+            
+            // Skip if issue is already assigned
+            if (issue.assignees && issue.assignees.length > 0) {
+              console.log(`Issue #${issue.number} already has assignees, skipping auto-assignment`);
+              return;
+            }
+            
+            // Define area to team member mappings
+            // Replace these with actual team members for your project
+            const areaMappings = {
+              'area:database': ['database-expert'],
+              'area:api': ['api-developer'],
+              'area:ui': ['frontend-developer'],
+              'area:auth': ['security-expert'],
+              'area:testing': ['qa-engineer'],
+              'area:chembl': ['data-scientist'],
+              'area:docs': ['technical-writer'],
+              'area:devops': ['devops-engineer']
+            };
+            
+            if (label in areaMappings) {
+              const assignees = areaMappings[label];
+              console.log(`Auto-assigning issue #${issue.number} to: ${assignees.join(', ')}`);
+              
+              try {
+                await github.rest.issues.addAssignees({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  assignees: assignees
+                });
+                console.log(`Successfully assigned issue #${issue.number}`);
+              } catch (error) {
+                console.error(`Error assigning issue: ${error}`);
+              }
+            }
+
+  # Link PRs to issues automatically
+  link_pr_to_issue:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.action == 'opened'
+    steps:
+      - name: Link PR to related issues
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const pr = context.payload.pull_request;
+            const prBody = pr.body || '';
+            
+            // Look for issue references in the PR body
+            const issueRefs = prBody.match(/(close|closes|closed|fix|fixes|fixed|resolve|resolves|resolved)\s+#(\d+)/gi);
+            if (!issueRefs) {
+              console.log('No issue references found in PR body');
+              return;
+            }
+            
+            // Extract issue numbers
+            const issueNumbers = issueRefs.map(ref => {
+              const match = ref.match(/#(\d+)/);
+              return match ? match[1] : null;
+            }).filter(Boolean);
+            
+            // Add PR link comment to each referenced issue
+            for (const issueNumber of issueNumbers) {
+              console.log(`Adding link comment to issue #${issueNumber}`);
+              
+              try {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: parseInt(issueNumber),
+                  body: `Linked to pull request #${pr.number}`
+                });
+              } catch (error) {
+                console.error(`Error adding comment to issue #${issueNumber}: ${error}`);
+              }
+            }
+
+  # Auto-label PRs based on changed files
+  auto_label_pr:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'synchronize')
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      
+      - name: Label PR based on changed files
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const pr = context.payload.pull_request;
+            
+            // Get list of files changed in the PR
+            const { data: changedFiles } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pr.number
+            });
+            
+            const filePaths = changedFiles.map(file => file.filename);
+            console.log(`Files changed in PR #${pr.number}: ${filePaths.join(', ')}`);
+            
+            // Define file patterns and their corresponding labels
+            const labelMappings = [
+              { pattern: /^api\//, label: 'area:api' },
+              { pattern: /^frontend\//, label: 'area:ui' },
+              { pattern: /database\//, label: 'area:database' },
+              { pattern: /auth\//, label: 'area:auth' },
+              { pattern: /(test|spec)\./, label: 'area:testing' },
+              { pattern: /docs\//, label: 'area:docs' },
+              { pattern: /chembl|pubchem/, label: 'area:chembl' },
+              { pattern: /docker|kubernetes|deploy/, label: 'area:devops' }
+            ];
+            
+            // Determine which labels to add
+            const labelsToAdd = new Set();
+            for (const file of filePaths) {
+              for (const mapping of labelMappings) {
+                if (mapping.pattern.test(file)) {
+                  labelsToAdd.add(mapping.label);
+                }
+              }
+            }
+            
+            // Add labels to the PR
+            if (labelsToAdd.size > 0) {
+              const labels = Array.from(labelsToAdd);
+              console.log(`Adding labels to PR #${pr.number}: ${labels.join(', ')}`);
+              
+              try {
+                await github.rest.issues.addLabels({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: pr.number,
+                  labels: labels
+                });
+              } catch (error) {
+                console.error(`Error adding labels to PR #${pr.number}: ${error}`);
+              }
+            }
+
+  # Add link to epic for new issues
+  link_to_epic:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'issues' && github.event.action == 'opened' && !contains(github.event.issue.title, 'Epic:')
+    steps:
+      - name: Check for epic reference and add if missing
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issue = context.payload.issue;
+            const body = issue.body || '';
+            
+            // Check if there's already an epic reference
+            const epicRefMatch = body.match(/##\s*Related\s*Epic[\s\S]*?#(\d+)/i);
+            if (epicRefMatch) {
+              console.log(`Issue #${issue.number} already has an epic reference: #${epicRefMatch[1]}`);
+              return;
+            }
+            
+            // No epic reference found, check labels to determine which epic it might belong to
+            const labels = issue.labels.map(l => l.name.toLowerCase());
+            
+            // Map labels to potential epic categories
+            let suggestedEpic = null;
+            if (labels.includes('area:database') || body.toLowerCase().includes('database')) {
+              suggestedEpic = 'Database Implementation and Optimization';
+            } else if (labels.includes('area:api') || body.toLowerCase().includes('api')) {
+              suggestedEpic = 'API Development and Standardization';
+            } else if (labels.includes('area:ui') || body.toLowerCase().includes('frontend') || body.toLowerCase().includes('ui')) {
+              suggestedEpic = 'Frontend Implementation and User Experience';
+            } else if (labels.includes('area:auth') || body.toLowerCase().includes('authentication') || body.toLowerCase().includes('security')) {
+              suggestedEpic = 'Authentication and Security Implementation';
+            } else if (labels.includes('area:testing') || body.toLowerCase().includes('test')) {
+              suggestedEpic = 'Testing and Quality Assurance';
+            } else if (labels.includes('area:chembl') || body.toLowerCase().includes('chembl')) {
+              suggestedEpic = 'ChEMBL Integration and Data Pipeline';
+            } else if (body.toLowerCase().includes('pubchem') || body.toLowerCase().includes('molecule')) {
+              suggestedEpic = 'PubChem Integration and Molecule Management';
+            } else if (body.toLowerCase().includes('rdkit') || body.toLowerCase().includes('chemical')) {
+              suggestedEpic = 'RDKit Integration and Chemical Functionality';
+            } else if (labels.includes('area:devops') || body.toLowerCase().includes('deploy') || body.toLowerCase().includes('infrastructure')) {
+              suggestedEpic = 'Infrastructure and Deployment';
+            }
+            
+            if (suggestedEpic) {
+              // Add a comment suggesting the epic relationship
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `This issue appears to be related to the "${suggestedEpic}" epic. Please update the "Related Epic" section in the issue description with the appropriate epic reference.`
+              });
+              
+              console.log(`Suggested epic category "${suggestedEpic}" for issue #${issue.number}`);
+            }
+
+  # Stale issue detection and notification
+  stale_issues:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+    steps:
+      - name: Check for stale issues
+        uses: actions/stale@v8
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          stale-issue-message: 'This issue has had no activity for 30 days. It will be closed in 7 days unless there is new activity.'
+          stale-pr-message: 'This pull request has had no activity for 30 days. It will be closed in 7 days unless there is new activity.'
+          stale-issue-label: 'stale'
+          stale-pr-label: 'stale'
+          days-before-stale: 30
+          days-before-close: 7
+          exempt-issue-labels: 'type:epic,priority:high'
+          exempt-pr-labels: 'priority:high'
+          operations-per-run: 50

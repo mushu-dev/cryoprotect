@@ -318,3 +318,41 @@ def csrf_exempt():
         return decorated
     
     return decorator
+
+def require_auth(f):
+    """
+    Decorator to require authentication for an endpoint.
+    
+    This is a temporary implementation for testing. In production, this would
+    validate JWT tokens or other authentication mechanisms.
+    
+    Returns:
+        Decorator function
+    """
+    @functools.wraps(f)
+    def decorated(*args, **kwargs):
+        # For testing, we'll always allow access
+        # In production, this would check for valid authentication
+        request.user = type('User', (), {'id': 'test-user-id'})
+        return f(*args, **kwargs)
+    
+    return decorated
+
+def require_service_role(f):
+    """
+    Decorator to require service role authentication for an endpoint.
+    
+    This is a temporary implementation for testing. In production, this would
+    validate service role tokens or other authorization mechanisms.
+    
+    Returns:
+        Decorator function
+    """
+    @functools.wraps(f)
+    def decorated(*args, **kwargs):
+        # For testing, we'll always allow access with service role
+        # In production, this would check for valid service role authorization
+        request.user = type('ServiceUser', (), {'id': 'service-role-user-id'})
+        return f(*args, **kwargs)
+    
+    return decorated

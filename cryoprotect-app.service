@@ -1,0 +1,17 @@
+[Unit]
+Description=CryoProtect Flask Application
+After=network.target
+Documentation=https://github.com/yourusername/cryoprotect
+
+[Service]
+Type=simple
+WorkingDirectory=/home/mushu/Projects/CryoProtect
+ExecStart=/home/mushu/Projects/CryoProtect/systemd_run_app.sh
+Environment=PATH=/home/mushu/.local/bin:/home/mushu/.npm-global/bin:/home/mushu/.local/bin:/usr/local/bin:/usr/bin:/var/lib/snapd/snap/bin:/usr/local/sbin:/usr/sbin
+Restart=on-failure
+RestartSec=10s
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

@@ -11,7 +11,7 @@ from database.convex_adapter import create_client
 
 # Set up environment for testing
 os.environ['USE_CONVEX'] = 'true'
-os.environ['CONVEX_URL'] = 'https://dynamic-mink-63.convex.cloud'
+os.environ['CONVEX_URL'] = 'https://upbeat-parrot-866.convex.cloud'
 os.environ['CONVEX_DEPLOYMENT_KEY'] = ''  # Add your deployment key if needed
 
 # Create client

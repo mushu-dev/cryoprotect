@@ -1,0 +1,39 @@
+{
+  "timestamp": "2025-05-12T10:37:25.295253",
+  "rdkit_url": "http://localhost:5002",
+  "property_results": {
+    "Ethanol": {
+      "average": 3.157933553059896,
+      "min": 2.777099609375,
+      "max": 3.872394561767578,
+      "count": 3
+    },
+    "Glycerol": {
+      "average": 3.0214786529541016,
+      "min": 2.9828548431396484,
+      "max": 3.0891895294189453,
+      "count": 3
+    },
+    "DMSO": {
+      "average": 2.423365910847982,
+      "min": 2.327442169189453,
+      "max": 2.4967193603515625,
+      "count": 3
+    },
+    "Sucrose": {
+      "average": 2.2794405619303384,
+      "min": 2.2470951080322266,
+      "max": 2.3162364959716797,
+      "count": 3
+    }
+  },
+  "performance_results": {
+    "total_time": 31.043529510498047,
+    "average_response_time": 9.064650535583496,
+    "p95": 15.413284301757812,
+    "requests": 20,
+    "successful": 20,
+    "errors": 0,
+    "throughput": 644.2566394789794
+  }
+}

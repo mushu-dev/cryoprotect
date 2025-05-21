@@ -1,0 +1,25 @@
+2025-05-12 01:00:20,223 - INFO - Starting performance test
+2025-05-12 01:00:20,227 - ERROR - Failed to get molecule IDs: Expecting value: line 1 column 1 (char 0)
+2025-05-12 01:00:20,227 - ERROR - No molecule IDs found
+2025-05-12 01:00:20,230 - ERROR - Failed to get molecule IDs: Expecting value: line 1 column 1 (char 0)
+2025-05-12 01:00:20,231 - ERROR - No molecule IDs found
+2025-05-12 01:00:20,231 - INFO - Results saved to toxicity_test_results_20250512_010019/api_performance_results.json
+2025-05-12 01:00:20,231 - INFO - Performance test completed
+
+================================================================================
+PERFORMANCE TEST RESULTS
+================================================================================
+
+ORIGINAL ENDPOINTS:
+--------------------------------------------------------------------------------
+Endpoint                                 Avg Time (s)    Med Time (s)    Resp Size (KB) 
+--------------------------------------------------------------------------------
+
+OPTIMIZED ENDPOINTS:
+--------------------------------------------------------------------------------
+Endpoint                                 Avg Time (s)    Med Time (s)    Resp Size (KB) 
+--------------------------------------------------------------------------------
+
+================================================================================
+PERFORMANCE COMPARISON
+================================================================================

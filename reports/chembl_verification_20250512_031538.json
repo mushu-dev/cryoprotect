@@ -1,0 +1,72 @@
+{
+  "timestamp": "2025-05-12T03:15:41.449841",
+  "molecule_count": 28,
+  "property_completeness": {
+    "total_molecules": 28,
+    "molecules_with_properties": 0,
+    "molecules_missing_properties": 28,
+    "molecules_with_jsonb_properties": 0,
+    "molecules_missing_jsonb_properties": 28,
+    "property_coverage": {
+      "Hydrogen Bond Acceptor Count": {
+        "count": 9,
+        "percentage": 32.142857142857146
+      },
+      "Molecular Weight": {
+        "count": 10,
+        "percentage": 35.714285714285715
+      },
+      "Hydrogen Bond Donor Count": {
+        "count": 9,
+        "percentage": 32.142857142857146
+      },
+      "Aromatic Ring Count": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "Ring Count": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "LogP": {
+        "count": 19,
+        "percentage": 67.85714285714286
+      },
+      "TPSA": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "Rotatable Bond Count": {
+        "count": 9,
+        "percentage": 32.142857142857146
+      },
+      "Heavy Atom Count": {
+        "count": 0,
+        "percentage": 0.0
+      }
+    },
+    "molecules_by_property_count": {
+      "0": 9,
+      "1": 0,
+      "2": 10,
+      "3": 0,
+      "4": 9,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0
+    },
+    "property_completeness_percentage": 0.0,
+    "jsonb_property_completeness_percentage": 0.0
+  },
+  "pubchem_cross_references": {
+    "total_molecules": 28,
+    "molecules_with_pubchem_cid": 8,
+    "molecules_missing_pubchem_cid": 20,
+    "molecules_with_inchikey": 27,
+    "molecules_without_inchikey": 1,
+    "pubchem_cross_reference_percentage": 28.57142857142857,
+    "inchikey_coverage_percentage": 96.42857142857143
+  }
+}

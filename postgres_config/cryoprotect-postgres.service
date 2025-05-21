@@ -1,0 +1,19 @@
+[Unit]
+Description=CryoProtect PostgreSQL Container
+After=network.target
+Documentation=https://github.com/yourusername/cryoprotect
+
+[Service]
+Type=forking
+User=mushu
+WorkingDirectory=/home/mushu/Projects/CryoProtect
+ExecStart=/home/mushu/Projects/CryoProtect/run_optimized_postgres.sh --start
+ExecStop=/home/mushu/Projects/CryoProtect/run_optimized_postgres.sh --stop
+ExecReload=/home/mushu/Projects/CryoProtect/run_optimized_postgres.sh --restart
+Restart=on-failure
+RestartSec=30s
+TimeoutStartSec=180s
+TimeoutStopSec=120s
+
+[Install]
+WantedBy=multi-user.target

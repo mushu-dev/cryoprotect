@@ -1,0 +1,15 @@
+# CryoProtect Netlify Deployment Instructions
+
+1. Go to https://app.netlify.com/drop
+2. Drag and drop this entire folder (netlify-deploy-package)
+3. Wait for deployment to complete
+4. After deployment, go to Site settings > Build & deploy > Environment
+5. Add the following environment variables:
+   - NEXT_PUBLIC_NETLIFY=true
+   - NEXT_PUBLIC_API_URL=https://cryoprotect-8030e4025428.herokuapp.com/api
+   - NEXTAUTH_URL=https://[your-site-name].netlify.app
+   - NEXTAUTH_SECRET=[your-auth-secret]
+   - NEXT_PUBLIC_SUPABASE_URL=[your-supabase-url]
+   - NEXT_PUBLIC_SUPABASE_ANON_KEY=[your-supabase-anon-key]
+6. Go to Site settings > Build & deploy > Continuous deployment
+7. Connect your GitHub repository to enable continuous deployment for future updates

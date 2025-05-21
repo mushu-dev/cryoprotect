@@ -1,0 +1,56 @@
+Mapping of Open Issues from blueprint-house/cryoprotect to mushu-dev/cryoprotect
+Created at Thu May 15 12:16:13 AM MDT 2025
+=======================================
+
+Original Issue #295 in blueprint-house/cryoprotect
+  → New Issue #41 in mushu-dev/cryoprotect
+  → https://github.com/mushu-dev/cryoprotect/issues/41
+
+Original Issue #294 in blueprint-house/cryoprotect
+  → New Issue #42 in mushu-dev/cryoprotect
+  → https://github.com/mushu-dev/cryoprotect/issues/42
+
+Original Issue #293 in blueprint-house/cryoprotect
+  → New Issue #43 in mushu-dev/cryoprotect
+  → https://github.com/mushu-dev/cryoprotect/issues/43
+
+Original Issue #292 in blueprint-house/cryoprotect
+  → New Issue #44 in mushu-dev/cryoprotect
+  → https://github.com/mushu-dev/cryoprotect/issues/44
+
+Original Issue #291 in blueprint-house/cryoprotect
+  → New Issue #45 in mushu-dev/cryoprotect
+  → https://github.com/mushu-dev/cryoprotect/issues/45
+
+Original Issue #290 in blueprint-house/cryoprotect
+  → New Issue #46 in mushu-dev/cryoprotect
+  → https://github.com/mushu-dev/cryoprotect/issues/46
+
+Original Issue #289 in blueprint-house/cryoprotect
+  → New Issue #47 in mushu-dev/cryoprotect
+  → https://github.com/mushu-dev/cryoprotect/issues/47
+
+Original Issue #288 in blueprint-house/cryoprotect
+  → New Issue #48 in mushu-dev/cryoprotect
+  → https://github.com/mushu-dev/cryoprotect/issues/48
+
+Original Issue #287 in blueprint-house/cryoprotect
+  → New Issue #49 in mushu-dev/cryoprotect
+  → https://github.com/mushu-dev/cryoprotect/issues/49
+
+Original Issue #286 in blueprint-house/cryoprotect
+  → New Issue #50 in mushu-dev/cryoprotect
+  → https://github.com/mushu-dev/cryoprotect/issues/50
+
+Original Issue #283 in blueprint-house/cryoprotect
+  → New Issue #51 in mushu-dev/cryoprotect
+  → https://github.com/mushu-dev/cryoprotect/issues/51
+
+Original Issue #246 in blueprint-house/cryoprotect
+  → New Issue #52 in mushu-dev/cryoprotect
+  → https://github.com/mushu-dev/cryoprotect/issues/52
+
+Original Issue #245 in blueprint-house/cryoprotect
+  → New Issue #53 in mushu-dev/cryoprotect
+  → https://github.com/mushu-dev/cryoprotect/issues/53
+

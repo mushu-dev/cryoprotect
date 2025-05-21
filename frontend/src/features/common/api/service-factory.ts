@@ -2,6 +2,10 @@ import { moleculeService } from '@/features/molecules/services/molecule-service'
 import { mockMoleculeService } from '@/features/molecules/services/mock-molecule-service';
 import { mixtureService } from '@/features/mixtures/services/mixture-service';
 import { mockMixtureService } from '@/features/mixtures/services/mock-mixture-service';
+import { ProtocolService, MockProtocolService } from '@/features/protocols/services/protocol-service';
+import { ApiProtocolService } from '@/features/protocols/services/protocol-service-api';
+import { ContextProtocolService } from '@/features/protocols/services/protocol-service-with-context';
+import { useApi } from '@/contexts/api-context';
 
 // Helper to check if we should use mock services
 const shouldUseMockServices = () => {
@@ -40,6 +44,20 @@ export const getMoleculeService = () => {
 // Get the appropriate mixture service
 export const getMixtureService = () => {
   return shouldUseMockServices() ? mockMixtureService : mixtureService;
+};
+
+// Get the appropriate protocol service
+export const getProtocolService = (): ProtocolService => {
+  return shouldUseMockServices() 
+    ? new MockProtocolService() 
+    : new ApiProtocolService();
+};
+
+// Get a context-based protocol service
+export const getContextProtocolService = (apiClient: any): ProtocolService => {
+  return shouldUseMockServices()
+    ? new MockProtocolService()
+    : new ContextProtocolService(apiClient);
 };
 
 // Mark API connection as failed - will cause fallback to mock data

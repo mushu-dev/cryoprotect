@@ -1,67 +1,62 @@
 import React from 'react';
-import Link from 'next/link';
 import Head from 'next/head';
 
 export default function Home() {
   return (
-    <>
+    <div style={{ 
+      display: 'flex', 
+      flexDirection: 'column', 
+      alignItems: 'center', 
+      justifyContent: 'center', 
+      minHeight: '100vh',
+      fontFamily: 'Arial, sans-serif',
+      padding: '20px',
+      textAlign: 'center'
+    }}>
       <Head>
-        <title>CryoProtect - A platform for cryoprotectant analysis</title>
-        <meta name="description" content="A platform for cryoprotectant analysis and experiment management" />
+        <title>CryoProtect</title>
+        <meta name="description" content="Cryoprotectant research and analysis platform" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
-      
-      <div className="container mx-auto px-4 py-8">
-        <section className="mb-12">
-          <h1 className="text-4xl font-bold mb-4">CryoProtect</h1>
-          <p className="text-xl text-gray-700 dark:text-gray-300">
-            A platform for cryoprotectant analysis and experiment management
-          </p>
-        </section>
-        
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold mb-4">Molecule Database</h2>
-          <p className="mb-6 text-gray-700 dark:text-gray-300">
-            Explore our comprehensive database of cryoprotectant molecules and their properties.
-          </p>
-          <Link href="/molecules">
-            <a className="text-blue-600 hover:underline font-medium">View Molecules</a>
-          </Link>
-        </section>
-        
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold mb-4">Mixtures</h2>
-          <p className="mb-6 text-gray-700 dark:text-gray-300">
-            Discover optimized cryoprotectant mixtures and their performance characteristics.
-          </p>
-          <Link href="/mixtures">
-            <a className="text-blue-600 hover:underline font-medium">View Mixtures</a>
-          </Link>
-        </section>
-        
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold mb-4">Experiments</h2>
-          <p className="mb-6 text-gray-700 dark:text-gray-300">
-            Design, track, and analyze cryopreservation experiments with detailed protocols.
-          </p>
-          <Link href="/experiments">
-            <a className="text-blue-600 hover:underline font-medium">Manage Experiments</a>
-          </Link>
-        </section>
-        
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold mb-4">Protocols</h2>
-          <p className="mb-6 text-gray-700 dark:text-gray-300">
-            Create and manage standardized protocols for reproducible cryopreservation procedures.
-          </p>
-          <Link href="/protocols">
-            <a className="text-blue-600 hover:underline font-medium">Browse Protocols</a>
-          </Link>
-        </section>
-        
-        <footer className="text-sm text-gray-500 dark:text-gray-400 mt-12">
-          © 2025 CryoProtect. All rights reserved.
-        </footer>
+
+      <h1 style={{ color: '#0070f3', marginBottom: '20px' }}>
+        Welcome to CryoProtect
+      </h1>
+
+      <p style={{ fontSize: '1.2rem', maxWidth: '600px', lineHeight: 1.6 }}>
+        CryoProtect is a platform for cryoprotectant research, analysis, and experimental tracking. 
+        We're currently working on enhancements to our platform to better serve the scientific community.
+      </p>
+
+      <div style={{ 
+        marginTop: '40px',
+        padding: '20px',
+        border: '1px solid #eaeaea',
+        borderRadius: '10px',
+        backgroundColor: '#f9f9f9',
+        maxWidth: '600px'
+      }}>
+        <h2 style={{ color: '#0070f3', marginBottom: '10px' }}>Coming Soon</h2>
+        <ul style={{ 
+          textAlign: 'left', 
+          paddingLeft: '20px',
+          lineHeight: 1.6
+        }}>
+          <li>Enhanced molecular visualization</li>
+          <li>Improved experimental data tracking</li>
+          <li>Protocol and experiment sharing</li>
+          <li>Advanced analysis tools</li>
+          <li>Integration with laboratory equipment</li>
+        </ul>
       </div>
-    </>
+
+      <footer style={{
+        marginTop: '60px',
+        color: '#666',
+        fontSize: '0.9rem'
+      }}>
+        © {new Date().getFullYear()} CryoProtect - All rights reserved
+      </footer>
+    </div>
   );
 }

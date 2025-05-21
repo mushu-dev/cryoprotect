@@ -1,0 +1,136 @@
+{
+  "monitoring": {
+    "enabled": true,
+    "dashboard_port": 5001,
+    "monitoring_dir": "monitoring",
+    "metrics_retention_days": 7,
+    "health_check_intervals": {
+      "database": 60,
+      "api": 60,
+      "system": 30
+    },
+    "alert_thresholds": {
+      "database_failures": 3,
+      "api_errors": 3,
+      "memory_usage": 90,
+      "cpu_usage": 90,
+      "disk_usage": 90
+    }
+  },
+  "notifications": {
+    "email": {
+      "enabled": false,
+      "smtp_server": "smtp.example.com",
+      "smtp_port": 587,
+      "sender_email": "monitoring@example.com",
+      "recipient_emails": ["admin@example.com"],
+      "username": "monitoring@example.com",
+      "password": "",
+      "use_tls": true,
+      "min_severity": "warning"
+    },
+    "slack": {
+      "enabled": false,
+      "webhook_url": "",
+      "channel": "#monitoring",
+      "username": "CryoProtect Monitoring",
+      "icon_emoji": ":warning:",
+      "min_severity": "warning"
+    },
+    "pagerduty": {
+      "enabled": false,
+      "integration_key": "",
+      "component": "CryoProtect",
+      "group": "Monitoring",
+      "class_type": "application",
+      "min_severity": "error"
+    },
+    "sms": {
+      "enabled": false,
+      "account_sid": "",
+      "auth_token": "",
+      "from_number": "+1234567890",
+      "to_numbers": ["+1234567890"],
+      "min_severity": "critical"
+    },
+    "webhooks": [
+      {
+        "enabled": false,
+        "webhook_url": "",
+        "http_method": "POST",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "min_severity": "warning"
+      }
+    ]
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "monitoring/monitoring.log",
+    "max_size_mb": 10,
+    "backup_count": 5,
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  },
+  "database_monitoring": {
+    "enabled": true,
+    "monitor_pool_size": true,
+    "monitor_query_time": true,
+    "slow_query_threshold_ms": 500,
+    "connection_failure_threshold": 3,
+    "circuit_breaker_reset_seconds": 300
+  },
+  "api_monitoring": {
+    "enabled": true,
+    "endpoints": [
+      {
+        "path": "/health",
+        "method": "GET",
+        "data": null,
+        "expected_status": 200
+      },
+      {
+        "path": "/api/v1/molecules",
+        "method": "GET",
+        "data": null,
+        "expected_status": 200
+      },
+      {
+        "path": "/api/v1/mixtures",
+        "method": "GET",
+        "data": null,
+        "expected_status": 200
+      }
+    ],
+    "response_time_warning_threshold_ms": 500,
+    "response_time_error_threshold_ms": 2000
+  },
+  "system_monitoring": {
+    "enabled": true,
+    "monitor_cpu": true,
+    "monitor_memory": true,
+    "monitor_disk": true,
+    "monitor_network": true,
+    "storage_path": "/",
+    "cpu_warning_threshold": 80,
+    "cpu_error_threshold": 90,
+    "memory_warning_threshold": 80,
+    "memory_error_threshold": 90,
+    "disk_warning_threshold": 80,
+    "disk_error_threshold": 90
+  },
+  "progress_trackers": {
+    "checkpoint_dir": "monitoring/checkpoints",
+    "auto_resume": true
+  },
+  "observability": {
+    "enabled": true,
+    "tracing_enabled": true,
+    "correlation_id_header": "X-Correlation-ID",
+    "request_id_header": "X-Request-ID",
+    "trace_id_header": "X-Trace-ID",
+    "span_id_header": "X-Span-ID",
+    "timing_header": "X-Response-Time-Ms",
+    "active_trace_limit": 1000
+  }
+}

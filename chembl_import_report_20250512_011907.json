@@ -1,0 +1,145 @@
+{
+  "test_info": {
+    "molecule_count": 50,
+    "timestamp": "2025-05-12T01:19:07.800746",
+    "cache_dir": "/home/mushu/Projects/CryoProtect/chembl_cache"
+  },
+  "import_stats": {
+    "total_time": 0.014968633651733398,
+    "success_count": 50,
+    "error_count": 0,
+    "average_time_per_molecule": 0.000299372673034668,
+    "molecules_per_second": 3340.318239013746,
+    "total_properties_count": 450,
+    "completed_molecules": 50,
+    "total_molecules": 50,
+    "progress_percentage": 100.0,
+    "elapsed_time": 0.014304876327514648
+  },
+  "data_verification": {
+    "molecules_verified": 50,
+    "properties_verified": 450,
+    "verification_success": true,
+    "errors": []
+  },
+  "database_stats": {
+    "before": {
+      "table_counts": {
+        "molecules": 0,
+        "molecular_properties": 0,
+        "toxicity_data": 0
+      },
+      "database_size": {
+        "total": "0 KB",
+        "molecules": "0 KB",
+        "properties": "0 KB"
+      },
+      "timestamp": "2025-05-12 01:19:07"
+    },
+    "after": {
+      "table_counts": {
+        "molecules": 0,
+        "molecular_properties": 0,
+        "toxicity_data": 0
+      },
+      "database_size": {
+        "total": "0 KB",
+        "molecules": "0 KB",
+        "properties": "0 KB"
+      },
+      "timestamp": "2025-05-12 01:19:07"
+    },
+    "difference": {
+      "table_counts": {
+        "molecules": 0,
+        "molecular_properties": 0,
+        "toxicity_data": 0
+      }
+    }
+  },
+  "performance_metrics": [
+    {
+      "processed": 5,
+      "timestamp": 0.003181934356689453,
+      "overall_rate": 1571.3711973625057,
+      "current_rate": 1571.3711973625057,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 10,
+      "timestamp": 0.004645109176635742,
+      "overall_rate": 2152.8019298875943,
+      "current_rate": 3417.22665797621,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 15,
+      "timestamp": 0.006854057312011719,
+      "overall_rate": 2188.4847641575066,
+      "current_rate": 2263.5207771181867,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 20,
+      "timestamp": 0.008310794830322266,
+      "overall_rate": 2406.508692409203,
+      "current_rate": 3432.327332242226,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 25,
+      "timestamp": 0.009713411331176758,
+      "overall_rate": 2573.7610760658795,
+      "current_rate": 3564.766275709672,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 30,
+      "timestamp": 0.011320352554321289,
+      "overall_rate": 2650.0941429203262,
+      "current_rate": 3111.5014836795253,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 35,
+      "timestamp": 0.011639833450317383,
+      "overall_rate": 3006.915876364679,
+      "current_rate": 15650.388059701492,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 40,
+      "timestamp": 0.012984991073608398,
+      "overall_rate": 3080.4795916493767,
+      "current_rate": 3717.0365118752215,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 45,
+      "timestamp": 0.013562440872192383,
+      "overall_rate": 3317.986815504966,
+      "current_rate": 8658.761354252683,
+      "success_rate": 1.0
+    },
+    {
+      "processed": 50,
+      "timestamp": 0.014203786849975586,
+      "overall_rate": 3520.1879983214435,
+      "current_rate": 7796.1040892193305,
+      "success_rate": 1.0
+    }
+  ],
+  "analysis": {
+    "completion_percentage": 100.0,
+    "time_per_1000_molecules": 0.29937267303466797,
+    "estimated_full_import_time": 1.4968633651733398,
+    "resource_efficiency_score": 334.0318239013746
+  },
+  "performance_summary": {
+    "average_rate": 5318.300373913705,
+    "min_rate": 1571.3711973625057,
+    "max_rate": 15650.388059701492,
+    "rate_stability": 0,
+    "peak_performance_at": 6
+  }
+}

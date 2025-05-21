@@ -1,0 +1,23 @@
+Starting toxicity data optimization...
+Applying toxicity schema migration...
+Skipping actual database migration due to no database connection
+Migration would apply the following files:
+ - migrations/021_toxicity_schema_optimization.sql
+ - migrations/022_toxicity_data_migration.sql
+Schema migration step completed (simulation mode)
+Refreshing materialized views...
+Skipping materialized view refresh due to no database connection
+Views would be refreshed using: SELECT refresh_toxicity_materialized_views();
+Materialized view refresh step completed (simulation mode)
+Verifying schema changes...
+Skipping schema verification due to no database connection
+Would verify the following materialized views:
+ - toxicity_summary
+ - ld50_summary
+ - tox21_activity_summary
+ - hazard_classification_summary
+Schema verification step completed (simulation mode)
+Updating API to use optimized toxicity resources...
+2025-05-12 01:19:07,976 - INFO - Starting toxicity data optimization
+2025-05-12 01:19:08,724 - ERROR - Failed to import optimized toxicity resources: No module named 'rdkit'
+2025-05-12 01:19:08,724 - ERROR - Verification of optimized resources failed

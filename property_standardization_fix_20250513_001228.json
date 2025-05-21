@@ -1,0 +1,16 @@
+{
+  "timestamp": "2025-05-13T00:12:28.976888",
+  "standardization_candidates": 15,
+  "standardization_results": {
+    "updated": 1,
+    "errors": 0,
+    "skipped_duplicates": 14
+  },
+  "duplicate_groups": 7,
+  "merge_results": {
+    "groups_merged": 7,
+    "properties_affected": 14,
+    "records_updated": 28,
+    "errors": 0
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "start_time": "2025-05-12T03:17:52.803453",
+  "end_time": "2025-05-12T03:19:10.527968",
+  "duration_seconds": 77.72,
+  "compounds": {
+    "total_fetched": 20,
+    "total_processed": 3,
+    "inserted": 3,
+    "skipped": 17
+  },
+  "properties": {
+    "total_inserted": 0
+  },
+  "pubchem_cross_references": {
+    "resolved_count": 3,
+    "resolved_by_method": {
+      "chembl_id": 0,
+      "inchikey": 3,
+      "smiles": 0
+    }
+  },
+  "errors": 0,
+  "args": {
+    "limit": 20,
+    "batch_size": 5,
+    "dry_run": false,
+    "verify_only": false,
+    "verify_limit": null
+  },
+  "verification": {
+    "timestamp": "2025-05-12T03:19:10.527229",
+    "molecule_count": 31,
+    "property_completeness": {
+      "total_molecules": 31,
+      "molecules_with_properties": 0,
+      "molecules_missing_properties": 31,
+      "molecules_with_jsonb_properties": 0,
+      "molecules_missing_jsonb_properties": 31,
+      "property_coverage": {
+        "Ring Count": {
+          "count": 0,
+          "percentage": 0.0
+        },
+        "Hydrogen Bond Acceptor Count": {
+          "count": 9,
+          "percentage": 29.03225806451613
+        },
+        "TPSA": {
+          "count": 0,
+          "percentage": 0.0
+        },
+        "Hydrogen Bond Donor Count": {
+          "count": 9,
+          "percentage": 29.03225806451613
+        },
+        "Aromatic Ring Count": {
+          "count": 0,
+          "percentage": 0.0
+        },
+        "LogP": {
+          "count": 19,
+          "percentage": 61.29032258064516
+        },
+        "Molecular Weight": {
+          "count": 10,
+          "percentage": 32.25806451612903
+        },
+        "Heavy Atom Count": {
+          "count": 0,
+          "percentage": 0.0
+        },
+        "Rotatable Bond Count": {
+          "count": 9,
+          "percentage": 29.03225806451613
+        }
+      },
+      "molecules_by_property_count": {
+        "0": 12,
+        "1": 0,
+        "2": 10,
+        "3": 0,
+        "4": 9,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "property_completeness_percentage": 0.0,
+      "jsonb_property_completeness_percentage": 0.0
+    },
+    "pubchem_cross_references": {
+      "total_molecules": 31,
+      "molecules_with_pubchem_cid": 11,
+      "molecules_missing_pubchem_cid": 20,
+      "molecules_with_inchikey": 30,
+      "molecules_without_inchikey": 1,
+      "pubchem_cross_reference_percentage": 35.483870967741936,
+      "inchikey_coverage_percentage": 96.7741935483871
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "test_info": {
+    "molecule_count": 5000,
+    "timestamp": "2025-05-12T01:15:48.460443",
+    "cache_dir": "/home/mushu/Projects/CryoProtect/chembl_cache"
+  },
+  "import_stats": {
+    "total_time": 0,
+    "success_count": 1250,
+    "error_count": 0,
+    "average_time_per_molecule": 0,
+    "molecules_per_second": 0,
+    "total_properties_count": 0,
+    "completed_molecules": 1250,
+    "total_molecules": 5000,
+    "progress_percentage": 25.0,
+    "elapsed_time": 0.48177003860473633
+  },
+  "data_verification": {
+    "molecules_verified": 0,
+    "properties_verified": 0,
+    "verification_success": false,
+    "errors": []
+  },
+  "database_stats": {
+    "before": {},
+    "after": {},
+    "difference": {}
+  }
+}

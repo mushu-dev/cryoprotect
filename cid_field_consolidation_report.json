@@ -1,0 +1,26 @@
+{
+  "before": {
+    "total_molecules": 1554,
+    "with_pubchem_cid": 1512,
+    "with_cid": 1512,
+    "with_both": 1512,
+    "with_matching_values": 1512,
+    "with_different_values": 0,
+    "with_cid_only": 0,
+    "with_pubchem_cid_only": 0
+  },
+  "updates": {
+    "updated_records": 0,
+    "details": []
+  },
+  "after": {
+    "total_molecules": 1554,
+    "with_pubchem_cid": 1512,
+    "with_cid": 1512,
+    "with_both": 1512,
+    "with_matching_values": 1512,
+    "with_different_values": 0,
+    "with_cid_only": 0,
+    "with_pubchem_cid_only": 0
+  }
+}

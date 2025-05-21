@@ -1,0 +1,316 @@
+#!/bin/bash
+# Script to create a simple connection test page on GitHub Pages or similar service
+
+# Configuration
+BACKEND_URL="https://cryoprotect-8030e4025428.herokuapp.com"
+OUTPUT_DIR="public_connection_test"
+
+# Create output directory
+mkdir -p "$OUTPUT_DIR"
+
+# Create the HTML file
+cat > "$OUTPUT_DIR/index.html" << EOF
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryoProtect API Connection Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .container {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 40px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .success {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .error {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .pending {
+            color: #ffc107;
+            font-weight: bold;
+        }
+        pre {
+            background: #f8f9fa;
+            border-radius: 4px;
+            padding: 10px;
+            overflow: auto;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            max-height: 300px;
+        }
+        .api-link {
+            display: inline-block;
+            margin-top: 1em;
+            padding: 8px 16px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #007bff;
+            border: 1px solid #ddd;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .api-link:hover {
+            background-color: #e9ecef;
+            color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f8f9fa;
+        }
+        .footer {
+            margin-top: 2em;
+            padding-top: 1em;
+            border-top: 1px solid #eee;
+            font-size: 0.9em;
+            color: #6c757d;
+            text-align: center;
+        }
+        .test-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .test-button:hover {
+            background-color: #0069d9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>CryoProtect API Connection Test</h1>
+            <p>Verify connectivity between any frontend and the Heroku backend</p>
+        </div>
+        
+        <div>
+            <h2>Configuration</h2>
+            <table>
+                <tr>
+                    <th>Backend URL</th>
+                    <td id="backendUrl">${BACKEND_URL}</td>
+                </tr>
+                <tr>
+                    <th>Frontend URL</th>
+                    <td id="frontendUrl">Loading...</td>
+                </tr>
+                <tr>
+                    <th>Current Time</th>
+                    <td id="currentTime">Loading...</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div>
+            <h2>Connectivity Test</h2>
+            <p>Status: <span id="status" class="pending">⏳ Please click "Run Tests" to begin testing...</span></p>
+            <button id="testButton" class="test-button">Run Tests</button>
+            <pre id="results">No tests run yet...</pre>
+            
+            <h2>Direct API Access</h2>
+            <p>The following links allow direct access to the backend API:</p>
+            <div>
+                <a href="${BACKEND_URL}/health" target="_blank" class="api-link">Health Check</a>
+                <a href="${BACKEND_URL}/api/connect" target="_blank" class="api-link">Connectivity API</a>
+                <a href="${BACKEND_URL}/api/molecules?limit=5" target="_blank" class="api-link">List Molecules (5)</a>
+                <a href="${BACKEND_URL}/api/molecules/1" target="_blank" class="api-link">Get Molecule #1</a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 CryoProtect Team</p>
+        </div>
+    </div>
+    
+    <script>
+        // Set current time and frontend URL
+        document.getElementById('frontendUrl').textContent = window.location.origin + window.location.pathname;
+        
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('currentTime').textContent = now.toISOString();
+        }
+        
+        updateTime();
+        setInterval(updateTime, 1000);
+        
+        // Run connectivity tests
+        document.getElementById('testButton').addEventListener('click', runConnectivityTests);
+        
+        async function runConnectivityTests() {
+            const statusEl = document.getElementById('status');
+            const resultsEl = document.getElementById('results');
+            const backendUrl = document.getElementById('backendUrl').textContent;
+            
+            statusEl.textContent = '⏳ Testing connectivity...';
+            statusEl.className = 'pending';
+            resultsEl.textContent = 'Running tests...';
+            
+            let results = {};
+            
+            try {
+                // Health check test
+                try {
+                    const healthResponse = await fetch(backendUrl + '/health', {
+                        mode: 'cors'
+                    });
+                    const healthData = await healthResponse.json();
+                    results.healthCheck = {
+                        endpoint: backendUrl + '/health',
+                        status: healthResponse.status,
+                        data: healthData
+                    };
+                } catch (error) {
+                    results.healthCheck = {
+                        endpoint: backendUrl + '/health',
+                        status: 'error',
+                        message: error.message
+                    };
+                }
+                
+                // API connect test
+                try {
+                    const connectResponse = await fetch(backendUrl + '/api/connect', {
+                        headers: {
+                            'Origin': window.location.origin
+                        },
+                        mode: 'cors'
+                    });
+                    const connectData = await connectResponse.json();
+                    results.apiConnect = {
+                        endpoint: backendUrl + '/api/connect',
+                        status: connectResponse.status,
+                        data: connectData
+                    };
+                } catch (error) {
+                    results.apiConnect = {
+                        endpoint: backendUrl + '/api/connect',
+                        status: 'error',
+                        message: error.message
+                    };
+                }
+                
+                // Molecules list test
+                try {
+                    const moleculesResponse = await fetch(backendUrl + '/api/molecules?limit=1', {
+                        headers: {
+                            'Origin': window.location.origin
+                        },
+                        mode: 'cors'
+                    });
+                    const moleculesData = await moleculesResponse.json();
+                    results.molecules = {
+                        endpoint: backendUrl + '/api/molecules?limit=1',
+                        status: moleculesResponse.status,
+                        data: moleculesData
+                    };
+                } catch (error) {
+                    results.molecules = {
+                        endpoint: backendUrl + '/api/molecules?limit=1',
+                        status: 'error',
+                        message: error.message
+                    };
+                }
+                
+                // Determine overall status
+                const allSuccessful = 
+                    (results.healthCheck?.status === 200 || results.healthCheck?.data?.status === 'ok') &&
+                    (results.apiConnect?.status === 200 || results.apiConnect?.data?.status === 'success') &&
+                    (results.molecules?.status === 200 || results.molecules?.data?.status === 'success');
+                
+                // Update status
+                if (allSuccessful) {
+                    statusEl.textContent = '✅ Success! Backend is fully accessible';
+                    statusEl.className = 'success';
+                } else {
+                    statusEl.textContent = '❌ Connection issues detected';
+                    statusEl.className = 'error';
+                }
+                
+                // Format for display
+                const summary = {
+                    timestamp: new Date().toISOString(),
+                    overall: allSuccessful ? 'success' : 'failure',
+                    results: results
+                };
+                
+                // Display results
+                resultsEl.textContent = JSON.stringify(summary, null, 2);
+                
+            } catch (error) {
+                statusEl.textContent = '❌ Error running tests: ' + error.message;
+                statusEl.className = 'error';
+                resultsEl.textContent = error.stack;
+            }
+        }
+    </script>
+</body>
+</html>
+EOF
+
+# Create README
+cat > "$OUTPUT_DIR/README.md" << EOF
+# CryoProtect API Connection Test
+
+This is a simple page to test connectivity to the CryoProtect backend API.
+
+## Usage
+
+1. Open index.html in your browser
+2. Click "Run Tests" to check connectivity
+3. View the results of the connectivity tests
+
+## Backend API Information
+
+- Base URL: ${BACKEND_URL}
+- Health Check: ${BACKEND_URL}/health
+- API Connect: ${BACKEND_URL}/api/connect
+- List Molecules: ${BACKEND_URL}/api/molecules
+
+## Deployment
+
+This page can be deployed to any static hosting service such as:
+- GitHub Pages
+- Netlify
+- Vercel
+- Or served locally
+
+No build step required - just deploy the files as-is.
+EOF
+
+echo "Connection test page created in $OUTPUT_DIR/"
+echo "You can deploy this to GitHub Pages, Netlify, or any static hosting service."
+echo "Or you can simply open the HTML file locally in your browser."

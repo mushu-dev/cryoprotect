@@ -1,0 +1,30 @@
+{
+  "timestamp": "2025-05-17T03:50:02.746Z",
+  "tests": {
+    "Playwright Browser": {
+      "status": "passed",
+      "error": null
+    },
+    "File Operations": {
+      "status": "passed",
+      "error": null
+    },
+    "Library Compatibility": {
+      "status": "passed",
+      "error": null
+    },
+    "Context7 MCP Server": {
+      "status": "skipped",
+      "reason": "Cannot be tested outside Claude Code CLI"
+    },
+    "Supabase MCP Server": {
+      "status": "skipped",
+      "reason": "Cannot be tested outside Claude Code CLI"
+    }
+  },
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "skipped": 2
+  }
+}

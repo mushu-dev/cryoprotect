@@ -1,0 +1,197 @@
+"""
+CryoProtect - Hierarchical Environment Configuration System
+"""
+
+import os
+import json
+import sys
+from typing import Any, Dict, List, Optional, Type, TypeVar, Union
+
+# Type variable for config class types
+ConfigType = TypeVar("ConfigType", bound="BaseConfig")
+
+class ConfigurationError(Exception):
+    """Exception raised for configuration errors."""
+    pass
+
+class BaseConfig:
+    """Base configuration class."""
+
+    # Core application settings
+    APP_NAME: str = "CryoProtect"
+    APP_ENVIRONMENT: str = "development"
+    APP_DEBUG: bool = False
+    APP_TESTING: bool = False
+    APP_SECRET_KEY: str
+
+    # API configuration
+    API_TITLE: str = "CryoProtect Analyzer API"
+    API_VERSION: str = "v1"
+    API_BASE_URL: str
+    API_OPENAPI_VERSION: str = "3.0.2"
+    API_OPENAPI_URL_PREFIX: str = "/"
+    API_SWAGGER_UI_PATH: str = "/swagger"
+    API_SWAGGER_UI_URL: str = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
+
+    # Database configuration
+    DATABASE_CONNECTION_MODE: str = "auto"
+    DATABASE_CONNECTION_TIMEOUT: int = 30
+    DATABASE_CONNECTION_LIFETIME: int = 3600
+    DATABASE_IDLE_TIMEOUT: int = 300
+    DATABASE_APPLICATION_NAME: str = "CryoProtect"
+
+    # Authentication configuration
+    AUTH_URL: str
+    AUTH_DEBUG: bool = False
+
+    # Logging configuration
+    LOGGING_LEVEL: str = "INFO"
+    LOGGING_FILE: str = "cryoprotectant_analysis.log"
+    LOGGING_LOG_TO_FILE: bool = True
+
+    # Caching configuration
+    CACHING_TYPE: str = "memory"
+    CACHING_REDIS_URL: str
+    CACHING_DEFAULT_TIMEOUT: int = 300
+
+    # Rate limiting configuration
+    RATE_LIMITING_ENABLED: bool = True
+    RATE_LIMITING_STORAGE_URL: str = "memory://"
+    RATE_LIMITING_STRATEGY: str = "fixed-window"
+    RATE_LIMITING_BY: str = "hybrid"
+    RATE_LIMITING_HEADERS_ENABLED: bool = True
+    RATE_LIMITING_RETRY_AFTER: int = 60
+
+    # ChEMBL API configuration
+    CHEMBL_API_URL: str = "https://www.ebi.ac.uk/chembl/api/data"
+    CHEMBL_API_KEY: str
+    CHEMBL_API_KEY_REQUIRED: bool = False
+    CHEMBL_API_DELAY: float = 0.3
+    CHEMBL_ID_FILE: str
+    CHEMBL_CACHE_DIR: str = "cache/chembl"
+    CHEMBL_REQUESTS_PER_SECOND: float = 5.0
+    CHEMBL_MAX_RETRIES: int = 5
+    CHEMBL_FAILURE_THRESHOLD: int = 3
+    CHEMBL_RECOVERY_TIMEOUT: int = 60
+    CHEMBL_CACHE_TTL: int = 2592000
+    CHEMBL_MEMORY_CACHE_SIZE: int = 1000
+    CHEMBL_MEMORY_THRESHOLD: float = 80.0
+    CHEMBL_BATCH_SIZE: int = 100
+    CHEMBL_MEMORY_CHECK_FREQUENCY: int = 10
+    CHEMBL_CHECKPOINT_DIR: str = "checkpoints"
+
+    # Frontend-specific configuration
+    FRONTEND_GOOGLE_ANALYTICS_ID: str
+    FRONTEND_SENTRY_DSN: str
+
+    def __init__(self):
+        """Initialize the configuration."""
+        pass
+        
+    def validate(self):
+        """Validate the configuration."""
+        pass
+        
+    @classmethod
+    def from_env(cls: Type[ConfigType]) -> ConfigType:
+        """Create a configuration instance based on the current environment."""
+        return cls()
+
+class DevelopmentConfig(BaseConfig):
+    """Development environment configuration."""
+    APP_DEBUG: bool = True
+    APP_FEATURE_FLAGS: bool = True
+    APP_FEATURE_FLAGS: bool = True
+    AUTH_DEBUG: bool = True
+    LOGGING_LEVEL: str = "DEBUG"
+
+class TestingConfig(BaseConfig):
+    """Testing environment configuration."""
+    APP_DEBUG: bool = True
+    APP_TESTING: bool = True
+    APP_FEATURE_FLAGS: bool = True
+    LOGGING_LEVEL: str = "DEBUG"
+
+class StagingConfig(BaseConfig):
+    """Staging environment configuration."""
+    APP_DEBUG: bool = False
+    APP_FEATURE_FLAGS: bool = True
+    API_CORS: List = ['https://staging.cryoprotect-analyzer.com']
+    LOGGING_LEVEL: str = "INFO"
+
+class ProductionConfig(BaseConfig):
+    """Production environment configuration."""
+    APP_DEBUG: bool = False
+    APP_FEATURE_FLAGS: bool = False
+    API_CORS: List = ['https://cryoprotect-analyzer.com']
+    LOGGING_LEVEL: str = "WARNING"
+    CACHING_TYPE: str = "redis"
+
+# Dictionary with different configuration environments
+config_classes = {
+    "development": DevelopmentConfig,
+    "testing": TestingConfig,
+    "staging": StagingConfig,
+    "production": ProductionConfig,
+}
+
+# Create the active configuration instance
+active_config = BaseConfig.from_env()
+
+# For module-level imports
+APP_NAME = active_config.APP_NAME
+APP_ENVIRONMENT = active_config.APP_ENVIRONMENT
+APP_DEBUG = active_config.APP_DEBUG
+APP_TESTING = active_config.APP_TESTING
+APP_SECRET_KEY = active_config.APP_SECRET_KEY
+API_TITLE = active_config.API_TITLE
+API_VERSION = active_config.API_VERSION
+API_BASE_URL = active_config.API_BASE_URL
+API_OPENAPI_VERSION = active_config.API_OPENAPI_VERSION
+API_OPENAPI_URL_PREFIX = active_config.API_OPENAPI_URL_PREFIX
+API_SWAGGER_UI_PATH = active_config.API_SWAGGER_UI_PATH
+API_SWAGGER_UI_URL = active_config.API_SWAGGER_UI_URL
+DATABASE_CONNECTION_MODE = active_config.DATABASE_CONNECTION_MODE
+DATABASE_CONNECTION_TIMEOUT = active_config.DATABASE_CONNECTION_TIMEOUT
+DATABASE_CONNECTION_LIFETIME = active_config.DATABASE_CONNECTION_LIFETIME
+DATABASE_IDLE_TIMEOUT = active_config.DATABASE_IDLE_TIMEOUT
+DATABASE_APPLICATION_NAME = active_config.DATABASE_APPLICATION_NAME
+AUTH_URL = active_config.AUTH_URL
+AUTH_DEBUG = active_config.AUTH_DEBUG
+LOGGING_LEVEL = active_config.LOGGING_LEVEL
+LOGGING_FILE = active_config.LOGGING_FILE
+LOGGING_LOG_TO_FILE = active_config.LOGGING_LOG_TO_FILE
+CACHING_TYPE = active_config.CACHING_TYPE
+CACHING_REDIS_URL = active_config.CACHING_REDIS_URL
+CACHING_DEFAULT_TIMEOUT = active_config.CACHING_DEFAULT_TIMEOUT
+RATE_LIMITING_ENABLED = active_config.RATE_LIMITING_ENABLED
+RATE_LIMITING_STORAGE_URL = active_config.RATE_LIMITING_STORAGE_URL
+RATE_LIMITING_STRATEGY = active_config.RATE_LIMITING_STRATEGY
+RATE_LIMITING_BY = active_config.RATE_LIMITING_BY
+RATE_LIMITING_HEADERS_ENABLED = active_config.RATE_LIMITING_HEADERS_ENABLED
+RATE_LIMITING_RETRY_AFTER = active_config.RATE_LIMITING_RETRY_AFTER
+CHEMBL_API_URL = active_config.CHEMBL_API_URL
+CHEMBL_API_KEY = active_config.CHEMBL_API_KEY
+CHEMBL_API_KEY_REQUIRED = active_config.CHEMBL_API_KEY_REQUIRED
+CHEMBL_API_DELAY = active_config.CHEMBL_API_DELAY
+CHEMBL_ID_FILE = active_config.CHEMBL_ID_FILE
+CHEMBL_CACHE_DIR = active_config.CHEMBL_CACHE_DIR
+CHEMBL_REQUESTS_PER_SECOND = active_config.CHEMBL_REQUESTS_PER_SECOND
+CHEMBL_MAX_RETRIES = active_config.CHEMBL_MAX_RETRIES
+CHEMBL_FAILURE_THRESHOLD = active_config.CHEMBL_FAILURE_THRESHOLD
+CHEMBL_RECOVERY_TIMEOUT = active_config.CHEMBL_RECOVERY_TIMEOUT
+CHEMBL_CACHE_TTL = active_config.CHEMBL_CACHE_TTL
+CHEMBL_MEMORY_CACHE_SIZE = active_config.CHEMBL_MEMORY_CACHE_SIZE
+CHEMBL_MEMORY_THRESHOLD = active_config.CHEMBL_MEMORY_THRESHOLD
+CHEMBL_BATCH_SIZE = active_config.CHEMBL_BATCH_SIZE
+CHEMBL_MEMORY_CHECK_FREQUENCY = active_config.CHEMBL_MEMORY_CHECK_FREQUENCY
+CHEMBL_CHECKPOINT_DIR = active_config.CHEMBL_CHECKPOINT_DIR
+FRONTEND_GOOGLE_ANALYTICS_ID = active_config.FRONTEND_GOOGLE_ANALYTICS_ID
+FRONTEND_SENTRY_DSN = active_config.FRONTEND_SENTRY_DSN
+
+# If this module is run directly, print the configuration
+if __name__ == "__main__":
+    print(f"Configuration: {active_config.__class__.__name__}")
+    for key, value in vars(active_config).items():
+        if not key.startswith("_"):
+            print(f"{key}: {value}")

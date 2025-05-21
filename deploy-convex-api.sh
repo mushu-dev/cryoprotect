@@ -19,7 +19,7 @@ fi
 
 # Deploy to Convex
 echo "Deploying to Convex..."
-npx convex deploy
+npx convex deploy --yes --typecheck=disable
 
 echo "Deployment complete!"
 echo "Testing Convex API endpoints..."

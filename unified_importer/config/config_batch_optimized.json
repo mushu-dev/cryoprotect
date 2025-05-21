@@ -1,0 +1,92 @@
+{
+    "logging": {
+        "level": "INFO",
+        "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        "file": "unified_importer.log"
+    },
+    "database": {
+        "host": "localhost",
+        "port": 5432,
+        "database": "cryoprotect",
+        "user": "postgres",
+        "password": "",
+        "pool_min_size": 5,
+        "pool_max_size": 20,
+        "pool_target_utilization": 0.7,
+        "pool_timeout": 30.0,
+        "pool_max_lifetime": 3600.0,
+        "pool_validation_interval": 300.0,
+        "pool_health_check_interval": 60.0,
+        "batch_size": 100,
+        "max_retries": 3,
+        "retry_delay": 2.0
+    },
+    "use_enhanced_connection_pool": true,
+    "batch_processing": {
+        "max_workers": 4,
+        "adaptive_batch_sizing": true,
+        "parallel_processing": true
+    },
+    "checkpoints": {
+        "directory": "checkpoints",
+        "backup_interval": 5
+    },
+    "sources": {
+        "chembl": {
+            "api_base_url": "https://www.ebi.ac.uk/chembl/api/data",
+            "api_version": "v1.3",
+            "batch_size": 50,
+            "max_retries": 3,
+            "retry_delay": 2.0,
+            "api_delay": 0.5,
+            "property_types": ["ALogP", "HBA", "HBD", "MW", "PSA", "RTB"]
+        },
+        "pubchem": {
+            "api_base_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug",
+            "batch_size": 100,
+            "max_retries": 3,
+            "retry_delay": 2.0,
+            "api_delay": 0.5,
+            "property_filters": {
+                "XLogP": [-3, 6],
+                "MolecularWeight": [18, 500],
+                "HBondDonorCount": [0, 10],
+                "HBondAcceptorCount": [0, 15],
+                "RotatableBondCount": [0, 15]
+            },
+            "search_properties": [
+                "IUPACName",
+                "MolecularFormula",
+                "XLogP",
+                "ExactMass",
+                "MonoisotopicMass",
+                "TPSA",
+                "ComplexityScore",
+                "HBondDonorCount",
+                "HBondAcceptorCount",
+                "RotatableBondCount",
+                "HeavyAtomCount",
+                "IsotopeAtomCount",
+                "AtomStereoCount",
+                "DefinedAtomStereoCount",
+                "UndefinedAtomStereoCount",
+                "BondStereoCount",
+                "DefinedBondStereoCount",
+                "UndefinedBondStereoCount",
+                "CovalentUnitCount"
+            ]
+        }
+    },
+    "transforms": {
+        "molecule_transform": {
+            "standardize_smiles": true,
+            "resolve_identifiers": true,
+            "calculate_fingerprints": true,
+            "fingerprint_types": ["morgan", "rdkit"]
+        },
+        "property_transform": {
+            "validate_property_values": true,
+            "convert_units": true
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "cryoprotect-bypass",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "vercel-build": "echo 'Skip build step'"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "timestamp": "2025-05-12T20:36:20.195940",
+  "empty_tables": [
+    "molecule",
+    "molecular_property",
+    "mixture",
+    "mixture_component",
+    "experiment",
+    "experiment_property",
+    "prediction",
+    "project",
+    "team",
+    "user_profile"
+  ],
+  "foreign_key_issues": [
+    "mixture_component.mixture_id \u2192 mixture.id",
+    "mixture_component.molecule_id \u2192 molecule.id",
+    "experiment.mixture_id \u2192 mixture.id",
+    "experiment.project_id \u2192 project.id",
+    "experiment_property.experiment_id \u2192 experiment.id",
+    "molecular_property.molecule_id \u2192 molecule.id",
+    "prediction.molecule_id \u2192 molecule.id",
+    "prediction.method_id \u2192 calculation_method.id"
+  ],
+  "scientific_issues": [],
+  "status": "FAIL"
+}

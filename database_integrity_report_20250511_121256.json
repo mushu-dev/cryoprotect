@@ -1,0 +1,642 @@
+{
+  "timestamp": "2025-05-11T12:12:56.853883",
+  "summary": {
+    "tables_checked": 33,
+    "rows_checked": 5654,
+    "foreign_keys_checked": 27,
+    "issues_found": 99
+  },
+  "issues": [
+    {
+      "severity": "error",
+      "title": "Error checking foreign key experiment_properties.experiment_id",
+      "description": "syntax error at or near \"'83609bcd-424b-4c87-8f1c-5488a95c5839'\"\nLINE 3:                             FROM (VALUES '83609bcd-424b-4c87...\n                                                 ^\n",
+      "timestamp": "2025-05-11T12:13:03.774920"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking foreign key experiment_properties.property_type_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:03.903499"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking foreign key experiments.mixture_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:04.003039"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking foreign key experiments.molecule_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:04.097824"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking foreign key experiments.property_type_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:04.192982"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking foreign key mixture_components.mixture_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:04.295829"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking foreign key mixture_components.molecule_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:04.433478"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking foreign key molecular_properties.molecule_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:04.507644"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking foreign key molecular_properties.property_type_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:04.583740"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking foreign key predictions.calculation_method_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:04.650438"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking foreign key predictions.mixture_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:04.712858"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking foreign key predictions.molecule_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:04.778227"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking foreign key predictions.property_type_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:04.842400"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking foreign key projects.team_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:04.912270"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking foreign key property_calculation_queue.molecule_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:04.981567"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking foreign key team_members.team_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:05.045370"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking foreign key user_profile.team_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:05.109348"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field calculation_method.id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:05.194392"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field calculation_method.name",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:05.261528"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field calculation_methods.id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:05.326031"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field calculation_methods.name",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:05.395638"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field calculation_methods.created_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:05.459424"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field calculation_methods.updated_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:05.530688"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field experiment_properties.id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:05.628298"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field experiment_properties.experiment_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:05.711815"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field experiment_properties.property_type_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:05.775925"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field experiments.id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:05.839858"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field experiments.created_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:05.906162"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field experiments.updated_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:05.970873"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field mixture_components.id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:06.034005"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field mixture_components.mixture_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:06.098225"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field mixture_components.molecule_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:06.185800"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field mixture_components.concentration",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:06.280812"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field mixture_components.concentration_unit",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:06.356968"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field mixture_components.created_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:06.424698"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field mixture_components.updated_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:06.518708"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field mixtures.id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:06.583734"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field mixtures.name",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:06.655770"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field mixtures.created_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:06.728945"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field mixtures.updated_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:06.796793"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field molecular_properties.id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:06.860721"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field molecular_properties.molecule_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:06.926578"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field molecular_properties.property_type_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:07.011099"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field molecular_properties.created_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:07.131819"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field molecular_properties.updated_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:07.375383"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field molecules.id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:07.443341"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field molecules.name",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:07.505775"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field molecules.created_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:07.569000"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field molecules.updated_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:07.635015"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field optimization_reports.id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:07.702019"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field optimization_reports.report_date",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:07.766772"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field optimization_reports.report_type",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:07.828721"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field optimization_reports.report_content",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:07.894154"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field predictions.id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:07.967441"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field predictions.property_type_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:08.033049"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field predictions.calculation_method_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:08.104227"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field predictions.created_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:08.181994"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field predictions.updated_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:08.257852"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field projects.id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:08.324048"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field projects.name",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:08.387251"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field projects.created_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:08.453931"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field projects.updated_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:08.526075"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field property_calculation_queue.id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:08.594888"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field property_calculation_queue.molecule_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:08.674617"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field property_calculation_queue.smiles",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:08.774123"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field property_types.id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:08.862298"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field property_types.name",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:08.997457"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field property_types.data_type",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:09.106922"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field property_types.created_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:09.387611"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field property_types.updated_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:09.458840"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field rls_verification_reports.id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:09.524710"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field scientific_data_audit.id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:09.588240"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field scientific_data_audit.table_name",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:09.652891"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field scientific_data_audit.record_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:09.721385"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field scientific_data_audit.operation",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:09.793764"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field scientific_data_audit.user_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:09.861068"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field scientific_data_audit.timestamp",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:09.926237"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field team_members.id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:10.073465"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field team_members.team_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:10.168743"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field team_members.user_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:10.241624"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field team_members.role",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:10.308032"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field team_members.created_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:10.370807"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field team_members.updated_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:10.437016"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field teams.id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:10.509941"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field teams.name",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:10.574307"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field teams.created_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:10.638737"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field teams.updated_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:10.733374"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field toxicity_data_source.id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:10.831256"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field toxicity_data_source.name",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:10.906112"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field user_profile.id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:10.974533"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field user_profile.auth_user_id",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:11.042231"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field user_profile.display_name",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:11.131957"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field user_profile.email",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:11.202377"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field user_profile.created_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:11.405755"
+    },
+    {
+      "severity": "error",
+      "title": "Error checking required field user_profile.updated_at",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:11.471717"
+    },
+    {
+      "severity": "error",
+      "title": "Error verifying chemical data quality",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:11.548865"
+    },
+    {
+      "severity": "error",
+      "title": "Error verifying mixture integrity",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:11.627592"
+    },
+    {
+      "severity": "error",
+      "title": "Error verifying property data consistency",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:11.711810"
+    },
+    {
+      "severity": "error",
+      "title": "Error verifying team/project access",
+      "description": "current transaction is aborted, commands ignored until end of transaction block\n",
+      "timestamp": "2025-05-11T12:13:11.774858"
+    }
+  ],
+  "data_counts": {
+    "calculation_method": 2,
+    "calculation_methods": 9,
+    "chembl_import_batches": 0,
+    "chembl_import_logs": 0,
+    "cryoprotection_scores": 0,
+    "experiment_properties": 3,
+    "experiment_with_results": 5,
+    "experiments": 5,
+    "lab_verifications": 0,
+    "migrations": 0,
+    "mixture_components": 3,
+    "mixture_with_components": 10,
+    "mixtures": 10,
+    "molecular_properties": 741,
+    "molecule_experiments": 0,
+    "molecule_proteins": 0,
+    "molecule_with_properties": 735,
+    "molecules": 735,
+    "optimization_reports": 1,
+    "predictions": 15,
+    "projects": 3,
+    "property_calculation_queue": 100,
+    "property_types": 50,
+    "proteins": 0,
+    "rls_policy_stats": 124,
+    "rls_verification_reports": 1,
+    "scientific_data_audit": 3094,
+    "shared_resources": 0,
+    "shares": 0,
+    "team_members": 2,
+    "teams": 2,
+    "toxicity_data_source": 1,
+    "user_profile": 3
+  },
+  "status": "FAIL",
+  "execution_time_seconds": 14.92
+}

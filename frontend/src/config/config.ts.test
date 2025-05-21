@@ -1,0 +1,442 @@
+/**
+ * CryoProtect Configuration
+ * 
+ * This file is auto-generated from the unified configuration schema.
+ */
+
+export interface AppConfig {
+  /**
+   * Application name
+   */
+  name: string;
+  /**
+   * Application environment
+   */
+  environment: "development" | "testing" | "staging" | "production";
+  /**
+   * Enable debug mode
+   */
+  debug?: boolean;
+  /**
+   * Enable testing mode
+   */
+  testing?: boolean;
+  /**
+   * Secret key for cryptographic signing
+   */
+  secret_key: string;
+  /**
+   * Feature flag settings
+   */
+  feature_flags?: Record<string, any>;
+}
+
+export interface ApiConfig {
+  /**
+   * API title for documentation
+   */
+  title?: string;
+  /**
+   * API version
+   */
+  version?: string;
+  /**
+   * Base URL for the API
+   */
+  base_url: string;
+  /**
+   * OpenAPI specification version
+   */
+  openapi_version?: string;
+  /**
+   * URL prefix for OpenAPI documentation
+   */
+  openapi_url_prefix?: string;
+  /**
+   * URL path for Swagger UI
+   */
+  swagger_ui_path?: string;
+  /**
+   * URL for Swagger UI assets
+   */
+  swagger_ui_url?: string;
+  /**
+   * CORS configuration
+   */
+  cors?: Record<string, any>;
+}
+
+export interface DatabaseConfig {
+  /**
+   * Database connection mode
+   */
+  connection_mode?: "local" | "supabase" | "mcp" | "auto";
+  /**
+   * Local database configuration
+   */
+  local?: Record<string, any>;
+  /**
+   * Supabase configuration
+   */
+  supabase?: Record<string, any>;
+  /**
+   * MCP configuration
+   */
+  mcp?: Record<string, any>;
+  /**
+   * Connection timeout in seconds
+   */
+  connection_timeout?: number;
+  /**
+   * Connection lifetime in seconds
+   */
+  connection_lifetime?: number;
+  /**
+   * Idle timeout in seconds
+   */
+  idle_timeout?: number;
+  /**
+   * Application name for database connections
+   */
+  application_name?: string;
+}
+
+export interface AuthConfig {
+  /**
+   * Authentication URL
+   */
+  url: string;
+  /**
+   * Enable NextAuth.js debug mode
+   */
+  debug?: boolean;
+}
+
+export interface LoggingConfig {
+  /**
+   * Logging level
+   */
+  level?: "DEBUG" | "INFO" | "WARNING" | "ERROR" | "CRITICAL";
+  /**
+   * Log file name
+   */
+  file?: string;
+  /**
+   * Enable logging to file
+   */
+  log_to_file?: boolean;
+}
+
+export interface CachingConfig {
+  /**
+   * Cache type
+   */
+  type?: "memory" | "redis" | "filesystem";
+  /**
+   * Redis URL for caching
+   */
+  redis_url?: string;
+  /**
+   * Default cache timeout in seconds
+   */
+  default_timeout?: number;
+}
+
+export interface RateLimitingConfig {
+  /**
+   * Enable rate limiting
+   */
+  enabled?: boolean;
+  /**
+   * Rate limit storage URL
+   */
+  storage_url?: string;
+  /**
+   * Rate limiting strategy
+   */
+  strategy?: "fixed-window" | "moving-window";
+  /**
+   * Rate limiting identifier
+   */
+  by?: "ip" | "user" | "hybrid";
+  /**
+   * Enable rate limit headers
+   */
+  headers_enabled?: boolean;
+  /**
+   * Retry after seconds
+   */
+  retry_after?: number;
+  /**
+   * Rate limit rates by role
+   */
+  roles?: Record<string, any>;
+}
+
+export interface ChemblConfig {
+  /**
+   * ChEMBL API URL
+   */
+  api_url?: string;
+  /**
+   * ChEMBL API key
+   */
+  api_key?: string;
+  /**
+   * Whether ChEMBL API key is required
+   */
+  api_key_required?: boolean;
+  /**
+   * Delay between API requests in seconds
+   */
+  api_delay?: number;
+  /**
+   * Path to file containing ChEMBL IDs
+   */
+  id_file?: string;
+  /**
+   * ChEMBL cache directory
+   */
+  cache_dir?: string;
+  /**
+   * Maximum requests per second
+   */
+  requests_per_second?: number;
+  /**
+   * Maximum number of retries
+   */
+  max_retries?: number;
+  /**
+   * Failure threshold
+   */
+  failure_threshold?: number;
+  /**
+   * Recovery timeout in seconds
+   */
+  recovery_timeout?: number;
+  /**
+   * Cache time-to-live in seconds (default: 30 days)
+   */
+  cache_ttl?: number;
+  /**
+   * Memory cache size
+   */
+  memory_cache_size?: number;
+  /**
+   * Memory usage threshold (percentage)
+   */
+  memory_threshold?: number;
+  /**
+   * Batch size for ChEMBL API requests
+   */
+  batch_size?: number;
+  /**
+   * Memory check frequency
+   */
+  memory_check_frequency?: number;
+  /**
+   * Checkpoint directory
+   */
+  checkpoint_dir?: string;
+}
+
+export interface FrontendConfig {
+  /**
+   * Vercel deployment configuration
+   */
+  vercel?: Record<string, any>;
+  /**
+   * Google Analytics ID
+   */
+  google_analytics_id?: string;
+  /**
+   * Sentry DSN for error tracking
+   */
+  sentry_dsn?: string;
+}
+
+export interface AppConfig {
+  app: AppConfig;
+  api: ApiConfig;
+  database: DatabaseConfig;
+  auth: AuthConfig;
+  logging: LoggingConfig;
+  caching: CachingConfig;
+  rate_limiting: RateLimitingConfig;
+  chembl: ChemblConfig;
+  frontend: FrontendConfig;
+}
+
+export const defaultAppConfig: AppConfig = {
+  name: "CryoProtect",
+  environment: "development",
+  debug: false,
+  testing: false,
+};
+
+export const defaultApiConfig: ApiConfig = {
+  title: "CryoProtect Analyzer API",
+  version: "v1",
+  openapi_version: "3.0.2",
+  openapi_url_prefix: "/",
+  swagger_ui_path: "/swagger",
+  swagger_ui_url: "https://cdn.jsdelivr.net/npm/swagger-ui-dist/",
+};
+
+export const defaultDatabaseConfig: DatabaseConfig = {
+  connection_mode: "auto",
+  connection_timeout: 30,
+  connection_lifetime: 3600,
+  idle_timeout: 300,
+  application_name: "CryoProtect",
+};
+
+export const defaultAuthConfig: AuthConfig = {
+  debug: false,
+};
+
+export const defaultLoggingConfig: LoggingConfig = {
+  level: "INFO",
+  file: "cryoprotectant_analysis.log",
+  log_to_file: true,
+};
+
+export const defaultCachingConfig: CachingConfig = {
+  type: "memory",
+  default_timeout: 300,
+};
+
+export const defaultRateLimitingConfig: RateLimitingConfig = {
+  enabled: true,
+  storage_url: "memory://",
+  strategy: "fixed-window",
+  by: "hybrid",
+  headers_enabled: true,
+  retry_after: 60,
+  roles: {"admin": ["5000 per day", "500 per hour", "100 per minute"], "premium": ["2000 per day", "200 per hour", "40 per minute"], "basic": ["1000 per day", "100 per hour", "20 per minute"]},
+};
+
+export const defaultChemblConfig: ChemblConfig = {
+  api_url: "https://www.ebi.ac.uk/chembl/api/data",
+  api_key_required: false,
+  api_delay: 0.3,
+  cache_dir: "cache/chembl",
+  requests_per_second: 5.0,
+  max_retries: 5,
+  failure_threshold: 3,
+  recovery_timeout: 60,
+  cache_ttl: 2592000,
+  memory_cache_size: 1000,
+  memory_threshold: 80.0,
+  batch_size: 100,
+  memory_check_frequency: 10,
+  checkpoint_dir: "checkpoints",
+};
+
+export const defaultFrontendConfig: FrontendConfig = {
+};
+
+export const developmentConfig = {
+  app: {
+    debug: true,
+    feature_flags: true,
+  },
+  auth: {
+    debug: true,
+  },
+  logging: {
+    level: "DEBUG",
+  },
+};
+
+export const testingConfig = {
+  app: {
+    debug: true,
+    testing: true,
+    feature_flags: true,
+  },
+  logging: {
+    level: "DEBUG",
+  },
+};
+
+export const stagingConfig = {
+  app: {
+    debug: false,
+    feature_flags: true,
+  },
+  api: {
+    cors: ["https://staging.cryoprotect-analyzer.com"],
+  },
+  logging: {
+    level: "INFO",
+  },
+};
+
+export const productionConfig = {
+  app: {
+    debug: false,
+    feature_flags: false,
+  },
+  api: {
+    cors: ["https://cryoprotect-analyzer.com"],
+  },
+  logging: {
+    level: "WARNING",
+  },
+  caching: {
+    type: "redis",
+  },
+};
+
+/**
+ * Get the active configuration based on current environment
+ * @returns The active configuration for the current environment
+ */
+export function getConfig(): AppConfig {
+  // Determine environment
+  const env = typeof process !== "undefined" && process.env ? (process.env.NODE_ENV || "development") : "development";
+  
+  // Load base configuration
+  const config: AppConfig = {
+    app: { ...defaultAppConfig },
+    api: { ...defaultApiConfig },
+    database: { ...defaultDatabaseConfig },
+    auth: { ...defaultAuthConfig },
+    logging: { ...defaultLoggingConfig },
+    caching: { ...defaultCachingConfig },
+    rate_limiting: { ...defaultRateLimitingConfig },
+    chembl: { ...defaultChemblConfig },
+    frontend: { ...defaultFrontendConfig },
+  };
+  
+  // Apply environment-specific configuration
+  if (env === "development") {
+    mergeConfig(config, developmentConfig);
+  } else if (env === "test" || env === "testing") {
+    mergeConfig(config, testingConfig);
+  } else if (env === "staging") {
+    mergeConfig(config, stagingConfig);
+  } else if (env === "production") {
+    mergeConfig(config, productionConfig);
+  }
+  
+  return config;
+}
+
+/**
+ * Deep merge objects
+ */
+function mergeConfig(target: any, source: any) {
+  for (const key of Object.keys(source)) {
+    if (source[key] instanceof Object && key in target) {
+      mergeConfig(target[key], source[key]);
+    } else {
+      target[key] = source[key];
+    }
+  }
+}
+
+// Export a singleton instance of the configuration
+export const config = getConfig();
+export default config;

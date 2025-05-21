@@ -1,0 +1,41 @@
+{
+  "total": 5,
+  "updated": 5,
+  "results": [
+    {
+      "molecule_id": "c6ed38e9-eab8-480e-a5d9-5626e797bd7a",
+      "name": "DMSO",
+      "smiles": "CS(=O)C",
+      "calculated_formula": "C2H6O",
+      "status": "updated"
+    },
+    {
+      "molecule_id": "6b41111a-9a92-4a02-b8ab-31975af62be1",
+      "name": "Ethylene glycol",
+      "smiles": "C(CO)O",
+      "calculated_formula": "C2H6O2",
+      "status": "updated"
+    },
+    {
+      "molecule_id": "d55ea26c-b945-45dc-87c7-261c7ccc5ce3",
+      "name": "Glycerol",
+      "smiles": "C(C(CO)O)O",
+      "calculated_formula": "C3H8O3",
+      "status": "updated"
+    },
+    {
+      "molecule_id": "9a1c401b-d524-4c51-a3b5-8cf84e3e52ad",
+      "name": "Propylene glycol",
+      "smiles": "CC(CO)O",
+      "calculated_formula": "C3H8O2",
+      "status": "updated"
+    },
+    {
+      "molecule_id": "0a0fe74e-c001-454d-97d6-b1f859b25fb2",
+      "name": "Trehalose",
+      "smiles": "C(C1C(C(C(C(O1)OC2C(OC(C2O)O)C(O)C(O)C(O)CO)O)O)O)O",
+      "calculated_formula": "C12H22O11",
+      "status": "updated"
+    }
+  ]
+}

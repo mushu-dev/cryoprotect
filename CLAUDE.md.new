@@ -1,0 +1,682 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository. As the Project Manager (PM), you coordinate the overall project and help develop CryoProtect, a Flask-based application for analyzing cryoprotectant molecules using RDKit with Supabase database integration. The project is transitioning from RooRoo framework to the Cursor IDE environment while completing the Fedora migration.
+
+## Import System
+
+CLAUDE.md files can now import other files using the `@path/to/file.md` syntax. This allows modular organization of context information. The system:
+- Processes imports at Claude Code launch time
+- Includes content from referenced files inline
+- Supports nested imports (files can import other files)
+- Preserves headings hierarchy from imported files
+
+## Project Management & Delegation Structure
+
+### Hierarchy and Responsibilities
+- **Claude Code CLI (You)**: Top-level Project Manager that oversees the entire project
+  - Responsible for high-level planning, assessment, and coordination
+  - Handles planning, architecture, and workflow orchestration
+  - Tracks overall project progress and priorities
+  - Makes strategic decisions about resource allocation
+  - Performs code reviews and quality assurance
+
+- **Cursor IDE**: Implementation environment with AI assistance
+  - Provides context-aware code generation and editing
+  - Integrates with TaskMaster for structured development
+  - Interfaces with the same task system as Claude Code
+  - Shares access to the Supabase MCP for direct database operations
+  - Enables efficient implementation of planned features
+  - Offers specialized AI capabilities for code completion and refactoring
+
+### Task Management Protocol
+- Assess task complexity and nature before assigning environment
+- For planning, architecture, PRD generation: Use Claude Code CLI
+- For implementation, code generation, refactoring: Use Cursor IDE
+- For database operations: Use either environment with shared Supabase MCP access
+- Include specific file:line references in all tasks (example.py:45-72)
+- Define clear acceptance criteria for all tasks
+- Maintain project-level tracking in GitHub Issues (only visible to Claude Code)
+- Maintain implementation-level task state using TaskMaster (visible to both Claude and Cursor)
+- Claude must translate GitHub issues into TaskMaster tasks for Cursor implementation
+- Coordinate database changes through GitHub issues (Claude) and reflect in TaskMaster tasks (Cursor)
+
+### Cross-Environment Interaction Pattern
+1. Claude Code (PM) assesses project needs and creates GitHub issues with PRDs
+2. PM translates PRDs into structured TaskMaster tasks
+3. Implementation proceeds in Cursor using TaskMaster tasks as guidance (cannot see GitHub issues)
+4. Task status updates in TaskMaster are synchronized between environments
+5. Claude Code reviews completed work before final commits
+6. Claude maintains GitHub issues as the project-level source of truth
+7. Claude ensures consistency between GitHub issues and TaskMaster tasks
+
+## MCP Server Integration
+
+### Context7 MCP Server
+- **Purpose**: Provides up-to-date documentation access and context-aware assistance
+- **Usage**: Use for library version issues, API documentation, and syntax updates
+- **Commands**: 
+  - `generate_documentation`: Create documentation for specific features
+  - `extract_concepts`: Extract key concepts from documentation
+  - `create_diagram`: Generate visual representations
+  - `summarize_document`: Create summaries for large documentation files
+- **Best Practices**: 
+  - Check Context7 when encountering versioning issues
+  - Use for real-time documentation validation
+  - Leverage for API specification updates
+
+### Supabase MCP Server
+- **Purpose**: Direct integration with Supabase database operations
+- **Usage**: Use for database queries, schema management, and RLS policy testing
+- **Availability**: Accessible from both Claude Code CLI and Cursor IDE
+- **Commands**:
+  - `execute_sql`: Run SQL queries directly
+  - `list_tables`: View database schema
+  - `get_project`: Access project configuration
+  - `apply_migration`: Apply database migrations
+- **Best Practices**:
+  - Test RLS policies using execute_sql
+  - Verify database changes before implementing in code
+  - Use for real-time database state inspection
+  - Coordinate database operations across environments
+  - Document database changes in GitHub issues for cross-environment visibility
+
+### TaskMaster System Integration
+- **Purpose**: AI-powered task management for structured development with Cursor
+- **Usage**: Generate, track, and manage granular development tasks from PRDs
+- **Installation**: 
+  - Already installed globally on the system via npm
+  - Accessible directly from command line with `task-master` command
+  - No MCP server required - direct system integration
+- **Shared Task Storage**: 
+  - Tasks are stored in `/tasks/tasks.json` and individual task files
+  - Both Claude Code and Cursor access the same task files
+  - All task updates from either environment modify the same shared files
+- **Key Commands** (run in bash):
+  - `task-master parse-prd --input=scripts/your_prd.txt`: Generate tasks from PRD
+  - `task-master next`: Identify next task to work on based on dependencies
+  - `task-master list`: View all tasks with optional filters
+  - `task-master show <id>`: Display specific task details
+  - `task-master expand --id=<id> --num=<number>`: Generate subtasks
+  - `task-master analyze-complexity`: Evaluate task complexity
+  - `task-master set-status --id=<id> --status=<status>`: Update task status
+  - `task-master init`: Initialize a new TaskMaster project if needed
+- **Best Practices**:
+  - Generate tasks from detailed PRDs stored in GitHub issues
+  - Break down complex tasks using expand command
+  - Follow dependency chains for efficient development
+  - Update task status as you progress through implementation
+  - Store PRDs in `scripts/` directory for parsing
+
+## Project Architecture
+
+### Core Components
+- **Flask Backend**: The core application server using Flask and Flask-RESTful
+- **RDKit Integration**: Molecular property calculation and visualization
+- **Supabase Database**: Primary data store with RLS policies for security
+- **API Layers**: 
+  - Resources: RESTful endpoint definitions
+  - Models: Data structures and ORM
+  - Schemas: Request/response validation
+  - Services: Business logic implementation
+
+### Module-Specific Documentation
+
+#### API Module
+@api/claude.md
+
+#### Database Module
+@database/claude.md
+
+#### ChEMBL Integration
+@chembl/claude.md
+
+#### PubChem Integration
+@pubchem/claude.md
+
+#### Monitoring Infrastructure
+@monitoring/claude.md
+
+#### Security Components
+@security/claude.md
+
+#### Testing Framework
+@tests/claude.md
+
+#### Database Migrations
+@migrations/claude.md
+
+#### Project Documentation
+@docs/claude.md
+
+### Design Patterns
+- **Adapter Pattern**: For database connectivity abstraction (see database/adapter.py)
+- **Repository Pattern**: For data access logic (see api/resources.py)
+- **Factory Pattern**: For service creation (see api/supabase_client.py)
+- **Decorator Pattern**: For API authentication and validation (see api/api_decorators.py)
+- **Facade Pattern**: For simplifying complex subsystems (see api/rdkit_enhanced.py)
+
+### Error Handling Strategy
+- Use try/except with specific exception types
+- Log detailed errors while providing sanitized responses to users
+- Implement custom error classes for domain-specific exceptions
+- Support consistent error responses across all API endpoints
+
+## Fedora Environment Specifics
+
+### SELinux Management
+- Respect SELinux contexts for file operations
+- Use `:Z` suffix for dedicated volume mounts, `:z` for shared mounts
+- Check contexts with `ls -lZ` when troubleshooting permission issues
+- Use `chcon` and `semanage` for context adjustments when necessary
+
+### Podman Usage (Docker Alternative)
+- Prefer Podman over Docker for containerization
+- Use `podman-compose` instead of `docker-compose`
+- Reference `PODMAN_MIGRATION_GUIDE.md` for command translations
+- Remember rootless Podman requires special handling for ports under 1024
+
+### Fedora-Specific File Paths
+- Use forward slashes (/) for all path separators
+- PostgreSQL data path is at `/var/lib/pgsql/data`
+- Use `os.path.join()` for cross-platform path construction
+- System-wide configurations belong in `/etc/cryoprotect/`
+
+### System Integration
+- Use DNF package manager (`sudo dnf install`) rather than apt
+- Configure firewalld with `firewall-cmd` rather than iptables
+- Use systemd services for persistent processes
+- Check `fedora_setup.sh` for environment initialization
+
+## Workflow Optimization Guidelines
+
+### Current Development Focus
+- **Fedora Migration**: Completing the transition to Fedora Linux with proper SELinux configuration
+- **Podman Adoption**: Replacing Docker with Podman for containerization
+- **Connection Pooling**: Optimizing database connection pooling for performance
+- **RLS Optimization**: Enhancing Row Level Security policies for better performance
+- **TaskMaster Integration**: Implementing cross-environment task management with TaskMaster
+
+### API Cost Management
+- Prefer delta context mode: Only analyze changed files when possible
+- Use chunking: Focus on one directory/component at a time
+- Minimize document generation: Don't create unnecessary documentation files
+- Use precise file:line references for targeted changes
+- Leverage MCP servers for documentation and database queries to reduce token usage
+
+### Task Management Approach
+- Handle tasks directly through Claude Code CLI according to priorities
+- Use GitHub issue tracking for task management (new structure implemented)
+- Reference milestone and label conventions from CURSOR_MIGRATION_GUIDE.md
+- Track completion status of each task using TodoWrite/TodoRead tools
+- Use Context7 for documentation-related tasks instead of regenerating documentation
+
+### GitHub Issue Management as Source of Truth and Central Workspace
+
+- **Single Source of Truth**: GitHub issues serve as the definitive record for the project:
+  - All project decisions must be documented in issues
+  - Critical information (architecture, schemas, design patterns) must be captured in issues
+  - Issues provide traceability for all changes and their rationale
+  - Implementation details, especially database changes, must be recorded in issues
+  - Technical constraints and workarounds must be explained in associated issues
+  - Issues remain the persistent record even when implementations change
+  - Each feature, bug, and enhancement must have an associated issue
+  - Claude Code must reference these issues for consistency and context
+  - Issues should be structured in a consistent and searchable manner
+  - **Note**: Cursor IDE cannot directly access GitHub issues - Claude must translate these to TaskMaster tasks
+
+- **Cross-Context Integration Hub**: Use GitHub issues as the primary workspace for tracking tasks across different environments:
+  - Claude Code CLI sessions (direct GitHub issues access)
+  - Cursor IDE development (via TaskMaster tasks generated from issues)
+  - Vercel deployments
+  - Supabase database changes
+  - Local development environments
+
+- **Complex Workflow Documentation**: For multi-step processes, create a GitHub issue that serves as:
+  - Step-by-step checklist of required actions
+  - Persistent scratchpad for intermediate results
+  - Reference for command sequences and parameters
+  - Documentation of decisions made and alternatives considered
+  - Record of debugging attempts and their outcomes
+
+- **Issue Creation Pattern**: When faced with complex tasks:
+  1. Create an issue with `/github-issues create`
+  2. Structure with checklist format using markdown `- [ ]` syntax
+  3. Add detailed steps, commands, and expected outcomes
+  4. Update progress by checking items and adding comments
+  5. Reference related resources with links
+  6. Document any CLI commands to be reused later
+
+- **Cross-Session Continuity**: Use issues to maintain context between working sessions:
+  - Document current state before ending a session
+  - Note what was tried and what worked/didn't work
+  - List the next steps for the next session
+  - Record environment-specific details (paths, IDs, variables)
+  - Capture temporary solutions planned for proper implementation later
+
+- **Issue Quality Management**:
+  - **Regular Review**: Conduct weekly issue reviews to ensure accuracy and relevance
+  - **Cleanup Process**: Use `/github-consolidate cleanup` to identify stale or duplicate issues
+  - **Standardization**: Enforce consistent formatting and required information in all issues
+  - **Issue Hygiene**: Close resolved issues promptly with proper resolution documentation
+  - **Linking**: Maintain proper relationships between related issues
+  - **Historical Value**: Preserve issue history even when closing (never delete important issues)
+  - **Milestone Alignment**: Ensure all issues are properly assigned to correct milestones
+
+- **Tools and Commands** (automatically executed when prefixed with `/`):
+  - `/github-issues [command]` - Manage issues (list, view, create, edit, etc.)
+  - `/github-prs [command]` - Manage PRs (list, view, create, review, etc.)
+  - `/github-consolidate [command]` - Organize issues (setup milestones, labels, link issues)
+  - `/github-project [command]` - View project status (milestones, components, priorities)
+  - `/github-workflow-template [title] [component] [priority]` - Create a standardized workflow issue template
+  - `/github-prd [command]` - Manage PRDs for TaskMaster integration
+  - `/sync-tasks [command]` - Synchronize TaskMaster tasks between Claude Code and Cursor
+  - Check issue status daily with `/github-project status`
+  - Review high-priority issues with `/github-issues list-milestone "Phase 1: Technical Foundation"`
+  - Create complex workflow documentation with `/github-workflow-template "Task Title" component priority`
+
+- **Workflow Integration Examples**:
+  - **Complex SELinux Configuration**: Create issue with all context labels, permissions, and verification steps
+  - **ChEMBL Integration Process**: Document API endpoints, rate limits, and data mapping in an issue
+  - **Podman Migration**: Track testing steps and compatibility fixes in a dedicated issue
+  - **RLS Policy Development**: Document each policy with test cases in a GitHub issue
+
+### Common Error Patterns
+- **Connection Issues**: Look for PostgreSQL connection timeout patterns
+- **RLS Policy Conflicts**: Watch for row-level security policy conflicts
+- **SELinux Denials**: Check for SELinux permission issues in logs
+- **ChEMBL API Rate Limits**: Handle ChEMBL API throttling gracefully
+- **JWT Token Validation**: Monitor for JWT validation errors
+
+### File Management
+- Prune temporary files after task completion
+- Use the new directory structure that separates concerns (api/database/migrations)
+- Use explicit file paths when referring to code that needs modification
+- Reuse existing documentation rather than regenerating
+- Maintain clean directory structure according to project standards
+- Follow Fedora file path conventions for system resources
+
+### Thinking Modes
+- Use "think" for simple tasks
+- Use "think hard" for complex architecture decisions
+- Use "think harder" for challenging debugging
+- Use "ultrathink" for system-wide refactoring
+
+## Build/Run/Test Commands
+
+### Linux/Fedora Commands
+- **Run application**: `python app.py` or `./run_app.sh`
+- **Run all tests**: `python tests/run_tests.py` or `./run_tests.sh`
+- **Run single test**: `python tests/run_tests.py -t test_file_name.py`
+- **Specific test pattern**: `python -m unittest tests/test_specific_file.py::TestClass::test_method`
+- **API tests only**: `python tests/run_supabase_api_tests.py`
+- **Set up environment**: `conda env create -f environment.yml` or `./setup_fresh_linux.sh`
+- **Setup Fedora environment**: `./fedora_setup.sh`
+- **Install dependencies**: `./install_linux_dependencies.sh`
+- **Test Podman readiness**: `./test_podman_readiness.sh`
+- **Migrate to Podman**: `./migrate_to_podman.sh`
+- **Quick start with Podman**: `./quickstart_podman.sh`
+- **PostgreSQL direct connection test**: `python direct_postgres_connect.py`
+- **Check connection pooling**: `python test_connection_pool.py`
+- **Validate SELinux config**: `python test_podman_readiness.sh --selinux-check`
+- **RLS policy verification**: `python test_rls_policies.py` or `./run_rls_verification.py`
+- **Generate TypeScript types**: `node migrations/apply_migration.js --generate-types`
+
+### Windows Commands (Legacy)
+- **Run application**: `python app.py` or `run_app.bat`
+- **Run all tests**: `python tests/run_tests.py` or `run_tests.bat`
+- **Run single test**: `python tests/run_tests.py -t test_file_name.py`
+- **API tests only**: `python tests/run_supabase_api_tests.py`
+- **Set up environment**: `conda env create -f environment.yml`
+
+## Troubleshooting Guide
+
+### Database Connection Issues
+1. Check Supabase environment variables in .env file or config.py
+2. Verify firewalld is properly configured (`firewall-cmd --list-all`)
+3. Confirm SELinux is not blocking connections (`ausearch -m avc --start recent`)
+4. Test direct connection with `python direct_postgres_connect.py`
+5. Check connection pool settings in `database/connection_manager.py`
+
+### SELinux Troubleshooting
+1. Use `ls -lZ` to check file contexts
+2. View SELinux denials: `ausearch -m avc --start recent`
+3. Create custom SELinux policy with `audit2allow` if needed
+4. Check container SELinux profiles with `podman inspect --format='{{.ProcessLabel}}'`
+5. Review SELinux policies applied: `semodule -l | grep cryoprotect`
+
+### ChEMBL Integration Issues
+1. Check rate limiting and backoff settings in `chembl/rate_limiter.py`
+2. Examine cache implementation in `chembl/cache.py`
+3. Verify checkpoint files in `checkpoints/chembl/`
+4. Test ChEMBL API access with `python test_chembl_client.py`
+5. Review progress logs in `reports/chembl_import_*.json`
+
+### Common Fixes
+1. **PostgreSQL Connection Reset**: Increase max_connections in PostgreSQL config
+2. **JWT Validation Errors**: Check clock skew between systems
+3. **Podman Network Issues**: Create dedicated podman network with `podman network create`
+4. **SELinux Denials**: Use `setsebool -P container_manage_cgroup on`
+5. **Database File Permissions**: Apply `chcon -Rt container_file_t ./database/`
+
+## Code Style Guidelines
+
+- **Docstrings**: Triple-quoted docstrings for all modules, classes, and functions
+- **Imports**: Group imports (stdlib, third-party, local) with empty line between groups
+- **Formatting**: 4-space indentation, 79-character line length
+- **Typing**: Use type hints for function arguments and return values
+- **Naming**: snake_case for functions/variables, PascalCase for classes, UPPER_CASE for constants
+- **Error handling**: Use try/except with specific exception types and proper logging
+- **Logging**: Use the logging module instead of print statements
+- **Documentation**: Include detailed docstrings with parameters and return values
+- **Testing**: Write unit tests with clear test cases and assertions
+- **Path Handling**: Use os.path.join() for cross-platform compatibility; avoid hardcoded separators
+
+## Project Completion Plan
+
+### Current Phase: Technical Foundation
+- ✅ Code Cleanup (Phase 1.1)
+- ✅ Testing Infrastructure (Phase 1.2)
+- 🔄 Database Architecture (Phase 1.3)
+- 🔄 Authentication System (Phase 1.4)
+- 🔄 Fedora Migration (Phase 1.5)
+
+### Priority Tasks
+1. Complete Fedora environment setup and migration
+2. Optimize RLS implementation for complex queries
+3. Stress test and fine-tune connection pooling
+4. Implement robust migration framework
+5. Verify data integrity across all tables
+
+### Phase 1: Technical Foundation
+
+#### Phase 1.3: Database Architecture
+- Optimize RLS implementation for complex queries
+- Stress test and fine-tune connection pooling
+- Implement robust migration framework
+- Verify data integrity across all tables
+
+#### Phase 1.4: Authentication System
+- Replace service role workaround with proper implementation
+- Enhance user session handling
+- Implement secure token management
+- Add proper role-based access controls
+
+#### Phase 1.5: Fedora Migration
+- ✅ Create basic Fedora setup scripts
+- ✅ Adapt Docker configuration for Podman compatibility
+- 🔄 Configure SELinux for application security
+- 🔄 Optimize PostgreSQL for Fedora environment
+- 🔄 Set up systemd services for automatic startup
+
+### Phase 2: Feature Completion
+
+#### Phase 2.1: API Layer Completion
+- Finish implementing remaining API endpoints
+- Standardize error handling across endpoints
+- Implement rate limiting for production readiness
+- Add comprehensive API documentation
+- Ensure Linux compatibility for all API operations
+
+#### Phase 2.2: Core Functionality
+- Complete predictive models implementation
+- Finalize protocol designer functionality
+- Enhance export/sharing capabilities
+- Implement integration with external systems
+- Optimize RDKit visualization for Wayland/X11
+
+#### Phase 2.3: User Interface
+- Improve UI responsiveness for all screen sizes
+- Complete molecular visualization features
+- Implement accessibility standards
+- Enhance user experience workflows
+- Ensure proper font rendering on Fedora
+
+### Phase 3: Production Readiness
+
+#### Phase 3.1: Deployment Infrastructure
+- Complete CI/CD pipeline with test automation
+- Migrate from Docker to Podman for production
+- Standardize environment configuration for Fedora
+- Implement blue/green deployment strategy
+- Configure firewalld for secure network access
+
+#### Phase 3.2: Monitoring and Maintenance
+- Implement centralized logging system
+- Set up performance monitoring and alerting
+- Configure scheduled backups using systemd timers
+- Create maintenance runbooks for Fedora environment
+- Implement SELinux monitoring and alerting
+
+#### Phase 3.3: Security
+- Conduct comprehensive security audit
+- Add scanning for vulnerable dependencies
+- Enhance data encryption for sensitive information
+- Implement security best practices
+- Create SELinux custom policies for enhanced isolation
+
+### Phase 4: Documentation and Knowledge Transfer
+
+#### Phase 4.1: Documentation
+- Complete user documentation
+- Create operations guide for administrators
+- Finalize developer documentation
+- Update API documentation
+- Create Fedora-specific setup and troubleshooting guides
+
+#### Phase 4.2: Knowledge Transfer
+- Create onboarding materials
+- Conduct handover sessions
+- Document known issues and workarounds
+- Create video tutorials for key workflows
+- Document Fedora-specific considerations and best practices
+
+## TaskMaster Integration and Cursor-Claude Workflow
+
+### Cursor IDE Integration
+
+#### Database Operations in Cursor
+- **Shared Supabase MCP Access**:
+  - Cursor has access to the same Supabase MCP as Claude Code
+  - Execute SQL queries directly within Cursor using MCP
+  - List tables, verify schema changes, and apply migrations
+  - Test database changes immediately during implementation
+  - Track database operations with coordinated GitHub issue references
+
+- **Database Workflow Between Environments**:
+  - Plan database changes in Claude Code
+  - Implement and test changes in Cursor with direct Supabase MCP access
+  - Document schema modifications in GitHub issues for visibility
+  - Verify changes across environments using shared MCP access
+  - Coordinate complex database operations with clear handoffs between environments
+
+#### Cursor Project Structure for PRDs and Tasks
+- **Documentation Organization**:
+  - Store PRDs in `scripts/` directory with clear naming (e.g., `prd_auth_system.txt`)
+  - Create supplementary docs as needed in `.md` files for additional context
+  - Use `.cursorrules` file in the project root to define project conventions
+
+- **PRD Format Optimization for Cursor**:
+  - Structure PRDs in Markdown format for easy parsing
+  - Use headings, bullet points, and concise language
+  - Break requirements into smaller sections with clear hierarchy
+  - Format PRDs as engineer-friendly checklists
+
+- **Cursor Contextual Features**:
+  - Reference PRDs and documentation files using @ symbol in Cursor
+  - Include line references to specific code in PRDs (file.py:line number)
+  - Keep PRDs and task documentation in the repository for version control
+  - Create documentation folder with essential project information
+
+- **Cursor Workspace Integration**:
+  - Open relevant files before starting work on a task to provide context
+  - Use "Reference Open Editors" feature (press /) to include files in context
+  - Use Cursor's Composer feature for multi-file tasks
+  - Create tests alongside implementation in side-by-side views
+
+- **Cursor AI Features for Tasks**:
+  - Use natural language to ask Cursor AI about specific tasks
+  - Reference PRDs when implementing features
+  - Ask Cursor to help analyze task complexity
+  - Leverage Cursor's bug finder feature for code review
+
+#### Cross-Environment Task Synchronization
+
+TaskMaster provides a shared task management system between Claude Code and Cursor environments:
+
+1. **Shared Task Files**:
+   - All tasks are stored in the `/tasks` directory
+   - The main task data is in `/tasks/tasks.json`
+   - Individual task files are stored as `/tasks/task_001.txt`, etc.
+   - Both Claude Code and Cursor read from and write to these same files
+   - TaskMaster commands in both environments operate on these same files
+
+2. **Accessing TaskMaster**:
+   - In Claude Code: Use direct bash command `task-master <command>`
+   - In Cursor: Use TaskMaster via natural language or direct command
+   - Both environments use the same globally installed TaskMaster binary
+
+3. **Synchronization Workflow**:
+   - Before switching environments, commit task changes with `/sync-tasks commit`
+   - When beginning work in a new environment, run `/sync-tasks pull` to get latest tasks
+   - Monitor task synchronization status with `/sync-tasks status`
+   - Use git to track task changes and ensure consistency across environments
+
+4. **Task Synchronization Commands**:
+   - `/sync-tasks status` - Show task synchronization status
+   - `/sync-tasks pull` - Pull latest task changes from git
+   - `/sync-tasks push` - Commit and push task changes to git
+   - `/sync-tasks list` - List all tasks (runs task-master list)
+   - `/sync-tasks commit` - Commit task files to git with automatic message
+
+5. **Best Practices**:
+   - Always run `/sync-tasks status` at the beginning of each session
+   - Commit task changes before switching between environments
+   - Use consistent task IDs across both environments
+   - Reference task IDs in git commit messages for traceability
+   - Keep task files in git to maintain version history
+   - Use `/sync-tasks` commands rather than direct git commands for task files
+
+#### TaskMaster for Structured Development
+
+TaskMaster AI provides an advanced task management system that bridges the gap between high-level requirements and granular implementation tasks:
+
+1. **Planning to Implementation Workflow**:
+   - **Explore & Plan**: Begin in Claude Code to explore solutions and plan approach
+   - **Create PRD**: Document requirements in a structured Product Requirements Document
+   - **Generate Tasks**: Use TaskMaster to generate granular implementation tasks from PRD
+   - **Implement in Cursor**: Move to Cursor IDE for actual implementation with task guidance
+   - **Review with Claude**: Return to Claude Code for code review and quality assurance
+   - **Commit & Document**: Commit changes and update documentation
+
+2. **PRD Creation Best Practices**:
+   - Structure PRDs with these key sections:
+     - **Overview**: High-level description of the feature/component
+     - **Requirements**: Detailed list of must-have functionality
+     - **Technical Context**: Existing architecture and integration points
+     - **Constraints**: Performance, security, or compatibility requirements
+     - **Acceptance Criteria**: How to verify successful implementation
+   - Store PRDs in the `scripts/` directory with clear naming (e.g., `prd_auth_system.txt`)
+   - Reference relevant GitHub issues and existing code in the PRD
+
+3. **Task Generation and Management**:
+   - Parse PRD with: `task-master parse-prd --input=scripts/your_prd.txt`
+   - Expand complex tasks: `task-master expand --id=3 --num=5`
+   - Analyze implementation complexity: `task-master analyze-complexity`
+   - Plan task sequence with: `task-master next`
+   - Update task status as you work: `task-master set-status --id=3 --status=done`
+   - Generate task files with: `task-master generate`
+   - View task complexity report: `task-master complexity-report`
+
+4. **Cursor-Claude Cross-Environment Task Management**:
+   - Use natural language to interact with TaskMaster in Cursor
+   - Ask for specific task details: "Tell me about task 3"
+   - Request implementation guidance: "Help me implement task 2.1"
+   - Add work notes to tasks: "Add a note to task 4 that authentication needs rate limiting"
+   - Update task status through conversation: "Mark task 1.2 as completed"
+   - All changes to tasks made in Cursor will be visible in Claude Code and vice versa
+   - Both environments read from and write to the same task files in the `/tasks` directory
+   - Use git to commit task files when switching between environments to ensure synchronization
+
+5. **TaskMaster-GitHub Issue Integration**:
+   - Create a GitHub issue for each major feature PRD (only visible to Claude Code)
+   - Include the full PRD in the issue description
+   - Link related implementation tasks in issue comments
+   - Reference GitHub issue numbers in PRDs
+   - Use issue-based PRDs as input for TaskMaster
+   - Claude must translate GitHub issues to TaskMaster tasks for Cursor implementation
+   - TaskMaster is the primary task management system visible to Cursor IDE
+   - Use the `/github-prd` helper for PRD management:
+     - `/github-prd create "Feature Name" 123`: Create PRD from GitHub issue #123
+     - `/github-prd extract 123`: Extract PRD sections from issue #123
+     - `/github-prd generate-tasks scripts/prd_file.txt`: Generate TaskMaster tasks (runs task-master command)
+     - `/github-prd template "New Feature"`: Create a new PRD template
+     - `/github-prd view scripts/prd_file.txt`: Display a PRD file
+     - `/github-prd link scripts/prd_file.txt 123`: Link PRD to GitHub issue
+
+### Project Status Monitoring and Cross-Context Workflow Management
+
+#### Status Tracking
+
+To maintain an up-to-date understanding of the project's status, use the following GitHub management tools:
+
+- **General Status**: Run `/github-project status` daily to see overall project health
+- **Milestone Tracking**: Monitor phase progress with `/github-project milestone-progress [phase-id]`
+- **Component Review**: Check specific components with `/github-project component-status [component]`
+- **Issue Management**: Keep issues organized with `/github-consolidate status`
+- **High Priorities**: Track critical items with `/github-project priorities`
+- **Task Complexity**: Review task complexity with direct command `task-master complexity-report`
+
+#### Cross-Context Workflow Integration
+
+For complex tasks spanning multiple environments or requiring specialized knowledge:
+
+1. **Create Environment-Spanning Issues**:
+   - Create a dedicated issue to track processes that span:
+     - Database schema changes in Supabase (accessible in both environments)
+     - API code changes in the repository
+     - Frontend changes in Vercel deployments
+     - Local environment configurations
+   - Include context-switching guidance with detailed steps for each environment
+   - Specify which environment (Claude Code or Cursor) is responsible for each step
+   - Document any database operations performed through shared Supabase MCP
+   - Use this issue as the basis for TaskMaster PRD creation
+
+2. **Structured Workflow Documentation**:
+   - Use the standardized workflow template with `/github-workflow-template` which includes:
+     - **Overview**: Brief explanation of the task
+     - **Prerequisites**: Required setup and tools
+     - **Environment Configuration**: Necessary configurations for each environment
+     - **Step-by-Step Process**: Detailed workflow with checkboxes
+     - **Verification Steps**: How to validate successful completion
+     - **Rollback Procedure**: How to revert changes if needed
+     - **Working Notes**: Scratchpad area for observations and progress
+     - **References**: Links to related resources, docs, or other issues
+   - Example: `/github-workflow-template "Migrate Database to New Schema" database high`
+   - Convert completed templates to TaskMaster PRDs for implementation
+
+3. **Issue Management for Knowledge Retention**:
+   - Use code blocks in issues to save important commands, queries, and configs
+   - Create "workflow recipe" issues for repeatable processes
+   - Document troubleshooting steps that worked to solve specific problems
+   - Reference issues in commit messages and PR descriptions
+   - Link TaskMaster tasks to GitHub issues for traceability
+
+4. **Cross-Session and Cross-Environment Continuity**:
+   - Begin each working session by running `/sync-tasks status` to check task state
+   - When switching from Cursor to Claude Code, run `/sync-tasks pull` first to get latest tasks
+   - When switching from Claude Code to Cursor, run `/sync-tasks commit` to save task changes
+   - End each Claude Code session by updating progress in both GitHub issues and TaskMaster tasks
+   - End each Cursor session by updating progress in TaskMaster tasks only (cannot access GitHub issues)
+   - Claude must manually sync important information between GitHub issues and TaskMaster tasks
+   - Run `/sync-tasks status` regularly to ensure task synchronization
+   - Use issue comments to document intermediate progress (Claude Code only)
+   - Reference GitHub issues in Claude conversations and TaskMaster tasks in Cursor conversations
+
+The project follows these organizational principles:
+- GitHub issues are grouped by milestones aligned with project phases
+- TaskMaster tasks provide granular implementation details
+- Components are tagged with `component:*` labels
+- Priorities are clearly marked with `priority:*` labels
+- Implementation and verification issues are linked
+- All issues belong to a milestone and have proper component/priority labels
+- Complex workflows are documented in dedicated issues and TaskMaster tasks

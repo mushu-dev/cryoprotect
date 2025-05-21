@@ -1,0 +1,10 @@
+{
+  "timestamp": "2025-05-13T00:19:30.160934",
+  "duplicate_groups": 13,
+  "results": {
+    "groups_processed": 0,
+    "total_duplicates": 0,
+    "successful_consolidations": 0,
+    "consolidated_molecules": []
+  }
+}

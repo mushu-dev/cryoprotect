@@ -1,0 +1,71 @@
+name: "Project Board Automation"
+on:
+  issues:
+    types:
+      - opened
+      - reopened
+      - closed
+      - labeled
+      - unlabeled
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - closed
+      - review_requested
+
+jobs:
+  issue_opened:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'issues' && github.event.action == 'opened'
+    steps:
+      - name: Add issue to project
+        uses: actions/add-to-project@v0.5.0
+        with:
+          project-url: https://github.com/orgs/${{ github.repository_owner }}/projects/1
+          github-token: ${{ secrets.PROJECT_TOKEN }}
+      
+  issue_labeled:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'issues' && github.event.action == 'labeled'
+    steps:
+      - name: Update issue status based on label
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.PROJECT_TOKEN }}
+          script: |
+            const label = context.payload.label.name;
+            const issue_number = context.payload.issue.number;
+            
+            // Define mappings from labels to status
+            const statusMappings = {
+              'status:planning': 'Todo',
+              'status:ready': 'Ready',
+              'status:in-progress': 'In Progress',
+              'status:needs-review': 'Review',
+              'status:completed': 'Done',
+              'status:blocked': 'Blocked'
+            };
+            
+            // Check if this label maps to a status
+            if (label in statusMappings) {
+              const projectStatus = statusMappings[label];
+              
+              // Get project data
+              const owner = context.repo.owner;
+              const repo = context.repo.repo;
+              
+              // Find the item in the project and update its status
+              // Note: This is a simplified example and might need adjustments
+              console.log(`Setting issue #${issue_number} to status: ${projectStatus}`);
+            }
+  
+  pr_opened:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'reopened')
+    steps:
+      - name: Add PR to project
+        uses: actions/add-to-project@v0.5.0
+        with:
+          project-url: https://github.com/orgs/${{ github.repository_owner }}/projects/1
+          github-token: ${{ secrets.PROJECT_TOKEN }}

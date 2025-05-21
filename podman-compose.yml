@@ -1,0 +1,154 @@
+version: '3.8'
+
+services:
+  cryoprotect:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - FLASK_ENV=${FLASK_ENV:-production}
+        - BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+        - VCS_REF=${VCS_REF:-latest}
+    image: ${PODMAN_REGISTRY:-localhost}/${PODMAN_NAMESPACE:-cryoprotect}/cryoprotect:${IMAGE_TAG:-latest}
+    ports:
+      - "${HOST_PORT:-5000}:5000"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=${FLASK_ENV:-production}
+      # Logging configuration
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - LOG_TO_FILE=1
+      - LOG_TO_CONSOLE=1
+      - LOG_TO_ELK=${LOG_TO_ELK:-0}
+      - LOG_JSON_FORMAT=1
+      # Monitoring configuration
+      - PROMETHEUS_METRICS=1
+      - PROMETHEUS_ENDPOINT=/metrics
+      # Security configuration
+      - STRICT_SECRET_MODE=${STRICT_SECRET_MODE:-true}
+      - STRICT_ENV_MODE=${STRICT_ENV_MODE:-true}
+      - STRICT_ROTATION_MODE=${STRICT_ROTATION_MODE:-false}
+    volumes:
+      - cryoprotect-logs:/app/logs:Z
+      - cryoprotect-backups:/app/backup/data:Z
+    logging:
+      driver: k8s-file
+      options:
+        path: /var/log/containers/cryoprotect.log
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    restart: unless-stopped
+    # SELinux labels for volumes
+    security_opt:
+      - no-new-privileges:true
+      - label=type:container_file_t
+    read_only: ${READ_ONLY:-false}
+    tmpfs:
+      - /tmp:size=100M,mode=1777
+    networks:
+      - app-network
+
+  # Development configuration with volume mount
+  cryoprotect-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - FLASK_ENV=development
+    image: ${PODMAN_REGISTRY:-localhost}/${PODMAN_NAMESPACE:-cryoprotect}/cryoprotect:${DEV_IMAGE_TAG:-dev}
+    ports:
+      - "${DEV_HOST_PORT:-5000}:5000"
+    volumes:
+      # For development, mount the project directory as a volume
+      - .:/app:Z
+      - dev-cache:/app/cache:Z
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+      # Load sensitive values from .env file for development
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_KEY=${SUPABASE_KEY}
+      - SECRET_KEY=${SECRET_KEY:-dev-secret-key-please-change-in-production}
+      - REDIS_URL=${REDIS_URL:-}
+      # Logging configuration for development
+      - LOG_LEVEL=DEBUG
+      - LOG_TO_FILE=1
+      - LOG_TO_CONSOLE=1
+      - LOG_TO_ELK=0
+      - LOG_JSON_FORMAT=1
+      # Monitoring configuration
+      - PROMETHEUS_METRICS=1
+      - PROMETHEUS_ENDPOINT=/metrics
+      # Development-specific settings
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+      - FLASK_DEBUG=1
+      - STRICT_SECRET_MODE=false
+      - STRICT_ENV_MODE=false
+    restart: unless-stopped
+    entrypoint: ["/app/docker-entrypoint.sh"]
+    command: ["/opt/conda/envs/cryoprotect/bin/python", "-m", "flask", "run", "--host=0.0.0.0", "--port=5000", "--reload"]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    # SELinux labels for volumes
+    security_opt:
+      - label=type:container_file_t
+    networks:
+      - app-network
+
+  # Redis for caching and rate limiting
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis-data:/data:Z
+    command: ["redis-server", "--appendonly", "yes", "--maxmemory", "${REDIS_MAXMEMORY:-256mb}", "--maxmemory-policy", "allkeys-lru"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: k8s-file
+      options:
+        path: /var/log/containers/redis.log
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  # Application data
+  cryoprotect-logs:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${LOGS_VOLUME_PATH:-./logs}
+  cryoprotect-backups:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${BACKUPS_VOLUME_PATH:-./backup/data}
+  dev-cache:
+    driver: local
+  redis-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${REDIS_DATA_PATH:-./redis-data}

@@ -1,0 +1,71 @@
+{
+  "version": "001",
+  "name": "initial_schema",
+  "description": "Initial database schema for CryoProtect",
+  "schema": {
+    "users": {
+      "name": "string",
+      "email": "string",
+      "password_hash": "string?",
+      "role": "string?",
+      "created_at": "number",
+      "updated_at": "number"
+    },
+    "teams": {
+      "name": "string",
+      "description": "string?",
+      "created_by": "string",
+      "created_at": "number",
+      "updated_at": "number"
+    },
+    "team_members": {
+      "team_id": "string",
+      "user_id": "string",
+      "role": "string",
+      "created_at": "number",
+      "updated_at": "number"
+    }
+  },
+  "data": [
+    {
+      "type": "insert",
+      "table": "users",
+      "data": {
+        "name": "System Administrator",
+        "email": "admin@cryoprotect.com",
+        "password_hash": "5f4dcc3b5aa765d61d8327deb882cf99",
+        "role": "admin",
+        "created_at": 1620000000000,
+        "updated_at": 1620000000000
+      }
+    },
+    {
+      "type": "insert",
+      "table": "teams",
+      "data": {
+        "name": "Administrators",
+        "description": "System administrators with full access",
+        "created_by": "admin@cryoprotect.com",
+        "created_at": 1620000000000,
+        "updated_at": 1620000000000
+      }
+    }
+  ],
+  "indexes": [
+    {
+      "table": "users",
+      "name": "by_email",
+      "fields": ["email"]
+    },
+    {
+      "table": "team_members",
+      "name": "by_team",
+      "fields": ["team_id"]
+    },
+    {
+      "table": "team_members",
+      "name": "by_user",
+      "fields": ["user_id"]
+    }
+  ]
+}

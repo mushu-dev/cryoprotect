@@ -1,0 +1,116 @@
+import { useCallback, useEffect, useState } from 'react';
+
+/**
+ * Simple tracking function to avoid module import issues
+ * @param eventName Event name to track
+ * @param properties Additional properties
+ */
+function trackEvent(eventName, properties = {}) {
+  // Skip tracking in development environment
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`[Analytics] Event tracked: ${eventName}`, properties);
+    return;
+  }
+
+  // Track event with Netlify analytics if available
+  if (typeof window !== 'undefined' && window.netlifyIdentity) {
+    try {
+      if (eventName === 'pageview') {
+        // Simple pageview tracking
+        console.log(`[Netlify Analytics] Pageview: ${properties}`);
+      } else {
+        // Custom event tracking
+        console.log(`[Netlify Analytics] Event: ${eventName}`, properties);
+      }
+    } catch (error) {
+      console.error('[Analytics] Error tracking event:', error);
+    }
+  }
+}
+
+/**
+ * Hook for tracking analytics events throughout the application
+ * Provides a consistent interface regardless of analytics provider
+ */
+export function useAnalytics() {
+  const [isAnalyticsEnabled, setIsAnalyticsEnabled] = useState(false);
+  
+  // Initialize analytics state
+  useEffect(() => {
+    const netlifyEnabled = process.env.NEXT_PUBLIC_NETLIFY === 'true';
+    const vercelEnabled = process.env.NEXT_PUBLIC_VERCEL === 'true';
+    setIsAnalyticsEnabled(netlifyEnabled || vercelEnabled);
+  }, []);
+  
+  /**
+   * Track page view
+   * @param path - Optional path to track (defaults to current path)
+   */
+  const trackPageView = useCallback((path) => {
+    if (!isAnalyticsEnabled) return;
+    
+    const pagePath = path || (typeof window !== 'undefined' ? window.location.pathname : '');
+    
+    // Log in development
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`[Analytics] Page view: ${pagePath}`);
+    }
+    
+    // Track event
+    trackEvent('pageview', { path: pagePath });
+  }, [isAnalyticsEnabled]);
+  
+  /**
+   * Track feature usage
+   * @param feature - Name of the feature being used
+   * @param properties - Additional properties
+   */
+  const trackFeatureUsage = useCallback((feature, properties = {}) => {
+    if (!isAnalyticsEnabled) return;
+    trackEvent('feature_used', { feature, ...properties });
+  }, [isAnalyticsEnabled]);
+  
+  /**
+   * Track errors
+   * @param error - Error message or object
+   * @param source - Where the error occurred
+   */
+  const trackError = useCallback((error, source) => {
+    if (!isAnalyticsEnabled) return;
+    
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    trackEvent('error', { message: errorMessage, source });
+  }, [isAnalyticsEnabled]);
+  
+  /**
+   * Track search queries
+   * @param query - Search term
+   * @param results - Number of results
+   */
+  const trackSearch = useCallback((query, results) => {
+    if (!isAnalyticsEnabled) return;
+    trackEvent('search', { query, results });
+  }, [isAnalyticsEnabled]);
+  
+  /**
+   * Track user actions
+   * @param action - Action performed
+   * @param category - Category of the action
+   * @param properties - Additional properties
+   */
+  const trackAction = useCallback((action, category, properties = {}) => {
+    if (!isAnalyticsEnabled) return;
+    trackEvent('user_action', { action, category, ...properties });
+  }, [isAnalyticsEnabled]);
+  
+  return {
+    isAnalyticsEnabled,
+    trackPageView,
+    trackFeatureUsage,
+    trackError,
+    trackSearch,
+    trackAction,
+  };
+}
+
+export default useAnalytics;

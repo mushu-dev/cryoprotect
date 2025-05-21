@@ -1,0 +1,681 @@
+{
+  "timestamp": "2025-05-12T01:49:21.460448",
+  "database_info": {
+    "tables": [
+      "calculation_method",
+      "calculation_methods",
+      "chembl_import_batches",
+      "chembl_import_logs",
+      "cryoprotection_scores",
+      "experiment_properties",
+      "experiment_with_results",
+      "experiments",
+      "lab_verifications",
+      "migrations",
+      "mixture_components",
+      "mixture_with_components",
+      "mixtures",
+      "molecular_properties",
+      "molecule_experiments",
+      "molecule_proteins",
+      "molecule_with_properties",
+      "molecules",
+      "optimization_reports",
+      "predictions",
+      "projects",
+      "property_calculation_queue",
+      "property_types",
+      "proteins",
+      "rls_policy_stats",
+      "rls_verification_reports",
+      "scientific_data_audit",
+      "shared_resources",
+      "shares",
+      "team_members",
+      "teams",
+      "toxicity_data_source",
+      "user_profile"
+    ],
+    "total_molecules": 736,
+    "molecules_schema": [
+      {
+        "column_name": "id",
+        "data_type": "uuid",
+        "is_nullable": "NO"
+      },
+      {
+        "column_name": "name",
+        "data_type": "character varying",
+        "is_nullable": "NO"
+      },
+      {
+        "column_name": "smiles",
+        "data_type": "character varying",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "inchi",
+        "data_type": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "inchikey",
+        "data_type": "character varying",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "formula",
+        "data_type": "character varying",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "molecular_weight",
+        "data_type": "numeric",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "created_by",
+        "data_type": "uuid",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "is_public",
+        "data_type": "boolean",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "data_source",
+        "data_type": "character varying",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "version",
+        "data_type": "integer",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "modification_history",
+        "data_type": "jsonb",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO"
+      },
+      {
+        "column_name": "updated_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO"
+      },
+      {
+        "column_name": "pubchem_cid",
+        "data_type": "integer",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "cid",
+        "data_type": "integer",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "pubchem_link",
+        "data_type": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "molecular_formula",
+        "data_type": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "chembl_id",
+        "data_type": "character varying",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "properties",
+        "data_type": "jsonb",
+        "is_nullable": "YES"
+      }
+    ],
+    "molecular_properties_schema": [
+      {
+        "column_name": "id",
+        "data_type": "uuid",
+        "is_nullable": "NO"
+      },
+      {
+        "column_name": "molecule_id",
+        "data_type": "uuid",
+        "is_nullable": "NO"
+      },
+      {
+        "column_name": "property_type_id",
+        "data_type": "uuid",
+        "is_nullable": "NO"
+      },
+      {
+        "column_name": "numeric_value",
+        "data_type": "numeric",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "text_value",
+        "data_type": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "boolean_value",
+        "data_type": "boolean",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "unit",
+        "data_type": "character varying",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "created_by",
+        "data_type": "uuid",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "data_source",
+        "data_type": "character varying",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "version",
+        "data_type": "integer",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "modification_history",
+        "data_type": "jsonb",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "created_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO"
+      },
+      {
+        "column_name": "updated_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO"
+      },
+      {
+        "column_name": "sensitivity_level",
+        "data_type": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "property_name",
+        "data_type": "character varying",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "property_value",
+        "data_type": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "property_type",
+        "data_type": "character varying",
+        "is_nullable": "YES"
+      },
+      {
+        "column_name": "source",
+        "data_type": "character varying",
+        "is_nullable": "YES"
+      }
+    ],
+    "chembl_molecules_checked": 21
+  },
+  "property_verification": {
+    "total_molecules": 21,
+    "molecules_with_properties": 20,
+    "molecules_missing_properties": 1,
+    "molecules_with_jsonb_properties": 0,
+    "property_counts": {
+      "null": 1,
+      "Rotatable Bond Count": 9,
+      "LogP": 19,
+      "Hydrogen Bond Acceptor Count": 9,
+      "Hydrogen Bond Donor Count": 9,
+      "Molecular Weight": 10
+    },
+    "molecules_with_issues": [
+      {
+        "id": "951bae65-a400-4dec-b80c-efcf0f3bd707",
+        "chembl_id": "TEST_MCP",
+        "missing_properties": [
+          "heavy_atom_count",
+          "h_bond_acceptor_count",
+          "ring_count",
+          "tpsa",
+          "h_bond_donor_count",
+          "rotatable_bond_count",
+          "logp",
+          "molecular_weight"
+        ],
+        "has_molecular_properties": true,
+        "has_jsonb_properties": false
+      },
+      {
+        "id": "c170e735-e6e9-4591-9e81-c653869083ef",
+        "chembl_id": "MCP_TEST_001",
+        "missing_properties": [
+          "heavy_atom_count",
+          "h_bond_acceptor_count",
+          "ring_count",
+          "tpsa",
+          "h_bond_donor_count",
+          "rotatable_bond_count",
+          "logp",
+          "molecular_weight"
+        ],
+        "has_molecular_properties": false,
+        "has_jsonb_properties": false
+      },
+      {
+        "id": "83ed505d-566d-46b8-b021-498f8bb89df3",
+        "chembl_id": "CHEMBL6752",
+        "missing_properties": [
+          "heavy_atom_count",
+          "h_bond_acceptor_count",
+          "ring_count",
+          "tpsa",
+          "h_bond_donor_count",
+          "rotatable_bond_count",
+          "logp",
+          "molecular_weight"
+        ],
+        "has_molecular_properties": true,
+        "has_jsonb_properties": false
+      },
+      {
+        "id": "0a0fe74e-c001-454d-97d6-b1f859b25fb2",
+        "chembl_id": "CHEMBL262548",
+        "missing_properties": [
+          "heavy_atom_count",
+          "h_bond_acceptor_count",
+          "ring_count",
+          "tpsa",
+          "h_bond_donor_count",
+          "rotatable_bond_count",
+          "logp",
+          "molecular_weight"
+        ],
+        "has_molecular_properties": true,
+        "has_jsonb_properties": false
+      },
+      {
+        "id": "9a1c401b-d524-4c51-a3b5-8cf84e3e52ad",
+        "chembl_id": "CHEMBL967",
+        "missing_properties": [
+          "heavy_atom_count",
+          "h_bond_acceptor_count",
+          "ring_count",
+          "tpsa",
+          "h_bond_donor_count",
+          "rotatable_bond_count",
+          "logp",
+          "molecular_weight"
+        ],
+        "has_molecular_properties": true,
+        "has_jsonb_properties": false
+      },
+      {
+        "id": "6b41111a-9a92-4a02-b8ab-31975af62be1",
+        "chembl_id": "CHEMBL6196",
+        "missing_properties": [
+          "heavy_atom_count",
+          "h_bond_acceptor_count",
+          "ring_count",
+          "tpsa",
+          "h_bond_donor_count",
+          "rotatable_bond_count",
+          "logp",
+          "molecular_weight"
+        ],
+        "has_molecular_properties": true,
+        "has_jsonb_properties": false
+      },
+      {
+        "id": "f2a6d927-65c6-4a2a-900b-9522cc0c712e",
+        "chembl_id": "CHEMBL1487",
+        "missing_properties": [
+          "heavy_atom_count",
+          "h_bond_acceptor_count",
+          "ring_count",
+          "tpsa",
+          "h_bond_donor_count",
+          "rotatable_bond_count",
+          "logp",
+          "molecular_weight"
+        ],
+        "has_molecular_properties": true,
+        "has_jsonb_properties": false
+      },
+      {
+        "id": "97d2b5ca-c7c2-4b01-af16-5d2fc8224f4f",
+        "chembl_id": "CHEMBL500033",
+        "missing_properties": [
+          "heavy_atom_count",
+          "h_bond_acceptor_count",
+          "ring_count",
+          "tpsa",
+          "h_bond_donor_count",
+          "rotatable_bond_count",
+          "logp",
+          "molecular_weight"
+        ],
+        "has_molecular_properties": true,
+        "has_jsonb_properties": false
+      },
+      {
+        "id": "e17dff32-d245-4ae0-a921-c37dc8b994ab",
+        "chembl_id": "CHEMBL66195",
+        "missing_properties": [
+          "heavy_atom_count",
+          "h_bond_acceptor_count",
+          "ring_count",
+          "tpsa",
+          "h_bond_donor_count",
+          "rotatable_bond_count",
+          "logp",
+          "molecular_weight"
+        ],
+        "has_molecular_properties": true,
+        "has_jsonb_properties": false
+      },
+      {
+        "id": "c6ed38e9-eab8-480e-a5d9-5626e797bd7a",
+        "chembl_id": "CHEMBL1098659",
+        "missing_properties": [
+          "heavy_atom_count",
+          "h_bond_acceptor_count",
+          "ring_count",
+          "tpsa",
+          "h_bond_donor_count",
+          "rotatable_bond_count",
+          "logp",
+          "molecular_weight"
+        ],
+        "has_molecular_properties": true,
+        "has_jsonb_properties": false
+      },
+      {
+        "id": "d55ea26c-b945-45dc-87c7-261c7ccc5ce3",
+        "chembl_id": "CHEMBL388978",
+        "missing_properties": [
+          "heavy_atom_count",
+          "h_bond_acceptor_count",
+          "ring_count",
+          "tpsa",
+          "h_bond_donor_count",
+          "rotatable_bond_count",
+          "logp",
+          "molecular_weight"
+        ],
+        "has_molecular_properties": true,
+        "has_jsonb_properties": false
+      },
+      {
+        "id": "e42e3ee8-7afc-40dd-b864-7dadfa9edb86",
+        "chembl_id": "CHEMBL1398948",
+        "missing_properties": [
+          "heavy_atom_count",
+          "h_bond_acceptor_count",
+          "ring_count",
+          "tpsa",
+          "h_bond_donor_count",
+          "rotatable_bond_count",
+          "logp",
+          "molecular_weight"
+        ],
+        "has_molecular_properties": true,
+        "has_jsonb_properties": false
+      },
+      {
+        "id": "35ee7477-ca40-4c86-962f-7813ce2b6a4b",
+        "chembl_id": "CHEMBL1078124",
+        "missing_properties": [
+          "heavy_atom_count",
+          "h_bond_acceptor_count",
+          "ring_count",
+          "tpsa",
+          "h_bond_donor_count",
+          "rotatable_bond_count",
+          "logp",
+          "molecular_weight"
+        ],
+        "has_molecular_properties": true,
+        "has_jsonb_properties": false
+      },
+      {
+        "id": "3b862ce6-c6cb-4a85-a0c8-0f81eb17854f",
+        "chembl_id": "CHEMBL1078140",
+        "missing_properties": [
+          "heavy_atom_count",
+          "h_bond_acceptor_count",
+          "ring_count",
+          "tpsa",
+          "h_bond_donor_count",
+          "rotatable_bond_count",
+          "logp",
+          "molecular_weight"
+        ],
+        "has_molecular_properties": true,
+        "has_jsonb_properties": false
+      },
+      {
+        "id": "5dafe671-e36d-4ff5-8836-19cd26870184",
+        "chembl_id": "CHEMBL1078036",
+        "missing_properties": [
+          "heavy_atom_count",
+          "h_bond_acceptor_count",
+          "ring_count",
+          "tpsa",
+          "h_bond_donor_count",
+          "rotatable_bond_count",
+          "logp",
+          "molecular_weight"
+        ],
+        "has_molecular_properties": true,
+        "has_jsonb_properties": false
+      },
+      {
+        "id": "8a2fc198-26dd-46f9-ae9f-dff4da6730b8",
+        "chembl_id": "CHEMBL573104",
+        "missing_properties": [
+          "heavy_atom_count",
+          "h_bond_acceptor_count",
+          "ring_count",
+          "tpsa",
+          "h_bond_donor_count",
+          "rotatable_bond_count",
+          "logp",
+          "molecular_weight"
+        ],
+        "has_molecular_properties": true,
+        "has_jsonb_properties": false
+      },
+      {
+        "id": "63d6e584-020b-408b-b2e0-c8a306fd969d",
+        "chembl_id": "CHEMBL507352",
+        "missing_properties": [
+          "heavy_atom_count",
+          "h_bond_acceptor_count",
+          "ring_count",
+          "tpsa",
+          "h_bond_donor_count",
+          "rotatable_bond_count",
+          "logp",
+          "molecular_weight"
+        ],
+        "has_molecular_properties": true,
+        "has_jsonb_properties": false
+      },
+      {
+        "id": "1dab82aa-b6df-4a07-a0f7-76409233480e",
+        "chembl_id": "CHEMBL510533",
+        "missing_properties": [
+          "heavy_atom_count",
+          "h_bond_acceptor_count",
+          "ring_count",
+          "tpsa",
+          "h_bond_donor_count",
+          "rotatable_bond_count",
+          "logp",
+          "molecular_weight"
+        ],
+        "has_molecular_properties": true,
+        "has_jsonb_properties": false
+      },
+      {
+        "id": "4dbdf559-1663-4063-b2be-75446c5d1f10",
+        "chembl_id": "CHEMBL444162",
+        "missing_properties": [
+          "heavy_atom_count",
+          "h_bond_acceptor_count",
+          "ring_count",
+          "tpsa",
+          "h_bond_donor_count",
+          "rotatable_bond_count",
+          "logp",
+          "molecular_weight"
+        ],
+        "has_molecular_properties": true,
+        "has_jsonb_properties": false
+      },
+      {
+        "id": "c06622cf-c402-450c-a685-dfef370d3969",
+        "chembl_id": "CHEMBL261131",
+        "missing_properties": [
+          "heavy_atom_count",
+          "h_bond_acceptor_count",
+          "ring_count",
+          "tpsa",
+          "h_bond_donor_count",
+          "rotatable_bond_count",
+          "logp",
+          "molecular_weight"
+        ],
+        "has_molecular_properties": true,
+        "has_jsonb_properties": false
+      },
+      {
+        "id": "b1bf3b52-acf6-441c-89e7-b8f4b7b923cd",
+        "chembl_id": "CHEMBL122972",
+        "missing_properties": [
+          "heavy_atom_count",
+          "h_bond_acceptor_count",
+          "ring_count",
+          "tpsa",
+          "h_bond_donor_count",
+          "rotatable_bond_count",
+          "logp",
+          "molecular_weight"
+        ],
+        "has_molecular_properties": true,
+        "has_jsonb_properties": false
+      }
+    ]
+  },
+  "cross_reference_verification": {
+    "total_molecules": 21,
+    "molecules_with_pubchem_cid": 1,
+    "molecules_with_chembl_id": 21,
+    "molecules_with_both": 1,
+    "molecules_missing_pubchem": [
+      {
+        "id": "c170e735-e6e9-4591-9e81-c653869083ef",
+        "chembl_id": "MCP_TEST_001"
+      },
+      {
+        "id": "83ed505d-566d-46b8-b021-498f8bb89df3",
+        "chembl_id": "CHEMBL6752"
+      },
+      {
+        "id": "0a0fe74e-c001-454d-97d6-b1f859b25fb2",
+        "chembl_id": "CHEMBL262548"
+      },
+      {
+        "id": "9a1c401b-d524-4c51-a3b5-8cf84e3e52ad",
+        "chembl_id": "CHEMBL967"
+      },
+      {
+        "id": "6b41111a-9a92-4a02-b8ab-31975af62be1",
+        "chembl_id": "CHEMBL6196"
+      },
+      {
+        "id": "f2a6d927-65c6-4a2a-900b-9522cc0c712e",
+        "chembl_id": "CHEMBL1487"
+      },
+      {
+        "id": "97d2b5ca-c7c2-4b01-af16-5d2fc8224f4f",
+        "chembl_id": "CHEMBL500033"
+      },
+      {
+        "id": "e17dff32-d245-4ae0-a921-c37dc8b994ab",
+        "chembl_id": "CHEMBL66195"
+      },
+      {
+        "id": "c6ed38e9-eab8-480e-a5d9-5626e797bd7a",
+        "chembl_id": "CHEMBL1098659"
+      },
+      {
+        "id": "d55ea26c-b945-45dc-87c7-261c7ccc5ce3",
+        "chembl_id": "CHEMBL388978"
+      },
+      {
+        "id": "e42e3ee8-7afc-40dd-b864-7dadfa9edb86",
+        "chembl_id": "CHEMBL1398948"
+      },
+      {
+        "id": "35ee7477-ca40-4c86-962f-7813ce2b6a4b",
+        "chembl_id": "CHEMBL1078124"
+      },
+      {
+        "id": "3b862ce6-c6cb-4a85-a0c8-0f81eb17854f",
+        "chembl_id": "CHEMBL1078140"
+      },
+      {
+        "id": "5dafe671-e36d-4ff5-8836-19cd26870184",
+        "chembl_id": "CHEMBL1078036"
+      },
+      {
+        "id": "8a2fc198-26dd-46f9-ae9f-dff4da6730b8",
+        "chembl_id": "CHEMBL573104"
+      },
+      {
+        "id": "63d6e584-020b-408b-b2e0-c8a306fd969d",
+        "chembl_id": "CHEMBL507352"
+      },
+      {
+        "id": "1dab82aa-b6df-4a07-a0f7-76409233480e",
+        "chembl_id": "CHEMBL510533"
+      },
+      {
+        "id": "4dbdf559-1663-4063-b2be-75446c5d1f10",
+        "chembl_id": "CHEMBL444162"
+      },
+      {
+        "id": "c06622cf-c402-450c-a685-dfef370d3969",
+        "chembl_id": "CHEMBL261131"
+      },
+      {
+        "id": "b1bf3b52-acf6-441c-89e7-b8f4b7b923cd",
+        "chembl_id": "CHEMBL122972"
+      }
+    ]
+  },
+  "overall_health": {
+    "percent_with_properties": 95.23809523809523,
+    "percent_with_cross_refs": 4.761904761904762,
+    "status": "poor"
+  }
+}

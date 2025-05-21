@@ -122,6 +122,18 @@ Alternatively, build with Plausible enabled:
 npm run analytics:enable-plausible
 ```
 
+## Static Export Compatibility
+
+For static exports with Netlify (using `output: 'export'` in Next.js), we've ensured analytics remains compatible:
+
+1. All analytics calls are wrapped in `useEffect` to ensure they only run client-side
+2. We use a global event listener for navigation changes with `popstate`
+3. The CSP in netlify.toml allows connections to Netlify analytics domains
+4. Environment variables are passed through the build process for static generation
+5. The `unoptimized: true` setting for images ensures compatibility with static export
+
+For more details on handling client-side analytics with dynamic routes and static export, see [NETLIFY_DYNAMIC_ROUTES.md](./NETLIFY_DYNAMIC_ROUTES.md).
+
 ## File Structure
 
 The analytics implementation consists of:

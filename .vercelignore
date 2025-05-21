@@ -1,0 +1,23 @@
+# Directories to exclude
+**/node_modules
+**/.git
+**/.github
+**/__pycache__
+**/venv
+**/alembic
+**/api
+**/tests
+**/migrations
+**/cache
+**/backups
+**/checkpoints
+**/chembl
+**/reports
+
+# Allow only what's needed
+!frontend
+!package.json
+!.npmrc
+!frontend/.npmrc
+!vercel.json
+!.vercelignore

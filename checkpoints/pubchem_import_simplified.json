@@ -1,0 +1,15 @@
+{
+  "position": 50,
+  "processed": 4,
+  "last_batch": 1,
+  "total_imported": 3,
+  "total_skipped": 1,
+  "total_errors": 0,
+  "batch_times": [
+    1.3513555526733398,
+    1.3216984272003174
+  ],
+  "elapsed_seconds": 2.7160370349884033,
+  "last_updated": "2025-05-11T19:29:27.569869",
+  "status": "Completed"
+}

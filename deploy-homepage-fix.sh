@@ -11,13 +11,20 @@ cd "$(dirname "$0")"
 # Navigate to the frontend directory
 cd frontend
 
-# Build the project
-echo "Building the project..."
-npm run build
+# Install dependencies if needed
+if [ ! -d "node_modules" ]; then
+  echo "Installing dependencies..."
+  npm install
+fi
 
-# Deploy to Netlify
+# Build the project with static export
+echo "Building the project with static export..."
+npm run build
+npm run export
+
+# Deploy to Netlify using the out directory
 echo "Deploying to Netlify..."
-npx netlify deploy --prod
+npx netlify deploy --prod --dir=out
 
 echo "Deployment complete!"
 echo "The homepage fix should now be visible at https://cryoprotect.app"

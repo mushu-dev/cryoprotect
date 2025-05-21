@@ -1,0 +1,174 @@
+{
+  "timestamp": "2025-05-14T00:32:00.507368",
+  "migration_file": "migrations/032_performance_indexes.sql",
+  "results": [
+    {
+      "status": "success",
+      "index_name": "idx_molecular_properties_unit",
+      "table": "molecular_properties",
+      "column": "unit",
+      "execution_time": 0.6795225143432617
+    },
+    {
+      "status": "success",
+      "index_name": "idx_molecular_properties_data_source",
+      "table": "molecular_properties",
+      "column": "data_source",
+      "execution_time": 0.25016307830810547
+    },
+    {
+      "status": "success",
+      "index_name": "idx_molecular_properties_property_name",
+      "table": "molecular_properties",
+      "column": "property_name",
+      "execution_time": 0.257612943649292
+    },
+    {
+      "status": "success",
+      "index_name": "idx_molecular_properties_property_value",
+      "table": "molecular_properties",
+      "column": "property_value",
+      "execution_time": 0.22887492179870605
+    },
+    {
+      "status": "error",
+      "index_name": "idx_molecular_properties_property_type",
+      "table": "molecular_properties",
+      "column": "property_type",
+      "error": "relation \"idx_molecular_properties_property_type\" already exists\n"
+    },
+    {
+      "status": "success",
+      "index_name": "idx_molecular_properties_source",
+      "table": "molecular_properties",
+      "column": "source",
+      "execution_time": 0.24997925758361816
+    },
+    {
+      "status": "success",
+      "index_name": "idx_molecular_properties_version",
+      "table": "molecular_properties",
+      "column": "version",
+      "execution_time": 0.23312115669250488
+    },
+    {
+      "status": "error",
+      "index_name": "idx_molecules_molecule_id",
+      "table": "molecules",
+      "column": "molecule_id",
+      "error": "column \"molecule_id\" does not exist\n"
+    },
+    {
+      "status": "success",
+      "index_name": "idx_molecules_smiles",
+      "table": "molecules",
+      "column": "smiles",
+      "execution_time": 0.22793865203857422
+    },
+    {
+      "status": "success",
+      "index_name": "idx_molecules_inchi",
+      "table": "molecules",
+      "column": "inchi",
+      "execution_time": 0.21867036819458008
+    },
+    {
+      "status": "success",
+      "index_name": "idx_molecules_data_source",
+      "table": "molecules",
+      "column": "data_source",
+      "execution_time": 0.2067561149597168
+    },
+    {
+      "status": "success",
+      "index_name": "idx_molecules_pubchem_link",
+      "table": "molecules",
+      "column": "pubchem_link",
+      "execution_time": 0.23218131065368652
+    },
+    {
+      "status": "success",
+      "index_name": "idx_molecules_molecular_formula",
+      "table": "molecules",
+      "column": "molecular_formula",
+      "execution_time": 0.21937990188598633
+    },
+    {
+      "status": "success",
+      "index_name": "idx_molecules_molecular_weight",
+      "table": "molecules",
+      "column": "molecular_weight",
+      "execution_time": 0.20430636405944824
+    },
+    {
+      "status": "success",
+      "index_name": "idx_molecules_version",
+      "table": "molecules",
+      "column": "version",
+      "execution_time": 0.21004939079284668
+    },
+    {
+      "status": "success",
+      "index_name": "idx_property_calculation_queue_molecule_id",
+      "table": "property_calculation_queue",
+      "column": "molecule_id",
+      "execution_time": 0.22539710998535156
+    },
+    {
+      "status": "success",
+      "index_name": "idx_property_calculation_queue_smiles",
+      "table": "property_calculation_queue",
+      "column": "smiles",
+      "execution_time": 0.2112107276916504
+    },
+    {
+      "status": "success",
+      "index_name": "idx_property_calculation_queue_status",
+      "table": "property_calculation_queue",
+      "column": "status",
+      "execution_time": 0.19654011726379395
+    },
+    {
+      "status": "success",
+      "index_name": "idx_property_calculation_queue_error",
+      "table": "property_calculation_queue",
+      "column": "error",
+      "execution_time": 0.20287489891052246
+    },
+    {
+      "status": "success",
+      "index_name": "idx_property_calculation_queue_properties_added",
+      "table": "property_calculation_queue",
+      "column": "properties_added",
+      "execution_time": 0.2060096263885498
+    },
+    {
+      "status": "success",
+      "index_name": "idx_scientific_data_audit_operation",
+      "table": "scientific_data_audit",
+      "column": "operation",
+      "execution_time": 1.84025239944458
+    },
+    {
+      "status": "success",
+      "index_name": "idx_scientific_data_audit_ip_address",
+      "table": "scientific_data_audit",
+      "column": "ip_address",
+      "execution_time": 0.7887096405029297
+    },
+    {
+      "status": "success",
+      "index_name": "idx_scientific_data_audit_application_context",
+      "table": "scientific_data_audit",
+      "column": "application_context",
+      "execution_time": 0.24367523193359375
+    },
+    {
+      "status": "error",
+      "index_name": "idx_property_types_property_type_id",
+      "table": "property_types",
+      "column": "property_type_id",
+      "error": "column \"property_type_id\" does not exist\n"
+    }
+  ]
+}

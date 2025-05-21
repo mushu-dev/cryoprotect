@@ -43,150 +43,268 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Commands**: 
   - `resolve-library-id`: Find the exact Context7-compatible library ID
   - `get-library-docs`: Retrieve comprehensive documentation including code examples
-- **Test Results**: Successfully resolved and retrieved documentation for React, including:
-  - Modern React patterns with hooks
-  - Functional components
-  - State management techniques
-  - Context API usage
-  - Client component patterns
 - **Best Practices**: 
-  - Check Context7 when encountering versioning issues
-  - Use for real-time documentation validation
-  - Leverage for API specification updates
-
-### Supabase MCP Server ✅
-- **Purpose**: Direct integration with Supabase database operations
-- **Status**: Functioning correctly
-- **Usage**: Use for database queries, schema management, and RLS policy testing
-- **Commands**:
-  - `execute_sql`: Run SQL queries directly
-  - `list_tables`: View database schema
-  - `get_project`: Access project configuration
-  - `apply_migration`: Apply database migrations
-  - `list_organizations`: List available Supabase organizations
-- **Test Results**: Successfully listed available organizations
-- **Best Practices**:
-  - Test RLS policies using execute_sql
-  - Verify database changes before implementing in code
-  - Use for real-time database state inspection
+  - Check Context7 when encountering React 18 and Next.js 14 migration issues
+  - Use for Convex Client API documentation validation
+  - Leverage for Mol* library implementation guidance
+  - Consult for shadcn/ui component integration patterns
 
 ### Sequential-thinking MCP Server ✅
 - **Purpose**: Provides structured, step-by-step reasoning for complex problems
 - **Status**: Functioning correctly
 - **Usage**: Use for breaking down complex problems, planning, and tool recommendation
-- **Commands**:
-  - This is an integrated thinking process rather than individual commands
-- **Test Results**: Successfully demonstrated:
-  - Progressive, step-by-step reasoning
-  - Tool recommendation with confidence scores and rationale
-  - Tracking of executed steps and results verification
-  - Structured problem-solving approach
 - **Best Practices**:
-  - Use for complex algorithmic problems
-  - Leverage for planning multi-step implementations
-  - Apply when debugging requires systematic reasoning
+  - Use for complex implementation planning (especially resiliency patterns)
+  - Leverage for React 18 migration planning
+  - Apply when implementing Mol* library integration
+  - Use when implementing circuit breaker patterns in frontend
 
 ### Playwright MCP Server ✅
 - **Purpose**: Browser automation for testing and web scraping
 - **Status**: Fully functional with containerized solution
-- **Usage**: Use for UI testing, web scraping, and generating screenshots
-- **Linux Compatibility**: On Fedora/newer Linux distributions, our containerized solution ensures full compatibility:
-  ```bash
-  # The MCP command is only accessible through Claude Code CLI
-  # But you can use our container solution for testing:
-  ./mcp-playwright-final.sh browser_navigate https://example.com
-  ./mcp-playwright-final.sh browser_take_screenshot https://example.com screenshot.png
-  ./mcp-playwright-final.sh browser_snapshot https://example.com
-  ```
+- **Usage**: Use for UI testing, particularly for experimental data visualization features
+- **Linux Compatibility**: Use our containerized solution for maximum compatibility
 - **Commands**:
-  - `browser_navigate`: Navigate to a URL
-  - `browser_take_screenshot`: Capture screenshots of pages
-  - `browser_click`: Interact with page elements
-  - `browser_type`: Input text into forms
-  - `browser_snapshot`: Get accessibility snapshot of a page
-- **Implementation**:
-  We've created a robust containerized solution that works on any Linux system:
-  - Uses official Microsoft Playwright Docker image
-  - No system-wide changes required
-  - Handles all library compatibility issues automatically
-  - Provides JSON-formatted output for easy parsing
-  - Supports all MCP Playwright commands
-- **Multiple Solutions Available**:
-  - **mcp-playwright-final.sh**: Production-ready solution using Docker/Podman container
-  - **mcp-playwright-direct.sh**: Alternative implementation with direct container access
-  - **mcp-cli.sh**: Original symbolic link approach for systems without containers
+  - `browser_navigate`: Navigate to protocol and experiment pages for testing
+  - `browser_take_screenshot`: Capture screenshots for visual regression tests
+  - `browser_click`: Test UI interactions with Protocol Step Editor
+  - `browser_type`: Test form inputs in Protocol and Experiment forms
+  - `browser_snapshot`: Test accessibility of new UI components
 - **Best Practices**:
-  - Use the containerized solution for maximum compatibility
-  - Automated tests ensure reliability across environments
-  - The integration is transparent to Claude Code MCP
-  - Container starts on-demand and has minimal resource usage
-  - Use browser snapshot for interactive analysis rather than screenshots
+  - Use the containerized solution (`mcp-playwright-final.sh`) for all tests
+  - Create automated tests for all critical protocol workflows
+  - Test Mol* visualization across different browsers
+  - Verify accessibility standards compliance with snapshots
 
-## MCP Testing and Verification
+## Technology Stack Overview
 
-### Testing Tools
-- **Automated test script**: `test_mcp_services.js` - tests Playwright compatibility and library setup
-- **Manual test script**: `test_playwright.js` - simple Playwright browser test
-- **MCP integration test**: `test_mcp_playwright.js` - tests the compatibility layer with MCP-style operations 
-- **Compatibility wrapper**: `mcp-cli.sh` - wrapper script for running commands with proper library paths
-- **Library setup script**: `setup_mcp_playwright.sh` - sets up the symbolic links needed for compatibility
+### Frontend
+- **Framework**: Next.js (migrating to version 14.x)
+- **UI Library**: React (migrating to version 18.x)
+- **Component Library**: shadcn/ui (based on Radix UI primitives)
+- **Styling**: Tailwind CSS
+- **State Management**: Combination of React Query and Zustand
+- **Visualization**: Mol* library for 3D molecule visualization
+- **Database Client**: Convex Client (for real-time data)
+- **Testing**: Jest for unit tests, Playwright for E2E tests
 
-### How to Verify MCP Services
-1. Run the automated test scripts:
-   ```bash
-   # Test the containerized solution (recommended)
-   node test-final-playwright.js
-   
-   # Test direct Playwright solution 
-   node test-direct-playwright.js
-   
-   # Test original symbolic link solution
-   ./mcp-cli.sh node test_mcp_services.js
-   ```
-2. Check test results in the test output
-3. For manual verification of specific services within Claude Code, use the Task tool to test:
-   - Context7: Resolve documentation for a common library
-   - Supabase: List organizations or tables
-   - Sequential-thinking: Run a simple reasoning task
-   - Playwright: Try browser navigation and screenshots
+### Backend
+- **API**: Flask API with resiliency patterns
+- **Database**: Convex (migrating from Supabase)
+- **Deployment**: Netlify for frontend, Heroku for API
+- **Specialized Services**: RDKit service deployed on Fly.io
+- **Container Technology**: Docker/Podman for service isolation
+- **API Endpoints**:
+  - Main API (Heroku): `https://cryoprotect-8030e4025428.herokuapp.com/api`
+  - RDKit Service (Fly.io): `https://cryoprotect-rdkit.fly.dev`
+- **Working Endpoints**:
+  - Get all molecules: `GET /api/molecules`
+  - Get molecule by ID: `GET /api/molecules/{id}`
 
-### Testing Each MCP Playwright Command
-You can test each MCP Playwright command individually:
+## Build/Run/Test Commands
 
-```bash
-# Check status of Playwright container
-./mcp-playwright-final.sh status
+### Development
+- **Run frontend development**: `cd frontend && npm run dev` 
+- **Run frontend with Convex**: `cd frontend && npm run dev:with-convex`
+- **Build frontend**: `cd frontend && npm run build`
+- **Run API locally**: `python app.py`
+- **Run RDKit service**: `./run_rdkit_service.sh`
 
-# Navigate to a URL and print information
-./mcp-playwright-final.sh browser_navigate https://example.com
+### Testing
+- **Run all tests**: `cd frontend && npm run test:all`
+- **Run end-to-end tests**: `cd frontend && npm run test:e2e`
+- **Run experimental data tests**: `cd frontend && npm run test:experimental`
+- **Run protein visualizer tests**: `cd frontend && npm run test:protein-visualizer`
+- **Run API mock tests**: `cd frontend && npm run test:api:verify`
+- **Run API live tests**: `cd frontend && npm run test:api:live`
+- **Run API tests (Python)**: `python -m pytest tests/api/`
+- **Run resiliency tests**: `python examples/resiliency_demo.py`
 
-# Take a screenshot of a website
-./mcp-playwright-final.sh browser_take_screenshot https://example.com test.png
+### Deployment
+- **Deploy to Netlify**: `cd frontend && npm run deploy:netlify`
+- **Deploy to Heroku**: `git push heroku main`
+- **Deploy RDKit service**: `flyctl deploy`
 
-# Get accessibility snapshot of a website
-./mcp-playwright-final.sh browser_snapshot https://example.com
+### Playwright Containers
+- **Run containerized Playwright tests**: `cd frontend && npx playwright test`
+- **Test container Playwright solution**: `node test-final-playwright.js`
+- **Run containerized Playwright commands**: `./mcp-playwright-final.sh <command> [arguments]`
+- **Check container status**: `./mcp-playwright-final.sh status`
+
+## Code Style Guidelines
+
+- **Components**: Functional components with hooks (no class components)
+- **Docstrings**: JSDoc comments for all modules, components, and functions
+- **Imports**: Group imports (React, third-party, local) with empty line between groups
+- **Formatting**: 2-space indentation for JS/TS, 4-space for Python, 80-character line length
+- **Typing**: TypeScript types for all components, functions, and state
+- **Naming**: camelCase for variables/functions, PascalCase for components/classes, UPPER_CASE for constants
+- **Error handling**: React error boundaries for components, try/catch with specific error types
+- **Logging**: Structured logging with appropriate log levels (using our new logging system)
+- **Documentation**: Include detailed JSDoc with parameters and return values
+- **Testing**: Component tests, integration tests, and E2E tests with Playwright
+
+## Project Completion Plan
+
+### Current Phase: Feature Enhancement and Production Readiness
+
+#### Phase 2.2: Protein Visualization Enhancement 🔄
+- ✅ Create MolstarViewer component skeleton
+- ✅ Implement visualization styles and controls
+- 🔄 Integrate with Mol* library
+- 🔄 Add advanced visualization features
+- 🔄 Implement cross-reference with experimental data
+
+#### Phase 2.3: React 18 Migration 🔄
+- 🔄 Update Next.js configuration for React 18 compatibility
+- 🔄 Refactor class components to functional components with hooks
+- 🔄 Implement modern UI components
+- 🔄 Optimize performance for all device sizes
+- 🔄 Implement accessibility standards
+
+#### Phase 3.1: Core Resiliency (Backend Completed ✅, Frontend Pending 🔄)
+- ✅ Implement API timeout and retry mechanism with exponential backoff
+- ✅ Add circuit breaker pattern to prevent cascading failures
+- ✅ Implement connection monitoring and recycling
+- ✅ Create service health tracking system
+- 🔄 Implement frontend retry mechanism for API calls
+- 🔄 Add client-side circuit breaker for API requests
+- 🔄 Optimize Convex connection and data fetching
+- 🔄 Create data validation schemas for all endpoints
+
+### Priority Tasks
+1. **Complete Protein Visualization Enhancement**
+   - Integrate Mol* library with MolstarViewer component
+   - Implement advanced visualization features
+   - Create cross-references with experimental data
+
+2. **Complete React 18 Migration**
+   - Update Next.js configuration for React 18
+   - Refactor remaining class components to functional components
+   - Update UI components to latest versions
+   - Implement accessibility standards
+
+3. **Implement Frontend Resiliency**
+   - Add retry mechanisms for API calls
+   - Implement client-side circuit breaker
+   - Add timeout handling for external services
+   - Optimize Convex connection configuration
+
+4. **Complete Experimental Data Integration**
+   - Connect UI to real backend API endpoints
+   - Implement data fetching and state management
+   - Add proper error handling and loading states
+   - Test data integration extensively
+
+5. **Begin Monitoring and Observability**
+   - Implement structured logging for frontend
+   - Create comprehensive error tracking system
+   - Set up performance monitoring and profiling
+   - Create smoke tests for critical user workflows
+
+## Testing Strategy
+
+### Comprehensive Testing Approach
+We've implemented a multi-layered testing strategy:
+
+1. **Unit Tests**:
+   - Test individual components in isolation
+   - Mock dependencies and external services
+   - Target 90%+ code coverage for critical paths
+
+2. **Integration Tests**:
+   - Test component interactions
+   - Verify service integration points
+   - Test data flows across components
+
+3. **End-to-End Tests**:
+   - Test complete user workflows with Playwright
+   - Verify critical paths in production-like environment
+   - Include visual regression tests
+
+4. **Resilience Tests**:
+   - Test system behavior under failure conditions
+   - Validate retry mechanisms and circuit breakers
+   - Verify graceful degradation
+
+5. **Accessibility Tests**:
+   - Verify WCAG compliance across components
+   - Test keyboard navigation
+   - Verify screen reader compatibility
+
+## Frontend Architecture
+
+### Key Components
+
+```
+┌────────────────────────────────────────────────────┐
+│ Next.js Application                                │
+│                                                    │
+│  ┌────────────────────┐    ┌────────────────────┐  │
+│  │ UI Components      │    │ Data Layer         │  │
+│  │                    │    │                    │  │
+│  │  • shadcn/ui       │    │  • Convex Client   │  │
+│  │  • Tailwind CSS    │    │  • React Query     │  │
+│  │  • Radix UI        │    │  • Zustand         │  │
+│  └────────────────────┘    └────────────────────┘  │
+│                                                    │
+│  ┌────────────────────┐    ┌────────────────────┐  │
+│  │ Domain Components  │    │ Visualization      │  │
+│  │                    │    │                    │  │
+│  │  • Experiments     │    │  • MolstarViewer   │  │
+│  │  • Protocols       │    │  • Data Charts     │  │
+│  │  • Molecules       │    │  • Interactive UI  │  │
+│  └────────────────────┘    └────────────────────┘  │
+│                                                    │
+│  ┌────────────────────┐    ┌────────────────────┐  │
+│  │ Resiliency Layer   │    │ Monitoring         │  │
+│  │                    │    │                    │  │
+│  │  • Retry Mechanism │    │  • Error Tracking  │  │
+│  │  • Circuit Breaker │    │  • Performance     │  │
+│  │  • Timeout Handling│    │  • Logging         │  │
+│  └────────────────────┘    └────────────────────┘  │
+│                                                    │
+└────────────────────────────────────────────────────┘
 ```
 
-### Handling Issues
-- **Container issues**: 
-  - The solution automatically pulls the container image if needed
-  - Make sure podman/docker is installed on your system
-  - Verify you have permissions to create containers
+### Database Integration (Convex)
 
-- **Compatibility issues**:
-  - The container approach eliminates most compatibility issues
-  - If using symbolic links, run `./setup_mcp_playwright.sh` to recreate links
-  - For browser install errors, manually run `npx playwright install` in the container
+Convex serves as our primary database with these key capabilities:
 
-- **MCP service unavailability**:
-  - Verify status with `mcp` command in Claude Code CLI
-  - Check container status with `podman ps` or `docker ps`
-  - Check if appropriate ports are open if needed
+1. **Real-time Data**: Automatic subscriptions to data changes
+2. **Type Safety**: Full TypeScript integration with generated types
+3. **Authentication**: Integrated Auth0 support with role-based access
+4. **Functions**: Backend functions with database access
+5. **Performance**: Optimized for React applications
+6. **Resiliency**: Connection pooling, retry mechanisms, and error handling
 
-- **Performance concerns**:
-  - Container launches quickly on demand
-  - First launch may be slower due to image pulling
-  - Consider using a pre-warmed container for faster startup
+## Experimental Data Enhancement
+
+The experimental data enhancement system is a core feature being developed in the current phase. Key components include:
+
+1. **Protocol Designer**:
+   - Comprehensive step editor with advanced features
+   - Equipment and parameter management
+   - Alert system for critical steps
+   - Version management and comparison tools
+
+2. **Experiment Tracking**:
+   - Data collection and visualization
+   - Results analysis tools
+   - Cross-reference with molecular structures
+   - Integration with external data sources
+
+3. **Integration Points**:
+   - Molecular visualization with MolstarViewer
+   - Protocol execution tracking
+   - Data export and sharing capabilities
+   - Laboratory equipment integration
+
+4. **Current Implementation Status**:
+   - Basic UI components are completed
+   - Protocol step editor is functional
+   - Data integration is in progress
+   - Connection to real backend endpoints is pending
 
 ## Workflow Optimization Guidelines
 
@@ -195,217 +313,22 @@ You can test each MCP Playwright command individually:
 - Use chunking: Focus on one directory/component at a time
 - Minimize document generation: Don't create unnecessary documentation files
 - Use precise file:line references for targeted changes
-- Optimize token usage by delegating appropriate tasks to Roo
 - Leverage MCP servers for documentation and database queries to reduce token usage
 
 ### Task Management Approach
 - Handle simple tasks directly through Claude Code CLI
 - Delegate complex tasks to Roo agent team through Master Orchestrator
 - Provide detailed instructions with file paths and line numbers
-- Store task plans in existing issue tracking system, not as separate files
 - Track completion status of each delegated task
 - Use Context7 for documentation-related tasks instead of regenerating documentation
 
-### File Management
-- Prune temporary files after task completion
-- Avoid creating new versions of implementation plans; update existing ones
-- Use explicit file paths when referring to code that needs modification
-- Reuse existing documentation rather than regenerating
-- Maintain clean directory structure according to project standards
+### Production Deployment Strategy
+- Use Netlify for frontend hosting with proper configuration for dynamic routes
+- Deploy backend API to Heroku with proper scaling configuration
+- Use Fly.io for specialized services requiring custom containerization
+- Implement proper monitoring and alerting for all deployed services
+- Use blue/green deployment for zero-downtime updates
 
-### Thinking Modes
-- Use "think" for simple tasks
-- Use "think hard" for complex architecture decisions
-- Use "think harder" for challenging debugging
-- Use "ultrathink" for system-wide refactoring
+## Conclusion
 
-## Build/Run/Test Commands
-
-- **Run application**: `python app.py` (Windows: `run_app.bat`)
-- **Run all tests**: `python tests/run_tests.py` or `run_tests.bat`/`run_tests.sh`
-- **Run single test**: `python tests/run_tests.py -t test_file_name.py` 
-- **Specific test pattern**: `python -m unittest tests/test_specific_file.py::TestClass::test_method`
-- **API tests only**: `python tests/run_supabase_api_tests.py`
-- **Set up environment**: `conda env create -f environment.yml`
-- **Test container Playwright solution**: `node test-final-playwright.js`
-- **Run containerized Playwright commands**: `./mcp-playwright-final.sh <command> [arguments]`
-- **Set up alternative compatibility layer**: `./setup_mcp_playwright.sh` (fallback option)
-- **Test original compatibility layer**: `./mcp-cli.sh node test_mcp_playwright.js` (fallback option)
-- **Check container status**: `./mcp-playwright-final.sh status`
-
-## Code Style Guidelines
-
-- **Docstrings**: Triple-quoted docstrings for all modules, classes, and functions
-- **Imports**: Group imports (stdlib, third-party, local) with empty line between groups
-- **Formatting**: 4-space indentation, 79-character line length
-- **Typing**: Use type hints for function arguments and return values
-- **Naming**: snake_case for functions/variables, PascalCase for classes, UPPER_CASE for constants
-- **Error handling**: Use try/except with specific exception types and proper logging
-- **Logging**: Use the logging module instead of print statements
-- **Documentation**: Include detailed docstrings with parameters and return values
-- **Testing**: Write unit tests with clear test cases and assertions
-
-## Project Completion Plan
-
-### Current Phase: Technical Foundation
-- ✅ Code Cleanup (Phase 1.1)
-- ✅ Testing Infrastructure (Phase 1.2)
-- 🔄 Database Architecture (Phase 1.3)
-- 🔄 Authentication System (Phase 1.4)
-
-### Priority Tasks
-1. Optimize RLS implementation for complex queries
-2. Stress test and fine-tune connection pooling
-3. Implement robust migration framework
-4. Verify data integrity across all tables
-
-### Phase 1: Technical Foundation
-
-#### Phase 1.3: Database Architecture
-- Optimize RLS implementation for complex queries
-- Stress test and fine-tune connection pooling
-- Implement robust migration framework
-- Verify data integrity across all tables
-
-#### Phase 1.4: Authentication System
-- Replace service role workaround with proper implementation
-- Enhance user session handling
-- Implement secure token management
-- Add proper role-based access controls
-
-### Phase 2: Feature Completion
-
-#### Phase 2.1: API Layer Completion
-- Finish implementing remaining API endpoints
-- Standardize error handling across endpoints
-- Implement rate limiting for production readiness
-- Add comprehensive API documentation
-
-#### Phase 2.2: Core Functionality
-- Complete predictive models implementation
-- Finalize protocol designer functionality
-- Enhance export/sharing capabilities
-- Implement integration with external systems
-
-#### Phase 2.3: User Interface
-- Improve UI responsiveness for all screen sizes
-- Complete molecular visualization features
-- Implement accessibility standards
-- Enhance user experience workflows
-
-### Phase 3: Production Readiness
-
-#### Phase 3.1: Core Resiliency
-- Implement API timeout and retry mechanism with exponential backoff
-- Add circuit breaker pattern to prevent cascading failures
-- Optimize database connection pooling
-- Implement rate limiting for all API endpoints
-- Create data validation schemas for all endpoints
-
-#### Phase 3.2: Monitoring and Observability
-- Implement enhanced structured logging system
-- Create comprehensive error tracking system
-- Set up performance monitoring and profiling
-- Configure alerting system for service disruptions
-- Implement frontend error handling
-
-#### Phase 3.3: Deployment and Availability
-- Create comprehensive CI/CD pipeline
-- Implement blue/green deployment strategy
-- Set up automated smoke tests
-- Configure scheduled backups and restore procedures
-- Implement graceful degradation strategy
-
-#### Phase 3.4: Security and Compliance
-- Conduct comprehensive security audit
-- Add scanning for vulnerable dependencies
-- Enhance data encryption for sensitive information
-- Implement API versioning strategy
-- Set up secure environment configuration management
-
-### Phase 4: Documentation and Knowledge Transfer
-
-#### Phase 4.1: Documentation
-- Complete user documentation
-- Create operations guide for administrators
-- Finalize developer documentation
-- Update API documentation
-
-#### Phase 4.2: Knowledge Transfer
-- Create onboarding materials
-- Conduct handover sessions
-- Document known issues and workarounds
-- Create video tutorials for key workflows
-
-## Production Readiness Implementation Roadmap
-
-This section outlines our comprehensive production readiness implementation plan with a focus on building a resilient, observable, and maintainable system.
-
-### Core Principles
-
-- **Defense in Depth**: Multiple layers of protection and fallbacks
-- **Observability First**: Comprehensive monitoring and logging
-- **Graceful Degradation**: Maintain core functionality even during partial failures
-- **Progressive Enhancement**: Implement features incrementally
-- **Automated Operations**: Minimize manual intervention for routine tasks
-
-### Implementation Priorities
-
-1. **Resiliency Mechanisms**
-   - Implement timeout/retry pattern for all external service calls
-   - Add circuit breaker pattern to prevent cascading failures
-   - Create fallback mechanisms for critical services
-   - Ensure proper connection management with pooling
-
-2. **Monitoring and Alerting**
-   - Enhanced structured logging with correlation IDs
-   - Comprehensive error tracking with deduplication
-   - Performance monitoring with automatic profiling for slow operations
-   - Multi-channel alerting with appropriate severity levels
-
-3. **Deployment and Testing**
-   - Blue-green deployment for zero downtime updates
-   - Automated smoke tests to verify deployments
-   - Database backup and restore procedures
-   - Comprehensive CI/CD pipeline with security scans
-
-4. **Data Integrity and Security**
-   - Schema validation for all data operations
-   - Rate limiting to prevent abuse
-   - API versioning strategy
-   - Secure configuration management
-
-### Component Dependencies
-
-```
-┌───────────────────┐     ┌───────────────────┐
-│ Feature Flags     │────>│ API Versioning    │
-└───────────────────┘     └───────────────────┘
-        │                         ▲
-        ▼                         │
-┌───────────────────┐     ┌───────────────────┐
-│ Error Handling    │────>│ Graceful          │
-│ & Retry           │     │ Degradation       │
-└───────────────────┘     └───────────────────┘
-        │                         ▲
-        ▼                         │
-┌───────────────────┐     ┌───────────────────┐
-│ Circuit Breaking  │────>│ Monitoring &      │
-│                   │     │ Alerting          │
-└───────────────────┘     └───────────────────┘
-        │                         ▲
-        ▼                         │
-┌───────────────────┐     ┌───────────────────┐
-│ Rate Limiting     │────>│ Deployment        │
-│                   │     │ Pipeline          │
-└───────────────────┘     └───────────────────┘
-```
-
-### Testing Strategy
-
-For each component:
-1. **Unit Tests**: Verify component behavior in isolation
-2. **Integration Tests**: Verify component interactions
-3. **Chaos Tests**: Deliberately cause failures to test resilience
-4. **Load Tests**: Verify performance under load
-5. **Smoke Tests**: Quick verification of critical paths
+This guidance document aligns with our production environment and workflow goals. It reflects our current technology choices, priorities, and implementation plans. As we progress through the phases of the project, we will continue to update this document to ensure it remains accurate and valuable for development work.

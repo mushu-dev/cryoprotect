@@ -1,0 +1,231 @@
+[
+  {
+    "group_id": "28a772ca-a829-4767-ba84-a15df4906417",
+    "consolidation_type": "SELECTIVE_MERGE",
+    "primary_molecule": {
+      "id": "7a8b62b7-3bcd-4601-860a-66d338021f19",
+      "name": "2-aminopentanedioate",
+      "pubchem_cid": 5128032
+    },
+    "secondary_molecules": [
+      {
+        "id": "a00bc3a5-267e-4f63-a5c8-dd03515f2907",
+        "name": "(2S)-2-aminopentanedioate",
+        "pubchem_cid": 5460544
+      }
+    ],
+    "timestamp": "2025-05-12T15:39:38.393016",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "a00bc3a5-267e-4f63-a5c8-dd03515f2907",
+        "field": "properties.consolidated_to",
+        "value": "7a8b62b7-3bcd-4601-860a-66d338021f19"
+      }
+    ]
+  },
+  {
+    "group_id": "28a772ca-a829-4767-ba84-a15df4906417",
+    "consolidation_type": "SELECTIVE_MERGE",
+    "primary_molecule": {
+      "id": "7a8b62b7-3bcd-4601-860a-66d338021f19",
+      "name": "2-aminopentanedioate",
+      "pubchem_cid": 5128032
+    },
+    "secondary_molecules": [
+      {
+        "id": "a00bc3a5-267e-4f63-a5c8-dd03515f2907",
+        "name": "(2S)-2-aminopentanedioate",
+        "pubchem_cid": 5460544
+      }
+    ],
+    "timestamp": "2025-05-12T15:41:49.687010",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "a00bc3a5-267e-4f63-a5c8-dd03515f2907",
+        "field": "properties.consolidated_to",
+        "value": "7a8b62b7-3bcd-4601-860a-66d338021f19"
+      }
+    ]
+  },
+  {
+    "group_id": "28a772ca-a829-4767-ba84-a15df4906417",
+    "consolidation_type": "SELECTIVE_MERGE",
+    "primary_molecule": {
+      "id": "7a8b62b7-3bcd-4601-860a-66d338021f19",
+      "name": "2-aminopentanedioate",
+      "pubchem_cid": 5128032
+    },
+    "secondary_molecules": [
+      {
+        "id": "a00bc3a5-267e-4f63-a5c8-dd03515f2907",
+        "name": "(2S)-2-aminopentanedioate",
+        "pubchem_cid": 5460544
+      }
+    ],
+    "timestamp": "2025-05-12T15:41:59.763906",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "a00bc3a5-267e-4f63-a5c8-dd03515f2907",
+        "field": "properties.consolidated_to",
+        "value": "7a8b62b7-3bcd-4601-860a-66d338021f19"
+      }
+    ]
+  },
+  {
+    "group_id": "6e7589ac-ce2e-4e13-b982-bec6afa7eb9f",
+    "consolidation_type": "SELECTIVE_MERGE",
+    "primary_molecule": {
+      "id": "19144686-3c1f-49d0-82a9-2e081581d40c",
+      "name": "2-aminopentanedioic acid",
+      "pubchem_cid": 611
+    },
+    "secondary_molecules": [
+      {
+        "id": "aabad6ee-1e92-4775-9a45-f25fc33c9038",
+        "name": "(2R)-2-aminopentanedioic acid",
+        "pubchem_cid": 23327
+      },
+      {
+        "id": "496e4251-521e-436a-be53-7a341f61a987",
+        "name": "(2S)-2-aminopentanedioic acid",
+        "pubchem_cid": 33032
+      }
+    ],
+    "timestamp": "2025-05-12T15:42:00.646692",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "aabad6ee-1e92-4775-9a45-f25fc33c9038",
+        "field": "properties.consolidated_to",
+        "value": "19144686-3c1f-49d0-82a9-2e081581d40c"
+      },
+      {
+        "type": "property_update",
+        "molecule_id": "496e4251-521e-436a-be53-7a341f61a987",
+        "field": "properties.consolidated_to",
+        "value": "19144686-3c1f-49d0-82a9-2e081581d40c"
+      },
+      {
+        "type": "property_migration",
+        "from_molecule_id": "496e4251-521e-436a-be53-7a341f61a987",
+        "to_molecule_id": "19144686-3c1f-49d0-82a9-2e081581d40c",
+        "property_type": "heavy_atoms",
+        "new_property_id": "20cc8fea-1e38-4e5d-9a91-ac506180a2c8"
+      }
+    ]
+  },
+  {
+    "group_id": "fa972452-6feb-41a9-950d-e62404d27448",
+    "consolidation_type": "SELECTIVE_MERGE",
+    "primary_molecule": {
+      "id": "02dedcbc-8dae-4108-8347-76e4bec13aaa",
+      "name": "(2R,3R,4R,5S)-hexane-1,2,3,4,5,6-hexol",
+      "pubchem_cid": 5780
+    },
+    "secondary_molecules": [
+      {
+        "id": "cb98aa08-5582-47a1-95e1-f80e42219a1d",
+        "name": "(2R,3R,4R,5R)-hexane-1,2,3,4,5,6-hexol",
+        "pubchem_cid": 6251
+      }
+    ],
+    "timestamp": "2025-05-12T15:42:02.567052",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "cb98aa08-5582-47a1-95e1-f80e42219a1d",
+        "field": "properties.consolidated_to",
+        "value": "02dedcbc-8dae-4108-8347-76e4bec13aaa"
+      }
+    ]
+  },
+  {
+    "group_id": "28a772ca-a829-4767-ba84-a15df4906417",
+    "consolidation_type": "SELECTIVE_MERGE",
+    "primary_molecule": {
+      "id": "7a8b62b7-3bcd-4601-860a-66d338021f19",
+      "name": "2-aminopentanedioate",
+      "pubchem_cid": 5128032
+    },
+    "secondary_molecules": [
+      {
+        "id": "a00bc3a5-267e-4f63-a5c8-dd03515f2907",
+        "name": "(2S)-2-aminopentanedioate",
+        "pubchem_cid": 5460544
+      }
+    ],
+    "timestamp": "2025-05-12T21:05:42.482397",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "a00bc3a5-267e-4f63-a5c8-dd03515f2907",
+        "field": "properties.consolidated_to",
+        "value": "7a8b62b7-3bcd-4601-860a-66d338021f19"
+      }
+    ]
+  },
+  {
+    "group_id": "6e7589ac-ce2e-4e13-b982-bec6afa7eb9f",
+    "consolidation_type": "SELECTIVE_MERGE",
+    "primary_molecule": {
+      "id": "19144686-3c1f-49d0-82a9-2e081581d40c",
+      "name": "2-aminopentanedioic acid",
+      "pubchem_cid": 611
+    },
+    "secondary_molecules": [
+      {
+        "id": "aabad6ee-1e92-4775-9a45-f25fc33c9038",
+        "name": "(2R)-2-aminopentanedioic acid",
+        "pubchem_cid": 23327
+      },
+      {
+        "id": "496e4251-521e-436a-be53-7a341f61a987",
+        "name": "(2S)-2-aminopentanedioic acid",
+        "pubchem_cid": 33032
+      }
+    ],
+    "timestamp": "2025-05-12T21:05:43.333347",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "aabad6ee-1e92-4775-9a45-f25fc33c9038",
+        "field": "properties.consolidated_to",
+        "value": "19144686-3c1f-49d0-82a9-2e081581d40c"
+      },
+      {
+        "type": "property_update",
+        "molecule_id": "496e4251-521e-436a-be53-7a341f61a987",
+        "field": "properties.consolidated_to",
+        "value": "19144686-3c1f-49d0-82a9-2e081581d40c"
+      }
+    ]
+  },
+  {
+    "group_id": "fa972452-6feb-41a9-950d-e62404d27448",
+    "consolidation_type": "SELECTIVE_MERGE",
+    "primary_molecule": {
+      "id": "02dedcbc-8dae-4108-8347-76e4bec13aaa",
+      "name": "(2R,3R,4R,5S)-hexane-1,2,3,4,5,6-hexol",
+      "pubchem_cid": 5780
+    },
+    "secondary_molecules": [
+      {
+        "id": "cb98aa08-5582-47a1-95e1-f80e42219a1d",
+        "name": "(2R,3R,4R,5R)-hexane-1,2,3,4,5,6-hexol",
+        "pubchem_cid": 6251
+      }
+    ],
+    "timestamp": "2025-05-12T21:05:45.183258",
+    "changes": [
+      {
+        "type": "property_update",
+        "molecule_id": "cb98aa08-5582-47a1-95e1-f80e42219a1d",
+        "field": "properties.consolidated_to",
+        "value": "02dedcbc-8dae-4108-8347-76e4bec13aaa"
+      }
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "timestamp": "2025-05-12T20:36:13.642609",
+  "actions": [
+    {
+      "table": "mixture_components",
+      "orphaned_records_found": 0,
+      "orphaned_records_removed": 0
+    },
+    {
+      "table": "molecular_properties",
+      "orphaned_records_found": 0,
+      "orphaned_records_removed": 0
+    },
+    {
+      "table": "predictions",
+      "orphaned_records_found": 0,
+      "orphaned_records_removed": 0
+    }
+  ],
+  "status": "FAILED",
+  "verification_result": "ERROR"
+}

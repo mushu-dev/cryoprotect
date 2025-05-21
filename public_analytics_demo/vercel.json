@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "public": true,
+  "buildCommand": "npm install && npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "env": {
+    "VERCEL_ANALYTICS_ID": "true",
+    "VERCEL_SPEED_INSIGHTS": "true"
+  }
+}

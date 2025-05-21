@@ -1,0 +1,26 @@
+[INFO] Getting accessibility snapshot of URL: https://cryoprotect.app
+
+{
+  "name": "input",
+  "version": "1.0.0",
+  "main": "navigate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "playwright": "^1.52.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}
+
+
+
+
+
+Navigating to URL: https://cryoprotect.app
+Getting accessibility snapshot...
+{"success":true,"data":{"snapshot":{"role":"WebArea","name":"CryoProtect - Cryoprotectant Analysis Platform","children":[{"role":"link","name":"CryoProtect"},{"role":"link","name":"Dashboard"},{"role":"link","name":"Molecules"},{"role":"link","name":"Mixtures"},{"role":"link","name":"Properties"},{"role":"button","name":"Toggle theme","haspopup":"menu"},{"role":"heading","name":"Welcome to CryoProtect","level":1},{"role":"text","name":"A comprehensive platform for analyzing and optimizing cryoprotectant molecules and mixtures"},{"role":"text","name":"Molecules"},{"role":"heading","name":"1,243","level":3},{"role":"text","name":"1,056"},{"role":"text","name":" unique"},{"role":"text","name":"Mixtures"},{"role":"heading","name":"89","level":3},{"role":"text","name":"67"},{"role":"text","name":" public"},{"role":"text","name":"Experiments"},{"role":"heading","name":"54","level":3},{"role":"text","name":"42"},{"role":"text","name":" successful"},{"role":"text","name":"Predictions"},{"role":"heading","name":"276","level":3},{"role":"text","name":"168"},{"role":"text","name":" high confidence"},{"role":"heading","name":"Molecular Viewer","level":3},{"role":"region","name":"3D visualization of Glycerol"},{"role":"link","name":"Browse Molecules"},{"role":"heading","name":"Mixture Composition","level":3},{"role":"text","name":"Loading mixture composition..."},{"role":"link","name":"Explore Mixtures"},{"role":"heading","name":"Import Molecule","level":3},{"role":"text","name":"Import a molecule from PubChem by its Compound ID (CID)."},{"role":"link","name":"Import Molecule"},{"role":"heading","name":"Create Mixture","level":3},{"role":"text","name":"Create a new mixture by combining multiple molecules."},{"role":"link","name":"Create Mixture"},{"role":"heading","name":"Property Explorer","level":3},{"role":"text","name":"Explore molecular properties and find patterns."},{"role":"link","name":"Explore Properties"},{"role":"text","name":"© "},{"role":"text","name":"2025"},{"role":"text","name":" CryoProtect. All rights reserved."},{"role":"link","name":"About"},{"role":"link","name":"Privacy"},{"role":"link","name":"Terms"},{"role":"link","name":"Contact"}]}}}

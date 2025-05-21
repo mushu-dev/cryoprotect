@@ -1,0 +1,10 @@
+{
+  "timestamp": "2025-05-13T00:21:54.084183",
+  "result": {
+    "property_type_id": "8c6e816a-d971-48e9-883e-f4ed65a5ea3f",
+    "calculation_method_id": "2fae4333-dc2b-4e73-88ad-ab0f97d2fa3a",
+    "total_molecules": 1551,
+    "scores_populated": 1551,
+    "coverage_percentage": 100.0
+  }
+}

@@ -2,9 +2,15 @@
 
 A tool for analyzing cryoprotectant molecules using RDKit and Convex.
 
+> 🚀 **NEW:** Convex integration is now complete! CryoProtect now supports both Supabase and Convex as database backends. See the [Convex Integration Complete Report](CONVEX_INTEGRATION_COMPLETE.md) for details.
+
+> 🛡️ **NEW:** Advanced resiliency patterns are now available! CryoProtect now includes retry mechanisms, circuit breakers, and more to ensure robust operation. See the [Production Readiness Plan](PRODUCTION_READINESS_PLAN.md) for details.
+>
+> 🧪 **NEW:** Enhanced Protocol Designer is now available! The Protocol Designer now includes a comprehensive step editor, improved visualization, and support for equipment, parameters, and alerts.
+
 ## Overview
 
-CryoProtect Analyzer is a Flask-based web application that allows users to analyze cryoprotectant molecules, calculate their properties, and store the results in a Convex database. The application uses RDKit for molecular property calculations and visualization.
+CryoProtect Analyzer is a Flask-based web application that allows users to analyze cryoprotectant molecules, calculate their properties, and store the results in a database. The application uses RDKit for molecular property calculations and visualization and now supports both Supabase and Convex as database backends.
 
 ## Features
 
@@ -15,6 +21,8 @@ CryoProtect Analyzer is a Flask-based web application that allows users to analy
 - Database storage using Convex
 - Web interface using Next.js and Netlify
 - Real-time data updates
+- **NEW:** Advanced resiliency patterns for robust operation
+- **NEW:** Enhanced Protocol Designer with comprehensive step management
 
 ## Development Environment
 
@@ -57,9 +65,18 @@ CryoProtect now supports development using [Cursor IDE](https://cursor.sh/), whi
    setup_environment.bat   # Windows
    ```
 
-3. Configure Convex:
-   - Create a `.env` file with your Convex credentials
-   - Apply the database configuration using `npx convex deploy`
+3. Configure the Database (Supabase or Convex):
+   - For Supabase (default):
+     - Create a `.env` file with your Supabase credentials
+   - For Convex (recommended):
+     - Create a `.env` file with your Convex credentials
+     - Configure environment variables:
+       ```
+       USE_CONVEX=true
+       CONVEX_URL=https://upbeat-parrot-866.convex.cloud
+       RDKIT_SERVICE_URL=https://cryoprotect-rdkit.fly.dev
+       ```
+     - Apply the database configuration using `npx convex deploy`
 
 4. Run the application:
    ```
@@ -82,19 +99,103 @@ docker-compose up
 
 ## Documentation
 
+### Core Documentation
 - [API Documentation](README_API.md)
-- [RDKit Integration](README_RDKit.md)
-- [Convex Integration Guide](CONVEX_INTEGRATION_GUIDE.md)
-- [Convex Integration Complete Report](CONVEX_INTEGRATION_COMPLETE.md)
 - [Web Interface](README_Web.md)
+- [RDKit Integration](README_RDKit.md)
 - [RDKit Troubleshooting](README_RDKit_Troubleshooting.md)
+
+### Database Documentation
 - [Database Remediation Final Report](reports/DATABASE_REMEDIATION_FINAL_REPORT.md)
 - [Database Maintenance Guide](reports/DATABASE_MAINTENANCE_GUIDE.md)
-- [Cursor Migration Guide](CURSOR_MIGRATION_GUIDE.md)
-- [Netlify Analytics Setup](NETLIFY_ANALYTICS_SETUP.md)
-- [Netlify Dynamic Routes](NETLIFY_DYNAMIC_ROUTES.md)
+
+### Convex Integration (Latest)
+- [**✅ Convex Integration Complete Report**](CONVEX_INTEGRATION_COMPLETE.md) - **NEW**
 - [Backend Frontend Integration](BACKEND_FRONTEND_INTEGRATION.md)
 - [Convex Implementation Plan](CONVEX_IMPLEMENTATION_PLAN.md)
+
+### Production Readiness (Latest)
+- [**✅ Production Readiness Plan**](PRODUCTION_READINESS_PLAN.md) - **NEW**
+- [Resiliency Patterns](api/resiliency/README.md) - **NEW**
+- Demo: `examples/resiliency_demo.py` - **NEW**
+
+### RDKit Service
+- [**✅ RDKit Service Deployment**](https://cryoprotect-rdkit.fly.dev/health) - Deployed to fly.io
+- Core endpoints:
+  - Health check: `https://cryoprotect-rdkit.fly.dev/health`
+  - CORS test: `https://cryoprotect-rdkit.fly.dev/test-cors`
+  - Property calculation: `https://cryoprotect-rdkit.fly.dev/calculate`
+
+### Deployment
+- [**🚀 Netlify Automatic Deployment**](NETLIFY_AUTOMATIC_DEPLOYMENT.md) - **NEW!** Complete guide for GitHub Actions deployment
+- [**⚠️ Netlify Deployment Fix**](NETLIFY_DEPLOYMENT_FIX.md) - Fix for static fallback page
+- [Netlify Deployment Solution](NETLIFY_DEPLOYMENT_SOLUTION.md) - Comprehensive solution for UI rendering issues
+- [Netlify Analytics Setup](NETLIFY_ANALYTICS_SETUP.md)
+- [Netlify Dynamic Routes](NETLIFY_DYNAMIC_ROUTES.md)
+
+### Experimental Data
+- [**✨ Protocol Designer Documentation**](frontend/src/features/protocols/README.md) - **NEW**
+- [Experimental Data Enhancement](EXPERIMENTAL_DATA_ENHANCEMENT_SUMMARY.md)
+
+### Development Environment
+- [Cursor Migration Guide](CURSOR_MIGRATION_GUIDE.md)
+
+## Resiliency Patterns
+
+CryoProtect v2 now includes advanced resiliency patterns to ensure robust operation in production environments. These patterns help prevent cascading failures, improve system stability, and provide better user experience during service degradation.
+
+### Core Resiliency Patterns
+
+1. **Retry with Exponential Backoff**
+   - Automatically retries failed operations with increasing delays
+   - Configurable retry attempts, backoff factors, and jitter
+   - Supports specific exception types for targeted retries
+   - Built-in logging and observability
+
+2. **Circuit Breaker**
+   - Prevents cascading failures by stopping calls to failing services
+   - Automatic recovery with half-open state for testing
+   - Configurable thresholds and recovery timeouts
+   - Integration with monitoring systems
+
+3. **Timeout Management**
+   - Enforces time limits on operations to prevent resource blockage
+   - Thread-safe implementation for multi-threaded applications
+   - Integration with logging and observability
+
+4. **Service Health Tracking**
+   - Real-time monitoring of service health based on success rates and response times
+   - Automatic detection of degraded or failing services
+   - Integration with circuit breaker and retry mechanisms
+
+### Example Usage
+
+```python
+from api.resiliency import retry_with_backoff, circuit_breaker, with_timeout, track_service_health
+
+# Basic retry example
+@retry_with_backoff(max_retries=3, base_delay=0.5)
+def external_api_call():
+    # This function will retry up to 3 times with exponential backoff
+    pass
+
+# Combined patterns example
+@retry_with_backoff(max_retries=3)
+@circuit_breaker(name="database")
+@with_timeout(seconds=5)
+@track_service_health("database")
+def database_operation():
+    # This function has comprehensive resiliency
+    pass
+```
+
+For a complete demonstration, run:
+
+```
+python examples/resiliency_demo.py
+```
+
+See the [Production Readiness Plan](PRODUCTION_READINESS_PLAN.md) for more details.
 
 ## Database Remediation Project
 

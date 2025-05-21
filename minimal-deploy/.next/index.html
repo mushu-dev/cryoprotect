@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CryoProtect Minimal - Static Fallback</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .container {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 2rem;
+      margin-top: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>CryoProtect Minimal</h1>
+    <p>This is a static fallback page</p>
+    <p>If you're seeing this page, it means the Next.js app failed to load properly</p>
+    <p>Time: <span id="time"></span></p>
+  </div>
+  <script>
+    document.getElementById('time').textContent = new Date().toISOString();
+  </script>
+</body>
+</html>

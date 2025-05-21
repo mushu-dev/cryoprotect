@@ -1,0 +1,22 @@
+{
+  "timestamp": "2025-05-13T00:29:06.307033",
+  "verification_results": {
+    "duplicate_molecules": {
+      "passed": true,
+      "description": "No duplicate molecules remain"
+    },
+    "property_standardization": {
+      "passed": true,
+      "description": "Property types are standardized"
+    },
+    "cryoprotection_scores": {
+      "passed": true,
+      "description": "Cryoprotection scores have been calculated"
+    },
+    "rdkit_properties": {
+      "passed": false,
+      "description": "Essential RDKit properties have been calculated"
+    }
+  },
+  "all_tests_passed": false
+}

@@ -1,0 +1,7 @@
+Starting toxicity data optimization...
+Applying toxicity schema migration...
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from database.utils import execute_sql_file; execute_sql_file('migrations/021_toxicity_schema_optimization.sql'); execute_sql_file('migrations/022_toxicity_data_migration.sql')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ImportError: cannot import name 'execute_sql_file' from 'database.utils' (/home/mushu/Projects/CryoProtect/database/utils/__init__.py)

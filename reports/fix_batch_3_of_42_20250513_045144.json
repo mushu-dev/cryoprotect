@@ -1,0 +1,9 @@
+{
+  "batch": 3,
+  "total_batches": 42,
+  "results": {
+    "fixed": 20,
+    "failed": 0,
+    "errors": []
+  }
+}
