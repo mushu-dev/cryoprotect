@@ -90,13 +90,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Backend
 - **API**: Flask API with resiliency patterns
-- **Database**: Convex (migrating from Supabase)
+- **Database**: Convex
 - **Deployment**: Netlify for frontend, Heroku for API
 - **Specialized Services**: RDKit service deployed on Fly.io
 - **Container Technology**: Docker/Podman for service isolation
 - **API Endpoints**:
   - Main API (Heroku): `https://cryoprotect-8030e4025428.herokuapp.com/api`
   - RDKit Service (Fly.io): `https://cryoprotect-rdkit.fly.dev`
+  - Convex API: `https://upbeat-parrot-866.convex.cloud`
 - **Working Endpoints**:
   - Get all molecules: `GET /api/molecules`
   - Get molecule by ID: `GET /api/molecules/{id}`
@@ -119,6 +120,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Run API live tests**: `cd frontend && npm run test:api:live`
 - **Run API tests (Python)**: `python -m pytest tests/api/`
 - **Run resiliency tests**: `python examples/resiliency_demo.py`
+- **Run protocol template tests**: `cd frontend && npm run test:protocol-templates`
 
 ### Deployment
 - **Deploy to Netlify**: 
@@ -148,61 +150,76 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Completion Plan
 
-### Current Phase: Feature Enhancement and Production Readiness
+### Current Phase: Production-Ready Convex Integration 🚀
 
-#### Phase 2.2: Protein Visualization Enhancement 🔄
-- ✅ Create MolstarViewer component skeleton
-- ✅ Implement visualization styles and controls
-- 🔄 Integrate with Mol* library
-- 🔄 Add advanced visualization features
-- 🔄 Implement cross-reference with experimental data
+**PRIORITY: Full production deployment with real scientific data in 4 days**
 
-#### Phase 2.3: React 18 Migration 🔄
-- 🔄 Update Next.js configuration for React 18 compatibility
-- 🔄 Refactor class components to functional components with hooks
-- 🔄 Implement modern UI components
-- 🔄 Optimize performance for all device sizes
-- 🔄 Implement accessibility standards
+#### Phase 1: Database Migration & Population (Days 1-2) 🔄
+- ✅ Analyze existing ChEMBL/PubChem population scripts
+- 🔄 Create enhanced ConvexAdapter for production workloads
+- 🔄 Convert Supabase-based scripts to Convex-compatible versions
+- 🔄 Execute full ChEMBL dataset population (5000+ molecules)
+- 🔄 Populate PubChem naming and molecular properties
+- 🔄 Implement data validation and integrity checks
 
-#### Phase 3.1: Core Resiliency (Backend Completed ✅, Frontend Pending 🔄)
-- ✅ Implement API timeout and retry mechanism with exponential backoff
-- ✅ Add circuit breaker pattern to prevent cascading failures
-- ✅ Implement connection monitoring and recycling
-- ✅ Create service health tracking system
-- 🔄 Implement frontend retry mechanism for API calls
-- 🔄 Add client-side circuit breaker for API requests
-- 🔄 Optimize Convex connection and data fetching
-- 🔄 Create data validation schemas for all endpoints
+#### Phase 2: Integration & Calculations (Days 2-3) 🔄
+- 🔄 Enhance RDKit service integration with Convex backend
+- 🔄 Update Flask API to use ConvexAdapter exclusively
+- 🔄 Implement calculation result caching in Convex
+- 🔄 Add comprehensive error handling and retry logic
+- 🔄 Test end-to-end calculation workflow
 
-### Priority Tasks
-1. **Complete Protein Visualization Enhancement**
-   - Integrate Mol* library with MolstarViewer component
-   - Implement advanced visualization features
-   - Create cross-references with experimental data
+#### Phase 3: Frontend & Real-time Features (Days 3-4) 🔄
+- 🔄 Connect frontend to Convex for real-time data
+- 🔄 Implement live molecule search and property display
+- 🔄 Add real-time calculation updates
+- 🔄 Enable collaborative experiment editing
+- 🔄 Optimize performance for production loads
 
-2. **Complete React 18 Migration**
-   - Update Next.js configuration for React 18
-   - Refactor remaining class components to functional components
-   - Update UI components to latest versions
-   - Implement accessibility standards
+#### Phase 4: Production Deployment & Testing (Day 4) 🔄
+- 🔄 Coordinate deployments across Netlify, Heroku, Fly.io
+- 🔄 Execute comprehensive Playwright testing
+- 🔄 Implement monitoring and error tracking
+- 🔄 Verify system reliability and performance
+- ✅ **DELIVERABLE**: Production-ready scientific research tool
 
-3. **Implement Frontend Resiliency**
-   - Add retry mechanisms for API calls
-   - Implement client-side circuit breaker
-   - Add timeout handling for external services
-   - Optimize Convex connection configuration
+### Priority Tasks (Production Ready in 4 Days)
 
-4. **Complete Experimental Data Integration**
-   - Connect UI to real backend API endpoints
-   - Implement data fetching and state management
-   - Add proper error handling and loading states
-   - Test data integration extensively
+1. **🚨 CRITICAL: Enhanced ConvexAdapter Development**
+   - Create production-ready ConvexAdapter with batch operations
+   - Implement connection pooling and retry logic  
+   - Add transaction support and error handling
+   - Enable bulk inserts for population scripts
 
-5. **Begin Monitoring and Observability**
-   - Implement structured logging for frontend
-   - Create comprehensive error tracking system
-   - Set up performance monitoring and profiling
-   - Create smoke tests for critical user workflows
+2. **🚨 CRITICAL: Database Population Scripts**
+   - Convert ChEMBL_CryoProtectants_Supabase.py → ChEMBL_CryoProtectants_Convex.py
+   - Convert PubChem_CryoProtectants_Supabase.py → PubChem_CryoProtectants_Convex.py
+   - Execute full scientific dataset population (5000+ molecules)
+   - Implement progress tracking and resumability
+
+3. **🚨 CRITICAL: RDKit-Convex Integration**
+   - Create RDKit calculation service bridge to Convex
+   - Implement result caching and error handling
+   - Test molecular property calculations end-to-end
+   - Optimize calculation performance
+
+4. **🔥 HIGH: Flask API Convex Migration**
+   - Replace all Supabase calls with ConvexAdapter
+   - Add real-time subscriptions for data changes
+   - Implement proper authentication flow
+   - Add comprehensive API error handling
+
+5. **🔥 HIGH: Frontend Real-time Features**
+   - Enable live molecule search with Convex subscriptions
+   - Implement real-time calculation updates
+   - Add collaborative experiment editing
+   - Optimize frontend performance for production
+
+6. **⚡ MEDIUM: Production Deployment**
+   - Coordinate deployments across all services
+   - Execute comprehensive Playwright testing
+   - Implement monitoring and error tracking
+   - Verify end-to-end system functionality
 
 ## Testing Strategy
 
@@ -273,12 +290,35 @@ We've implemented a multi-layered testing strategy:
 
 Convex serves as our primary database with these key capabilities:
 
-1. **Real-time Data**: Automatic subscriptions to data changes
-2. **Type Safety**: Full TypeScript integration with generated types
-3. **Authentication**: Integrated Auth0 support with role-based access
-4. **Functions**: Backend functions with database access
-5. **Performance**: Optimized for React applications
+1. **Real-time Data**: Automatic subscriptions to data changes with reactive UI updates
+2. **Type Safety**: Full TypeScript integration with generated types from schema
+3. **Authentication**: Integrated Auth with role-based access and JWT support
+4. **Functions**: Backend functions with secure database access and validation
+5. **Performance**: Optimized for React applications with efficient caching
 6. **Resiliency**: Connection pooling, retry mechanisms, and error handling
+7. **Collaborative Features**: Real-time presence, conflict resolution, and shared editing
+8. **Offline Support**: Works offline with automatic synchronization when reconnected
+9. **Primary Database**: Now the exclusive database for this project
+
+#### Convex Connection Architecture
+
+```
+┌─────────────────────┐    ┌─────────────────────┐    ┌─────────────────────┐
+│ Frontend            │    │ Middleware          │    │ Backend             │
+│                     │    │                     │    │                     │
+│ ┌─────────────────┐ │    │ ┌─────────────────┐ │    │ ┌─────────────────┐ │
+│ │ React Components│ │    │ │ AuthBridge      │ │    │ │ ConvexAdapter   │ │
+│ └────────┬────────┘ │    │ └────────┬────────┘ │    │ └────────┬────────┘ │
+│          │          │    │          │          │    │          │          │
+│ ┌────────┴────────┐ │    │ ┌────────┴────────┐ │    │ ┌────────┴────────┐ │
+│ │ Convex Hooks    │ │    │ │ JWT Validator   │ │    │ │ DB Factory      │ │
+│ └────────┬────────┘ │    │ └────────┬────────┘ │    │ └────────┬────────┘ │
+│          │          │    │          │          │    │          │          │
+│ ┌────────┴────────┐ │    │ ┌────────┴────────┐ │    │ ┌────────┴────────┐ │
+│ │ Convex Client   │◄├────┼─┤ Sync Manager    │◄├────┼─┤ Flask API       │ │
+│ └─────────────────┘ │    │ └─────────────────┘ │    │ └─────────────────┘ │
+└─────────────────────┘    └─────────────────────┘    └─────────────────────┘
+```
 
 ## Experimental Data Enhancement
 
@@ -302,11 +342,24 @@ The experimental data enhancement system is a core feature being developed in th
    - Data export and sharing capabilities
    - Laboratory equipment integration
 
-4. **Current Implementation Status**:
-   - Basic UI components are completed
-   - Protocol step editor is functional
-   - Data integration is in progress
-   - Connection to real backend endpoints is pending
+4. **Protocol Template Management**:
+   - Template creation and editing
+   - Version control and comparison
+   - Template to protocol conversion
+   - Access control for sharing templates
+   - Component routes:
+     - `/protocols/templates`: Template management
+     - `/protocols/templates/create`: Create template
+     - `/protocols/templates/[id]`: Edit template
+     - `/protocols/templates/versions/[id]`: Version comparison
+
+5. **Current Implementation Status**:
+   - ✅ Enhanced Protocol Step Editor is completed
+   - ✅ Lab Verification System is implemented
+   - ✅ Protocol Template Management System is implemented
+   - ✅ Time Series Visualization is completed
+   - 🔄 Advanced Uncertainty Quantification is pending
+   - 🔄 Direct connection to Convex is implemented
 
 ## Workflow Optimization Guidelines
 

@@ -16,6 +16,7 @@ from .adapter import DatabaseAdapter
 from .local_adapter import LocalPostgreSQLAdapter
 from .supabase_adapter import SupabaseDirectAdapter
 from .mcp_adapter import MCPAdapter
+from .enhanced_convex_adapter import ConvexAdapter
 
 logger = logging.getLogger(__name__)
 
@@ -90,13 +91,22 @@ class ConnectionManager:
                     'max_connections': int(os.getenv('SUPABASE_DB_MAX_CONNECTIONS', '10')),
                     'ip_address': os.getenv('SUPABASE_DB_IP_ADDRESS', '')
                 },
+                'convex': {
+                    'enabled': os.getenv('CONVEX_DB_ENABLED', 'false').lower() == 'true',
+                    'url': os.getenv('CONVEX_URL', ''),
+                    'key': os.getenv('CONVEX_DEPLOYMENT_KEY', ''),
+                    'timeout': int(os.getenv('CONVEX_TIMEOUT', '30')),
+                    'retry_count': int(os.getenv('CONVEX_RETRY_COUNT', '3')),
+                    'circuit_breaker_threshold': int(os.getenv('CONVEX_CIRCUIT_BREAKER_THRESHOLD', '5')),
+                    'circuit_breaker_timeout': int(os.getenv('CONVEX_CIRCUIT_BREAKER_TIMEOUT', '60'))
+                },
                 'mcp': {
                     'enabled': os.getenv('MCP_DB_ENABLED', 'true').lower() == 'true',
                     'server_name': os.getenv('MCP_SERVER_NAME', 'supabase'),
                     'timeout': int(os.getenv('MCP_TIMEOUT', '30'))
                 }
             },
-            'adapter_order': os.getenv('DB_ADAPTER_ORDER', 'local,supabase,mcp').split(',')
+            'adapter_order': os.getenv('DB_ADAPTER_ORDER', 'local,supabase,convex,mcp').split(',')
         }
         
         return config
@@ -151,6 +161,8 @@ class ConnectionManager:
                 self.adapters[adapter_name] = LocalPostgreSQLAdapter(adapter_config)
             elif adapter_name == 'supabase':
                 self.adapters[adapter_name] = SupabaseDirectAdapter(adapter_config)
+            elif adapter_name == 'convex':
+                self.adapters[adapter_name] = ConvexAdapter(adapter_config)
             elif adapter_name == 'mcp':
                 self.adapters[adapter_name] = MCPAdapter(adapter_config)
             else:

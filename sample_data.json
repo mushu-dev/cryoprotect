@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Glycerol",
+    "pubchemCid": "CID753",
+    "canonicalSmiles": "C(C(CO)O)O",
+    "inchiKey": "PEDCQBHIVMGVHV-UHFFFAOYSA-N",
+    "formula": "C3H8O3",
+    "status": "active"
+  },
+  {
+    "name": "DMSO",
+    "pubchemCid": "CID679",
+    "canonicalSmiles": "CS(=O)C",
+    "inchiKey": "IAZDPXIOMUYVGZ-UHFFFAOYSA-N",
+    "formula": "C2H6OS",
+    "status": "active"
+  },
+  {
+    "name": "Ethylene Glycol",
+    "pubchemCid": "CID174",
+    "canonicalSmiles": "C(CO)O",
+    "inchiKey": "LYCAIKOWRPUZTN-UHFFFAOYSA-N",
+    "formula": "C2H6O2",
+    "status": "active"
+  },
+  {
+    "name": "Propylene Glycol",
+    "pubchemCid": "CID1030",
+    "canonicalSmiles": "CC(CO)O",
+    "inchiKey": "DNIAPMSPPWPWGF-UHFFFAOYSA-N",
+    "formula": "C3H8O2",
+    "status": "active"
+  },
+  {
+    "name": "Trehalose",
+    "pubchemCid": "CID7427",
+    "canonicalSmiles": "C(C1C(C(C(C(O1)OC2C(C(C(C(O2)CO)O)O)O)O)O)O)O",
+    "inchiKey": "FYKJLVPIXMZVTQ-UHFFFAOYSA-N",
+    "formula": "C12H22O11",
+    "status": "active"
+  },
+  {
+    "name": "Sucrose",
+    "pubchemCid": "CID5988",
+    "canonicalSmiles": "C(C1C(C(C(C(O1)OC2(C(C(C(O2)CO)O)O)CO)O)O)O)O",
+    "inchiKey": "CZMRCDWAGMRECN-UGDNZRGBSA-N",
+    "formula": "C12H22O11",
+    "status": "active"
+  },
+  {
+    "name": "Glucose",
+    "pubchemCid": "CID5793",
+    "canonicalSmiles": "C(C1C(C(C(C(O1)O)O)O)O)O",
+    "inchiKey": "WQZGKKKJIJFFOK-GASJEMHNSA-N",
+    "formula": "C6H12O6",
+    "status": "active"
+  },
+  {
+    "name": "Mannitol",
+    "pubchemCid": "CID6251",
+    "canonicalSmiles": "C(C(C(C(C(CO)O)O)O)O)O",
+    "inchiKey": "FBPFZTCFMRRESA-UHFFFAOYSA-N",
+    "formula": "C6H14O6",
+    "status": "active"
+  },
+  {
+    "name": "Sorbitol",
+    "pubchemCid": "CID5780",
+    "canonicalSmiles": "C(C(C(C(C(CO)O)O)O)O)O",
+    "inchiKey": "FBPFZTCFMRRESA-UHFFFAOYSA-N",
+    "formula": "C6H14O6",
+    "status": "active"
+  },
+  {
+    "name": "Methanol",
+    "pubchemCid": "CID887",
+    "canonicalSmiles": "CO",
+    "inchiKey": "OKKJLVBELUTLKV-UHFFFAOYSA-N",
+    "formula": "CH4O",
+    "status": "active"
+  },
+  {
+    "name": "Ethanol",
+    "pubchemCid": "CID702",
+    "canonicalSmiles": "CCO",
+    "inchiKey": "LFQSCWFLJHTTHZ-UHFFFAOYSA-N",
+    "formula": "C2H6O",
+    "status": "active"
+  },
+  {
+    "name": "1,2-Propanediol",
+    "pubchemCid": "CID1030",
+    "canonicalSmiles": "CC(CO)O",
+    "inchiKey": "DNIAPMSPPWPWGF-UHFFFAOYSA-N",
+    "formula": "C3H8O2",
+    "status": "active"
+  },
+  {
+    "name": "Polyethylene Glycol",
+    "pubchemCid": "CID174",
+    "canonicalSmiles": "C(CO)O",
+    "inchiKey": "LYCAIKOWRPUZTN-UHFFFAOYSA-N",
+    "formula": "C2H6O2",
+    "status": "active"
+  },
+  {
+    "name": "Hydroxyethyl Starch",
+    "pubchemCid": "CID53477765",
+    "canonicalSmiles": "CCCOCCO",
+    "inchiKey": "AEMRFAOFKBGASW-UHFFFAOYSA-N",
+    "formula": "C12H22O11",
+    "status": "active"
+  },
+  {
+    "name": "Polyvinyl Alcohol",
+    "pubchemCid": "CID11199",
+    "canonicalSmiles": "CC(O)CC(O)CC(O)",
+    "inchiKey": "KKEYFWRCBNTPAC-UHFFFAOYSA-N",
+    "formula": "C2H4O",
+    "status": "active"
+  }
+]

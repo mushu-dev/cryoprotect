@@ -6,8 +6,8 @@ const { chromium } = require('playwright');
   const page = await browser.newPage();
   
   try {
-    console.log('Navigating to URL: https://cryoprotect.app');
-    await page.goto('https://cryoprotect.app');
+    console.log('Navigating to URL: https://cryoprotect.app/molecules/1');
+    await page.goto('https://cryoprotect.app/molecules/1');
     console.log('Getting accessibility snapshot...');
     const snapshot = await page.accessibility.snapshot();
     console.log(JSON.stringify({ 

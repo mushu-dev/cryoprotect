@@ -6,8 +6,8 @@ const { chromium } = require('playwright');
   const page = await browser.newPage();
   
   try {
-    console.log('Navigating to URL: --url');
-    await page.goto('--url');
+    console.log('Navigating to URL: https://cryoprotect.app/molecules/1');
+    await page.goto('https://cryoprotect.app/molecules/1');
     const title = await page.title();
     console.log(JSON.stringify({ 
       success: true, 

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import useExperimentData from '../../features/experiments/hooks/useExperimentData';
+import useConvexExperimentData from '../../features/experiments/hooks/useConvexExperimentData';
 
 export default function CreateExperimentPage() {
   const router = useRouter();
@@ -100,6 +102,13 @@ export default function CreateExperimentPage() {
     return newErrors;
   };
   
+  // Import hooks at the top of the file
+  const useConvex = process.env.NEXT_PUBLIC_USE_CONVEX === 'true';
+  
+  // Hooks for experiment data
+  const { createExperiment: createStandardExperiment } = useExperimentData ? useExperimentData() : { createExperiment: null };
+  const { createExperiment: createConvexExperiment } = useConvexExperimentData ? useConvexExperimentData() : { createExperiment: null };
+  
   // Form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -115,11 +124,20 @@ export default function CreateExperimentPage() {
     setIsSubmitting(true);
     
     try {
-      // This would typically be an API call
-      console.log('Submitting experiment data:', formData);
-      
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Use appropriate creation method based on configuration
+      if (useConvex && createConvexExperiment) {
+        // Create experiment in Convex
+        const experimentId = await createConvexExperiment(formData);
+        console.log('Created experiment in Convex with ID:', experimentId);
+      } else if (createStandardExperiment) {
+        // Create experiment using standard API
+        const experimentId = await createStandardExperiment(formData);
+        console.log('Created experiment with standard API, ID:', experimentId);
+      } else {
+        // Fallback to mock implementation
+        console.log('Submitting experiment data (mock):', formData);
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      }
       
       setSubmitSuccess(true);
       

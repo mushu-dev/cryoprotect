@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import useExperimentData from '../hooks/useExperimentData';
+import useConvexExperimentData from '../hooks/useConvexExperimentData';
 import ExperimentCard from './ExperimentCard';
 import ExperimentFilters from './ExperimentFilters';
 import ExperimentComparison from './ExperimentComparison';
@@ -8,8 +9,26 @@ import { analyzeCryoprotectantEffectiveness } from '../utils/data-transformation
 
 /**
  * Main experiments list page with filtering, comparison, and data analysis
+ * Supports both traditional API and Convex for real-time collaboration
  */
 export default function ExperimentsList() {
+  // Environment configuration for determining data source
+  const useConvex = process.env.NEXT_PUBLIC_USE_CONVEX === 'true';
+  
+  // Standard API data hook
+  const standardData = useExperimentData();
+  
+  // Convex real-time data hook
+  const convexData = useConvexExperimentData(
+    {}, // initial filters
+    {   // options
+      includeResults: true,
+      includeProtocol: true,
+      includeMixture: false
+    }
+  );
+
+  // Use the appropriate data source based on configuration
   const { 
     experiments, 
     filteredExperiments, 
@@ -19,10 +38,12 @@ export default function ExperimentsList() {
     setFilters,
     selectedExperiments,
     toggleExperimentSelection,
-    selectedExperimentData
-  } = useExperimentData();
+    selectedExperimentData,
+    viewMode,
+    setViewMode
+  } = useConvex ? convexData : standardData;
 
-  const [viewMode, setViewMode] = useState('grid');
+  // UI state
   const [showComparison, setShowComparison] = useState(false);
   const [showEffectiveness, setShowEffectiveness] = useState(false);
 
@@ -30,7 +51,11 @@ export default function ExperimentsList() {
   const handleRemoveFromComparison = (experimentId) => {
     if (Array.isArray(experimentId)) {
       // Clear all
-      setSelectedExperiments([]);
+      if (useConvex) {
+        convexData.setSelectedExperiments([]);
+      } else {
+        standardData.setSelectedExperiments([]);
+      }
     } else {
       // Remove specific experiment
       toggleExperimentSelection(experimentId);

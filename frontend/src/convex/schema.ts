@@ -127,6 +127,40 @@ export type ExperimentSchema = Infer<typeof experimentSchema>;
 export type Experiment = Doc<"experiments">;
 
 /**
+ * Enhanced Experiment schema - corresponds to the enhancedExperiments table in Convex
+ */
+export const enhancedExperimentSchema = {
+  name: v.string(),
+  description: v.optional(v.string()),
+  protocolId: v.optional(v.id("protocols")),
+  protocolVersion: v.optional(v.string()),
+  status: v.string(), // 'planned' | 'in_progress' | 'completed' | 'aborted' | 'failed'
+  date: v.optional(v.number()),
+  conductedBy: v.optional(v.id("users")),
+  temperature: v.optional(v.number()),
+  temperatureUnit: v.optional(v.string()),
+  pressure: v.optional(v.number()),
+  pressureUnit: v.optional(v.string()),
+  coolingRate: v.optional(v.number()),
+  coolingRateUnit: v.optional(v.string()),
+  concentration: v.optional(v.number()),
+  concentrationUnit: v.optional(v.string()),
+  ph: v.optional(v.number()),
+  mixingRate: v.optional(v.number()),
+  mixingRateUnit: v.optional(v.string()),
+  parameters: v.optional(v.map(v.string(), v.any())),
+  equipment: v.optional(v.array(v.string())),
+  notes: v.optional(v.string()),
+  tags: v.optional(v.array(v.string())),
+  isTemplate: v.optional(v.boolean()),
+  createdAt: v.number(),
+  updatedAt: v.number(),
+};
+
+export type EnhancedExperimentSchema = Infer<typeof enhancedExperimentSchema>;
+export type EnhancedExperiment = Doc<"enhancedExperiments">;
+
+/**
  * Experiment Result schema - corresponds to the experimentResults table in Convex
  */
 export const experimentResultSchema = {
@@ -193,6 +227,36 @@ export type ProtocolStepSchema = Infer<typeof protocolStepSchema>;
 export type ProtocolStep = Doc<"protocolSteps">;
 
 /**
+ * Protocol Template schema - corresponds to the protocolTemplates table in Convex
+ */
+export const protocolTemplateSchema = {
+  name: v.string(),
+  description: v.optional(v.string()),
+  version: v.string(),
+  parentVersionId: v.optional(v.id("protocolTemplates")),
+  parameters: v.optional(v.map(v.string(), v.any())),
+  steps: v.array(v.object({
+    name: v.string(),
+    description: v.optional(v.string()),
+    order: v.number(),
+    duration: v.optional(v.number()),
+    durationUnit: v.optional(v.string()),
+    temperature: v.optional(v.number()),
+    temperatureUnit: v.optional(v.string()),
+    parameters: v.optional(v.map(v.string(), v.any())),
+    equipment: v.optional(v.array(v.string())),
+  })),
+  category: v.optional(v.string()),
+  tags: v.optional(v.array(v.string())),
+  createdBy: v.optional(v.id("users")),
+  createdAt: v.number(),
+  updatedAt: v.number(),
+};
+
+export type ProtocolTemplateSchema = Infer<typeof protocolTemplateSchema>;
+export type ProtocolTemplate = Doc<"protocolTemplates">;
+
+/**
  * Tissue Type schema - corresponds to the tissueTypes table in Convex
  */
 export const tissueTypeSchema = {
@@ -213,13 +277,16 @@ export type TissueType = Doc<"tissueTypes">;
  * Time Series schema - corresponds to the timeSeries table in Convex
  */
 export const timeSeriesSchema = {
-  experimentId: v.id("experiments"),
-  resultId: v.optional(v.id("experimentResults")),
+  name: v.string(),
+  description: v.optional(v.string()),
+  experimentId: v.optional(v.id("enhancedExperiments")),
+  units: v.optional(v.string()),
+  startTimestamp: v.optional(v.number()),
+  endTimestamp: v.optional(v.number()),
   parameter: v.string(),
-  unit: v.string(),
-  startTime: v.string(),
-  endTime: v.string(),
-  notes: v.optional(v.string()),
+  type: v.optional(v.string()),
+  tags: v.optional(v.array(v.string())),
+  metadata: v.optional(v.map(v.string(), v.any())),
   createdBy: v.optional(v.id("users")),
   createdAt: v.number(),
   updatedAt: v.number(),
@@ -229,21 +296,66 @@ export type TimeSeriesSchema = Infer<typeof timeSeriesSchema>;
 export type TimeSeries = Doc<"timeSeries">;
 
 /**
- * Time Series Data Point schema - corresponds to the timeSeriesDataPoints table in Convex
+ * Time Series Data schema - corresponds to the timeSeriesData table in Convex
  */
-export const timeSeriesDataPointSchema = {
+export const timeSeriesDataSchema = {
   timeSeriesId: v.id("timeSeries"),
-  time: v.number(),
+  timestamp: v.number(),
   value: v.number(),
   uncertainty: v.optional(v.number()),
   metadata: v.optional(v.map(v.string(), v.any())),
-  createdBy: v.optional(v.id("users")),
   createdAt: v.number(),
   updatedAt: v.number(),
 };
 
-export type TimeSeriesDataPointSchema = Infer<typeof timeSeriesDataPointSchema>;
-export type TimeSeriesDataPoint = Doc<"timeSeriesDataPoints">;
+export type TimeSeriesDataSchema = Infer<typeof timeSeriesDataSchema>;
+export type TimeSeriesData = Doc<"timeSeriesData">;
+
+/**
+ * Uncertainty Analysis schema - corresponds to the uncertaintyAnalysis table in Convex
+ */
+export const uncertaintyAnalysisSchema = {
+  timeSeriesId: v.id("timeSeries"),
+  analysisType: v.string(), // 'confidence_interval', 'monte_carlo', 'sensitivity', 'error_propagation'
+  results: v.any(),
+  parameters: v.optional(v.object({
+    confidenceLevel: v.optional(v.number()),
+    monteCarloSamples: v.optional(v.number()),
+    sensitivityParameters: v.optional(v.array(v.string())),
+  })),
+  createdAt: v.number(),
+  updatedAt: v.number(),
+};
+
+export type UncertaintyAnalysisSchema = Infer<typeof uncertaintyAnalysisSchema>;
+export type UncertaintyAnalysis = Doc<"uncertaintyAnalysis">;
+
+/**
+ * Lab Verification schema - corresponds to the labVerifications table in Convex
+ */
+export const labVerificationSchema = {
+  experimentId: v.id("enhancedExperiments"),
+  verificationStatus: v.string(), // 'pending', 'verified', 'rejected', 'needs_revision'
+  requestDate: v.number(),
+  verificationDate: v.optional(v.number()),
+  verifiedBy: v.optional(v.id("users")),
+  requestedBy: v.id("users"),
+  equipmentUsed: v.union(v.string(), v.array(v.string())),
+  methodologyDescription: v.optional(v.string()),
+  controlProcedures: v.optional(v.string()),
+  requestNotes: v.optional(v.string()),
+  verifierNotes: v.optional(v.string()),
+  reproducibilityRating: v.optional(v.number()),
+  qualityRating: v.optional(v.number()),
+  documentationRating: v.optional(v.number()),
+  overallRating: v.optional(v.number()),
+  evidenceUrls: v.optional(v.array(v.string())),
+  createdAt: v.number(),
+  updatedAt: v.number(),
+};
+
+export type LabVerificationSchema = Infer<typeof labVerificationSchema>;
+export type LabVerification = Doc<"labVerifications">;
 
 // Export all schemas for use in other parts of the application
 export const schemas = {
@@ -253,10 +365,14 @@ export const schemas = {
   mixture: mixtureSchema,
   mixtureComponent: mixtureComponentSchema,
   experiment: experimentSchema,
+  enhancedExperiment: enhancedExperimentSchema,
   experimentResult: experimentResultSchema,
   protocol: protocolSchema,
   protocolStep: protocolStepSchema,
+  protocolTemplate: protocolTemplateSchema,
   tissueType: tissueTypeSchema,
   timeSeries: timeSeriesSchema,
-  timeSeriesDataPoint: timeSeriesDataPointSchema,
+  timeSeriesData: timeSeriesDataSchema,
+  uncertaintyAnalysis: uncertaintyAnalysisSchema,
+  labVerification: labVerificationSchema,
 };

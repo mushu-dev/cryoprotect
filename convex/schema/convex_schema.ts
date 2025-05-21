@@ -174,6 +174,23 @@ export default defineSchema({
   protocols: defineTable({
     name: v.string(),
     description: v.optional(v.string()),
+    
+    // Cryopreservation-specific fields
+    protocolType: v.optional(v.string()), // slow_freezing, vitrification, etc.
+    coolingRate: v.optional(v.number()),
+    coolingRateUnit: v.optional(v.string()),
+    warmingRate: v.optional(v.number()),
+    warmingRateUnit: v.optional(v.string()),
+    holdTemperature: v.optional(v.number()),
+    holdDuration: v.optional(v.number()),
+    holdDurationUnit: v.optional(v.string()),
+    cryoprotectantAdditionMethod: v.optional(v.string()),
+    preFreezingTreatment: v.optional(v.string()),
+    postThawingTreatment: v.optional(v.string()),
+    storageTemperature: v.optional(v.number()),
+    storageContainerType: v.optional(v.string()),
+    cpaEquilibrationTime: v.optional(v.number()), // time for CPA equilibration in minutes
+    
     steps: v.array(v.object({
       id: v.string(),
       name: v.string(),
@@ -182,13 +199,29 @@ export default defineSchema({
       duration: v.optional(v.number()),
       durationUnit: v.optional(v.string()),
       temperature: v.optional(v.number()),
-      temperatureUnit: v.optional(v.string())
+      temperatureUnit: v.optional(v.string()),
+      
+      // Step-specific cryopreservation fields
+      rampRate: v.optional(v.number()), // temperature change rate for this step
+      rampRateUnit: v.optional(v.string()),
+      pressureApplied: v.optional(v.number()),
+      pressureUnit: v.optional(v.string()),
+      substancesAdded: v.optional(v.array(v.string())),
+      equipmentRequired: v.optional(v.array(v.string())),
+      criticalStep: v.optional(v.boolean()), // marks steps critical to successful cryopreservation
+      qualityControlChecks: v.optional(v.array(v.string()))
     })),
+    
     version: v.optional(v.number()),
     parentId: v.optional(v.id("protocols")),
     category: v.optional(v.string()),
     isTemplate: v.optional(v.boolean()),
     parameters: v.optional(v.map(v.string(), v.any())),
+    
+    validationStatus: v.optional(v.string()), // unvalidated, validated, failed_validation
+    publications: v.optional(v.array(v.string())), // DOIs or URLs to scientific publications
+    successRate: v.optional(v.number()), // historical success rate
+    
     createdBy: v.optional(v.id("users")),
     createdAt: v.number(),
     updatedAt: v.number(),
@@ -198,6 +231,7 @@ export default defineSchema({
     .index("by_creator", ["createdBy"])
     .index("by_category", ["category"])
     .index("by_template", ["isTemplate"])
+    .index("by_protocol_type", ["protocolType"])
     .index("by_public", ["public"]),
 
   /**
@@ -257,13 +291,61 @@ export default defineSchema({
     description: v.optional(v.string()),
     species: v.optional(v.string()),
     taxonomyId: v.optional(v.number()),
+    
+    // Enhanced biospecimen fields
+    cellType: v.optional(v.string()),
+    tissueOrigin: v.optional(v.string()),
+    cellDensity: v.optional(v.number()),
+    cellDensityUnit: v.optional(v.string()),
+    passageNumber: v.optional(v.number()),
+    cellDiameter: v.optional(v.number()),
+    cellDiameterUnit: v.optional(v.string()),
+    waterContent: v.optional(v.number()), // water content percentage
+    lipidContent: v.optional(v.number()), // lipid content percentage
+    osmolality: v.optional(v.number()),
+    osmolalityUnit: v.optional(v.string()),
+    preparationMethod: v.optional(v.string()),
+    storageConditions: v.optional(v.map(v.string(), v.any())),
+    cryopreservationHistory: v.optional(v.boolean()), // whether tissue was previously cryopreserved
+    
     properties: v.optional(v.map(v.string(), v.any())),
     createdBy: v.optional(v.id("users")),
     createdAt: v.number(),
     updatedAt: v.number()
   })
     .index("by_name", ["name"])
-    .index("by_species", ["species"]),
+    .index("by_species", ["species"])
+    .index("by_cell_type", ["cellType"])
+    .index("by_tissue_origin", ["tissueOrigin"]),
+    
+  /**
+   * Biospecimens - tracks individual specimen samples
+   */
+  biospecimens: defineTable({
+    tissueTypeId: v.id("tissueTypes"),
+    identifier: v.string(),
+    donorId: v.optional(v.string()),
+    donorAge: v.optional(v.number()),
+    donorSex: v.optional(v.string()),
+    donorSpecies: v.optional(v.string()),
+    collectionDate: v.optional(v.number()),
+    processingMethod: v.optional(v.string()),
+    processingDate: v.optional(v.number()),
+    qualityScore: v.optional(v.number()),
+    viabilityAtCollection: v.optional(v.number()),
+    storageLocation: v.optional(v.string()),
+    freezeThawCycles: v.optional(v.number()),
+    clinicalDiagnosis: v.optional(v.string()),
+    consentInformation: v.optional(v.string()),
+    metadata: v.optional(v.map(v.string(), v.any())),
+    createdBy: v.optional(v.id("users")),
+    createdAt: v.number(),
+    updatedAt: v.number()
+  })
+    .index("by_tissue_type", ["tissueTypeId"])
+    .index("by_identifier", ["identifier"])
+    .index("by_donor", ["donorId"])
+    .index("by_collection_date", ["collectionDate"]),
 
   /**
    * Experiment Results - stores results from experiments
@@ -290,9 +372,23 @@ export default defineSchema({
     mixtureId: v.optional(v.id("mixtures")),
     concentration: v.optional(v.number()),
     concentrationUnit: v.optional(v.string()),
+    
+    // Enhanced viability measurements
     viabilityPercentage: v.optional(v.number()),
+    viabilityMethod: v.optional(v.string()), // method used to measure viability
     recoveryRate: v.optional(v.number()),
+    recoveryRateUnit: v.optional(v.string()),
     functionalityScore: v.optional(v.number()),
+    functionalAssay: v.optional(v.string()), // specific assay used for functionality
+    integrityMeasure: v.optional(v.number()),
+    integrityMethod: v.optional(v.string()), // method used to measure integrity
+    
+    // Cryopreservation-specific metrics
+    iceFormationObserved: v.optional(v.boolean()),
+    postThawMorphologyScore: v.optional(v.number()), // 1-10 rating of morphology
+    stressResponseMarkers: v.optional(v.array(v.string())), // markers of cellular stress
+    timeToRecovery: v.optional(v.number()), // time in hours to recover normal function
+    
     uncertainty: v.optional(v.map(v.string(), v.map(v.string(), v.any()))),
     resultDetails: v.optional(v.map(v.string(), v.any())),
     notes: v.optional(v.string()),
@@ -303,7 +399,8 @@ export default defineSchema({
     .index("by_experiment", ["experimentId"])
     .index("by_tissue_type", ["tissueTypeId"])
     .index("by_molecule", ["moleculeId"])
-    .index("by_mixture", ["mixtureId"]),
+    .index("by_mixture", ["mixtureId"])
+    .index("by_viability", ["viabilityPercentage"]),
 
   /**
    * Predictions - stores model predictions for molecules or mixtures
@@ -479,4 +576,73 @@ export default defineSchema({
     .index("by_user", ["userId"])
     .index("by_operation", ["operation"])
     .index("by_timestamp", ["timestamp"]),
+    
+  /**
+   * Lab Verifications - tracks verification of experimental results
+   * This system ensures experimental reproducibility and quality control
+   */
+  labVerifications: defineTable({
+    experimentId: v.id("enhancedExperiments"),
+    verificationStatus: v.string(), // pending, verified, rejected
+    verifierId: v.id("users"),
+    equipmentUsed: v.string(),
+    verificationDate: v.number(),
+    comments: v.optional(v.string()),
+    evidenceUrls: v.optional(v.array(v.string())),
+    reviewedProtocolSteps: v.optional(v.array(v.string())),
+    qualityScore: v.optional(v.number()), // 1-10 quality rating
+    createdAt: v.number(),
+    updatedAt: v.number()
+  })
+    .index("by_experiment", ["experimentId"])
+    .index("by_status", ["verificationStatus"])
+    .index("by_verifier", ["verifierId"])
+    .index("by_date", ["verificationDate"]),
+    
+  /**
+   * Cryoprotectant Effectiveness - tracks specialized effectiveness metrics
+   * for cryoprotectant molecules and mixtures
+   */
+  cryoprotectantEffectiveness: defineTable({
+    moleculeId: v.optional(v.id("molecules")),
+    mixtureId: v.optional(v.id("mixtures")),
+    tissueTypeId: v.optional(v.id("tissueTypes")),
+    
+    // Overall effectiveness metrics
+    effectivenessScore: v.number(), // overall score (0-100)
+    effectiveConcentration: v.optional(v.number()),
+    effectiveConcentrationUnit: v.optional(v.string()),
+    
+    // Mechanism-specific metrics
+    membranePermeability: v.optional(v.number()),
+    membranePermeabilityUnit: v.optional(v.string()),
+    glassTransitionTemp: v.optional(v.number()),
+    toxicityThreshold: v.optional(v.number()),
+    toxicityThresholdUnit: v.optional(v.string()),
+    osmoticTolerance: v.optional(v.number()),
+    iceInhibitionCapacity: v.optional(v.number()),
+    
+    // Experimental context
+    experimentalConditions: v.optional(v.map(v.string(), v.any())),
+    measuredAt: v.optional(v.number()), // temperature at which effectiveness was measured
+    measuredAtUnit: v.optional(v.string()),
+    freezingRate: v.optional(v.number()),
+    freezingRateUnit: v.optional(v.string()),
+    
+    // Data provenance
+    source: v.optional(v.id("dataSources")),
+    experimentId: v.optional(v.id("enhancedExperiments")),
+    methodologyDescription: v.optional(v.string()),
+    confidenceLevel: v.optional(v.number()), // statistical confidence (0-1)
+    literatureReference: v.optional(v.string()), // reference to scientific literature
+    
+    createdBy: v.optional(v.id("users")),
+    createdAt: v.number(),
+    updatedAt: v.number()
+  })
+    .index("by_molecule", ["moleculeId"])
+    .index("by_mixture", ["mixtureId"])
+    .index("by_tissue", ["tissueTypeId"])
+    .index("by_effectiveness", ["effectivenessScore"])
+    .index("by_experiment", ["experimentId"]),
 });

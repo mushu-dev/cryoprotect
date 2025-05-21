@@ -1,1 +1,6 @@
-{"/_app":"pages/_app.js","/_error":"pages/_error.js","/404":"pages/404.html","/about":"pages/about.html","/connections":"pages/connections.html","/experiments":"pages/experiments.html","/":"pages/index.html","/molecule-viewer":"pages/molecule-viewer.html","/protocols":"pages/protocols.html","/mixtures":"pages/mixtures.js","/molecules":"pages/molecules.js","/mixtures/[id]":"pages/mixtures/[id].js","/molecules/[id]":"pages/molecules/[id].js","/_document":"pages/_document.js"}
+{
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/_app": "pages/_app.js",
+  "/molecules": "pages/molecules.js"
+}

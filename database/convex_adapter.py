@@ -19,25 +19,35 @@ class ConvexAdapter:
     This allows for gradual migration of the codebase.
     """
     
-    def __init__(self, url=None, key=None):
+    def __init__(self, url=None, key=None, user_token=None):
         """
         Initialize the Convex adapter.
         
         Args:
             url (str): The Convex URL. If not provided, it's read from CONVEX_URL env var.
             key (str): The Convex deployment key. If not provided, it's read from CONVEX_DEPLOYMENT_KEY env var.
+            user_token (str): Optional user JWT token for authenticated requests.
         """
-        self.url = url or os.environ.get('CONVEX_URL', 'https://dynamic-mink-63.convex.cloud')
+        self.url = url or os.environ.get('CONVEX_URL', 'https://primary-meerkat-478.convex.cloud')
         self.key = key or os.environ.get('CONVEX_DEPLOYMENT_KEY', '')
+        self.user_token = user_token
         
         # Ensure the URL ends with a slash for proper joining
         if not self.url.endswith('/'):
             self.url = self.url + '/'
             
+        # Setup headers with content type
         self.headers = {
             'Content-Type': 'application/json',
-            'Authorization': f'Bearer {self.key}' if self.key else None
         }
+        
+        # Add authorization if we have a user token or deployment key
+        if self.user_token:
+            # User token takes precedence over deployment key
+            self.headers['Authorization'] = f'Bearer {self.user_token}'
+        elif self.key:
+            # Fall back to deployment key if no user token
+            self.headers['Authorization'] = f'Bearer {self.key}'
         
         logger.info("Initialized Convex adapter with URL: %s", self.url)
     
@@ -79,7 +89,8 @@ class ConvexAdapter:
         if path.startswith('/'):
             path = path[1:]  # Remove leading slash if present
         
-        url = urljoin(self.url, "http-api/" + path)
+        # Use direct path for our Convex HTTP API implementation
+        url = urljoin(self.url, path)
         
         logger.debug("Executing Convex query: %s %s", action, url)
         logger.debug("Params: %s", params)
@@ -286,7 +297,7 @@ class TableAdapter:
         
         # Execute the query and convert to Supabase-like response
         try:
-            result = self.adapter.execute_query('POST', 'api/query', params)
+            result = self.adapter.execute_query('POST', '/api/query', params)
             return Response(result.get('data', []), result.get('error'))
         except Exception as e:
             logger.error("Error executing Convex query: %s", str(e))
@@ -308,7 +319,7 @@ class TableAdapter:
         }
         
         try:
-            result = self.adapter.execute_query('POST', 'api/insert', params)
+            result = self.adapter.execute_query('POST', '/api/insert', params)
             return Response(result.get('data', []), result.get('error'))
         except Exception as e:
             logger.error("Error inserting into Convex: %s", str(e))
@@ -331,7 +342,7 @@ class TableAdapter:
         }
         
         try:
-            result = self.adapter.execute_query('POST', 'api/update', params)
+            result = self.adapter.execute_query('POST', '/api/update', params)
             return Response(result.get('data', []), result.get('error'))
         except Exception as e:
             logger.error("Error updating in Convex: %s", str(e))
@@ -350,7 +361,7 @@ class TableAdapter:
         }
         
         try:
-            result = self.adapter.execute_query('POST', 'api/delete', params)
+            result = self.adapter.execute_query('POST', '/api/delete', params)
             return Response(result.get('data', []), result.get('error'))
         except Exception as e:
             logger.error("Error deleting from Convex: %s", str(e))
@@ -384,7 +395,7 @@ class AuthAdapter:
         }
         
         try:
-            result = self.adapter.execute_query('POST', 'api/auth/signin', params)
+            result = self.adapter.execute_query('POST', '/api/auth/signin', params)
             return Response(result.get('data', {}), result.get('error'))
         except Exception as e:
             logger.error("Error signing in with Convex: %s", str(e))
@@ -406,7 +417,7 @@ class AuthAdapter:
         }
         
         try:
-            result = self.adapter.execute_query('POST', 'api/auth/signup', params)
+            result = self.adapter.execute_query('POST', '/api/auth/signup', params)
             return Response(result.get('data', {}), result.get('error'))
         except Exception as e:
             logger.error("Error signing up with Convex: %s", str(e))
@@ -420,7 +431,7 @@ class AuthAdapter:
             Response: A Supabase-like response object.
         """
         try:
-            result = self.adapter.execute_query('POST', 'api/auth/signout', {})
+            result = self.adapter.execute_query('POST', '/api/auth/signout', {})
             return Response(result.get('data', {}), result.get('error'))
         except Exception as e:
             logger.error("Error signing out with Convex: %s", str(e))
@@ -440,7 +451,7 @@ class Response:
         self.data = data
         self.error = error
 
-def create_client(url=None, key=None, use_convex=None):
+def create_client(url=None, key=None, use_convex=None, user_token=None):
     """
     Create a Convex client based on environment configuration.
     
@@ -448,6 +459,7 @@ def create_client(url=None, key=None, use_convex=None):
         url (str): The Convex URL.
         key (str): The Convex deployment key.
         use_convex (bool): Force use of Convex if True, Supabase if False.
+        user_token (str): Optional JWT token for user authentication.
         
     Returns:
         ConvexAdapter or supabase.Client: The appropriate client.
@@ -458,7 +470,7 @@ def create_client(url=None, key=None, use_convex=None):
     
     if should_use_convex:
         logger.info("Using Convex adapter for database operations")
-        return ConvexAdapter(url, key)
+        return ConvexAdapter(url, key, user_token)
     else:
         # Fall back to Supabase
         logger.info("Using Supabase for database operations")
@@ -466,5 +478,10 @@ def create_client(url=None, key=None, use_convex=None):
         
         supabase_url = os.environ.get('SUPABASE_URL', '')
         supabase_key = os.environ.get('SUPABASE_KEY', '')
+        supabase_client = create_supabase_client(supabase_url, supabase_key)
         
-        return create_supabase_client(supabase_url, supabase_key)
+        # If user token is provided, set auth header for Supabase too
+        if user_token:
+            supabase_client.auth.session = {"access_token": user_token}
+        
+        return supabase_client

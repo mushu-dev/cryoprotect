@@ -1,0 +1,8 @@
+{
+  "origin": "https://primary-meerkat-478.convex.cloud",
+  "functions": "convex",
+  "schema": "convex/schema.js",
+  "actions": {
+    "httpUrl": "https://primary-meerkat-478.convex.cloud"
+  }
+}

@@ -1,11 +1,11 @@
-import { mutation } from "../_generated/server";
+import { query } from "../_generated/server";
 import { v } from "convex/values";
 
 /**
  * API endpoint for our backend adapter to query Convex tables
  * This function handles queries from the Supabase-compatible adapter
  */
-export const execute = mutation({
+export const execute = query({
   args: {
     table: v.string(),
     filters: v.optional(v.any()),

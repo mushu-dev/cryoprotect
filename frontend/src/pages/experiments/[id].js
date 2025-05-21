@@ -3,12 +3,40 @@ import Link from 'next/link';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import ExperimentDetail from '../../features/experiments/components/ExperimentDetail';
+import CollaborativeExperimentEditorWrapper from '../../features/experiments/components/CollaborativeExperimentEditorWrapper';
 import useExperimentData from '../../features/experiments/hooks/useExperimentData';
+import useConvexExperimentData from '../../features/experiments/hooks/useConvexExperimentData';
+import { useQuery } from 'convex/react';
+import { api } from '../../convex/_generated/api';
 
 export default function ExperimentDetailPage() {
   const router = useRouter();
   const { id } = router.query;
-  const { fetchExperiment } = useExperimentData();
+  const useConvex = process.env.NEXT_PUBLIC_USE_CONVEX === 'true';
+  
+  // Standard data fetching
+  const { fetchExperiment: fetchStandardExperiment } = useExperimentData();
+  
+  // Convex data fetching
+  const { fetchExperiment: fetchConvexExperiment } = useConvexExperimentData();
+  
+  // For real-time updates when using Convex
+  const convexExperiment = useConvex && id ? useQuery(
+    api.experiments.enhanced_experiments.getEnhancedExperiment,
+    { 
+      experimentId: id,
+      options: {
+        includeResults: true,
+        includeProtocol: true,
+        includeMixture: true,
+        includeTissueTypes: true,
+        includeEquipment: true,
+        includeTimeSeries: true
+      }
+    }
+  ) : null;
+  
+  // Local state for experiment data
   const [experiment, setExperiment] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -19,7 +47,18 @@ export default function ExperimentDetailPage() {
       if (id) {
         try {
           setLoading(true);
-          const data = await fetchExperiment(id);
+          
+          // If using Convex real-time data, we don't need to fetch manually
+          if (useConvex && convexExperiment !== undefined) {
+            setExperiment(convexExperiment);
+            setError(null);
+            setLoading(false);
+            return;
+          }
+          
+          // Otherwise, fetch data from the appropriate source
+          const fetchFunc = useConvex ? fetchConvexExperiment : fetchStandardExperiment;
+          const data = await fetchFunc(id);
           setExperiment(data);
           setError(null);
         } catch (err) {
@@ -32,7 +71,7 @@ export default function ExperimentDetailPage() {
     }
 
     loadExperiment();
-  }, [id, fetchExperiment]);
+  }, [id, convexExperiment, fetchStandardExperiment, fetchConvexExperiment, useConvex]);
 
   if (router.isFallback || loading) {
     return (
@@ -81,7 +120,14 @@ export default function ExperimentDetailPage() {
           </Link>
         </div>
         
-        <ExperimentDetail experiment={experiment} />
+        {/* Use the collaborative wrapper component */}
+        <CollaborativeExperimentEditorWrapper 
+          experiment={experiment}
+          onSave={(updatedExperiment) => {
+            setExperiment(updatedExperiment);
+          }}
+          readOnly={false}
+        />
       </div>
     </>
   );

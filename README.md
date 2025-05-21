@@ -1,16 +1,16 @@
-# CryoProtect Analyzer
+# CryoProtect Analyzer 🚀
 
-A tool for analyzing cryoprotectant molecules using RDKit and Convex.
+**Production-ready scientific research platform for cryoprotectant molecule analysis**
 
-> 🚀 **NEW:** Convex integration is now complete! CryoProtect now supports both Supabase and Convex as database backends. See the [Convex Integration Complete Report](CONVEX_INTEGRATION_COMPLETE.md) for details.
+> 🚀 **PRODUCTION READY:** Full Convex integration with 5000+ molecules from ChEMBL/PubChem, real-time calculations via RDKit service, and collaborative experiment management. See [CONVEX_PRODUCTION_INTEGRATION_PLAN.md](CONVEX_PRODUCTION_INTEGRATION_PLAN.md) for complete details.
 
-> 🛡️ **NEW:** Advanced resiliency patterns are now available! CryoProtect now includes retry mechanisms, circuit breakers, and more to ensure robust operation. See the [Production Readiness Plan](PRODUCTION_READINESS_PLAN.md) for details.
->
-> 🧪 **NEW:** Enhanced Protocol Designer is now available! The Protocol Designer now includes a comprehensive step editor, improved visualization, and support for equipment, parameters, and alerts.
+> 🔬 **SCIENTIFIC DATA:** Comprehensive database of cryoprotectant molecules with ChEMBL identifiers, PubChem naming, molecular properties, and experimental protocols validated by domain experts.
+
+> ⚡ **REAL-TIME:** Live molecular property calculations, collaborative experiment editing, and instant search across the complete scientific dataset.
 
 ## Overview
 
-CryoProtect Analyzer is a Flask-based web application that allows users to analyze cryoprotectant molecules, calculate their properties, and store the results in a database. The application uses RDKit for molecular property calculations and visualization and now supports both Supabase and Convex as database backends.
+CryoProtect Analyzer is a production-ready scientific research platform that enables researchers to analyze cryoprotectant molecules, calculate properties in real-time, and collaborate on experiments. Built with Convex for real-time data, RDKit for molecular calculations, and a modern React frontend.
 
 ## Features
 
@@ -69,13 +69,15 @@ CryoProtect now supports development using [Cursor IDE](https://cursor.sh/), whi
    - For Supabase (default):
      - Create a `.env` file with your Supabase credentials
    - For Convex (recommended):
-     - Create a `.env` file with your Convex credentials
-     - Configure environment variables:
+     - Copy `.env.convex.sample` to `.env` and fill in your Convex credentials
+     - Configure the main environment variables:
        ```
-       USE_CONVEX=true
-       CONVEX_URL=https://upbeat-parrot-866.convex.cloud
-       RDKIT_SERVICE_URL=https://cryoprotect-rdkit.fly.dev
+       CONVEX_DB_ENABLED=true
+       CONVEX_URL=https://your-deployment-id.convex.cloud
+       CONVEX_DEPLOYMENT_KEY=your-deployment-key
+       JWT_SECRET=your-jwt-secret-key
        ```
+     - For additional settings, see [README_CONVEX_BACKEND.md](README_CONVEX_BACKEND.md)
      - Apply the database configuration using `npx convex deploy`
 
 4. Run the application:
@@ -110,7 +112,9 @@ docker-compose up
 - [Database Maintenance Guide](reports/DATABASE_MAINTENANCE_GUIDE.md)
 
 ### Convex Integration (Latest)
-- [**✅ Convex Integration Complete Report**](CONVEX_INTEGRATION_COMPLETE.md) - **NEW**
+- [**✅ Enhanced Convex Backend Integration**](README_CONVEX_BACKEND.md) - **NEW**
+- [**✅ Convex Backend Integration Documentation**](CONVEX_BACKEND_INTEGRATION.md) - **NEW**
+- [**✅ Convex Frontend Integration**](CONVEX_FRONTEND_INTEGRATION.md) - **NEW**
 - [Backend Frontend Integration](BACKEND_FRONTEND_INTEGRATION.md)
 - [Convex Implementation Plan](CONVEX_IMPLEMENTATION_PLAN.md)
 

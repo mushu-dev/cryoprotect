@@ -1,0 +1,58 @@
+[
+  {
+    "name": "molecular_weight",
+    "displayName": "Molecular Weight",
+    "description": "The molecular weight of the molecule in g/mol",
+    "dataType": "number",
+    "units": "g/mol",
+    "defaultUnits": "g/mol",
+    "category": "physical",
+    "isCalculated": true
+  },
+  {
+    "name": "logp",
+    "displayName": "LogP",
+    "description": "Octanol-water partition coefficient",
+    "dataType": "number",
+    "category": "physical",
+    "isCalculated": true
+  },
+  {
+    "name": "melting_point",
+    "displayName": "Melting Point",
+    "description": "The melting point of the molecule",
+    "dataType": "number",
+    "units": "°C",
+    "defaultUnits": "°C",
+    "category": "physical",
+    "isCalculated": false
+  },
+  {
+    "name": "boiling_point",
+    "displayName": "Boiling Point",
+    "description": "The boiling point of the molecule",
+    "dataType": "number",
+    "units": "°C",
+    "defaultUnits": "°C",
+    "category": "physical",
+    "isCalculated": false
+  },
+  {
+    "name": "glass_transition_temp",
+    "displayName": "Glass Transition Temperature",
+    "description": "The glass transition temperature of the molecule",
+    "dataType": "number",
+    "units": "°C",
+    "defaultUnits": "°C",
+    "category": "cryoprotective",
+    "isCalculated": false
+  },
+  {
+    "name": "toxicity_score",
+    "displayName": "Toxicity Score",
+    "description": "A measure of molecule toxicity",
+    "dataType": "number",
+    "category": "toxicity",
+    "isCalculated": true
+  }
+]

@@ -55,8 +55,25 @@ from flask import current_app, g, request, jsonify
 from marshmallow import ValidationError
 from functools import wraps
 
-# Import Supabase client
-from .supabase_client import create_client
+# Import database clients
+from .supabase_client import create_client as create_supabase_client
+from database.convex_adapter import create_client as create_convex_client
+import os
+
+def get_database_client():
+    """
+    Get the appropriate database client based on configuration.
+    
+    Returns:
+        Database client (either Supabase or Convex)
+    """
+    # Check if we should use Convex
+    use_convex = os.environ.get('USE_CONVEX', '').lower() in ('true', 'yes', '1')
+    
+    if use_convex:
+        return get_convex_client()
+    else:
+        return get_supabase_client()
 
 def get_supabase_client():
     """
@@ -66,8 +83,24 @@ def get_supabase_client():
         Supabase client
     """
     if 'supabase_client' not in g:
-        g.supabase_client = create_client()
+        g.supabase_client = create_supabase_client()
     return g.supabase_client
+
+def get_convex_client():
+    """
+    Get the Convex client.
+    
+    Returns:
+        Convex client
+    """
+    if 'convex_client' not in g:
+        # Check if we have a user token in the request
+        from .jwt_auth import get_token_from_request
+        user_token = get_token_from_request()
+        
+        # Create client with user token if available
+        g.convex_client = create_convex_client(user_token=user_token)
+    return g.convex_client
 
 def release_supabase_connection():
     """
@@ -78,6 +111,26 @@ def release_supabase_connection():
     if client:
         # Close any open connections
         pass  # Supabase client doesn't have an explicit close method
+        
+def release_convex_connection():
+    """
+    Release the Convex connection.
+    This function is called when the request context is torn down.
+    """
+    client = g.pop('convex_client', None)
+    # No need to explicitly close Convex connection
+
+def release_database_connection():
+    """
+    Release the appropriate database connection.
+    This function is called when the request context is torn down.
+    """
+    use_convex = os.environ.get('USE_CONVEX', '').lower() in ('true', 'yes', '1')
+    
+    if use_convex:
+        release_convex_connection()
+    else:
+        release_supabase_connection()
 
 def authenticate_user(email=None, password=None):
     """
@@ -92,6 +145,9 @@ def authenticate_user(email=None, password=None):
     """
     # Import here to avoid circular imports
     from .jwt_auth import get_token_from_request, extract_user_from_token
+    
+    # Check if we should use Convex
+    use_convex = os.environ.get('USE_CONVEX', '').lower() in ('true', 'yes', '1')
     
     # Check if we have a token in the request
     if email is None and password is None:
@@ -113,17 +169,36 @@ def authenticate_user(email=None, password=None):
                 logging.error(f"Token authentication error: {str(e)}")
                 return None
     
-    # If email and password are provided, authenticate with Supabase
+    # If email and password are provided, authenticate with the appropriate client
     if email and password:
         try:
-            client = get_supabase_client()
-            response = client.auth.sign_in_with_password({
-                'email': email,
-                'password': password
-            })
-            
-            if response.user:
-                return response.user
+            if use_convex:
+                # Authenticate with Convex
+                client = get_convex_client()
+                response = client.auth().sign_in_with_password({
+                    'email': email,
+                    'password': password
+                })
+                
+                if response.data and not response.error:
+                    # Create a user object from the Convex response
+                    class User:
+                        def __init__(self, data):
+                            self.id = data.get('id')
+                            self.email = data.get('email')
+                            self.role = data.get('role', 'user')
+                    
+                    return User(response.data)
+            else:
+                # Authenticate with Supabase
+                client = get_supabase_client()
+                response = client.auth.sign_in_with_password({
+                    'email': email,
+                    'password': password
+                })
+                
+                if response.user:
+                    return response.user
             
             return None
         except Exception as e:

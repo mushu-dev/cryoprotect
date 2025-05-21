@@ -9,6 +9,8 @@
 [build.environment]
   NEXT_PUBLIC_ENVIRONMENT = "production"
   NEXT_PUBLIC_NETLIFY = "true"
+  NEXT_PUBLIC_USE_CONVEX = "true"
+  NEXT_PUBLIC_CONVEX_URL = "https://upbeat-parrot-866.convex.cloud"
 
 # These headers help secure your site
 [[headers]]

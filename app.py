@@ -28,7 +28,7 @@ from flask_mail import Mail
 from config import active_config
 from api import init_app
 from api.docs import init_docs
-from api.utils import get_supabase_client, authenticate_user, token_required, release_supabase_connection
+from api.utils import get_database_client, get_supabase_client, get_convex_client, authenticate_user, token_required, release_database_connection
 from logging_enhanced import setup_enhanced_logging, get_logger, log_with_context
 import logging
 from api.rate_limiter import configure_rate_limiter, add_rate_limit_headers
@@ -39,6 +39,10 @@ from api.observability import init_observability
 from backup.backup_manager import BackupManager
 from api.lab_verification_resources import LabVerificationResource, VerificationStatsResource
 from api import api
+
+# Import Convex adapter and auth bridge
+from database.convex_adapter import create_client, ConvexAdapter
+from database.auth_bridge import AuthBridge, create_jwt_middleware
 
 
 # Import authentication configuration
@@ -183,6 +187,12 @@ def create_app(config_object=None, testing=False):
     
     # Initialize session security
     init_session_security(app)
+    
+    # Initialize Convex auth bridge
+    auth_bridge = AuthBridge(app)
+    
+    # Create JWT middleware for Convex authentication
+    create_jwt_middleware(app)
     
     # Apply security headers to all responses
     apply_security_headers(app)
@@ -383,17 +393,41 @@ def create_app(config_object=None, testing=False):
     # Register before request handler
     @app.before_request
     def before_request():
-        # Initialize Supabase client
+        # Initialize database client
         try:
-            get_supabase_client()
+            use_convex = os.environ.get('USE_CONVEX', '').lower() in ('true', 'yes', '1')
+            
+            if use_convex:
+                # Initialize Convex client
+                get_convex_client()
+                log_with_context(
+                    logger, 'debug',
+                    "Initialized Convex client for request",
+                    context={
+                        "event_type": "database_init",
+                        "database_type": "convex"
+                    }
+                )
+            else:
+                # Initialize Supabase client
+                get_supabase_client()
+                log_with_context(
+                    logger, 'debug',
+                    "Initialized Supabase client for request",
+                    context={
+                        "event_type": "database_init",
+                        "database_type": "supabase"
+                    }
+                )
         except Exception as e:
             log_with_context(
                 logger, 'error',
-                f"Error initializing Supabase client: {str(e)}",
+                f"Error initializing database client: {str(e)}",
                 context={
                     "event_type": "database_error",
-                    "error_type": "supabase_init_error",
-                    "error_details": str(e)
+                    "error_type": "database_init_error",
+                    "error_details": str(e),
+                    "database_type": "convex" if os.environ.get('USE_CONVEX', '').lower() in ('true', 'yes', '1') else "supabase"
                 },
                 exc_info=True
             )
@@ -404,9 +438,15 @@ def create_app(config_object=None, testing=False):
     def teardown_request(exception=None):
         # Clean up resources
         try:
-            if hasattr(g, 'supabase'):
+            # Check which database we're using
+            use_convex = os.environ.get('USE_CONVEX', '').lower() in ('true', 'yes', '1')
+            
+            if use_convex and hasattr(g, 'convex_client'):
+                # Release connection for Convex
+                release_database_connection()
+            elif hasattr(g, 'supabase_client'):
                 # Release connection back to the pool if using connection pooling
-                release_supabase_connection()
+                release_database_connection()
                 
                 # Update connection pool metrics
                 if app.config.get('SUPABASE_CONNECTION_POOL_ENABLED', False):
@@ -414,10 +454,6 @@ def create_app(config_object=None, testing=False):
                     idle = app.config.get('SUPABASE_IDLE_CONNECTIONS', 0)
                     max_conn = app.config.get('SUPABASE_MAX_CONNECTIONS', 10)
                     update_connection_pool_status(active, idle, max_conn)
-                
-                # For non-pooled connections, just delete the reference
-                if hasattr(g, 'supabase'):
-                    del g.supabase
         except Exception as e:
             log_with_context(
                 logger, 'error',
@@ -886,6 +922,23 @@ def create_app(config_object=None, testing=False):
                 }
             })
             
+            # Generate Convex JWT token
+            convex_token = None
+            if hasattr(app, 'auth_bridge'):
+                user_data = {
+                    'name': getattr(user, 'name', user.email.split('@')[0]),
+                    'email': user.email,
+                    'role': getattr(user, 'role', DEFAULT_ROLE),
+                    'roles': user_roles,
+                    'permissions': user_permissions
+                }
+                convex_token = app.auth_bridge.generate_token(user.id, user_data)
+                
+                # Add Convex token to response
+                response.json.update({
+                    'convex_token': convex_token
+                })
+            
             # Set cookies if configured to do so
             if HTTP_ONLY_COOKIES:
                 from api.session_security import set_secure_cookie
@@ -911,6 +964,18 @@ def create_app(config_object=None, testing=False):
                     secure=SECURE_COOKIES,
                     samesite=SAME_SITE_COOKIES
                 )
+                
+                # Set Convex token cookie if available
+                if convex_token:
+                    response = set_secure_cookie(
+                        response,
+                        'convex_token',
+                        convex_token,
+                        max_age=JWT_EXPIRY,
+                        httponly=True,
+                        secure=SECURE_COOKIES,
+                        samesite=SAME_SITE_COOKIES
+                    )
                 
                 # Rotate session on login
                 from api.session_security import rotate_session

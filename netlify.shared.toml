@@ -1,0 +1,55 @@
+# Shared Netlify configuration for both frontends
+# To use this configuration:
+# 1. Copy to frontend/netlify.toml or minimal-frontend/netlify.toml
+# 2. Adjust the publish directory if needed
+
+[build]
+  publish = "out"
+  command = "npm run build"
+
+# Environment variables for all contexts
+[build.environment]
+  NEXT_PUBLIC_USE_CONVEX = "false"  # Disable Convex by default in production
+  NEXT_PUBLIC_API_URL = "https://cryoprotect-8030e4025428.herokuapp.com/api"
+  NODE_VERSION = "18"
+
+# Production environment (Convex disabled for safety)
+[context.production.environment]
+  NEXT_PUBLIC_USE_CONVEX = "false"
+  NODE_ENV = "production"
+
+# Development/staging environment (Convex enabled for testing)
+[context.develop.environment]
+  NEXT_PUBLIC_USE_CONVEX = "true"
+  NEXT_PUBLIC_CONVEX_URL = "https://hallowed-malamute-424.convex.cloud"
+
+# Branch-specific environments
+[context.convex-enabled.environment]
+  NEXT_PUBLIC_USE_CONVEX = "true"
+  NEXT_PUBLIC_CONVEX_URL = "https://hallowed-malamute-424.convex.cloud"
+
+[context.convex-disabled.environment]
+  NEXT_PUBLIC_USE_CONVEX = "false"
+
+# Add necessary security headers for Convex
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; connect-src 'self' https://cryoprotect-8030e4025428.herokuapp.com https://*.convex.cloud https://*.netlify.app; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; frame-src 'self'"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Redirects for API (when not using Convex)
+[[redirects]]
+  from = "/api/*"
+  to = "https://cryoprotect-8030e4025428.herokuapp.com/api/:splat"
+  status = 200
+  force = true
+
+# Catch-all for SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

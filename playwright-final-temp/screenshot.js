@@ -6,8 +6,8 @@ const { chromium } = require('playwright');
   const page = await browser.newPage();
   
   try {
-    console.log('Navigating to URL: http://localhost:3000');
-    await page.goto('http://localhost:3000');
+    console.log('Navigating to URL: https://cryoprotect.app/molecules/1');
+    await page.goto('https://cryoprotect.app/molecules/1');
     console.log('Taking screenshot...');
     await page.screenshot({ path: '/output/screenshot.png', fullPage: true });
     console.log(JSON.stringify({ 
