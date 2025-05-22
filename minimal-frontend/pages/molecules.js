@@ -548,22 +548,51 @@ export default function Molecules({ initialMolecules }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Try to fetch from API if not using Convex
-    if (!isConvexEnabled) {
-      fetchMolecules();
-    }
+    // Always try to fetch from API first, with fallback
+    fetchMolecules();
   }, []);
 
   const fetchMolecules = async () => {
     try {
       setLoading(true);
       setError(null);
+      
+      // Try direct API call first (bypass utils for troubleshooting)
+      const response = await fetch('https://cryoprotect-8030e4025428.herokuapp.com/api/molecules', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        mode: 'cors'
+      });
+      
+      if (response.ok) {
+        const result = await response.json();
+        const moleculeData = result.data || result; // Handle different response formats
+        if (Array.isArray(moleculeData) && moleculeData.length > 0) {
+          setMolecules(moleculeData);
+          console.log('Successfully fetched molecules from API:', moleculeData.length);
+          return;
+        }
+      }
+      
+      // If API fails, try the utils method
+      console.log('Direct API call failed, trying utils method...');
       const { getMolecules } = await import('../utils/api');
       const data = await getMolecules();
-      setMolecules(data || initialMolecules);
+      
+      if (data && Array.isArray(data) && data.length > 0) {
+        setMolecules(data);
+        console.log('Successfully fetched molecules from utils:', data.length);
+      } else {
+        throw new Error('No data received from API');
+      }
     } catch (err) {
-      console.error('Failed to fetch molecules:', err);
+      console.error('Failed to fetch molecules, using fallback data:', err);
+      // Use initial molecules as fallback
       setMolecules(initialMolecules);
+      console.log('Using fallback molecules:', initialMolecules.length);
     } finally {
       setLoading(false);
     }

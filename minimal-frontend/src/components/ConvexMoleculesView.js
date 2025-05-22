@@ -8,7 +8,7 @@ export default function ConvexMoleculesView() {
   const [loadingCalculations, setLoadingCalculations] = useState(new Set());
 
   // Query molecules from Convex with real-time updates
-  const molecules = useQuery(api.molecules.query.getRecentMolecules, { 
+  const molecules = useQuery(api.molecules.listMolecules, { 
     limit: 50
   });
   

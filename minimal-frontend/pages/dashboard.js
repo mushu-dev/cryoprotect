@@ -111,28 +111,60 @@ export default function Dashboard() {
         
         // Get molecule count with better error handling
         try {
-          const molecules = await getMolecules();
-          console.log('Molecules fetched:', molecules);
-          setStats(prev => ({ 
-            ...prev, 
-            molecules: { 
-              count: molecules.length, 
-              loading: false, 
-              error: null 
-            }
-          }));
-          setSystemHealth(prev => ({ ...prev, heroku: 'online' }));
+          // Try direct API call first
+          const response = await fetch('https://cryoprotect-8030e4025428.herokuapp.com/api/molecules', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+            },
+            mode: 'cors'
+          });
+          
+          if (response.ok) {
+            const result = await response.json();
+            const molecules = result.data || result;
+            console.log('Direct API molecules fetched:', molecules?.length);
+            setStats(prev => ({ 
+              ...prev, 
+              molecules: { 
+                count: molecules?.length || 0, 
+                loading: false, 
+                error: null 
+              }
+            }));
+            setSystemHealth(prev => ({ ...prev, heroku: 'online' }));
+          } else {
+            throw new Error(`API returned ${response.status}`);
+          }
         } catch (error) {
-          console.error('Molecules fetch error:', error);
-          setStats(prev => ({ 
-            ...prev, 
-            molecules: { 
-              count: 4, // Show mock data count
-              loading: false, 
-              error: 'Using fallback data'
-            }
-          }));
-          setSystemHealth(prev => ({ ...prev, heroku: 'offline' }));
+          console.error('Direct API failed, trying utils:', error);
+          
+          // Fallback to utils method
+          try {
+            const molecules = await getMolecules();
+            console.log('Utils molecules fetched:', molecules?.length);
+            setStats(prev => ({ 
+              ...prev, 
+              molecules: { 
+                count: molecules?.length || 4, 
+                loading: false, 
+                error: molecules?.length ? null : 'Using fallback data'
+              }
+            }));
+            setSystemHealth(prev => ({ ...prev, heroku: 'online' }));
+          } catch (utilsError) {
+            console.error('Utils also failed:', utilsError);
+            setStats(prev => ({ 
+              ...prev, 
+              molecules: { 
+                count: 4, // Show mock data count
+                loading: false, 
+                error: 'Using fallback data'
+              }
+            }));
+            setSystemHealth(prev => ({ ...prev, heroku: 'offline' }));
+          }
         }
         
         // Get mixture count with better error handling
