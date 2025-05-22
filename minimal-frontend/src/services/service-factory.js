@@ -5,6 +5,7 @@
  */
 import { moleculeService } from './molecules/molecule-service';
 import { mixtureService } from './mixtures/mixture-service';
+import { enhancedConvexMoleculeService } from './enhanced-convex-service';
 
 // Helper to check if we should use mock services
 const shouldUseMockServices = () => {
@@ -37,9 +38,22 @@ const shouldUseMockServices = () => {
 
 // Get the appropriate molecule service
 export const getMoleculeService = () => {
+  // Check for enhanced Convex service preference
+  if (typeof window !== 'undefined') {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('enhanced') === 'true' || window.location.pathname.includes('enhanced')) {
+      return enhancedConvexMoleculeService;
+    }
+  }
+  
   // For now, we don't have mock services in minimal-frontend
   // This can be extended later to include mock services
   return moleculeService;
+};
+
+// Get the enhanced molecule service directly
+export const getEnhancedMoleculeService = () => {
+  return enhancedConvexMoleculeService;
 };
 
 // Get the appropriate mixture service
